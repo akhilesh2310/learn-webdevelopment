@@ -1,0 +1,8 @@
+{
+  "label": "Caching",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "system-design/caching/index"
+  }
+}

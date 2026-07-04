@@ -1,41 +1,64 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+const docSections = [
+  {
+    title: 'DSA',
+    description: 'Organized notes for data structures, algorithms, and interview patterns.',
+    to: '/docs/dsa',
+  },
+  {
+    title: 'Web Development',
+    description: 'A structured home for frontend, backend, frameworks, and platform notes.',
+    to: '/docs/web-development',
+  },
+  {
+    title: 'System Design',
+    description: 'Scalable categories for frontend, backend, infrastructure, and distributed systems.',
+    to: '/docs/system-design',
+  },
+];
 
 export default function Home(): ReactNode {
+  const {siteConfig} = useDocusaurusContext();
+
   return (
     <Layout
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      title={siteConfig.title}
+      description="Personal study notes for DSA, web development, and system design.">
       <main>
-        <HomepageFeatures />
+        <section className={styles.hero}>
+          <div className="container">
+            <Heading as="h1" className={styles.heroTitle}>
+              {siteConfig.title}
+            </Heading>
+            <p className={styles.heroSubtitle}>
+              A long-term documentation space for interview preparation,
+              quick revision, and structured technical learning.
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className="container">
+            <div className={styles.cardGrid}>
+              {docSections.map((section) => (
+                <Link className={styles.card} to={section.to} key={section.title}>
+                  <Heading as="h2" className={styles.cardTitle}>
+                    {section.title}
+                  </Heading>
+                  <p className={styles.cardDescription}>{section.description}</p>
+                  <span className={styles.cardLink}>Open notes</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
