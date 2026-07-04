@@ -3,7 +3,9 @@ Before making any changes, read:
 - PROJECT_REQUIREMENTS.md
 - AI_PROJECT_CONTEXT.md
 - KNOWLEDGE_ARCHITECTURE.md
-- WORKFLOWS.md
+- DECISIONS.md
+- .knowledge/knowledge-rules.yaml
+- .knowledge/knowledge-map.yaml
 - .github/copilot-instructions.md
 
 Task:

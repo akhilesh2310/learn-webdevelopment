@@ -19,9 +19,11 @@ The site is intended to grow into a large documentation system covering DSA, Web
 - `src/pages/index.module.css`: Homepage-specific styles.
 - `src/css/custom.css`: Global Docusaurus theme overrides.
 - `PROJECT_REQUIREMENTS.md`: Product and architecture requirements.
+- `KNOWLEDGE_ARCHITECTURE.md`: Root-level knowledge architecture principles.
+- `DECISIONS.md`: Long-term architecture and knowledge-management decisions.
 - `.github/copilot-instructions.md`: Short editing rules for GitHub Copilot.
 - `.knowledge/`: Knowledge-base infrastructure for topic maps, aliases, migration logs, review queues, and AI editing rules.
-- `DECISIONS.md`: Long-term architecture and knowledge-management decisions.
+- `prompts/`: Reusable Codex prompts only. Project architecture and decisions should not live inside this folder.
 
 ## Knowledge Base Infrastructure
 
@@ -42,6 +44,25 @@ Knowledge-base source-of-truth rules:
 - One topic should have one canonical document.
 - Search existing docs and `.knowledge/knowledge-map.yaml` before creating a new page.
 - Prefer updating canonical pages over creating duplicates.
+
+## Prompt Library
+
+The `prompts/` folder is for reusable Codex prompts only.
+
+- `prompts/README.md`: Explains which prompt to use for common workflows.
+- `prompts/add-new-knowledge.md`: Main workflow for adding newly learned technical knowledge.
+- `prompts/migrate-section.md`: Reusable workflow for migrating an approved section.
+- `prompts/review-existing-doc.md`: Reusable workflow for reviewing an existing documentation page.
+- `prompts/improve-doc-quality.md`: Reusable workflow for improving an existing migrated doc.
+- `prompts/archive/`: Historical one-time prompts that should be preserved but not used as active workflows.
+
+Project architecture and decision documents live at the root:
+
+- `PROJECT_REQUIREMENTS.md`
+- `AI_PROJECT_CONTEXT.md`
+- `KNOWLEDGE_ARCHITECTURE.md`
+- `DECISIONS.md`
+- `.knowledge/`
 
 ## Current Top Navigation
 
