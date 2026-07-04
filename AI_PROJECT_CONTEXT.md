@@ -34,7 +34,7 @@ Do not add Blog or other top-level navigation items.
 
 ## Documentation Structure
 
-The documentation is partially migrated. DSA has been migrated as direct sidebar pages, while Web Development and System Design remain reset placeholders:
+The documentation is partially migrated. DSA and System Design have been migrated, while Web Development remains a reset placeholder:
 
 ```text
 docs/
@@ -47,10 +47,22 @@ docs/
     toll-increase.md
     problems-solved.md
   web-development.md
-  system-design.md
+  system-design/
+    interview-pattern.md
+    basic-concepts.md
+    resources.md
+    system-design-questions/
+      index.md
+      autocomplete.md
+      google-search.md
+      ...
+    dsa-roadmap/
+      index.md
+      solved.md
+    worked-22nd-aug.md
 ```
 
-Do not treat the Web Development or System Design placeholder pages as migrated content. The approved hierarchy should be reviewed in `knowledge-hierarchy.md` before recreating nested docs.
+Do not treat the Web Development placeholder page as migrated content. The approved hierarchy should be reviewed in `knowledge-hierarchy.md` before recreating nested docs.
 
 ### DSA
 
@@ -75,7 +87,37 @@ docs/web-development.md
 ### System Design
 
 ```text
-docs/system-design.md
+docs/system-design/
+  interview-pattern.md
+  basic-concepts.md
+  resources.md
+  system-design-questions/
+    _category_.json
+    index.md
+    autocomplete.md
+    google-search.md
+    google-docs.md
+    google-sheets.md
+    google-drive-dropbox.md
+    google-maps.md
+    instagram.md
+    facebook-news-feed.md
+    twitter.md
+    netflix.md
+    youtube.md
+    whatsapp-messenger.md
+    url-shortening-service.md
+    web-crawler.md
+    uber-ola.md
+    traffic-control-system.md
+    bookmyshow.md
+    airbnb.md
+    airline-management-system.md
+  dsa-roadmap/
+    _category_.json
+    index.md
+    solved.md
+  worked-22nd-aug.md
 ```
 
 ### Engineering Handbook
@@ -111,7 +153,18 @@ docs/engineering-handbook/
 - Toll Increase
 - Problems Solved
 
-`webDevelopmentSidebar` and `systemDesignSidebar` currently show the same minimal reset menu while their migrations are restarted:
+`systemDesignSidebar` now shows a collapsible `System Design` category with these approved main sidebar items:
+
+- Interview Pattern
+- Basic Concepts
+- Resources
+- System Design Questions
+- DSA Roadmap
+- Worked 22nd Aug
+
+`System Design Questions` is a collapsible category with detected interview problem pages. `DSA Roadmap` is a collapsible category with `Solved`.
+
+`webDevelopmentSidebar` currently shows the minimal reset menu while its migration is restarted:
 
 - Introduction
 - DSA
@@ -139,15 +192,15 @@ The generated documentation from the failed migration was removed from `docs/`. 
 
 - `docs/intro.md`
 - `docs/web-development.md`
-- `docs/system-design.md`
 
 DSA has since been migrated from `source-notes/1. DSA.md` into `docs/dsa/` as direct pages only.
+System Design has since been migrated from `source-notes/3. System Design.md` into `docs/system-design/` using the approved six-item hierarchy.
 
 `sidebars.ts` keeps the existing sidebar IDs used by `docusaurus.config.ts`, but each sidebar now shows the same reset menu:
 
 - `dsaSidebar`: migrated DSA category with direct pages.
 - `webDevelopmentSidebar`: reset menu.
-- `systemDesignSidebar`: reset menu.
+- `systemDesignSidebar`: migrated System Design category with direct pages and two nested categories.
 
 The Engineering Handbook sidebar item is a placeholder link until that section is intentionally recreated.
 
