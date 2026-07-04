@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # 3. React Hooks
 
-# **3\. React Hooks**
+## 3\. React Hooks
 
 ## **useState**
 
@@ -39,13 +39,13 @@ sidebar_position: 3
 * useMemo vs useCallback  
 * useRef use cases
 
-# **React Hooks**
+## React Hooks
 
 React Hooks let functional components use React features like state, side effects, refs, context, reducers, memoization, and imperative handles. Hooks are the reason modern React mostly uses functional components instead of class components.
 
 ---
 
-# **1\. useState**
+## 1\. useState
 
 ## **Simple meaning**
 
@@ -113,7 +113,7 @@ The function runs only during initial render.
 
 ---
 
-# **2\. useEffect**
+## 2\. useEffect
 
 ## **Simple meaning**
 
@@ -180,7 +180,7 @@ function UserPage() \{
 
 ---
 
-# **3\. useEffect Cleanup Function**
+## 3\. useEffect Cleanup Function
 
 ## **Simple meaning**
 
@@ -279,7 +279,7 @@ The cleanup function in `useEffect` is used to clean subscriptions, timers, even
 
 ---
 
-# **4\. useEffect Dependency Array**
+## 4\. useEffect Dependency Array
 
 ## **Simple meaning**
 
@@ -359,7 +359,7 @@ The dependency array tells React when to re-run an effect. No array means after 
 
 ---
 
-# **5\. useRef**
+## 5\. useRef
 
 ## **Simple meaning**
 
@@ -449,7 +449,7 @@ The UI will not update just because this value changed.
 
 ---
 
-# **6\. useMemo**
+## 6\. useMemo
 
 ## **Simple meaning**
 
@@ -510,7 +510,7 @@ This is usually unnecessary because `a + b` is cheap.
 
 ---
 
-# **7\. useCallback**
+## 7\. useCallback
 
 ## **Simple meaning**
 
@@ -583,7 +583,7 @@ It is useful when function identity matters.
 
 ---
 
-# **8\. useMemo vs useCallback**
+## 8\. useMemo vs useCallback
 
 ## **Simple comparison**
 
@@ -615,7 +615,7 @@ const handleSelect \= React.useCallback((item) \=\> \{
 
 ---
 
-# **9\. useContext**
+## 9\. useContext
 
 ## **Simple meaning**
 
@@ -691,7 +691,7 @@ const value \= React.useMemo(() \=\> \{
 
 ---
 
-# **10\. useReducer**
+## 10\. useReducer
 
 ## **Simple meaning**
 
@@ -783,7 +783,7 @@ function formReducer(state, action) \{
 
 ---
 
-# **11\. useLayoutEffect**
+## 11\. useLayoutEffect
 
 ## **Simple meaning**
 
@@ -839,7 +839,7 @@ Use `useEffect` by default. Use `useLayoutEffect` only when visual correctness r
 
 ---
 
-# **12\. useImperativeHandle**
+## 12\. useImperativeHandle
 
 ## **Simple meaning**
 
@@ -915,7 +915,7 @@ Normally React prefers declarative data flow. `useImperativeHandle` is for rare 
 
 ---
 
-# **13\. Custom Hooks**
+## 13\. Custom Hooks
 
 ## **Simple meaning**
 
@@ -1054,7 +1054,7 @@ Custom hooks are reusable functions that encapsulate hook-based logic. They let 
 
 ---
 
-# **14\. Hook Rules**
+## 14\. Hook Rules
 
 ## **Rule 1: Call hooks only at the top level**
 
@@ -1137,11 +1137,11 @@ Hooks must be called at the top level of React components or custom hooks becaus
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. useEffect lifecycle**
+## 1\. useEffect lifecycle
 
 ## **Simple answer**
 
@@ -1189,7 +1189,7 @@ React.useEffect(() \=\> \{
 
 ---
 
-# **2\. useMemo vs useCallback**
+## 2\. useMemo vs useCallback
 
 ## **Answer**
 
@@ -1213,7 +1213,7 @@ const handleClick \= React.useCallback(() \=\> \{
 
 ---
 
-# **3\. useRef use cases**
+## 3\. useRef use cases
 
 ## **Answer**
 
@@ -1264,7 +1264,7 @@ function Component(\{ value \}) \{
 
 ---
 
-# **4\. useState vs useReducer**
+## 4\. useState vs useReducer
 
 ## **Simple comparison**
 
@@ -1282,7 +1282,7 @@ function Component(\{ value \}) \{
 
 ---
 
-# **5\. useEffect vs useLayoutEffect**
+## 5\. useEffect vs useLayoutEffect
 
 ## **Simple comparison**
 
@@ -1299,7 +1299,7 @@ function Component(\{ value \}) \{
 
 ---
 
-# **6\. Why hooks should not be called conditionally?**
+## 6\. Why hooks should not be called conditionally?
 
 ## **Answer**
 
@@ -1329,7 +1329,7 @@ Hooks cannot be called conditionally because React relies on the same hook call 
 
 ---
 
-# **7\. What is stale closure in hooks?**
+## 7\. What is stale closure in hooks?
 
 ## **Simple meaning**
 
@@ -1399,7 +1399,7 @@ A stale closure happens when an effect, callback, or timer captures old state or
 
 ---
 
-# **8\. What makes a good custom hook?**
+## 8\. What makes a good custom hook?
 
 ## **Answer**
 
@@ -1449,7 +1449,7 @@ A good custom hook extracts reusable hook-based logic behind a clean API. It sho
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Hook | Main purpose |
 | ----- | ----- |
@@ -1469,6 +1469,6 @@ A good custom hook extracts reusable hook-based logic behind a clean API. It sho
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 React Hooks allow functional components to use state, effects, refs, context, reducers, memoization, and reusable stateful logic. `useState` manages local state, `useEffect` handles side effects after render, and its cleanup prevents leaks from timers, subscriptions, listeners, and requests. The dependency array controls when effects re-run. `useRef` stores mutable values or DOM references without triggering re-render. `useMemo` caches calculated values, while `useCallback` caches function references. `useContext` reads shared context, `useReducer` handles complex state transitions, and `useLayoutEffect` is used for layout-sensitive work before paint. Custom hooks extract reusable hook logic. The most important rule is that hooks must be called at the top level because React depends on consistent hook call order across renders.

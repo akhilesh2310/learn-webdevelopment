@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # React Performance
 
-# **7\. React Performance Optimization**
+## 7\. React Performance Optimization
 
 ## **React.memo**
 
@@ -29,7 +29,7 @@ sidebar_position: 4
 
 ## **Memoization Strategies**
 
-# **Senior / Staff React Topics**
+## Senior / Staff React Topics
 
 ## **Performance Profiling**
 
@@ -48,7 +48,7 @@ sidebar_position: 4
 * Scaling React teams  
 * Frontend architecture decisions
 
-# **React Performance Optimization**
+## React Performance Optimization
 
 React performance optimization means improving how fast the UI loads, renders, responds to user interactions, and handles large data. The most important rule is:
 
@@ -58,7 +58,7 @@ Do not blindly add `React.memo`, `useMemo`, and `useCallback` everywhere. First 
 
 ---
 
-# **1\. When Should You Optimize?**
+## 1\. When Should You Optimize?
 
 ## **Simple meaning**
 
@@ -98,7 +98,7 @@ I optimize React apps when there is measurable or visible performance pain. I fi
 
 ---
 
-# **2\. Common React Performance Problems**
+## 2\. Common React Performance Problems
 
 ## **Common causes**
 
@@ -180,7 +180,7 @@ React apps usually become slow because of unnecessary re-renders, expensive rend
 
 ---
 
-# **3\. React.memo**
+## 3\. React.memo
 
 ## **Simple meaning**
 
@@ -277,7 +277,7 @@ Avoid when:
 
 ---
 
-# **4\. useMemo**
+## 4\. useMemo
 
 ## **Simple meaning**
 
@@ -364,7 +364,7 @@ This is unnecessary because `a + b` is cheap.
 
 ---
 
-# **5\. useCallback**
+## 5\. useCallback
 
 ## **Simple meaning**
 
@@ -474,7 +474,7 @@ Avoid when:
 
 ---
 
-# **6\. React.memo vs useMemo vs useCallback**
+## 6\. React.memo vs useMemo vs useCallback
 
 ## **Simple comparison**
 
@@ -528,7 +528,7 @@ function Parent(\{ items \}: \{ items: Item\[\] \}) \{
 
 ---
 
-# **7\. Preventing Unnecessary Re-renders**
+## 7\. Preventing Unnecessary Re-renders
 
 ## **Common re-render triggers**
 
@@ -672,7 +672,7 @@ To prevent unnecessary re-renders, I first identify why the component re-renders
 
 ---
 
-# **8\. Memoization Strategies**
+## 8\. Memoization Strategies
 
 ## **Simple meaning**
 
@@ -733,7 +733,7 @@ Memoization should be used selectively. I memoize expensive calculations, stable
 
 ---
 
-# **9\. Code Splitting**
+## 9\. Code Splitting
 
 ## **Simple meaning**
 
@@ -793,7 +793,7 @@ Code splitting breaks the app bundle into smaller chunks so users do not downloa
 
 ---
 
-# **10\. Lazy Loading**
+## 10\. Lazy Loading
 
 ## **Simple meaning**
 
@@ -825,7 +825,7 @@ Lazy loading delays loading code or assets until they are needed. In React, `Rea
 
 ---
 
-# **11\. Suspense**
+## 11\. Suspense
 
 ## **Simple meaning**
 
@@ -885,7 +885,7 @@ Suspense lets React show fallback UI while a lazy-loaded component or suspended 
 
 ---
 
-# **12\. Virtualization**
+## 12\. Virtualization
 
 ## **Simple meaning**
 
@@ -949,7 +949,7 @@ Virtualization improves large list performance by rendering only the visible row
 
 ---
 
-# **13\. react-window**
+## 13\. react-window
 
 ## **Simple meaning**
 
@@ -1026,7 +1026,7 @@ The `style` prop is important.
 
 ---
 
-# **14\. react-virtualized**
+## 14\. react-virtualized
 
 ## **Simple meaning**
 
@@ -1057,7 +1057,7 @@ It supports large lists, grids, tables, auto-sizing, cell measuring, and more ad
 
 ---
 
-# **15\. Large List Optimization**
+## 15\. Large List Optimization
 
 ## **Problem**
 
@@ -1131,7 +1131,7 @@ For large lists, I avoid rendering all items at once. I use pagination, infinite
 
 ---
 
-# **16\. Performance Profiling**
+## 16\. Performance Profiling
 
 ## **Simple meaning**
 
@@ -1180,7 +1180,7 @@ I profile before optimizing. I reproduce the slow interaction, record it with Re
 
 ---
 
-# **17\. React DevTools Profiler**
+## 17\. React DevTools Profiler
 
 ## **Simple meaning**
 
@@ -1233,7 +1233,7 @@ React DevTools Profiler helps measure rendering performance. It shows which comp
 
 ---
 
-# **18\. Rendering Optimization**
+## 18\. Rendering Optimization
 
 ## **Simple meaning**
 
@@ -1295,7 +1295,7 @@ Rendering optimization means reducing render frequency and render cost. I keep r
 
 ---
 
-# **19\. Architecture Decisions for Performance**
+## 19\. Architecture Decisions for Performance
 
 ## **Simple meaning**
 
@@ -1341,7 +1341,7 @@ At senior level, React performance is not just `useMemo`. Architecture decisions
 
 ---
 
-# **20\. Large Scale State Management**
+## 20\. Large Scale State Management
 
 ## **Performance problem**
 
@@ -1395,7 +1395,7 @@ For large-scale state performance, I separate client state from server state, ke
 
 ---
 
-# **21\. Scaling React Teams**
+## 21\. Scaling React Teams
 
 ## **Simple meaning**
 
@@ -1438,11 +1438,11 @@ Scaling React teams requires technical and process decisions. I use feature owne
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. React.memo vs useMemo**
+## 1\. React.memo vs useMemo
 
 ## **Answer**
 
@@ -1466,7 +1466,7 @@ const activeUsers \= React.useMemo(() \=\> \{
 
 ---
 
-# **2\. useMemo vs useCallback**
+## 2\. useMemo vs useCallback
 
 ## **Answer**
 
@@ -1490,7 +1490,7 @@ const handleClick \= React.useCallback(() \=\> \{
 
 ---
 
-# **3\. How do you optimize a large list?**
+## 3\. How do you optimize a large list?
 
 ## **Answer**
 
@@ -1520,7 +1520,7 @@ I avoid rendering thousands of DOM nodes at once. I use virtualization with libr
 
 ---
 
-# **4\. How do you identify unnecessary re-renders?**
+## 4\. How do you identify unnecessary re-renders?
 
 ## **Answer**
 
@@ -1544,7 +1544,7 @@ I use React DevTools Profiler to record the slow interaction and inspect render 
 
 ---
 
-# **5\. How do you optimize route loading?**
+## 5\. How do you optimize route loading?
 
 ## **Answer**
 
@@ -1566,7 +1566,7 @@ I optimize route loading by splitting large route components into separate chunk
 
 ---
 
-# **6\. How do you optimize context performance?**
+## 6\. How do you optimize context performance?
 
 ## **Answer**
 
@@ -1594,7 +1594,7 @@ Context updates can re-render all consumers using that context. To optimize it, 
 
 ---
 
-# **7\. How do senior engineers approach React performance?**
+## 7\. How do senior engineers approach React performance?
 
 ## **Answer**
 
@@ -1618,7 +1618,7 @@ At senior level, I do not jump directly to hooks. I first measure, then identify
 
 ---
 
-# **8\. How do you make architecture decisions for frontend performance?**
+## 8\. How do you make architecture decisions for frontend performance?
 
 ## **Answer**
 
@@ -1641,7 +1641,7 @@ Frontend architecture decisions should balance performance and maintainability. 
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1664,6 +1664,6 @@ Frontend architecture decisions should balance performance and maintainability. 
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 React performance optimization starts with measurement. I first use React DevTools Profiler, browser Performance tools, Lighthouse, bundle analyzer, or monitoring data to find the real bottleneck. At component level, I use `React.memo` to skip expensive child re-renders, `useMemo` to cache expensive calculated values, and `useCallback` to keep function references stable when needed. For loading performance, I use code splitting, lazy loading, and Suspense. For large lists, I use pagination, infinite scroll, or virtualization with tools like `react-window` or `react-virtualized`. To prevent unnecessary re-renders, I improve state placement, split components, split context, use selectors, and avoid unstable props. At senior/staff level, performance is also an architecture topic: route-level splitting, server-state caching, bundle governance, design-system quality, scalable state management, and team-wide performance standards matter more than blindly adding memoization.

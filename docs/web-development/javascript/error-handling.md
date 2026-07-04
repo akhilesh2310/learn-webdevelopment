@@ -30,9 +30,7 @@ sidebar_position: 25
 [https://javascript.info/error-handling](https://javascript.info/error-handling)  
 [https://www.tutorialspoint.com/javascript/javascript\_error\_handling.htm](https://www.tutorialspoint.com/javascript/javascript_error_handling.htm)
 
-# 
 
-# 
 
 # **JavaScript Error Handling**
 

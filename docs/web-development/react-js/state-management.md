@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # 4. State Management
 
-# **4\. State Management**
+## 4\. State Management
 
 ## **Local State**
 
@@ -38,7 +38,7 @@ sidebar_position: 4
 * Context vs Redux  
 * Redux Toolkit advantages
 
-# **React State Management**
+## React State Management
 
 State management means deciding **where data should live**, **who owns it**, **who can update it**, and **how UI should react when it changes**.
 
@@ -50,7 +50,7 @@ The best state management answer is not “always use Redux”. The best answer 
 
 ---
 
-# **1\. Local State**
+## 1\. Local State
 
 ## **Simple meaning**
 
@@ -112,7 +112,7 @@ Local state is state managed inside a component using `useState` or `useReducer`
 
 ---
 
-# **2\. Lift State Up**
+## 2\. Lift State Up
 
 ## **Simple meaning**
 
@@ -203,7 +203,7 @@ Lifting state up means moving shared state to the nearest common parent and pass
 
 ---
 
-# **3\. Context API**
+## 3\. Context API
 
 ## **Simple meaning**
 
@@ -311,7 +311,7 @@ Context API is used to avoid prop drilling for values needed by many components,
 
 ---
 
-# **4\. Reducer Pattern**
+## 4\. Reducer Pattern
 
 ## **Simple meaning**
 
@@ -422,7 +422,7 @@ The reducer pattern centralizes state transition logic. It uses actions to descr
 
 ---
 
-# **5\. Redux Fundamentals**
+## 5\. Redux Fundamentals
 
 Redux is a predictable global state management library.
 
@@ -470,7 +470,7 @@ Redux is a predictable state management library where the application state live
 
 ---
 
-# **6\. Redux Store**
+## 6\. Redux Store
 
 ## **Simple meaning**
 
@@ -552,7 +552,7 @@ The Redux store is the central place where application state is kept. Components
 
 ---
 
-# **7\. Redux Actions**
+## 7\. Redux Actions
 
 ## **Simple meaning**
 
@@ -600,7 +600,7 @@ An action is an object that describes an event in the application. It usually ha
 
 ---
 
-# **8\. Redux Reducers**
+## 8\. Redux Reducers
 
 ## **Simple meaning**
 
@@ -699,7 +699,7 @@ A reducer is a pure function that receives current state and an action, then ret
 
 ---
 
-# **9\. Redux Middleware**
+## 9\. Redux Middleware
 
 ## **Simple meaning**
 
@@ -760,7 +760,7 @@ Middleware extends Redux dispatch behavior. It runs after an action is dispatche
 
 ---
 
-# **10\. Redux Toolkit**
+## 10\. Redux Toolkit
 
 ## **Simple meaning**
 
@@ -864,7 +864,7 @@ Redux Toolkit is the modern recommended way to write Redux. It simplifies store 
 
 ---
 
-# **11\. Zustand**
+## 11\. Zustand
 
 ## **Simple meaning**
 
@@ -939,7 +939,7 @@ Zustand is a lightweight hook-based state management library. It is simpler and 
 
 ---
 
-# **12\. Recoil Optional**
+## 12\. Recoil Optional
 
 ## **Simple meaning**
 
@@ -993,7 +993,7 @@ Recoil uses atoms for shared state and selectors for derived state. It is useful
 
 ---
 
-# **13\. Server State vs Client State**
+## 13\. Server State vs Client State
 
 ## **Simple meaning**
 
@@ -1065,7 +1065,7 @@ Client state is owned by the frontend, such as modal state, form state, theme, a
 
 ---
 
-# **14\. Context vs Redux**
+## 14\. Context vs Redux
 
 ## **Simple comparison**
 
@@ -1112,7 +1112,7 @@ Context is mainly for passing values deeply and avoiding prop drilling. Redux is
 
 ---
 
-# **15\. Redux Toolkit Advantages**
+## 15\. Redux Toolkit Advantages
 
 ## **Main advantages**
 
@@ -1205,7 +1205,7 @@ Redux Toolkit is preferred because it removes much of the old Redux boilerplate.
 
 ---
 
-# **16\. How to Choose State Management**
+## 16\. How to Choose State Management
 
 ## **Simple decision tree**
 
@@ -1243,11 +1243,11 @@ I start with the simplest solution. Local UI state stays local. Shared sibling s
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Context vs Redux**
+## 1\. Context vs Redux
 
 ## **Answer**
 
@@ -1265,7 +1265,7 @@ Context is not a complete Redux replacement. Context is good for passing low-fre
 
 ---
 
-# **2\. Redux Toolkit advantages**
+## 2\. Redux Toolkit advantages
 
 ## **Answer**
 
@@ -1288,7 +1288,7 @@ Redux Toolkit reduces Redux boilerplate and prevents common mistakes. It combine
 
 ---
 
-# **3\. When should state be local vs global?**
+## 3\. When should state be local vs global?
 
 ## **Answer**
 
@@ -1316,7 +1316,7 @@ Keep state as close as possible to where it is used. Make it global only when ma
 
 ---
 
-# **4\. What is server state?**
+## 4\. What is server state?
 
 ## **Answer**
 
@@ -1338,7 +1338,7 @@ Server state is remote data fetched from APIs. Unlike client state, it can becom
 
 ---
 
-# **5\. useReducer vs Redux**
+## 5\. useReducer vs Redux
 
 ## **Simple comparison**
 
@@ -1356,7 +1356,7 @@ Server state is remote data fetched from APIs. Unlike client state, it can becom
 
 ---
 
-# **6\. Zustand vs Redux Toolkit**
+## 6\. Zustand vs Redux Toolkit
 
 ## **Simple comparison**
 
@@ -1374,7 +1374,7 @@ Zustand is lightweight and simple, good for small to medium global state with le
 
 ---
 
-# **7\. What are selectors?**
+## 7\. What are selectors?
 
 ## **Answer**
 
@@ -1400,7 +1400,7 @@ Selectors are functions that read or derive data from state. They hide the inter
 
 ---
 
-# **8\. What is middleware in Redux?**
+## 8\. What is middleware in Redux?
 
 ## **Answer**
 
@@ -1414,7 +1414,7 @@ Redux middleware extends the dispatch pipeline. It can inspect actions, perform 
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1436,6 +1436,6 @@ Redux middleware extends the dispatch pipeline. It can inspect actions, perform 
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 State management in React starts with choosing the right owner for state. Local component state should stay local. If siblings need the same state, lift it to the nearest common parent. If deeply nested components need low-frequency shared values like theme, auth, or locale, use Context API. For complex local transitions, use the reducer pattern. For complex global client state, Redux Toolkit or Zustand can be used. Redux uses a store, actions, reducers, middleware, and selectors to manage state predictably. Redux Toolkit is the modern way to write Redux because it reduces boilerplate, generates actions and reducers, uses Immer for immutable updates, and provides good defaults. A senior-level answer should also separate client state from server state: server state needs caching, refetching, stale handling, retries, and invalidation, so tools like RTK Query, TanStack Query, SWR, or Apollo are often better than manually storing API data in Redux.

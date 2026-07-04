@@ -7,13 +7,13 @@ sidebar_position: 4
 
 ### **How would you test accessibility?**
 
-# Expected:
+## Expected:
 
 * # axe
 
 * # Lighthouse
 
-# **🎯 What is Web Accessibility (WCAG)?**
+## 🎯 What is Web Accessibility (WCAG)?
 
 **Web Accessibility** means making your websites **usable by everyone**, including people with:
 
@@ -29,7 +29,7 @@ The **WCAG** (**Web Content Accessibility Guidelines**) are the official **inter
 
 ---
 
-# **❓ Why is Accessibility Important?**
+## ❓ Why is Accessibility Important?
 
 | Why | Explanation |
 | ----- | ----- |
@@ -41,7 +41,7 @@ The **WCAG** (**Web Content Accessibility Guidelines**) are the official **inter
 
 ---
 
-# **🧩 WCAG is Based on 4 Main Principles ("POUR")**
+## 🧩 WCAG is Based on 4 Main Principles ("POUR")
 
 | Principle | Meaning | Example |
 | ----- | ----- | ----- |
@@ -52,7 +52,7 @@ The **WCAG** (**Web Content Accessibility Guidelines**) are the official **inter
 
 ---
 
-# **🔥 How to Implement WCAG Accessibility in React.js**
+## 🔥 How to Implement WCAG Accessibility in React.js
 
 Here’s a structured approach:
 
@@ -268,7 +268,7 @@ This will log accessibility violations in console during development\!
 
 ---
 
-# **🧠 Quick Mental Checklist for Developers:**
+## 🧠 Quick Mental Checklist for Developers:
 
 ✅ Use semantic HTML  
  ✅ Label everything (images, forms)  
@@ -279,7 +279,7 @@ This will log accessibility violations in console during development\!
 
 ---
 
-# **🔥 Summary**
+## 🔥 Summary
 
 |  |  |
 | ----- | ----- |
@@ -306,7 +306,7 @@ Of course\! Let’s dive into it step-by-step:
 
 ---
 
-# **🎯 Accessibility Levels Explained (WCAG Levels A, AA, AAA)**
+## 🎯 Accessibility Levels Explained (WCAG Levels A, AA, AAA)
 
 In **WCAG guidelines**, accessibility is **organized into three levels** of conformance:
 
@@ -318,7 +318,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-# **🛡️ 1\. Level A (Minimum Compliance)**
+## 🛡️ 1\. Level A (Minimum Compliance)
 
 * 🧠 **Focus:**
 
@@ -336,7 +336,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-# **🛡️ 2\. Level AA (Most Common Target)**
+## 🛡️ 2\. Level AA (Most Common Target)
 
 * 🧠 **Focus:**
 
@@ -362,7 +362,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-# **🛡️ 3\. Level AAA (Highest Standard, Very Hard to Achieve)**
+## 🛡️ 3\. Level AAA (Highest Standard, Very Hard to Achieve)
 
 * 🧠 **Focus:**
 
@@ -386,7 +386,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-# **🎨 Easy Visual Summary**
+## 🎨 Easy Visual Summary
 
 pgsql  
 CopyEdit  
@@ -396,7 +396,7 @@ CopyEdit
 
 ---
 
-# **🚀 Example in Real Life**
+## 🚀 Example in Real Life
 
 | Level | Example |
 | ----- | ----- |
@@ -406,7 +406,7 @@ CopyEdit
 
 ---
 
-# **📜 In Short**
+## 📜 In Short
 
 |  |  |
 | ----- | ----- |
@@ -414,7 +414,7 @@ CopyEdit
 | **Level AA** | Real-world usable. Most common legal standard. |
 | **Level AAA** | Maximal access. Idealistic, aspirational. |
 
-# **💡 Pro Tip for Developers**
+## 💡 Pro Tip for Developers
 
 When building React apps:
 
@@ -446,7 +446,7 @@ Awesome\! Let’s continue 🔥
 
 ---
 
-# **🛡️ How Companies Audit Web Accessibility (Level A / AA / AAA)**
+## 🛡️ How Companies Audit Web Accessibility (Level A / AA / AAA)
 
 ### **1\. Automated Testing (First Pass)**
 
@@ -523,7 +523,7 @@ Example:
 
 ---
 
-# **📋 Practical WCAG Checklist for Developers**
+## 📋 Practical WCAG Checklist for Developers
 
 | Feature | Level A | Level AA | Level AAA |
 | ----- | ----- | ----- | ----- |
@@ -537,7 +537,7 @@ Example:
 
 ---
 
-# **🎯 Tips to Integrate Accessibility from Day 1 (React.js)**
+## 🎯 Tips to Integrate Accessibility from Day 1 (React.js)
 
 1. **Use semantic HTML**:
 
@@ -577,7 +577,7 @@ Example:
 
 ---
 
-# **🛡️ Quick Example in React**
+## 🛡️ Quick Example in React
 
 jsx  
 CopyEdit  
@@ -598,7 +598,7 @@ CopyEdit
 
 ---
 
-# **✨ Why Accessibility Matters**
+## ✨ Why Accessibility Matters
 
 |  |  |
 | ----- | ----- |
@@ -609,7 +609,7 @@ CopyEdit
 
 ---
 
-# **✅ Quick Summary**
+## ✅ Quick Summary
 
 * **Always aim for Level AA** by default.
 

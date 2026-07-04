@@ -43,7 +43,7 @@ sidebar_position: 19
 * Promise chaining  
 * Async/Await flow
 
-# **Synchronous vs Asynchronous JavaScript**
+## Synchronous vs Asynchronous JavaScript
 
 JavaScript is single-threaded, but it can handle asynchronous work using the browser/runtime APIs, callback queue, microtask queue, and event loop. This is why JavaScript can start an API call, timer, or file operation without blocking the main thread.
 
@@ -91,7 +91,7 @@ Synchronous code runs line by line and blocks further execution. Asynchronous co
 
 ---
 
-# **Callbacks**
+## Callbacks
 
 A callback is a function passed into another function to be executed later. Callbacks are one of the oldest ways to handle asynchronous behavior in JavaScript.
 
@@ -134,7 +134,7 @@ A callback is a function passed to another function and executed later. It is co
 
 ---
 
-# **Callback Hell**
+## Callback Hell
 
 Callback hell happens when multiple asynchronous operations are nested inside each other, making code hard to read, debug, and maintain.
 
@@ -199,7 +199,7 @@ Callback hell happens when async callbacks are deeply nested. It makes code diff
 
 ---
 
-# **Promises**
+## Promises
 
 A Promise represents a value that may be available now, later, or never. It is used to handle asynchronous operations more cleanly than callbacks.
 
@@ -250,7 +250,7 @@ A promise is an object that represents the eventual success or failure of an asy
 
 ---
 
-# **Promise Chaining**
+## Promise Chaining
 
 Promise chaining means returning a value or another promise from `.then()` so the next `.then()` receives the result.
 
@@ -312,7 +312,7 @@ Promise chaining is used to run async steps in sequence. Each `.then()` receives
 
 ---
 
-# **Promise Error Handling**
+## Promise Error Handling
 
 Promise errors are handled using `.catch()` or the second argument of `.then()`, but `.catch()` is usually cleaner.
 
@@ -373,7 +373,7 @@ Promise errors can be handled using `.catch()`. A `.catch()` at the end catches 
 
 ---
 
-# **Promise APIs**
+## Promise APIs
 
 JavaScript provides static promise methods to handle multiple promises together.
 
@@ -386,7 +386,7 @@ The most important ones are:
 
 ---
 
-# **Promise.all()**
+## Promise.all()
 
 `Promise.all()` runs multiple promises in parallel and waits for all of them to fulfill.
 
@@ -441,7 +441,7 @@ const \[profile, permissions, settings\] \= await Promise.all(\[
 
 ---
 
-# **Promise.allSettled()**
+## Promise.allSettled()
 
 `Promise.allSettled()` waits for all promises to finish, whether they succeed or fail.
 
@@ -487,7 +487,7 @@ const successfulData \= results
 
 ---
 
-# **Promise.any()**
+## Promise.any()
 
 `Promise.any()` resolves with the first fulfilled promise.
 
@@ -530,7 +530,7 @@ Try multiple mirror endpoints/CDNs and use whichever succeeds first.
 
 ---
 
-# **Promise.race()**
+## Promise.race()
 
 `Promise.race()` settles as soon as the first promise settles, whether fulfilled or rejected.
 
@@ -577,7 +577,7 @@ Promise.race(\[fetchData(), timeout(3000)\])
 
 ---
 
-# **Async/Await**
+## Async/Await
 
 `async/await` is syntax built on top of promises. It makes asynchronous code look and read like synchronous code.
 
@@ -678,7 +678,7 @@ console.log("Done");
 
 ---
 
-# **Fetch API**
+## Fetch API
 
 The Fetch API is used to make HTTP requests from the browser. It returns a promise.
 
@@ -753,7 +753,7 @@ In React, use fetch inside `useEffect` or inside event handlers, manage loading/
 
 ---
 
-# **AbortController**
+## AbortController
 
 `AbortController` is used to cancel an in-flight async operation, especially a fetch request.
 
@@ -841,11 +841,11 @@ useEffect(() \=\> \{
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Explain Promise Chaining**
+## 1\. Explain Promise Chaining
 
 ## **Answer**
 
@@ -878,7 +878,7 @@ Promise chaining lets us run async operations in sequence. Each `.then()` receiv
 
 ---
 
-# **2\. Explain Async/Await Flow**
+## 2\. Explain Async/Await Flow
 
 ## **Answer**
 
@@ -916,7 +916,7 @@ Step by step:
 
 ---
 
-# **3\. Difference between Promise and Async/Await**
+## 3\. Difference between Promise and Async/Await
 
 ## **Simple answer**
 
@@ -946,7 +946,7 @@ Promises represent async results, while async/await is syntax built on top of pr
 
 ---
 
-# **4\. Promise.all vs Promise.allSettled**
+## 4\. Promise.all vs Promise.allSettled
 
 ## **Simple answer**
 
@@ -976,7 +976,7 @@ Use `Promise.all()` when all operations are required and one failure should fail
 
 ---
 
-# **5\. Promise.any vs Promise.race**
+## 5\. Promise.any vs Promise.race
 
 ## **Simple answer**
 
@@ -1002,7 +1002,7 @@ Promise.race(\[
 
 ---
 
-# **6\. Why should we avoid async inside forEach?**
+## 6\. Why should we avoid async inside forEach?
 
 ## **Problem**
 
@@ -1040,7 +1040,7 @@ console.log("Done");
 
 ---
 
-# **7\. Sequential vs Parallel API Calls**
+## 7\. Sequential vs Parallel API Calls
 
 ## **Sequential**
 
@@ -1064,7 +1064,7 @@ If one API call depends on the previous result, use sequential `await`. If API c
 
 ---
 
-# **8\. How do you handle API errors with fetch?**
+## 8\. How do you handle API errors with fetch?
 
 ## **Answer**
 
@@ -1086,7 +1086,7 @@ With `fetch`, I handle network errors using `try/catch`, and HTTP errors by chec
 
 ---
 
-# **9\. How do you cancel an API request?**
+## 9\. How do you cancel an API request?
 
 ## **Answer**
 
@@ -1120,7 +1120,7 @@ To cancel a fetch request, I use `AbortController`. I pass its `signal` to fetch
 
 ---
 
-# **10\. What is the difference between microtask and macrotask?**
+## 10\. What is the difference between microtask and macrotask?
 
 ## **Simple meaning**
 
@@ -1163,7 +1163,7 @@ Microtasks have higher priority than macrotasks. Promise callbacks go to the mic
 
 ---
 
-# **11\. What happens if async function throws an error?**
+## 11\. What happens if async function throws an error?
 
 ## **Answer**
 
@@ -1183,7 +1183,7 @@ An async function always returns a promise. If it returns a value, the promise r
 
 ---
 
-# **12\. What does await do with a non-promise value?**
+## 12\. What does await do with a non-promise value?
 
 ## **Answer**
 
@@ -1203,7 +1203,7 @@ test();
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1227,6 +1227,6 @@ test();
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 JavaScript is single-threaded, but it handles asynchronous operations using browser/runtime APIs, queues, and the event loop. Callbacks were the older way to handle async logic, but they can lead to callback hell. Promises provide a cleaner way to represent future success or failure with states like pending, fulfilled, and rejected. Promise chaining lets us run dependent async steps, while APIs like `Promise.all`, `allSettled`, `any`, and `race` help manage multiple promises. `async/await` is syntax built on promises and makes async code easier to read. For API calls, `fetch` returns a promise but does not reject on HTTP errors, so we should check `response.ok`. `AbortController` is used to cancel requests and avoid stale UI updates.

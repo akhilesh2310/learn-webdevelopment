@@ -152,13 +152,13 @@ When designing a modern, highly secure web application, these APIs are usually o
 3. **Heavy Processing:** If you need to encrypt large files client-side before upload or run client-side analytics, spin up a **Web Worker** so your UI doesn't stutter.  
 4. **Offline Capability & Speed:** Implement a **Service Worker** to intercept network calls, serving UI assets instantly from the Cache Storage API, while querying **IndexedDB** for cached, structured business data.
 
-# **DOM, Events, and Web APIs**
+## DOM, Events, and Web APIs
 
 DOM and Web APIs are important frontend interview topics because they test how the browser exposes the page to JavaScript. React handles a lot of DOM work for us, but senior frontend interviews still expect strong understanding of DOM traversal, manipulation, event propagation, browser storage, timers, fetch, observers, and workers.
 
 ---
 
-# **1\. DOM Basics**
+## 1\. DOM Basics
 
 DOM stands for **Document Object Model**. It is the browser’s object-based representation of an HTML document.
 
@@ -210,7 +210,7 @@ DOM is the browser’s live object representation of HTML. JavaScript can use DO
 
 ---
 
-# **2\. DOM Traversal**
+## 2\. DOM Traversal
 
 DOM traversal means moving between nodes in the DOM tree.
 
@@ -262,7 +262,7 @@ DOM traversal means navigating between DOM nodes using APIs like `parentElement`
 
 ---
 
-# **3\. DOM Manipulation**
+## 3\. DOM Manipulation
 
 DOM manipulation means changing the page using JavaScript.
 
@@ -334,7 +334,7 @@ DOM manipulation means changing elements, attributes, classes, text, or structur
 
 ---
 
-# **4\. Event Handling**
+## 4\. Event Handling
 
 Events are signals that something happened in the browser, like a click, key press, form submit, page load, or mouse movement.
 
@@ -408,7 +408,7 @@ Event handling means responding to browser events using handlers. `addEventListe
 
 ---
 
-# **5\. Event Bubbling and Event Capturing**
+## 5\. Event Bubbling and Event Capturing
 
 Events move through the DOM in phases.
 
@@ -481,7 +481,7 @@ Event capturing is the phase where an event travels from the root down to the ta
 
 ---
 
-# **6\. Event Delegation**
+## 6\. Event Delegation
 
 Event delegation means attaching one event listener to a parent instead of attaching listeners to many child elements.
 
@@ -544,7 +544,7 @@ Event delegation uses event bubbling to handle events from child elements at a p
 
 ---
 
-# **7\. LocalStorage and SessionStorage**
+## 7\. LocalStorage and SessionStorage
 
 `localStorage` and `sessionStorage` are browser storage APIs for storing string key-value data.
 
@@ -608,7 +608,7 @@ Do not store access tokens or sensitive information in localStorage if avoidable
 
 ---
 
-# **8\. Cookies**
+## 8\. Cookies
 
 Cookies are small key-value data stored by the browser and commonly sent with HTTP requests.
 
@@ -656,7 +656,7 @@ Cookies are small browser-stored values that can be sent automatically with HTTP
 
 ---
 
-# **9\. IndexedDB**
+## 9\. IndexedDB
 
 IndexedDB is a browser database for storing larger and more structured client-side data.
 
@@ -692,7 +692,7 @@ IndexedDB is a client-side database for storing large and structured data in the
 
 ---
 
-# **10\. Web Workers**
+## 10\. Web Workers
 
 Web Workers allow JavaScript to run code in a background thread separate from the main UI thread.
 
@@ -742,7 +742,7 @@ Web Workers run JavaScript in a background thread, which helps keep the UI respo
 
 ---
 
-# **11\. Service Workers**
+## 11\. Service Workers
 
 A Service Worker is a browser background script that can intercept network requests, cache resources, and enable offline behavior.
 
@@ -784,7 +784,7 @@ A Service Worker is a background script that can intercept network requests and 
 
 ---
 
-# **12\. Fetch API**
+## 12\. Fetch API
 
 Fetch is a browser API for making HTTP requests. It returns a promise.
 
@@ -845,7 +845,7 @@ Fetch is a promise-based browser API for HTTP requests. It rejects for network e
 
 ---
 
-# **13\. Timers: `setTimeout` and `setInterval`**
+## 13\. Timers: `setTimeout` and `setInterval`
 
 Timers schedule code to run later.
 
@@ -909,7 +909,7 @@ useEffect(() \=\> \{
 
 ---
 
-# **14\. Geolocation API**
+## 14\. Geolocation API
 
 The Geolocation API allows the browser to get the user’s location with permission.
 
@@ -957,7 +957,7 @@ The Geolocation API provides access to the user’s location after permission. I
 
 ---
 
-# **15\. Intersection Observer**
+## 15\. Intersection Observer
 
 Intersection Observer watches when an element enters or leaves the viewport or another container.
 
@@ -1006,7 +1006,7 @@ Intersection Observer detects when an element becomes visible or hidden relative
 
 ---
 
-# **16\. Mutation Observer**
+## 16\. Mutation Observer
 
 Mutation Observer watches changes in the DOM.
 
@@ -1055,11 +1055,11 @@ Mutation Observer watches DOM changes such as added nodes, removed nodes, attrib
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Explain Event Delegation**
+## 1\. Explain Event Delegation
 
 ## **Answer**
 
@@ -1089,7 +1089,7 @@ Event delegation uses event bubbling to handle child element events at a parent 
 
 ---
 
-# **2\. localStorage vs sessionStorage vs cookies**
+## 2\. localStorage vs sessionStorage vs cookies
 
 ## **Simple comparison**
 
@@ -1118,7 +1118,7 @@ For authentication, `HttpOnly`, `Secure`, and `SameSite` cookies are generally s
 
 ---
 
-# **3\. What is Event Bubbling?**
+## 3\. What is Event Bubbling?
 
 ## **Answer**
 
@@ -1143,7 +1143,7 @@ Event bubbling is the phase where an event moves from the target element up thro
 
 ---
 
-# **4\. What is Event Capturing?**
+## 4\. What is Event Capturing?
 
 ## **Answer**
 
@@ -1163,7 +1163,7 @@ Event capturing is the phase where an event travels from the root down to the ta
 
 ---
 
-# **5\. target vs currentTarget**
+## 5\. target vs currentTarget
 
 ## **Answer**
 
@@ -1180,7 +1180,7 @@ parent.addEventListener("click", (event) \=\> \{
 
 ---
 
-# **6\. What is the difference between preventDefault and stopPropagation?**
+## 6\. What is the difference between preventDefault and stopPropagation?
 
 ## **Answer**
 
@@ -1200,7 +1200,7 @@ button.addEventListener("click", (event) \=\> \{
 
 ---
 
-# **7\. Why use Intersection Observer instead of scroll event?**
+## 7\. Why use Intersection Observer instead of scroll event?
 
 ## **Answer**
 
@@ -1212,7 +1212,7 @@ Intersection Observer is preferred for visibility detection because it is more e
 
 ---
 
-# **8\. When would you use IndexedDB over localStorage?**
+## 8\. When would you use IndexedDB over localStorage?
 
 ## **Answer**
 
@@ -1224,7 +1224,7 @@ I use localStorage for small non-sensitive string preferences. I use IndexedDB f
 
 ---
 
-# **9\. Web Worker vs Service Worker**
+## 9\. Web Worker vs Service Worker
 
 ## **Simple comparison**
 
@@ -1242,7 +1242,7 @@ A Web Worker is used to run CPU-heavy JavaScript in a background thread so the U
 
 ---
 
-# **10\. setTimeout vs setInterval**
+## 10\. setTimeout vs setInterval
 
 ## **Answer**
 
@@ -1262,7 +1262,7 @@ setInterval(() \=\> \{
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1287,6 +1287,6 @@ setInterval(() \=\> \{
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 The DOM is the browser’s live object representation of HTML. JavaScript can traverse, manipulate, and listen to events on DOM nodes. Events move through capturing, target, and bubbling phases, and event delegation uses bubbling to handle child events from a parent listener. For browser storage, `localStorage` persists across sessions, `sessionStorage` lasts for a tab session, cookies can be sent with HTTP requests, and IndexedDB handles large structured data. Web Workers run heavy JavaScript off the main thread, while Service Workers help with caching, offline support, and PWAs. Fetch is used for HTTP requests, timers schedule delayed or repeated work, and observer APIs like Intersection Observer and Mutation Observer help efficiently react to visibility and DOM changes.

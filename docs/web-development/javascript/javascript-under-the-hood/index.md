@@ -326,9 +326,7 @@ Any change in the DOM or CSSOM may trigger:
 
 These operations can affect performance, so understanding the Render Tree helps in optimizing rendering.
 
-# 
 
-# 
 
 # **Part 2: Browser Rendering Pipeline & Performance Optimization**
 

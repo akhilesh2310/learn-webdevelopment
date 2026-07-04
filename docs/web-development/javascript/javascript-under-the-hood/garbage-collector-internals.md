@@ -5,11 +5,11 @@ sidebar_position: 5
 
 # Garbage Collector Internals
 
-# **Garbage Collector (GC) Internals**
+## Garbage Collector (GC) Internals
 
 ---
 
-# **Why Do We Need Garbage Collection?**
+## Why Do We Need Garbage Collection?
 
 **JavaScript automatically manages memory.**
 
@@ -36,7 +36,7 @@ Garbage Collection solves this problem.
 
 ---
 
-# **What is Garbage Collection?**
+## What is Garbage Collection?
 
 Garbage Collection (GC) is the process of:
 
@@ -47,7 +47,7 @@ Free Their Memory
 Reuse Memory Later  
 ---
 
-# **Reachability Concept**
+## Reachability Concept
 
 The most important concept in Garbage Collection is:
 
@@ -102,7 +102,7 @@ UNREACHABLE
 
 ---
 
-# **V8 Memory Architecture**
+## V8 Memory Architecture
 
 V8 does not store all objects in a single memory area.
 
@@ -135,7 +135,7 @@ Heap
 └── Old Space (Old Generation)  
 ---
 
-# **V8 Heap Structure**
+## V8 Heap Structure
 
 \+--------------------------------+  
 |             HEAP                 |  
@@ -150,7 +150,7 @@ Heap
 \+--------------------------------+  
 ---
 
-# **New Space (Young Generation)**
+## New Space (Young Generation)
 
 ---
 
@@ -183,7 +183,7 @@ Most objects created here die quickly.
 
 ---
 
-# **New Space Collector**
+## New Space Collector
 
 New Space uses:
 
@@ -195,7 +195,7 @@ Based on:
 
 ---
 
-# **Cheney's Copying Algorithm**
+## Cheney's Copying Algorithm
 
 New Space is divided into:
 
@@ -227,7 +227,7 @@ Objects are allocated inside:
 From Space  
 ---
 
-# **GC Cycle Begins**
+## GC Cycle Begins
 
 Suppose:
 
@@ -238,7 +238,7 @@ B → Dead
 D → Dead  
 ---
 
-# **Step 1: Mark Live Objects**
+## Step 1: Mark Live Objects
 
 Engine identifies:
 
@@ -248,7 +248,7 @@ A
 C  
 ---
 
-# **Step 2: Copy Survivors**
+## Step 2: Copy Survivors
 
 Only live objects are copied into To Space.
 
@@ -268,7 +268,7 @@ Dead objects disappear automatically.
 
 ---
 
-# **Step 3: Swap Spaces**
+## Step 3: Swap Spaces
 
 Before
 
@@ -284,7 +284,7 @@ Roles are swapped.
 
 ---
 
-# **Result**
+## Result
 
 Before
 
@@ -302,7 +302,7 @@ Benefits:
 
 ---
 
-# **Why is Scavenger Fast?**
+## Why is Scavenger Fast?
 
 Instead of scanning the entire heap:
 
@@ -315,7 +315,7 @@ So copying cost remains very low.
 
 ---
 
-# **Object Promotion**
+## Object Promotion
 
 Some objects survive multiple GC cycles.
 
@@ -347,7 +347,7 @@ Eventually moves into:
 Old Space  
 ---
 
-# **Old Space**
+## Old Space
 
 ---
 
@@ -379,7 +379,7 @@ Cache Objects
 
 ---
 
-# **Major Garbage Collection**
+## Major Garbage Collection
 
 Old Space uses:
 
@@ -389,7 +389,7 @@ This is much more sophisticated than Scavenger.
 
 ---
 
-# **Mark-Sweep-Compact Overview**
+## Mark-Sweep-Compact Overview
 
 Mark  
  ↓  
@@ -398,7 +398,7 @@ Sweep
 Compact  
 ---
 
-# **Phase 1: Mark**
+## Phase 1: Mark
 
 Goal:
 
@@ -446,7 +446,7 @@ Marked as alive.
 
 ---
 
-# **Three Color Marking Algorithm**
+## Three Color Marking Algorithm
 
 V8 internally uses:
 
@@ -487,7 +487,7 @@ Black \= Alive
 White \= Garbage  
 ---
 
-# **Phase 2: Sweep**
+## Phase 2: Sweep
 
 After marking:
 
@@ -515,7 +515,7 @@ Freed memory becomes available.
 
 ---
 
-# **Free Lists**
+## Free Lists
 
 Instead of immediately reallocating memory:
 
@@ -536,7 +536,7 @@ Future allocations reuse them.
 
 ---
 
-# **Problem: Fragmentation**
+## Problem: Fragmentation
 
 After many GC cycles:
 
@@ -566,7 +566,7 @@ Allocation fails.
 
 ---
 
-# **Phase 3: Compact**
+## Phase 3: Compact
 
 Compaction solves fragmentation.
 
@@ -586,7 +586,7 @@ Benefits:
 
 ---
 
-# **Interview Callout**
+## Interview Callout
 
 ### **Difference Between Sweep and Compact**
 
@@ -602,7 +602,7 @@ to eliminate fragmentation.
 
 ---
 
-# **Orinoco Garbage Collector**
+## Orinoco Garbage Collector
 
 Modern V8 GC framework.
 
@@ -611,7 +611,7 @@ Introduced to reduce:
 Stop-The-World Pauses  
 ---
 
-# **What is Stop-The-World?**
+## What is Stop-The-World?
 
 During GC:
 
@@ -626,7 +626,7 @@ Reduce pause time as much as possible.
 
 ---
 
-# **Orinoco Optimizations**
+## Orinoco Optimizations
 
 ---
 
@@ -706,7 +706,7 @@ Simultaneously.
 
 ---
 
-# **Complete V8 GC Flow**
+## Complete V8 GC Flow
 
 Object Created  
       │  
@@ -735,7 +735,7 @@ Sweep
 Compact  
 ---
 
-# **Senior-Level Interview Questions**
+## Senior-Level Interview Questions
 
 ---
 
@@ -805,7 +805,7 @@ This allows applications to remain responsive while memory is being reclaimed.
 
 ---
 
-# **Quick Revision Sheet**
+## Quick Revision Sheet
 
 Heap  
 │  

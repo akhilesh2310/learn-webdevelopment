@@ -5,13 +5,13 @@ sidebar_position: 2
 
 # ChatGPT Notes
 
-# **TypeScript Interview Preparation Notes**
+## TypeScript Interview Preparation Notes
 
 TypeScript is JavaScript with a type system. It helps catch many mistakes before runtime, improves code readability, gives better IDE support, and makes large frontend codebases safer to refactor. For senior frontend interviews, focus less on memorizing syntax and more on explaining how TypeScript helps design safer APIs, reusable components, scalable state, and maintainable domain models.
 
 ---
 
-# **1\. TypeScript Fundamentals**
+## 1\. TypeScript Fundamentals
 
 ## **Simple meaning**
 
@@ -192,7 +192,7 @@ TypeScript adds static type checking to JavaScript. It helps catch bugs during d
 
 ---
 
-# **2\. Functions in TypeScript**
+## 2\. Functions in TypeScript
 
 ## **Simple meaning**
 
@@ -284,7 +284,7 @@ TypeScript functions can type parameters, return values, callbacks, optional par
 
 ---
 
-# **3\. Objects and Type Definitions**
+## 3\. Objects and Type Definitions
 
 ## **Simple meaning**
 
@@ -393,7 +393,7 @@ TypeScript object types define the expected shape of an object. We can use optio
 
 ---
 
-# **4\. Interfaces**
+## 4\. Interfaces
 
 ## **Simple meaning**
 
@@ -483,7 +483,7 @@ Interfaces define object, function, or class contracts. They can extend other in
 
 ---
 
-# **5\. Type Aliases**
+## 5\. Type Aliases
 
 ## **Simple meaning**
 
@@ -533,7 +533,7 @@ Both `type` and `interface` can define object shapes. I usually use `interface` 
 
 ---
 
-# **6\. Type Narrowing**
+## 6\. Type Narrowing
 
 ## **Simple meaning**
 
@@ -641,7 +641,7 @@ Type narrowing is how TypeScript refines a broad type into a specific type using
 
 ---
 
-# **7\. Generics**
+## 7\. Generics
 
 ## **Simple meaning**
 
@@ -770,7 +770,7 @@ Generics allow us to write reusable code without losing type information. Instea
 
 ---
 
-# **8\. Advanced Types**
+## 8\. Advanced Types
 
 ## **`keyof`**
 
@@ -857,7 +857,7 @@ Advanced TypeScript types help derive and transform types from existing types. `
 
 ---
 
-# **9\. Mapped Types**
+## 9\. Mapped Types
 
 ## **Simple meaning**
 
@@ -908,7 +908,7 @@ Mapped types create new types by iterating over the keys of an existing type usi
 
 ---
 
-# **10\. Utility Types**
+## 10\. Utility Types
 
 ## **Simple meaning**
 
@@ -1024,7 +1024,7 @@ Utility types are built-in helpers that transform existing types. `Partial`, `Re
 
 ---
 
-# **11\. Enums and Literal Types**
+## 11\. Enums and Literal Types
 
 ## **Literal types**
 
@@ -1076,7 +1076,7 @@ Enums define named constants, while union literal types define a set of allowed 
 
 ---
 
-# **12\. Classes in TypeScript**
+## 12\. Classes in TypeScript
 
 ## **Simple meaning**
 
@@ -1155,7 +1155,7 @@ TypeScript classes support access modifiers, readonly members, parameter propert
 
 ---
 
-# **13\. Modules and Namespaces**
+## 13\. Modules and Namespaces
 
 ## **ES Modules**
 
@@ -1195,7 +1195,7 @@ Interview-ready answer: ES Modules are the modern standard for organizing TypeSc
 
 ---
 
-# **14\. Decorators**
+## 14\. Decorators
 
 ## **Simple meaning**
 
@@ -1233,7 +1233,7 @@ Decorators are functions that attach metadata or behavior to classes, methods, p
 
 ---
 
-# **15\. TypeScript Configuration**
+## 15\. TypeScript Configuration
 
 ## **Simple meaning**
 
@@ -1294,7 +1294,7 @@ TypeScript source code is checked and transpiled into JavaScript. Type informati
 
 ---
 
-# **16\. Declaration Files**
+## 16\. Declaration Files
 
 ## **Simple meaning**
 
@@ -1327,7 +1327,7 @@ Declaration files tell TypeScript the types of JavaScript code that exists elsew
 
 ---
 
-# **17\. TypeScript with React**
+## 17\. TypeScript with React
 
 ## **Typing props**
 
@@ -1444,7 +1444,7 @@ In React with TypeScript, we type props, state, events, refs, reducers, context,
 
 ---
 
-# **18\. Advanced TypeScript for Senior Engineers**
+## 18\. Advanced TypeScript for Senior Engineers
 
 ## **Discriminated unions**
 
@@ -1569,7 +1569,7 @@ Senior TypeScript is about designing types that make invalid states hard to repr
 
 ---
 
-# **Fastest Interview Preparation Order**
+## Fastest Interview Preparation Order
 
 ## **Phase 1: Most Asked**
 
@@ -1614,7 +1614,7 @@ Study these for deeper discussions:
 
 ---
 
-# **Most Common TypeScript Interview Questions**
+## Most Common TypeScript Interview Questions
 
 ## **1\. What problem does TypeScript solve?**
 
@@ -1669,6 +1669,6 @@ function List\<T\>(\{ items, renderItem \}: ListProps\<T\>) \{
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 TypeScript is JavaScript with static typing. It helps catch mistakes during development, improves IDE support, and makes large frontend apps easier to refactor and maintain. The most important interview topics are `type` vs `interface`, `any` vs `unknown`, `void` vs `never`, union and intersection types, type narrowing, generics, utility types, and React typing. For senior interviews, focus on how TypeScript helps model real application states safely using discriminated unions, generics, mapped types, conditional types, and type-safe APIs. The strongest TypeScript answers explain not only syntax, but also how to design types that make invalid states hard to represent.

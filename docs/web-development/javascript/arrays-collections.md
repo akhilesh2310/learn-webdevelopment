@@ -7,7 +7,7 @@ sidebar_position: 16
 
 Indexed & Keyed collections: [http://webmobtuts.com/javascript/javascript-keyed-and-indexed-collections-array-map-and-set/](http://webmobtuts.com/javascript/javascript-keyed-and-indexed-collections-array-map-and-set/)
 
-# **JavaScript Array Methods, Set, Map, WeakSet, WeakMap**
+## JavaScript Array Methods, Set, Map, WeakSet, WeakMap
 
 JavaScript array methods are commonly asked because they test iteration, immutability, callbacks, return values, performance, and real frontend use cases. For interviews, focus on: what each method returns, whether it mutates original data, when to use it, and common traps.
 
@@ -48,7 +48,7 @@ JavaScript array methods are commonly asked because they test iteration, immutab
 | 29 | [unshift()](https://www.w3schools.com/jsref/jsref_unshift.asp) | Adds new elements to the beginning of an array, and returns the new length |
 | 30 | [valueOf()](https://www.w3schools.com/jsref/jsref_valueof_array.asp) | Returns the primitive value of an array |
 
-# **1\. `forEach`**
+## 1\. `forEach`
 
 ## **Simple meaning**
 
@@ -90,7 +90,7 @@ Answer: `forEach` returns `undefined`, so it should not be used when you need a 
 
 ---
 
-# **2\. `map`**
+## 2\. `map`
 
 ## **Simple meaning**
 
@@ -159,7 +159,7 @@ console.log(result); // \[2, 4, 6\]
 
 ---
 
-# **3\. `filter`**
+## 3\. `filter`
 
 ## **Simple meaning**
 
@@ -210,7 +210,7 @@ Why? `filter` expects a truthy/falsy condition. Since `num * 2` is truthy for al
 
 ---
 
-# **4\. `reduce`**
+## 4\. `reduce`
 
 ## **Simple meaning**
 
@@ -346,7 +346,7 @@ Always prefer passing the initial value.
 
 ---
 
-# **5\. `find`**
+## 5\. `find`
 
 ## **Simple meaning**
 
@@ -377,7 +377,7 @@ console.log(user); // \{ id: 2, name: "Rahul" \}
 
 ---
 
-# **6\. `findIndex`**
+## 6\. `findIndex`
 
 ## **Simple meaning**
 
@@ -429,7 +429,7 @@ console.log(cart);
 
 ---
 
-# **7\. `some`**
+## 7\. `some`
 
 ## **Simple meaning**
 
@@ -465,7 +465,7 @@ console.log(canEdit); // true
 
 ---
 
-# **8\. `every`**
+## 8\. `every`
 
 ## **Simple meaning**
 
@@ -509,7 +509,7 @@ Why? For an empty array, `every` returns `true` because no item violates the con
 
 ---
 
-# **9\. `flat`**
+## 9\. `flat`
 
 ## **Simple meaning**
 
@@ -555,7 +555,7 @@ Useful in paginated API responses.
 
 ---
 
-# **10\. `flatMap`**
+## 10\. `flatMap`
 
 ## **Simple meaning**
 
@@ -597,7 +597,7 @@ console.log(tags); // \["react", "js", "ts"\]
 
 ---
 
-# **11\. `sort`**
+## 11\. `sort`
 
 ## **Simple meaning**
 
@@ -695,7 +695,7 @@ console.log(sorted); // \[1, 2, 3\]
 
 ---
 
-# **12\. `Set`**
+## 12\. `Set`
 
 ## **Simple meaning**
 
@@ -773,7 +773,7 @@ Why? Both objects look same, but they are different references.
 
 ---
 
-# **13\. `Map`**
+## 13\. `Map`
 
 ## **Simple meaning**
 
@@ -849,7 +849,7 @@ console.log(map.size); // 2
 
 ---
 
-# **14\. `WeakSet`**
+## 14\. `WeakSet`
 
 ## **Simple meaning**
 
@@ -906,7 +906,7 @@ Useful when tracking object processing without creating memory leaks.
 
 ---
 
-# **15\. `WeakMap`**
+## 15\. `WeakMap`
 
 ## **Simple meaning**
 
@@ -960,11 +960,11 @@ Useful for storing DOM element metadata without preventing garbage collection.
 
 ---
 
-# **Common Interview Questions**
+## Common Interview Questions
 
 ---
 
-# **1\. `map` vs `forEach`**
+## 1\. `map` vs `forEach`
 
 ## **Simple answer**
 
@@ -1008,7 +1008,7 @@ Answer: React needs an array of elements, and `map` returns that array. `forEach
 
 ---
 
-# **2\. `filter` vs `find`**
+## 2\. `filter` vs `find`
 
 ## **Simple answer**
 
@@ -1036,7 +1036,7 @@ Use `filter` when multiple items can match. Use `find` when we only need the fir
 
 ---
 
-# **3\. `some` vs `every`**
+## 3\. `some` vs `every`
 
 ## **Simple answer**
 
@@ -1054,7 +1054,7 @@ console.log(nums.every((num) \=\> num % 2 \=== 0)); // false
 
 ---
 
-# **4\. `reduce` use cases**
+## 4\. `reduce` use cases
 
 ## **Common use cases**
 
@@ -1124,7 +1124,7 @@ console.log(grouped);
 
 ---
 
-# **5\. `Set` vs `Array`**
+## 5\. `Set` vs `Array`
 
 ## **Simple answer**
 
@@ -1148,7 +1148,7 @@ An array is better for ordered lists, rendering, and index-based access. A `Set`
 
 ---
 
-# **6\. `Map` vs `Object`**
+## 6\. `Map` vs `Object`
 
 ## **Simple answer**
 
@@ -1192,7 +1192,7 @@ Objects are good for representing structured data with known properties. `Map` i
 
 ---
 
-# **7\. Important `sort` interview points**
+## 7\. Important `sort` interview points
 
 ## **Key points**
 
@@ -1230,7 +1230,7 @@ JavaScript `sort` mutates the original array and sorts values as strings by defa
 
 ---
 
-# **8\. Check duplicates in array**
+## 8\. Check duplicates in array
 
 ## **Using `Set`**
 
@@ -1264,7 +1264,7 @@ For primitive values, the simplest way to check duplicates is comparing `new Set
 
 ---
 
-# **9\. Remove duplicates from array of objects**
+## 9\. Remove duplicates from array of objects
 
 ## **Problem**
 
@@ -1298,13 +1298,13 @@ For arrays of objects, `Set` is not enough because objects are compared by refer
 
 ---
 
-# **Important Polyfills**
+## Important Polyfills
 
 Polyfills are commonly asked to test how well you understand method behavior, callback handling, `thisArg`, sparse arrays, return value, and mutation.
 
 ---
 
-# **1\. Polyfill for `map`**
+## 1\. Polyfill for `map`
 
 Array.prototype.myMap \= function (callback, thisArg) \{
 
@@ -1351,7 +1351,7 @@ console.log(result); // \[2, 4, 6\]
 
 ---
 
-# **2\. Polyfill for `filter`**
+## 2\. Polyfill for `filter`
 
 Array.prototype.myFilter \= function (callback, thisArg) \{
 
@@ -1397,7 +1397,7 @@ console.log(result); // \[2, 4\]
 
 ---
 
-# **3\. Polyfill for `reduce`**
+## 3\. Polyfill for `reduce`
 
 Array.prototype.myReduce \= function (callback, initialValue) \{
 
@@ -1470,7 +1470,7 @@ console.log(total); // 6
 
 ---
 
-# **4\. Polyfill for `forEach`**
+## 4\. Polyfill for `forEach`
 
 Array.prototype.myForEach \= function (callback, thisArg) \{
 
@@ -1520,7 +1520,7 @@ Array.prototype.myForEach \= function (callback, thisArg) \{
 
 ---
 
-# **5\. Polyfill for `find`**
+## 5\. Polyfill for `find`
 
 Array.prototype.myFind \= function (callback, thisArg) \{
 
@@ -1564,7 +1564,7 @@ console.log(result); // 2
 
 ---
 
-# **6\. Polyfill for `some`**
+## 6\. Polyfill for `some`
 
 Array.prototype.mySome \= function (callback, thisArg) \{
 
@@ -1606,7 +1606,7 @@ console.log(\[1, 3, 4\].mySome((num) \=\> num % 2 \=== 0)); // true
 
 ---
 
-# **7\. Polyfill for `every`**
+## 7\. Polyfill for `every`
 
 Array.prototype.myEvery \= function (callback, thisArg) \{
 
@@ -1648,7 +1648,7 @@ console.log(\[2, 4, 6\].myEvery((num) \=\> num % 2 \=== 0)); // true
 
 ---
 
-# **8\. Polyfill for `flat`**
+## 8\. Polyfill for `flat`
 
 Array.prototype.myFlat \= function (depth \= 1\) \{
 
@@ -1690,7 +1690,7 @@ console.log(result); // \[1, 2, 3, \[4\]\]
 
 ---
 
-# **9\. Polyfill for `flatMap`**
+## 9\. Polyfill for `flatMap`
 
 Array.prototype.myFlatMap \= function (callback, thisArg) \{
 
@@ -1709,7 +1709,7 @@ console.log(result); // \[1, 2, 2, 4, 3, 6\]
 
 ---
 
-# **10\. Polyfill for duplicate check**
+## 10\. Polyfill for duplicate check
 
 ## **Check duplicates for primitives**
 
@@ -1775,7 +1775,7 @@ console.log(removeDuplicatesByKey(users, "id"));
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Method | Purpose | Returns | Mutates original? |
 | ----- | ----- | ----- | ----- |
@@ -1793,7 +1793,7 @@ console.log(removeDuplicatesByKey(users, "id"));
 
 ---
 
-# **Most Common Interview Traps**
+## Most Common Interview Traps
 
 * `forEach` returns `undefined`, not a new array.  
 * `map` needs an explicit `return` when using `\{\}`.  
@@ -1810,7 +1810,7 @@ console.log(removeDuplicatesByKey(users, "id"));
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 JavaScript array methods are used for different types of data operations. `map` transforms each item and returns a new array, `filter` keeps matching items, `reduce` accumulates an array into a single result, and `forEach` is mainly for side effects. Search methods like `find`, `findIndex`, `some`, and `every` help locate or validate data efficiently. `flat` and `flatMap` are useful for nested arrays. `sort` is important because it mutates the original array and sorts as strings by default. For collections, `Set` is useful for unique values, `Map` is useful for dynamic key-value data, and `WeakMap`/`WeakSet` are useful when we want object-based storage without preventing garbage collection.
 

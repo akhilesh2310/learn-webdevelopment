@@ -91,7 +91,7 @@ sidebar_position: 3
 
 * Working with DefinitelyTyped / `@types`
 
-# **TypeScript – Core Concepts for Interviews**
+## TypeScript – Core Concepts for Interviews
 
 TypeScript is JavaScript with static type checking. It helps catch many bugs during development before code runs in the browser or Node.js.
 
@@ -108,7 +108,7 @@ TypeScript does not change JavaScript runtime behavior. It mainly improves devel
 
 ---
 
-# **1\. Basic Types**
+## 1\. Basic Types
 
 ## **number, string, boolean**
 
@@ -235,7 +235,7 @@ TypeScript provides basic types like `number`, `string`, `boolean`, `null`, `und
 
 ---
 
-# **2\. Type Inference & Annotations**
+## 2\. Type Inference & Annotations
 
 ## **Type inference**
 
@@ -298,7 +298,7 @@ TypeScript infers types automatically from values, so we do not need annotations
 
 ---
 
-# **3\. Functions & Objects**
+## 3\. Functions & Objects
 
 ## **Function type annotations**
 
@@ -386,7 +386,7 @@ TypeScript allows us to type function parameters, return values, objects, option
 
 ---
 
-# **4\. Interfaces & Types**
+## 4\. Interfaces & Types
 
 ## **interface**
 
@@ -486,7 +486,7 @@ interface User \{
 
 ---
 
-# **5\. Generics**
+## 5\. Generics
 
 ## **Simple meaning**
 
@@ -593,7 +593,7 @@ Generics let us create reusable type-safe functions, interfaces, and classes. In
 
 ---
 
-# **6\. Advanced Types**
+## 6\. Advanced Types
 
 ## **Conditional types**
 
@@ -711,7 +711,7 @@ Advanced TypeScript types help transform and reason about types. Conditional typ
 
 ---
 
-# **7\. Type Narrowing**
+## 7\. Type Narrowing
 
 ## **Simple meaning**
 
@@ -819,7 +819,7 @@ Type narrowing helps TypeScript understand the exact type inside a code block. C
 
 ---
 
-# **8\. Modules & Namespaces**
+## 8\. Modules & Namespaces
 
 ## **ES modules in TypeScript**
 
@@ -909,7 +909,7 @@ TypeScript works well with ES modules using `import` and `export`. Module resolu
 
 ---
 
-# **9\. Decorators**
+## 9\. Decorators
 
 ## **Simple meaning**
 
@@ -973,7 +973,7 @@ Decorators are functions used to add metadata or behavior to classes, methods, p
 
 ---
 
-# **10\. Tooling & Configuration**
+## 10\. Tooling & Configuration
 
 ## **tsconfig.json**
 
@@ -1078,11 +1078,11 @@ These types usually come from DefinitelyTyped.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. any vs unknown vs never**
+## 1\. any vs unknown vs never
 
 ## **Answer**
 
@@ -1097,7 +1097,7 @@ let b: unknown;
 
 ---
 
-# **2\. interface vs type**
+## 2\. interface vs type
 
 ## **Answer**
 
@@ -1117,7 +1117,7 @@ I use `interface` for extendable object contracts and class implementation. I us
 
 ---
 
-# **3\. Union vs Intersection**
+## 3\. Union vs Intersection
 
 ## **Union**
 
@@ -1137,7 +1137,7 @@ Union means a value can be one of several types. Intersection means a value must
 
 ---
 
-# **4\. What are generics?**
+## 4\. What are generics?
 
 ## **Answer**
 
@@ -1153,7 +1153,7 @@ Generics let functions, interfaces, and classes work with different types while 
 
 ---
 
-# **5\. What are utility types?**
+## 5\. What are utility types?
 
 ## **Answer**
 
@@ -1174,7 +1174,7 @@ Utility types are built-in TypeScript helpers that transform types. They reduce 
 
 ---
 
-# **6\. What is type narrowing?**
+## 6\. What is type narrowing?
 
 ## **Answer**
 
@@ -1192,7 +1192,7 @@ Type narrowing helps TypeScript understand the exact type inside a condition. It
 
 ---
 
-# **7\. What is a discriminated union?**
+## 7\. What is a discriminated union?
 
 ## **Answer**
 
@@ -1209,7 +1209,7 @@ A discriminated union is a union where each type has a common literal field, lik
 
 ---
 
-# **8\. What is keyof?**
+## 8\. What is keyof?
 
 ## **Answer**
 
@@ -1229,7 +1229,7 @@ type UserKey \= keyof User;
 
 ---
 
-# **9\. What are mapped types?**
+## 9\. What are mapped types?
 
 ## **Answer**
 
@@ -1245,7 +1245,7 @@ Mapped types allow us to transform object types by looping over their keys. Util
 
 ---
 
-# **10\. What is a .d.ts file?**
+## 10\. What is a .d.ts file?
 
 ## **Answer**
 
@@ -1257,7 +1257,7 @@ A `.d.ts` file contains type declarations without implementation.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1290,6 +1290,6 @@ A `.d.ts` file contains type declarations without implementation.
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 TypeScript adds static type checking to JavaScript. It supports basic types like `number`, `string`, `boolean`, `null`, `undefined`, `void`, `never`, tuples, and enums. Type inference lets TypeScript infer types automatically, while explicit annotations are useful for function parameters, API responses, and public contracts. Interfaces and type aliases define object shapes and reusable types. Generics allow reusable type-safe functions, interfaces, and classes without losing type information. Advanced types like conditional types, mapped types, `keyof`, and utility types help transform and compose types. Type narrowing using `typeof`, `instanceof`, `in`, user-defined guards, and discriminated unions makes code safer. TypeScript works with ES modules, supports declaration files, and is configured through `tsconfig.json`. For interviews, the most important concepts are `any` vs `unknown`, `type` vs `interface`, unions/intersections, generics, utility types, type guards, discriminated unions, and strict configuration.
