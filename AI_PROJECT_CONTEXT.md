@@ -20,6 +20,28 @@ The site is intended to grow into a large documentation system covering DSA, Web
 - `src/css/custom.css`: Global Docusaurus theme overrides.
 - `PROJECT_REQUIREMENTS.md`: Product and architecture requirements.
 - `.github/copilot-instructions.md`: Short editing rules for GitHub Copilot.
+- `.knowledge/`: Knowledge-base infrastructure for topic maps, aliases, migration logs, review queues, and AI editing rules.
+- `DECISIONS.md`: Long-term architecture and knowledge-management decisions.
+
+## Knowledge Base Infrastructure
+
+This repository is a Personal Technical Knowledge Base. Docusaurus is the presentation layer, while migrated Markdown/MDX docs are the working source of truth after migration.
+
+Read `.knowledge/` before structural knowledge-base edits, especially when creating, moving, merging, or deleting documentation pages.
+
+- `.knowledge/knowledge-map.yaml`: Tracks canonical topic ids, canonical paths, aliases, tags, related topics, status, and review notes. Add or update entries after structural topic changes.
+- `.knowledge/knowledge-rules.yaml`: Stores rules Codex and Copilot should follow before editing the knowledge base.
+- `.knowledge/aliases.yaml`: Maps common shortcuts and alternate names to canonical concept names.
+- `.knowledge/review-queue.yaml`: Stores uncertain AI decisions that need manual review. Add uncertain placement, duplicate, merge, or naming decisions here instead of guessing.
+- `.knowledge/migration-log.md`: Records source-note migration status and major movement. Update it after source-note migration or significant content movement.
+
+Knowledge-base source-of-truth rules:
+
+- `docs/` is the working source of truth after migration.
+- `source-notes/` is a read-only historical archive and should not be edited unless explicitly requested.
+- One topic should have one canonical document.
+- Search existing docs and `.knowledge/knowledge-map.yaml` before creating a new page.
+- Prefer updating canonical pages over creating duplicates.
 
 ## Current Top Navigation
 
@@ -35,6 +57,8 @@ Do not add Blog or other top-level navigation items.
 ## Documentation Structure
 
 The documentation is partially migrated. DSA and System Design have been migrated, while Web Development remains a reset placeholder:
+
+Migration audit note: `migration-audit.md` now reports that DSA, System Design, and Web Development have all been migrated and audited. Some older sections below still describe the earlier reset state and should be reconciled in a dedicated context-refresh pass.
 
 ```text
 docs/

@@ -81,6 +81,16 @@ The current migrated sidebar categories come from the source Google Docs exports
 - Preserve dark mode, sidebars, breadcrumbs, table of contents, previous/next navigation, and syntax highlighting.
 - Keep the structure friendly to future search integration.
 
+## Long-Term Knowledge Base Requirements
+
+- The system should support continuous learning over many years.
+- New knowledge should be merged into the right canonical page whenever possible.
+- Duplicate content should be avoided by searching existing docs before creating new pages.
+- The hierarchy can evolve, but major structural changes require approval.
+- The website should remain easy to revise before interviews.
+- `.knowledge/knowledge-map.yaml` should track canonical topic locations as the knowledge base matures.
+- `.knowledge/review-queue.yaml` should capture uncertain placement or merge decisions instead of guessing.
+
 ## AI Editing Rules
 
 - Explain planned changes before editing.

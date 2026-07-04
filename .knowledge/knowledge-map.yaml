@@ -1,0 +1,76 @@
+# Current map of the personal technical knowledge base.
+#
+# Add one entry per canonical topic. Keep ids stable after publishing because
+# future cross-links, aliases, review notes, and migrations may depend on them.
+# Prefer updating an existing canonical topic over creating a duplicate topic.
+
+topics:
+  - id: dsa-resources
+    title: DSA Resources
+    canonical_path: docs/dsa/resources.md
+    domain: DSA
+    category: Resources
+    aliases:
+      - data structures resources
+      - algorithm resources
+    tags:
+      - dsa
+      - resources
+    related_topics: []
+    status: migrated
+    last_reviewed: null
+    notes: Initial canonical topic example from migrated DSA docs.
+
+  - id: js-event-loop
+    title: Event Loop
+    canonical_path: docs/web-development/javascript/event-loop.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - javascript event loop
+      - event loop in js
+    tags:
+      - javascript
+      - async
+      - browser
+    related_topics:
+      - js-async
+    status: migrated
+    last_reviewed: null
+    notes: Initial canonical topic example from migrated Web Development docs.
+
+  - id: react-hooks
+    title: React Hooks
+    canonical_path: docs/web-development/react-js/react-hooks.md
+    domain: Web Development
+    category: React.js
+    aliases:
+      - hooks
+      - react use state
+      - react use effect
+    tags:
+      - react
+      - hooks
+    related_topics:
+      - react-state-management
+    status: migrated
+    last_reviewed: null
+    notes: Initial canonical topic example from migrated Web Development docs.
+
+  - id: system-design-autocomplete
+    title: Autocomplete
+    canonical_path: docs/system-design/system-design-questions/autocomplete.md
+    domain: System Design
+    category: System Design Questions
+    aliases:
+      - autocomplete system design
+      - typeahead
+      - search suggestions
+    tags:
+      - system-design
+      - interview-question
+    related_topics:
+      - system-design-google-search
+    status: migrated
+    last_reviewed: null
+    notes: Initial canonical topic example from migrated System Design docs.

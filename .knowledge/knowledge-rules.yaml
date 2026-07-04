@@ -1,0 +1,33 @@
+rules:
+  - id: one-canonical-document
+    rule: One topic should have one canonical document.
+  - id: search-before-create
+    rule: Search existing docs before creating a new page.
+  - id: prefer-merge-over-duplicate
+    rule: Prefer updating or merging existing docs over creating duplicate pages.
+  - id: protect-user-knowledge
+    rule: Never delete user knowledge without explicit approval.
+  - id: no-unrequested-rewrite
+    rule: Never rewrite or summarize content unless explicitly asked.
+  - id: preserve-source-shape
+    rule: Preserve code blocks, examples, interview questions, and answers.
+  - id: no-base64-after-cleanup
+    rule: Do not embed Base64 images in final docs after the image cleanup phase.
+  - id: top-level-approval
+    rule: Require user approval before creating new top-level categories.
+  - id: move-approval
+    rule: Require user approval before moving existing pages.
+  - id: delete-approval
+    rule: Require user approval before deleting pages.
+  - id: reorg-approval
+    rule: Require user approval before large reorganizations.
+  - id: update-knowledge-map
+    rule: Update .knowledge/knowledge-map.yaml after structural changes.
+  - id: update-migration-log
+    rule: Update .knowledge/migration-log.md after source-note migration or major movement.
+  - id: queue-uncertainty
+    rule: Add uncertain decisions to .knowledge/review-queue.yaml instead of guessing.
+  - id: kebab-case
+    rule: Keep file and folder names in kebab-case.
+  - id: docusaurus-compatible
+    rule: Keep docs compatible with Docusaurus routing, sidebars, MDX parsing, breadcrumbs, table of contents, and build validation.

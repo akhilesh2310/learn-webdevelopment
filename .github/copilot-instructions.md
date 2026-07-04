@@ -23,6 +23,12 @@ This repository is a Docusaurus documentation website for personal study notes.
 ## Editing Rules
 
 - Check `AI_PROJECT_CONTEXT.md` before structural changes.
+- Read `.knowledge/` before structural knowledge-base edits.
+- Search existing docs before creating docs.
+- Prefer canonical pages over duplicates.
+- Do not modify `source-notes/`.
+- Add uncertain items to `.knowledge/review-queue.yaml`.
+- Do not rewrite notes unless asked.
 - Update `AI_PROJECT_CONTEXT.md` after structural changes.
 - Preserve useful existing content.
 - Prefer small focused changes.

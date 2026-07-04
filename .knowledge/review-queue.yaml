@@ -1,0 +1,49 @@
+# Add uncertain AI decisions here instead of guessing during migration or cleanup.
+# Example shape:
+# review_queue:
+#   - id: example-review-item
+#     topic: Example Topic
+#     issue: Example issue that needs owner confirmation.
+#     suggested_locations:
+#       - docs/example.md
+#     confidence: low
+#     status: example
+#     notes: Remove or replace this example when adding real review work.
+
+review_queue:
+  - id: review-system-design-todo-pages
+    topic: System Design Questions
+    issue: Multiple System Design question pages are TODO-only after migration.
+    suggested_locations:
+      - docs/system-design/system-design-questions/
+    confidence: medium
+    status: open
+    notes: Identified in migration-audit.md. Review against source-notes/3. System Design.md before editing.
+
+  - id: review-web-development-micro-frontends
+    topic: Micro Frontends
+    issue: The migrated Micro Frontends page is TODO-only.
+    suggested_locations:
+      - docs/web-development/important/micro-frontends.md
+    confidence: medium
+    status: open
+    notes: Identified in migration-audit.md. Review against source-notes/2. Web Development.md before editing.
+
+  - id: confirm-web-development-index-strategy
+    topic: Web Development Landing Page
+    issue: Current docs use docs/web-development/ with a generated sidebar index, while earlier expected-state text referenced docs/web-development.md.
+    suggested_locations:
+      - docs/web-development/
+      - docs/web-development.md
+    confidence: medium
+    status: open
+    notes: Confirm final Docusaurus pattern before creating or removing any landing page.
+
+  - id: plan-base64-image-cleanup
+    topic: Embedded Images
+    issue: Base64 images are embedded in migrated docs and source notes.
+    suggested_locations:
+      - static/img/notes/
+    confidence: high
+    status: open
+    notes: Keep current embeds until a dedicated image cleanup phase to avoid content loss.

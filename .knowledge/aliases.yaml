@@ -1,0 +1,21 @@
+aliases:
+  js:
+    canonical: JavaScript
+  ts:
+    canonical: TypeScript
+  react memo:
+    canonical: React.memo
+  use effect:
+    canonical: useEffect
+  node:
+    canonical: Node.js
+  next:
+    canonical: Next.js
+  system design:
+    canonical: System Design
+  bff:
+    canonical: Backend for Frontend
+  csrf:
+    canonical: CSRF
+  xss:
+    canonical: Cross-Site Scripting
