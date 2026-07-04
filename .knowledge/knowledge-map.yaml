@@ -35,9 +35,15 @@ topics:
       - browser
     related_topics:
       - js-async
+      - asynchronous-javascript
+      - promises
+      - microtasks
+      - macrotasks
+      - browser-rendering-pipeline
+      - node-event-loop
     status: migrated
     last_reviewed: 2026-07-04
-    notes: Canonical Event Loop page. Cross-linked from System Design Basic Concepts, Quick Questions, JavaScript Under The Hood, Async JavaScript, Node.js notes, and company prep during the first canonical cross-linking batch.
+    notes: Canonical Event Loop page. Cross-linked from System Design Basic Concepts, Quick Questions, JavaScript Under The Hood, Async JavaScript, Node.js notes, and company prep during the first canonical cross-linking batch. Browser Event Loop duplicate sections were consolidated into the canonical page and replaced with linked summaries.
 
   - id: react-hooks
     title: React Hooks

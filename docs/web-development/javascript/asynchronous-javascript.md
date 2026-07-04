@@ -1124,6 +1124,8 @@ To cancel a fetch request, I use `AbortController`. I pass its `signal` to fetch
 
 ## 10\. What is the difference between microtask and macrotask?
 
+For the full browser Event Loop execution model, see [Event Loop](event-loop.md).
+
 ## **Simple meaning**
 
 Promises run in the microtask queue. `setTimeout` runs in the macrotask queue.

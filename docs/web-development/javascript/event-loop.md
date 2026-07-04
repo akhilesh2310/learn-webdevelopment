@@ -33,9 +33,10 @@ To understand the event loop, you must look at the entire runtime layout. JavaSc
 Once a background Web API task finishes, its callback function needs to run. It cannot jump straight back into the Call Stack because that would disrupt running code. Instead, it waits in one of two queues:
 
 * **Microtask Queue:** Holds high-priority callbacks.  
-  * *What goes here:* Promise.then() callbacks, MutationObserver, and queueMicrotask().  
+  * *What goes here:* Promise.then() callbacks, MutationObserver, queueMicrotask(), and async/await resume steps.  
 * **Macrotask Queue (or Callback Queue):** Holds lower-priority background events.  
   * *What goes here:* setTimeout, setInterval, and DOM event callbacks (like clicks).
+* **Rendering Queue:** The browser may also have a rendering phase where it updates the UI before processing more tasks.
 
 ### **🔄 The Event Loop's One Job**
 
@@ -55,14 +56,16 @@ The Event Loop acts like a traffic controller. It constantly runs a single check
 | **Execution Pace** | The Event Loop clears the **entire queue** in one pass. | The Event Loop executes **only one task** per cycle. |
 | **Browser Rendering** | Runs *before* the browser repaints the UI grid. | Runs *after* render loops cycle through. |
 
-### 
-
 ### **🌐 Browser vs. Node.js Event Loop**
 
 While the basic concepts are identical, the runtime environments diverge slightly:
 
 * **The Browser:** Focuses heavily on user interactions and layout updates. The event loop coordinates tasks with the **Render Queue** to ensure the screen runs at a smooth frame rate.  
 * **Node.js:** Does not have a visual screen to repaint. It uses a custom C++ engine library called **libuv**. Its event loop is divided into highly specific internal phases (Timers phase, I/O Polling phase, Close callbacks phase) to handle high-volume backend data streaming efficiently.
+
+### **Async/Await and Microtasks**
+
+`await` pauses only the async function, not the whole JavaScript thread. The awaited promise continuation runs in the microtask queue, so it is handled before the next macrotask.
 
 ### **⚠️ High-Frequency Execution Order Puzzles**
 
@@ -124,10 +127,6 @@ The single best way to prove you understand the event loop in an interview is by
 
 * **Reasoning:** Remember the execution pace rule: the event loop will not stop processing microtasks until the Microtask Queue is completely empty. Because starveEventLoop() adds a fresh microtask during its execution step, the queue never drains to zero. The event loop is trapped permanently in the microtask phase and is starved of the chance to look at the Macrotask Queue or update the browser screen layout.
 
-### 
-
-### 
-
 ### **🗺️ The Event Loop Runtime Map**
 
 This diagram illustrates how tasks move from background containers (like Network Requests or Event Listeners) through the dual-queue structure before the Event Loop feeds them back into the main execution Call Stack![][image5]
@@ -153,7 +152,9 @@ When analyzing any interview code snippet, trace it using this exact loop path:
 
 Microtasks *always* jump the line. Even a setTimeout with a 0 millisecond delay has to sit and wait until the entire Microtask Promise queue is completely empty.
 
-### 
+### **Interview Answer**
+
+The Event Loop lets single-threaded JavaScript run async callbacks after synchronous code finishes. Microtasks such as Promise callbacks run before macrotasks such as `setTimeout`.
 
 ### **🚀 Quick Self-Test for Review**
 
