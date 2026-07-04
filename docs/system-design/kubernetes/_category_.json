@@ -1,8 +1,0 @@
-{
-  "label": "Kubernetes",
-  "position": 8,
-  "link": {
-    "type": "doc",
-    "id": "system-design/kubernetes/index"
-  }
-}

@@ -35,35 +35,39 @@ Do not add Blog, GitHub, Tutorial, or other top-level navigation items unless th
 
 ## Documentation Categories
 
+The current migrated sidebar categories come from the source Google Docs exports. Treat only the known Google Docs tab names below as first-level sidebar categories. Other exported `#` headings should remain child pages under the active known category unless a future review explicitly promotes them.
+
 ### DSA
 
-- Arrays
-- Strings
-- Linked List
-- Trees
-- Graphs
-- Dynamic Programming
+- Resources
+- Concepts
+- Recently Asked
+- JS vs JAVA
+- Toll Increase
+- Problems Solved
 
 ### Web Development
 
+- Interview Prep Order
+- Companies
+- Important
 - JavaScript
 - TypeScript
-- HTML & CSS
 - React
 - Next.js
 - Node.js
+- HTML & CSS
 - Angular
+- Video Tutorial
 
 ### System Design
 
-- Frontend
-- Backend
-- Networking
-- Databases
-- Caching
-- Security
-- Docker
-- Kubernetes
+- Interview Pattern
+- Basic Concepts
+- Resources
+- System Design Questions
+- DSA Roadmap
+- Worked 22nd Aug
 
 ## Long-Term Requirements
 

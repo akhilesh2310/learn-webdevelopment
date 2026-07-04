@@ -1,8 +1,0 @@
-{
-  "label": "Backend",
-  "position": 2,
-  "link": {
-    "type": "doc",
-    "id": "system-design/backend/index"
-  }
-}

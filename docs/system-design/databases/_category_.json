@@ -1,8 +1,0 @@
-{
-  "label": "Databases",
-  "position": 4,
-  "link": {
-    "type": "doc",
-    "id": "system-design/databases/index"
-  }
-}
