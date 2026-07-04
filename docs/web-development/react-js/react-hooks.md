@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # 3. React Hooks
 
+Related canonical page: [React Performance](../important/performance/react-performance.md) for optimization trade-offs around `React.memo`, `useMemo`, and `useCallback`.
+
 ## 3\. React Hooks
 
 ## **useState**

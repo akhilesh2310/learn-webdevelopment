@@ -5,6 +5,8 @@ sidebar_position: 6
 
 # Security Headers
 
+Related canonical pages: [XSS](xss-cross-site-scripting.md), [iFrame Protection](iframe-protection.md).
+
 # **Security Headers**
 
 ## **1\. What is Security Headers?**

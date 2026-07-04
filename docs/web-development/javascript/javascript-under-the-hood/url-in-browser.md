@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # URL in Browser
 
+Related canonical page: [Browser Rendering Pipeline](browser-rendering-pipeline.md).
+
 # **What Happens When You Enter a URL in the Browser?**
 
 Suppose the user enters: [https://www.agoda.com](https://www.agoda.com)

@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # Reconciliation 1
 
+Related canonical pages: [React Fiber](react-fiber.md), [Rendering Components](../rendering-components.md), [React Performance](../../important/performance/react-performance.md).
+
 ## **React Reconciliation**
 
 React Reconciliation is the internal process React uses to compare the **previous React tree** with the **new React tree** after a component’s state or props change.

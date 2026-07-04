@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Security
 
+Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-csrf.md), [Security Headers](security-headers.md), [iFrame Protection](iframe-protection.md).
+
 ## **Security**
 
 * XSS  

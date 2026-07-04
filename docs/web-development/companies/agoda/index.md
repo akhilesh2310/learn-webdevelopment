@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Agoda
 
+Related canonical pages: [Event Loop](../../javascript/event-loop.md), [React Performance](../../important/performance/react-performance.md), [React Fiber](../../react-js/fundamentals/react-fiber.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md), [XSS](../../important/security/xss-cross-site-scripting.md), [JWT & CSRF](../../important/security/jwt-csrf.md).
+
 Agoda Prep doc:  
 [https://docs.google.com/document/d/1yX\_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0](https://docs.google.com/document/d/1yX_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0)
 

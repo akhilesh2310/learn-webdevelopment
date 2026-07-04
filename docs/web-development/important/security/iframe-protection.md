@@ -5,6 +5,8 @@ sidebar_position: 4
 
 # iFrame Protection
 
+Related canonical page: [Security Headers](security-headers.md).
+
 # **iFrame Protection**
 
 ## **1\. What is iFrame Protection?**

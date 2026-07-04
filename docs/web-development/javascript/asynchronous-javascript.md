@@ -5,6 +5,8 @@ sidebar_position: 19
 
 # Asynchronous JavaScript
 
+Related canonical page: [Event Loop](event-loop.md).
+
 ## [**https://javascript.info/async**](https://javascript.info/async)
 
 [https://chatgpt.com/c/6a32d66c-f7f8-83ee-9168-fd343d87ca68](https://chatgpt.com/c/6a32d66c-f7f8-83ee-9168-fd343d87ca68)

@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # Quick Questions
 
+Related canonical pages: [Event Loop](../javascript/event-loop.md), [Browser Rendering Pipeline](../javascript/javascript-under-the-hood/browser-rendering-pipeline.md), [React Reconciliation](../react-js/fundamentals/reconciliation-1.md), [React Performance](performance/react-performance.md).
+
 ### [**https://www.youtube.com/watch?v=M2RpzmyKfvQ\&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj\_Oceld**](https://www.youtube.com/watch?v=M2RpzmyKfvQ&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj_Oceld)
 
 ### **1\. How does a Web Browser Work?**

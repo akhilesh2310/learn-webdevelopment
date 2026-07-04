@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Adobe
 
+Related canonical pages: [React Performance](../important/performance/react-performance.md), [XSS](../important/security/xss-cross-site-scripting.md), [JWT & CSRF](../important/security/jwt-csrf.md).
+
 ### **✅ 1\. Microfrontend Architecture Design for a Modular Enterprise App**
 
 **Approach:**

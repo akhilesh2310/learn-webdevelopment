@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # Basic Concepts
 
+Related canonical pages: [Event Loop](../web-development/javascript/event-loop.md), [Browser Rendering Pipeline](../web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline.md), [React Reconciliation](../web-development/react-js/fundamentals/reconciliation-1.md), [XSS](../web-development/important/security/xss-cross-site-scripting.md), [JWT & CSRF](../web-development/important/security/jwt-csrf.md), [Security Headers](../web-development/important/security/security-headers.md).
+
 ### **1\. How does a Web Browser Work?**
 
 **Answer:**

@@ -5,6 +5,8 @@ sidebar_position: 13
 
 # 13. React Under The Hood
 
+Related canonical pages: [React Fiber](fundamentals/react-fiber.md), [React Reconciliation](fundamentals/reconciliation-1.md), [Rendering Components](rendering-components.md).
+
 # **React Under The Hood**
 
 ## **React Fiber**

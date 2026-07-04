@@ -36,8 +36,8 @@ topics:
     related_topics:
       - js-async
     status: migrated
-    last_reviewed: null
-    notes: Initial canonical topic example from migrated Web Development docs.
+    last_reviewed: 2026-07-04
+    notes: Canonical Event Loop page. Cross-linked from System Design Basic Concepts, Quick Questions, JavaScript Under The Hood, Async JavaScript, Node.js notes, and company prep during the first canonical cross-linking batch.
 
   - id: react-hooks
     title: React Hooks
@@ -54,8 +54,8 @@ topics:
     related_topics:
       - react-state-management
     status: migrated
-    last_reviewed: null
-    notes: Initial canonical topic example from migrated Web Development docs.
+    last_reviewed: 2026-07-04
+    notes: Canonical React Hooks page. Cross-linked with React Performance for API usage versus optimization guidance around useMemo and useCallback during the first canonical cross-linking batch.
 
   - id: system-design-autocomplete
     title: Autocomplete

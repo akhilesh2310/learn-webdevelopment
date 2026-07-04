@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # 1. Fundamentals
 
+Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](reconciliation-1.md), [React Performance](../../important/performance/react-performance.md).
+
 # **1\. React Fundamentals**
 
 ## **What is React?**

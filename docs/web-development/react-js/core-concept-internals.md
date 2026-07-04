@@ -5,6 +5,8 @@ sidebar_position: 8
 
 # 8. Core Concept / Internals
 
+Related canonical pages: [React Fiber](fundamentals/react-fiber.md), [React Reconciliation](fundamentals/reconciliation-1.md), [Rendering Components](rendering-components.md), [React Under The Hood](react-under-the-hood.md).
+
 # **8\. React Internals**
 
 ## **Fiber Architecture**

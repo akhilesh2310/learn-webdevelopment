@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # JavaScript Under The Hood
 
+Related canonical pages: [Event Loop](../event-loop.md), [Browser Rendering Pipeline](browser-rendering-pipeline.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md).
+
 ### **1\. How does a Web Browser Work?**
 
 **Answer:**

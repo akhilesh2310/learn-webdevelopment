@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # ChatGPT Next
 
+Related canonical pages: [JWT & CSRF](../important/security/jwt-csrf.md), [Security Headers](../important/security/security-headers.md).
+
 # **Next.js Interview Questions and Answers**
 
 IMP: [https://chatgpt.com/c/6a3612d1-fd74-83ee-b7e4-4e0b2a84922b](https://chatgpt.com/c/6a3612d1-fd74-83ee-b7e4-4e0b2a84922b)

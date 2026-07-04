@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # ChatGPT Node
 
+Related canonical pages: [JWT & CSRF](../important/security/jwt-csrf.md), [XSS](../important/security/xss-cross-site-scripting.md). For browser JavaScript scheduling, see [Event Loop](../javascript/event-loop.md).
+
 [https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252](https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252)
 
 [https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b](https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b)

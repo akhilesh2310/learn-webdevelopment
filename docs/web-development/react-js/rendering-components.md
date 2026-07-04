@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # 2. Rendering (Components)
 
+Related canonical pages: [React Fiber](fundamentals/react-fiber.md), [React Reconciliation](fundamentals/reconciliation-1.md), [React Under The Hood](react-under-the-hood.md), [React Performance](../important/performance/react-performance.md).
+
 # **2\. Component Lifecycle & Rendering**
 
 ## **Render Phase**
