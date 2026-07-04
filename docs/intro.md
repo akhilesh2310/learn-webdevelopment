@@ -2,6 +2,14 @@
 sidebar_position: 1
 ---
 
-# Akhilesh Study Notes
+# Welcome 👋
 
-Welcome to my study notes for frontend development, data structures and algorithms, and system design.
+Welcome to my personal study notes.
+
+This website contains everything I learn about
+
+- Data Structures & Algorithms
+- Web Development
+- System Design
+
+These notes are written in simple English for interview preparation and quick revision.
