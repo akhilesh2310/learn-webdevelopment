@@ -42,7 +42,16 @@ const systemDesignSidebar = [
           type: 'doc',
           id: 'system-design/interview-guide/index',
         },
-        items: ['system-design/interview-guide/google-session-chat-service'],
+        items: [
+          'system-design/interview-guide/design-round',
+          'system-design/interview-guide/coding-round',
+          'system-design/interview-guide/l6-frontend-system-design-pattern',
+          'system-design/interview-guide/sample-question-l6-frontend',
+          'system-design/interview-guide/preparation-resources',
+          'system-design/interview-guide/question-patterns',
+          'system-design/interview-guide/answering-framework',
+          'system-design/interview-guide/google-session-chat-service',
+        ],
       },
       'system-design/resources',
       {
