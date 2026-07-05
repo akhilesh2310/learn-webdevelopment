@@ -36,7 +36,6 @@ const systemDesignSidebar = [
     collapsed: false,
     items: [
       'system-design/interview-pattern',
-      'system-design/basic-concepts',
       'system-design/resources',
       {
         type: 'category',
