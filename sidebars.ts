@@ -16,7 +16,6 @@ const dsaSidebar = [
     items: [
       'dsa/resources',
       'dsa/concepts',
-      'dsa/recently-asked',
       'dsa/js-vs-java',
       'dsa/toll-increase',
       'dsa/problems-solved',
