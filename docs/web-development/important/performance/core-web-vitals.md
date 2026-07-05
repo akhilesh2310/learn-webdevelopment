@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Core Web Vitals
 
-Related canonical pages: [Browser Rendering Pipeline](../../javascript/javascript-under-the-hood/browser-rendering-pipeline.md), [React Performance](react-performance.md).
+Related canonical pages: [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md), [React Performance](react-performance.md).
 
 # **Core Web Vitals and Google Lighthouse Notes**
 

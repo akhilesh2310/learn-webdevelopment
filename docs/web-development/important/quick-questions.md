@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Quick Questions
 
-Related canonical pages: [Event Loop](../javascript/event-loop.md), [Browser Rendering Pipeline](../javascript/javascript-under-the-hood/browser-rendering-pipeline.md), [React Reconciliation](../react-js/fundamentals/reconciliation-1.md), [React Performance](performance/react-performance.md).
+Related canonical pages: [Event Loop](../javascript/event-loop.md), [Browser Rendering Pipeline](../web-fundamentals/browser-rendering-pipeline.md), [React Reconciliation](../react-js/fundamentals/reconciliation-1.md), [React Performance](performance/react-performance.md).
 
 ### [**https://www.youtube.com/watch?v=M2RpzmyKfvQ\&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj\_Oceld**](https://www.youtube.com/watch?v=M2RpzmyKfvQ&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj_Oceld)
 
@@ -167,4 +167,4 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 Quick answer: the Render Tree combines the DOM and CSSOM into the visible structure the browser uses for layout, painting, and compositing.
 
-For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](../javascript/javascript-under-the-hood/browser-rendering-pipeline.md).
+For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](../web-fundamentals/browser-rendering-pipeline.md).

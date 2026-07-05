@@ -136,6 +136,18 @@ const webDevelopmentSidebar = [
       },
       {
         type: 'category',
+        label: 'Web Fundamentals',
+        link: {type: 'doc', id: 'web-development/web-fundamentals/index'},
+        items: [
+          'web-development/web-fundamentals/url-in-browser',
+          'web-development/web-fundamentals/browser-rendering-pipeline',
+          'web-development/javascript/javascript-under-the-hood/js-engine',
+          'web-development/javascript/event-loop',
+          'web-development/javascript/browser-apis-dom',
+        ],
+      },
+      {
+        type: 'category',
         label: 'Core Engineering',
         link: {type: 'doc', id: 'web-development/important/index'},
         items: [
@@ -176,10 +188,12 @@ const webDevelopmentSidebar = [
           'web-development/important/caching',
           'web-development/important/observability',
           'web-development/important/frontend-architecture',
+          'web-development/important/memory-management',
           'web-development/important/quick-questions',
           'web-development/important/accessibility',
           'web-development/important/backend-for-fe-bff',
           'web-development/important/solid',
+          'web-development/important/code-review-checklist',
           {
             type: 'category',
             label: 'UX | Design System',
@@ -200,8 +214,6 @@ const webDevelopmentSidebar = [
             link: {type: 'doc', id: 'web-development/javascript/javascript-under-the-hood/index'},
             items: [
               'web-development/javascript/javascript-under-the-hood/js-engine',
-              'web-development/javascript/javascript-under-the-hood/url-in-browser',
-              'web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline',
               'web-development/javascript/javascript-under-the-hood/garbage-collector-internals',
             ],
           },

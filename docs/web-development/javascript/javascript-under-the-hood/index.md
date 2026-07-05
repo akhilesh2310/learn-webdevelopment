@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # JavaScript Under The Hood
 
-Related canonical pages: [Event Loop](../event-loop.md), [Browser Rendering Pipeline](browser-rendering-pipeline.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md).
+Related canonical pages: [Event Loop](../event-loop.md), [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md).
 
 ### **1\. How does a Web Browser Work?**
 
@@ -165,7 +165,7 @@ This page keeps the under-the-hood overview. For the full browser Event Loop exp
 
 The Render Tree combines DOM and CSSOM information into the visible structure the browser uses for layout, painting, and compositing.
 
-For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](browser-rendering-pipeline.md).
+For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md).
 
 
 
