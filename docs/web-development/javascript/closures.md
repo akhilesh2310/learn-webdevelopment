@@ -54,17 +54,15 @@ An outer function accepts initialization arguments and returns a custom-tailored
 
 #### **3\. Advanced Optimization: Memoization (Caching Engine)**
 
-Using a hidden private `Map` object inside a closure scope to cache computational results and optimize expensive processing paths.
+Memoization uses closure scope to keep a private cache alive between function calls.
 
-| function memoize(expensiveFunction) \{   const cache \= new Map(); // Private cache container locked in closure   return function (...args) \{     const key \= JSON.stringify(args);     if (cache.has(key)) \{       console.log("⚡ Cache Hit for arguments:", args);       return cache.get(key);     \}     const result \= expensiveFunction.apply(this, args);     cache.set(key, result);     return result;   \}; \} const slowFactorial \= (n) \=\> (n \<= 1 ? 1 : n \* slowFactorial(n \- 1)); const fastFactorial \= memoize(slowFactorial); console.log(fastFactorial(5)); // Calculates manually: 120 console.log(fastFactorial(5)); // ⚡ Cache Hit\! Instantly outputs 120 from the closure map. |
-| :---- |
+Detailed concept notes are maintained in [Advanced JS](./advanced-js.md), and reusable implementations are maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
 
 #### **4\. Architecture Blueprint: Function Currying**
 
-Breaking down a multi-argument function into a series of nested single-argument closures.
+Currying breaks down a multi-argument function into a series of nested functions, and each nested function uses closure scope to remember previous arguments.
 
-| function buildApiUrl(baseUrl) \{   return function(version) \{     return function(endpoint) \{       return \`$\{baseUrl\}/$\{version\}/$\{endpoint\}\`;     \};   \}; \} const productionGateway \= buildApiUrl("https://api.production.com")("v1"); console.log(productionGateway("users")); // "https://api.production.com/v1/users" |
-| :---- |
+Detailed concept notes are maintained in [Advanced JS](./advanced-js.md), and reusable implementations are maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
 
 ### **⚠️ Architectural Risks: Memory Implications (Leaks)**
 
@@ -81,25 +79,9 @@ You must explicitly break the reference connection path by nullifying the pointe
 
 #### **Puzzle 1: Asynchronous Loops & Scope Lifecycle (`var` vs `let` vs `IIFE`)**
 
-**Question:** Explain what this script logs, why it happens, and the two historical and modern ways to fix it.
+This is a closure and scope puzzle: callbacks close over the loop variable, and `var` creates one shared function-scoped binding.
 
-| // The Problem Path for (var i \= 1; i \<= 3; i++) \{   setTimeout(function () \{     console.log('after ' \+ i \+ ' second(s): ' \+ i);   \}, i \* 1000); \} |
-| :---- |
-
-* **Output:** Logs `after 4 second(s): 4` three separate times.  
-* **Why:** The `var` keyword is function-scoped. There is exactly **one single shared variable `i`** allocated for the entire loop block. The asynchronous `setTimeout` callbacks form a closure over this exact same shared variable pointer. By the time the event loop executes the first callback (\~1 second later), the synchronous loop has already run to completion and left `i` sitting at `4`.
-
-##### **The Pre-ES6 Fix (IIFE Context Isolation)**
-
-| for (var i \= 1; i \<= 3; i++) \{   (function (capturedIndex) \{     setTimeout(function () \{       console.log('after ' \+ capturedIndex \+ ' second(s): ' \+ capturedIndex);     \}, capturedIndex \* 1000);   \})(i); // Passing 'i' freezes its literal state value inside an isolated function scope pass \} |
-| :---- |
-
-##### **The Modern Native Fix (`let` Block-Scoping)**
-
-| for (let i \= 1; i \<= 3; i++) \{   setTimeout(function () \{     console.log('after ' \+ i \+ ' second(s): ' \+ i); // Prints 1, 2, 3   \}, i \* 1000); \} |
-| :---- |
-
-* **Why it works:** The `let` keyword is block-scoped. On every loop iteration, the engine spawns a **completely fresh block Lexical Environment**. Each callback captures its own immutable, independent snapshot reference copy of `i`.
+The full output question, `let` fix, and IIFE fix are maintained in [Hoisting](./hoisting.md).
 
 #### **Puzzle 2: The Lost Context Object-Method Trap**
 

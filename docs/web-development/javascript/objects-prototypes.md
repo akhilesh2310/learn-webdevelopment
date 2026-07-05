@@ -65,6 +65,8 @@ sidebar_position: 10
 
 [https://www.phpied.com/3-ways-to-define-a-javascript-class/](https://www.phpied.com/3-ways-to-define-a-javascript-class/)
 
+Class and OOP interview explanations are maintained in [Classes & OOP](./classes-oop.md). This page focuses on objects, object creation, property descriptors, prototype links, and prototype-chain behavior.
+
 ## Understanding Prototype in JavaScript \{#understanding-prototype-in-javascript\}
 
 [https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866](https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866)  

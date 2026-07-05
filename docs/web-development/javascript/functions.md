@@ -219,10 +219,9 @@ HOFs are used to isolate **reusable logic behavior** from actual data processing
 
 #### **🛠️ How to build a custom one (Polyfill)**
 
-Interviewers frequently ask candidates to write a custom version of native array HOFs to test their understanding of the underlying mechanics. Let's build a custom polyfill for `Array.prototype.map`:
+Interviewers frequently ask candidates to write custom versions of native array HOFs to test their understanding of callbacks, `thisArg`, sparse arrays, and return behavior.
 
-| // Custom Map HOF implementation Array.prototype.myMap \= function(callback) \{   const newArray \= \[\];   // 'this' refers to the array instance calling .myMap()   for (let i \= 0; i \< this.length; i++) \{     // Pass current element, index, and the full original array to the callback     const transformedValue \= callback(this\[i\], i, this);     newArray.push(transformedValue);   \}   return newArray; \}; // Usage: const numbers \= \[1, 2, 3\]; const doubled \= numbers.myMap(num \=\> num \* 2);  console.log(doubled); // \[2, 4, 6\] |
-| :---- |
+The canonical polyfill implementations are maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
 
 #### **⚠️ Engineering Challenges & Pitfalls**
 

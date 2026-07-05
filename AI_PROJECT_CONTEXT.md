@@ -45,6 +45,19 @@ Knowledge-base source-of-truth rules:
 - Search existing docs and `.knowledge/knowledge-map.yaml` before creating a new page.
 - Prefer updating canonical pages over creating duplicates.
 
+## JavaScript Refactor Ownership Notes
+
+The JavaScript section has started duplicate cleanup using canonical ownership:
+
+- `docs/web-development/javascript/advanced-js.md` owns advanced JavaScript concepts such as debounce, throttle, memoization, currying, generators, iterators, Proxy, and Reflect.
+- `docs/web-development/javascript/javascript-coding-questions.md` owns reusable JavaScript implementation snippets, polyfills, and machine-coding utilities.
+- `docs/web-development/javascript/scope.md` owns lexical scope, scope chain, variable shadowing, and var/function-scope traps.
+- `docs/web-development/javascript/hoisting.md` owns hoisting, TDZ, function declaration/expression behavior, and output puzzles.
+- `docs/web-development/javascript/memory-management.md` owns practical memory leaks and frontend cleanup patterns.
+- `docs/web-development/javascript/javascript-under-the-hood/garbage-collector-internals.md` owns deep V8 garbage collector internals.
+- `docs/web-development/javascript/javascript-under-the-hood/index.md` is now a runtime internals hub, not a duplicate quick Q&A page.
+- Web Fundamentals should list only web/page-load fundamentals directly in the sidebar. JavaScript runtime pages can be linked from the Web Fundamentals overview, but should remain listed under JavaScript as their primary sidebar home.
+
 ## Prompt Library
 
 The `prompts/` folder is for reusable Codex prompts only.

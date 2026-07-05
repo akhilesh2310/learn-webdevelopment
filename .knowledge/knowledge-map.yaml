@@ -45,6 +45,139 @@ topics:
     last_reviewed: 2026-07-04
     notes: Canonical Event Loop page. Cross-linked from System Design Basic Concepts, Quick Questions, JavaScript Under The Hood, Async JavaScript, Node.js notes, and company prep during the first canonical cross-linking batch. Browser Event Loop duplicate sections were consolidated into the canonical page and replaced with linked summaries.
 
+  - id: js-advanced-concepts
+    title: Advanced JavaScript Concepts
+    canonical_path: docs/web-development/javascript/advanced-js.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - advanced js
+      - debounce concept
+      - throttle concept
+      - memoization concept
+      - currying concept
+    tags:
+      - javascript
+      - advanced-js
+      - interview
+    related_topics:
+      - js-coding-questions
+      - js-closures
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical concept page for currying, debouncing, throttling, memoization, lazy evaluation, generators, iterators, Proxy, and Reflect. Reusable implementations belong in JavaScript Coding Questions.
+
+  - id: js-coding-questions
+    title: JavaScript Coding Questions
+    canonical_path: docs/web-development/javascript/javascript-coding-questions.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - javascript polyfills
+      - js machine coding
+      - debounce implementation
+      - throttle implementation
+      - memoize implementation
+      - custom bind
+    tags:
+      - javascript
+      - coding
+      - polyfills
+    related_topics:
+      - js-advanced-concepts
+      - js-arrays-collections
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical implementation page for JavaScript utility/polyfill/machine-coding snippets. Concept pages should link here instead of duplicating reusable implementations.
+
+  - id: js-scope
+    title: Scope
+    canonical_path: docs/web-development/javascript/scope.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - javascript scope
+      - lexical scope
+      - scope chain
+      - variable shadowing
+    tags:
+      - javascript
+      - scope
+    related_topics:
+      - js-hoisting
+      - js-closures
+      - js-execution-context
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical page for scope chain, lexical environments, variable shadowing, and var/function-scope traps.
+
+  - id: js-hoisting
+    title: Hoisting
+    canonical_path: docs/web-development/javascript/hoisting.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - javascript hoisting
+      - tdz
+      - temporal dead zone
+      - function hoisting
+    tags:
+      - javascript
+      - hoisting
+      - interview-puzzles
+    related_topics:
+      - js-scope
+      - js-execution-context
+      - js-closures
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical page for hoisting, TDZ, function declaration/expression behavior, and hoisting output puzzles.
+
+  - id: js-memory-management
+    title: JavaScript Memory Management
+    canonical_path: docs/web-development/javascript/memory-management.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - javascript memory
+      - memory leaks
+      - stack heap
+      - weakmap memory
+      - weakset memory
+    tags:
+      - javascript
+      - memory
+      - performance
+    related_topics:
+      - js-garbage-collector-internals
+      - js-closures
+      - js-arrays-collections
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical practical page for stack vs heap, reachability, memory leaks, closures and leaks, event listener leaks, detached DOM references, WeakMap/WeakSet memory behavior, and React leak scenarios.
+
+  - id: js-garbage-collector-internals
+    title: Garbage Collector Internals
+    canonical_path: docs/web-development/javascript/javascript-under-the-hood/garbage-collector-internals.md
+    domain: Web Development
+    category: JavaScript
+    aliases:
+      - gc internals
+      - v8 garbage collector
+      - orinoco
+      - mark sweep compact
+    tags:
+      - javascript
+      - v8
+      - memory
+      - internals
+    related_topics:
+      - js-memory-management
+      - js-engine
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical deep-dive page for V8 garbage collector internals. Practical leak-prevention notes belong in JavaScript Memory Management.
+
   - id: react-hooks
     title: React Hooks
     canonical_path: docs/web-development/react-js/react-hooks.md

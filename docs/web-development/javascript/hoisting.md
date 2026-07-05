@@ -125,6 +125,25 @@ Output: `0 1 2`, Here, each iteration passes the current value of `i` into a new
 
 ### **Key takeaway:** `var` creates one shared variable. `let` creates a fresh variable per loop iteration.
 
+### **Delayed message variant**
+
+| for (var i \= 1; i \<= 3; i++) \{   setTimeout(function () \{     console.log('after ' \+ i \+ ' second(s): ' \+ i);   \}, i \* 1000); \} |
+| :---- |
+
+Output: Logs `after 4 second(s): 4` three separate times.
+
+Why: The `var` keyword is function-scoped. There is exactly one shared variable `i` allocated for the entire loop block. The asynchronous `setTimeout` callbacks form a closure over this same shared variable. By the time the event loop executes the first callback, the synchronous loop has already completed and left `i` as `4`.
+
+Pre-ES6 fix with IIFE:
+
+| for (var i \= 1; i \<= 3; i++) \{   (function (capturedIndex) \{     setTimeout(function () \{       console.log('after ' \+ capturedIndex \+ ' second(s): ' \+ capturedIndex);     \}, capturedIndex \* 1000);   \})(i); \} |
+| :---- |
+
+Modern fix with `let`:
+
+| for (let i \= 1; i \<= 3; i++) \{   setTimeout(function () \{     console.log('after ' \+ i \+ ' second(s): ' \+ i);   \}, i \* 1000); \} |
+| :---- |
+
 ## **Puzzle 3: TDZ Execution Timing**
 
 Does this throw an error?

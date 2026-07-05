@@ -84,6 +84,13 @@ console.log(canEdit(\{ roles: \["viewer", "editor"\] \})); // true
 
 This is useful when we want to pre-configure a function and reuse it later.
 
+## **Architecture blueprint**
+
+Breaking down a multi-argument function into a series of nested single-argument closures.
+
+| function buildApiUrl(baseUrl) \{   return function(version) \{     return function(endpoint) \{       return \`$\{baseUrl\}/$\{version\}/$\{endpoint\}\`;     \};   \}; \} const productionGateway \= buildApiUrl("https://api.production.com")("v1"); console.log(productionGateway("users")); // "https://api.production.com/v1/users" |
+| :---- |
+
 ## **Why currying is useful**
 
 * Reusability.  
@@ -394,9 +401,25 @@ Memoization is useful only when:
 * Computation is expensive or repeated.  
 * Cache does not grow forever.
 
+`JSON.stringify(args)` is simple but not perfect.
+
+Problems:
+
+* Object key order can affect cache key.
+* Functions cannot be serialized well.
+* Large objects can make keys expensive.
+* Cache can grow forever.
+
 Common mistake: Memoizing everything.
 
 Memoization adds memory overhead and complexity. If the calculation is cheap, memoization may not help.
+
+## **Closure-based example**
+
+Using a hidden private `Map` object inside a closure scope to cache computational results and optimize expensive processing paths.
+
+| function memoize(expensiveFunction) \{   const cache \= new Map(); // Private cache container locked in closure   return function (...args) \{     const key \= JSON.stringify(args);     if (cache.has(key)) \{       console.log("Cache Hit for arguments:", args);       return cache.get(key);     \}     const result \= expensiveFunction.apply(this, args);     cache.set(key, result);     return result;   \}; \} const slowFactorial \= (n) \=\> (n \<= 1 ? 1 : n \* slowFactorial(n \- 1)); const fastFactorial \= memoize(slowFactorial); console.log(fastFactorial(5)); // Calculates manually: 120 console.log(fastFactorial(5)); // Cache Hit! Instantly outputs 120 from the closure map. |
+| :---- |
 
 ## **Interview-ready answer**
 
@@ -766,327 +789,21 @@ console.log(user.name); // "Akhilesh"
 
 ---
 
-# **1\. Implement Debounce**
+# **Implementation Questions**
 
-## **Problem**
+This page owns the concepts and interview reasoning for currying, debouncing, throttling, and memoization.
 
-Create a function that delays execution until the user stops calling it for a given delay.
+The reusable coding implementations are maintained in [JavaScript Coding Questions](./javascript-coding-questions.md):
 
-## **Implementation**
+* Debounce
+* Debounce with immediate option
+* Throttle
+* Throttle with trailing call
+* Memoization
+* Currying
+* Infinite currying
 
-function debounce(fn, delay) \{  
-  let timerId;
-
-  return function (...args) \{  
-    clearTimeout(timerId);
-
-    timerId \= setTimeout(() \=\> \{  
-      fn.apply(this, args);  
-    \}, delay);  
-  \};  
-\}
-
-## **Usage**
-
-const search \= debounce(function (query) \{  
-  console.log("Searching:", query);  
-\}, 500);
-
-search("r");  
-search("re");  
-search("react");
-
-// After 500ms:  
-// "Searching: react"
-
-## **Why?**
-
-Step by step:
-
-* First call starts a timer.  
-* Second call clears the first timer and starts a new one.  
-* Third call clears the second timer and starts a new one.  
-* After no new call happens for 500ms, only latest call executes.
-
-## **Frontend example**
-
-Use it for search input so typing `react` does not trigger 5 API calls.
-
-## **Interview-ready answer**
-
-Debounce delays a function until calls stop for a specified delay. It is implemented by storing a timer, clearing it on every call, and running the function only after the final timer completes.
-
----
-
-# **2\. Implement Throttle**
-
-## **Problem**
-
-Create a function that runs at most once within a given delay.
-
-## **Timestamp-based implementation**
-
-function throttle(fn, delay) \{  
-  let lastCall \= 0;
-
-  return function (...args) \{  
-    const now \= Date.now();
-
-    if (now \- lastCall \>= delay) \{  
-      lastCall \= now;  
-      fn.apply(this, args);  
-    \}  
-  \};  
-\}
-
-## **Usage**
-
-const handleScroll \= throttle(function () \{  
-  console.log("Scroll handled");  
-\}, 500);
-
-handleScroll();  
-handleScroll();  
-handleScroll();
-
-// Immediate output:  
-// "Scroll handled"
-
-Only one call runs within the 500ms window.
-
-## **Timer-based implementation**
-
-function throttle(fn, delay) \{  
-  let isThrottled \= false;
-
-  return function (...args) \{  
-    if (isThrottled) return;
-
-    fn.apply(this, args);  
-    isThrottled \= true;
-
-    setTimeout(() \=\> \{  
-      isThrottled \= false;  
-    \}, delay);  
-  \};  
-\}
-
-## **Frontend example**
-
-Use it for scroll or resize handlers where we want updates during the event, but not too frequently.
-
-## **Interview-ready answer**
-
-Throttle limits a function to run at most once in a given interval. It is useful for high-frequency events like scroll, resize, mousemove, and drag. It can be implemented using timestamps or a timer flag.
-
----
-
-# **3\. Implement Memoization**
-
-## **Problem**
-
-Create a function that caches results for repeated inputs.
-
-## **Implementation**
-
-function memoize(fn) \{  
-  const cache \= new Map();
-
-  return function (...args) \{  
-    const key \= JSON.stringify(args);
-
-    if (cache.has(key)) \{  
-      return cache.get(key);  
-    \}
-
-    const result \= fn.apply(this, args);
-
-    cache.set(key, result);
-
-    return result;  
-  \};  
-\}
-
-## **Usage**
-
-const multiply \= memoize(function (a, b) \{  
-  console.log("Calculating...");  
-  return a \* b;  
-\});
-
-console.log(multiply(2, 3)); // "Calculating..." 6  
-console.log(multiply(2, 3)); // 6
-
-## **Why?**
-
-Step by step:
-
-* Convert arguments into a cache key.  
-* If key exists, return cached result.  
-* Otherwise, calculate result.  
-* Store result in cache.  
-* Return result.
-
-## **Important traps**
-
-`JSON.stringify(args)` is simple but not perfect.
-
-Problems:
-
-* Object key order can affect cache key.  
-* Functions cannot be serialized well.  
-* Large objects can make keys expensive.  
-* Cache can grow forever.
-
-## **Better for single primitive argument**
-
-function memoizeOneArg(fn) \{  
-  const cache \= new Map();
-
-  return function (arg) \{  
-    if (cache.has(arg)) \{  
-      return cache.get(arg);  
-    \}
-
-    const result \= fn.call(this, arg);  
-    cache.set(arg, result);
-
-    return result;  
-  \};  
-\}
-
-## **Interview-ready answer**
-
-Memoization caches function results based on input arguments. If the same input is passed again, the cached result is returned instead of recalculating. It works best for pure functions with expensive repeated calculations, but we must manage cache size to avoid memory growth.
-
----
-
-# **4\. Implement Currying**
-
-## **Problem**
-
-Convert a function like `sum(a, b, c)` into `sum(a)(b)(c)`.
-
-## **Basic implementation**
-
-function curry(fn) \{  
-  return function curried(...args) \{  
-    if (args.length \>= fn.length) \{  
-      return fn.apply(this, args);  
-    \}
-
-    return function (...nextArgs) \{  
-      return curried.apply(this, \[...args, ...nextArgs\]);  
-    \};  
-  \};  
-\}
-
-## **Usage**
-
-function add(a, b, c) \{  
-  return a \+ b \+ c;  
-\}
-
-const curriedAdd \= curry(add);
-
-console.log(curriedAdd(1)(2)(3)); // 6  
-console.log(curriedAdd(1, 2)(3)); // 6  
-console.log(curriedAdd(1)(2, 3)); // 6
-
-## **Why?**
-
-Step by step:
-
-* `fn.length` tells how many declared parameters the original function expects.  
-* If enough arguments are collected, call the original function.  
-* If not, return a new function to collect more arguments.  
-* Closures remember the previously collected arguments.
-
-## **Important traps**
-
-Default parameters can affect `fn.length`.
-
-function test(a, b \= 2, c) \{\}
-
-console.log(test.length); // 1
-
-Answer: `fn.length` counts parameters before the first default parameter.
-
-## **Interview-ready answer**
-
-Currying converts a multi-argument function into a sequence of functions that collect arguments over time. It works using closures. Once enough arguments are collected, the original function is executed.
-
----
-
-# **5\. Debounce with Immediate Option**
-
-## **Problem**
-
-Sometimes we want the function to run immediately on the first call, then ignore calls until the delay passes.
-
-## **Implementation**
-
-function debounce(fn, delay, immediate \= false) \{  
-  let timerId;
-
-  return function (...args) \{  
-    const shouldCallNow \= immediate && \!timerId;
-
-    clearTimeout(timerId);
-
-    timerId \= setTimeout(() \=\> \{  
-      timerId \= null;
-
-      if (\!immediate) \{  
-        fn.apply(this, args);  
-      \}  
-    \}, delay);
-
-    if (shouldCallNow) \{  
-      fn.apply(this, args);  
-    \}  
-  \};  
-\}
-
-## **Usage**
-
-const save \= debounce(  
-  function () \{  
-    console.log("Saved");  
-  \},  
-  1000,  
-  true  
-);
-
-save(); // "Saved"  
-save();  
-save();
-
-Answer: First call runs immediately. Later calls within delay are ignored/reset.
-
-## **Interview-ready answer**
-
-A debounce with immediate option supports leading execution. If `immediate` is true, it runs on the first call and then waits until the delay passes before allowing another leading call.
-
----
-
-# **6\. Throttle with Trailing Call**
-
-## **Problem**
-
-Basic throttle may skip the final call. Sometimes we want the last event to run after the interval.
-
-## **Implementation**
-
-The canonical trailing-call throttle implementation is maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
-
-## **Why trailing matters**
-
-For scroll or resize, the user may stop after the last event. Trailing call ensures the final state is handled.
-
-## **Interview-ready answer**
-
-A throttle with trailing call ensures the function runs at most once per interval, but also runs one final time with the latest arguments after the interval. This is useful when the final event state matters.
+Keep implementation details there so the coding-practice page stays the single source for reusable utilities.
 
 ---
 

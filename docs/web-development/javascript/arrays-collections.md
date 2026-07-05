@@ -855,8 +855,6 @@ console.log(map.size); // 2
 
 `WeakSet` stores only objects, and those object references are weak.
 
-If no other reference exists to an object, it can be garbage collected.
-
 const weakSet \= new WeakSet();
 
 let user \= \{ name: "Akhil" \};
@@ -867,7 +865,7 @@ console.log(weakSet.has(user)); // true
 
 ## **Key mental model**
 
-Use `WeakSet` when you want to track objects without preventing garbage collection.
+Use `WeakSet` when you want to track objects temporarily without making the collection iterable or countable.
 
 ## **Important points**
 
@@ -884,25 +882,9 @@ weakSet.add(1);
 
 // TypeError: Invalid value used in weak set
 
-## **Practical use case**
-
-const visited \= new WeakSet();
-
-function processUser(user) \{
-
- if (visited.has(user)) return;
-
- visited.add(user);
-
- console.log("Processing user");
-
-\}
-
-Useful when tracking object processing without creating memory leaks.
-
 ## **Interview-ready answer**
 
-`WeakSet` stores weak references to objects. It does not prevent garbage collection, so it is useful for tracking objects temporarily. It only accepts objects and is not iterable.
+`WeakSet` stores object values weakly. It only accepts objects, is not iterable, and does not expose `.size`. For the memory-management angle, see [Memory Management](./memory-management.md).
 
 ---
 
@@ -922,7 +904,7 @@ console.log(weakMap.get(user)); // \{ lastActive: 178... \}
 
 ## **Key mental model**
 
-Use `WeakMap` when you want to attach private metadata to objects without preventing garbage collection.
+Use `WeakMap` when you want object-only keys and private object metadata.
 
 ## **Important points**
 
@@ -930,19 +912,6 @@ Use `WeakMap` when you want to attach private metadata to objects without preven
 * Values can be any type.  
 * Not iterable.  
 * No `.size`.  
-* Helps avoid memory leaks.
-
-## **Practical frontend example**
-
-const elementData \= new WeakMap();
-
-const button \= document.querySelector("button");
-
-elementData.set(button, \{ clicked: 0 \});
-
-console.log(elementData.get(button)); // \{ clicked: 0 \}
-
-Useful for storing DOM element metadata without preventing garbage collection.
 
 ## **WeakMap vs Map**
 
@@ -956,7 +925,7 @@ Useful for storing DOM element metadata without preventing garbage collection.
 
 ## **Interview-ready answer**
 
-`WeakMap` is like `Map`, but its keys must be objects and are weakly referenced. If the object key is no longer used anywhere else, it can be garbage collected. It is useful for private metadata and memory-safe object associations.
+`WeakMap` is like `Map`, but its keys must be objects and it is not iterable. It is useful for private metadata and object associations. For the garbage-collection and leak-prevention angle, see [Memory Management](./memory-management.md).
 
 ---
 
@@ -1304,169 +1273,16 @@ Polyfills are commonly asked to test how well you understand method behavior, ca
 
 ---
 
-## 1\. Polyfill for `map`
+## Polyfills Maintained In JavaScript Coding Questions
 
-Array.prototype.myMap \= function (callback, thisArg) \{
+The full implementations for `map`, `filter`, and `reduce` are maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
 
- if (this \== null) \{
+Key interview points to remember from this page:
 
-   throw new TypeError("Array.prototype.myMap called on null or undefined");
-
- \}
-
- if (typeof callback \!== "function") \{
-
-   throw new TypeError(callback \+ " is not a function");
-
- \}
-
- const arr \= Object(this);
-
- const result \= \[\];
-
- for (let i \= 0; i \< arr.length; i++) \{
-
-   if (i in arr) \{
-
-     result\[i\] \= callback.call(thisArg, arr\[i\], i, arr);
-
-   \}
-
- \}
-
- return result;
-
-\};
-
-const result \= \[1, 2, 3\].myMap((num) \=\> num \* 2);
-
-console.log(result); // \[2, 4, 6\]
-
-## **Key interview points**
-
-* `map` returns a new array.  
-* Callback receives `value`, `index`, and `array`.  
-* Supports optional `thisArg`.  
-* Should skip empty slots in sparse arrays.
-
----
-
-## 2\. Polyfill for `filter`
-
-Array.prototype.myFilter \= function (callback, thisArg) \{
-
- if (this \== null) \{
-
-   throw new TypeError("Array.prototype.myFilter called on null or undefined");
-
- \}
-
- if (typeof callback \!== "function") \{
-
-   throw new TypeError(callback \+ " is not a function");
-
- \}
-
- const arr \= Object(this);
-
- const result \= \[\];
-
- for (let i \= 0; i \< arr.length; i++) \{
-
-   if (i in arr && callback.call(thisArg, arr\[i\], i, arr)) \{
-
-     result.push(arr\[i\]);
-
-   \}
-
- \}
-
- return result;
-
-\};
-
-const result \= \[1, 2, 3, 4\].myFilter((num) \=\> num % 2 \=== 0);
-
-console.log(result); // \[2, 4\]
-
-## **Key interview points**
-
-* `filter` returns a new array.  
-* It keeps items only when callback returns truthy.  
-* It does not mutate original array.
-
----
-
-## 3\. Polyfill for `reduce`
-
-Array.prototype.myReduce \= function (callback, initialValue) \{
-
- if (this \== null) \{
-
-   throw new TypeError("Array.prototype.myReduce called on null or undefined");
-
- \}
-
- if (typeof callback \!== "function") \{
-
-   throw new TypeError(callback \+ " is not a function");
-
- \}
-
- const arr \= Object(this);
-
- let accumulator;
-
- let startIndex \= 0;
-
- if (arguments.length \>= 2\) \{
-
-   accumulator \= initialValue;
-
- \} else \{
-
-   while (startIndex \< arr.length && \!(startIndex in arr)) \{
-
-     startIndex++;
-
-   \}
-
-   if (startIndex \>= arr.length) \{
-
-     throw new TypeError("Reduce of empty array with no initial value");
-
-   \}
-
-   accumulator \= arr\[startIndex\];
-
-   startIndex++;
-
- \}
-
- for (let i \= startIndex; i \< arr.length; i++) \{
-
-   if (i in arr) \{
-
-     accumulator \= callback(accumulator, arr\[i\], i, arr);
-
-   \}
-
- \}
-
- return accumulator;
-
-\};
-
-const total \= \[1, 2, 3\].myReduce((acc, num) \=\> acc \+ num, 0);
-
-console.log(total); // 6
-
-## **Key interview points**
-
-* Initial value is important.  
-* Without initial value, first available item becomes accumulator.  
-* Empty array without initial value throws error.  
-* Callback receives `accumulator`, `currentValue`, `index`, and `array`.
+* `map` returns a new array and should skip empty slots in sparse arrays.
+* `filter` returns a new array with items whose callback result is truthy.
+* `reduce` depends heavily on whether an initial value is provided.
+* Polyfills should handle `thisArg`, callback validation, sparse arrays, and null/undefined receivers.
 
 ---
 

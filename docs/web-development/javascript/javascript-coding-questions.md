@@ -299,6 +299,10 @@ function debounce(fn, delay, immediate \= false) \{
   \};  
 \}
 
+Answer: First call runs immediately. Later calls within delay are ignored/reset.
+
+Interview point: A debounce with immediate option supports leading execution. If `immediate` is true, it runs on the first call and then waits until the delay passes before allowing another leading call.
+
 ---
 
 # **6\. Throttle**
@@ -331,6 +335,8 @@ const handleScroll \= throttle(function () \{
 
 ## **Throttle with trailing call**
 
+Basic throttle may skip the final call. Sometimes we want the last event to run after the interval.
+
 function throttle(fn, delay) \{  
   let lastCall \= 0;  
   let timerId \= null;  
@@ -358,6 +364,8 @@ function throttle(fn, delay) \{
     \}  
   \};  
 \}
+
+Interview point: A throttle with trailing call ensures the function runs at most once per interval, but also runs one final time with the latest arguments after the interval. This is useful when the final event state matters.
 
 ---
 
@@ -558,6 +566,23 @@ console.log(multiply(2, 3)); // 6
 * Trades memory for speed.  
 * `JSON.stringify` is simple but not perfect for complex objects.  
 * Cache should be bounded in production.
+
+## **Better for single primitive argument**
+
+function memoizeOneArg(fn) \{  
+  const cache \= new Map();
+
+  return function (arg) \{  
+    if (cache.has(arg)) \{  
+      return cache.get(arg);  
+    \}
+
+    const result \= fn.call(this, arg);  
+    cache.set(arg, result);
+
+    return result;  
+  \};  
+\}
 
 ---
 

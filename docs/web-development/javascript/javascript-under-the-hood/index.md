@@ -5,311 +5,41 @@ sidebar_position: 1
 
 # JavaScript Under The Hood
 
-Related canonical pages: [Event Loop](../event-loop.md), [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md).
+This page is the hub for JavaScript runtime internals.
 
-### **1\. How does a Web Browser Work?**
+## Canonical Study Path
 
-**Answer:**
+1. [JS Engine](./js-engine.md)
+2. [Garbage Collector Internals](./garbage-collector-internals.md)
+3. [Event Loop](../event-loop.md)
+4. [Asynchronous JavaScript](../asynchronous-javascript.md)
+5. [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md)
+6. [Browser APIs & DOM](../browser-apis-dom.md)
 
-A web browser works in several stages:
+## Related Non-JavaScript Internals
 
-1. **URL Resolution:** When a user enters a URL, DNS resolves it to an IP address.
+- [React Under The Hood](../../react-js/react-under-the-hood.md)
+- [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md)
+- [Node.js Notes](../../node-js/chatgpt-node.md)
 
-2. **HTTP Request:** The browser sends an HTTP/HTTPS request to the server.
+## Engine Notes
 
-3. **Server Response:** The server responds with HTML, CSS, JS, etc.
+V8 is Google’s high-performance JavaScript and WebAssembly engine used in Chrome and Node.js. It uses parsing, bytecode interpretation, JIT compilation, optimization, deoptimization, and garbage collection.
 
-4. **HTML Parsing:** The browser parses the HTML into a **DOM tree**.
+SpiderMonkey is Mozilla’s JavaScript engine used in Firefox. It was the first JavaScript engine and supports modern JavaScript, garbage collection, bytecode interpretation, and optimizing compilation.
 
-5. **CSS Parsing:** CSS is parsed into a **CSSOM (CSS Object Model)**.
-
-6. **Render Tree Construction:** DOM \+ CSSOM \= Render Tree.
-
-7. **Layout:** Calculates each element’s position on the screen.
-
-8. **Painting:** Draws pixels on the screen using the render tree.
-
-9. **JavaScript Execution:** JS engine (like V8 or SpiderMonkey) executes JS.
-
-10. **Reflows & Repaints:** Any DOM changes might trigger re-layout and repaint.
-
----
-
-### **2\. How Does React Work Under the Hood?**
-
-**Answer:**
-
-React operates using the following core concepts:
-
-1. **Virtual DOM:** React maintains a lightweight copy of the real DOM.
-
-2. **Reconciliation:** When state/props change, a new Virtual DOM is created and compared (diffing) with the previous one.
-
-3. **Fiber Architecture:** React uses a fiber data structure to break rendering work into chunks to enable async rendering.
-
-4. **Component Lifecycle:** React components go through lifecycle methods (like `componentDidMount`, `useEffect`).
-
-5. **ReactDOM:** Converts Virtual DOM changes to actual DOM updates efficiently.
-
----
-
-### **3\. What is V8 Engine?**
-
-**Answer:**
-
-* V8 is Google’s open-source high-performance JavaScript and WebAssembly engine.
-
-* Used in Chrome and Node.js.
-
-* Written in C++.
-
-* **Key features:**
-
-  * Compiles JS to native machine code using **Just-In-Time (JIT) compilation**.
-
-  * Has a garbage collector and memory management.
-
-  * Uses **Ignition** (interpreter) and **TurboFan** (compiler) for performance.
-
----
-
-### **4\. What is SpiderMonkey?**
-
-**Answer:**
-
-* SpiderMonkey is Mozilla’s JavaScript engine, used in Firefox.
-
-* The first JavaScript engine ever created.
-
-* Supports modern JavaScript (ES6+), garbage collection, and JIT compilation.
-
-* Like V8, it uses **bytecode interpretation** and **baseline & optimizing compilers**.
-
----
-
-### **5\. What is the Difference Between Synchronous and Asynchronous JavaScript?**
-
-**Answer:**
-
-* **Synchronous:** Code runs line by line, blocking the execution until each operation finishes.
-
-* **Asynchronous:** Non-blocking; uses callbacks, promises, async/await to handle operations like API calls, timers.
-
-* JavaScript uses the **Event Loop** and **callback queue** to handle async tasks.
-
----
-
-### **6\. How Does the JavaScript Event Loop Work?**
-
-**Answer:**
-
-JavaScript runtime behavior includes the call stack, Web APIs or runtime APIs, task queues, microtask queue, and Event Loop.
-
-This page keeps the under-the-hood overview. For the full browser Event Loop explanation and execution-order examples, see [Event Loop](../event-loop.md).
-
----
-
-### **7\. What is the Role of the DOM and BOM in a Web Browser?**
-
-**Answer:**
-
-* **DOM (Document Object Model):** Represents HTML structure in a tree format. Manipulated using JS to change content.
-
-* **BOM (Browser Object Model):** Provides access to browser features like `window`, `navigator`, `location`, etc.
-
----
-
-### **8\. How Does Node.js Work Under the Hood?**
-
-**Answer:**
-
-* Built on top of V8.
-
-* Uses **libuv** to provide an event-driven, non-blocking I/O model.
-
-* Has its own **event loop** to handle async operations.
-
-* Uses **C++ bindings** to perform system-level tasks like file I/O, network.
-
----
-
-### **9\. What is WebAssembly and How Does it Work?**
-
-**Answer:**
-
-* WebAssembly (WASM) is a binary instruction format.
-
-* Enables running compiled code (like C/C++) in the browser.
-
-* Runs at near-native speed.
-
-* Works alongside JS and uses the same Web APIs.
-
----
-
-### **10\. How Do Modern JavaScript Frameworks Improve Performance?**
-
-**Answer:**
-
-* Use **Virtual DOM** for efficient updates.
-
-* Employ **tree shaking** to remove unused code.
-
-* Support **code-splitting** for lazy loading.
-
-* Use **memoization** and **reconciliation** to reduce unnecessary renders.
-
----
-
-### **What is a Render Tree in a Web Browser?**
-
-The Render Tree combines DOM and CSSOM information into the visible structure the browser uses for layout, painting, and compositing.
-
-For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md).
-
-
+WebAssembly is a binary instruction format that allows compiled languages like C/C++ to run in the browser at near-native speed. It works alongside JavaScript and the same Web APIs.
 
 # **Part 2: Browser Rendering Pipeline & Performance Optimization**
 
-## 
+Browser rendering pipeline details are canonical in [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md).
 
-## **1\. The Core Rendering Pipeline**
+This JavaScript Under The Hood page keeps only the runtime overview. Use the canonical browser page for:
 
-### **Step-by-Step Architecture Pipeline**
-
-1. **DOM Construction:** Parses raw HTML string bytes into tokens to generate the internal **Document Object Model (DOM)** tree.  
-2. **CSSOM Construction:** Parses linked stylesheet rules and style blocks to generate the **CSS Object Model (CSSOM)** tree.  
-3. **Render Tree Generation:** Combines the structural DOM tree with the structural CSSOM tree, omitting non-visual layout targets (e.g., \<head\>, nodes matching display: none).  
-4. **Layout (Reflow):** Computes exact geographic geometric coordinates, dimensions ($X, Y$ positions, widths, heights) for every visible element node.  
-5. **Paint:** Fills in programmatic pixels across separate isolated layers, executing instructions for graphics, borders, text colors, and shadows.  
-6. **Composite:** Evaluates independent layering targets, utilizing the GPU hardware thread to blend layer surfaces together and project them onto the screen display.
-
-## **2\. Structural Breakdown of Pipeline Data Structures**
-
-### **DOM (Document Object Model)**
-
-* **Data Structure:** **N-ary Tree Node Graph**.  
-* **Characteristics:** Elements maintain deep cyclical directional references linking parents directly to structural arrays of dynamic live children.  
-* **Underlying Engine Opts:** Standard layout tree traversal costs $O(N)$. To prevent slow structural searches via methods like document.getElementById(), engines maintain an internal, synchronized **Hash Map Index** linking unique identifier keys to node memory addresses, lowering lookup costs to **$O(1)$**.
-
-### **CSSOM (CSS Object Model)**
-
-* **Data Structure:** **Tree / Rule Map Node Hierarchies**.  
-* **Characteristics:** Operates like a cascade tree structure to compute explicit style inheritance hierarchies (e.g., matching general wildcards down to targeted layout rules).
-
-### **Render Tree**
-
-* **Data Structure:** **Hierarchical Layout Object Tree** (Internally tracked as RenderObject / LayoutObject).  
-* **Characteristics:** Maps structural content directly to its corresponding computed display styles. It contains only nodes that affect visual output.
-
-| Trait | DOM Tree | Render Tree |
-| :---- | :---- | :---- |
-| **Node Scope** | Contains *all* structural elements. | Contains *only* visible elements. |
-| **Structural Match** | Includes \<head\>, \<script\>, display: none. | Drops hidden elements completely. |
-| **Visibility Elements** | Includes elements with visibility: hidden. | Includes visibility: hidden (allocates layout space). |
-| **Style Context** | Raw structural layout node data. | Embedded with explicit, calculated computed styles. |
-
-## 
-
-## **3\. Execution Lifecycle: Reflow vs. Repaint vs. Composite**
-
-Modifying the DOM or styles triggers parts of the rendering pipeline. Understanding these entry points is critical for performance optimization.
-
-### **Reflow (Layout Phase)**
-
-* **Trigger:** Any modification that alters the geometric layout or structural dimensions of an element.  
-* **Pipeline Path Execution:** Layout $\\rightarrow$ Paint $\\rightarrow$ Composite.  
-* **Cost:** **Extremely High**. Geometric modifications trigger a cascade of layout calculations across parent nodes, siblings, and child structures.  
-* **Common Causes:** Modifying width, height, margin, padding, font-size, or reading properties that force layout evaluation.
-
-### **Repaint (Paint Phase)**
-
-* **Trigger:** Modifications that change the visual appearance of an element without altering its geometric dimensions or layout footprint.  
-* **Pipeline Path Execution:** Paint $\\rightarrow$ Composite.  
-* **Cost:** **Moderate**. Skips geometric recalculations, but re-allocates pixel buffers across modified graphic layers.  
-* **Common Causes:** Modifying background-color, color, visibility, box-shadow, or outline-color.
-
-### **Composite-Only**
-
-* **Trigger:** Visual adjustments isolated onto separate layers, managed entirely via GPU hardware acceleration.  
-* **Pipeline Path Execution:** Composite.  
-* **Cost:** **Extremely Low**. Bypasses both the CPU-bound Layout and Paint phases.  
-* **Common Causes:** Animating properties like transform (translate, scale, rotate) or opacity.
-
-### **Code Comparison: Performance Mechanics**
-
-JavaScript
-
-// ❌ High-Cost Performance Trap: Triggers Reflow, Paint, and Composite
-
-element.style.left \= "100px";
-
-//  Low-Cost Optimization: Triggers Composite Only via GPU Layer Isolation
-
-element.style.transform \= "translateX(100px)";
-
-## **4\. Advanced Production Performance Challenges**
-
-### **Layout Thrashing (Forced Synchronous Reflow)**
-
-Layout Thrashing occurs when JavaScript writes a geometric layout property to the DOM and immediately reads a layout property in a tight loop. This forces the browser to halt execution and recalculate the layout synchronously to return accurate values.
-
-JavaScript
-
-// ❌ CRITICAL TRAP: Causes Layout Thrashing
-
-for (let i \= 0; i \< elements.length; i++) \{
-
-  // Read layout property (Forces immediate synchronous reflow calculation)
-
-  const width \= elements\[i\].offsetWidth; 
-
-  // Write layout property (Invalidates the layout state)
-
-  elements\[i\].style.width \= width \+ 10 \+ "px"; 
-
-\}
-
-#### **Remediation and Fixes**
-
-To prevent this, batch read and write operations so the browser can optimize layout changes in a single pass.
-
-JavaScript
-
-//  FIX 1: Batch reads first, then batch writes
-
-const widths \= elements.map(el \=\> el.offsetWidth); // Batch Read
-
-elements.forEach((el, i) \=\> \{
-
-  el.style.width \= widths\[i\] \+ 10 \+ "px";         // Batch Write
-
-\});
-
-//  FIX 2: Schedule updates using requestAnimationFrame
-
-requestAnimationFrame(() \=\> \{
-
-  elements.forEach(el \=\> \{
-
-    // Perform isolated visual updates synced with the display refresh cycle
-
-  \});
-
-\});
-
-### **Cumulative Layout Shift (CLS)**
-
-CLS is a Core Web Vital metric that tracks unexpected visual instability on a webpage.
-
-* **Primary Causes:** Media elements (images, video embeds, iframes) lacking explicit dimension attributes, or dynamic ad injectors loading above existing text.  
-* **Remediation:** Always include explicit structural aspect ratio dimensions on asset containers.
-
-HTML
-
-\<img src="hotel.jpg" /\>
-
-\<img src="hotel.jpg" width="300" height="200" style="aspect-ratio: 300 / 200;" /\>
+* DOM, CSSOM, Render Tree, Layout, Paint, and Composite.
+* Reflow, repaint, and composite-only updates.
+* Layout thrashing examples and fixes.
+* CLS and rendering-performance interview answers.
 
 # **Part 3: Senior-Level (IC4+) Interview Reference Sheet**
 

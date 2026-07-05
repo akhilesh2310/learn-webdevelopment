@@ -141,9 +141,6 @@ const webDevelopmentSidebar = [
         items: [
           'web-development/web-fundamentals/url-in-browser',
           'web-development/web-fundamentals/browser-rendering-pipeline',
-          'web-development/javascript/javascript-under-the-hood/js-engine',
-          'web-development/javascript/event-loop',
-          'web-development/javascript/browser-apis-dom',
         ],
       },
       {

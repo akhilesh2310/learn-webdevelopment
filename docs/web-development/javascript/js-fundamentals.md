@@ -65,49 +65,16 @@ In modern JavaScript, you should completely abandon `var`. Instead, follow this 
 * Use `const` by default for everything.  
 * Only switch to `let` if you know the value *must* change later (like a loop counter or a toggling state).
 
-### **Interviewer Follow-Up Questions to Watch Out For:**
+### **Interviewer Follow-Up Questions to Watch Out For**
 
-Q: What is Hoisting: The Hidden Difference
+This page keeps the variable declaration overview. The deeper interview puzzles are canonical in:
 
-* Hoisting is a JavaScript mechanism where variable, function, class, or import declarations are registered in memory during the compile phase before the code actually executes  
-* `var` is hoisted and initialized as `undefined`. You can technically use it *before* it's declared without the code crashing.  
-* `let` and `const` are hoisted but not initialized. If you try to use them before their declaration line, JavaScript throws an error (this dead zone is called the Temporal Dead Zone).
-
-| console.log(x); // Outputs: undefined (weird, but doesn't crash) var x \= 5; console.log(y); // ❌ ReferenceError: Cannot access 'y' before initialization let y \= 10; |
-| :---- |
-
-Q: What is the Temporal Dead Zone (TDZ)?
-
-* Answer: The TDZ is the period between entering a block scope and the actual line where a `let` or `const` variable is declared. During this time, the variable exists in memory (it is hoisted) but cannot be accessed. Trying to access it throws a `ReferenceError`.
+* [Hoisting](./hoisting.md) for hoisting, TDZ, function declarations, function expressions, and output puzzles.
+* [Scope](./scope.md) for scope chain, lexical environments, variable shadowing, and scope lookup.
 
 Q: Is `const` truly immutable in JavaScript?
 
 * Answer: No, `const` creates an immutable *binding*, not an immutable *value*. You cannot reassign the variable to a new identifier, but if the value is an object or an array, you can still mutate its internal properties or elements. (If you want true immutability, mention `Object.freeze()`).
-
-**Variable shadowing**
-
-Variable shadowing occurs when a variable declared within a specific scope (like a block, function, or loop) has the exact same name as a variable declared in an outer scope.
-
-When this happens, the outer variable becomes temporarily inaccessible (it is "shadowed" or hidden) within the inner scope. The JavaScript engine resolves the variable name by looking at the closest local scope first, moving outward only if it doesn't find a match.
-
-| const userRole \= 'Admin'; // Outer variable function checkPermissions() \{   const userRole \= 'Guest'; // Shadowing variable   console.log(\`Inner scope role: $\{userRole\}\`);    // Output: Inner scope role: Guest   // The outer 'userRole' is shadowed here. \} checkPermissions(); console.log(\`Global scope role: $\{userRole\}\`);  // Output: Global scope role: Admin // The outer variable remains untouched. |
-| :---- |
-
-**The var Trap (Interview Favorite)**
-
-Interviews will often throw var into the mix to see if you catch the difference between block scope and function scope. Because var is function-scoped, it behaves differently inside blocks:
-
-| var status \= 'active'; if (true) \{   var status \= 'pending'; // This is NOT shadowing. It overwrites the outer variable\!   console.log(status); // 'pending' \} console.log(status); // 'pending' \- The outer variable was mutated. |
-| :---- |
-
-Conversely, if you use a function block, var will shadow:
-
-| var status \= 'active'; function update() \{   var status \= 'pending'; // This IS shadowing because it's inside a function.   console.log(status); // 'pending' \} update(); console.log(status); // 'active' |
-| :---- |
-
-**Memory & Performance Implication**
-
-From a systems perspective, when a variable is shadowed, the engine doesn't destroy the outer variable; it just skips it during the execution context's identifier lookup. However, heavy reliance on shadowing inside deep closures can occasionally lead to unexpected memory retention if the inner function retains a reference to the environment, though modern engines (like V8) are highly optimized to garbage-collect unreferenced outer variables.
 
 ## **Data Types**
 
