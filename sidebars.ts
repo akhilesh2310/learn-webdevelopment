@@ -183,6 +183,7 @@ const webDevelopmentSidebar = [
               'web-development/important/security/xss-cross-site-scripting',
               'web-development/important/security/security-headers',
               'web-development/important/security/react-security',
+              'web-development/important/security/frontend-security-checklist',
             ],
           },
           'web-development/important/caching',

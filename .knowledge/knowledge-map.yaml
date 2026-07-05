@@ -63,6 +63,29 @@ topics:
     last_reviewed: 2026-07-04
     notes: Canonical React Hooks page. Cross-linked with React Performance for API usage versus optimization guidance around useMemo and useCallback during the first canonical cross-linking batch.
 
+  - id: browser-rendering-pipeline
+    title: Browser Rendering Pipeline
+    canonical_path: docs/web-development/web-fundamentals/browser-rendering-pipeline.md
+    domain: Web Development
+    category: Web Fundamentals
+    aliases:
+      - browser rendering
+      - render tree
+      - rendering pipeline
+      - layout paint composite
+    tags:
+      - browser
+      - rendering
+      - performance
+      - web-fundamentals
+    related_topics:
+      - js-event-loop
+      - core-web-vitals
+      - web-performance
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical browser rendering page moved under Web Fundamentals. Quick Questions, Core Web Vitals, and JavaScript Under The Hood link to this page instead of owning duplicate render tree explanations.
+
   - id: system-design-autocomplete
     title: Autocomplete
     canonical_path: docs/system-design/system-design-questions/autocomplete.md
