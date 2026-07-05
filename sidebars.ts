@@ -268,17 +268,23 @@ const webDevelopmentSidebar = [
         items: [
           {
             type: 'category',
-            label: '1. Fundamentals',
+            label: 'Fundamentals',
             link: {type: 'doc', id: 'web-development/react-js/fundamentals/index'},
             items: [
-              'web-development/react-js/fundamentals/reconciliation-1',
-              'web-development/react-js/fundamentals/reconciliation-2',
-              'web-development/react-js/fundamentals/react-pipeline',
               'web-development/react-js/fundamentals/functional-components-vs-class-components',
+            ],
+          },
+          {
+            type: 'category',
+            label: 'Rendering & Internals',
+            link: {type: 'doc', id: 'web-development/react-js/react-under-the-hood'},
+            items: [
+              'web-development/react-js/rendering-components',
+              'web-development/react-js/fundamentals/react-pipeline',
+              'web-development/react-js/fundamentals/reconciliation-1',
               'web-development/react-js/fundamentals/react-fiber',
             ],
           },
-          'web-development/react-js/rendering-components',
           'web-development/react-js/react-hooks',
           'web-development/react-js/state-management',
           'web-development/react-js/forms',

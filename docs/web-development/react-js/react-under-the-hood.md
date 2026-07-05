@@ -1,11 +1,20 @@
 ---
-title: 13. React Under The Hood
+title: React Under The Hood
 sidebar_position: 13
 ---
 
-# 13. React Under The Hood
+# React Under The Hood
 
 Related canonical pages: [React Fiber](fundamentals/react-fiber.md), [React Reconciliation](fundamentals/reconciliation-1.md), [Rendering Components](rendering-components.md).
+
+## How To Use This Page
+
+Use this page as the advanced React internals hub.
+
+- For Fiber basics and Fiber node details, start with [React Fiber](fundamentals/react-fiber.md).
+- For diffing, keys, state preservation, and reconciliation rules, study [React Reconciliation](fundamentals/reconciliation-1.md).
+- For render phase, commit phase, lifecycle, re-render triggers, and cleanup, study [Rendering Components](rendering-components.md).
+- Use this page for Scheduler, lanes, concurrent rendering, Suspense internals, hydration, priorities, and the full mental model.
 
 # **React Under The Hood**
 

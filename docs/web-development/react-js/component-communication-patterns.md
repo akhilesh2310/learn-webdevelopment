@@ -1,9 +1,17 @@
 ---
-title: 6. Component Communication Patterns
+title: Component Communication Patterns
 sidebar_position: 6
 ---
 
-# 6. Component Communication Patterns
+# Component Communication Patterns
+
+Related pages: [State Management](state-management.md), [Advanced React Patterns](advanced-react-patterns.md), [React Hooks](react-hooks.md).
+
+## Ownership
+
+Use this page for communication decisions: parent to child, child to parent, siblings, Context, refs, cross-component communication, and when to lift state or use global state.
+
+Use [Advanced React Patterns](advanced-react-patterns.md) for deep reusable pattern design such as compound components, provider pattern, headless components, and custom hooks.
 
 # **6\. Component Communication Patterns**
 

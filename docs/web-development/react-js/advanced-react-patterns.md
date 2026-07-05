@@ -1,9 +1,17 @@
 ---
-title: 9. Advanced React Patterns
+title: Advanced React Patterns
 sidebar_position: 9
 ---
 
-# 9. Advanced React Patterns
+# Advanced React Patterns
+
+Related pages: [Component Communication Patterns](component-communication-patterns.md), [React Hooks](react-hooks.md), [React Architecture](react-architecture.md).
+
+## Ownership
+
+Use this page for reusable React patterns such as HOC, render props, custom hooks, compound components, provider pattern, controlled component pattern, and headless components.
+
+Use [Component Communication Patterns](component-communication-patterns.md) for deciding how components pass data, callbacks, refs, context, or events between each other.
 
 # **9\. Advanced React Patterns**
 

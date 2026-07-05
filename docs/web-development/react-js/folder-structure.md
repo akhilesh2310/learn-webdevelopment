@@ -1,9 +1,13 @@
 ---
-title: 7. Folder Structure
+title: Folder Structure
 sidebar_position: 7
 ---
 
-# 7. Folder Structure
+# Folder Structure
+
+Related page: [React Architecture](react-architecture.md).
+
+This page is a quick visual/reference note. For complete scalable architecture guidance, study [React Architecture](react-architecture.md).
 
 ![][image6]  
 🚀 Structuring Your React Project for Scalability & Maintainability 🏗️

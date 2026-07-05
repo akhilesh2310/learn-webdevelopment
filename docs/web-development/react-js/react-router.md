@@ -1,9 +1,9 @@
 ---
-title: 11. React Router
+title: React Router
 sidebar_position: 11
 ---
 
-# 11. React Router
+# React Router
 
 # **11\. React Router**
 

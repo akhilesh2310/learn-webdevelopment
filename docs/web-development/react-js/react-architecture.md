@@ -1,9 +1,15 @@
 ---
-title: 12. React Architecture
+title: React Architecture
 sidebar_position: 12
 ---
 
-# 12. React Architecture
+# React Architecture
+
+Related pages: [Frontend Architecture](../important/frontend-architecture.md), [Folder Structure](folder-structure.md), [State Management](state-management.md), [Advanced React Patterns](advanced-react-patterns.md), [Micro Frontends](../important/micro-frontends.md).
+
+## Ownership
+
+Use this page for scalable React architecture, feature/domain structure, monorepos, design systems, shared component libraries, micro frontends, and senior/staff-level architecture answers.
 
 # **React Architecture**
 

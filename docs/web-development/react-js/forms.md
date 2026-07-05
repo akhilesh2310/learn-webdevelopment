@@ -1,9 +1,15 @@
 ---
-title: 5. Forms
+title: Forms
 sidebar_position: 5
 ---
 
-# 5. Forms
+# Forms
+
+Related pages: [State Management](state-management.md), [React Hooks](react-hooks.md), [Error Handling in React](error-handling-in-react.md), [React Performance](../important/performance/react-performance.md).
+
+## Ownership
+
+Use this page for controlled/uncontrolled forms, validation, React Hook Form, Formik, dynamic forms, API form errors, and large-form interview answers.
 
 # **5\. Forms & Controlled Components**
 

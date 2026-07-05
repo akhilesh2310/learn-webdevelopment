@@ -5,6 +5,27 @@ sidebar_position: 1
 
 # React.js
 
+## Study Path
+
+1. [Fundamentals](./fundamentals/)
+2. [Rendering & Internals](./react-under-the-hood.md)
+3. [React Hooks](./react-hooks.md)
+4. [State Management](./state-management.md)
+5. [Forms](./forms.md)
+6. [Component Communication Patterns](./component-communication-patterns.md)
+7. [Advanced React Patterns](./advanced-react-patterns.md)
+8. [React Router](./react-router.md)
+9. [React Architecture](./react-architecture.md)
+10. [React Coding](./coding.md)
+
+## Canonical Internals Pages
+
+- [React Reconciliation](./fundamentals/reconciliation-1.md)
+- [React Fiber](./fundamentals/react-fiber.md)
+- [React Pipeline](./fundamentals/react-pipeline.md)
+- [Rendering Components](./rendering-components.md)
+- [React Under The Hood](./react-under-the-hood.md)
+
 # **React Interview Preparation**
 
 ---

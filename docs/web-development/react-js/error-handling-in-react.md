@@ -1,9 +1,15 @@
 ---
-title: 10. Error Handling in React
+title: Error Handling in React
 sidebar_position: 10
 ---
 
-# 10. Error Handling in React
+# Error Handling in React
+
+Related pages: [Error Handling](../important/error-handling.md), [React Hooks](react-hooks.md), [Forms](forms.md), [Observability](../important/observability.md).
+
+## Ownership
+
+Use this page for React-specific error boundaries, async errors, API error states, global error handling, and production React error-handling patterns.
 
 # **10\. Error Handling**
 

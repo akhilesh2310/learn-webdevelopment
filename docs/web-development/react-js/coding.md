@@ -1,9 +1,13 @@
 ---
-title: 14. Coding
+title: React Coding
 sidebar_position: 14
 ---
 
-# 14. Coding
+# React Coding
+
+Related pages: [JavaScript Coding Questions](../javascript/javascript-coding-questions.md), [Advanced React Patterns](advanced-react-patterns.md), [React Hooks](react-hooks.md).
+
+This page is the React-specific coding and machine-coding entry point.
 
 # **React Coding Interview Questions**
 

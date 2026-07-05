@@ -1,9 +1,9 @@
 ---
-title: 1. Fundamentals
+title: React Fundamentals
 sidebar_position: 1
 ---
 
-# 1. Fundamentals
+# React Fundamentals
 
 Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](reconciliation-1.md), [React Performance](../../important/performance/react-performance.md).
 
@@ -534,135 +534,9 @@ The Real DOM is the actual browser DOM that appears on the screen. The Virtual D
 
 # **5\. React Reconciliation**
 
-## **Simple meaning**
-
 React Reconciliation is the process React uses to compare the previous React tree with the new React tree after state or props change.
 
-Based on this comparison, React decides what changes are required in the real DOM.
-
-## **Why it is needed**
-
-React does not blindly recreate the full DOM whenever something changes.
-
-Instead:
-
-State/props change
-
-     ↓
-
-Component re-renders
-
-     ↓
-
-New React tree is created
-
-     ↓
-
-React compares old tree and new tree
-
-     ↓
-
-React updates only necessary DOM changes
-
-This comparison process is reconciliation.
-
-## **The core problem**
-
-A perfect tree comparison algorithm can be expensive. React uses a practical O(n) heuristic diffing algorithm based on assumptions such as different element types producing different trees and stable keys helping identify children. This is consistent with React’s model of preserving or resetting state based on element type, position, and keys.
-
-## **Main reconciliation rules**
-
-### **1\. Different element type means replace**
-
-// Before
-
-\<div\>Hello\</div\>
-
-// After
-
-\<span\>Hello\</span\>
-
-React sees different element types.
-
-So it removes the old `div` and creates a new `span`.
-
-Same with components:
-
-// Before
-
-\<UserProfile /\>
-
-// After
-
-\<AdminProfile /\>
-
-React unmounts `UserProfile` and mounts `AdminProfile`.
-
-Old local state is lost.
-
-### **2\. Same DOM element type means reuse DOM node**
-
-// Before
-
-\<button className="primary"\>Save\</button\>
-
-// After
-
-\<button className="secondary"\>Save\</button\>
-
-React keeps the same `button` DOM node and only updates `className`.
-
-### **3\. Same component type means preserve state**
-
-\<UserCard name="Akhilesh" /\>
-
-\<UserCard name="Rahul" /\>
-
-The component type is still `UserCard`.
-
-React reuses the component and updates props.
-
-State is preserved.
-
-## **Keys in reconciliation**
-
-Keys help React identify list items.
-
-Bad:
-
-items.map((item, index) \=\> (
-
- \<Todo key=\{index\} item=\{item\} /\>
-
-));
-
-Good:
-
-items.map((item) \=\> (
-
- \<Todo key=\{item.id\} item=\{item\} /\>
-
-));
-
-Index keys can cause wrong state preservation when items are inserted, deleted, sorted, or reordered.
-
-For example:
-
-Wrong checkbox selected
-
-Wrong input value
-
-Wrong expanded row
-
-Wrong local state attached to wrong item
-
-## **Render vs commit**
-
-Reconciliation mainly happens during the render phase.
-
-DOM updates happen during the commit phase.
-
-React’s official model explains screen updates as trigger, render, and commit. It also notes that React does not touch the DOM if the render result is same as before.
+For the full explanation, rules, key behavior, state preservation, render/commit relationship, and interview traps, study [React Reconciliation](./reconciliation-1.md).
 
 ## **Compact interview-ready answer**
 
@@ -672,173 +546,13 @@ React Reconciliation is the process React uses to compare the previous React tre
 
 # **6\. React Rendering Process**
 
-## **Simple meaning**
-
 React rendering is the process where React calls your components to figure out what the UI should look like.
 
 Rendering does not always mean updating the DOM.
 
-This is a very important point.
+For the full render phase, commit phase, re-render triggers, lifecycle, and cleanup explanation, study [Rendering Components](../rendering-components.md).
 
-Render \= React calculates UI
-
-Commit \= React updates DOM
-
-Official React docs explain that any screen update happens in three steps: trigger, render, and commit.
-
-## **React update flow**
-
-1\. Trigger
-
-2\. Render
-
-3\. Commit
-
-## **1\. Trigger phase**
-
-A render is triggered when something changes.
-
-Common triggers:
-
-State update
-
-Props change from parent
-
-Context value change
-
-Parent component re-render
-
-External store update
-
-Route change
-
-Example:
-
-setCount(count \+ 1);
-
-This triggers React to render again.
-
-## **2\. Render phase**
-
-During render, React calls your component function.
-
-Example:
-
-function Counter(\{ count \}) \{
-
- return \<h1\>\{count\}\</h1\>;
-
-\}
-
-React calls:
-
-Counter(\{ count: 1 \})
-
-The component returns JSX.
-
-React builds a new React tree and compares it with the previous one.
-
-This is where reconciliation happens.
-
-Important:
-
-Render phase should be pure.
-
-Do not cause side effects during render.
-
-Bad:
-
-function UserList() \{
-
- localStorage.setItem("visited", "true"); // bad during render
-
- return \<div\>User List\</div\>;
-
-\}
-
-Better:
-
-function UserList() \{
-
- React.useEffect(() \=\> \{
-
-   localStorage.setItem("visited", "true");
-
- \}, \[\]);
-
- return \<div\>User List\</div\>;
-
-\}
-
-React docs also emphasize that rendering should be pure and components should return JSX without changing existing objects or variables during render.
-
-## **3\. Commit phase**
-
-In the commit phase, React applies final changes to the real DOM.
-
-It also:
-
-Updates refs
-
-Runs layout effects
-
-Runs effects after paint
-
-## **Simple example**
-
-function App() \{
-
- const \[name, setName\] \= React.useState("Akhilesh");
-
- return (
-
-   \<div\>
-
-     \<h1\>Hello \{name\}\</h1\>
-
-     \<button onClick=\{() \=\> setName("Rahul")\}\>
-
-       Change
-
-     \</button\>
-
-   \</div\>
-
- );
-
-\}
-
-When button is clicked:
-
-1\. setName triggers update.
-
-2\. App renders again.
-
-3\. React creates new tree.
-
-4\. React compares old and new tree.
-
-5\. Only h1 text changed.
-
-6\. React commits text update to DOM.
-
-## **Re-render does not mean DOM update**
-
-Example:
-
-function App() \{
-
- const \[count, setCount\] \= React.useState(0);
-
- return \<h1\>Static Title\</h1\>;
-
-\}
-
-Even if state changes and component re-renders, the output is still:
-
-\<h1\>Static Title\</h1\>
-
-React may not update the DOM because the rendered output did not change.
+For the complete state update → Fiber → reconciliation → commit pipeline, study [React Pipeline](./react-pipeline.md).
 
 ## **Compact interview-ready answer**
 
@@ -1996,97 +1710,20 @@ React is not automatically fast.
 
 React gives us a good performance model, but we can still build a slow React app.
 
-React is efficient because of several design choices.
+React is efficient because of several design choices:
 
-## **1\. Declarative UI**
+* Declarative UI
+* Virtual DOM and reconciliation
+* Batched updates
+* Fiber scheduling
+* Component model
+* Memoization options
+* Lazy loading and code splitting
+* Strong ecosystem
 
-We describe what UI should look like.
+For full optimization strategy, profiler-first guidance, `React.memo`, `useMemo`, `useCallback`, virtualization, bundle optimization, and senior-level performance tradeoffs, study [React Performance](../../important/performance/react-performance.md).
 
-\<h1\>\{count\}\</h1\>
-
-We do not manually write all DOM update steps.
-
-React handles updates.
-
-This reduces bugs and avoids unnecessary manual DOM manipulation.
-
-## **2\. Virtual DOM and reconciliation**
-
-React creates a new UI tree after state changes and compares it with the old one.
-
-Then it updates only necessary DOM parts.
-
-## **3\. Batched updates**
-
-React can group multiple state updates into fewer renders.
-
-Example:
-
-setName("Akhilesh");
-
-setAge(34);
-
-setCity("Bengaluru");
-
-React can batch these updates instead of rendering separately for each update.
-
-## **4\. Fiber scheduling**
-
-React Fiber allows React to break rendering work into smaller units.
-
-This helps React prioritize urgent updates, pause/resume work, and keep UI responsive.
-
-## **5\. Component model**
-
-React lets us split UI into components.
-
-If state is placed properly, only relevant parts of the app need to update.
-
-## **6\. Memoization options**
-
-React provides tools like:
-
-React.memo
-
-useMemo
-
-useCallback
-
-React docs explain that `memo` allows React to skip re-rendering a component when its props have not changed, though it can still re-render if its own state or used context changes.
-
-## **7\. Lazy loading and code splitting**
-
-React supports lazy loading components with `React.lazy`, and the docs explain that lazy returns a component that can be rendered while code is being loaded, usually together with `Suspense`.
-
-Example:
-
-const ReportsPage \= React.lazy(() \=\> import("./ReportsPage"));
-
-This helps avoid loading all code upfront.
-
-## **8\. Good ecosystem**
-
-Tools like Vite, Next.js, React Query, virtualization libraries, and bundlers help optimize React apps.
-
-## **But React can be slow if:**
-
-Large components re-render frequently
-
-State is placed too high
-
-Huge lists are rendered without virtualization
-
-Expensive calculations happen during render
-
-Unstable props break memoization
-
-Too much context causes broad re-renders
-
-Keys are unstable
-
-Bundle size is too large
-
-Images are not optimized
+For Fiber scheduling details, study [React Fiber](./react-fiber.md) and [React Under The Hood](../react-under-the-hood.md).
 
 ## **Compact interview-ready answer**
 

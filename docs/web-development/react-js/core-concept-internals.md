@@ -1,11 +1,24 @@
 ---
-title: 8. Core Concept / Internals
+title: Core Concept / Internals
 sidebar_position: 8
 ---
 
-# 8. Core Concept / Internals
+# Core Concept / Internals
 
 Related canonical pages: [React Fiber](fundamentals/react-fiber.md), [React Reconciliation](fundamentals/reconciliation-1.md), [Rendering Components](rendering-components.md), [React Under The Hood](react-under-the-hood.md).
+
+## Status
+
+This page is a legacy combined internals page.
+
+Use these canonical pages for focused study:
+
+- [React Fiber](fundamentals/react-fiber.md)
+- [React Reconciliation](fundamentals/reconciliation-1.md)
+- [Rendering Components](rendering-components.md)
+- [React Under The Hood](react-under-the-hood.md)
+
+The notes below are preserved for no-loss reference, but this page should not be the primary study path.
 
 # **8\. React Internals**
 

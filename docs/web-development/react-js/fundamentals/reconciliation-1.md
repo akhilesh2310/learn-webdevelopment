@@ -1,9 +1,9 @@
 ---
-title: Reconciliation 1
+title: React Reconciliation
 sidebar_position: 2
 ---
 
-# Reconciliation 1
+# React Reconciliation
 
 Related canonical pages: [React Fiber](react-fiber.md), [Rendering Components](../rendering-components.md), [React Performance](../../important/performance/react-performance.md).
 
@@ -336,6 +336,44 @@ Virtual DOM \= UI representation
 Reconciliation \= comparison process  
 ---
 
+## **Reconciliation vs Diffing**
+
+These two terms are closely related but not exactly the same.
+
+Reconciliation \= Overall process of updating the UI efficiently
+
+Diffing \= The comparison algorithm used during reconciliation
+
+So, diffing is part of reconciliation.
+
+In interviews, you can say:
+
+Reconciliation is the overall process, and diffing is the comparison step inside it.
+
+---
+
+## **Where Reconciliation Fits in React Rendering**
+
+The flow looks like this:
+
+State or props change  
+      ↓  
+React calls the component again  
+      ↓  
+Component returns new JSX  
+      ↓  
+JSX becomes a new React element tree  
+      ↓  
+React compares old tree and new tree  
+      ↓  
+React decides what changed  
+      ↓  
+React updates the real DOM
+
+The step where React compares the old tree and new tree is called **Reconciliation**.
+
+---
+
 ## **Render Phase vs Commit Phase**
 
 React updates happen in two major phases.
@@ -429,6 +467,24 @@ Fiber helps React support features like:
 
 ---
 
+## **Reconciliation and Fiber**
+
+React Fiber is the internal architecture that performs reconciliation.
+
+Before Fiber, reconciliation was synchronous and could not be interrupted.
+
+With Fiber, React can split reconciliation work into smaller units, pause it, resume it, prioritize it, or discard old work.
+
+So the relationship is:
+
+Fiber \= Internal engine / architecture
+
+Reconciliation \= Process of comparing old and new UI trees
+
+Diffing \= Algorithm used to find what changed
+
+---
+
 ## **Practical Example**
 
 function Counter() \{  
@@ -457,6 +513,34 @@ When the button is clicked:
 8\. React updates only the text inside p.
 
 React does not recreate the whole DOM.
+
+---
+
+## **Reconciliation and Component Re-render**
+
+When a parent component re-renders, React also calls its child components by default.
+
+But calling a component again does not always mean the real DOM will change.
+
+Example:
+
+function App() \{  
+  const \[count, setCount\] \= useState(0);
+
+  return \<Title text="Hello" /\>;  
+\}
+
+When `count` changes, `App` re-renders and `Title` may also be called again.
+
+But if `Title` returns the same JSX as before, React may not update the real DOM.
+
+Important mental model:
+
+Re-render means React called the component again.
+
+DOM update means React found an actual change and committed it.
+
+These are not always the same thing.
 
 ---
 

@@ -63,6 +63,94 @@ topics:
     last_reviewed: 2026-07-04
     notes: Canonical React Hooks page. Cross-linked with React Performance for API usage versus optimization guidance around useMemo and useCallback during the first canonical cross-linking batch.
 
+  - id: react-reconciliation
+    title: React Reconciliation
+    canonical_path: docs/web-development/react-js/fundamentals/reconciliation-1.md
+    domain: Web Development
+    category: React.js
+    aliases:
+      - reconciliation
+      - react diffing
+      - diffing algorithm
+      - react keys
+    tags:
+      - react
+      - internals
+      - rendering
+    related_topics:
+      - react-fiber
+      - react-rendering-components
+      - react-performance
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical React Reconciliation page. Reconciliation 2 was merged into this page and removed from the primary sidebar.
+
+  - id: react-fiber
+    title: React Fiber
+    canonical_path: docs/web-development/react-js/fundamentals/react-fiber.md
+    domain: Web Development
+    category: React.js
+    aliases:
+      - fiber
+      - fiber tree
+      - react scheduler
+    tags:
+      - react
+      - internals
+      - rendering
+    related_topics:
+      - react-reconciliation
+      - react-under-the-hood
+      - react-rendering-components
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical React Fiber deep dive. React Under The Hood links here for Fiber basics.
+
+  - id: react-under-the-hood
+    title: React Under The Hood
+    canonical_path: docs/web-development/react-js/react-under-the-hood.md
+    domain: Web Development
+    category: React.js
+    aliases:
+      - react internals
+      - react scheduler
+      - concurrent rendering
+      - hydration
+    tags:
+      - react
+      - internals
+      - scheduler
+    related_topics:
+      - react-fiber
+      - react-reconciliation
+      - react-rendering-components
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Advanced React internals hub for Scheduler, lanes, concurrent rendering, Suspense internals, hydration, priorities, and full mental model.
+
+  - id: react-rendering-components
+    title: Rendering Components
+    canonical_path: docs/web-development/react-js/rendering-components.md
+    domain: Web Development
+    category: React.js
+    aliases:
+      - react rendering
+      - render phase
+      - commit phase
+      - react lifecycle
+      - re-render triggers
+    tags:
+      - react
+      - rendering
+      - lifecycle
+    related_topics:
+      - react-reconciliation
+      - react-fiber
+      - react-performance
+    status: migrated
+    last_reviewed: 2026-07-05
+    notes: Canonical page for component lifecycle, render phase, commit phase, re-render triggers, mounting, updating, unmounting, and cleanup.
+
   - id: browser-rendering-pipeline
     title: Browser Rendering Pipeline
     canonical_path: docs/web-development/web-fundamentals/browser-rendering-pipeline.md
