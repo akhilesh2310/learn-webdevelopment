@@ -1,8 +1,13 @@
 ---
-title: Whatsapp Messenger
+title: WhatsApp Messenger
 sidebar_position: 13
 ---
 
-# Whatsapp Messenger
+# WhatsApp Messenger
 
-TODO: Manual Review
+This design problem is visible in the sidebar and still needs detailed notes.
+
+Start from:
+
+- [System Design Resources](../resources.md)
+- [Question Bank](./index.md)

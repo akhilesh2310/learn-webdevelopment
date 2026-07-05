@@ -1,11 +1,13 @@
 ---
-title: Worked 22nd Aug
-sidebar_position: 6
+title: "Google Session: Chat Service"
+sidebar_position: 2
 ---
 
-# Worked 22nd Aug
+# Google Session: Chat Service
 
-### **Interview Approach & Principles**
+This page preserves notes from a Google interview preparation session. The chat service problem is used as an example to explain the interview approach.
+
+## Interview Approach & Principles
 
 * **First-Principle Thinking**  
    Avoid bias toward known solutions. Break down the problem from fundamentals.
@@ -39,11 +41,11 @@ sidebar_position: 6
    Target: Solve in **\~1 hour** efficiently.  
    Structure your solution and present it logically.
 
-### **Problem: Design a Chat Service**
+## Problem: Design a Chat Service
 
 ---
 
-#### **Scope: Functional Requirements**
+### Scope: Functional Requirements
 
 **In Scope**
 
@@ -61,7 +63,7 @@ sidebar_position: 6
 
 ---
 
-#### **Scope: Non-Functional Requirements**
+### Scope: Non-Functional Requirements
 
 * **Low latency**
 
@@ -71,7 +73,7 @@ sidebar_position: 6
 
 ---
 
-### **Back-of-the-Envelope Estimations**
+## Back-of-the-Envelope Estimations
 
 * Make rough scale assumptions (users, messages/sec, storage, etc.)
 
@@ -81,19 +83,30 @@ sidebar_position: 6
 
 ---
 
+## Session Diagrams
+
 ![][image7]
 
 ![][image8]
 
 ![][image9]  
 ![][image10]  
-On that but you are all we want to reduce the latency but may be like save for that you may have to choose like less integrated but you are taking that is it as a design you if you can show that it is like really giving you good saving on the leader is very very important system ID  
+
+## Raw Session Notes
+
+The text below is preserved from rough session notes and needs manual cleanup later.
+
+> On that but you are all we want to reduce the latency but may be like save for that you may have to choose like less integrated but you are taking that is it as a design you if you can show that it is like really giving you good saving on the leader is very very important system ID
+
 ![][image11]
 
-I will put a cash should not be even li![][image12] messageke I have to make it like less contin message that is  
- message that is
+> I will put a cash should not be even li messageke I have to make it like less contin message that is
+>
+> message that is
+>
+> ing
 
-ing
+![][image12]
 
 [image7]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-01.png
 [image8]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-02.png

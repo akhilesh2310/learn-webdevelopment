@@ -1,9 +1,9 @@
 ---
-title: System Design Questions
+title: Question Bank
 sidebar_position: 1
 ---
 
-# System Design Questions
+# Question Bank
 
 Mock System Design Interview
 

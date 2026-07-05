@@ -5,4 +5,9 @@ sidebar_position: 20
 
 # Airline Management System
 
-TODO: Manual Review
+This design problem is visible in the sidebar and still needs detailed notes.
+
+Start from:
+
+- [System Design Resources](../resources.md)
+- [Question Bank](./index.md)

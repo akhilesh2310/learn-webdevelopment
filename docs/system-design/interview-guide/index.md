@@ -1,9 +1,9 @@
 ---
-title: Interview Pattern
+title: Interview Guide
 sidebar_position: 1
 ---
 
-# Interview Pattern
+# Interview Guide
 
 ### **L6 Google Prep Guide**
 
@@ -617,4 +617,4 @@ You need to **focus on the frontend system**, but be aware of how it interacts w
 
 **"Design a Collaborative Document Editor (like Google Docs)"** — focused on the **Frontend** for a Staff Software Engineer (L6) interview.
 
-For the full problem-specific solution, see [Google Docs](./system-design-questions/google-docs.md).
+For the full problem-specific solution, see [Google Docs](../system-design-questions/google-docs.md).

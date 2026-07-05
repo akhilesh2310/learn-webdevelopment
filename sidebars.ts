@@ -35,11 +35,19 @@ const systemDesignSidebar = [
     },
     collapsed: false,
     items: [
-      'system-design/interview-pattern',
+      {
+        type: 'category',
+        label: 'Interview Guide',
+        link: {
+          type: 'doc',
+          id: 'system-design/interview-guide/index',
+        },
+        items: ['system-design/interview-guide/google-session-chat-service'],
+      },
       'system-design/resources',
       {
         type: 'category',
-        label: 'System Design Questions',
+        label: 'Design Problems',
         link: {
           type: 'doc',
           id: 'system-design/system-design-questions/index',
@@ -66,7 +74,6 @@ const systemDesignSidebar = [
           'system-design/system-design-questions/airline-management-system',
         ],
       },
-      'system-design/worked-22nd-aug',
     ],
   },
 ] satisfies SidebarsConfig[string];

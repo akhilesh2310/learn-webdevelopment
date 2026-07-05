@@ -1,8 +1,13 @@
 ---
-title: Google Drive/DropBox
+title: Google Drive/Dropbox
 sidebar_position: 6
 ---
 
-# Google Drive/DropBox
+# Google Drive/Dropbox
 
-TODO: Manual Review
+This design problem is visible in the sidebar and still needs detailed notes.
+
+Start from:
+
+- [System Design Resources](../resources.md)
+- [Question Bank](./index.md)
