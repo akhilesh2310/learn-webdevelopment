@@ -5,33 +5,33 @@ sidebar_position: 11
 
 # React Router
 
-# **11\. React Router**
+## 11. React Router
 
-## **Routing Fundamentals**
+## Routing Fundamentals
 
-## **Nested Routes**
+## Nested Routes
 
-## **Dynamic Routes**
+## Dynamic Routes
 
-## **Protected Routes**
+## Protected Routes
 
-## **Route Parameters**
+## Route Parameters
 
-## **Navigation**
+## Navigation
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Protected routing
 
-# **React Router**
+## React Router
 
 React Router is used to handle navigation in React applications. It lets us map URLs to components, build nested layouts, read route parameters, navigate programmatically, and protect routes based on authentication or authorization.
 
 ---
 
-# **1\. Routing Fundamentals**
+## 1. Routing Fundamentals
 
-## **Simple meaning**
+## Simple meaning
 
 Routing means showing different UI based on the current URL.
 
@@ -45,7 +45,7 @@ Example:
 
 /users/10      \-\> User details page
 
-## **Basic setup**
+## Basic setup
 
 \import \{
 
@@ -99,7 +99,7 @@ function About() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 React Router keeps UI in sync with the URL.
 
@@ -113,7 +113,7 @@ Router matches route
 
 Matched component renders
 
-## **Common router components**
+## Common router components
 
 | Component / Hook | Purpose |
 | ----- | ----- |
@@ -129,15 +129,15 @@ Matched component renders
 | `useSearchParams` | Reads/updates query params |
 | `useLocation` | Reads current location object |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 React Router maps URLs to React components. It allows SPA navigation without full page reloads by rendering the matching component for the current path. It supports normal routes, nested routes, dynamic routes, route params, redirects, and programmatic navigation.
 
 ---
 
-# **2\. Nested Routes**
+## 2. Nested Routes
 
-## **Simple meaning**
+## Simple meaning
 
 Nested routes allow child routes to render inside a parent layout.
 
@@ -151,7 +151,7 @@ Example:
 
 All routes can share the same dashboard layout.
 
-## **Example**
+## Example
 
 \import \{ Routes, Route, Outlet, Link \} from "react-router-dom";
 
@@ -203,7 +203,7 @@ function DashboardLayout() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 `Outlet` is the placeholder where child routes render.
 
@@ -217,7 +217,7 @@ DashboardLayout
 
 DashboardHome / Profile / Settings
 
-## **Index route**
+## Index route
 
 An index route is the default child route.
 
@@ -227,7 +227,7 @@ This renders when the URL is exactly:
 
 /dashboard
 
-## **Why nested routes are useful**
+## Why nested routes are useful
 
 * Shared layouts.  
 * Dashboard pages.  
@@ -237,15 +237,15 @@ This renders when the URL is exactly:
 * Master-detail screens.  
 * Route-based code organization.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Nested routes allow a parent route to render a layout and child routes to render inside it using `Outlet`. This is useful for dashboards, settings pages, admin sections, and any UI where multiple pages share the same layout.
 
 ---
 
-# **3\. Dynamic Routes**
+## 3. Dynamic Routes
 
-## **Simple meaning**
+## Simple meaning
 
 Dynamic routes are routes with variable parts in the URL.
 
@@ -253,7 +253,7 @@ Dynamic routes are routes with variable parts in the URL.
 
 /products/:productId
 
-## **Example**
+## Example
 
 \<Route path="/users/:userId" element=\{\<UserDetails /\>\} /\>
 
@@ -265,7 +265,7 @@ Then `userId` is:
 
 101
 
-## **Reading dynamic params**
+## Reading dynamic params
 
 \import \{ useParams \} from "react-router-dom";
 
@@ -277,7 +277,7 @@ function UserDetails() \{
 
 \}
 
-## **Multiple dynamic params**
+## Multiple dynamic params
 
 \<Route
 
@@ -305,7 +305,7 @@ function ProductDetails() \{
 
 \}
 
-## **Practical example**
+## Practical example
 
 /hotels/123
 
@@ -315,7 +315,7 @@ function ProductDetails() \{
 
 /users/42/edit
 
-## **Important point**
+## Important point
 
 Route params are strings.
 
@@ -323,15 +323,15 @@ const \{ userId \} \= useParams();
 
 const numericUserId \= Number(userId);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Dynamic routes use URL parameters like `/users/:userId`. React Router extracts the dynamic part and makes it available through `useParams`. Route params are useful for details pages, edit pages, reports, booking IDs, product IDs, and other entity-specific screens.
 
 ---
 
-# **4\. Route Parameters**
+## 4. Route Parameters
 
-## **Simple meaning**
+## Simple meaning
 
 Route parameters are dynamic values taken from the URL path.
 
@@ -345,7 +345,7 @@ function OrderDetails() \{
 
 \}
 
-## **Route params vs query params**
+## Route params vs query params
 
 /users/101
 
@@ -355,7 +355,7 @@ function OrderDetails() \{
 
 `status` and `page` are query params.
 
-## **Query params with useSearchParams**
+## Query params with useSearchParams
 
 \import \{ useSearchParams \} from "react-router-dom";
 
@@ -383,7 +383,7 @@ function UsersPage() \{
 
 \}
 
-## **When to use route params**
+## When to use route params
 
 Use route params for identity.
 
@@ -393,27 +393,27 @@ Use route params for identity.
 
 /bookings/:bookingId
 
-## **When to use query params**
+## When to use query params
 
 Use query params for filtering, sorting, pagination, and UI state that should be shareable in URL.
 
 /hotels?city=bangalore\&sort=price\&page=2
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Route params represent identity in the URL, like user ID or product ID. Query params represent optional state like filters, sorting, pagination, and search text. Use `useParams` for route params and `useSearchParams` for query params.
 
 ---
 
-# **5\. Navigation**
+## 5. Navigation
 
-## **Simple meaning**
+## Simple meaning
 
 Navigation means moving from one route to another.
 
 React Router supports declarative navigation and programmatic navigation.
 
-## **Link**
+## Link
 
 Use `Link` for normal navigation.
 
@@ -423,7 +423,7 @@ Use `Link` for normal navigation.
 
 `Link` avoids full page reload and performs client-side navigation.
 
-## **NavLink**
+## NavLink
 
 Use `NavLink` when active styling is needed.
 
@@ -441,7 +441,7 @@ Use `NavLink` when active styling is needed.
 
 \</NavLink\>
 
-## **useNavigate**
+## useNavigate
 
 Use `useNavigate` for navigation from code.
 
@@ -463,7 +463,7 @@ function LoginPage() \{
 
 \}
 
-## **Replace navigation**
+## Replace navigation
 
 Use `replace` when you do not want the user to go back to the previous page.
 
@@ -471,13 +471,13 @@ navigate("/dashboard", \{ replace: true \});
 
 Common after login/logout.
 
-## **Navigate back**
+## Navigate back
 
 navigate(-1);
 
 Useful for close modal/back button behavior, but use carefully because browser history may not always contain the expected page.
 
-## **Navigate component**
+## Navigate component
 
 \import \{ Navigate \} from "react-router-dom";
 
@@ -487,15 +487,15 @@ function OldRoute() \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 React Router supports navigation using `Link`, `NavLink`, `Navigate`, and `useNavigate`. Use `Link` for normal navigation, `NavLink` when active styling is needed, and `useNavigate` for programmatic navigation after actions like login, logout, form submit, or wizard step completion.
 
 ---
 
-# **6\. Protected Routes**
+## 6. Protected Routes
 
-## **Simple meaning**
+## Simple meaning
 
 Protected routes are routes that should be accessible only when the user is authenticated or authorized.
 
@@ -507,7 +507,7 @@ Example:
 
 /settings        \-\> only logged-in users
 
-## **Basic protected route**
+## Basic protected route
 
 \import \{ Navigate, Outlet \} from "react-router-dom";
 
@@ -547,7 +547,7 @@ Usage:
 
 \</Routes\>
 
-## **Key mental model**
+## Key mental model
 
 Protected route is a wrapper route.
 
@@ -565,7 +565,7 @@ If logged in → render Outlet
 
 If not logged in → redirect to /login
 
-## **Preserve intended destination**
+## Preserve intended destination
 
 When redirecting to login, store where the user came from.
 
@@ -627,7 +627,7 @@ function Login() \{
 
 \}
 
-## **Role-based protected route**
+## Role-based protected route
 
 function RoleProtectedRoute(\{ allowedRoles \}) \{
 
@@ -663,7 +663,7 @@ Usage:
 
 \</Route\>
 
-## **Important security point**
+## Important security point
 
 Protected routes improve frontend UX, but they are not real security by themselves.
 
@@ -671,15 +671,15 @@ Backend APIs must still validate authentication and authorization.
 
 A user can inspect frontend code or call APIs directly.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Protected routing means checking whether a user is authenticated or authorized before rendering a route. If the user is allowed, render `Outlet`; otherwise redirect to login or unauthorized page using `Navigate`. Frontend route protection is for UX, but backend authorization is still mandatory for real security.
 
 ---
 
-# **7\. Layout Routes**
+## 7. Layout Routes
 
-## **Simple meaning**
+## Simple meaning
 
 A layout route renders common UI around child pages.
 
@@ -724,15 +724,15 @@ Usage:
 
 \</Route\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Layout routes let multiple pages share common UI like header, sidebar, and footer. The parent layout renders `Outlet`, and the matched child route appears inside it.
 
 ---
 
-# **8\. Not Found Route**
+## 8. Not Found Route
 
-## **Simple meaning**
+## Simple meaning
 
 A not found route handles unmatched URLs.
 
@@ -752,15 +752,15 @@ function NotFound() \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A wildcard route using `path="*"` catches unmatched routes and renders a 404 page. It should usually be placed after specific routes.
 
 ---
 
-# **9\. Lazy Loading Routes**
+## 9. Lazy Loading Routes
 
-## **Simple meaning**
+## Simple meaning
 
 Lazy loading routes means loading route components only when needed.
 
@@ -784,26 +784,26 @@ function App() \{
 
 \}
 
-## **Why useful**
+## Why useful
 
 * Reduces initial bundle size.  
 * Improves first load performance.  
 * Good for large apps.  
 * Useful for admin, reports, dashboards, and rarely visited pages.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Route lazy loading splits the app by route and loads a page component only when the user visits that route. It improves initial load performance, especially in large React applications.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Protected Routing**
+## 1. Protected Routing
 
-## **Answer**
+## Answer
 
 Protected routing checks authentication or authorization before rendering a route.
 
@@ -835,15 +835,15 @@ Usage:
 
 \</Route\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Protected routing is implemented by wrapping private routes inside a guard component. The guard checks auth state. If the user is authenticated, it renders `Outlet`; otherwise it redirects to login using `Navigate`. For role-based access, also check user roles or permissions. Backend authorization is still required because frontend route guards alone are not secure.
 
 ---
 
-# **2\. How do nested routes work?**
+## 2. How do nested routes work?
 
-## **Answer**
+## Answer
 
 Nested routes render child routes inside a parent route using `Outlet`.
 
@@ -871,15 +871,15 @@ function DashboardLayout() \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Nested routes allow child pages to render inside a shared parent layout. The parent route renders `Outlet`, and React Router places the matched child route there.
 
 ---
 
-# **3\. How do dynamic routes work?**
+## 3. How do dynamic routes work?
 
-## **Answer**
+## Answer
 
 Dynamic routes use `:paramName` in the path.
 
@@ -889,15 +889,15 @@ Read the param:
 
 const \{ userId \} \= useParams();
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Dynamic routes allow variable URL segments using `:paramName`. React Router extracts these values and exposes them through `useParams`. They are commonly used for details, edit, and report pages.
 
 ---
 
-# **4\. Route params vs query params**
+## 4. Route params vs query params
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Route params | Query params |
 | ----- | ----- | ----- |
@@ -906,15 +906,15 @@ Dynamic routes allow variable URL segments using `:paramName`. React Router extr
 | Hook | `useParams` | `useSearchParams` |
 | Use case | User ID, product ID | Search, sort, filter, pagination |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Route params identify the main resource, like `/users/:userId`. Query params represent optional UI state like filters, sorting, search text, and pagination. Use `useParams` for route params and `useSearchParams` for query params.
 
 ---
 
-# **5\. Link vs NavLink vs useNavigate**
+## 5. Link vs NavLink vs useNavigate
 
-## **Simple comparison**
+## Simple comparison
 
 | API | Use case |
 | ----- | ----- |
@@ -923,15 +923,15 @@ Route params identify the main resource, like `/users/:userId`. Query params rep
 | `useNavigate` | Programmatic navigation |
 | `Navigate` | Redirect from render |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Use `Link` for normal navigation, `NavLink` when active link styling is needed, `useNavigate` for navigation after actions like login or submit, and `Navigate` for redirecting during render.
 
 ---
 
-# **6\. BrowserRouter vs HashRouter**
+## 6. BrowserRouter vs HashRouter
 
-## **BrowserRouter**
+## BrowserRouter
 
 Uses clean URLs.
 
@@ -941,7 +941,7 @@ Uses clean URLs.
 
 Requires server configuration to serve `index.html` for unknown routes.
 
-## **HashRouter**
+## HashRouter
 
 Uses hash-based URLs.
 
@@ -951,43 +951,43 @@ Uses hash-based URLs.
 
 Does not need special server rewrite configuration.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `BrowserRouter` uses the HTML5 history API and gives clean URLs, but the server must be configured to fallback to `index.html` for client routes. `HashRouter` stores route state after `#` and works without server configuration, but URLs are less clean.
 
 ---
 
-# **7\. How do you handle 404 routes?**
+## 7. How do you handle 404 routes?
 
-## **Answer**
+## Answer
 
 Use wildcard route.
 
 \<Route path="\*" element=\{\<NotFound /\>\} /\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A `path="*"` route catches unmatched paths and renders a 404 page. It should be placed after specific route definitions.
 
 ---
 
-# **8\. Where should API calls happen: component or route loader?**
+## 8. Where should API calls happen: component or route loader?
 
-## **Answer**
+## Answer
 
 In simple React Router setups, API calls often happen inside components using `useEffect` or data-fetching libraries.
 
 In data-router setups, route loaders can fetch data before rendering the route.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For simple apps, fetching inside components or using React Query/RTK Query is common. In React Router data-router architecture, loaders can fetch route data before rendering and can redirect early. The best choice depends on the app architecture and data-fetching strategy.
 
 ---
 
-# **9\. How do you design routing in a large React app?**
+## 9. How do you design routing in a large React app?
 
-## **Answer**
+## Answer
 
 For large apps:
 
@@ -1003,13 +1003,13 @@ For large apps:
 * Handle loading and error states.  
 * Keep routing consistent with permissions.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In large React apps, I organize routes by feature, use nested layout routes for shared UI, lazy load large pages, protect authenticated and role-based routes, use params and search params properly, and include 404/unauthorized handling. For route data, I choose between loaders, React Query, RTK Query, or another data layer based on architecture.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1033,6 +1033,6 @@ In large React apps, I organize routes by feature, use nested layout routes for 
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 React Router is used to map URLs to React components in a single-page application. Basic routing uses `BrowserRouter`, `Routes`, and `Route`. Nested routes allow shared layouts using `Outlet`. Dynamic routes use `:paramName`, and values are read using `useParams`. Query params are handled using `useSearchParams` and are useful for filters, sorting, search, and pagination. Navigation is done using `Link`, `NavLink`, `Navigate`, and `useNavigate`. Protected routing is implemented by wrapping private routes in a guard component that checks authentication or authorization and either renders `Outlet` or redirects to login/unauthorized page. In large apps, routes should be feature-organized, layout-based, lazy-loaded where useful, and protected according to user permissions.

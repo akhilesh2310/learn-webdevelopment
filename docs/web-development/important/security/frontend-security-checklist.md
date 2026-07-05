@@ -7,16 +7,16 @@ sidebar_position: 1
 
 Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-csrf.md), [Security Headers](security-headers.md), [iFrame Protection](iframe-protection.md).
 
-## **Security**
+## Security
 
 * XSS  
 * CSRF  
 * Content Security Policy (CSP)  
 * Secure Storage Practices
 
-## [**A10 Server Side Request Forgery (SSRF) \- OWASP Top 10:2021**](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
+## [A10 Server Side Request Forgery (SSRF) \- OWASP Top 10:2021](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
 
-## **1\. Client-Side Storage**
+## 1. Client-Side Storage
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -26,7 +26,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **2\. Authentication & Session Management**
+## 2. Authentication & Session Management
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -37,7 +37,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **3\. Input Fields & Forms**
+## 3. Input Fields & Forms
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -47,7 +47,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **4\. API and Backend**
+## 4. API and Backend
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -57,7 +57,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **5\. Sensitive Data Handling**
+## 5. Sensitive Data Handling
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -67,7 +67,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **6\. Third-Party Scripts and Dependencies**
+## 6. Third-Party Scripts and Dependencies
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -77,7 +77,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **7\. Browser-Level Issues**
+## 7. Browser-Level Issues
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -87,7 +87,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **8\. DevOps / Deployment**
+## 8. DevOps / Deployment
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -97,7 +97,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ---
 
-## **9\. HTTP Headers**
+## 9. HTTP Headers
 
 Set proper headers to protect against various attacks:
 
@@ -113,7 +113,7 @@ Set proper headers to protect against various attacks:
 
 ---
 
-## **10\. Admin Panels & Dashboards**
+## 10. Admin Panels & Dashboards
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -122,7 +122,7 @@ Set proper headers to protect against various attacks:
 
 ---
 
-## **Bonus: Codebase Risks**
+## Bonus: Codebase Risks
 
 | Area | Risk | Mitigation |
 | ----- | ----- | ----- |
@@ -132,7 +132,7 @@ Set proper headers to protect against various attacks:
 
 ---
 
-## **Secure These 10 Key Areas**
+## Secure These 10 Key Areas
 
 1. **Client-side storage** (never store tokens in localStorage)
 
@@ -176,7 +176,7 @@ Discover the nuances of \[Next Topic Name\], understanding its what, when, how, 
 * Cross-Origin Resource Sharing (CORS): Manage CORS effectively for secure cross-origin data sharing withing your frontend applications.  
 * Cross-Site Request Forgery (CSRF): Prevent cross-site request forgery (CSRF) attacks for enhanced security.
 
-# **✨ Template for the Next Topic**
+## ✨ Template for the Next Topic
 
 I am preparing for interview with 13 years of experience as UI architect and I would to learn about security topic for better explaining to interviewer.
 

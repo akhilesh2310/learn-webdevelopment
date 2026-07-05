@@ -5,46 +5,46 @@ sidebar_position: 27
 
 # JavaScript Coding Questions
 
-## **Very Important:**
+## Very Important:
 
-## **https://leetcode.com/studyplan/30-days-of-javascript/**
+## https://leetcode.com/studyplan/30-days-of-javascript/
 
-## **Polyfills**
+## Polyfills
 
 * map  
 * filter  
 * reduce  
 * bind
 
-## **Debounce**
+## Debounce
 
-## **Throttle**
+## Throttle
 
-## **Deep Clone**
+## Deep Clone
 
-## **Flatten Array**
+## Flatten Array
 
-## **Memoization**
+## Memoization
 
-## **Event Emitter**
+## Event Emitter
 
-## **Promise Implementation**
+## Promise Implementation
 
-## **Currying**
+## Currying
 
-## **LRU Cache**
+## LRU Cache
 
-## **Common Machine Coding Problems**
+## Common Machine Coding Problems
 
-# **JavaScript Coding Questions: Polyfills and Machine Coding Utilities**
+## JavaScript Coding Questions: Polyfills and Machine Coding Utilities
 
 These are common JavaScript coding questions because they test fundamentals like callbacks, closures, `this`, prototypes, async behavior, recursion, data structures, and event-driven design.
 
 ---
 
-# **1\. Polyfill for `map`**
+## 1. Polyfill for `map`
 
-## **Requirement**
+## Requirement
 
 Implement `Array.prototype.map`.
 
@@ -73,7 +73,7 @@ const nums \= \[1, 2, 3\];
 
 console.log(nums.myMap((num) \=\> num \* 2)); // \[2, 4, 6\]
 
-## **Interview points**
+## Interview points
 
 * Returns a new array.  
 * Does not mutate original array.  
@@ -83,9 +83,9 @@ console.log(nums.myMap((num) \=\> num \* 2)); // \[2, 4, 6\]
 
 ---
 
-# **2\. Polyfill for `filter`**
+## 2. Polyfill for `filter`
 
-## **Requirement**
+## Requirement
 
 Implement `Array.prototype.filter`.
 
@@ -114,7 +114,7 @@ const nums \= \[1, 2, 3, 4\];
 
 console.log(nums.myFilter((num) \=\> num % 2 \=== 0)); // \[2, 4\]
 
-## **Interview points**
+## Interview points
 
 * Returns a new array.  
 * Keeps items when callback returns truthy.  
@@ -123,9 +123,9 @@ console.log(nums.myFilter((num) \=\> num % 2 \=== 0)); // \[2, 4\]
 
 ---
 
-# **3\. Polyfill for `reduce`**
+## 3. Polyfill for `reduce`
 
-## **Requirement**
+## Requirement
 
 Implement `Array.prototype.reduce`.
 
@@ -170,7 +170,7 @@ const nums \= \[1, 2, 3\];
 
 console.log(nums.myReduce((acc, num) \=\> acc \+ num, 0)); // 6
 
-## **Interview points**
+## Interview points
 
 * Without `initialValue`, first available item becomes accumulator.  
 * Empty array without `initialValue` throws error.  
@@ -178,9 +178,9 @@ console.log(nums.myReduce((acc, num) \=\> acc \+ num, 0)); // 6
 
 ---
 
-# **4\. Polyfill for `bind`**
+## 4. Polyfill for `bind`
 
-## **Requirement**
+## Requirement
 
 Implement `Function.prototype.bind`.
 
@@ -208,14 +208,14 @@ const boundGreet \= greet.myBind(user, "Hello");
 
 console.log(boundGreet("\!")); // "Hello, Akhilesh\!"
 
-## **Interview points**
+## Interview points
 
 * `bind` returns a new function.  
 * It does not immediately call the function.  
 * It permanently binds `this` and optionally pre-fills arguments.  
 * This simple version does not fully handle `new` behavior.
 
-## **Better bind with constructor support**
+## Better bind with constructor support
 
 Function.prototype.myBind \= function (context, ...boundArgs) \{  
   if (typeof this \!== "function") \{  
@@ -240,9 +240,9 @@ Function.prototype.myBind \= function (context, ...boundArgs) \{
 
 ---
 
-# **5\. Debounce**
+## 5. Debounce
 
-## **Requirement**
+## Requirement
 
 Execute function only after events stop for a delay.
 
@@ -269,13 +269,13 @@ search("react");
 // After 500ms:  
 // "Searching: react"
 
-## **Interview points**
+## Interview points
 
 * Useful for search input, auto-save, resize.  
 * Clears previous timer on every call.  
 * Runs only after the final call waits for delay.
 
-## **Debounce with immediate option**
+## Debounce with immediate option
 
 function debounce(fn, delay, immediate \= false) \{  
   let timerId;
@@ -305,9 +305,9 @@ Interview point: A debounce with immediate option supports leading execution. If
 
 ---
 
-# **6\. Throttle**
+## 6. Throttle
 
-## **Requirement**
+## Requirement
 
 Execute function at most once in a given interval.
 
@@ -328,12 +328,12 @@ const handleScroll \= throttle(function () \{
   console.log("Scroll handled");  
 \}, 500);
 
-## **Interview points**
+## Interview points
 
 * Useful for scroll, resize, mousemove, drag.  
 * Runs during continuous activity, but with limited frequency.
 
-## **Throttle with trailing call**
+## Throttle with trailing call
 
 Basic throttle may skip the final call. Sometimes we want the last event to run after the interval.
 
@@ -369,13 +369,13 @@ Interview point: A throttle with trailing call ensures the function runs at most
 
 ---
 
-# **7\. Deep Clone**
+## 7. Deep Clone
 
-## **Requirement**
+## Requirement
 
 Create a deep copy of an object or array.
 
-## **Simple version**
+## Simple version
 
 function deepClone(value) \{  
   if (value \=== null || typeof value \!== "object") \{  
@@ -411,7 +411,7 @@ copy.address.city \= "Nagpur";
 console.log(user.address.city); // "Bengaluru"  
 console.log(copy.address.city); // "Nagpur"
 
-## **Better version with circular reference handling**
+## Better version with circular reference handling
 
 function deepClone(value, seen \= new WeakMap()) \{  
   if (value \=== null || typeof value \!== "object") \{  
@@ -449,7 +449,7 @@ const copy \= deepClone(obj);
 console.log(copy.name); // "Akhilesh"  
 console.log(copy.self \=== copy); // true
 
-## **Interview points**
+## Interview points
 
 * Shallow copy is not enough for nested objects.  
 * Circular references need `WeakMap`.  
@@ -458,13 +458,13 @@ console.log(copy.self \=== copy); // true
 
 ---
 
-# **8\. Flatten Array**
+## 8. Flatten Array
 
-## **Requirement**
+## Requirement
 
 Flatten nested arrays.
 
-## **Recursive version**
+## Recursive version
 
 function flattenArray(arr) \{  
   const result \= \[\];
@@ -482,7 +482,7 @@ function flattenArray(arr) \{
 
 console.log(flattenArray(\[1, \[2, \[3, 4\]\], 5\])); // \[1, 2, 3, 4, 5\]
 
-## **With depth**
+## With depth
 
 function flattenArray(arr, depth \= 1\) \{  
   const result \= \[\];
@@ -500,7 +500,7 @@ function flattenArray(arr, depth \= 1\) \{
 
 console.log(flattenArray(\[1, \[2, \[3, \[4\]\]\]\], 2)); // \[1, 2, 3, \[4\]\]
 
-## **Iterative version**
+## Iterative version
 
 function flattenArray(arr) \{  
   const stack \= \[...arr\];  
@@ -521,7 +521,7 @@ function flattenArray(arr) \{
 
 console.log(flattenArray(\[1, \[2, \[3\]\], 4\])); // \[1, 2, 3, 4\]
 
-## **Interview points**
+## Interview points
 
 * Recursive approach is simple.  
 * Iterative approach avoids deep recursion call stack issues.  
@@ -529,9 +529,9 @@ console.log(flattenArray(\[1, \[2, \[3\]\], 4\])); // \[1, 2, 3, 4\]
 
 ---
 
-# **9\. Memoization**
+## 9. Memoization
 
-## **Requirement**
+## Requirement
 
 Cache function results for repeated inputs.
 
@@ -560,14 +560,14 @@ const multiply \= memoize(function (a, b) \{
 console.log(multiply(2, 3)); // "Calculating..." 6  
 console.log(multiply(2, 3)); // 6
 
-## **Interview points**
+## Interview points
 
 * Works best for pure functions.  
 * Trades memory for speed.  
 * `JSON.stringify` is simple but not perfect for complex objects.  
 * Cache should be bounded in production.
 
-## **Better for single primitive argument**
+## Better for single primitive argument
 
 function memoizeOneArg(fn) \{  
   const cache \= new Map();
@@ -586,9 +586,9 @@ function memoizeOneArg(fn) \{
 
 ---
 
-# **10\. Event Emitter**
+## 10. Event Emitter
 
-## **Requirement**
+## Requirement
 
 Implement `on`, `off`, `emit`, and `once`.
 
@@ -651,7 +651,7 @@ unsubscribe();
 
 emitter.emit("user:login", "Rahul"); // No output
 
-## **Interview points**
+## Interview points
 
 * Event emitter is Pub/Sub style.  
 * Use `Set` to avoid duplicate listeners.  
@@ -660,9 +660,9 @@ emitter.emit("user:login", "Rahul"); // No output
 
 ---
 
-# **11\. Promise Implementation**
+## 11. Promise Implementation
 
-## **Requirement**
+## Requirement
 
 Implement a basic Promise.
 
@@ -797,7 +797,7 @@ promise
     console.log(value); // 20  
   \});
 
-## **Interview points**
+## Interview points
 
 * Promise has states: `pending`, `fulfilled`, `rejected`.  
 * State changes only once.  
@@ -808,9 +808,9 @@ promise
 
 ---
 
-# **12\. Currying**
+## 12. Currying
 
-## **Requirement**
+## Requirement
 
 Convert `sum(a, b, c)` into `sum(a)(b)(c)`.
 
@@ -836,7 +836,7 @@ console.log(curriedAdd(1)(2)(3)); // 6
 console.log(curriedAdd(1, 2)(3)); // 6  
 console.log(curriedAdd(1)(2, 3)); // 6
 
-## **Infinite currying**
+## Infinite currying
 
 function add(a) \{  
   return function next(b) \{  
@@ -850,7 +850,7 @@ function add(a) \{
 
 console.log(add(1)(2)(3)(4)()); // 10
 
-## **Infinite currying with coercion**
+## Infinite currying with coercion
 
 function add(a) \{  
   function inner(b) \{  
@@ -866,7 +866,7 @@ function add(a) \{
 console.log(add(1)(2)(3) \== 6); // true  
 console.log(add(1)(2)(3) \+ 0); // 6
 
-## **Interview points**
+## Interview points
 
 * Currying uses closures.  
 * `fn.length` gives expected parameter count.  
@@ -875,15 +875,15 @@ console.log(add(1)(2)(3) \+ 0); // 6
 
 ---
 
-# **13\. LRU Cache**
+## 13. LRU Cache
 
-## **Requirement**
+## Requirement
 
 Implement an LRU Cache with `get` and `put`.
 
 LRU means **Least Recently Used**. When cache reaches capacity, remove the least recently used item.
 
-## **Simple implementation using `Map`**
+## Simple implementation using `Map`
 
 class LRUCache \{  
   constructor(capacity) \{  
@@ -932,7 +932,7 @@ cache.put("c", 3);
 console.log(cache.get("b")); // \-1  
 console.log(cache.get("c")); // 3
 
-## **Why `Map` works here**
+## Why `Map` works here
 
 `Map` preserves insertion order.
 
@@ -941,7 +941,7 @@ console.log(cache.get("c")); // 3
 * On `get`, delete and reinsert to mark as recently used.  
 * On overflow, delete first key.
 
-## **Interview points**
+## Interview points
 
 * `get` and `put` are effectively `O(1)` with `Map`.  
 * Classic LRU is often implemented using HashMap \+ Doubly Linked List.  
@@ -949,9 +949,9 @@ console.log(cache.get("c")); // 3
 
 ---
 
-# **14\. LRU Cache with TTL**
+## 14. LRU Cache with TTL
 
-## **Requirement**
+## Requirement
 
 Add expiry time for each key.
 
@@ -1018,7 +1018,7 @@ cache.put("square:4", 16, 1000);
 
 console.log(cache.get("square:4")); // 16
 
-## **Interview points**
+## Interview points
 
 * TTL means Time To Live.  
 * Expired keys should return `null`.  
@@ -1027,11 +1027,11 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-# **15\. Common Machine Coding Problems**
+## 15. Common Machine Coding Problems
 
-## **1\. Todo App**
+## 1. Todo App
 
-### **Expected features**
+### Expected features
 
 * Add todo.  
 * Edit todo.  
@@ -1040,7 +1040,7 @@ console.log(cache.get("square:4")); // 16
 * Filter by all/active/completed.  
 * Persist in localStorage.
 
-### **Important points**
+### Important points
 
 * State management.  
 * Controlled inputs.  
@@ -1051,9 +1051,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **2\. Modal Component**
+## 2. Modal Component
 
-### **Expected features**
+### Expected features
 
 * Open/close modal.  
 * Close on Escape key.  
@@ -1062,7 +1062,7 @@ console.log(cache.get("square:4")); // 16
 * Restore previous focus.  
 * Prevent background scroll.
 
-### **Important points**
+### Important points
 
 * DOM events.  
 * Keyboard accessibility.  
@@ -1072,9 +1072,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **3\. Dropdown / Autocomplete**
+## 3. Dropdown / Autocomplete
 
-### **Expected features**
+### Expected features
 
 * Search input.  
 * Debounced API call.  
@@ -1083,7 +1083,7 @@ console.log(cache.get("square:4")); // 16
 * Close on outside click.  
 * Loading and error states.
 
-### **Important points**
+### Important points
 
 * Debounce.  
 * Race condition handling.  
@@ -1093,9 +1093,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **4\. Infinite Scroll**
+## 4. Infinite Scroll
 
-### **Expected features**
+### Expected features
 
 * Fetch next page when user reaches bottom.  
 * Show loader.  
@@ -1103,7 +1103,7 @@ console.log(cache.get("square:4")); // 16
 * Stop when no more data.  
 * Error handling.
 
-### **Important points**
+### Important points
 
 * Intersection Observer.  
 * Pagination.  
@@ -1113,9 +1113,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **5\. File Explorer Tree**
+## 5. File Explorer Tree
 
-### **Expected features**
+### Expected features
 
 * Render nested folders/files.  
 * Expand/collapse folders.  
@@ -1123,7 +1123,7 @@ console.log(cache.get("square:4")); // 16
 * Search.  
 * Auto-expand matching folders.
 
-### **Important points**
+### Important points
 
 * Recursion.  
 * Tree traversal.  
@@ -1133,9 +1133,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **6\. Toast Notification System**
+## 6. Toast Notification System
 
-### **Expected features**
+### Expected features
 
 * Add toast.  
 * Auto-dismiss after timeout.  
@@ -1144,7 +1144,7 @@ console.log(cache.get("square:4")); // 16
 * Pause on hover.  
 * Limit visible toasts.
 
-### **Important points**
+### Important points
 
 * Event emitter or central store.  
 * Timers.  
@@ -1154,9 +1154,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **7\. Tabs Component**
+## 7. Tabs Component
 
-### **Expected features**
+### Expected features
 
 * Render tabs.  
 * Active tab state.  
@@ -1164,7 +1164,7 @@ console.log(cache.get("square:4")); // 16
 * ARIA roles.  
 * Lazy render content optionally.
 
-### **Important points**
+### Important points
 
 * Controlled/uncontrolled pattern.  
 * Accessibility.  
@@ -1173,9 +1173,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **8\. Carousel**
+## 8. Carousel
 
-### **Expected features**
+### Expected features
 
 * Next/previous.  
 * Auto-play.  
@@ -1184,7 +1184,7 @@ console.log(cache.get("square:4")); // 16
 * Infinite loop.  
 * Keyboard support.
 
-### **Important points**
+### Important points
 
 * Timers.  
 * Cleanup interval.  
@@ -1194,9 +1194,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **9\. Data Table**
+## 9. Data Table
 
-### **Expected features**
+### Expected features
 
 * Sorting.  
 * Filtering.  
@@ -1205,7 +1205,7 @@ console.log(cache.get("square:4")); // 16
 * Column configuration.  
 * Loading and empty states.
 
-### **Important points**
+### Important points
 
 * Derived data.  
 * Memoization.  
@@ -1215,9 +1215,9 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-## **10\. Typeahead Search**
+## 10. Typeahead Search
 
-### **Expected features**
+### Expected features
 
 * Debounced search.  
 * API call.  
@@ -1226,7 +1226,7 @@ console.log(cache.get("square:4")); // 16
 * Keyboard navigation.  
 * Cancel stale requests.
 
-### **Important points**
+### Important points
 
 * Debounce.  
 * AbortController.  
@@ -1236,7 +1236,7 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Problem | Main concept tested |
 | ----- | ----- |
@@ -1257,6 +1257,6 @@ console.log(cache.get("square:4")); // 16
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 Common JavaScript coding questions test core language behavior and practical utility design. Polyfills like `map`, `filter`, `reduce`, and `bind` test callbacks, prototypes, `this`, and edge cases. Debounce and throttle test closures and timers. Deep clone and flatten array test recursion and reference handling. Memoization tests caching and pure functions. Event emitter tests Pub/Sub design. Promise implementation tests async state management and chaining. Currying tests closures and argument collection. LRU Cache tests data structure design, and in JavaScript a `Map` can be used effectively because it preserves insertion order. For machine coding, common problems include Todo App, Modal, Dropdown, Infinite Scroll, File Explorer Tree, Toast System, Tabs, Carousel, Data Table, and Typeahead Search.

@@ -5,20 +5,21 @@ sidebar_position: 4
 
 # Browser Rendering Pipeline
 
-# **Browser Rendering Pipeline**
+## Browser Rendering Pipeline
 
-## **High-Level Flow**
+## High-Level Flow
 
 ![][image3]
 
-# **1\. DOM Construction**
+## 1. DOM Construction
 
-## The browser receives HTML and parses it into a **DOM (Document Object Model)**.
+## The browser receives HTML and parses it into a DOM (Document Object Model).
 
-| HTML \<body\>   \<h1\>Hello\</h1\>   \<p\>Welcome\</p\> \</body\> DOM Tree Document  └── body       ├── h1       │    └── "Hello"       └── p            └── "Welcome" |
-| :---- |
+```js
+HTML <body>   <h1>Hello</h1>   <p>Welcome</p> </body> DOM Tree Document  └── body       ├── h1       │    └── "Hello"       └── p            └── "Welcome"
+```
 
-### **Key Points**
+### Key Points
 
 * ## DOM is an N-ary tree structure.
 
@@ -33,14 +34,15 @@ sidebar_position: 4
 
 ## ---
 
-# **2\. CSSOM Construction**
+## 2. CSSOM Construction
 
-## The browser parses all CSS files and style tags into the **CSS Object Model (CSSOM)**.
+## The browser parses all CSS files and style tags into the CSS Object Model (CSSOM).
 
-| CSS h1 \{   color: blue; \} p \{   color: gray; \} CSSOM Stylesheet  ├── h1 → color: blue  └── p  → color: gray |
-| :---- |
+```js
+CSS h1 {   color: blue; } p {   color: gray; } CSSOM Stylesheet  ├── h1 → color: blue  └── p  → color: gray
+```
 
-### **Key Points**
+### Key Points
 
 * ## CSSOM contains styling rules.
 
@@ -50,9 +52,9 @@ sidebar_position: 4
 
 ## ---
 
-# **3\. Render Tree Generation**
+## 3. Render Tree Generation
 
-### **Render Tree**
+### Render Tree
 
 * **Data Structure:** **Hierarchical Layout Object Tree** (Internally tracked as RenderObject / LayoutObject).  
 * **Characteristics:** Maps structural content directly to its corresponding computed display styles. It contains only nodes that affect visual output.
@@ -64,10 +66,11 @@ sidebar_position: 4
 
 ## The Render Tree contains only elements that need to be displayed.
 
-### **Example**
+### Example
 
-| \<div\>Hello\</div\> \<div style="display:none"\>   Hidden \</div\> |
-| :---- |
+```js
+<div>Hello</div> <div style="display:none">   Hidden </div>
+```
 
 ## Render Tree:
 
@@ -83,15 +86,13 @@ sidebar_position: 4
 | **Visibility Elements** | Includes elements with visibility: hidden. | Includes visibility: hidden (allocates layout space). |
 | **Style Context** | Raw structural layout node data. | Embedded with explicit, calculated, computed styles. |
 
-## 
-
 ### ---
 
-# **4\. Layout (Reflow)**
+## 4. Layout (Reflow)
 
 ## The browser calculates the exact size and position of every visible element.
 
-### **Questions Answered During Layout**
+### Questions Answered During Layout
 
 * ## Where should the element appear?
 
@@ -101,12 +102,12 @@ sidebar_position: 4
 
 * ## How much space does it occupy?
 
-### **Example**
+### Example
 
 | Button → X \= 50px, Y \= 100px, Width \= 200px, Height \= 40px |
 | :---- |
 
-### **Why It Is Expensive**
+### Why It Is Expensive
 
 ## A change in one element can affect:
 
@@ -120,7 +121,7 @@ sidebar_position: 4
 
 ---
 
-# **5\. Paint**
+## 5. Paint
 
 ## Once the layout is complete, the browser paints pixels. Paint Includes
 
@@ -131,14 +132,14 @@ sidebar_position: 4
 
 ## ---
 
-## **6\. Composite**
+## 6. Composite
 
 ## The browser combines painted layers and sends them to the GPU.
 
 | Layer 1 Layer 2 Layer 3    ↓ Composite    ↓ Screen |
 | :---- |
 
-### **Why It Is Fast**
+### Why It Is Fast
 
 ## The browser avoids: ❌ Layout , ❌ Paint, and simply moves existing layers.
 
@@ -146,36 +147,36 @@ sidebar_position: 4
 
 ## ---
 
-# **Rendering Pipeline Summary**
+## Rendering Pipeline Summary
 
 | HTML  ↓ DOM  ↓ CSSOM  ↓ Render Tree  ↓ Layout  ↓ Paint  ↓ Composite  ↓ Screen |
 | :---: |
 
 ## ---
 
-# **Reflow vs Repaint vs Composite**
+## Reflow vs Repaint vs Composite
 
 ## This is one of the most common senior frontend interview questions.
 
-## **1\. Reflow (Layout):** Triggers anything that changes geometry.
+## 1. Reflow (Layout): Triggers anything that changes geometry.
 
 | element.style.width \= "200px"; element.style.height \= "100px"; element.style.margin \= "20px"; |
 | :---- |
 
-### **Pipeline:** Layout \> Paint \> Composite   **Cost:** 🔥 Highest
+### Pipeline: Layout \> Paint \> Composite   Cost: 🔥 Highest
 
 ## ---
 
-## **2\. Repaint**: **Triggers** visual changes only.
+## 2. Repaint: Triggers visual changes only.
 
 | element.style.color \= "red"; element.style.background \= "blue"; |
 | :---- |
 
-### **Pipeline:** Paint \>  Composite **Cost:** Medium
+### Pipeline: Paint \>  Composite Cost: Medium
 
 ## ---
 
-## **3\. Composite:** Triggers GPU-friendly properties.
+## 3. Composite: Triggers GPU-friendly properties.
 
 | transform opacity |
 | :---- |
@@ -189,61 +190,65 @@ Example:
 
 ## ---
 
-# **Animation Performance Rule**
+## Animation Performance Rule
 
 Bad
 
 | element.style.left \= "100px"; |
 | :---- |
 
-### **Pipeline**: Layout \> Paint \> Composite
+### Pipeline: Layout \> Paint \> Composite
 
-### **Good**
+### Good
 
 | element.style.transform \= "translateX(100px)"; |
 | :---- |
 
-## **Pipeline**: Composite Only
+## Pipeline: Composite Only
 
-### **Interview One-Liner**
+### Interview One-Liner
 
 ## For smooth animations, prefer `transform` and `opacity` because they can run entirely in the compositing stage without triggering layout or paint.
 
 ## ---
 
-# **Layout Thrashing (Forced Synchronous Reflow)**
+## Layout Thrashing (Forced Synchronous Reflow)
 
 ## A very common performance problem.
 
 Bad Example
 
-| for (const el of elements) \{   const width \= el.offsetWidth;   el.style.width \= width \+ 10 \+ "px"; \} What Happens Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout The browser repeatedly recalculates the layout. Result ❌ Jank ❌ FPS drops ❌ Slow UI |
-| :---- |
+```js
+for (const el of elements) {   const width = el.offsetWidth;   el.style.width = width + 10 + "px"; } What Happens Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout The browser repeatedly recalculates the layout. Result ❌ Jank ❌ FPS drops ❌ Slow UI
+```
 
 ## ---
 
-## **Fix 1: Batch Reads and Writes**
+## Fix 1: Batch Reads and Writes
 
-| const widths \= elements.map(el \=\> el.offsetWidth); elements.forEach((el, i) \=\> \{   el.style.width \=     widths\[i\] \+ 10 \+ "px"; \}); Optimized Flow Read Read Read Read Write Write Write Write |
-| :---- |
+```js
+const widths = elements.map(el => el.offsetWidth); elements.forEach((el, i) => {   el.style.width =     widths[i] + 10 + "px"; }); Optimized Flow Read Read Read Read Write Write Write Write
+```
 
 ## ---
 
-## **Fix 2: requestAnimationFrame**
+## Fix 2: requestAnimationFrame
 
-| requestAnimationFrame(() \=\> \{   elements.forEach(el \=\> \{     el.style.transform \=       "translateX(10px)";   \}); \}); |
-| :---- |
+```js
+requestAnimationFrame(() => {   elements.forEach(el => {     el.style.transform =       "translateX(10px)";   }); });
+```
 
 ## This schedules updates before the next paint cycle.
 
 ## ---
 
-# **Cumulative Layout Shift (CLS)**
+## Cumulative Layout Shift (CLS)
 
 ## CLS measures unexpected visual movement of content while the page is loading.
 
-| Bad Example: \<img src="hotel.jpg" /\> |
-| :---- |
+```js
+Bad Example: <img src="hotel.jpg" />
+```
 
 ## The browser doesn't know the image dimensions initially.
 
@@ -255,12 +260,13 @@ Bad Example
 
 ## ---
 
-| Good Example : \<img src="hotel.jpg" width="300" height="200"/\> |
-| :---- |
+```js
+Good Example : <img src="hotel.jpg" width="300" height="200"/>
+```
 
 ## The browser reserves space before loading the image.
 
-### **Common CLS Causes**
+### Common CLS Causes
 
 * ## Images without dimensions, videos & iframe
 
@@ -270,7 +276,7 @@ Bad Example
 
 * ## Third-party widgets
 
-### **Fixes**
+### Fixes
 
 * ## Set width/height
 
@@ -280,21 +286,21 @@ Bad Example
 
 ## ---
 
-# **Senior-Level Interview Answer (2-Min Version)**
+## Senior-Level Interview Answer (2-Min Version)
 
 ## When a browser receives HTML, it parses it into a DOM tree. CSS is parsed into a CSSOM tree. These are combined to form the Render Tree, which contains only visible elements. The browser then performs Layout to calculate positions and dimensions, Paint to draw pixels, and Composite to combine layers using the GPU and display them on the screen.
 
-## For performance, I avoid triggering Layout whenever possible. Properties like width, height, margin, and left cause reflow and are expensive. For animations, I prefer transform and opacity because they typically run in **the compositing stage and are GPU-accelerated**. I also **avoid layout thrashing by batching DOM reads and writes** and **using requestAnimationFrame when updating the UI.**
+## For performance, I avoid triggering Layout whenever possible. Properties like width, height, margin, and left cause reflow and are expensive. For animations, I prefer transform and opacity because they typically run in the compositing stage and are GPU-accelerated. I also avoid layout thrashing by batching DOM reads and writes and using requestAnimationFrame when updating the UI.
 
 ## ---
 
-### **![][image4]**
+### ![][image4]
 
 ---
 
-# **1\. Reflow vs Repaint**
+## 1. Reflow vs Repaint
 
-## **Reflow (Layout)**
+## Reflow (Layout)
 
 Reflow happens when the browser must recalculate the size and position of elements.
 
@@ -306,7 +312,7 @@ The browser needs to determine:
 * Margins  
 * Padding
 
-### **Examples**
+### Examples
 
 div.style.width \= "500px";  
 div.style.height \= "200px";
@@ -329,11 +335,11 @@ Reflow is expensive because it may affect many elements.
 
 ---
 
-## **Repaint**
+## Repaint
 
 Repaint happens when appearance changes but layout remains unchanged.
 
-### **Examples**
+### Examples
 
 div.style.backgroundColor \= "red";
 
@@ -353,17 +359,17 @@ No layout calculation required.
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 Reflow recalculates element geometry such as size and position, while repaint only updates visual appearance. Reflow is generally more expensive because it may trigger repaint and compositing as well.
 
 ---
 
-# **2\. Layout Thrashing**
+## 2. Layout Thrashing
 
 One of the most important performance topics.
 
-## **What is it?**
+## What is it?
 
 Layout Thrashing happens when JavaScript repeatedly:
 
@@ -376,7 +382,7 @@ This forces the browser to perform multiple synchronous layouts.
 
 ---
 
-## **Bad Example**
+## Bad Example
 
 for (let i \= 0; i \< items.length; i++) \{  
   items\[i\].style.width \= "100px";
@@ -384,7 +390,7 @@ for (let i \= 0; i \< items.length; i++) \{
   console.log(items\[i\].offsetWidth);  
 \}
 
-### **What happens?**
+### What happens?
 
 Write width  
  ↓  
@@ -402,7 +408,7 @@ Repeated reflows.
 
 ---
 
-## **Better**
+## Better
 
 const widths \= \[\];
 
@@ -418,13 +424,13 @@ Read first, write later.
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 Layout thrashing occurs when code alternates between DOM reads and writes, forcing synchronous reflow multiple times. The optimization is to batch reads and writes separately.
 
 ---
 
-# **3\. Composite Layers**
+## 3. Composite Layers
 
 Modern browsers split the page into layers.
 
@@ -432,7 +438,7 @@ Instead of repainting the whole screen, the browser can update individual layers
 
 ---
 
-## **Example**
+## Example
 
 \<div class="header"\>\</div\>  
 \<div class="sidebar"\>\</div\>  
@@ -452,7 +458,7 @@ instead of repainting the entire page.
 
 ---
 
-## **Layer Promotion**
+## Layer Promotion
 
 Elements often get their own layer when using:
 
@@ -465,13 +471,13 @@ canvas
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 Composite layers allow browsers to isolate portions of the page so they can be moved or animated independently without repainting the entire screen.
 
 ---
 
-# **4\. GPU Acceleration**
+## 4. GPU Acceleration
 
 Normally rendering happens on CPU.
 
@@ -487,7 +493,7 @@ GPU excels at:
 
 ---
 
-## **Example**
+## Example
 
 transform: translateX(200px);
 
@@ -495,7 +501,7 @@ Browser can move pixels using GPU.
 
 ---
 
-## **Not GPU Friendly**
+## Not GPU Friendly
 
 width: 500px;
 
@@ -507,19 +513,19 @@ Requires layout recalculation.
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 GPU acceleration allows browsers to offload compositing and transform operations to the graphics processor, resulting in smoother animations and reduced CPU workload.
 
 ---
 
-# **5\. Why is transform Faster than top/left?**
+## 5. Why is transform Faster than top/left?
 
 This is asked extremely often.
 
 ---
 
-## **Using top/left**
+## Using top/left
 
 position: absolute;  
 left: 200px;
@@ -538,7 +544,7 @@ Position changes affect layout.
 
 ---
 
-## **Using Transform**
+## Using Transform
 
 transform: translateX(200px);
 
@@ -553,9 +559,9 @@ Composite
 
 ---
 
-## **Visual Pipeline**
+## Visual Pipeline
 
-### **top/left**
+### top/left
 
 Style  
  ↓  
@@ -565,25 +571,25 @@ Paint
  ↓  
 Composite
 
-### **transform**
+### transform
 
 Composite Only
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 transform is faster because it usually updates only the compositing stage, while top/left affects layout and may trigger reflow and repaint.
 
 ---
 
-# **6\. How Browser Paints Pixels?**
+## 6. How Browser Paints Pixels?
 
 After layout is complete:
 
 ---
 
-## **Step 1**
+## Step 1
 
 Browser creates paint records.
 
@@ -597,7 +603,7 @@ Draw red rectangle
 
 ---
 
-## **Step 2**
+## Step 2
 
 Commands are sent to rasterization.
 
@@ -609,7 +615,7 @@ Pixel Buffer
 
 ---
 
-## **Step 3**
+## Step 3
 
 GPU combines layers.
 
@@ -623,7 +629,7 @@ Final Screen
 
 ---
 
-## **Complete Rendering Pipeline**
+## Complete Rendering Pipeline
 
 HTML  
  ↓  
@@ -649,19 +655,19 @@ Screen Pixels
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 The browser paints pixels by generating paint commands, rasterizing them into pixel buffers, and then compositing layers together to produce the final image shown on screen.
 
 ---
 
-# **7\. What Causes Layout Shifts?**
+## 7. What Causes Layout Shifts?
 
 Layout Shift means content unexpectedly moves after it has already appeared.
 
 ---
 
-## **Example**
+## Example
 
 Page loads:
 
@@ -678,9 +684,9 @@ Everything jumps down.
 
 ---
 
-## **Common Causes**
+## Common Causes
 
-### **Images without dimensions**
+### Images without dimensions
 
 Bad:
 
@@ -696,7 +702,7 @@ Good:
 
 ---
 
-### **Ads**
+### Ads
 
 Ad loads later.
 
@@ -708,13 +714,13 @@ Content pushed down
 
 ---
 
-### **Dynamic Content**
+### Dynamic Content
 
 container.prepend(notification);
 
 ---
 
-### **Web Fonts**
+### Web Fonts
 
 Font changes after loading.
 
@@ -726,13 +732,13 @@ Text reflows
 
 ---
 
-## **Interview Answer**
+## Interview Answer
 
 Layout shifts occur when elements change position unexpectedly during page load, commonly due to images without reserved space, ads, dynamically injected content, or **font swaps.**
 
 ---
 
-# **8\. What is CLS?**
+## 8. What is CLS?
 
 CLS stands for:
 
@@ -744,7 +750,7 @@ CLS measures visual stability.
 
 ---
 
-## **Formula**
+## Formula
 
 CLS \= Impact Fraction × Distance Fraction
 
@@ -752,17 +758,17 @@ CLS \= Impact\\ Fraction \\times Distance\\ Fraction
 
 Where:
 
-### **Impact Fraction**
+### Impact Fraction
 
 How much of viewport shifted.
 
-### **Distance Fraction**
+### Distance Fraction
 
 How far it shifted.
 
 ---
 
-## **CLS Scores**
+## CLS Scores
 
 | Score | Meaning |
 | ----- | ----- |
@@ -772,34 +778,34 @@ How far it shifted.
 
 ---
 
-## **How to Reduce CLS**
+## How to Reduce CLS
 
-### **Reserve image space**
+### Reserve image space
 
 \<img  
   width="800"  
   height="400"  
 /\>
 
-### **Reserve ad space**
+### Reserve ad space
 
 .ad-slot \{  
   min-height: 250px;  
 \}
 
-### **Avoid inserting content above existing content**
+### Avoid inserting content above existing content
 
 Bad:
 
 container.prepend(element);
 
-### **Use font-display**
+### Use font-display
 
 font-display: swap;
 
 ---
 
-## **Senior-Level Interview Summary**
+## Senior-Level Interview Summary
 
 When asked all these topics together, connect them into a single story:
 
@@ -829,8 +835,6 @@ Pixels on Screen
 * CLS \= metric measuring layout stability.
 
 This level of explanation is typically expected for Staff Engineer or Senior Frontend interviews.
-
-##
 
 [image3]: /img/docs/web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline/browser-rendering-pipeline-01.png
 [image4]: /img/docs/web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline/browser-rendering-pipeline-02.png

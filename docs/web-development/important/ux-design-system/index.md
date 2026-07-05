@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # UX | Design System
 
-### **What is a Design System?**
+### What is a Design System?
 
 A **Design System** is a **collection of reusable components**, **guided by clear standards**, that can be **assembled together** to build consistent and scalable user interfaces (UIs).
 
@@ -39,7 +39,7 @@ Examples of famous design systems:
 
 ---
 
-### **What is Atomic Design Paradigm?**
+### What is Atomic Design Paradigm?
 
 **Atomic Design** is a **methodology** for **creating design systems** proposed by Brad Frost.
 
@@ -63,7 +63,7 @@ It breaks UI down into a **hierarchy of components**, inspired by chemistry:
 
 ---
 
-### **In short:**
+### In short:
 
 * A **Design System** organizes components, standards, and guidelines to build consistent UIs.
 
@@ -75,24 +75,24 @@ Would you also like me to show you a **visual diagram** or a **real-world exampl
 
 4o
 
-##### **You said:**
+##### You said:
 
 How to create and use it in react js ?
 
-###### **ChatGPT said:**
+###### ChatGPT said:
 
 Good question\! Let’s go step-by-step:
 
 ---
 
-## **How to Create and Use a Design System in React.js**
+## How to Create and Use a Design System in React.js
 
 Think of it like **building a Lego set**:  
  You create small blocks (components) → combine them → build pages → create a consistent product.
 
 ---
 
-### **1\. Set Up Your Project**
+### 1. Set Up Your Project
 
 You need a **React app**.
 
@@ -105,7 +105,7 @@ You can later move the design system to a **separate package/repo** if you want 
 
 ---
 
-### **2\. Plan your Atomic Structure**
+### 2. Plan your Atomic Structure
 
 Organize your folder like this (Atomic Design structure):
 
@@ -136,7 +136,7 @@ CopyEdit
 
 ---
 
-### **3\. Create Reusable Atoms**
+### 3. Create Reusable Atoms
 
 Example: **Button**
 
@@ -177,7 +177,7 @@ CopyEdit
 
 ---
 
-### **4\. Create Molecules**
+### 4. Create Molecules
 
 Example: **FormField**
 
@@ -199,7 +199,7 @@ CopyEdit
 
 ---
 
-### **5\. Create Organisms**
+### 5. Create Organisms
 
 Example: **Header**
 
@@ -220,7 +220,7 @@ CopyEdit
 
 ---
 
-### **6\. Create Templates and Pages**
+### 6. Create Templates and Pages
 
 Templates are layouts you reuse.
 
@@ -259,7 +259,7 @@ CopyEdit
 
 ---
 
-### **7\. Bonus: Use Style Libraries for Scalability**
+### 7. Bonus: Use Style Libraries for Scalability
 
 Instead of inline styles, you can later use:
 
@@ -293,7 +293,7 @@ CopyEdit
 
 ---
 
-## **Summary:**
+## Summary:
 
 | Step | Action |
 | ----- | ----- |
@@ -316,22 +316,22 @@ Would you also like me to show how to **separate your design system into a priva
 
 4o
 
-##### **You said:**
+##### You said:
 
 yes
 
-###### **ChatGPT said:**
+###### ChatGPT said:
 
 Awesome\! 🚀  
  Let's take it step-by-step on **how to separate your React Design System into a reusable private NPM package**:
 
 ---
 
-# **📦 How to Create a Reusable Design System as a Private NPM Package**
+## 📦 How to Create a Reusable Design System as a Private NPM Package
 
 ---
 
-## **1\. Move Your Design System into a Separate Repo**
+## 1. Move Your Design System into a Separate Repo
 
 Create a new project (could be on GitHub, GitLab, Bitbucket, etc.).
 
@@ -345,7 +345,7 @@ CopyEdit
 
 ---
 
-## **2\. Set up the Project for Components**
+## 2. Set up the Project for Components
 
 Install **React**, **React DOM**, and **build tools** because you are building a library.
 
@@ -378,7 +378,7 @@ CopyEdit
 
 ---
 
-## **3\. Write an `index.js` to Export Everything**
+## 3. Write an `index.js` to Export Everything
 
 javascript  
 CopyEdit  
@@ -392,7 +392,7 @@ CopyEdit
 
 ---
 
-## **4\. Build Your Library**
+## 4. Build Your Library
 
 Set up a simple Vite/Rollup build to bundle your components.
 
@@ -433,9 +433,9 @@ It generates the `/dist` folder with bundle files.
 
 ---
 
-## **5\. Publish it Privately (Options)**
+## 5. Publish it Privately (Options)
 
-### **a) If you want to publish to npm private**
+### a) If you want to publish to npm private
 
 Set your `package.json`:
 
@@ -466,7 +466,7 @@ CopyEdit
 
 ---
 
-### **b) OR GitHub Packages**
+### b) OR GitHub Packages
 
 You can publish to GitHub Packages too:
 
@@ -484,7 +484,7 @@ CopyEdit
 
 ---
 
-## **6\. How to Use It in Another React Project**
+## 6. How to Use It in Another React Project
 
 Install your design system in any React app:
 
@@ -515,7 +515,7 @@ CopyEdit
 
 ---
 
-## **7\. Bonus Tips for Production-Ready Design Systems**
+## 7. Bonus Tips for Production-Ready Design Systems
 
 | Item | Purpose |
 | ----- | ----- |
@@ -528,7 +528,7 @@ CopyEdit
 
 ---
 
-# **✨ Quick Overview**
+## ✨ Quick Overview
 
 | Step | Action |
 | ----- | ----- |
@@ -538,7 +538,7 @@ CopyEdit
 | 4 | Publish to npm or GitHub |
 | 5 | Install and use in any React app |
 
-# **🎯 First: What is Storybook?**
+## 🎯 First: What is Storybook?
 
 **Storybook** is a **UI development environment** and **component explorer** for frontend developers.
 
@@ -566,13 +566,13 @@ It looks something like this:
 
 ---
 
-# **🛠 How to Add Storybook to Your Design System Project**
+## 🛠 How to Add Storybook to Your Design System Project
 
 Let's continue building your design system.
 
 ---
 
-## **1\. Install Storybook**
+## 1. Install Storybook
 
 Inside your `my-design-system` project:
 
@@ -586,7 +586,7 @@ It creates a `.storybook` folder and some example stories inside `/stories`.
 
 ---
 
-## **2\. Create Stories for Your Components**
+## 2. Create Stories for Your Components
 
 Let's say you have a `Button` component at:
 
@@ -627,7 +627,7 @@ Each named export (`Primary`, `Secondary`, etc.) will appear as separate live ex
 
 ---
 
-## **3\. Run Storybook**
+## 3. Run Storybook
 
 bash  
 CopyEdit  
@@ -643,7 +643,7 @@ CopyEdit
 
 ---
 
-## **4\. Organize Your Stories Smartly**
+## 4. Organize Your Stories Smartly
 
 Organize based on **Atomic Design** categories:
 
@@ -669,7 +669,7 @@ CopyEdit
 
 ---
 
-# **🎨 Bonus: Add Light/Dark Theme Switching to Your Design System**
+## 🎨 Bonus: Add Light/Dark Theme Switching to Your Design System
 
 In your `my-design-system`, you can build **theming** using simple CSS variables or a library like `styled-components` or `tailwindcss`.
 
@@ -712,7 +712,7 @@ CopyEdit
 
 ---
 
-# **🔥 Final Architecture**
+## 🔥 Final Architecture
 
 | Folder | What it contains |
 | ----- | ----- |
@@ -733,7 +733,7 @@ You will have:
 
 ---
 
-# **✅ Summary**
+## ✅ Summary
 
 | Step | Goal |
 | ----- | ----- |

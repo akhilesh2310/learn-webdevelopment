@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Related canonical pages: [React Performance](../important/performance/react-performance.md), [XSS](../important/security/xss-cross-site-scripting.md), [JWT & CSRF](../important/security/jwt-csrf.md).
 
-### **✅ 1\. Microfrontend Architecture Design for a Modular Enterprise App**
+### ✅ 1. Microfrontend Architecture Design for a Modular Enterprise App
 
 **Approach:**
 
@@ -50,7 +50,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-### **✅ 2\. Building a Component Library with Theming, Accessibility & Responsiveness**
+### ✅ 2. Building a Component Library with Theming, Accessibility & Responsiveness
 
 **Approach:**
 
@@ -94,7 +94,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-### **✅ 3\. Client-side Caching, Code Splitting, and Lazy Loading in a Large React App (100+ Screens)**
+### ✅ 3. Client-side Caching, Code Splitting, and Lazy Loading in a Large React App (100+ Screens)
 
 **Approach:**
 
@@ -128,11 +128,11 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
    * Monitor bundle size with `webpack-bundle-analyzer`.
 
-### **Frontend Architect & UI Engineering \- Interview Prep Answers**
+### Frontend Architect & UI Engineering \- Interview Prep Answers
 
 ---
 
-#### **1\. Deciding to Adopt a New Frontend Framework**
+#### 1. Deciding to Adopt a New Frontend Framework
 
 **Criteria:**
 
@@ -166,7 +166,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **2\. Introducing Architectural Change (STAR Format)**
+#### 2. Introducing Architectural Change (STAR Format)
 
 **Situation:** Legacy monolith React app became hard to scale.  
  **Task:** Break it into independently deployable modules.  
@@ -175,7 +175,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **3\. Handling Quick Release vs Technical Debt**
+#### 3. Handling Quick Release vs Technical Debt
 
 * Communicate long-term costs clearly (e.g., future delays, bug risks).
 
@@ -185,7 +185,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **4\. Onboarding Junior Developers**
+#### 4. Onboarding Junior Developers
 
 * Start with pair programming sessions.
 
@@ -197,7 +197,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **5\. Ensuring Code Quality Across Distributed Teams**
+#### 5. Ensuring Code Quality Across Distributed Teams
 
 * Enforce standards via ESLint, Prettier, and Husky hooks.
 
@@ -209,7 +209,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **6\. Mentoring for Testing/Accessibility (STAR Format)**
+#### 6. Mentoring for Testing/Accessibility (STAR Format)
 
 **Situation:** A React team had zero test coverage and poor a11y.  
  **Task:** Improve reliability and user experience.  
@@ -218,7 +218,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **7\. Coordinating with Backend Teams on API Design**
+#### 7. Coordinating with Backend Teams on API Design
 
 * Use API contracts like Swagger/OpenAPI.
 
@@ -230,7 +230,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **8\. Aligning Design Systems with UX Teams**
+#### 8. Aligning Design Systems with UX Teams
 
 * Regular design-developer syncs.
 
@@ -242,7 +242,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **9\. Business vs UX/Engineering Goals (STAR Format)**
+#### 9. Business vs UX/Engineering Goals (STAR Format)
 
 **Situation:** Stakeholders wanted complex form on a single page.  
  **Task:** Improve usability without losing requirements.  
@@ -251,14 +251,14 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **10\. Designing UI that Improves Key Metric**
+#### 10. Designing UI that Improves Key Metric
 
 **Example:** Redesigned onboarding flow with inline tooltips and validations.  
  **Result:** Increased account activation by 30% in 3 weeks.
 
 ---
 
-#### **11\. Validating UI Performance & Accessibility**
+#### 11. Validating UI Performance & Accessibility
 
 * Lighthouse audits (CI \+ local).
 
@@ -270,7 +270,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **12\. Balancing Aesthetics vs Performance**
+#### 12. Balancing Aesthetics vs Performance
 
 * Use animations sparingly and with GPU acceleration (e.g., `transform`, `opacity`).
 
@@ -280,7 +280,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **13\. Debugging Slow React App in Production**
+#### 13. Debugging Slow React App in Production
 
 * Confirm environment (browser, network, app version).
 
@@ -292,7 +292,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **14\. Migrating Legacy AngularJS App**
+#### 14. Migrating Legacy AngularJS App
 
 * Audit existing app and group by modules.
 
@@ -304,7 +304,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **15\. Fallback Strategy for Critical UI on API Failure**
+#### 15. Fallback Strategy for Critical UI on API Failure
 
 * Use loading/error boundaries.
 
@@ -316,7 +316,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **16\. Rituals for Frontend-Focused Agile Teams**
+#### 16. Rituals for Frontend-Focused Agile Teams
 
 * Weekly UI reviews.
 
@@ -328,7 +328,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **17\. Tracking Technical Debt in Sprints**
+#### 17. Tracking Technical Debt in Sprints
 
 * Maintain a visible tech debt board (e.g., Jira/Notion).
 
@@ -338,7 +338,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **18\. Communicating Tech Decisions to Non-Tech Stakeholders**
+#### 18. Communicating Tech Decisions to Non-Tech Stakeholders
 
 **STAR Example:**  
  **Situation:** Wanted to introduce lazy loading, but PM feared delays.  
@@ -348,7 +348,7 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 ---
 
-#### **19\. Adobe Spectrum Design System**
+#### 19. Adobe Spectrum Design System
 
 * Adobe’s design system focused on accessibility, scale, and consistency.
 
@@ -372,9 +372,9 @@ Related canonical pages: [React Performance](../important/performance/react-perf
 
 Let me know if you’d like a PDF or presentation version of this document.
 
-## **✅ Mock Techno-Managerial Interview for UI Architect – Adobe**
+## ✅ Mock Techno-Managerial Interview for UI Architect – Adobe
 
-### **💬 1\. Tell me about the most complex UI project you've worked on. What were your architectural decisions and why?**
+### 💬 1. Tell me about the most complex UI project you've worked on. What were your architectural decisions and why?
 
 **Sample Answer:**
 
@@ -382,7 +382,7 @@ One of the most complex projects I led was building a multi-tenant SaaS dashboar
 
 ---
 
-### **💬 2\. How do you ensure scalability and maintainability in large frontend codebases?**
+### 💬 2. How do you ensure scalability and maintainability in large frontend codebases?
 
 **Sample Answer:**
 
@@ -396,7 +396,7 @@ I also set up **module boundaries** in NX or Lerna to prevent tight coupling.
 
 ---
 
-### **💬 3\. A backend team insists on a breaking API change. How do you respond?**
+### 💬 3. A backend team insists on a breaking API change. How do you respond?
 
 **Sample Answer:**
 
@@ -410,7 +410,7 @@ Ultimately, I aim for **collaborative resolution**, not conflict — if needed, 
 
 ---
 
-### **💬 4\. How do you handle performance bottlenecks in a complex React app?**
+### 💬 4. How do you handle performance bottlenecks in a complex React app?
 
 **Sample Answer:**
 
@@ -428,7 +428,7 @@ I start by profiling the app with **React DevTools** and **Chrome Performance Ta
 
 ---
 
-### **💬 5\. How do you mentor junior engineers and maintain code quality across teams?**
+### 💬 5. How do you mentor junior engineers and maintain code quality across teams?
 
 **Sample Answer:**
 
@@ -436,7 +436,7 @@ I maintain **internal documentation**, run **monthly code clinics**, and create 
 
 ---
 
-### **💬 6\. What’s your approach to building an internal design system?**
+### 💬 6. What’s your approach to building an internal design system?
 
 **Sample Answer:**
 
@@ -444,7 +444,7 @@ First, I partner with UX to define the **design tokens** (spacing, colors, typog
 
 ---
 
-### **💬 7\. How do you handle conflicts between engineering and product priorities?**
+### 💬 7. How do you handle conflicts between engineering and product priorities?
 
 **Sample Answer:**
 
@@ -452,7 +452,7 @@ I first align with PMs on business goals. If engineering needs are being deprior
 
 ---
 
-### **💬 8\. Have you dealt with accessibility issues in your projects? How did you fix them?**
+### 💬 8. Have you dealt with accessibility issues in your projects? How did you fix them?
 
 **Sample Answer:**
 
@@ -460,7 +460,7 @@ Yes. In a customer-facing dashboard, screen reader users had trouble with custom
 
 ---
 
-### **💬 9\. Suppose you have a legacy AngularJS app that needs to be migrated. What’s your approach?**
+### 💬 9. Suppose you have a legacy AngularJS app that needs to be migrated. What’s your approach?
 
 **Sample Answer:**
 
@@ -468,7 +468,7 @@ I propose a **strangler pattern** — gradually replacing AngularJS modules with
 
 ---
 
-### **💬 10\. How do you measure success for a UI architecture?**
+### 💬 10. How do you measure success for a UI architecture?
 
 **Sample Answer:**
 
@@ -486,13 +486,13 @@ I use a mix of **technical and business KPIs**:
 
 * Long-term: easier onboarding and faster pivoting for features
 
-### **1\. Familiarity with OWASP Security (Top 10\)**
+### 1. Familiarity with OWASP Security (Top 10\)
 
 **OWASP** stands for the **Open Web Application Security Project**. It provides a widely adopted list of the top 10 most critical web application security risks.
 
 As a UI Architect, your familiarity with OWASP means you proactively **build secure frontends** that avoid exposing user data or enabling malicious attacks.
 
-#### **Key OWASP Top 10 items relevant to frontend:**
+#### Key OWASP Top 10 items relevant to frontend:
 
 * **XSS (Cross-site scripting):** Escaping input/output properly, using frameworks that auto-escape (e.g., React).
 
@@ -509,13 +509,13 @@ Example:
 
 ---
 
-### **2\. Aware of Headless Commerce Implementation**
+### 2. Aware of Headless Commerce Implementation
 
 **Headless commerce** refers to separating the **frontend (presentation layer)** from the **backend (commerce logic like product catalog, cart, payment)** — usually connected via APIs (often GraphQL or REST).
 
 In a **headless setup**, the frontend can be built with **React, Next.js, or Angular**, while the backend is powered by platforms like **Magento**, **Shopify**, **Adobe Commerce**, or **commercetools**.
 
-#### **Key UI architect responsibilities in headless commerce:**
+#### Key UI architect responsibilities in headless commerce:
 
 * Designing flexible **component-driven UIs** that pull data via APIs.
 
@@ -530,7 +530,7 @@ Example:
 
 ---
 
-### **3\. Experience in Building Frontend for the AEM Platform (Advantage)**
+### 3. Experience in Building Frontend for the AEM Platform (Advantage)
 
 **Adobe Experience Manager (AEM)** is a powerful CMS used to manage digital experiences across websites, apps, and more. AEM can be used in a traditional, SPA, or headless mode.
 
@@ -544,7 +544,7 @@ As a UI engineer or architect working with AEM, you're likely building:
 
 * Integration with AEM’s **content fragments or assets**
 
-#### **When AEM is used in headless mode:**
+#### When AEM is used in headless mode:
 
 * You consume **content via AEM’s GraphQL APIs** or REST endpoints in a frontend app (e.g., React/Next.js).
 
@@ -555,7 +555,7 @@ Example:
 
 ---
 
-### **Summary**
+### Summary
 
 | Topic | What It Means | Why It Matters for a UI Architect |
 | ----- | ----- | ----- |
@@ -569,23 +569,23 @@ Would you like a quick STAR-format response if asked: **"Have you worked with he
 
 4o
 
-##### **You said:**
+##### You said:
 
 No i need to learn so please share about it
 
-###### **ChatGPT said:**
+###### ChatGPT said:
 
 Great — here’s a **clear and beginner-friendly overview** to help you **learn** these three important topics as a UI architect:
 
 ---
 
-## **1\. OWASP Security (Frontend-focused)**
+## 1. OWASP Security (Frontend-focused)
 
-### **What is OWASP?**
+### What is OWASP?
 
 The **Open Web Application Security Project (OWASP)** is a nonprofit focused on improving web security. Its **Top 10** list is the gold standard for knowing the biggest vulnerabilities in web apps.
 
-### **OWASP Top 10 (Frontend-Relevant) Simplified:**
+### OWASP Top 10 (Frontend-Relevant) Simplified:
 
 | Risk | What It Is (Frontend Angle) | How to Prevent As a UI Engineer |
 | ----- | ----- | ----- |
@@ -595,7 +595,7 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 | **Sensitive Data Exposure** | Exposing tokens, passwords in frontend code | Never store tokens in `localStorage` without encryption |
 | **Security Misconfigurations** | Leaving dev tools in prod, verbose error messages | Disable dev logs and tools in production builds |
 
-### **Learn This:**
+### Learn This:
 
 * **React Security Cheatsheet**: [https://cheatsheetseries.owasp.org/cheatsheets/React\_Security\_Cheat\_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/React_Security_Cheat_Sheet.html)  
 * 
@@ -604,16 +604,16 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
 ---
 
-## **2\. Headless Commerce**
+## 2. Headless Commerce
 
-### **What is it?**
+### What is it?
 
 **Headless commerce** separates the **frontend (UI)** from the **backend (product data, checkout, etc.)**, and connects them via APIs.
 
 **Traditional commerce** \= tightly coupled backend \+ frontend  
  **Headless commerce** \= backend (e.g., Shopify, Adobe Commerce) → APIs → frontend (React, Next.js)
 
-### **Why use it?**
+### Why use it?
 
 * Faster frontends
 
@@ -621,7 +621,7 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
 * More flexibility in UI/UX
 
-### **What a UI Architect Does:**
+### What a UI Architect Does:
 
 * Build a storefront using **React, Next.js, or Vue**
 
@@ -637,7 +637,7 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
   * User accounts
 
-### **Learn This:**
+### Learn This:
 
 * Headless Commerce Guide by commercetools
 
@@ -649,13 +649,13 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
 ---
 
-## **3\. Building Frontends for AEM (Adobe Experience Manager)**
+## 3. Building Frontends for AEM (Adobe Experience Manager)
 
-### **What is AEM?**
+### What is AEM?
 
 AEM is Adobe’s **enterprise CMS** that lets marketing teams create and manage digital content. It’s used by companies like Coca-Cola, HP, etc.
 
-### **How Frontend Works with AEM:**
+### How Frontend Works with AEM:
 
 1. **Traditional AEM**:
 
@@ -673,7 +673,7 @@ AEM is Adobe’s **enterprise CMS** that lets marketing teams create and manage 
 
    * You use AEM **only as a content API**, and your React app fetches content dynamically
 
-### **As a UI Architect:**
+### As a UI Architect:
 
 * Build **React components** mapped to **AEM content models**
 
@@ -681,7 +681,7 @@ AEM is Adobe’s **enterprise CMS** that lets marketing teams create and manage 
 
 * Integrate with **AEM Assets** (e.g., images, fragments)
 
-### **Learn This:**
+### Learn This:
 
 * [AEM Headless Developer Guide](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/headless/home.html)
 
@@ -689,7 +689,7 @@ AEM is Adobe’s **enterprise CMS** that lets marketing teams create and manage 
 
 ---
 
-## **Learning Plan (for all 3\)**
+## Learning Plan (for all 3\)
 
 | Week | Topic | What to Do |
 | ----- | ----- | ----- |

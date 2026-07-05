@@ -5,15 +5,15 @@ sidebar_position: 1
 
 # Interview Q&A
 
-## [**https://namastedev.com/learn/namaste-interview**](https://namastedev.com/learn/namaste-interview)
+## [https://namastedev.com/learn/namaste-interview](https://namastedev.com/learn/namaste-interview)
 
-## **JavaScript & TypeScript Interview Preparation Guide**
+## JavaScript & TypeScript Interview Preparation Guide
 
 This document is organized by topic for structured self-study. Each section includes commonly asked interview questions with clear, concise answers and code examples.
 
 ---
 
-### **🧠 1\. JavaScript Core Concepts**
+### 🧠 1. JavaScript Core Concepts
 
 * What is the use of `isNaN()` function?
 
@@ -49,7 +49,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **📚 2\. Execution & Scope**
+### 📚 2. Execution & Scope
 
 * Execution Context & Call Stack.
 
@@ -67,7 +67,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **🧩 3\. Arrays & Objects**
+### 🧩 3. Arrays & Objects
 
 * Array element removal: `pop()`, `shift()`, and removing first/last items.
 
@@ -95,7 +95,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **🔡 4\. String Manipulation**
+### 🔡 4. String Manipulation
 
 * Check if a string is a palindrome.
 
@@ -109,7 +109,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **🔄 5\. Functions & Async**
+### 🔄 5. Functions & Async
 
 * Implement a custom `Promise.all()`.
 
@@ -127,7 +127,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **🔎 6\. Practical/Interview Favorites**
+### 🔎 6. Practical/Interview Favorites
 
 * Infinite scroll logic.
 
@@ -141,7 +141,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **⚙️ 7\. Design Patterns**
+### ⚙️ 7. Design Patterns
 
 * Different design patterns and when to use them.
 
@@ -149,7 +149,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **📦 8\. Module Systems & ES6+ Features**
+### 📦 8. Module Systems & ES6+ Features
 
 * ES6+ Features (Destructuring, Spread, Optional Chaining).
 
@@ -161,7 +161,7 @@ This document is organized by topic for structured self-study. Each section incl
 
 ---
 
-### **📈 9\. Performance, Optimization & Memory**
+### 📈 9. Performance, Optimization & Memory
 
 * Memory Management & Avoiding Leaks.
 

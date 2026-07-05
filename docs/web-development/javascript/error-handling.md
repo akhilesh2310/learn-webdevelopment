@@ -5,23 +5,21 @@ sidebar_position: 25
 
 # Error Handling
 
-## 
+## try...catch
 
-## **try...catch**
+## finally
 
-## **finally**
+## throw
 
-## **throw**
+## Custom Errors
 
-## **Custom Errors**
+## Error Propagation
 
-## **Error Propagation**
+## Async Error Handling
 
-## **Async Error Handling**
+## Global Error Handling
 
-## **Global Error Handling**
-
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Error handling in async/await  
 * Custom error classes
@@ -30,19 +28,17 @@ sidebar_position: 25
 [https://javascript.info/error-handling](https://javascript.info/error-handling)  
 [https://www.tutorialspoint.com/javascript/javascript\_error\_handling.htm](https://www.tutorialspoint.com/javascript/javascript_error_handling.htm)
 
-
-
-# **JavaScript Error Handling**
+## JavaScript Error Handling
 
 Error handling is about detecting failures, stopping incorrect execution, and recovering gracefully. In frontend apps, good error handling improves reliability, debugging, user experience, and observability. Common places where errors happen are API calls, async flows, JSON parsing, form submission, rendering logic, and third-party integrations.
 
 ---
 
-# **1\. `try...catch`**
+## 1. `try...catch`
 
 `try...catch` is used to handle runtime errors without crashing the whole flow.
 
-## **Simple meaning**
+## Simple meaning
 
 Put risky code inside `try`. If an error happens, handle it inside `catch`.
 
@@ -52,7 +48,7 @@ try \{
   console.log(error.name); // "SyntaxError"  
 \}
 
-## **Key mental model**
+## Key mental model
 
 `try` is for code that may fail. `catch` is for recovery, fallback, logging, or showing user-friendly messages.
 
@@ -67,14 +63,14 @@ function parseUser(json) \{
 console.log(parseUser('\{"name":"Akhilesh"\}')); // \{ name: "Akhilesh" \}  
 console.log(parseUser("\{bad json\}")); // null
 
-## **Important points**
+## Important points
 
 * `catch` catches synchronous runtime errors inside `try`.  
 * It does not catch async errors from callbacks scheduled later.  
 * `catch` receives the thrown error value.  
 * Use `try...catch` where you can actually handle or add useful context.
 
-## **Important trap**
+## Important trap
 
 try \{  
   setTimeout(() \=\> \{  
@@ -96,17 +92,17 @@ setTimeout(() \=\> \{
   \}  
 \}, 0);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `try...catch` handles runtime errors in synchronous code. Code that may fail goes inside `try`, and error handling or fallback logic goes inside `catch`. It only catches errors thrown during the current execution flow, not errors thrown later in async callbacks.
 
 ---
 
-# **2\. `finally`**
+## 2. `finally`
 
 `finally` runs after `try` and `catch`, whether an error happened or not.
 
-## **Simple meaning**
+## Simple meaning
 
 Use `finally` for cleanup logic.
 
@@ -121,7 +117,7 @@ try \{
 // "Loading data"  
 // "Stop loading"
 
-## **Practical frontend example**
+## Practical frontend example
 
 async function loadUsers() \{  
   setLoading(true);
@@ -138,7 +134,7 @@ async function loadUsers() \{
   \}  
 \}
 
-## **Key mental model**
+## Key mental model
 
 `finally` is for work that must happen in both success and failure cases.
 
@@ -151,7 +147,7 @@ Common use cases:
 * Unlock UI.  
 * Reset flags.
 
-## **Important trap**
+## Important trap
 
 If `finally` returns a value, it can override the `try` or `catch` return.
 
@@ -167,17 +163,17 @@ console.log(test()); // "finally"
 
 Common mistake: Returning from `finally` unnecessarily. Avoid it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `finally` runs after `try` and `catch` regardless of success or failure. It is useful for cleanup like stopping loaders, clearing timers, closing resources, or resetting UI state. We should avoid returning from `finally` because it can override previous returns or thrown errors.
 
 ---
 
-# **3\. `throw`**
+## 3. `throw`
 
 `throw` is used to create and raise an error manually.
 
-## **Simple meaning**
+## Simple meaning
 
 Use `throw` when code reaches an invalid or failed state and should not continue normally.
 
@@ -195,11 +191,11 @@ try \{
   console.log(error.message); // "Cannot divide by zero"  
 \}
 
-## **Key mental model**
+## Key mental model
 
 `throw` stops the current normal flow and transfers control to the nearest error handler.
 
-## **Throwing custom values**
+## Throwing custom values
 
 JavaScript allows throwing anything.
 
@@ -211,7 +207,7 @@ throw new Error("Something failed");
 
 Why? `Error` gives useful properties like `message`, `name`, and stack trace.
 
-## **Practical frontend example**
+## Practical frontend example
 
 async function request(url) \{  
   const response \= await fetch(url);
@@ -223,17 +219,17 @@ async function request(url) \{
   return response.json();  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `throw` raises an error and stops normal execution. It is best to throw `Error` objects instead of strings because they provide useful debugging information like message, name, and stack trace.
 
 ---
 
-# **4\. Custom Errors**
+## 4. Custom Errors
 
 Custom errors are error classes created for specific failure types.
 
-## **Simple meaning**
+## Simple meaning
 
 Instead of throwing a generic `Error`, we create meaningful error types like `ValidationError`, `ApiError`, or `AuthError`.
 
@@ -246,7 +242,7 @@ class ValidationError extends Error \{
 
 throw new ValidationError("Email is required");
 
-## **Key mental model**
+## Key mental model
 
 Custom errors help identify what kind of failure happened.
 
@@ -268,7 +264,7 @@ async function request(url) \{
   return response.json();  
 \}
 
-## **Handling custom errors**
+## Handling custom errors
 
 try \{  
   await request("/api/users");  
@@ -280,7 +276,7 @@ try \{
   \}  
 \}
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * `ValidationError`: invalid user input.  
 * `ApiError`: failed HTTP response.  
@@ -288,7 +284,7 @@ try \{
 * `NetworkError`: request failed due to connectivity.  
 * `TimeoutError`: request took too long.
 
-## **Important trap**
+## Important trap
 
 When extending `Error`, call `super(message)` before using `this`.
 
@@ -309,17 +305,17 @@ class ApiError extends Error \{
   \}  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Custom errors are classes that extend `Error` and represent specific failure types. They make error handling cleaner because we can check `instanceof` and handle validation, API, auth, timeout, or network errors differently.
 
 ---
 
-# **5\. Error Propagation**
+## 5. Error Propagation
 
 Error propagation means an error moves up the call stack until it is handled.
 
-## **Simple meaning**
+## Simple meaning
 
 If a function does not catch an error, the error goes to its caller.
 
@@ -340,11 +336,11 @@ try \{
   console.log(error.message); // "Email is required"  
 \}
 
-## **Key mental model**
+## Key mental model
 
 Errors bubble up through function calls until some `catch` handles them.
 
-## **Async propagation**
+## Async propagation
 
 async function fetchUser() \{  
   throw new Error("User API failed");  
@@ -358,7 +354,7 @@ loadPage().catch((error) \=\> \{
   console.log(error.message); // "User API failed"  
 \});
 
-## **Rethrowing with context**
+## Rethrowing with context
 
 function parseConfig(json) \{  
   try \{  
@@ -375,7 +371,7 @@ try \{
   // "Invalid config: Expected property name or '\}' in JSON at position 1"  
 \}
 
-## **Common mistake**
+## Common mistake
 
 Catching an error and silently ignoring it.
 
@@ -394,21 +390,21 @@ try \{
   throw error;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Error propagation means an error moves up the call stack until it is caught. If a function cannot handle an error meaningfully, it should let it propagate or rethrow it with useful context instead of silently swallowing it.
 
 ---
 
-# **6\. Async Error Handling**
+## 6. Async Error Handling
 
 Async error handling depends on whether we use promises or async/await.
 
-## **Simple meaning**
+## Simple meaning
 
 Promise rejections are async errors. Handle them with `.catch()` or `try...catch` with `await`.
 
-## **Promise style**
+## Promise style
 
 fetchUser()  
   .then((user) \=\> \{  
@@ -418,7 +414,7 @@ fetchUser()
     console.log(error.message);  
   \});
 
-## **Async/await style**
+## Async/await style
 
 async function loadUser() \{  
   try \{  
@@ -429,7 +425,7 @@ async function loadUser() \{
   \}  
 \}
 
-## **Key mental model**
+## Key mental model
 
 `try...catch` catches promise rejections only when you `await` the promise inside the `try`.
 
@@ -453,7 +449,7 @@ async function loadUser() \{
   \}  
 \}
 
-## **Multiple async calls**
+## Multiple async calls
 
 Sequential:
 
@@ -475,7 +471,7 @@ try \{
   console.log(error.message);  
 \}
 
-## **Partial success**
+## Partial success
 
 Use `Promise.allSettled()` when some requests can fail independently.
 
@@ -487,21 +483,21 @@ const results \= await Promise.allSettled(\[
 
 const successful \= results.filter((result) \=\> result.status \=== "fulfilled");
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For async code, promise errors are handled with `.catch()` or with `try...catch` around an awaited promise. `try...catch` will not catch a rejected promise unless it is awaited or returned properly. For multiple promises, use `Promise.all` when all must succeed and `Promise.allSettled` when partial success is acceptable.
 
 ---
 
-# **7\. Global Error Handling**
+## 7. Global Error Handling
 
 Global error handling catches errors that were not handled locally.
 
-## **Simple meaning**
+## Simple meaning
 
 Use global handlers as a safety net, not as the main error handling strategy.
 
-## **Browser global error**
+## Browser global error
 
 window.addEventListener("error", (event) \=\> \{  
   console.log(event.message);  
@@ -509,13 +505,13 @@ window.addEventListener("error", (event) \=\> \{
   console.log(event.lineno);  
 \});
 
-## **Unhandled promise rejection**
+## Unhandled promise rejection
 
 window.addEventListener("unhandledrejection", (event) \=\> \{  
   console.log(event.reason);  
 \});
 
-## **React error boundary**
+## React error boundary
 
 React Error Boundaries catch rendering errors in component trees.
 
@@ -539,7 +535,7 @@ class ErrorBoundary extends React.Component \{
   \}  
 \}
 
-## **Important points**
+## Important points
 
 Global handlers are useful for:
 
@@ -550,7 +546,7 @@ Global handlers are useful for:
 
 But they should not replace local error handling for expected failures like form validation or API errors.
 
-## **Important trap**
+## Important trap
 
 React Error Boundaries do not catch:
 
@@ -573,19 +569,19 @@ function Button() \{
   return \<button onClick=\{handleClick\}\>Click\</button\>;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Global error handling is a safety net for uncaught errors and unhandled promise rejections. In the browser, we can use `window.onerror` or `window.addEventListener("error")`, and `unhandledrejection` for promise rejections. In React, Error Boundaries catch render-time errors, but not async errors or event handler errors.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Error handling in async/await**
+## 1. Error handling in async/await
 
-## **Answer**
+## Answer
 
 Use `try...catch` around awaited async operations.
 
@@ -608,14 +604,14 @@ async function loadUser() \{
   \}  
 \}
 
-## **Key points**
+## Key points
 
 * `try...catch` catches errors thrown inside the block.  
 * It catches rejected promises only when they are awaited.  
 * Use `finally` for cleanup like stopping loaders.  
 * Rethrow if the caller should handle the error too.
 
-## **Common trap**
+## Common trap
 
 async function loadUser() \{  
   try \{  
@@ -641,15 +637,15 @@ async function loadUser() \{
   \}  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In async/await, errors are handled using `try...catch`. A rejected promise is caught only if it is awaited inside the `try` block. For API calls, I check `response.ok`, throw an error for HTTP failures, handle it in `catch`, and use `finally` for cleanup like stopping a loader.
 
 ---
 
-# **2\. Custom error classes**
+## 2. Custom error classes
 
-## **Answer**
+## Answer
 
 Custom errors extend the built-in `Error` class and add extra context.
 
@@ -686,7 +682,7 @@ try \{
   \}  
 \}
 
-## **Why useful?**
+## Why useful?
 
 * Clear error type.  
 * Easier conditional handling.  
@@ -694,15 +690,15 @@ try \{
 * Better logging and monitoring.  
 * Cleaner separation between validation, API, auth, and network errors.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Custom error classes are useful when different errors need different handling. They extend `Error`, call `super(message)`, set a meaningful `name`, and can store extra metadata like status code, error code, or details. Then we can use `instanceof` to handle specific error types.
 
 ---
 
-# **3\. Difference between throw and return error**
+## 3. Difference between throw and return error
 
-## **Answer**
+## Answer
 
 Returning an error treats it like a normal value. Throwing an error stops normal flow and moves control to the nearest error handler.
 
@@ -736,15 +732,15 @@ try \{
   console.log(error.message); // "Email is required"  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `return` gives back a normal value, even if that value is an Error object. `throw` signals an exceptional failure and transfers control to `catch`. Use return for expected validation results and throw for exceptional or failed execution paths.
 
 ---
 
-# **4\. How does error propagation work?**
+## 4. How does error propagation work?
 
-## **Answer**
+## Answer
 
 If an error is not caught inside a function, it propagates to the caller.
 
@@ -762,15 +758,15 @@ try \{
   console.log(error.message); // "Failed in a"  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Error propagation means errors move up the call stack until they are caught. If a function cannot handle the error meaningfully, it should let it propagate or rethrow it with additional context.
 
 ---
 
-# **5\. How do you handle fetch errors?**
+## 5. How do you handle fetch errors?
 
-## **Answer**
+## Answer
 
 Handle both network errors and HTTP errors.
 
@@ -789,19 +785,19 @@ async function request(url) \{
   \}  
 \}
 
-## **Important point**
+## Important point
 
 `fetch` rejects for network failures, but not for HTTP statuses like `404` or `500`. So we must check `response.ok`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For fetch, I handle network errors with `try...catch`, and HTTP errors by checking `response.ok`. If it is false, I throw a custom API error with the status code so the caller can show the correct UI message.
 
 ---
 
-# **6\. What is unhandled promise rejection?**
+## 6. What is unhandled promise rejection?
 
-## **Answer**
+## Answer
 
 An unhandled promise rejection happens when a promise rejects and no `.catch()` or `try...catch` handles it.
 
@@ -823,21 +819,21 @@ load().catch((error) \=\> \{
   console.log(error.message); // "Failed"  
 \});
 
-## **Global handler**
+## Global handler
 
 window.addEventListener("unhandledrejection", (event) \=\> \{  
   console.log(event.reason);  
 \});
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An unhandled promise rejection happens when a promise rejects and no error handler catches it. It should be avoided by using `.catch()` or `try...catch` with `await`. A global `unhandledrejection` handler can log unexpected missed rejections.
 
 ---
 
-# **7\. React error handling**
+## 7. React error handling
 
-## **Answer**
+## Answer
 
 Use Error Boundaries for render-time errors and local `try...catch` for event handlers or async code.
 
@@ -861,7 +857,7 @@ class ErrorBoundary extends React.Component \{
   \}  
 \}
 
-## **Important trap**
+## Important trap
 
 Error Boundaries do not catch async errors or event handler errors.
 
@@ -877,13 +873,13 @@ function SaveButton() \{
   return \<button onClick=\{handleClick\}\>Save\</button\>;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In React, Error Boundaries catch rendering errors in the component tree and show fallback UI. They do not catch event handler errors or async errors, so those should be handled locally with `try...catch` or promise `.catch()`.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -902,6 +898,6 @@ In React, Error Boundaries catch rendering errors in the component tree and show
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 JavaScript error handling uses `try...catch`, `finally`, and `throw` to handle failures and control error flow. `try...catch` catches synchronous errors, `finally` is useful for cleanup, and `throw` is used to raise meaningful errors. Custom error classes extend `Error` and help handle different failure types like API, validation, auth, or timeout errors. Error propagation means an error moves up the call stack until caught. For async code, rejected promises must be handled with `.catch()` or `try...catch` around `await`. In frontend apps, global handlers like `window.onerror`, `unhandledrejection`, and React Error Boundaries are useful safety nets, but expected errors should still be handled locally.

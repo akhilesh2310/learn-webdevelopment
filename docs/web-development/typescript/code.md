@@ -5,9 +5,9 @@ sidebar_position: 4
 
 # Code
 
-# **Quick React / Next.js TypeScript Examples**
+## Quick React / Next.js TypeScript Examples
 
-## **1\. Basic types**
+## 1. Basic types
 
 let age: number \= 32;  
 let name: string \= "Akhilesh";  
@@ -29,7 +29,7 @@ function throwError(message: string): never \{
 
 ---
 
-## **2\. Object type**
+## 2. Object type
 
 type User \= \{  
   id: number;  
@@ -46,7 +46,7 @@ const user: User \= \{
 
 ---
 
-## **3\. Interface example**
+## 3. Interface example
 
 interface Product \{  
   id: number;  
@@ -62,7 +62,7 @@ Use `type` most of the time. Use `interface` when defining extendable object con
 
 ---
 
-## **4\. Array types**
+## 4. Array types
 
 type User \= \{  
   id: number;  
@@ -80,7 +80,7 @@ const names: Array\<string\> \= \["React", "Next.js"\];
 
 ---
 
-## **5\. Nested object type**
+## 5. Nested object type
 
 type Address \= \{  
   city: string;  
@@ -106,7 +106,7 @@ const user: User \= \{
 
 ---
 
-## **6\. Tree / recursive data type**
+## 6. Tree / recursive data type
 
 type TreeNode \= \{  
   id: string;  
@@ -137,7 +137,7 @@ Useful for file explorer, menu tree, comment thread, category tree.
 
 ---
 
-## **7\. Function types**
+## 7. Function types
 
 type Add \= (a: number, b: number) \=\> number;
 
@@ -153,7 +153,7 @@ const handleSave: OnSave \= (id, name) \=\> \{
 
 ---
 
-## **8\. Component props**
+## 8. Component props
 
 type ButtonProps \= \{  
   label: string;  
@@ -171,7 +171,7 @@ function Button(\{ label, disabled, onClick \}: ButtonProps) \{
 
 ---
 
-## **9\. Children prop**
+## 9. Children prop
 
 type CardProps \= \{  
   title: string;  
@@ -189,7 +189,7 @@ function Card(\{ title, children \}: CardProps) \{
 
 ---
 
-## **10\. useState types**
+## 10. useState types
 
 type User \= \{  
   id: number;  
@@ -212,7 +212,7 @@ const \[status, setStatus\] \= React.useState\<Status\>("idle");
 
 ---
 
-## **11\. Passing setState as prop**
+## 11. Passing setState as prop
 
 type SearchProps \= \{  
   searchText: string;  
@@ -237,7 +237,7 @@ type SearchProps \= \{
 
 ---
 
-## **12\. Form event types**
+## 12. Form event types
 
 function handleChange(event: React.ChangeEvent\<HTMLInputElement\>) \{  
   console.log(event.target.value);  
@@ -257,7 +257,7 @@ function handleSubmit(event: React.FormEvent\<HTMLFormElement\>) \{
 
 ---
 
-## **13\. Mouse and keyboard events**
+## 13. Mouse and keyboard events
 
 function handleClick(event: React.MouseEvent\<HTMLButtonElement\>) \{  
   console.log("Button clicked");  
@@ -275,7 +275,7 @@ function handleKeyDown(event: React.KeyboardEvent\<HTMLInputElement\>) \{
 
 ---
 
-## **14\. useRef types**
+## 14. useRef types
 
 const inputRef \= React.useRef\<HTMLInputElement | null\>(null);
 
@@ -293,7 +293,7 @@ const timerRef \= React.useRef\<ReturnType\<typeof setTimeout\> | null\>(null);
 
 ---
 
-## **15\. API response type**
+## 15. API response type
 
 type ApiResponse\<T\> \= \{  
   data: T;  
@@ -318,7 +318,7 @@ async function fetchUser(): Promise\<User\> \{
 
 ---
 
-## **16\. Union type**
+## 16. Union type
 
 type ButtonVariant \= "primary" | "secondary" | "danger";
 
@@ -333,7 +333,7 @@ function Button(\{ variant, label \}: ButtonProps) \{
 
 ---
 
-## **17\. Discriminated union**
+## 17. Discriminated union
 
 type ApiState\<T\> \=  
   | \{ status: "idle" \}  
@@ -362,7 +362,7 @@ if (state.status \=== "error") \{
 
 ---
 
-## **18\. Record / object map**
+## 18. Record / object map
 
 type Role \= "admin" | "user" | "guest";
 
@@ -378,7 +378,7 @@ type UserMap \= Record\<string, User\>;
 
 ---
 
-## **19\. Tuple**
+## 19. Tuple
 
 type Coordinates \= \[number, number\];
 
@@ -388,7 +388,7 @@ Useful when position/order matters.
 
 ---
 
-## **20\. Utility types**
+## 20. Utility types
 
 type User \= \{  
   id: number;  
@@ -409,7 +409,7 @@ type ReadonlyUser \= Readonly\<User\>;
 
 ---
 
-## **21\. useReducer types**
+## 21. useReducer types
 
 type State \= \{  
   count: number;  
@@ -440,7 +440,7 @@ const \[state, dispatch\] \= React.useReducer(reducer, \{ count: 0 \});
 
 ---
 
-## **22\. Context type**
+## 22. Context type
 
 type AuthContextValue \= \{  
   user: User | null;  
@@ -462,7 +462,7 @@ function useAuth() \{
 
 ---
 
-## **23\. Next.js page params**
+## 23. Next.js page params
 
 type PageProps \= \{  
   params: \{  
@@ -489,7 +489,7 @@ type PageProps \= \{
 
 ---
 
-## **24\. Nullable and optional data**
+## 24. Nullable and optional data
 
 type User \= \{  
   id: number;  
@@ -515,7 +515,7 @@ when the whole value may not exist yet.
 
 ---
 
-## **25\. Generic component**
+## 25. Generic component
 
 type ListProps\<T\> \= \{  
   items: T\[\];  
@@ -535,7 +535,7 @@ Usage:
 
 ---
 
-# **Quick Rule**
+## Quick Rule
 
 Object data          → type User \= \{ ... \}  
 Component props      → type Props \= \{ ... \}  
@@ -553,5 +553,89 @@ Tree data            → recursive type with children?: SameType\[\]
 Status values        → union type  
 Complex state        → discriminated union or useReducer
 
-| // 1\. Basic object type User \= \{   id: number;   name: string;   email?: string; // optional \}; // 2\. Component props type ButtonProps \= \{   label: string;   disabled?: boolean;   onClick: () \=\> void; \}; function Button(\{ label, disabled, onClick \}: ButtonProps) \{   return (     \<button disabled=\{disabled\} onClick=\{onClick\}\>       \{label\}     \</button\>   ); \} // 3\. Children prop type CardProps \= \{   title: string;   children: React.ReactNode; \}; function Card(\{ title, children \}: CardProps) \{   return (     \<div\>       \<h2\>\{title\}\</h2\>       \{children\}     \</div\>   ); \} // 4\. Array type type UserListProps \= \{   users: User\[\]; \}; // 5\. API response type type ApiResponse\<T\> \= \{   data: T;   success: boolean;   message?: string; \}; type UserResponse \= ApiResponse\<User\>; // 6\. useState type const \[user, setUser\] \= useState\<User | null\>(null); const \[users, setUsers\] \= useState\<User\[\]\>(\[\]); const \[loading, setLoading\] \= useState\<boolean\>(false); // 7\. Event type function handleChange(event: React.ChangeEvent\<HTMLInputElement\>) \{   console.log(event.target.value); \} function handleSubmit(event: React.FormEvent\<HTMLFormElement\>) \{   event.preventDefault(); \} // 8\. Button click event function handleClick(event: React.MouseEvent\<HTMLButtonElement\>) \{   console.log("clicked"); \} // 9\. Union type type Status \= "idle" | "loading" | "success" | "error"; const \[status, setStatus\] \= useState\<Status\>("idle"); // 10\. Next.js page params type PageProps \= \{   params: \{     id: string;   \}; \}; export default function Page(\{ params \}: PageProps) \{   return \<h1\>User ID: \{params.id\}\</h1\>; \} |
-| :---- |
+```tsx
+// 1. Basic object
+type User = {
+  id: number;
+  name: string;
+  email?: string; // optional
+};
+
+// 2. Component props
+type ButtonProps = {
+  label: string;
+  disabled?: boolean;
+  onClick: () => void;
+};
+
+function Button({ label, disabled, onClick }: ButtonProps) {
+  return (
+    <button disabled={disabled} onClick={onClick}>
+      {label}
+    </button>
+  );
+}
+
+// 3. Children prop
+type CardProps = {
+  title: string;
+  children: React.ReactNode;
+};
+
+function Card({ title, children }: CardProps) {
+  return (
+    <div>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
+}
+
+// 4. Array type
+type UserListProps = {
+  users: User[];
+};
+
+// 5. API response type
+type ApiResponse<T> = {
+  data: T;
+  success: boolean;
+  message?: string;
+};
+
+type UserResponse = ApiResponse<User>;
+
+// 6. useState type
+const [user, setUser] = useState<User | null>(null);
+const [users, setUsers] = useState<User[]>([]);
+const [loading, setLoading] = useState<boolean>(false);
+
+// 7. Event type
+function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  console.log(event.target.value);
+}
+
+function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+}
+
+// 8. Button click event
+function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+  console.log("clicked");
+}
+
+// 9. Union type
+type Status = "idle" | "loading" | "success" | "error";
+const [status, setStatus] = useState<Status>("idle");
+
+// 10. Next.js page params
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default function Page({ params }: PageProps) {
+  return <h1>User ID: {params.id}</h1>;
+}
+```

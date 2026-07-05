@@ -7,37 +7,37 @@ sidebar_position: 1
 
 Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](reconciliation-1.md), [React Performance](../../important/performance/react-performance.md).
 
-# **1\. React Fundamentals**
+## 1. React Fundamentals
 
-## **What is React?**
+## What is React?
 
-## **SPA vs MPA**
+## SPA vs MPA
 
-## **Virtual DOM**
+## Virtual DOM
 
-## **Real DOM vs Virtual DOM**
+## Real DOM vs Virtual DOM
 
-## **React Reconciliation**
+## React Reconciliation
 
-## **React Rendering Process**
+## React Rendering Process
 
-## **JSX**
+## JSX
 
-## **React Elements**
+## React Elements
 
-## **Components**
+## Components
 
-### **Functional Components**
+### Functional Components
 
-### **Class Components**
+### Class Components
 
-## **Props**
+## Props
 
-## **State**
+## State
 
-## **One-way Data Flow**
+## One-way Data Flow
 
-## **Common Interview Topics/Questions please**
+## Common Interview Topics/Questions please
 
 * Virtual DOM  
 * Why React is fast  
@@ -48,9 +48,9 @@ React.isStringMode
 
 ​React Strict Mode is a developer tool highlighting potential bugs or issues in a React application's codebase. It provides warnings to developers as feedback for errors that occur in an application, with no effect on the result because it does not render any visible UI.
 
-# **React Fundamentals**
+## React Fundamentals
 
-## **1\. What is React?**
+## 1. What is React?
 
 React is a JavaScript library for building user interfaces. It helps us build UI using small reusable pieces called components. Instead of manually writing DOM manipulation code like this:
 
@@ -90,7 +90,7 @@ State changes → React re-renders component → React updates required DOM chan
 
 React is not a full framework like Angular. It mainly focuses on the view layer. For routing, data fetching, forms, state management, and build setup, we usually combine React with other libraries or frameworks like React Router, Redux, Zustand, TanStack Query, Next.js, Vite, etc.
 
-### **Why React became popular**
+### Why React became popular
 
 React became popular because it gives a clean way to build complex UIs.
 
@@ -106,7 +106,7 @@ Its strengths are:
 * Can be used with TypeScript  
 * Can support SPA, SSR, SSG, and hybrid apps through frameworks like Next.js
 
-### **Simple real-world example**
+### Simple real-world example
 
 In an ad-tech dashboard, you may have:
 
@@ -126,15 +126,15 @@ Each part can be a separate React component.
 
 So instead of building one large page with mixed HTML, JavaScript, and DOM manipulation, React lets you split the UI into meaningful pieces.
 
-### **Compact interview-ready answer**
+### Compact interview-ready answer
 
 React is a JavaScript library for building user interfaces using reusable components. It lets us describe the UI declaratively based on state and props. When data changes, React re-renders the affected components, compares the new UI tree with the previous one, and updates only the necessary parts of the real DOM. React is mainly focused on the view layer and is commonly used to build SPAs, dashboards, forms, portals, and large-scale web applications.
 
 ---
 
-# **2\. SPA vs MPA**
+## 2. SPA vs MPA
 
-## **What is SPA?**
+## What is SPA?
 
 SPA means Single Page Application.
 
@@ -166,7 +166,7 @@ React changes the component tree
 
 Only required UI changes happen
 
-## **What is MPA?**
+## What is MPA?
 
 MPA means Multi Page Application.
 
@@ -194,7 +194,7 @@ JavaScript and CSS may reload depending on caching
 
 Traditional websites, server-rendered apps, old PHP/JSP/Rails/Django apps often work like MPAs.
 
-## **SPA flow**
+## SPA flow
 
 Initial request → Server sends HTML \+ JS bundle
 
@@ -206,7 +206,7 @@ React updates UI
 
 No full page reload
 
-## **MPA flow**
+## MPA flow
 
 User opens page → Server sends full HTML
 
@@ -214,7 +214,7 @@ User clicks another page → Browser requests another HTML page
 
 Full page reload happens
 
-## **SPA advantages**
+## SPA advantages
 
 SPA is good when the app is highly interactive.
 
@@ -246,7 +246,7 @@ Good for highly interactive UI
 
 Client-side state can be preserved between route changes
 
-## **SPA disadvantages**
+## SPA disadvantages
 
 Initial JavaScript bundle can be large
 
@@ -260,7 +260,7 @@ Requires client-side routing
 
 More responsibility on frontend
 
-## **MPA advantages**
+## MPA advantages
 
 Good SEO by default
 
@@ -272,7 +272,7 @@ Less JavaScript needed
 
 Server controls routing naturally
 
-## **MPA disadvantages**
+## MPA disadvantages
 
 Full page reload between pages
 
@@ -282,7 +282,7 @@ Shared client-side state is harder
 
 Repeated server rendering for navigation
 
-## **Modern reality**
+## Modern reality
 
 Today, the line between SPA and MPA is not always strict.
 
@@ -298,15 +298,15 @@ Frameworks like Next.js can support:
 
 So a modern React app may behave like an SPA after initial load, but still use server rendering for performance and SEO.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 An SPA loads a single HTML page and then updates the UI on the client side using JavaScript routing. It gives a smooth app-like experience and is good for dashboards and interactive applications. An MPA loads a new HTML page from the server for each route, which is simpler and naturally SEO-friendly but causes full page reloads. Modern React frameworks like Next.js can combine both approaches using SSR, SSG, and client-side navigation.
 
 ---
 
-# **3\. Virtual DOM**
+## 3. Virtual DOM
 
-## **Simple meaning**
+## Simple meaning
 
 The Virtual DOM is a lightweight JavaScript representation of the UI.
 
@@ -332,7 +332,7 @@ This object is not the real browser DOM.
 
 It is just React’s description of what the UI should look like.
 
-## **Why Virtual DOM exists**
+## Why Virtual DOM exists
 
 Direct DOM operations can be expensive when done frequently and poorly.
 
@@ -356,7 +356,7 @@ function Greeting(\{ name \}) \{
 
 We describe the final UI. React figures out how to update the real DOM.
 
-## **How Virtual DOM works conceptually**
+## How Virtual DOM works conceptually
 
 When state changes:
 
@@ -372,7 +372,7 @@ When state changes:
 
 This comparison process is called reconciliation.
 
-## **Important clarification**
+## Important clarification
 
 Virtual DOM itself is not magic.
 
@@ -396,7 +396,7 @@ Good state placement
 
 Virtual DOM comparison also has a cost. So we should not say “React is always fast because of Virtual DOM.” A badly structured React app can still be slow.
 
-## **Example**
+## Example
 
 function Counter() \{
 
@@ -418,15 +418,15 @@ React compares old and new UI descriptions and sees that only the text changed.
 
 So it updates only the text inside the real DOM node.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 The Virtual DOM is React’s lightweight JavaScript representation of the UI. When state or props change, React creates a new Virtual DOM tree, compares it with the previous one using reconciliation, and updates only the necessary parts of the real DOM. It helps React manage UI updates declaratively, but React performance also depends on diffing, batching, Fiber scheduling, stable keys, and good component design.
 
 ---
 
-# **4\. Real DOM vs Virtual DOM**
+## 4. Real DOM vs Virtual DOM
 
-## **Real DOM**
+## Real DOM
 
 The Real DOM is the actual browser Document Object Model.
 
@@ -450,7 +450,7 @@ document.querySelector("h1").innerText \= "Updated";
 
 When the DOM changes, the browser may need to recalculate layout, repaint pixels, and update the screen.
 
-## **Virtual DOM**
+## Virtual DOM
 
 The Virtual DOM is React’s in-memory JavaScript representation of the UI.
 
@@ -476,7 +476,7 @@ Example:
 
 React uses it to calculate what should change before touching the real DOM.
 
-## **Difference**
+## Difference
 
 Real DOM:
 
@@ -498,7 +498,7 @@ Used by React for comparison
 
 Managed by React
 
-## **Important point**
+## Important point
 
 The Virtual DOM is not faster than the Real DOM in every situation.
 
@@ -506,7 +506,7 @@ Creating and comparing Virtual DOM objects also takes time.
 
 React’s benefit is that it gives a predictable programming model and batches/optimizes updates so developers do not manually manage DOM changes.
 
-## **Example**
+## Example
 
 Suppose we update one counter value.
 
@@ -526,25 +526,25 @@ In a large app, managing every DOM update manually becomes difficult. React give
 
 State → UI
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 The Real DOM is the actual browser DOM that appears on the screen. The Virtual DOM is React’s JavaScript representation of the UI. React updates the Virtual DOM first, compares it with the previous version, and then commits only necessary changes to the Real DOM. The main benefit is not only performance, but also a predictable and maintainable way to build complex UIs.
 
 ---
 
-# **5\. React Reconciliation**
+## 5. React Reconciliation
 
 React Reconciliation is the process React uses to compare the previous React tree with the new React tree after state or props change.
 
 For the full explanation, rules, key behavior, state preservation, render/commit relationship, and interview traps, study [React Reconciliation](./reconciliation-1.md).
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 React Reconciliation is the process React uses to compare the previous React tree with the new React tree after state or props change. If element types are different, React replaces the subtree. If element types are the same, React reuses the DOM node or component instance and updates changed props or children. For lists, React uses keys to preserve correct item identity. Reconciliation happens during the render phase, and actual DOM updates happen during the commit phase.
 
 ---
 
-# **6\. React Rendering Process**
+## 6. React Rendering Process
 
 React rendering is the process where React calls your components to figure out what the UI should look like.
 
@@ -554,15 +554,15 @@ For the full render phase, commit phase, re-render triggers, lifecycle, and clea
 
 For the complete state update → Fiber → reconciliation → commit pipeline, study [React Pipeline](./react-pipeline.md).
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 React rendering is the process where React calls components to calculate what the UI should look like. A render can be triggered by state changes, props changes, context changes, or parent re-renders. During the render phase, React builds a new React tree and reconciles it with the previous tree. During the commit phase, React applies the required changes to the real DOM. Rendering should be pure, and DOM updates happen only when the final output changes.
 
 ---
 
-# **7\. JSX**
+## 7. JSX
 
-## **Simple meaning**
+## Simple meaning
 
 JSX stands for JavaScript XML.
 
@@ -586,7 +586,7 @@ React.createElement("h1", null, "Hello");
 
 In modern React setups, we do not always need to import React manually for JSX, depending on the compiler setup. But conceptually, JSX still becomes JavaScript that React can understand.
 
-## **Why JSX is useful**
+## Why JSX is useful
 
 JSX keeps UI structure and UI logic close.
 
@@ -610,7 +610,7 @@ function UserCard(\{ user \}) \{
 
 This is easier to read than manually creating DOM nodes.
 
-## **JSX can use JavaScript expressions**
+## JSX can use JavaScript expressions
 
 Use `\{\}` to write JavaScript expressions inside JSX.
 
@@ -638,9 +638,9 @@ You can use array mapping:
 
 ))\}
 
-## **JSX rules**
+## JSX rules
 
-### **1\. Return one parent element**
+### 1. Return one parent element
 
 Bad:
 
@@ -666,29 +666,29 @@ return (
 
 );
 
-### **2\. Use className instead of class**
+### 2. Use className instead of class
 
 \<div className="container"\>Hello\</div\>
 
-### **3\. Use htmlFor instead of for**
+### 3. Use htmlFor instead of for
 
 \<label htmlFor="email"\>Email\</label\>
 
 \<input id="email" /\>
 
-### **4\. Close all tags**
+### 4. Close all tags
 
 \<img src="/logo.png" alt="Logo" /\>
 
 \<input type="text" /\>
 
-### **5\. Use camelCase for most DOM props**
+### 5. Use camelCase for most DOM props
 
 \<button onClick=\{handleClick\}\>Click\</button\>
 
 React supports built-in browser HTML and SVG components with props and events, including React-specific props like `ref`.
 
-## **JSX is safe from basic injection by default**
+## JSX is safe from basic injection by default
 
 This:
 
@@ -704,15 +704,15 @@ But this is dangerous:
 
 Use `dangerouslySetInnerHTML` carefully.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 JSX is a syntax extension that lets us write HTML-like UI code inside JavaScript. JSX is not HTML; it gets compiled into JavaScript objects that React uses to build the UI. JSX supports JavaScript expressions inside curly braces, conditional rendering, list rendering, and component composition. It makes React code easier to read because the UI structure stays close to the logic that controls it.
 
 ---
 
-# **8\. React Elements**
+## 8. React Elements
 
-## **Simple meaning**
+## Simple meaning
 
 A React element is a plain JavaScript object that describes what should appear on the screen.
 
@@ -740,7 +740,7 @@ React elements are lightweight descriptions.
 
 They are not real DOM nodes.
 
-## **React element vs DOM element**
+## React element vs DOM element
 
 React element:
 
@@ -762,7 +762,7 @@ Can be expensive to update frequently
 
 Visible on the screen
 
-## **React element vs component**
+## React element vs component
 
 This is a common confusion.
 
@@ -788,7 +788,7 @@ Component \= blueprint/function
 
 Element \= description/object returned from JSX
 
-## **Example**
+## Example
 
 function Button() \{
 
@@ -806,7 +806,7 @@ Button \= component
 
 \<button\>Save\</button\> \= React element returned by Button
 
-## **Elements are immutable**
+## Elements are immutable
 
 Once a React element is created, you do not change it directly.
 
@@ -822,15 +822,15 @@ After state change:
 
 React does not mutate the old element. It creates a new one and compares.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 A React element is a plain JavaScript object that describes what should be rendered on the screen. JSX creates React elements. A component is a function or class that returns React elements. React elements are not real DOM nodes; they are lightweight descriptions used by React during rendering and reconciliation.
 
 ---
 
-# **9\. Components**
+## 9. Components
 
-## **Simple meaning**
+## Simple meaning
 
 A component is a reusable piece of UI.
 
@@ -856,7 +856,7 @@ Now you can use it like this:
 
 \<UserCard /\>
 
-## **Why components are useful**
+## Why components are useful
 
 Components help us split a large UI into smaller understandable pieces.
 
@@ -884,7 +884,7 @@ NotificationBell
 
 Each component has a clear responsibility.
 
-## **Component should ideally be focused**
+## Component should ideally be focused
 
 Good:
 
@@ -902,7 +902,7 @@ One component handles API calls, filters, table, modal, chart, export, permissio
 
 Large components become hard to test, reuse, and debug.
 
-## **Types of components**
+## Types of components
 
 Common categories:
 
@@ -920,7 +920,7 @@ Feature components
 
 Provider components
 
-### **Presentational component**
+### Presentational component
 
 Focuses on UI.
 
@@ -930,7 +930,7 @@ function Button(\{ label, onClick \}) \{
 
 \}
 
-### **Container component**
+### Container component
 
 Handles data and passes it down.
 
@@ -942,7 +942,7 @@ function UserContainer() \{
 
 \}
 
-## **Component composition**
+## Component composition
 
 React prefers composition.
 
@@ -972,15 +972,15 @@ function App() \{
 
 This makes components flexible.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 A React component is a reusable unit of UI. Components let us break large interfaces into smaller, manageable pieces. A component can receive data through props, manage local state, return JSX, and be composed with other components. Good React architecture depends heavily on creating focused, reusable, and predictable components.
 
 ---
 
-# **10\. Functional Components**
+## 10. Functional Components
 
-## **Simple meaning**
+## Simple meaning
 
 A functional component is a JavaScript function that returns JSX.
 
@@ -1004,7 +1004,7 @@ Usage:
 
 \<Greeting name="Akhilesh" /\>
 
-## **Functional components with state**
+## Functional components with state
 
 Earlier, functional components were mostly used for simple UI.
 
@@ -1028,7 +1028,7 @@ function Counter() \{
 
 \}
 
-## **Why functional components are preferred**
+## Why functional components are preferred
 
 Functional components are preferred in modern React because they are:
 
@@ -1042,7 +1042,7 @@ Work naturally with Hooks
 
 Better aligned with modern React patterns
 
-## **Hooks in functional components**
+## Hooks in functional components
 
 Common Hooks:
 
@@ -1060,7 +1060,7 @@ useContext → consume context
 
 useReducer → complex state logic
 
-## **Important rule**
+## Important rule
 
 Functional components should be pure.
 
@@ -1084,15 +1084,15 @@ function Total(\{ price \}) \{
 
 \}
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 A functional component is a JavaScript function that returns JSX. In modern React, functional components are the preferred way to build UI because Hooks allow them to manage state, effects, refs, context, and memoization. They are simpler than class components and align better with React’s current model of pure rendering and composition.
 
 ---
 
-# **11\. Class Components**
+## 11. Class Components
 
-## **Simple meaning**
+## Simple meaning
 
 A class component is a React component written using JavaScript class syntax.
 
@@ -1130,7 +1130,7 @@ class Counter extends React.Component \{
 
 Before Hooks, class components were used when we needed state or lifecycle methods.
 
-## **Class component lifecycle**
+## Class component lifecycle
 
 Common lifecycle methods:
 
@@ -1168,7 +1168,7 @@ class UserList extends React.Component \{
 
 \}
 
-## **Functional equivalent**
+## Functional equivalent
 
 function UserList() \{
 
@@ -1188,13 +1188,13 @@ function UserList() \{
 
 \}
 
-## **Are class components still used?**
+## Are class components still used?
 
 Yes, many old React codebases still use class components.
 
 But for new development, functional components with Hooks are usually preferred.
 
-## **Class components vs functional components**
+## Class components vs functional components
 
 Class components:
 
@@ -1220,19 +1220,19 @@ Preferred in modern React
 
 Better for composition
 
-## **StrictMode behavior**
+## StrictMode behavior
 
 In development, StrictMode can intentionally call lifecycle-related behavior extra times to help find missing cleanup logic. For class components, React docs mention that in StrictMode, React may call `componentDidMount`, then `componentWillUnmount`, then `componentDidMount` again in development to help detect cleanup issues.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 Class components are React components written using ES6 classes. They use `this.state`, `this.setState`, and lifecycle methods like `componentDidMount` and `componentWillUnmount`. Before Hooks, class components were required for stateful logic. In modern React, functional components with Hooks are preferred, but understanding class components is still useful for maintaining legacy codebases.
 
 ---
 
-# **12\. Props**
+## 12. Props
 
-## **Simple meaning**
+## Simple meaning
 
 Props are inputs passed from a parent component to a child component.
 
@@ -1268,7 +1268,7 @@ App passes props
 
 UserCard receives props
 
-## **Props are read-only**
+## Props are read-only
 
 A child component should not modify its props.
 
@@ -1314,7 +1314,7 @@ function Child(\{ name, onChangeName \}) \{
 
 \}
 
-## **Props can pass anything**
+## Props can pass anything
 
 Props can pass:
 
@@ -1348,7 +1348,7 @@ Example passing children:
 
 \</Card\>
 
-## **Props help reuse components**
+## Props help reuse components
 
 Instead of writing separate components:
 
@@ -1372,7 +1372,7 @@ Usage:
 
 \<Button variant="danger"\>Delete\</Button\>
 
-## **Props and re-rendering**
+## Props and re-rendering
 
 When parent re-renders, child may also re-render.
 
@@ -1390,15 +1390,15 @@ const config \= React.useMemo(() \=\> (\{ showRole: true \}), \[\]);
 
 \<UserCard config=\{config\} /\>
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 Props are read-only inputs passed from a parent component to a child component. They allow components to be reusable and configurable. Props can contain values, objects, functions, React elements, or children. A child should not mutate props. If child needs to update data, the parent should pass a callback that updates parent state.
 
 ---
 
-# **13\. State**
+## 13. State
 
-## **Simple meaning**
+## Simple meaning
 
 State is data that belongs to a component and can change over time.
 
@@ -1428,7 +1428,7 @@ count \= current state value
 
 setCount \= function to update state
 
-## **State is used for interactive UI**
+## State is used for interactive UI
 
 Examples of state:
 
@@ -1454,7 +1454,7 @@ Selected hotel
 
 Selected campaign
 
-## **State update triggers render**
+## State update triggers render
 
 setCount(count \+ 1);
 
@@ -1466,7 +1466,7 @@ Render this component again
 
 Update UI if output changed
 
-## **State should not be mutated directly**
+## State should not be mutated directly
 
 Bad:
 
@@ -1490,7 +1490,7 @@ Why?
 
 React compares references. If we mutate the same object, React may not detect the change correctly, and the code becomes unpredictable.
 
-## **State updates can be asynchronous/batched**
+## State updates can be asynchronous/batched
 
 React may batch multiple state updates together for performance.
 
@@ -1510,7 +1510,7 @@ setCount(prev \=\> prev \+ 1);
 
 Answer: Final count becomes `2`.
 
-## **State preservation**
+## State preservation
 
 React keeps track of which state belongs to which component based on its position in the UI tree. React docs explain that state is isolated between components and React tracks state based on where the component sits in the UI tree.
 
@@ -1522,7 +1522,7 @@ If `Modal` is removed from the tree, its state is destroyed.
 
 If it appears again, it starts fresh.
 
-## **Local state vs global state**
+## Local state vs global state
 
 Use local state when only one component or a small subtree needs the data.
 
@@ -1552,15 +1552,15 @@ Notifications
 
 Feature flags
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 State is data owned by a component that can change over time. When state changes, React re-renders the component and updates the UI if needed. State should be treated as immutable, so we should update objects and arrays by creating new references. Local state is best for UI-specific data, while shared state is used when multiple parts of the app need the same data.
 
 ---
 
-# **14\. One-way Data Flow**
+## 14. One-way Data Flow
 
-## **Simple meaning**
+## Simple meaning
 
 One-way data flow means data flows from parent to child through props.
 
@@ -1570,7 +1570,7 @@ Child components do not directly change parent state.
 
 Instead, parent passes a callback function to the child.
 
-## **Example**
+## Example
 
 function Parent() \{
 
@@ -1612,7 +1612,7 @@ React re-renders UI
 
 The child does not directly modify `count`.
 
-## **Why one-way data flow is useful**
+## Why one-way data flow is useful
 
 It makes the app easier to understand.
 
@@ -1626,7 +1626,7 @@ Who updates it?
 
 This avoids unpredictable changes from multiple places.
 
-## **Real-world example**
+## Real-world example
 
 Suppose we have a filter panel and hotel list.
 
@@ -1662,7 +1662,7 @@ Both children get updated data
 
 This is predictable.
 
-## **One-way flow vs two-way binding**
+## One-way flow vs two-way binding
 
 In two-way binding, UI and data can update each other more directly.
 
@@ -1696,15 +1696,15 @@ function InputBox() \{
 
 This is called a controlled component.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 One-way data flow means data moves from parent to child through props. A child cannot directly modify parent state. If a child needs to trigger a change, the parent passes a callback function. This makes React apps predictable because state ownership is clear and UI updates follow a simple flow: state changes, props update, components re-render.
 
 ---
 
-# **15\. Why React is Fast**
+## 15. Why React is Fast
 
-## **Important correction**
+## Important correction
 
 React is not automatically fast.
 
@@ -1725,15 +1725,15 @@ For full optimization strategy, profiler-first guidance, `React.memo`, `useMemo`
 
 For Fiber scheduling details, study [React Fiber](./react-fiber.md) and [React Under The Hood](../react-under-the-hood.md).
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 React is fast because it uses declarative UI, Virtual DOM, reconciliation, batched updates, Fiber scheduling, and a component-based architecture. It updates only necessary DOM changes instead of manually rebuilding the full UI. However, React is not automatically fast. Performance also depends on good state placement, stable keys, memoization where needed, code splitting, virtualization, and avoiding expensive render logic.
 
 ---
 
-# **16\. Props vs State**
+## 16. Props vs State
 
-## **Simple meaning**
+## Simple meaning
 
 Props are data passed into a component.
 
@@ -1743,7 +1743,7 @@ Props \= input from parent
 
 State \= internal changing data
 
-## **Props example**
+## Props example
 
 function UserCard(\{ name \}) \{
 
@@ -1757,7 +1757,7 @@ function UserCard(\{ name \}) \{
 
 The child receives it from parent.
 
-## **State example**
+## State example
 
 function Counter() \{
 
@@ -1771,7 +1771,7 @@ function Counter() \{
 
 The component owns it and can update it.
 
-## **Comparison**
+## Comparison
 
 Props:
 
@@ -1793,7 +1793,7 @@ Used for interactive data
 
 Changes cause re-render
 
-## **Real-world example**
+## Real-world example
 
 function CampaignCard(\{ campaign \}) \{
 
@@ -1829,7 +1829,7 @@ The campaign data comes from parent.
 
 The expanded/collapsed status belongs to this card.
 
-## **When to use props**
+## When to use props
 
 Use props when:
 
@@ -1841,7 +1841,7 @@ Child needs configuration
 
 Child needs callback from parent
 
-## **When to use state**
+## When to use state
 
 Use state when:
 
@@ -1853,7 +1853,7 @@ User interaction changes UI
 
 Component owns the data
 
-## **Common mistake**
+## Common mistake
 
 Do not copy props into state unless you really need to.
 
@@ -1879,17 +1879,17 @@ function UserCard(\{ name \}) \{
 
 Use local state only if the component truly needs independent editable data.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 Props are read-only inputs passed from parent to child. State is data owned and managed by a component. Props make components reusable and configurable. State is used for data that changes over time, usually because of user interaction or async updates. Props flow downward, while state updates trigger re-rendering.
 
 ---
 
-# **17\. StrictMode**
+## 17. StrictMode
 
 You wrote “StringMode”, but the React concept is **StrictMode**.
 
-## **Simple meaning**
+## Simple meaning
 
 StrictMode is a development-only tool in React that helps find potential bugs in components.
 
@@ -1909,7 +1909,7 @@ It only adds extra checks during development.
 
 React docs explain that StrictMode helps find bugs caused by impure rendering by calling certain pure functions twice in development.
 
-## **Why StrictMode exists**
+## Why StrictMode exists
 
 React expects components to be pure.
 
@@ -1933,7 +1933,7 @@ This component is impure because it changes external variable during render.
 
 StrictMode helps expose such issues.
 
-## **Common StrictMode behaviors**
+## Common StrictMode behaviors
 
 In development, StrictMode may:
 
@@ -1971,7 +1971,7 @@ function ChatRoom() \{
 
 StrictMode helps check whether cleanup is correct.
 
-## **Why API calls may appear twice in development**
+## Why API calls may appear twice in development
 
 Sometimes developers see API calls happening twice in development.
 
@@ -2005,7 +2005,7 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **Should we remove StrictMode?**
+## Should we remove StrictMode?
 
 Usually, no.
 
@@ -2013,31 +2013,31 @@ StrictMode helps catch problems early.
 
 Removing it may hide bugs that can appear later with concurrent rendering, remounting, or lifecycle issues.
 
-## **Compact interview-ready answer**
+## Compact interview-ready answer
 
 StrictMode is a development-only React tool that helps detect potential bugs. It does not affect production UI. In development, it may intentionally render components twice or run effects setup and cleanup extra times to find impure rendering and missing cleanup logic. It is useful because React components should be pure and effects should clean up properly.
 
 ---
 
-# **18\. Common Interview Topics and Questions**
+## 18. Common Interview Topics and Questions
 
-## **1\. What is React?**
+## 1. What is React?
 
 React is a JavaScript library for building user interfaces using reusable components. It lets us describe UI declaratively based on state and props. When data changes, React re-renders components, compares the new UI tree with the old one, and updates only the necessary DOM parts.
 
-## **2\. What is Virtual DOM?**
+## 2. What is Virtual DOM?
 
 Virtual DOM is React’s lightweight JavaScript representation of the UI. React creates a new Virtual DOM tree after state or props change, compares it with the previous tree, and then updates the real DOM where needed.
 
-## **3\. Real DOM vs Virtual DOM?**
+## 3. Real DOM vs Virtual DOM?
 
 The Real DOM is the actual browser DOM. The Virtual DOM is a JavaScript representation of the UI. React uses the Virtual DOM to calculate changes before committing updates to the Real DOM.
 
-## **4\. What is reconciliation?**
+## 4. What is reconciliation?
 
 Reconciliation is the process where React compares the old React tree with the new React tree and decides what needs to change in the real DOM.
 
-## **5\. What causes a React component to re-render?**
+## 5. What causes a React component to re-render?
 
 Common causes:
 
@@ -2048,53 +2048,53 @@ Common causes:
 * External store update  
 * Route change
 
-## **6\. Does re-render always mean DOM update?**
+## 6. Does re-render always mean DOM update?
 
 No. A component may re-render, but if the resulting UI is same, React may not update the DOM.
 
-## **7\. Why are keys important?**
+## 7. Why are keys important?
 
 Keys help React identify list items across renders. They preserve correct component identity when items are inserted, deleted, sorted, or reordered.
 
-## **8\. Why should we avoid index as key?**
+## 8. Why should we avoid index as key?
 
 Index as key can cause wrong state preservation when list order changes. It can attach input values, checkbox states, expanded states, or selected states to the wrong item.
 
-## **9\. What is JSX?**
+## 9. What is JSX?
 
 JSX is a syntax extension that lets us write HTML-like code inside JavaScript. It gets compiled into React elements.
 
-## **10\. What is a React element?**
+## 10. What is a React element?
 
 A React element is a plain JavaScript object that describes what should be rendered. It is not the same as a real DOM node.
 
-## **11\. What is a component?**
+## 11. What is a component?
 
 A component is a reusable piece of UI. It can receive props, manage state, return JSX, and be composed with other components.
 
-## **12\. Functional vs class components?**
+## 12. Functional vs class components?
 
 Functional components are JavaScript functions that return JSX and use Hooks for state/effects. Class components use ES6 classes, `this.state`, `this.setState`, and lifecycle methods. Modern React mostly prefers functional components.
 
-## **13\. Props vs state?**
+## 13. Props vs state?
 
 Props are read-only inputs passed from parent to child. State is data owned by a component and can change over time.
 
-## **14\. What is one-way data flow?**
+## 14. What is one-way data flow?
 
 Data flows from parent to child through props. If child wants to update parent data, parent passes a callback.
 
-## **15\. Why is React fast?**
+## 15. Why is React fast?
 
 React is efficient because of declarative UI, Virtual DOM, reconciliation, batched updates, Fiber scheduling, stable component model, and optimization tools like memoization and lazy loading. But React apps can still be slow if designed poorly.
 
-## **16\. What is StrictMode?**
+## 16. What is StrictMode?
 
 StrictMode is a development-only tool that helps detect bugs like impure rendering and missing cleanup. It may intentionally render components or run effects extra times in development.
 
 ---
 
-# **Final Compact Revision**
+## Final Compact Revision
 
 React is a JavaScript library for building UI using reusable components.
 

@@ -39,7 +39,7 @@ Now let’s fit each term clearly.
 
 ---
 
-# **1\. Your state changes**
+## 1. Your state changes
 
 Example:
 
@@ -64,7 +64,7 @@ Trigger
 Scheduling  
 ---
 
-# **2\. React schedules an update**
+## 2. React schedules an update
 
 After `setCount`, React creates an update request internally.
 
@@ -95,7 +95,7 @@ At this point, **React Fiber** starts becoming important.
 
 ---
 
-# **3\. React Fiber starts work**
+## 3. React Fiber starts work
 
 React Fiber is React’s internal engine for managing rendering work.
 
@@ -130,7 +130,7 @@ Fiber helps React avoid blocking the browser for too long.
 
 ---
 
-# **4\. React calls your component again**
+## 4. React calls your component again
 
 Now React enters the **render phase**.
 
@@ -166,7 +166,7 @@ Component execution
 Pure rendering  
 ---
 
-# **5\. Component returns new JSX**
+## 5. Component returns new JSX
 
 Your component returns JSX.
 
@@ -191,7 +191,7 @@ Related term:
 JSX  
 ---
 
-# **6\. JSX becomes React elements**
+## 6. JSX becomes React elements
 
 JSX gets converted into React elements.
 
@@ -223,7 +223,7 @@ React element \= object created from JSX
 Virtual DOM \= tree of React elements  
 ---
 
-# **7\. React creates a new React tree**
+## 7. React creates a new React tree
 
 After calling components, React gets a new tree.
 
@@ -250,7 +250,7 @@ React tree
 React element tree  
 ---
 
-# **8\. React Fiber builds/updates the Fiber tree**
+## 8. React Fiber builds/updates the Fiber tree
 
 This is where many people get confused.
 
@@ -289,7 +289,7 @@ Work-in-progress tree
 Current tree  
 ---
 
-# **9\. Reconciliation happens**
+## 9. Reconciliation happens
 
 Now React compares:
 
@@ -318,7 +318,7 @@ Important:
 Reconciliation is the overall comparison process.  
 ---
 
-# **10\. Diffing algorithm compares old and new tree**
+## 10. Diffing algorithm compares old and new tree
 
 Inside reconciliation, React uses a **diffing algorithm**.
 
@@ -326,7 +326,7 @@ Diffing means finding the difference between old tree and new tree.
 
 React follows practical rules.
 
-## **Rule 1: Different type means replace**
+## Rule 1: Different type means replace
 
 Old:
 
@@ -345,7 +345,7 @@ Decision:
 Remove div  
 Create span
 
-## **Rule 2: Same DOM type means reuse**
+## Rule 2: Same DOM type means reuse
 
 Old:
 
@@ -365,7 +365,7 @@ Decision:
 Reuse button  
 Update className only
 
-## **Rule 3: Same component type means preserve state**
+## Rule 3: Same component type means preserve state
 
 Old:
 
@@ -386,7 +386,7 @@ Update props
 Preserve state  
 Re-render child tree
 
-## **Rule 4: Keys help with lists**
+## Rule 4: Keys help with lists
 
 Old:
 
@@ -414,7 +414,7 @@ Reconciliation \= full process
 Diffing \= comparison rules used inside reconciliation  
 ---
 
-# **11\. React decides what changed**
+## 11. React decides what changed
 
 After diffing, React knows the required changes.
 
@@ -449,7 +449,7 @@ The simple idea is:
 React prepares what needs to be committed to the DOM.  
 ---
 
-# **12\. Render phase completes**
+## 12. Render phase completes
 
 Everything until now happened in the **render phase**.
 
@@ -482,7 +482,7 @@ Reconciliation
 Diffing  
 ---
 
-# **13\. Commit phase starts**
+## 13. Commit phase starts
 
 Now React enters the **commit phase**.
 
@@ -505,7 +505,7 @@ Important:
 Commit phase \= DOM update phase  
 ---
 
-# **14\. React updates the real DOM**
+## 14. React updates the real DOM
 
 Now React touches the actual browser DOM.
 
@@ -537,7 +537,7 @@ Refs
 useLayoutEffect  
 ---
 
-# **15\. Browser paints updated screen**
+## 15. Browser paints updated screen
 
 After DOM updates, the browser may do:
 
@@ -561,7 +561,7 @@ The browser then handles visual painting.
 
 ---
 
-# **Full mapping in one table**
+## Full mapping in one table
 
 | Step | What happens | React term |
 | ----- | ----- | ----- |
@@ -583,7 +583,7 @@ The browser then handles visual painting.
 
 ---
 
-# **Best mental model diagram**
+## Best mental model diagram
 
 setState()  
  ↓  
@@ -620,15 +620,15 @@ Browser performs layout/paint if needed
 User sees updated UI  
 ---
 
-# **Very simple definitions inside this flow**
+## Very simple definitions inside this flow
 
-## **JSX**
+## JSX
 
 The syntax you write.
 
 \<h1\>Hello\</h1\>
 
-## **React element**
+## React element
 
 The JavaScript object created from JSX.
 
@@ -639,7 +639,7 @@ The JavaScript object created from JSX.
  \}  
 \}
 
-## **Virtual DOM**
+## Virtual DOM
 
 The tree of React elements.
 
@@ -647,50 +647,50 @@ App
 └── div  
    └── h1
 
-## **Fiber**
+## Fiber
 
 React’s internal work system that tracks, schedules, pauses, resumes, and commits updates.
 
 Fiber \= work manager
 
-## **Render**
+## Render
 
 React calls your component to calculate the next UI.
 
 Render \= calculate UI
 
-## **Re-render**
+## Re-render
 
 React calls the same component again after an update.
 
 Re-render \= component function runs again
 
-## **Reconciliation**
+## Reconciliation
 
 React compares old tree and new tree.
 
 Reconciliation \= compare old UI with new UI
 
-## **Diffing**
+## Diffing
 
 The actual comparison rules used during reconciliation.
 
 Diffing \= find what exactly changed
 
-## **Commit**
+## Commit
 
 React applies changes to the real DOM.
 
 Commit \= update DOM
 
-## **Paint**
+## Paint
 
 Browser displays the updated UI.
 
 Paint \= browser shows final pixels  
 ---
 
-# **Most important takeaway**
+## Most important takeaway
 
 React update has two big parts:
 
@@ -735,13 +735,13 @@ Good question. The correct answer is:
 
 In common explanations, people say **Virtual DOM**, but internally React mainly works with a **Fiber tree**.
 
-## **Simple difference**
+## Simple difference
 
 Virtual DOM / React element tree \= description of what UI should look like
 
 Fiber tree \= React’s internal work structure used to render, compare, schedule, and update UI
 
-## **1\. React element tree / Virtual DOM**
+## 1. React element tree / Virtual DOM
 
 When your component returns JSX:
 
@@ -772,7 +772,7 @@ It is basically:
 
 What should the UI look like?
 
-## **2\. Fiber tree**
+## 2. Fiber tree
 
 React then uses those React elements to create/update its internal **Fiber tree**.
 
@@ -802,7 +802,7 @@ What priority is this update?
 Should this work be paused/resumed?  
 What DOM changes need to be committed?
 
-## **The best mental model**
+## The best mental model
 
 Use this:
 
@@ -818,10 +818,10 @@ Commit changes to Real DOM
 
 But more accurately, reconciliation happens while React is building/updating the Fiber tree.
 
-## **In one line**
+## In one line
 
 **Virtual DOM is the UI description. Fiber tree is React’s internal work tree built from that description.**
 
-## **Interview-safe answer**
+## Interview-safe answer
 
 React elements, often called the Virtual DOM, describe what the UI should look like. React Fiber is the internal tree structure React uses to process those elements, track state and effects, schedule work, perform reconciliation, and commit DOM updates. So they are related, but not the same. Virtual DOM is the description; Fiber tree is the execution/work structure React uses internally.

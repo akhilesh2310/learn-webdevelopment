@@ -5,15 +5,15 @@ sidebar_position: 2
 
 # Phase Wise
 
-# **Phase 1 (First 2 Weeks)**
+## Phase 1 (First 2 Weeks)
 
 Goal: Get interview-ready ASAP
 
 Daily Time: 5-6 hours
 
-## **Morning (2 Hours)**
+## Morning (2 Hours)
 
-### **JavaScript \+ TypeScript**
+### JavaScript \+ TypeScript
 
 Days 1-3
 
@@ -45,7 +45,7 @@ Days 8-14
 * Type Narrowing  
 * Advanced TypeScript
 
-### **Practice**
+### Practice
 
 Implement:
 
@@ -62,15 +62,15 @@ These appear constantly in frontend interviews.
 
 ---
 
-## **Afternoon (2 Hours)**
+## Afternoon (2 Hours)
 
-### **React From Scratch**
+### React From Scratch
 
 You don't need to become a React beginner.
 
 You need Staff Engineer React knowledge.
 
-### **Week 1**
+### Week 1
 
 Day 1
 
@@ -107,7 +107,7 @@ Day 7
 
 ---
 
-### **Week 2**
+### Week 2
 
 * React Rendering  
 * Reconciliation  
@@ -122,9 +122,9 @@ Day 7
 
 ---
 
-# **Evening (1 Hour)**
+## Evening (1 Hour)
 
-### **Easy DSA**
+### Easy DSA
 
 Focus only on patterns.
 
@@ -132,7 +132,7 @@ Do NOT do random problems.
 
 ---
 
-### **Arrays**
+### Arrays
 
 Solve:
 
@@ -143,7 +143,7 @@ Solve:
 
 ---
 
-### **Strings**
+### Strings
 
 * Valid Anagram  
 * Longest Common Prefix  
@@ -151,7 +151,7 @@ Solve:
 
 ---
 
-### **HashMap**
+### HashMap
 
 * Two Sum  
 * Group Anagrams  
@@ -159,35 +159,35 @@ Solve:
 
 ---
 
-### **Sliding Window**
+### Sliding Window
 
 * Maximum Subarray  
 * Longest Substring Without Repeating Characters
 
 ---
 
-### **Stack**
+### Stack
 
 * Valid Parentheses  
 * Min Stack
 
 ---
 
-### **Queue**
+### Queue
 
 * Moving Average  
 * Implement Queue Using Stack
 
 ---
 
-### **Binary Search**
+### Binary Search
 
 * Binary Search  
 * Search Insert Position
 
 ---
 
-### **Trees**
+### Trees
 
 * Maximum Depth  
 * Invert Binary Tree  
@@ -197,7 +197,7 @@ That's enough for 80% of frontend interviews.
 
 ---
 
-# **Phase 2 (Week 3\)**
+## Phase 2 (Week 3\)
 
 System Design
 
@@ -205,7 +205,7 @@ This is where your profile will shine.
 
 ---
 
-## **Day 15**
+## Day 15
 
 Design:
 
@@ -213,7 +213,7 @@ Design:
 
 ---
 
-## **Day 16**
+## Day 16
 
 Design:
 
@@ -221,7 +221,7 @@ Design:
 
 ---
 
-## **Day 17**
+## Day 17
 
 Design:
 
@@ -229,7 +229,7 @@ Design:
 
 ---
 
-## **Day 18**
+## Day 18
 
 Design:
 
@@ -237,7 +237,7 @@ Design:
 
 ---
 
-## **Day 19**
+## Day 19
 
 Design:
 
@@ -245,7 +245,7 @@ Design:
 
 ---
 
-## **Day 20**
+## Day 20
 
 Design:
 
@@ -253,7 +253,7 @@ Design:
 
 ---
 
-## **Day 21**
+## Day 21
 
 Design:
 
@@ -263,7 +263,7 @@ This one is almost guaranteed for your interviews.
 
 ---
 
-# **Phase 3 (Week 4\)**
+## Phase 3 (Week 4\)
 
 Frontend System Design
 
@@ -271,7 +271,7 @@ Very important for Staff roles.
 
 Prepare:
 
-### **Design Netflix**
+### Design Netflix
 
 Topics:
 
@@ -282,7 +282,7 @@ Topics:
 
 ---
 
-### **Design LinkedIn Feed**
+### Design LinkedIn Feed
 
 Topics:
 
@@ -292,7 +292,7 @@ Topics:
 
 ---
 
-### **Design Google Docs**
+### Design Google Docs
 
 Topics:
 
@@ -301,7 +301,7 @@ Topics:
 
 ---
 
-### **Design Large Dashboard**
+### Design Large Dashboard
 
 Topics:
 
@@ -312,32 +312,32 @@ Topics:
 
 ---
 
-# **Every Day**
+## Every Day
 
 Spend 30 minutes on Behavioral Questions.
 
 Prepare stories for:
 
-### **Leadership**
+### Leadership
 
 * Leading 8 engineers  
 * Mentoring juniors  
 * Architecture decisions
 
-### **Conflict**
+### Conflict
 
 * Team disagreement  
 * Technical debates
 
-### **Performance**
+### Performance
 
 * 11s → 700ms story
 
-### **Microfrontend**
+### Microfrontend
 
 * Monolith → 14 MFEs story
 
-### **GraphQL**
+### GraphQL
 
 * 60% API reduction story
 
@@ -345,13 +345,13 @@ These stories are likely to be asked more often than DSA for Staff Engineer role
 
 ---
 
-# **Interview Strategy**
+## Interview Strategy
 
 Apply immediately while preparing.
 
 Don't wait until you're "ready".
 
-### **Daily**
+### Daily
 
 * 10 applications  
 * 5 recruiter messages  

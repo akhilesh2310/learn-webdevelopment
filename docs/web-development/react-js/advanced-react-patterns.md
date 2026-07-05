@@ -13,42 +13,42 @@ Use this page for reusable React patterns such as HOC, render props, custom hook
 
 Use [Component Communication Patterns](component-communication-patterns.md) for deciding how components pass data, callbacks, refs, context, or events between each other.
 
-# **9\. Advanced React Patterns**
+## 9. Advanced React Patterns
 
-## **Higher Order Components (HOC)**
+## Higher Order Components (HOC)
 
-## **Render Props**
+## Render Props
 
-## **Compound Components**
+## Compound Components
 
-## **Custom Hooks Pattern**
+## Custom Hooks Pattern
 
-## **Provider Pattern**
+## Provider Pattern
 
-## **Controlled Component Pattern**
+## Controlled Component Pattern
 
-## **Headless Components**
+## Headless Components
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * HOC vs Custom Hooks  
 * Render Props
 
-# **Advanced React Patterns**
+## Advanced React Patterns
 
 Advanced React patterns help us reuse logic, compose flexible components, and separate behavior from UI. In modern React, **custom hooks and composition are usually preferred**, but older patterns like **HOC** and **Render Props** are still important because many libraries and legacy codebases use them.
 
 ---
 
-# **1\. Higher Order Components**
+## 1. Higher Order Components
 
-## **Simple meaning**
+## Simple meaning
 
 A Higher Order Component, or HOC, is a function that takes a component and returns a new enhanced component.
 
 const EnhancedComponent \= withFeature(BaseComponent);
 
-## **Basic example**
+## Basic example
 
 function withLogger(WrappedComponent) \{  
   return function EnhancedComponent(props) \{  
@@ -68,7 +68,7 @@ Usage:
 
 \<UserCardWithLogger name="Akhilesh" /\>
 
-## **Key mental model**
+## Key mental model
 
 HOC wraps a component and adds extra behavior.
 
@@ -78,7 +78,7 @@ HOC adds behavior
       ↓  
 Enhanced Component
 
-## **Practical use cases**
+## Practical use cases
 
 * Authentication wrapper.  
 * Permission-based rendering.  
@@ -89,7 +89,7 @@ Enhanced Component
 * Injecting common props.  
 * Legacy code reuse.
 
-## **Example: auth HOC**
+## Example: auth HOC
 
 function withAuth(WrappedComponent) \{  
   return function AuthenticatedComponent(props) \{  
@@ -103,7 +103,7 @@ function withAuth(WrappedComponent) \{
   \};  
 \}
 
-## **Common problems with HOC**
+## Common problems with HOC
 
 * Wrapper hell.  
 * Prop name collisions.  
@@ -112,21 +112,21 @@ function withAuth(WrappedComponent) \{
 * Static methods need hoisting.  
 * TypeScript typing can become complex.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A Higher Order Component is a function that takes a component and returns a new component with added behavior. HOCs are useful for cross-cutting concerns like auth, permissions, logging, and feature flags, but in modern React, custom hooks are often preferred because they reuse logic without adding wrapper components.
 
 ---
 
-# **2\. Render Props**
+## 2. Render Props
 
-## **Simple meaning**
+## Simple meaning
 
 Render Props is a pattern where a component receives a function prop and uses that function to decide what to render.
 
 \<DataProvider render=\{(data) \=\> \<UI data=\{data\} /\>\} /\>
 
-## **Basic example**
+## Basic example
 
 function MouseTracker(\{ render \}) \{  
   const \[position, setPosition\] \= React.useState(\{  
@@ -158,7 +158,7 @@ Usage:
   )\}  
 /\>
 
-## **Children as function**
+## Children as function
 
 Render props are often written using `children`.
 
@@ -181,7 +181,7 @@ Usage:
   )\}  
 \</Toggle\>
 
-## **Key mental model**
+## Key mental model
 
 The component owns behavior. The caller controls rendering.
 
@@ -189,7 +189,7 @@ Component provides state/logic
       ↓  
 Render function decides UI
 
-## **Practical use cases**
+## Practical use cases
 
 * Reusable state logic.  
 * Flexible UI rendering.  
@@ -198,21 +198,21 @@ Render function decides UI
 * Toggle/dropdown/tooltip behavior.  
 * Older code before hooks.
 
-## **Common problems**
+## Common problems
 
 * Nested render props can become hard to read.  
 * Inline render functions can affect memoization.  
 * Custom hooks are usually simpler now.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Render Props is a pattern where a component shares logic by calling a function prop to render UI. It gives flexibility because the component controls behavior while the consumer controls the rendered output. In modern React, custom hooks often replace render props for logic reuse.
 
 ---
 
-# **3\. Compound Components**
+## 3. Compound Components
 
-## **Simple meaning**
+## Simple meaning
 
 Compound components are multiple components that work together under one parent.
 
@@ -228,7 +228,7 @@ Example API:
   \<Tabs.Panel value="settings"\>Settings content\</Tabs.Panel\>  
 \</Tabs\>
 
-## **Key mental model**
+## Key mental model
 
 Parent manages shared state. Children communicate through context.
 
@@ -238,7 +238,7 @@ Tabs.Tab updates activeTab
       ↓  
 Tabs.Panel reads activeTab
 
-## **Basic example**
+## Basic example
 
 const TabsContext \= React.createContext(null);
 
@@ -287,7 +287,7 @@ function Panel(\{ value, children \}) \{
 Tabs.Tab \= Tab;  
 Tabs.Panel \= Panel;
 
-## **Good use cases**
+## Good use cases
 
 * Tabs.  
 * Accordion.  
@@ -299,7 +299,7 @@ Tabs.Panel \= Panel;
 * Radio group.  
 * Carousel.
 
-## **Why useful**
+## Why useful
 
 * Clean API.  
 * Flexible composition.  
@@ -307,15 +307,15 @@ Tabs.Panel \= Panel;
 * Good for design systems.  
 * Parent-child relationship is clear.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Compound Components are a pattern where related components work together under a shared parent. The parent manages common state, and children access it through context. This pattern is useful for flexible design-system components like Tabs, Accordion, Menu, Select, and Modal.
 
 ---
 
-# **4\. Custom Hooks Pattern**
+## 4. Custom Hooks Pattern
 
-## **Simple meaning**
+## Simple meaning
 
 A custom hook is a reusable function that contains hook-based logic.
 
@@ -347,14 +347,14 @@ function ToggleButton() \{
   );  
 \}
 
-## **Key mental model**
+## Key mental model
 
 Custom hooks reuse logic, not UI.
 
 Custom Hook \= reusable stateful behavior  
 Component \= UI
 
-## **Common custom hook examples**
+## Common custom hook examples
 
 * `useFetch`  
 * `useDebounce`  
@@ -366,7 +366,7 @@ Component \= UI
 * `useOutsideClick`  
 * `useInfiniteScroll`
 
-## **Example: `useDebounce`**
+## Example: `useDebounce`
 
 function useDebouncedValue(value, delay) \{  
   const \[debouncedValue, setDebouncedValue\] \= React.useState(value);
@@ -388,7 +388,7 @@ Usage:
 
 const debouncedSearch \= useDebouncedValue(searchText, 500);
 
-## **Why useful**
+## Why useful
 
 * Reuses stateful logic.  
 * Keeps components clean.  
@@ -397,15 +397,15 @@ const debouncedSearch \= useDebouncedValue(searchText, 500);
 * Works well with TypeScript.  
 * Better than HOC/render props for most logic reuse.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Custom hooks are reusable functions that extract hook-based logic from components. They are the preferred modern React pattern for sharing behavior like API fetching, debounce, permissions, localStorage sync, and event listeners. They reuse logic without adding extra components to the tree.
 
 ---
 
-# **5\. Provider Pattern**
+## 5. Provider Pattern
 
-## **Simple meaning**
+## Simple meaning
 
 The Provider Pattern makes shared data available to many nested components using Context.
 
@@ -413,7 +413,7 @@ The Provider Pattern makes shared data available to many nested components using
   \<App /\>  
 \</AuthProvider\>
 
-## **Basic example**
+## Basic example
 
 const AuthContext \= React.createContext(null);
 
@@ -466,7 +466,7 @@ function Header() \{
   );  
 \}
 
-## **Key mental model**
+## Key mental model
 
 Provider owns shared state. Custom hook exposes clean access.
 
@@ -476,7 +476,7 @@ Context makes it available
       ↓  
 Custom hook reads it safely
 
-## **Good use cases**
+## Good use cases
 
 * Auth.  
 * Theme.  
@@ -486,19 +486,19 @@ Custom hook reads it safely
 * Design system configuration.  
 * App shell settings.
 
-## **Common mistake**
+## Common mistake
 
 Putting too much frequently changing state in one provider can cause unnecessary re-renders.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Provider Pattern uses Context to provide shared data or behavior to nested components. A common modern approach is to combine a Provider with a custom hook, such as `AuthProvider` and `useAuth`, to keep usage clean and safe.
 
 ---
 
-# **6\. Controlled Component Pattern**
+## 6. Controlled Component Pattern
 
-## **Simple meaning**
+## Simple meaning
 
 The Controlled Component Pattern means the parent controls the state, and the child receives value and change handler as props.
 
@@ -522,7 +522,7 @@ function TextInput(\{ value, onChange \}) \{
   );  
 \}
 
-## **Key mental model**
+## Key mental model
 
 Parent owns state. Child displays value and reports changes.
 
@@ -536,7 +536,7 @@ onChange callback
   ↓  
 Parent updates state
 
-## **Useful for reusable components**
+## Useful for reusable components
 
 function Modal(\{ open, onOpenChange, children \}) \{  
   if (\!open) return null;
@@ -563,7 +563,7 @@ function Page() \{
   );  
 \}
 
-## **Controlled \+ uncontrolled support**
+## Controlled \+ uncontrolled support
 
 Reusable libraries often support both.
 
@@ -593,28 +593,28 @@ function Toggle(\{
   );  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Controlled Component Pattern lets the parent own the state and pass `value` plus `onChange` to the child. It makes reusable components predictable and easy to integrate with forms, filters, modals, tabs, and design-system components.
 
 ---
 
-# **7\. Headless Components**
+## 7. Headless Components
 
-## **Simple meaning**
+## Simple meaning
 
 Headless components provide behavior and state but do not enforce UI styling.
 
 They let the consumer control the markup and design.
 
-## **Key mental model**
+## Key mental model
 
 Headless component \= logic without visual opinion.
 
 Library/component provides behavior  
 Consumer provides UI
 
-## **Example: headless toggle with render prop**
+## Example: headless toggle with render prop
 
 function HeadlessToggle(\{ children \}) \{  
   const \[checked, setChecked\] \= React.useState(false);
@@ -637,7 +637,7 @@ Usage:
   )\}  
 \</HeadlessToggle\>
 
-## **Example: headless hook**
+## Example: headless hook
 
 function useToggle(initialValue \= false) \{  
   const \[checked, setChecked\] \= React.useState(initialValue);
@@ -668,7 +668,7 @@ function CustomToggle() \{
   );  
 \}
 
-## **Real use cases**
+## Real use cases
 
 * Headless dropdown.  
 * Headless select.  
@@ -678,7 +678,7 @@ function CustomToggle() \{
 * Headless table.  
 * Headless form controls.
 
-## **Why useful**
+## Why useful
 
 * Full styling control.  
 * Good for design systems.  
@@ -686,26 +686,26 @@ function CustomToggle() \{
 * UI is not locked to one design.  
 * Works well across products with different themes.
 
-## **Trade-offs**
+## Trade-offs
 
 * Consumer writes more UI code.  
 * Accessibility must be handled carefully.  
 * API design must be very clear.  
 * More flexible but sometimes more complex.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Headless Components separate behavior from presentation. They provide state, interactions, accessibility logic, and APIs, while the consumer controls the markup and styling. This pattern is useful for design systems and reusable UI primitives like dropdowns, modals, tabs, and tables.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. HOC vs Custom Hooks**
+## 1. HOC vs Custom Hooks
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | HOC | Custom Hook |
 | ----- | ----- | ----- |
@@ -717,11 +717,11 @@ Headless Components separate behavior from presentation. They provide state, int
 | Modern preference | Less common | Preferred |
 | Good for | Legacy, wrappers, auth gates | Logic reuse |
 
-## **HOC example**
+## HOC example
 
 const ProtectedPage \= withAuth(Page);
 
-## **Custom hook example**
+## Custom hook example
 
 function Page() \{  
   const user \= useAuthUser();
@@ -733,15 +733,15 @@ function Page() \{
   return \<Dashboard /\>;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 HOCs wrap components and return enhanced components, while custom hooks extract reusable stateful logic. HOCs can add wrapper hell and prop collisions. Custom hooks are usually preferred in modern React because they reuse logic without adding extra components. HOCs are still useful in legacy code or when a wrapper component is required.
 
 ---
 
-# **2\. Render Props**
+## 2. Render Props
 
-## **Answer**
+## Answer
 
 Render Props is a pattern where a component receives a function and calls it to render UI.
 
@@ -753,7 +753,7 @@ Render Props is a pattern where a component receives a function and calls it to 
   )\}  
 \</Toggle\>
 
-## **Why useful**
+## Why useful
 
 * Shares behavior.  
 * Consumer controls UI.  
@@ -761,15 +761,15 @@ Render Props is a pattern where a component receives a function and calls it to 
 * Useful before hooks.  
 * Still appears in some libraries.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Render Props share logic by passing a function as a prop or child. The component owns the behavior and calls the function to render UI. It is flexible, but nested render props can become hard to read. In modern React, custom hooks often solve the same problem more cleanly.
 
 ---
 
-# **3\. HOC vs Render Props**
+## 3. HOC vs Render Props
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | HOC | Render Props |
 | ----- | ----- | ----- |
@@ -779,15 +779,15 @@ Render Props share logic by passing a function as a prop or child. The component
 | Problem | Wrapper hell | Nested function nesting |
 | Modern alternative | Custom hooks | Custom hooks |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 HOCs reuse logic by wrapping a component, while Render Props reuse logic by passing a function that controls rendering. HOCs can create wrapper hell and prop collision issues. Render Props can create nested callback structures. Custom hooks are usually the modern replacement for both when the goal is logic reuse.
 
 ---
 
-# **4\. What are Compound Components?**
+## 4. What are Compound Components?
 
-## **Answer**
+## Answer
 
 Compound components are related components that share state under a parent.
 
@@ -796,15 +796,15 @@ Compound components are related components that share state under a parent.
   \<Tabs.Panel value="profile"\>Profile content\</Tabs.Panel\>  
 \</Tabs\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Compound Components are useful when multiple related components need to work together as one unit. The parent manages shared state, and children access it through context. This creates a flexible API for components like Tabs, Accordion, Select, Menu, and Modal.
 
 ---
 
-# **5\. What is the Provider Pattern?**
+## 5. What is the Provider Pattern?
 
-## **Answer**
+## Answer
 
 The Provider Pattern uses Context to provide shared data or behavior to nested components.
 
@@ -812,27 +812,27 @@ The Provider Pattern uses Context to provide shared data or behavior to nested c
   \<App /\>  
 \</AuthProvider\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Provider Pattern is commonly used for app-wide or feature-wide state such as auth, theme, locale, permissions, and feature flags. A good implementation usually exposes a custom hook like `useAuth` to make consumption safe and clean.
 
 ---
 
-# **6\. What are Headless Components?**
+## 6. What are Headless Components?
 
-## **Answer**
+## Answer
 
 Headless Components provide logic and behavior without enforcing UI.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Headless Components separate behavior from presentation. They are useful when we want reusable accessible behavior but full control over markup and styling. This pattern is common in design systems for dropdowns, modals, tabs, tables, and form controls.
 
 ---
 
-# **7\. Controlled vs Uncontrolled reusable components**
+## 7. Controlled vs Uncontrolled reusable components
 
-## **Answer**
+## Answer
 
 A controlled reusable component receives state from parent. An uncontrolled reusable component manages its own internal state.
 
@@ -844,15 +844,15 @@ Controlled.
 
 Uncontrolled.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Controlled reusable components are better when the parent needs full control over state. Uncontrolled components are simpler when the component can manage its own state. Good design-system components often support both controlled and uncontrolled usage.
 
 ---
 
-# **8\. Which advanced pattern is preferred today?**
+## 8. Which advanced pattern is preferred today?
 
-## **Answer**
+## Answer
 
 For logic reuse, prefer custom hooks.
 
@@ -862,13 +862,13 @@ For app-wide data, use provider pattern.
 
 Use HOC and render props when working with legacy code, library APIs, or cases where those patterns fit naturally.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In modern React, custom hooks are usually preferred for reusable logic. Compound and headless components are preferred for flexible UI primitives and design systems. Provider Pattern is useful for shared app-level data. HOCs and Render Props are still important to understand because older libraries and legacy code often use them.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Pattern | Main idea |
 | ----- | ----- |
@@ -886,6 +886,6 @@ In modern React, custom hooks are usually preferred for reusable logic. Compound
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 Advanced React patterns help reuse logic and create flexible component APIs. HOCs wrap components to add behavior, but they can cause wrapper hell and prop collisions. Render Props share logic by passing a render function, but nested render props can become hard to read. Custom hooks are the modern preferred pattern for logic reuse because they do not add extra components to the tree. Compound Components use a shared parent and context to build flexible APIs like Tabs, Accordion, Select, and Modal. The Provider Pattern uses Context to share app-level state like auth, theme, locale, and permissions. Controlled Component Pattern lets the parent own state and pass value/change handlers. Headless Components separate behavior from styling, making them useful for design systems. For interviews, the key comparison is: **HOC and Render Props were common before hooks, but Custom Hooks are usually preferred today for reusable logic.**

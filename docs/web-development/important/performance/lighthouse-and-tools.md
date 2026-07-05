@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Lighthouse & Tools
 
-### **🔍 What is Lighthouse?**
+### 🔍 What is Lighthouse?
 
 Lighthouse analyzes your web app or webpage and provides a detailed report with **performance scores (0–100)** in key categories:
 
@@ -31,9 +31,9 @@ You can run Lighthouse in:
 
 ---
 
-### **🚀 How Lighthouse Helps Improve Performance**
+### 🚀 How Lighthouse Helps Improve Performance
 
-#### **1\. Page Load Performance Metrics**
+#### 1. Page Load Performance Metrics
 
 Lighthouse measures **core web vitals**:
 
@@ -51,13 +51,13 @@ Lighthouse measures **core web vitals**:
 
 ---
 
-### **📌 What is CLS?**
+### 📌 What is CLS?
 
 CLS quantifies how often and how drastically elements **move around** on the screen without user interaction — e.g., text jumping, buttons shifting, or images pushing content.
 
 ---
 
-### **🧠 Why CLS Happens:**
+### 🧠 Why CLS Happens:
 
 * Images or ads without set width/height.
 
@@ -69,7 +69,7 @@ CLS quantifies how often and how drastically elements **move around** on the scr
 
 ---
 
-### **🧪 How CLS is Calculated:**
+### 🧪 How CLS is Calculated:
 
 Each unexpected layout shift is scored by:
 
@@ -83,7 +83,7 @@ Then, CLS is the **sum of all these shift scores** during the page lifecycle (es
 
 ---
 
-### **✅ Good vs Poor CLS:**
+### ✅ Good vs Poor CLS:
 
 | CLS Score | Experience |
 | ----- | ----- |
@@ -93,7 +93,7 @@ Then, CLS is the **sum of all these shift scores** during the page lifecycle (es
 
 ---
 
-### **🛡️ How to Fix CLS:**
+### 🛡️ How to Fix CLS:
 
 1. **Always set width and height** on images and videos.
 
@@ -109,7 +109,7 @@ Then, CLS is the **sum of all these shift scores** during the page lifecycle (es
 
 ---
 
-### **💡 Real-World Example:**
+### 💡 Real-World Example:
 
 `<!-- BAD: No size defined -->`
 
@@ -127,7 +127,7 @@ CLS is critical for **user experience**, especially on mobile. A low CLS means y
 
 ---
 
-#### **2\. Opportunities & Diagnostics**
+#### 2. Opportunities & Diagnostics
 
 It gives clear suggestions like:
 
@@ -149,7 +149,7 @@ It gives clear suggestions like:
 
 ---
 
-#### **3\. JavaScript & Network Optimization**
+#### 3. JavaScript & Network Optimization
 
 * Shows total JS size, unused JS, and execution time.
 
@@ -161,7 +161,7 @@ It gives clear suggestions like:
 
 ---
 
-#### **4\. Best Practices & Accessibility**
+#### 4. Best Practices & Accessibility
 
 * Warns about unsafe links, insecure connections, deprecated APIs.
 
@@ -171,7 +171,7 @@ It gives clear suggestions like:
 
 ---
 
-### **📈 Use Case in Real Workflows**
+### 📈 Use Case in Real Workflows
 
 * **During development**: Run audits locally before deploying.
 
@@ -181,7 +181,7 @@ It gives clear suggestions like:
 
 ---
 
-### **✅ Sample Workflow**
+### ✅ Sample Workflow
 
 1. Run Lighthouse via Chrome DevTools on your app.
 

@@ -5,9 +5,9 @@ sidebar_position: 1
 
 # Interview Prep Order
 
-# **Fastest Interview Preparation Order**
+## Fastest Interview Preparation Order
 
-### **JavaScript First**
+### JavaScript First
 
 1. JavaScript Fundamentals  
 2. Execution Context  
@@ -16,7 +16,7 @@ sidebar_position: 1
 5. Async JS  
 6. Event Loop
 
-### **Then React**
+### Then React
 
 1. React Fundamentals  
 2. Component Lifecycle & Rendering  
@@ -26,7 +26,7 @@ sidebar_position: 1
 6. React Internals  
 7. Architecture
 
-### **Then Next.js**
+### Then Next.js
 
 1. Fundamentals  
 2. Routing  

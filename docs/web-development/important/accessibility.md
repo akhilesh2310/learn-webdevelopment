@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Accessibility
 
-### **How would you test accessibility?**
+### How would you test accessibility?
 
 ## Expected:
 
@@ -58,7 +58,7 @@ Here’s a structured approach:
 
 ---
 
-## **1\. Semantic HTML First**
+## 1. Semantic HTML First
 
 React lets you render any element — **use the correct HTML tag**:
 
@@ -81,7 +81,7 @@ CopyEdit
 
 ---
 
-## **2\. Keyboard Navigation Support**
+## 2. Keyboard Navigation Support
 
 ✅ Make sure users can:
 
@@ -122,7 +122,7 @@ CopyEdit
 
 ---
 
-## **3\. Provide Alt Text for Images**
+## 3. Provide Alt Text for Images
 
 ✅ Always add `alt` attributes to `<img>`.
 
@@ -138,7 +138,7 @@ CopyEdit
 
 ---
 
-## **4\. Use ARIA Only When Necessary**
+## 4. Use ARIA Only When Necessary
 
 ✅ **ARIA** \= Accessible Rich Internet Applications attributes.
 
@@ -162,7 +162,7 @@ CopyEdit
 
 ---
 
-## **5\. Color Contrast and Font Sizes**
+## 5. Color Contrast and Font Sizes
 
 ✅ Text should have **sufficient contrast** from background.
 
@@ -186,7 +186,7 @@ WCAG requires:
 
 ---
 
-## **6\. Form Accessibility**
+## 6. Form Accessibility
 
 ✅ Key rules for forms:
 
@@ -207,7 +207,7 @@ CopyEdit
 
 ---
 
-## **7\. Accessible Modals, Dialogs, and Dropdowns**
+## 7. Accessible Modals, Dialogs, and Dropdowns
 
 ✅ When a modal opens:
 
@@ -233,7 +233,7 @@ CopyEdit
 
 ---
 
-## **8\. Testing Accessibility**
+## 8. Testing Accessibility
 
 ✅ Always test\!
 
@@ -296,11 +296,11 @@ Would you like me to also give you a **React.js Accessibility Starter Template**
 
 4o
 
-##### **You said:**
+##### You said:
 
 Exaplin different level of accessibility
 
-###### **ChatGPT said:**
+###### ChatGPT said:
 
 Of course\! Let’s dive into it step-by-step:
 
@@ -318,7 +318,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-## 🛡️ 1\. Level A (Minimum Compliance)
+## 🛡️ 1. Level A (Minimum Compliance)
 
 * 🧠 **Focus:**
 
@@ -336,7 +336,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-## 🛡️ 2\. Level AA (Most Common Target)
+## 🛡️ 2. Level AA (Most Common Target)
 
 * 🧠 **Focus:**
 
@@ -362,7 +362,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ---
 
-## 🛡️ 3\. Level AAA (Highest Standard, Very Hard to Achieve)
+## 🛡️ 3. Level AAA (Highest Standard, Very Hard to Achieve)
 
 * 🧠 **Focus:**
 
@@ -435,11 +435,11 @@ It'll be super handy if you want to ensure your React apps are compliant from th
 
 4o
 
-##### **You said:**
+##### You said:
 
 yes
 
-###### **ChatGPT said:**
+###### ChatGPT said:
 
 Awesome\! Let’s continue 🔥  
  I’ll break this down clearly so you can **directly apply** it in your projects.
@@ -448,7 +448,7 @@ Awesome\! Let’s continue 🔥
 
 ## 🛡️ How Companies Audit Web Accessibility (Level A / AA / AAA)
 
-### **1\. Automated Testing (First Pass)**
+### 1. Automated Testing (First Pass)
 
 * **Tools like:**
 
@@ -474,7 +474,7 @@ Awesome\! Let’s continue 🔥
 
 ---
 
-### **2\. Manual Testing (Deep Audit)**
+### 2. Manual Testing (Deep Audit)
 
 * **Real user-like testing:**
 
@@ -490,7 +490,7 @@ Awesome\! Let’s continue 🔥
 
 ---
 
-### **3\. Assistive Technology Testing**
+### 3. Assistive Technology Testing
 
 * **Devices like:**
 
@@ -504,7 +504,7 @@ Awesome\! Let’s continue 🔥
 
 ---
 
-### **4\. Create an Accessibility Report**
+### 4. Create an Accessibility Report
 
 * Lists all issues with:
 

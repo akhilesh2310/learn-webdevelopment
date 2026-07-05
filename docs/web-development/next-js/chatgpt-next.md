@@ -7,11 +7,11 @@ sidebar_position: 2
 
 Related canonical pages: [JWT & CSRF](../important/security/jwt-csrf.md), [Security Headers](../important/security/security-headers.md).
 
-# **Next.js Interview Questions and Answers**
+## Next.js Interview Questions and Answers
 
 IMP: [https://chatgpt.com/c/6a3612d1-fd74-83ee-b7e4-4e0b2a84922b](https://chatgpt.com/c/6a3612d1-fd74-83ee-b7e4-4e0b2a84922b)
 
-## **1\. What is Next.js?**
+## 1. What is Next.js?
 
 Next.js is a React framework used to build production-ready web applications.
 
@@ -34,7 +34,7 @@ Next.js is a framework built on top of React that helps us build fast, SEO-frien
 
 ---
 
-## **2\. Why use Next.js instead of plain React?**
+## 2. Why use Next.js instead of plain React?
 
 Plain React usually renders mostly on the client side. That means the browser downloads JavaScript, runs it, and then creates the page.
 
@@ -61,7 +61,7 @@ I use Next.js when the application needs better SEO, faster initial load, server
 
 ---
 
-## **3\. What is file-based routing in Next.js?**
+## 3. What is file-based routing in Next.js?
 
 In Next.js, routes are created based on files and folders.
 
@@ -84,7 +84,7 @@ File-based routing means we do not manually configure routes like React Router. 
 
 ---
 
-## **4\. What is the difference between App Router and Pages Router?**
+## 4. What is the difference between App Router and Pages Router?
 
 **Pages Router** uses the `pages` directory.
 
@@ -123,7 +123,7 @@ Pages Router is the older routing model based on the `pages` folder. App Router 
 
 ---
 
-## **5\. What are Server Components in Next.js?**
+## 5. What are Server Components in Next.js?
 
 Server Components are React components that render on the server.
 
@@ -168,7 +168,7 @@ Server Components are rendered on the server and are useful for data fetching, r
 
 ---
 
-## **6\. What are Client Components in Next.js?**
+## 6. What are Client Components in Next.js?
 
 Client Components run in the browser.
 
@@ -200,7 +200,7 @@ Client Components are used when we need interactivity in the browser. Server Com
 
 ---
 
-## **7\. Server Component vs Client Component**
+## 7. Server Component vs Client Component
 
 | Area | Server Component | Client Component |
 | ----- | ----- | ----- |
@@ -218,7 +218,7 @@ I prefer Server Components for data fetching, static UI, and secure server logic
 
 ---
 
-## **8\. What is SSR in Next.js?**
+## 8. What is SSR in Next.js?
 
 SSR means **Server-Side Rendering**.
 
@@ -257,7 +257,7 @@ SSR renders the page on the server for each request. It is useful when data must
 
 ---
 
-## **9\. What is SSG in Next.js?**
+## 9. What is SSG in Next.js?
 
 SSG means **Static Site Generation**.
 
@@ -295,7 +295,7 @@ SSG generates pages at build time. It is very fast because the page is already b
 
 ---
 
-## **10\. What is ISR in Next.js?**
+## 10. What is ISR in Next.js?
 
 ISR means **Incremental Static Regeneration**.
 
@@ -333,7 +333,7 @@ ISR gives the performance of static pages with the ability to update them after 
 
 ---
 
-## **11\. SSR vs SSG vs ISR**
+## 11. SSR vs SSG vs ISR
 
 | Rendering | When generated? | Best for |
 | ----- | ----- | ----- |
@@ -348,7 +348,7 @@ I choose SSR for fresh data, SSG for static pages, ISR for pages that need perio
 
 ---
 
-## **12\. What is CSR in Next.js?**
+## 12. What is CSR in Next.js?
 
 CSR means **Client-Side Rendering**.
 
@@ -394,7 +394,7 @@ CSR is useful for interactive browser-only parts of the app, but I avoid using i
 
 ---
 
-## **13\. How does data fetching work in App Router?**
+## 13. How does data fetching work in App Router?
 
 In App Router, Server Components can fetch data directly using async/await.
 
@@ -413,7 +413,7 @@ In App Router, data fetching is usually done inside Server Components. This keep
 
 ---
 
-## **14\. What is caching in Next.js?**
+## 14. What is caching in Next.js?
 
 Caching means storing data or rendered output so future requests can be served faster.
 
@@ -433,7 +433,7 @@ Caching in Next.js helps avoid repeated data fetching and rendering. It improves
 
 ---
 
-## **15\. How do you disable caching for a fetch request?**
+## 15. How do you disable caching for a fetch request?
 
 const res \= await fetch('https://api.example.com/products', \{  
  cache: 'no-store',  
@@ -454,7 +454,7 @@ I use `cache: 'no-store'` when I want the data to be fetched fresh on every requ
 
 ---
 
-## **16\. How do you revalidate cached data?**
+## 16. How do you revalidate cached data?
 
 const res \= await fetch('https://api.example.com/products', \{  
  next: \{  
@@ -470,7 +470,7 @@ I use `next.revalidate` when the data can be cached for some time but should eve
 
 ---
 
-## **17\. What is `layout.tsx` in Next.js?**
+## 17. What is `layout.tsx` in Next.js?
 
 `layout.tsx` defines shared UI for a route segment.
 
@@ -504,7 +504,7 @@ Layouts are useful for:
 
 ---
 
-## **18\. What is `template.tsx`?**
+## 18. What is `template.tsx`?
 
 `template.tsx` is similar to layout, but it creates a new instance on navigation.
 
@@ -521,7 +521,7 @@ Use it when you want:
 
 ---
 
-## **19\. What is `loading.tsx`?**
+## 19. What is `loading.tsx`?
 
 `loading.tsx` shows a loading UI while a route segment is loading.
 
@@ -537,7 +537,7 @@ It is built on React Suspense.
 
 ---
 
-## **20\. What is `error.tsx`?**
+## 20. What is `error.tsx`?
 
 `error.tsx` handles runtime errors for a route segment.
 
@@ -564,7 +564,7 @@ It is built on React Suspense.
 
 ---
 
-## **21\. What is `not-found.tsx`?**
+## 21. What is `not-found.tsx`?
 
 `not-found.tsx` renders custom 404 UI for a route segment.
 
@@ -586,7 +586,7 @@ if (\!product) \{
 
 ---
 
-## **22\. What are dynamic routes in Next.js?**
+## 22. What are dynamic routes in Next.js?
 
 Dynamic routes allow route parameters.
 
@@ -612,7 +612,7 @@ Dynamic routes are used when part of the URL is variable, such as product ID, us
 
 ---
 
-## **23\. What are catch-all routes?**
+## 23. What are catch-all routes?
 
 Catch-all routes match multiple path segments.
 
@@ -640,7 +640,7 @@ Catch-all routes are useful for nested paths like documentation, category trees,
 
 ---
 
-## **24\. What is `generateStaticParams`?**
+## 24. What is `generateStaticParams`?
 
 `generateStaticParams` is used in App Router to generate static pages for dynamic routes.
 
@@ -658,7 +658,7 @@ Catch-all routes are useful for nested paths like documentation, category trees,
 
 ---
 
-## **25\. What is metadata in Next.js?**
+## 25. What is metadata in Next.js?
 
 Metadata is used for SEO and social sharing.
 
@@ -690,7 +690,7 @@ Metadata in Next.js helps manage SEO fields like title, description, Open Graph 
 
 ---
 
-## **26\. What are Route Handlers in Next.js?**
+## 26. What are Route Handlers in Next.js?
 
 Route Handlers allow us to create backend-like API endpoints inside the App Router.
 
@@ -719,7 +719,7 @@ Route Handlers are used to create API endpoints in Next.js. They are useful for 
 
 ---
 
-## **27\. What are Server Actions / Server Functions?**
+## 27. What are Server Actions / Server Functions?
 
 Server Actions, now commonly described in docs as React Server Functions, allow us to run server-side functions directly from components. They are useful for mutations like form submissions.
 
@@ -750,7 +750,7 @@ Server Actions allow us to execute server-side logic directly from forms or comp
 
 ---
 
-## **28\. Route Handler vs Server Action**
+## 28. Route Handler vs Server Action
 
 | Area | Route Handler | Server Action |
 | ----- | ----- | ----- |
@@ -766,7 +766,7 @@ I use Route Handlers when I need a real HTTP endpoint, like webhooks or APIs con
 
 ---
 
-## **29\. How does authentication work in Next.js?**
+## 29. How does authentication work in Next.js?
 
 Authentication can be implemented using:
 
@@ -791,7 +791,7 @@ For secure authentication, I prefer HttpOnly secure cookies because tokens are n
 
 ---
 
-## **30\. How do you protect routes in Next.js?**
+## 30. How do you protect routes in Next.js?
 
 Using middleware:
 
@@ -818,7 +818,7 @@ I protect routes using middleware for request-level checks and server-side valid
 
 ---
 
-## **31\. What is Middleware in Next.js?**
+## 31. What is Middleware in Next.js?
 
 Middleware runs before a request is completed.
 
@@ -837,7 +837,7 @@ Middleware is useful when we need to intercept a request before it reaches the r
 
 ---
 
-## **32\. What is image optimization in Next.js?**
+## 32. What is image optimization in Next.js?
 
 Next.js provides the `Image` component.
 
@@ -868,7 +868,7 @@ Benefits:
 
 ---
 
-## **33\. What is `next/link`?**
+## 33. What is `next/link`?
 
 `next/link` is used for client-side navigation.
 
@@ -884,7 +884,7 @@ It avoids full page reloads and improves navigation performance.
 
 ---
 
-## **34\. What is `next/navigation`?**
+## 34. What is `next/navigation`?
 
 `next/navigation` provides navigation hooks for App Router.
 
@@ -914,7 +914,7 @@ notFound
 
 ---
 
-## **35\. What is code splitting in Next.js?**
+## 35. What is code splitting in Next.js?
 
 Next.js automatically splits JavaScript by route.
 
@@ -938,7 +938,7 @@ Code splitting reduces initial bundle size by loading only the code required for
 
 ---
 
-## **36\. What is `dynamic()` in Next.js?**
+## 36. What is `dynamic()` in Next.js?
 
 `dynamic()` allows lazy loading components.
 
@@ -963,7 +963,7 @@ const Map \= dynamic(() \=\> import('./Map'), \{
 
 ---
 
-## **37\. What does `ssr: false` mean?**
+## 37. What does `ssr: false` mean?
 
 const ClientOnlyMap \= dynamic(() \=\> import('./Map'), \{  
  ssr: false,  
@@ -984,7 +984,7 @@ navigator
 
 ---
 
-## **38\. How do you handle environment variables in Next.js?**
+## 38. How do you handle environment variables in Next.js?
 
 Server-only variable:
 
@@ -1002,7 +1002,7 @@ I keep secrets in server-only environment variables. Anything exposed to the bro
 
 ---
 
-## **39\. How do you improve performance in a Next.js app?**
+## 39. How do you improve performance in a Next.js app?
 
 Important techniques:
 
@@ -1024,7 +1024,7 @@ I optimize Next.js apps by reducing client-side JavaScript, using Server Compone
 
 ---
 
-## **40\. How do you handle SEO in Next.js?**
+## 40. How do you handle SEO in Next.js?
 
 Next.js helps SEO through:
 
@@ -1050,7 +1050,7 @@ Next.js improves SEO because content can be rendered on the server or generated 
 
 ---
 
-## **41\. What is hydration?**
+## 41. What is hydration?
 
 Hydration is the process where React attaches event handlers and makes server-rendered HTML interactive in the browser.
 
@@ -1070,7 +1070,7 @@ Hydration means converting server-rendered HTML into an interactive React applic
 
 ---
 
-## **42\. What causes hydration errors?**
+## 42. What causes hydration errors?
 
 Common causes:
 
@@ -1112,7 +1112,7 @@ Hydration errors happen when server-rendered HTML does not match the client-rend
 
 ---
 
-## **43\. What is streaming in Next.js?**
+## 43. What is streaming in Next.js?
 
 Streaming allows parts of the UI to be sent to the browser as soon as they are ready.
 
@@ -1139,7 +1139,7 @@ Streaming improves perceived performance by allowing the server to send UI in ch
 
 ---
 
-## **44\. What is Suspense used for in Next.js?**
+## 44. What is Suspense used for in Next.js?
 
 Suspense is used to show fallback UI while async components load.
 
@@ -1153,7 +1153,7 @@ Suspense lets us show loading UI for async server components or lazy-loaded comp
 
 ---
 
-## **45\. How do you structure a large Next.js app?**
+## 45. How do you structure a large Next.js app?
 
 Example structure:
 
@@ -1195,7 +1195,7 @@ For large apps, I structure by features, keep reusable UI in shared components, 
 
 ---
 
-## **46\. How do you handle state management in Next.js?**
+## 46. How do you handle state management in Next.js?
 
 State can be divided into:
 
@@ -1228,7 +1228,7 @@ I avoid putting everything in global state. Server data should stay on the serve
 
 ---
 
-## **47\. How do you handle forms in Next.js?**
+## 47. How do you handle forms in Next.js?
 
 Options:
 
@@ -1262,7 +1262,7 @@ For simple server mutations, Server Actions are clean. For complex client valida
 
 ---
 
-## **48\. How do you handle API errors in Next.js?**
+## 48. How do you handle API errors in Next.js?
 
 Good practices:
 
@@ -1293,7 +1293,7 @@ I handle errors at multiple levels: API layer with proper status codes, UI layer
 
 ---
 
-## **49\. How do you handle loading states?**
+## 49. How do you handle loading states?
 
 Options:
 
@@ -1315,7 +1315,7 @@ For route-level loading, I use `loading.tsx`. For component-level async sections
 
 ---
 
-## **50\. How do you handle redirects?**
+## 50. How do you handle redirects?
 
 Server redirect:
 
@@ -1346,7 +1346,7 @@ I prefer server redirects for auth and data-based redirects because they avoid r
 
 ---
 
-## **51\. What is the difference between `redirect()` and `router.push()`?**
+## 51. What is the difference between `redirect()` and `router.push()`?
 
 | API | Used where? | Purpose |
 | ----- | ----- | ----- |
@@ -1359,7 +1359,7 @@ I prefer server redirects for auth and data-based redirects because they avoid r
 
 ---
 
-## **52\. How do you use search params in Next.js?**
+## 52. How do you use search params in Next.js?
 
 Server Component:
 
@@ -1388,7 +1388,7 @@ I use `searchParams` for URL-driven state like filters, search query, sorting, a
 
 ---
 
-## **53\. How do you implement pagination in Next.js?**
+## 53. How do you implement pagination in Next.js?
 
 Use URL query params:
 
@@ -1413,7 +1413,7 @@ I prefer URL-based pagination because it supports browser navigation, sharing, b
 
 ---
 
-## **54\. How do you implement filtering and sorting?**
+## 54. How do you implement filtering and sorting?
 
 URL:
 
@@ -1437,7 +1437,7 @@ For filters and sorting, I prefer keeping state in the URL. It improves shareabi
 
 ---
 
-## **55\. How do you secure a Next.js app?**
+## 55. How do you secure a Next.js app?
 
 Important points:
 
@@ -1459,7 +1459,7 @@ I secure Next.js apps by keeping secrets on the server, using HttpOnly cookies, 
 
 ---
 
-## **56\. How do you handle role-based access control?**
+## 56. How do you handle role-based access control?
 
 Example:
 
@@ -1479,7 +1479,7 @@ RBAC should be enforced on the server, not only in the UI. The UI can hide butto
 
 ---
 
-## **57\. How do you deploy Next.js?**
+## 57. How do you deploy Next.js?
 
 Common deployment options:
 
@@ -1497,7 +1497,7 @@ Deployment depends on the rendering features used. Static sites can be exported,
 
 ---
 
-## **58\. What is Edge Runtime in Next.js?**
+## 58. What is Edge Runtime in Next.js?
 
 Edge Runtime allows code to run closer to users at edge locations.
 
@@ -1517,7 +1517,7 @@ Edge Runtime is useful for low-latency request processing close to the user, but
 
 ---
 
-## **59\. What are common production issues in Next.js?**
+## 59. What are common production issues in Next.js?
 
 Common issues:
 
@@ -1538,7 +1538,7 @@ Most Next.js production issues come from incorrect rendering strategy, overusing
 
 ---
 
-## **60\. How would you design a scalable Next.js application?**
+## 60. How would you design a scalable Next.js application?
 
 For a scalable app, I would focus on:
 
@@ -1560,9 +1560,9 @@ I would design a scalable Next.js app by separating server and client concerns c
 
 ---
 
-# **Senior-Level Follow-Up Questions**
+## Senior-Level Follow-Up Questions
 
-## **61\. When should you not use Next.js?**
+## 61. When should you not use Next.js?
 
 Next.js may not be necessary when:
 
@@ -1578,7 +1578,7 @@ I would not choose Next.js only because it is popular. If the app is a private d
 
 ---
 
-## **62\. How do you decide rendering strategy route by route?**
+## 62. How do you decide rendering strategy route by route?
 
 Example:
 
@@ -1598,7 +1598,7 @@ I decide based on freshness, SEO, personalization, and performance. Static where
 
 ---
 
-## **63\. Why should we avoid making everything a Client Component?**
+## 63. Why should we avoid making everything a Client Component?
 
 Because Client Components increase JavaScript sent to the browser.
 
@@ -1616,7 +1616,7 @@ I avoid unnecessary Client Components because they increase client-side JavaScri
 
 ---
 
-## **64\. How would you optimize a slow Next.js page?**
+## 64. How would you optimize a slow Next.js page?
 
 I would check:
 
@@ -1636,7 +1636,7 @@ I first measure using Lighthouse, Web Vitals, server logs, and bundle analyzer. 
 
 ---
 
-## **65\. How do you prevent duplicate API calls in Next.js?**
+## 65. How do you prevent duplicate API calls in Next.js?
 
 Approaches:
 
@@ -1653,7 +1653,7 @@ I prevent duplicate calls by fetching data at the right level, reusing server-fe
 
 ---
 
-## **66\. How do you handle real-time data in Next.js?**
+## 66. How do you handle real-time data in Next.js?
 
 Options:
 
@@ -1677,7 +1677,7 @@ Next.js can render the initial page, but real-time updates usually happen on the
 
 ---
 
-## **67\. How do you test a Next.js application?**
+## 67. How do you test a Next.js application?
 
 Testing strategy:
 
@@ -1694,7 +1694,7 @@ I test business logic with unit tests, UI behavior with React Testing Library, c
 
 ---
 
-# **Compact Interview Revision Answer**
+## Compact Interview Revision Answer
 
 Next.js is a React framework for building production-ready applications. It provides file-based routing, server-side rendering, static generation, incremental static regeneration, API routes, image optimization, metadata support, middleware, caching, and full-stack capabilities.
 

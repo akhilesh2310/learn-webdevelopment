@@ -5,43 +5,43 @@ sidebar_position: 4
 
 # React Performance
 
-## 7\. React Performance Optimization
+## 7. React Performance Optimization
 
-## **React.memo**
+## React.memo
 
-## **useMemo**
+## useMemo
 
-## **useCallback**
+## useCallback
 
-## **Code Splitting**
+## Code Splitting
 
-## **Lazy Loading**
+## Lazy Loading
 
-## **Suspense**
+## Suspense
 
-## **Virtualization**
+## Virtualization
 
 * ### **react-window**
 
 * ### **react-virtualized**
 
-## **Preventing Unnecessary Re-renders**
+## Preventing Unnecessary Re-renders
 
-## **Memoization Strategies**
+## Memoization Strategies
 
 ## Senior / Staff React Topics
 
-## **Performance Profiling**
+## Performance Profiling
 
-## **React DevTools Profiler**
+## React DevTools Profiler
 
-## **Rendering Optimization**
+## Rendering Optimization
 
-## **Architecture Decisions**
+## Architecture Decisions
 
-## **Large Scale State Management**
+## Large Scale State Management
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * React.memo vs useMemo  
 * Large list optimization  
@@ -58,9 +58,9 @@ Do not blindly add `React.memo`, `useMemo`, and `useCallback` everywhere. First 
 
 ---
 
-## 1\. When Should You Optimize?
+## 1. When Should You Optimize?
 
-## **Simple meaning**
+## Simple meaning
 
 Optimize when users can feel slowness or metrics show a real issue.
 
@@ -76,7 +76,7 @@ Common signs:
 * React DevTools shows expensive re-renders.  
 * Lighthouse/Core Web Vitals are poor.
 
-## **Do not optimize too early**
+## Do not optimize too early
 
 Bad mindset:
 
@@ -92,15 +92,15 @@ What is expensive?
 
 Can I reduce work?
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I optimize React apps when there is measurable or visible performance pain. I first profile the issue, identify whether the bottleneck is rendering, bundle size, API, state management, large lists, or expensive calculations, and then apply the right optimization.
 
 ---
 
-## 2\. Common React Performance Problems
+## 2. Common React Performance Problems
 
-## **Common causes**
+## Common causes
 
 Large bundle size
 
@@ -128,9 +128,9 @@ No server-state caching
 
 Heavy third-party libraries
 
-## **Production examples**
+## Production examples
 
-### **Example 1: Large table**
+### Example 1: Large table
 
 Rendering 10,000 rows directly:
 
@@ -146,7 +146,7 @@ Better:
 
 Use virtualization.
 
-### **Example 2: Search input**
+### Example 2: Search input
 
 Every keystroke filters a huge list.
 
@@ -160,7 +160,7 @@ Use transition/deferred value if needed
 
 Virtualize result list
 
-### **Example 3: Dashboard widgets**
+### Example 3: Dashboard widgets
 
 One widget updates every few seconds and causes the full dashboard to re-render.
 
@@ -174,15 +174,15 @@ Memoize stable widgets
 
 Use selector-based state subscription
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 React apps usually become slow because of unnecessary re-renders, expensive render logic, large lists, large bundles, poor state design, repeated API calls, heavy third-party libraries, or missing caching. The solution depends on the root cause.
 
 ---
 
-## 3\. React.memo
+## 3. React.memo
 
-## **Simple meaning**
+## Simple meaning
 
 `React.memo` memoizes a component.
 
@@ -196,7 +196,7 @@ const UserCard \= React.memo(function UserCard(\{ name \}: \{ name: string \}) \
 
 \});
 
-## **Example**
+## Example
 
 function Parent() \{
 
@@ -222,7 +222,7 @@ function Parent() \{
 
 If `UserCard` props are same, `React.memo` can skip its re-render.
 
-## **Key mental model**
+## Key mental model
 
 Same props
 
@@ -232,7 +232,7 @@ Changed props
 
 → render child again
 
-## **Important trap**
+## Important trap
 
 `React.memo` does shallow comparison.
 
@@ -252,7 +252,7 @@ const user \= React.useMemo(() \=\> \{
 
 \<UserCard user=\{user\} /\>;
 
-## **When to use React.memo**
+## When to use React.memo
 
 Use it when:
 
@@ -262,7 +262,7 @@ Use it when:
 * Child does not need to re-render every time.  
 * Profiling shows child render cost.
 
-## **When not to use**
+## When not to use
 
 Avoid when:
 
@@ -271,15 +271,15 @@ Avoid when:
 * You are adding it everywhere without profiling.  
 * It makes code harder to read for no benefit.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `React.memo` is used to memoize a component and skip re-rendering when props are shallowly equal. It is useful for expensive child components whose props remain stable while the parent re-renders. It should be used based on profiling, not blindly.
 
 ---
 
-## 4\. useMemo
+## 4. useMemo
 
-## **Simple meaning**
+## Simple meaning
 
 `useMemo` memoizes a calculated value.
 
@@ -289,7 +289,7 @@ const filteredUsers \= React.useMemo(() \=\> \{
 
 \}, \[users\]);
 
-## **Key mental model**
+## Key mental model
 
 Same dependencies
 
@@ -299,7 +299,7 @@ Dependencies changed
 
 → recalculate value
 
-## **Example: expensive filtering**
+## Example: expensive filtering
 
 function UserList(\{
 
@@ -341,7 +341,7 @@ function UserList(\{
 
 \}
 
-## **Use cases**
+## Use cases
 
 Use `useMemo` for:
 
@@ -352,21 +352,21 @@ Use `useMemo` for:
 * Preventing unnecessary effect runs caused by unstable references.  
 * Passing stable values to memoized children.
 
-## **Bad use**
+## Bad use
 
 const total \= React.useMemo(() \=\> a \+ b, \[a, b\]);
 
 This is unnecessary because `a + b` is cheap.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useMemo` caches the result of a calculation between renders. It is useful for expensive derived values or stable object/array references. It should be treated as a performance optimization, not a default coding habit.
 
 ---
 
-## 5\. useCallback
+## 5. useCallback
 
-## **Simple meaning**
+## Simple meaning
 
 `useCallback` memoizes a function reference.
 
@@ -376,7 +376,7 @@ const handleSave \= React.useCallback(() \=\> \{
 
 \}, \[userId\]);
 
-## **Key mental model**
+## Key mental model
 
 useMemo caches value
 
@@ -402,7 +402,7 @@ const handleClick \= React.useMemo(() \=\> \{
 
 \}, \[\]);
 
-## **Example with React.memo child**
+## Example with React.memo child
 
 const SaveButton \= React.memo(function SaveButton(\{
 
@@ -450,7 +450,7 @@ function Parent(\{ userId \}: \{ userId: string \}) \{
 
 Without `useCallback`, `handleSave` gets a new function reference on every render, so `SaveButton` may re-render.
 
-## **When to use useCallback**
+## When to use useCallback
 
 Use it when:
 
@@ -459,7 +459,7 @@ Use it when:
 * Custom hook returns stable handlers.  
 * Function identity matters.
 
-## **When not to use**
+## When not to use
 
 Avoid when:
 
@@ -468,15 +468,15 @@ Avoid when:
 * There is no performance issue.  
 * Code becomes harder to read.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useCallback` memoizes a function reference. It is useful when passing callbacks to memoized children or when a function is used as a hook dependency. It does not make the function execution faster; it keeps the function identity stable.
 
 ---
 
-## 6\. React.memo vs useMemo vs useCallback
+## 6. React.memo vs useMemo vs useCallback
 
-## **Simple comparison**
+## Simple comparison
 
 | API | What it memoizes | Use case |
 | ----- | ----- | ----- |
@@ -484,7 +484,7 @@ Avoid when:
 | `useMemo` | Calculated value | Cache expensive calculation or stable object |
 | `useCallback` | Function reference | Keep callback reference stable |
 
-## **Example**
+## Example
 
 const Child \= React.memo(function Child(\{
 
@@ -522,15 +522,15 @@ function Parent(\{ items \}: \{ items: Item\[\] \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `React.memo` memoizes a component, `useMemo` memoizes a calculated value, and `useCallback` memoizes a function reference. They are useful together when a memoized child receives expensive derived values or callback props.
 
 ---
 
-## 7\. Preventing Unnecessary Re-renders
+## 7. Preventing Unnecessary Re-renders
 
-## **Common re-render triggers**
+## Common re-render triggers
 
 A component re-renders when:
 
@@ -546,9 +546,9 @@ External store subscription changes
 
 Key changes
 
-## **Techniques to prevent unnecessary re-renders**
+## Techniques to prevent unnecessary re-renders
 
-### **1\. Keep state close to where it is used**
+### 1. Keep state close to where it is used
 
 Bad:
 
@@ -598,7 +598,7 @@ function App() \{
 
 \}
 
-### **2\. Split large components**
+### 2. Split large components
 
 Large component with many states can cause many unnecessary renders.
 
@@ -610,7 +610,7 @@ Move state down.
 
 Memoize expensive parts if needed.
 
-### **3\. Use React.memo for expensive children**
+### 3. Use React.memo for expensive children
 
 const HeavyChart \= React.memo(function HeavyChart(\{ data \}: \{ data: Data\[\] \}) \{
 
@@ -618,7 +618,7 @@ const HeavyChart \= React.memo(function HeavyChart(\{ data \}: \{ data: Data\[\]
 
 \});
 
-### **4\. Stabilize object/function props**
+### 4. Stabilize object/function props
 
 const config \= React.useMemo(() \=\> \{
 
@@ -632,7 +632,7 @@ const handleClick \= React.useCallback(() \=\> \{
 
 \}, \[\]);
 
-### **5\. Split context**
+### 5. Split context
 
 Bad:
 
@@ -654,7 +654,7 @@ Better:
 
 \</AuthProvider\>
 
-### **6\. Use selectors in global state**
+### 6. Use selectors in global state
 
 Redux/Zustand components should subscribe only to the data they need.
 
@@ -662,23 +662,23 @@ const userName \= useSelector((state) \=\> state.user.name);
 
 Do not select the whole store.
 
-### **7\. Virtualize large lists**
+### 7. Virtualize large lists
 
 Do not render thousands of rows at once.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 To prevent unnecessary re-renders, I first identify why the component re-renders. Then I improve state placement, split components, memoize expensive children, stabilize props with `useMemo`/`useCallback`, split context, use selectors for global state, and virtualize large lists.
 
 ---
 
-## 8\. Memoization Strategies
+## 8. Memoization Strategies
 
-## **Simple meaning**
+## Simple meaning
 
 Memoization means caching something so React does not repeat unnecessary work.
 
-## **What can be memoized?**
+## What can be memoized?
 
 Component → React.memo
 
@@ -692,7 +692,7 @@ API data → server-state cache
 
 Route chunk → lazy loading/code splitting
 
-## **Good memoization strategy**
+## Good memoization strategy
 
 Use memoization when:
 
@@ -702,7 +702,7 @@ Use memoization when:
 * Child component is memoized.  
 * Profiling shows repeated costly renders.
 
-## **Bad memoization strategy**
+## Bad memoization strategy
 
 Avoid:
 
@@ -716,7 +716,7 @@ Adding useMemo for cheap calculations
 
 Ignoring actual bottleneck
 
-## **Senior-level point**
+## Senior-level point
 
 Memoization also has cost.
 
@@ -727,19 +727,19 @@ It adds:
 * More complex code.  
 * Possible stale dependency bugs.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Memoization should be used selectively. I memoize expensive calculations, stable props for memoized children, and costly components that re-render unnecessarily. I avoid memoizing cheap work because memoization itself has overhead.
 
 ---
 
-## 9\. Code Splitting
+## 9. Code Splitting
 
-## **Simple meaning**
+## Simple meaning
 
 Code splitting means splitting the JavaScript bundle into smaller chunks and loading only what is needed.
 
-## **Why needed**
+## Why needed
 
 Large apps can create huge bundles.
 
@@ -753,7 +753,7 @@ Huge bundle
 
 Code splitting helps reduce initial load.
 
-## **Route-level code splitting**
+## Route-level code splitting
 
 const ReportsPage \= React.lazy(() \=\> import("./ReportsPage"));
 
@@ -775,7 +775,7 @@ function App() \{
 
 \}
 
-## **Good candidates for code splitting**
+## Good candidates for code splitting
 
 * Routes.  
 * Admin pages.  
@@ -787,19 +787,19 @@ function App() \{
 * Rarely used feature.  
 * Third-party-heavy component.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Code splitting breaks the app bundle into smaller chunks so users do not download all code upfront. Route-level splitting is the most common approach. It improves initial load performance, especially in large React applications.
 
 ---
 
-## 10\. Lazy Loading
+## 10. Lazy Loading
 
-## **Simple meaning**
+## Simple meaning
 
 Lazy loading means loading code, images, or data only when needed.
 
-## **React.lazy**
+## React.lazy
 
 const SettingsPage \= React.lazy(() \=\> import("./SettingsPage"));
 
@@ -811,23 +811,23 @@ Usage:
 
 \</React.Suspense\>
 
-## **Lazy loading images**
+## Lazy loading images
 
 \<img src="/hero.jpg" alt="Hero" loading="lazy" /\>
 
-## **Lazy loading heavy components**
+## Lazy loading heavy components
 
 const Chart \= React.lazy(() \=\> import("./Chart"));
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Lazy loading delays loading code or assets until they are needed. In React, `React.lazy` with `Suspense` is commonly used to lazy load route components or heavy UI modules. It reduces initial bundle size and improves first load performance.
 
 ---
 
-## 11\. Suspense
+## 11. Suspense
 
-## **Simple meaning**
+## Simple meaning
 
 `Suspense` shows fallback UI while a lazy component or suspended resource is loading.
 
@@ -837,7 +837,7 @@ Lazy loading delays loading code or assets until they are needed. In React, `Rea
 
 \</React.Suspense\>
 
-## **Common use**
+## Common use
 
 const Reports \= React.lazy(() \=\> import("./Reports"));
 
@@ -855,7 +855,7 @@ function App() \{
 
 \}
 
-## **Good fallback UX**
+## Good fallback UX
 
 Avoid layout jump.
 
@@ -869,7 +869,7 @@ Show route-level loader
 
 Keep previous UI when possible
 
-## **Suspense is not Error Boundary**
+## Suspense is not Error Boundary
 
 Suspense handles loading.
 
@@ -879,19 +879,19 @@ Loading problem → Suspense fallback
 
 Render error → Error Boundary fallback
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Suspense lets React show fallback UI while a lazy-loaded component or suspended part of the tree is not ready. It is commonly used with `React.lazy` for code splitting. Suspense is for loading states, not error handling.
 
 ---
 
-## 12\. Virtualization
+## 12. Virtualization
 
-## **Simple meaning**
+## Simple meaning
 
 Virtualization means rendering only visible items from a large list instead of rendering the entire list.
 
-## **Problem**
+## Problem
 
 \{items.map((item) \=\> (
 
@@ -901,7 +901,7 @@ Virtualization means rendering only visible items from a large list instead of r
 
 If `items` has 50,000 rows, rendering all rows is expensive.
 
-## **Virtualized idea**
+## Virtualized idea
 
 Total rows: 50,000
 
@@ -913,7 +913,7 @@ Fake full height using container
 
 Update visible rows while scrolling
 
-## **When to use virtualization**
+## When to use virtualization
 
 Use it for:
 
@@ -926,7 +926,7 @@ Use it for:
 * Chat history.  
 * Grid/list views.
 
-## **Benefits**
+## Benefits
 
 * Faster initial render.  
 * Less DOM memory.  
@@ -934,7 +934,7 @@ Use it for:
 * Better responsiveness.  
 * Lower browser layout/paint cost.
 
-## **Trade-offs**
+## Trade-offs
 
 * More implementation complexity.  
 * Dynamic row height is harder.  
@@ -943,19 +943,19 @@ Use it for:
 * SEO not suitable for all content lists.  
 * Keyboard navigation needs handling.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Virtualization improves large list performance by rendering only the visible rows instead of the entire list. It reduces DOM nodes, memory usage, layout cost, and rendering time. It is useful for tables, logs, search results, dropdowns, file explorers, and large feeds.
 
 ---
 
-## 13\. react-window
+## 13. react-window
 
-## **Simple meaning**
+## Simple meaning
 
 `react-window` is a lightweight virtualization library for rendering large lists and grids.
 
-## **Fixed size list example**
+## Fixed size list example
 
 \import \{ FixedSizeList as List \} from "react-window";
 
@@ -1005,7 +1005,7 @@ function VirtualizedList() \{
 
 \}
 
-## **Key point**
+## Key point
 
 The `style` prop is important.
 
@@ -1013,35 +1013,35 @@ The `style` prop is important.
 
 `react-window` uses it to position rows correctly.
 
-## **Use react-window when**
+## Use react-window when
 
 * You need simple list/grid virtualization.  
 * Row height is fixed or manageable.  
 * You want lighter API.  
 * You do not need many advanced features.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `react-window` is a lightweight library for virtualizing large lists and grids. It renders only visible items and uses positioning styles internally. It is usually preferred when we need simple and fast virtualization with less overhead.
 
 ---
 
-## 14\. react-virtualized
+## 14. react-virtualized
 
-## **Simple meaning**
+## Simple meaning
 
 `react-virtualized` is an older, feature-rich virtualization library.
 
 It supports large lists, grids, tables, auto-sizing, cell measuring, and more advanced cases.
 
-## **Use react-virtualized when**
+## Use react-virtualized when
 
 * You need advanced table/grid features.  
 * Dynamic row heights are important.  
 * You need mature utilities like auto sizer or cell measurer.  
 * Existing project already uses it.
 
-## **react-window vs react-virtualized**
+## react-window vs react-virtualized
 
 | Point | react-window | react-virtualized |
 | ----- | ----- | ----- |
@@ -1051,15 +1051,15 @@ It supports large lists, grids, tables, auto-sizing, cell measuring, and more ad
 | Complexity | Lower | Higher |
 | Modern preference | Often preferred for simple cases | Useful for complex legacy/advanced cases |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `react-window` is smaller and simpler, while `react-virtualized` is more feature-rich. For most simple large-list use cases, I would choose `react-window`. For complex grids, dynamic measurements, or existing legacy code, `react-virtualized` may still be useful.
 
 ---
 
-## 15\. Large List Optimization
+## 15. Large List Optimization
 
-## **Problem**
+## Problem
 
 Rendering a huge list directly creates too many DOM nodes.
 
@@ -1083,7 +1083,7 @@ function ProductList(\{ products \}: \{ products: Product\[\] \}) \{
 
 \}
 
-## **Better options**
+## Better options
 
 Use:
 
@@ -1103,7 +1103,7 @@ Stable keys
 
 Avoid heavy logic inside row render
 
-## **Row optimization**
+## Row optimization
 
 const ProductRow \= React.memo(function ProductRow(\{
 
@@ -1119,25 +1119,25 @@ const ProductRow \= React.memo(function ProductRow(\{
 
 \});
 
-## **Stable key**
+## Stable key
 
 \<ProductRow key=\{product.id\} product=\{product\} /\>
 
 Avoid index keys if list can reorder.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For large lists, I avoid rendering all items at once. I use pagination, infinite scroll, or virtualization depending on UX. I keep row components lightweight, use stable keys, avoid expensive logic during row rendering, and memoize rows only when profiling shows benefit.
 
 ---
 
-## 16\. Performance Profiling
+## 16. Performance Profiling
 
-## **Simple meaning**
+## Simple meaning
 
 Performance profiling means measuring where time is spent before optimizing.
 
-## **What to check**
+## What to check
 
 Which component re-rendered?
 
@@ -1149,7 +1149,7 @@ Which interaction was slow?
 
 Is the bottleneck React, JavaScript, network, layout, or bundle size?
 
-## **Tools**
+## Tools
 
 * React DevTools Profiler.  
 * Browser Performance tab.  
@@ -1160,7 +1160,7 @@ Is the bottleneck React, JavaScript, network, layout, or bundle size?
 * Real user monitoring.  
 * Logging/monitoring tools.
 
-## **Profiling process**
+## Profiling process
 
 1\. Reproduce slow interaction
 
@@ -1174,19 +1174,19 @@ Is the bottleneck React, JavaScript, network, layout, or bundle size?
 
 6\. Measure again
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I profile before optimizing. I reproduce the slow interaction, record it with React DevTools Profiler or browser Performance tools, identify which components rendered and why, apply a targeted fix, and measure again to confirm improvement.
 
 ---
 
-## 17\. React DevTools Profiler
+## 17. React DevTools Profiler
 
-## **Simple meaning**
+## Simple meaning
 
 React DevTools Profiler helps identify component render performance issues.
 
-## **What it shows**
+## What it shows
 
 * Which components rendered.  
 * How long each render took.  
@@ -1195,7 +1195,7 @@ React DevTools Profiler helps identify component render performance issues.
 * Interaction causing updates.  
 * Components that rendered unnecessarily.
 
-## **How I use it**
+## How I use it
 
 Open React DevTools Profiler
 
@@ -1215,7 +1215,7 @@ Optimize
 
 Record again
 
-## **Common findings**
+## Common findings
 
 Parent re-render caused expensive child re-render
 
@@ -1227,21 +1227,21 @@ Expensive filtering happened on every render
 
 Unstable object/function props broke memoization
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 React DevTools Profiler helps measure rendering performance. It shows which components rendered, how long they took, and which commits were expensive. I use it to verify the actual bottleneck before applying memoization or architectural changes.
 
 ---
 
-## 18\. Rendering Optimization
+## 18. Rendering Optimization
 
-## **Simple meaning**
+## Simple meaning
 
 Rendering optimization means reducing unnecessary render work or making render work cheaper.
 
-## **Techniques**
+## Techniques
 
-### **1\. Keep render pure and light**
+### 1. Keep render pure and light
 
 Avoid expensive work directly inside render.
 
@@ -1259,23 +1259,23 @@ const sortedUsers \= React.useMemo(() \=\> \{
 
 \}, \[users\]);
 
-### **2\. Split components**
+### 2. Split components
 
 Move frequently changing state down.
 
-### **3\. Memoize expensive children**
+### 3. Memoize expensive children
 
 Use `React.memo`.
 
-### **4\. Avoid unstable props**
+### 4. Avoid unstable props
 
 Use stable objects/functions where needed.
 
-### **5\. Use context carefully**
+### 5. Use context carefully
 
 Split context by update frequency.
 
-### **6\. Use transitions for non-urgent updates**
+### 6. Use transitions for non-urgent updates
 
 const \[isPending, startTransition\] \= React.useTransition();
 
@@ -1285,65 +1285,65 @@ startTransition(() \=\> \{
 
 \});
 
-### **7\. Use deferred values for expensive results**
+### 7. Use deferred values for expensive results
 
 const deferredQuery \= React.useDeferredValue(query);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Rendering optimization means reducing render frequency and render cost. I keep render logic pure and cheap, move state closer to usage, split components, memoize expensive subtrees, stabilize props, split context, virtualize large lists, and use transitions for non-urgent rendering.
 
 ---
 
-## 19\. Architecture Decisions for Performance
+## 19. Architecture Decisions for Performance
 
-## **Simple meaning**
+## Simple meaning
 
 Performance is not only hooks. Architecture affects performance more.
 
-## **Good architecture decisions**
+## Good architecture decisions
 
-### **1\. Route-level code splitting**
+### 1. Route-level code splitting
 
 Large features should load only when needed.
 
-### **2\. Feature-based structure**
+### 2. Feature-based structure
 
 Keeps state and code scoped to features.
 
-### **3\. Server-state caching**
+### 3. Server-state caching
 
 Use tools like RTK Query, React Query, SWR, or Apollo.
 
-### **4\. State ownership**
+### 4. State ownership
 
 Do not put everything in global state.
 
-### **5\. Design system**
+### 5. Design system
 
 Shared optimized components prevent duplicate poor implementations.
 
-### **6\. Bundle governance**
+### 6. Bundle governance
 
 Track bundle size and avoid heavy dependencies.
 
-### **7\. Microfrontend boundaries**
+### 7. Microfrontend boundaries
 
 Avoid duplicating React and shared libraries across MFEs.
 
-### **8\. Performance budgets**
+### 8. Performance budgets
 
 Define acceptable bundle size, render time, and Core Web Vitals targets.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 At senior level, React performance is not just `useMemo`. Architecture decisions like route splitting, state boundaries, server-state caching, bundle governance, design-system quality, and microfrontend dependency sharing have a bigger long-term impact.
 
 ---
 
-## 20\. Large Scale State Management
+## 20. Large Scale State Management
 
-## **Performance problem**
+## Performance problem
 
 Bad state management can cause wide re-renders.
 
@@ -1353,9 +1353,9 @@ Example:
 
 Any value change can re-render many consumers.
 
-## **Better options**
+## Better options
 
-### **Split context**
+### Split context
 
 \<AuthProvider\>
 
@@ -1371,11 +1371,11 @@ Any value change can re-render many consumers.
 
 \</AuthProvider\>
 
-### **Use selectors**
+### Use selectors
 
 const userName \= useSelector((state) \=\> state.user.name);
 
-### **Use server-state tools**
+### Use server-state tools
 
 API data
 
@@ -1385,23 +1385,23 @@ UI/client state
 
 → useState / useReducer / Context / Redux / Zustand
 
-### **Keep state local when possible**
+### Keep state local when possible
 
 Modal open state should not be global unless many features need it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For large-scale state performance, I separate client state from server state, keep state as local as possible, split contexts, use selectors in Redux/Zustand, and avoid making every update global. This reduces unnecessary re-renders and keeps the app easier to maintain.
 
 ---
 
-## 21\. Scaling React Teams
+## 21. Scaling React Teams
 
-## **Simple meaning**
+## Simple meaning
 
 Scaling performance also means scaling engineering practices.
 
-## **Team-level practices**
+## Team-level practices
 
 * Feature ownership.  
 * Shared component library.  
@@ -1416,7 +1416,7 @@ Scaling performance also means scaling engineering practices.
 * Architecture decision records.  
 * Avoid uncontrolled dependency growth.
 
-## **Example code review checklist**
+## Example code review checklist
 
 Is this state local or unnecessarily global?
 
@@ -1432,7 +1432,7 @@ Is this dependency heavy?
 
 Did we measure before optimizing?
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Scaling React teams requires technical and process decisions. I use feature ownership, design-system components, shared performance guidelines, bundle budgets, profiling practices, code review checklists, and clear state management rules so performance does not depend only on individual developers.
 
@@ -1442,9 +1442,9 @@ Scaling React teams requires technical and process decisions. I use feature owne
 
 ---
 
-## 1\. React.memo vs useMemo
+## 1. React.memo vs useMemo
 
-## **Answer**
+## Answer
 
 `React.memo` memoizes a component. `useMemo` memoizes a value.
 
@@ -1460,15 +1460,15 @@ const activeUsers \= React.useMemo(() \=\> \{
 
 \}, \[users\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `React.memo` is used to skip re-rendering a component when props are unchanged. `useMemo` is used inside a component to cache the result of an expensive calculation or keep an object/array reference stable. One works at component level, the other works at value level.
 
 ---
 
-## 2\. useMemo vs useCallback
+## 2. useMemo vs useCallback
 
-## **Answer**
+## Answer
 
 `useMemo` caches a value. `useCallback` caches a function reference.
 
@@ -1484,15 +1484,15 @@ const handleClick \= React.useCallback(() \=\> \{
 
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useMemo` returns a memoized value, while `useCallback` returns a memoized function. Use `useMemo` for expensive calculations and stable objects. Use `useCallback` when function identity matters, usually with memoized child components or dependency arrays.
 
 ---
 
-## 3\. How do you optimize a large list?
+## 3. How do you optimize a large list?
 
-## **Answer**
+## Answer
 
 For large lists, I use:
 
@@ -1514,15 +1514,15 @@ Debounced search
 
 Avoid expensive row render logic
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I avoid rendering thousands of DOM nodes at once. I use virtualization with libraries like `react-window` or `react-virtualized`, or pagination/infinite scroll depending on UX. I keep row components light, use stable keys, avoid expensive logic in rows, and measure performance before and after.
 
 ---
 
-## 4\. How do you identify unnecessary re-renders?
+## 4. How do you identify unnecessary re-renders?
 
-## **Answer**
+## Answer
 
 Use React DevTools Profiler.
 
@@ -1538,15 +1538,15 @@ Did props/state/context change?
 
 Is parent causing child re-render?
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I use React DevTools Profiler to record the slow interaction and inspect render commits. It shows which components rendered and how expensive they were. Then I check whether the re-render was caused by state, props, parent render, context, or unstable references.
 
 ---
 
-## 5\. How do you optimize route loading?
+## 5. How do you optimize route loading?
 
-## **Answer**
+## Answer
 
 Use route-level code splitting.
 
@@ -1560,15 +1560,15 @@ Wrap with Suspense.
 
 \</React.Suspense\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I optimize route loading by splitting large route components into separate chunks using `React.lazy` and `Suspense`. This reduces the initial bundle and loads heavy pages only when users visit them.
 
 ---
 
-## 6\. How do you optimize context performance?
+## 6. How do you optimize context performance?
 
-## **Answer**
+## Answer
 
 Avoid one huge context. Split providers by purpose and update frequency.
 
@@ -1588,15 +1588,15 @@ Better:
 
 \</AuthProvider\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context updates can re-render all consumers using that context. To optimize it, I split contexts by domain and update frequency, memoize provider values, and avoid putting frequently changing large state into one global context.
 
 ---
 
-## 7\. How do senior engineers approach React performance?
+## 7. How do senior engineers approach React performance?
 
-## **Answer**
+## Answer
 
 Senior engineers optimize at multiple levels:
 
@@ -1612,15 +1612,15 @@ Architecture level
 
 Team/process level
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 At senior level, I do not jump directly to hooks. I first measure, then identify whether the bottleneck is rendering, state design, API calls, bundle size, list size, or architecture. Then I choose the right fix and validate with profiling.
 
 ---
 
-## 8\. How do you make architecture decisions for frontend performance?
+## 8. How do you make architecture decisions for frontend performance?
 
-## **Answer**
+## Answer
 
 I consider:
 
@@ -1635,7 +1635,7 @@ I consider:
 * Monitoring.  
 * Future scale.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Frontend architecture decisions should balance performance and maintainability. I choose local state over global when possible, server-state tools for API data, route splitting for large features, design-system components for consistency, and microfrontends only when team ownership and independent deployment justify the complexity.
 

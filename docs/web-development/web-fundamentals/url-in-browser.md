@@ -7,11 +7,11 @@ sidebar_position: 3
 
 Related canonical page: [Browser Rendering Pipeline](browser-rendering-pipeline.md).
 
-# **What Happens When You Enter a URL in the Browser?**
+## What Happens When You Enter a URL in the Browser?
 
 Suppose the user enters: [https://www.agoda.com](https://www.agoda.com)
 
-# **High-Level Flow**
+## High-Level Flow
 
 1\. URL Parsing  
 2\. DNS Resolution  
@@ -26,7 +26,7 @@ Suppose the user enters: [https://www.agoda.com](https://www.agoda.com)
 
 ---
 
-# **Step 1: URL Parsing**
+## Step 1: URL Parsing
 
 Browser first parses: https://www.agoda.com/search?city=bangkok
 
@@ -41,7 +41,7 @@ Browser validates the URL and checks whether it already knows the IP address.
 
 ---
 
-# **Step 2: DNS Resolution**
+## Step 2: DNS Resolution
 
 Goal: →  [www.agoda.com](http://www.agoda.com) → IP Address
 
@@ -62,7 +62,7 @@ Example: [www.agoda.com](http://www.agoda.com) → 104.x.x.x
 Root Server → .com TLD Server → agoda.com Name Server → Returns IP address.  
 ---
 
-## **Follow-Up Question**
+## Follow-Up Question
 
 **Why is DNS caching important?**
 
@@ -74,7 +74,7 @@ Answer:
 
 ---
 
-# **Step 3: TCP Connection**
+## Step 3: TCP Connection
 
 Once IP is known: Browser establishes TCP connection. Uses 3-Way Handshake.
 
@@ -92,7 +92,7 @@ Purpose:
 
 ---
 
-## **Follow-Up**
+## Follow-Up
 
 **Why not send data immediately?**
 
@@ -104,7 +104,7 @@ Because both sides need to agree on:
 
 ---
 
-# **Step 4: TLS (Transport Layer Security Handshake) (HTTPS)**
+## Step 4: TLS (Transport Layer Security Handshake) (HTTPS)
 
 For HTTPS: [https://www.agoda.com](https://www.agoda.com), Browser performs TLS handshake.
 
@@ -114,7 +114,7 @@ The browser verifies the server certificate. Checks: Certificate validity, Certi
 
 ---
 
-## **Follow-Up**
+## Follow-Up
 
 **Why HTTPS instead of HTTP?**
 
@@ -130,7 +130,7 @@ HTTPS:
 
 ---
 
-# **Step 5: HTTP Request**
+## Step 5: HTTP Request
 
 Browser sends:
 
@@ -150,7 +150,7 @@ Accept: application/json
 
 ---
 
-## **Follow-Up**
+## Follow-Up
 
 **What else is sent?**
 
@@ -163,7 +163,7 @@ Typically:
 
 ---
 
-# **Step 6: Server Processing**
+## Step 6: Server Processing
 
 Server receives request. Possible flow:
 
@@ -173,7 +173,7 @@ Server generates response.
 
 ---
 
-# **Step 7: HTTP Response**
+## Step 7: HTTP Response
 
 Example:
 
@@ -193,13 +193,13 @@ Or for SPA:
 
 ---
 
-# **Step 8: Browser Rendering Pipeline**
+## Step 8: Browser Rendering Pipeline
 
 This is where interviewers often spend most of the time.
 
 ---
 
-## **HTML Parsing**
+## HTML Parsing
 
 The browser reads HTML.
 
@@ -221,7 +221,7 @@ Document
 
 ---
 
-## **CSS Parsing**
+## CSS Parsing
 
 Browser parses CSS.
 
@@ -231,7 +231,7 @@ CSSOM
 
 ---
 
-## **Render Tree**
+## Render Tree
 
 Combines:
 
@@ -253,7 +253,7 @@ Not included.
 
 ---
 
-## **Layout**
+## Layout
 
 Browser computes:
 
@@ -269,7 +269,7 @@ Reflow
 
 ---
 
-## **Paint**
+## Paint
 
 Browser converts elements into pixels.
 
@@ -280,7 +280,7 @@ Images
 
 ---
 
-## **Composite**
+## Composite
 
 GPU combines layers.
 
@@ -288,11 +288,11 @@ Final screen appears.
 
 ---
 
-# **Follow-Up Question**
+## Follow-Up Question
 
-## **Reflow vs Repaint**
+## Reflow vs Repaint
 
-### **Reflow**
+### Reflow
 
 Layout recalculation.
 
@@ -306,7 +306,7 @@ Expensive.
 
 ---
 
-### **Repaint**
+### Repaint
 
 Only visual changes.
 
@@ -322,7 +322,7 @@ Cheaper.
 
 ---
 
-# **Step 9: JavaScript Execution**
+## Step 9: JavaScript Execution
 
 When browser encounters:
 
@@ -348,7 +348,7 @@ Add Event Listeners
 
 ---
 
-## **Follow-Up**
+## Follow-Up
 
 **Why can JavaScript delay rendering?**
 
@@ -391,7 +391,7 @@ Key Behavioral Differences
 
 ---
 
-# **Step 10: Page Becomes Interactive**
+## Step 10: Page Becomes Interactive
 
 React application starts.
 
@@ -409,7 +409,7 @@ This process is called: **Hydration (SSR apps)** or **Client-side rendering,** d
 
 ---
 
-# **IC4-Level Performance Talking Points**
+## IC4-Level Performance Talking Points
 
 If the interviewer asks:
 
@@ -417,26 +417,26 @@ If the interviewer asks:
 
 Mention:
 
-### **Network**
+### Network
 
 * DNS caching  
 * HTTP/2  
 * HTTP/3  
 * CDN
 
-### **Assets**
+### Assets
 
 * Compression (Brotli, Gzip)  
 * Image optimization  
 * Lazy loading
 
-### **JavaScript**
+### JavaScript
 
 * Code splitting  
 * Tree shaking  
 * Dynamic imports
 
-### **Rendering**
+### Rendering
 
 * Minimize reflows  
 * Virtualization  
@@ -444,7 +444,7 @@ Mention:
 
 ---
 
-# **A Strong 2-Minute Interview Answer**
+## A Strong 2-Minute Interview Answer
 
 When a user enters a URL, the browser first parses it and resolves the domain through DNS to obtain an IP address. It then establishes a TCP connection and, for HTTPS, performs a TLS handshake to create a secure encrypted connection. The browser sends an HTTP request, and the server responds with HTML, CSS, JavaScript, and other assets. The browser parses HTML into a DOM tree and CSS into a CSSOM tree, combines them into a render tree, performs layout calculations, paints pixels, and composites layers to display the page. JavaScript is then executed, which can modify the DOM and make additional network requests. Finally, frameworks like React hydrate or render the UI and attach event handlers, making the page fully interactive.  
 ---

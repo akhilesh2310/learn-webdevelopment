@@ -5,25 +5,25 @@ sidebar_position: 21
 
 # Memory Management
 
-## **Stack vs Heap**
+## Stack vs Heap
 
-## **Garbage Collection**
+## Garbage Collection
 
-## **Mark and Sweep Algorithm**
+## Mark and Sweep Algorithm
 
-## **Memory Leaks**
+## Memory Leaks
 
-## **Closures and Leaks**
+## Closures and Leaks
 
-## **Event Listener Leaks**
+## Event Listener Leaks
 
-## **Detached DOM References**
+## Detached DOM References
 
-## **WeakMap**
+## WeakMap
 
-## **WeakSet**
+## WeakSet
 
-## **Common Interview Topics/Questions**
+## Common Interview Topics/Questions
 
 * Detecting memory leaks  
 * Preventing memory leaks
@@ -31,24 +31,22 @@ sidebar_position: 21
 Memory management:   
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory\_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
 
-
-
-# **JavaScript Memory Management**
+## JavaScript Memory Management
 
 JavaScript memory management is about how values are stored, used, and cleaned up. As frontend engineers, we usually do not manually allocate or free memory, but we must avoid holding references longer than needed. Most memory leaks happen when unused objects are still reachable through closures, event listeners, timers, caches, or detached DOM references.
 
 ---
 
-# **1\. Stack vs Heap**
+## 1. Stack vs Heap
 
-## **Simple meaning**
+## Simple meaning
 
 JavaScript uses memory to store values while code runs.
 
 * **Stack** stores function calls and simple local values.  
 * **Heap** stores objects, arrays, functions, DOM nodes, and other reference values.
 
-## **Key mental model**
+## Key mental model
 
 Primitive values are usually stored directly with the execution context. Objects are stored in the heap, and variables hold references to them.
 
@@ -63,7 +61,7 @@ Mental model:
 * `age` stores a primitive value.  
 * `user` stores a reference to an object in heap memory.
 
-## **Example**
+## Example
 
 let a \= 10;  
 let b \= a;
@@ -84,7 +82,7 @@ console.log(user1.name); // "Rahul"
 
 Answer: Objects are copied by reference. Both variables point to the same heap object.
 
-## **Important edge cases / traps**
+## Important edge cases / traps
 
 `const` does not make an object immutable.
 
@@ -101,21 +99,21 @@ const user \= \{ name: "Akhilesh" \};
 user \= \{ name: "Rahul" \};  
 // TypeError: Assignment to constant variable.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Stack memory stores function calls and local execution context data, while heap memory stores objects, arrays, functions, and DOM nodes. Primitive values behave like copied values, while objects are referenced from the heap. This is why changing an object through one reference affects other references to the same object.
 
 ---
 
-# **2\. Garbage Collection**
+## 2. Garbage Collection
 
-## **Simple meaning**
+## Simple meaning
 
 Garbage collection is the automatic process of freeing memory that is no longer reachable.
 
 JavaScript developers do not usually free memory manually. The JavaScript engine does it automatically when objects are no longer needed.
 
-## **Key mental model**
+## Key mental model
 
 If an object can still be reached from active code, it stays in memory. If nothing can reach it anymore, it becomes eligible for garbage collection.
 
@@ -127,7 +125,7 @@ user \= null;
 
 After `user = null`, the object may be garbage collected if no other references exist.
 
-## **Reachability**
+## Reachability
 
 An object is reachable if it can be accessed from the roots, like:
 
@@ -139,7 +137,7 @@ An object is reachable if it can be accessed from the roots, like:
 * DOM references.  
 * Caches like `Map`, arrays, or objects.
 
-## **Example**
+## Example
 
 let user \= \{ name: "Akhilesh" \};  
 let admin \= user;
@@ -150,27 +148,27 @@ console.log(admin.name); // "Akhilesh"
 
 Answer: The object is not garbage collected because `admin` still references it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Garbage collection automatically frees memory for objects that are no longer reachable. JavaScript mainly tracks reachability from roots like globals, active functions, closures, timers, event listeners, and DOM references. If an object is still reachable, it cannot be collected.
 
 ---
 
-# **3\. Mark and Sweep Algorithm**
+## 3. Mark and Sweep Algorithm
 
-## **Simple meaning**
+## Simple meaning
 
 Mark and Sweep is the common garbage collection approach used to find unreachable objects.
 
 The engine starts from known roots, marks everything reachable, and then removes what was not marked.
 
-## **Key mental model**
+## Key mental model
 
 Garbage collector asks: “Can this object still be reached from active code?”
 
 If yes, keep it. If no, clean it.
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -179,7 +177,7 @@ Step by step:
 * Follow references from marked objects and mark those too.  
 * Sweep memory and remove unmarked objects.
 
-## **Example**
+## Example
 
 let user \= \{  
   name: "Akhilesh",  
@@ -195,7 +193,7 @@ Step by step:
 * During garbage collection, it is not marked.  
 * It becomes eligible for cleanup.
 
-## **Why circular references are usually okay**
+## Why circular references are usually okay
 
 let a \= \{\};  
 let b \= \{\};
@@ -208,27 +206,27 @@ b \= null;
 
 Answer: Even though both objects reference each other, they are not reachable from root variables anymore, so modern garbage collectors can clean them.
 
-## **Important trap**
+## Important trap
 
 Older reference-counting garbage collectors had problems with circular references, but modern JavaScript engines mainly use reachability-based collection, so unreachable cycles can be collected.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Mark and Sweep starts from root references, marks all reachable objects, and then removes unmarked objects. Modern JavaScript garbage collection is based on reachability, so even circular references can be collected if they are no longer reachable from active code.
 
 ---
 
-# **4\. Memory Leaks**
+## 4. Memory Leaks
 
-## **Simple meaning**
+## Simple meaning
 
 A memory leak happens when memory that is no longer needed is still referenced, so the garbage collector cannot clean it.
 
-## **Key mental model**
+## Key mental model
 
 A leak is not “memory exists.” A leak is “unused memory is still reachable.”
 
-## **Common causes in frontend apps**
+## Common causes in frontend apps
 
 * Global variables.  
 * Unremoved event listeners.  
@@ -239,7 +237,7 @@ A leak is not “memory exists.” A leak is “unused memory is still reachable
 * Subscriptions not cleaned up.  
 * Stale references in React effects.
 
-## **Example: accidental global variable**
+## Example: accidental global variable
 
 function createUser() \{  
   user \= \{ name: "Akhilesh" \};  
@@ -257,25 +255,25 @@ function createUser() \{
   const user \= \{ name: "Akhilesh" \};  
 \}
 
-## **Frontend example**
+## Frontend example
 
 A component loads large API data and stores it in a global cache, but never clears old entries. Even after the user leaves the page, the data stays reachable through the cache.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A memory leak happens when unused objects are still reachable, so garbage collection cannot remove them. In frontend apps, leaks commonly come from unremoved listeners, uncleared timers, closures, detached DOM nodes, subscriptions, and unbounded caches.
 
 ---
 
-# **5\. Closures and Leaks**
+## 5. Closures and Leaks
 
-## **Simple meaning**
+## Simple meaning
 
 A closure allows a function to remember variables from its outer scope.
 
 Closures are useful, but they can cause leaks if they keep large objects alive unnecessarily.
 
-## **Key mental model**
+## Key mental model
 
 If an inner function still references outer variables, those variables cannot be garbage collected.
 
@@ -291,7 +289,7 @@ const handler \= createHandler();
 
 Answer: `largeData` stays in memory because `handler` closes over it.
 
-## **Practical frontend example**
+## Practical frontend example
 
 function setupSearch() \{  
   const largeResults \= new Array(100000).fill(\{ title: "Result" \});
@@ -303,7 +301,7 @@ function setupSearch() \{
 
 If the listener stays attached, `largeResults` also stays in memory.
 
-## **How to prevent**
+## How to prevent
 
 * Avoid capturing large objects unnecessarily.  
 * Remove event listeners when no longer needed.  
@@ -325,25 +323,25 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Common mistake**
+## Common mistake
 
 Thinking closures themselves are bad. They are not. Leaks happen when closures keep unnecessary references alive.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Closures can cause memory leaks when an inner function keeps references to large outer-scope variables after those variables are no longer needed. Closures are not bad, but we should avoid capturing unnecessary data and clean up callbacks, listeners, and subscriptions that keep closures alive.
 
 ---
 
-# **6\. Event Listener Leaks**
+## 6. Event Listener Leaks
 
-## **Simple meaning**
+## Simple meaning
 
 An event listener leak happens when a listener remains attached after the related UI is no longer needed.
 
 The listener keeps its callback and referenced data alive.
 
-## **Example**
+## Example
 
 function mountModal() \{  
   const modalData \= \{ title: "Large modal data" \};
@@ -359,7 +357,7 @@ mountModal();
 
 Problem: If the modal is removed but the resize listener is not removed, `handleResize` and `modalData` may stay in memory.
 
-## **Correct cleanup**
+## Correct cleanup
 
 function mountModal() \{  
   const modalData \= \{ title: "Large modal data" \};
@@ -379,7 +377,7 @@ const cleanup \= mountModal();
 
 cleanup();
 
-## **React example**
+## React example
 
 useEffect(() \=\> \{  
   function handleResize() \{  
@@ -393,7 +391,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Important trap**
+## Important trap
 
 To remove an event listener, you need the same function reference.
 
@@ -416,21 +414,21 @@ function handleResize() \{
 window.addEventListener("resize", handleResize);  
 window.removeEventListener("resize", handleResize);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event listener leaks happen when listeners are not removed after the UI or component is gone. The listener keeps its callback and captured variables alive. In React, we prevent this by returning cleanup from `useEffect`, and in plain JavaScript, we remove listeners using the same function reference.
 
 ---
 
-# **7\. Detached DOM References**
+## 7. Detached DOM References
 
-## **Simple meaning**
+## Simple meaning
 
 A detached DOM node is a DOM element removed from the page but still referenced by JavaScript.
 
 Because JavaScript still holds a reference, the garbage collector cannot clean it.
 
-## **Example**
+## Example
 
 let removedNode;
 
@@ -444,11 +442,11 @@ function removeElement() \{
 
 Problem: Even after removing the DOM element from the document, `removedNode` still references it.
 
-## **Practical frontend scenario**
+## Practical frontend scenario
 
 A modal, tooltip, dropdown, or table row is removed from the DOM, but some JavaScript cache, closure, listener, or variable still references it.
 
-## **Better**
+## Better
 
 let removedNode;
 
@@ -460,7 +458,7 @@ function removeElement() \{
   removedNode \= null;  
 \}
 
-## **Common causes**
+## Common causes
 
 * Caching DOM nodes globally.  
 * Event listeners referencing removed DOM nodes.  
@@ -468,19 +466,19 @@ function removeElement() \{
 * Third-party libraries not properly destroyed.  
 * Not cleaning up portals/modals/tooltips.
 
-## **React angle**
+## React angle
 
 React normally handles DOM cleanup, but leaks can still happen through external libraries, manually attached DOM listeners, timers, observers, or refs stored outside React.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A detached DOM leak happens when a DOM node is removed from the document but JavaScript still references it. Since it is still reachable, garbage collection cannot remove it. We prevent this by clearing references, removing listeners, and destroying third-party widgets properly.
 
 ---
 
-# **8\. WeakMap**
+## 8. WeakMap
 
-## **Simple meaning**
+## Simple meaning
 
 `WeakMap` stores key-value pairs where keys must be objects and are weakly referenced.
 
@@ -498,11 +496,11 @@ element \= null;
 
 If no other reference exists to that DOM element, it can be garbage collected.
 
-## **Key mental model**
+## Key mental model
 
 Use `WeakMap` when you want to associate metadata with an object without preventing that object from being cleaned up.
 
-## **Important points**
+## Important points
 
 * Keys must be objects.  
 * Values can be any type.  
@@ -510,7 +508,7 @@ Use `WeakMap` when you want to associate metadata with an object without prevent
 * No `.size`.  
 * Does not prevent garbage collection of keys.
 
-## **Practical frontend example**
+## Practical frontend example
 
 const elementState \= new WeakMap();
 
@@ -526,7 +524,7 @@ trackElement(button);
 
 Useful for DOM metadata, private object data, and memory-safe tracking.
 
-## **WeakMap vs Map**
+## WeakMap vs Map
 
 const map \= new Map();  
 let obj \= \{\};
@@ -538,15 +536,15 @@ With `Map`, the object may still stay in memory because `Map` strongly reference
 
 With `WeakMap`, the key is weakly referenced, so it can be collected when no other references exist.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `WeakMap` is useful when we need to attach metadata to objects without preventing garbage collection. Its keys must be objects, it is not iterable, and it does not expose `.size` because entries can disappear when keys are collected.
 
 ---
 
-# **9\. WeakSet**
+## 9. WeakSet
 
-## **Simple meaning**
+## Simple meaning
 
 `WeakSet` stores objects weakly.
 
@@ -560,11 +558,11 @@ visited.add(user);
 
 console.log(visited.has(user)); // true
 
-## **Key mental model**
+## Key mental model
 
 Use `WeakSet` for temporary object tracking without preventing garbage collection.
 
-## **Important points**
+## Important points
 
 * Only objects can be stored.  
 * Not iterable.  
@@ -572,7 +570,7 @@ Use `WeakSet` for temporary object tracking without preventing garbage collectio
 * Does not prevent garbage collection.  
 * Useful for visited object tracking.
 
-## **Practical example**
+## Practical example
 
 const processed \= new WeakSet();
 
@@ -586,32 +584,32 @@ function processNode(node) \{
 
 This can be useful for DOM nodes, graph traversal, or avoiding repeated processing.
 
-## **Common trap**
+## Common trap
 
 const weakSet \= new WeakSet();
 
 weakSet.add(1);  
 // TypeError: Invalid value used in weak set
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `WeakSet` stores weak references to objects. It is useful for tracking whether an object has been seen or processed without preventing that object from being garbage collected. It only accepts objects and cannot be iterated.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. How do you detect memory leaks?**
+## 1. How do you detect memory leaks?
 
-## **Simple answer**
+## Simple answer
 
 Use browser DevTools, observe memory growth, take heap snapshots, and check whether unused objects are still retained.
 
-## **Practical steps**
+## Practical steps
 
-### **1\. Reproduce the suspected leak**
+### 1. Reproduce the suspected leak
 
 Perform the same action repeatedly.
 
@@ -623,7 +621,7 @@ Example:
 * Mount and unmount a component repeatedly.  
 * Open a large table and switch filters multiple times.
 
-### **2\. Use Chrome DevTools Memory tab**
+### 2. Use Chrome DevTools Memory tab
 
 Common tools:
 
@@ -631,7 +629,7 @@ Common tools:
 * **Allocation instrumentation:** See memory allocations over time.  
 * **Performance monitor:** Watch JS heap size while using the app.
 
-### **3\. Compare heap snapshots**
+### 3. Compare heap snapshots
 
 Take snapshots:
 
@@ -642,7 +640,7 @@ Take snapshots:
 
 If objects keep growing and are not released, there may be a leak.
 
-### **4\. Look for common retained objects**
+### 4. Look for common retained objects
 
 * Detached DOM nodes.  
 * Event listener callbacks.  
@@ -653,7 +651,7 @@ If objects keep growing and are not released, there may be a leak.
 * Subscriptions.  
 * Observers like `MutationObserver`, `ResizeObserver`, `IntersectionObserver`.
 
-## **Example leak pattern**
+## Example leak pattern
 
 useEffect(() \=\> \{  
   const intervalId \= setInterval(() \=\> \{  
@@ -675,21 +673,21 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I detect memory leaks by reproducing the action repeatedly, then using Chrome DevTools Memory tab to take and compare heap snapshots. I look for retained objects that should have been released, such as detached DOM nodes, listeners, timers, closures, subscriptions, observers, and large cached data. If memory keeps growing after garbage collection, it is a strong leak signal.
 
 ---
 
-# **2\. How do you prevent memory leaks?**
+## 2. How do you prevent memory leaks?
 
-## **Simple answer**
+## Simple answer
 
 Prevent memory leaks by cleaning up references when they are no longer needed.
 
-## **Practical checklist**
+## Practical checklist
 
-### **Remove event listeners**
+### Remove event listeners
 
 useEffect(() \=\> \{  
   function handleResize() \{  
@@ -703,7 +701,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-### **Clear timers and intervals**
+### Clear timers and intervals
 
 useEffect(() \=\> \{  
   const timerId \= setTimeout(() \=\> \{  
@@ -725,7 +723,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-### **Abort in-flight API requests**
+### Abort in-flight API requests
 
 useEffect(() \=\> \{  
   const controller \= new AbortController();
@@ -739,7 +737,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-### **Unsubscribe from subscriptions**
+### Unsubscribe from subscriptions
 
 useEffect(() \=\> \{  
   const unsubscribe \= store.subscribe(() \=\> \{  
@@ -751,7 +749,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-### **Disconnect observers**
+### Disconnect observers
 
 useEffect(() \=\> \{  
   const observer \= new ResizeObserver(() \=\> \{  
@@ -765,7 +763,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-### **Avoid unbounded caches**
+### Avoid unbounded caches
 
 const cache \= new Map();
 
@@ -778,19 +776,19 @@ function setCache(key, value) \{
   cache.set(key, value);  
 \}
 
-### **Use WeakMap / WeakSet where useful**
+### Use WeakMap / WeakSet where useful
 
 Use `WeakMap` or `WeakSet` for object metadata when you do not want the collection to keep objects alive.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 **I prevent memory leaks by cleaning up event listeners, timers, intervals, subscriptions, observers, and in-flight API requests. I also avoid unbounded caches and unnecessary global references. In React, cleanup usually belongs inside the function returned from `useEffect`. For object metadata, `WeakMap` and `WeakSet` can help avoid keeping objects alive unnecessarily.**
 
 ---
 
-# **3\. How can closures cause memory leaks?**
+## 3. How can closures cause memory leaks?
 
-## **Answer**
+## Answer
 
 Closures can keep outer variables alive even after the outer function has finished. This becomes a leak when the closure is still referenced and the captured data is no longer needed.
 
@@ -808,21 +806,21 @@ window.addEventListener("click", listener);
 
 Here `largeData` remains in memory because `listener` closes over it and the event listener keeps `listener` alive.
 
-## **Fix**
+## Fix
 
 window.removeEventListener("click", listener);
 
 Or avoid capturing large data unnecessarily.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Closures keep references to outer-scope variables. If a long-lived callback, event listener, timer, or subscription closes over large data, that data cannot be garbage collected. The fix is to avoid capturing unnecessary data and clean up the callback when it is no longer needed.
 
 ---
 
-# **4\. Why do event listeners cause leaks?**
+## 4. Why do event listeners cause leaks?
 
-## **Answer**
+## Answer
 
 An event listener keeps a reference to its callback. If that callback references component data, DOM nodes, or large objects, those also stay in memory.
 
@@ -838,21 +836,21 @@ function mount() \{
 
 If `onScroll` is not removed, `data` stays alive.
 
-## **Fix**
+## Fix
 
 window.removeEventListener("scroll", onScroll);
 
 In React, return cleanup from `useEffect`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event listeners can cause leaks because the browser keeps the callback reference. If the listener is not removed, the callback and any variables it closes over remain reachable. This is why we remove listeners during cleanup.
 
 ---
 
-# **5\. What are detached DOM nodes?**
+## 5. What are detached DOM nodes?
 
-## **Answer**
+## Answer
 
 Detached DOM nodes are elements removed from the DOM tree but still referenced by JavaScript.
 
@@ -866,7 +864,7 @@ function closeModal() \{
 
 The modal is no longer visible, but `cachedModal` still references it.
 
-## **Fix**
+## Fix
 
 function closeModal() \{  
   const modal \= document.querySelector("\#modal");
@@ -875,15 +873,15 @@ function closeModal() \{
   cachedModal \= null;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Detached DOM nodes are removed elements that JavaScript still references. They can leak memory because the garbage collector sees them as reachable. We prevent this by clearing references, removing listeners, and properly destroying third-party DOM libraries.
 
 ---
 
-# **6\. Map vs WeakMap for memory**
+## 6. Map vs WeakMap for memory
 
-## **Simple answer**
+## Simple answer
 
 `Map` strongly references its keys. `WeakMap` weakly references object keys.
 
@@ -909,15 +907,15 @@ obj \= null;
 
 If no other references exist, the object can be garbage collected.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Use `Map` for normal key-value collections. Use `WeakMap` when keys are objects and we do not want the collection itself to prevent those objects from being garbage collected. This is useful for metadata attached to DOM nodes or object instances.
 
 ---
 
-# **7\. Common React memory leak scenarios**
+## 7. Common React memory leak scenarios
 
-## **Common cases**
+## Common cases
 
 * `setInterval` not cleared.  
 * Window/document event listener not removed.  
@@ -927,7 +925,7 @@ Use `Map` for normal key-value collections. Use `WeakMap` when keys are objects 
 * Observer not disconnected.  
 * Third-party chart/editor/table instance not destroyed.
 
-## **Example: interval leak**
+## Example: interval leak
 
 useEffect(() \=\> \{  
   const id \= setInterval(() \=\> \{  
@@ -939,7 +937,7 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Example: request cleanup**
+## Example: request cleanup
 
 useEffect(() \=\> \{  
   const controller \= new AbortController();
@@ -967,13 +965,13 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In React, memory leaks usually happen when effects create side effects but do not clean them up. Common examples are timers, event listeners, subscriptions, observers, WebSocket connections, and in-flight API calls. The fix is to return a cleanup function from `useEffect`.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -994,7 +992,7 @@ In React, memory leaks usually happen when effects create side effects but do no
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 JavaScript manages memory automatically using garbage collection. Primitive values are simple values, while objects, arrays, functions, and DOM nodes are stored in heap memory and accessed by reference. The garbage collector mainly uses reachability, often explained through the Mark and Sweep algorithm, where reachable objects are kept and unreachable ones are cleaned. Memory leaks happen when unused objects are still reachable through closures, event listeners, timers, DOM references, subscriptions, or caches. In frontend apps, I prevent leaks by cleaning up listeners, timers, subscriptions, observers, in-flight requests, and by avoiding unbounded caches. `WeakMap` and `WeakSet` are useful when we want to associate data with objects without preventing garbage collection.
 

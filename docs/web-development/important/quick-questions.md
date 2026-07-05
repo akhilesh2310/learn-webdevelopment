@@ -7,9 +7,9 @@ sidebar_position: 3
 
 Related canonical pages: [Event Loop](../javascript/event-loop.md), [Browser Rendering Pipeline](../web-fundamentals/browser-rendering-pipeline.md), [React Reconciliation](../react-js/fundamentals/reconciliation-1.md), [React Performance](performance/react-performance.md).
 
-### [**https://www.youtube.com/watch?v=M2RpzmyKfvQ\&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj\_Oceld**](https://www.youtube.com/watch?v=M2RpzmyKfvQ&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj_Oceld)
+### [https://www.youtube.com/watch?v=M2RpzmyKfvQ\&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj\_Oceld](https://www.youtube.com/watch?v=M2RpzmyKfvQ&list=PLe3J6mZBq1xVDr297Yg0p1SHbdj_Oceld)
 
-### **1\. How does a Web Browser Work?**
+### 1. How does a Web Browser Work?
 
 **Answer:**
 
@@ -37,7 +37,7 @@ A web browser works in several stages:
 
 ---
 
-### **2\. How Does React Work Under the Hood?**
+### 2. How Does React Work Under the Hood?
 
 **Answer:**
 
@@ -55,7 +55,7 @@ React operates using the following core concepts:
 
 ---
 
-### **3\. What is V8 Engine?**
+### 3. What is V8 Engine?
 
 **Answer:**
 
@@ -75,7 +75,7 @@ React operates using the following core concepts:
 
 ---
 
-### **4\. What is SpiderMonkey?**
+### 4. What is SpiderMonkey?
 
 **Answer:**
 
@@ -89,7 +89,7 @@ React operates using the following core concepts:
 
 ---
 
-### **5\. What is the Difference Between Synchronous and Asynchronous JavaScript?**
+### 5. What is the Difference Between Synchronous and Asynchronous JavaScript?
 
 **Answer:**
 
@@ -101,7 +101,7 @@ React operates using the following core concepts:
 
 ---
 
-### **6\. How Does the JavaScript Event Loop Work?**
+### 6. How Does the JavaScript Event Loop Work?
 
 **Answer:**
 
@@ -111,7 +111,7 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ---
 
-### **7\. What is the Role of the DOM and BOM in a Web Browser?**
+### 7. What is the Role of the DOM and BOM in a Web Browser?
 
 **Answer:**
 
@@ -121,7 +121,7 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ---
 
-### **8\. How Does Node.js Work Under the Hood?**
+### 8. How Does Node.js Work Under the Hood?
 
 **Answer:**
 
@@ -135,7 +135,7 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ---
 
-### **9\. What is WebAssembly and How Does it Work?**
+### 9. What is WebAssembly and How Does it Work?
 
 **Answer:**
 
@@ -149,7 +149,7 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ---
 
-### **10\. How Do Modern JavaScript Frameworks Improve Performance?**
+### 10. How Do Modern JavaScript Frameworks Improve Performance?
 
 **Answer:**
 
@@ -163,7 +163,7 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ---
 
-### **What is a Render Tree in a Web Browser?**
+### What is a Render Tree in a Web Browser?
 
 Quick answer: the Render Tree combines the DOM and CSSOM into the visible structure the browser uses for layout, painting, and compositing.
 

@@ -7,9 +7,9 @@ sidebar_position: 2
 
 Related canonical pages: [Browser Rendering Pipeline](../../web-fundamentals/browser-rendering-pipeline.md), [React Performance](react-performance.md).
 
-# **Core Web Vitals and Google Lighthouse Notes**
+## Core Web Vitals and Google Lighthouse Notes
 
-## **1\. Simple Meaning**
+## 1. Simple Meaning
 
 **Core Web Vitals** are Google’s key user experience metrics for checking whether a web page feels fast, responsive, and stable for real users.
 
@@ -23,7 +23,7 @@ Earlier, **FID** was used for interactivity, but **INP replaced FID as a Core We
 
 ---
 
-## **2\. Why Core Web Vitals Matter**
+## 2. Why Core Web Vitals Matter
 
 Core Web Vitals matter because they directly connect technical performance with real user experience.
 
@@ -43,9 +43,9 @@ Core Web Vitals help us measure real user experience. They tell us whether the p
 
 ---
 
-# **3\. Current Core Web Vitals Metrics**
+## 3. Current Core Web Vitals Metrics
 
-## **3.1 LCP: Largest Contentful Paint**
+## 3.1 LCP: Largest Contentful Paint
 
 **LCP measures loading performance.**
 
@@ -59,13 +59,13 @@ It tells us when the largest visible content element in the viewport is rendered
 
 **Good score:** LCP should be **2.5 seconds or less** for a good user experience. Google recommends checking this at the **75th percentile**, separately for mobile and desktop users.
 
-### **Why LCP matters**
+### Why LCP matters
 
 LCP is important because it tells us when the user feels that the main page content is ready.
 
 For example, if a product listing page opens but the product cards or hero content appear after 5 seconds, the user feels the page is slow.
 
-### **Common reasons for poor LCP**
+### Common reasons for poor LCP
 
 * Large hero image.  
 * Slow server response.  
@@ -75,7 +75,7 @@ For example, if a product listing page opens but the product cards or hero conte
 * Fonts blocking text rendering.  
 * API response needed before rendering above-the-fold content.
 
-### **How to improve LCP**
+### How to improve LCP
 
 * Optimize hero images using WebP or AVIF.  
 * Use responsive images with correct sizes.  
@@ -89,7 +89,7 @@ For example, if a product listing page opens but the product cards or hero conte
 * Split code by route and load only what is needed.  
 * Improve backend response time and use edge caching.
 
-### **React / Next.js example**
+### React / Next.js example
 
 In React SPAs, LCP can be poor because the browser first downloads JavaScript, parses it, runs it, fetches data, and then renders UI.
 
@@ -97,7 +97,7 @@ In Next.js, SSR, SSG, or ISR can improve LCP because the browser receives meanin
 
 ---
 
-## **3.2 INP: Interaction to Next Paint**
+## 3.2 INP: Interaction to Next Paint
 
 **INP measures responsiveness.**
 
@@ -111,13 +111,13 @@ It checks how quickly the page gives visual feedback after a user interaction li
 **Needs improvement:** Above 200 ms and up to 500 ms.  
 **Poor:** Above 500 ms.
 
-### **Why INP replaced FID**
+### Why INP replaced FID
 
 FID only measured the delay of the **first interaction**.
 
 INP is better because it observes interactions throughout the page lifecycle. It includes input delay, event handler execution time, and the time until the browser paints the next frame.
 
-### **Simple difference between FID and INP**
+### Simple difference between FID and INP
 
 **FID:**  
 How long did the browser take to start handling the first user interaction?
@@ -127,7 +127,7 @@ How long did the page take to visually respond to user interactions during the f
 
 So INP is more practical for modern web apps because users interact with the page multiple times, not just once.
 
-### **Common reasons for poor INP**
+### Common reasons for poor INP
 
 * Long JavaScript tasks blocking the main thread.  
 * Heavy click handlers.  
@@ -140,7 +140,7 @@ So INP is more practical for modern web apps because users interact with the pag
 * Layout thrashing due to repeated DOM reads and writes.  
 * Running analytics, validation, or formatting logic synchronously during user input.
 
-### **How to improve INP**
+### How to improve INP
 
 * Break long JavaScript tasks into smaller chunks.  
 * Reduce unnecessary React re-renders.  
@@ -155,7 +155,7 @@ So INP is more practical for modern web apps because users interact with the pag
 * Delay or async-load third-party scripts.  
 * Avoid doing heavy work directly inside click or input handlers.
 
-### **React example**
+### React example
 
 Bad pattern:
 
@@ -177,7 +177,7 @@ The idea is simple: keep the user interaction fast and move expensive work away 
 
 ---
 
-## **3.3 CLS: Cumulative Layout Shift**
+## 3.3 CLS: Cumulative Layout Shift
 
 **CLS measures visual stability.**
 
@@ -186,7 +186,7 @@ It tells us how much visible content unexpectedly moves on the page.
 **Good score:** CLS should be **0.1 or less**.  
 **Poor score:** Above **0.25**.
 
-### **Why CLS matters**
+### Why CLS matters
 
 CLS is painful for users because it causes accidental clicks and frustration.
 
@@ -194,7 +194,7 @@ Example:
 
 A user is about to click “Buy Now”, but suddenly an ad or banner loads above it and pushes the button down. The user clicks the wrong thing.
 
-### **Common reasons for poor CLS**
+### Common reasons for poor CLS
 
 * Images without width and height.  
 * Ads loading without reserved space.  
@@ -204,7 +204,7 @@ A user is about to click “Buy Now”, but suddenly an ad or banner loads above
 * Dynamic content injected above the fold.  
 * Cookie banners or notification bars pushing layout.
 
-### **How to improve CLS**
+### How to improve CLS
 
 * Always provide `width` and `height` for images.  
 * Use CSS `aspect-ratio` for responsive media.  
@@ -218,11 +218,11 @@ A user is about to click “Buy Now”, but suddenly an ad or banner loads above
 
 ---
 
-# **4\. Other Important Web Performance Metrics**
+## 4. Other Important Web Performance Metrics
 
 Core Web Vitals are the main metrics, but interviews often include related metrics.
 
-## **4.1 FCP: First Contentful Paint**
+## 4.1 FCP: First Contentful Paint
 
 **FCP measures when the first visible content appears.**
 
@@ -233,7 +233,7 @@ This could be:
 * SVG,  
 * canvas.
 
-### **FCP vs LCP**
+### FCP vs LCP
 
 **FCP:** When the user sees the first content.  
 **LCP:** When the main/largest content is visible.
@@ -247,7 +247,7 @@ So FCP tells us the page started rendering, but LCP tells us whether the useful 
 
 ---
 
-## **4.2 TBT: Total Blocking Time**
+## 4.2 TBT: Total Blocking Time
 
 **TBT measures how much time the main thread was blocked during page load.**
 
@@ -255,7 +255,7 @@ It is a lab metric used by Lighthouse. It is closely related to responsiveness b
 
 Lighthouse performance score uses multiple lab metrics. In Lighthouse 10 scoring, the largest weights are TBT, LCP, and CLS.
 
-### **Why TBT is useful**
+### Why TBT is useful
 
 TBT helps debug JavaScript-heavy pages.
 
@@ -269,7 +269,7 @@ If TBT is high, it usually means:
 
 ---
 
-## **4.3 Speed Index**
+## 4.3 Speed Index
 
 **Speed Index measures how quickly visible content appears during loading.**
 
@@ -277,9 +277,9 @@ It is useful for understanding visual progress. A page that gradually shows usef
 
 ---
 
-# **5\. Google Lighthouse**
+## 5. Google Lighthouse
 
-## **5.1 What is Lighthouse?**
+## 5.1 What is Lighthouse?
 
 **Google Lighthouse is an open-source automated tool for auditing web pages.**
 
@@ -296,7 +296,7 @@ You can run Lighthouse from Chrome DevTools, command line, Node module, or Light
 
 ---
 
-## **5.2 Lighthouse vs Core Web Vitals**
+## 5.2 Lighthouse vs Core Web Vitals
 
 This is very important for interviews.
 
@@ -308,13 +308,13 @@ So Lighthouse is great for debugging, but it may not exactly match real user dat
 
 Google’s own guidance says Core Web Vitals are best measured in the field because lab tools run under predefined conditions and may not reflect what real users experience.
 
-### **Simple interview answer**
+### Simple interview answer
 
 Lighthouse helps me identify performance issues in a controlled test environment. But for actual Core Web Vitals, I trust field data from real users, like CrUX, Search Console, PageSpeed Insights field data, or our own RUM setup.
 
 ---
 
-## **5.3 Lighthouse Score Is Not the Same as Core Web Vitals**
+## 5.3 Lighthouse Score Is Not the Same as Core Web Vitals
 
 A common mistake is saying:
 
@@ -339,9 +339,9 @@ So a good Lighthouse score is useful, but production field data is more reliable
 
 ---
 
-# **6\. Field Data vs Lab Data**
+## 6. Field Data vs Lab Data
 
-## **Field Data**
+## Field Data
 
 Field data comes from real users.
 
@@ -355,11 +355,11 @@ Examples:
 
 CrUX is Google’s dataset showing how real Chrome users experience popular websites. It includes Core Web Vitals and is used in Google tools.
 
-### **Field data answers**
+### Field data answers
 
 “What are real users experiencing?”
 
-## **Lab Data**
+## Lab Data
 
 Lab data comes from controlled tests.
 
@@ -370,11 +370,11 @@ Examples:
 * WebPageTest,  
 * local performance testing.
 
-### **Lab data answers**
+### Lab data answers
 
 “What could be causing the issue?”
 
-## **Best workflow**
+## Best workflow
 
 1. Use field data to identify the real problem.  
 2. Segment by page type, device, browser, and geography.  
@@ -384,9 +384,9 @@ Examples:
 
 ---
 
-# **7\. Tools to Measure Core Web Vitals**
+## 7. Tools to Measure Core Web Vitals
 
-## **7.1 PageSpeed Insights**
+## 7.1 PageSpeed Insights
 
 Use it for quick analysis.
 
@@ -396,7 +396,7 @@ It provides:
 * lab data from Lighthouse,  
 * improvement suggestions.
 
-## **7.2 Google Search Console**
+## 7.2 Google Search Console
 
 Use it for SEO and production monitoring.
 
@@ -408,7 +408,7 @@ It groups URLs by:
 
 It uses real-world usage data and reports issues for LCP, INP, and CLS.
 
-## **7.3 Lighthouse**
+## 7.3 Lighthouse
 
 Use it during development and debugging.
 
@@ -420,7 +420,7 @@ Best for:
 * checking accessibility,  
 * checking SEO basics.
 
-## **7.4 Chrome DevTools Performance Panel**
+## 7.4 Chrome DevTools Performance Panel
 
 Use it for deep debugging.
 
@@ -433,7 +433,7 @@ Best for:
 * expensive event handlers,  
 * React rendering issues.
 
-## **7.5 Web Vitals Library**
+## 7.5 Web Vitals Library
 
 Use it for production RUM.
 
@@ -441,13 +441,13 @@ It helps collect real user performance data and send it to analytics or observab
 
 ---
 
-# **8\. How to Optimize Each Metric**
+## 8. How to Optimize Each Metric
 
-## **8.1 LCP Optimization Checklist**
+## 8.1 LCP Optimization Checklist
 
 Use this when the page loads slowly.
 
-### **Frontend fixes**
+### Frontend fixes
 
 * Reduce JavaScript bundle size.  
 * Code split by route.  
@@ -460,7 +460,7 @@ Use this when the page loads slowly.
 * Use WebP or AVIF.  
 * Avoid blocking scripts in the head.
 
-### **Backend / platform fixes**
+### Backend / platform fixes
 
 * Improve server response time.  
 * Use CDN caching.  
@@ -470,7 +470,7 @@ Use this when the page loads slowly.
 * Compress responses using gzip or Brotli.  
 * Use HTTP/2 or HTTP/3 where possible.
 
-### **React / Next.js fixes**
+### React / Next.js fixes
 
 * Use SSG or ISR for mostly static pages.  
 * Use SSR for dynamic SEO pages where data changes often.  
@@ -480,11 +480,11 @@ Use this when the page loads slowly.
 
 ---
 
-## **8.2 INP Optimization Checklist**
+## 8.2 INP Optimization Checklist
 
 Use this when clicks, typing, filters, dropdowns, or buttons feel slow.
 
-### **Frontend fixes**
+### Frontend fixes
 
 * Reduce long tasks.  
 * Avoid heavy synchronous work in event handlers.  
@@ -498,7 +498,7 @@ Use this when clicks, typing, filters, dropdowns, or buttons feel slow.
 * Avoid global state updates for small UI interactions.  
 * Lazy load non-critical logic.
 
-### **React-specific fixes**
+### React-specific fixes
 
 * Use React Profiler to identify slow renders.  
 * Avoid passing unstable props to memoized children.  
@@ -510,11 +510,11 @@ Use this when clicks, typing, filters, dropdowns, or buttons feel slow.
 
 ---
 
-## **8.3 CLS Optimization Checklist**
+## 8.3 CLS Optimization Checklist
 
 Use this when layout jumps.
 
-### **Frontend fixes**
+### Frontend fixes
 
 * Add `width` and `height` to images.  
 * Use `aspect-ratio`.  
@@ -527,9 +527,9 @@ Use this when layout jumps.
 
 ---
 
-# **9\. SSR, SSG, ISR and Core Web Vitals**
+## 9. SSR, SSG, ISR and Core Web Vitals
 
-## **SSR: Server-Side Rendering**
+## SSR: Server-Side Rendering
 
 SSR can improve LCP because the server sends rendered HTML to the browser.
 
@@ -544,7 +544,7 @@ Trade-off:
 * If server response is slow, SSR can hurt performance.  
 * Needs caching strategy.
 
-## **SSG: Static Site Generation**
+## SSG: Static Site Generation
 
 SSG pre-builds HTML at build time.
 
@@ -560,7 +560,7 @@ Trade-off:
 
 * Freshness depends on rebuild or regeneration.
 
-## **ISR: Incremental Static Regeneration**
+## ISR: Incremental Static Regeneration
 
 ISR gives static performance with controlled freshness.
 
@@ -575,13 +575,13 @@ Trade-off:
 
 * Need to handle stale content properly.
 
-## **Simple interview answer**
+## Simple interview answer
 
 SSR, SSG, and ISR can improve LCP because the browser gets meaningful HTML earlier. But they do not automatically fix everything. INP still depends heavily on JavaScript execution, hydration cost, and how much work happens after user interaction.
 
 ---
 
-# **10\. SEO and Lighthouse**
+## 10. SEO and Lighthouse
 
 Lighthouse SEO audit checks basic technical SEO items like:
 
@@ -607,13 +607,13 @@ It does not fully judge:
 * search competition,  
 * structured content quality.
 
-### **Simple interview answer**
+### Simple interview answer
 
 Lighthouse SEO is useful for technical SEO checks, but it is not a complete SEO audit. For real SEO, we also need content quality, page intent, internal linking, structured data, crawlability, and Search Console data.
 
 ---
 
-# **11\. Accessibility and Lighthouse**
+## 11. Accessibility and Lighthouse
 
 Lighthouse also checks common accessibility issues like:
 
@@ -635,27 +635,27 @@ Manual testing is still needed for:
 * dynamic content announcements,  
 * real user journeys.
 
-### **Interview point**
+### Interview point
 
 I use Lighthouse accessibility as a baseline, but I do not treat it as full accessibility coverage. For production apps, I combine automated checks with manual keyboard and screen reader testing.
 
 ---
 
-# **12\. Common Interview Questions and Answers**
+## 12. Common Interview Questions and Answers
 
-## **Q1. What are Core Web Vitals?**
+## Q1. What are Core Web Vitals?
 
 Core Web Vitals are Google’s main user experience metrics for web pages. They measure loading performance using LCP, responsiveness using INP, and visual stability using CLS. These metrics help us understand how fast, responsive, and stable the page feels to real users.
 
 ---
 
-## **Q2. What changed recently in Core Web Vitals?**
+## Q2. What changed recently in Core Web Vitals?
 
 The important change is that FID is no longer the current Core Web Vital for interactivity. INP replaced FID in March 2024\. FID only measured the first interaction delay, but INP measures responsiveness across user interactions during the page lifecycle.
 
 ---
 
-## **Q3. What is the difference between FCP and LCP?**
+## Q3. What is the difference between FCP and LCP?
 
 FCP tells us when the first visible content appears.
 
@@ -665,7 +665,7 @@ FCP is useful for knowing when rendering starts, but LCP is more meaningful for 
 
 ---
 
-## **Q4. How would you improve poor LCP?**
+## Q4. How would you improve poor LCP?
 
 First, I would identify the LCP element using Lighthouse, PageSpeed Insights, or DevTools. Then I would check whether the problem is image size, slow server response, render-blocking resources, or heavy client-side rendering.
 
@@ -673,7 +673,7 @@ Common fixes include image optimization, CDN caching, preloading critical assets
 
 ---
 
-## **Q5. How would you improve poor INP?**
+## Q5. How would you improve poor INP?
 
 I would start by checking which interaction is slow. Then I would use DevTools Performance panel and React Profiler to identify long tasks, expensive event handlers, unnecessary re-renders, or heavy third-party scripts.
 
@@ -681,19 +681,19 @@ Fixes include splitting long tasks, reducing JavaScript, virtualizing large list
 
 ---
 
-## **Q6. How would you improve poor CLS?**
+## Q6. How would you improve poor CLS?
 
 I would check which elements are shifting. Then I would reserve space for images, ads, banners, iframes, and skeleton loaders. I would also fix font loading issues and avoid inserting dynamic content above existing content.
 
 ---
 
-## **Q7. Is Lighthouse score enough to confirm good performance?**
+## Q7. Is Lighthouse score enough to confirm good performance?
 
 No. Lighthouse is useful, but it is lab data. Real users may have different devices, networks, browsers, locations, and content variations. For real Core Web Vitals, I would use field data from Search Console, CrUX, PageSpeed Insights field data, or internal RUM.
 
 ---
 
-## **Q8. Why can Lighthouse and Search Console show different results?**
+## Q8. Why can Lighthouse and Search Console show different results?
 
 Lighthouse runs a test in a controlled lab environment.
 
@@ -703,19 +703,19 @@ So they can differ because real users may have slower devices, slower networks, 
 
 ---
 
-## **Q9. How do Core Web Vitals affect SEO?**
+## Q9. How do Core Web Vitals affect SEO?
 
 Core Web Vitals are part of Google’s page experience signals and are used by ranking systems. But they are not the only ranking factor. Good content, relevance, crawlability, links, and overall page quality are still very important.
 
 ---
 
-## **Q10. How would you set up Core Web Vitals monitoring in production?**
+## Q10. How would you set up Core Web Vitals monitoring in production?
 
 I would collect real user metrics using the Web Vitals library or a RUM tool. I would send metrics like LCP, INP, and CLS to an analytics or observability system. Then I would segment the data by route, device, browser, network, geography, and app version. I would also track p75 values because Core Web Vitals are usually evaluated at the 75th percentile.
 
 ---
 
-# **13\. Staff Engineer Level Answer**
+## 13. Staff Engineer Level Answer
 
 If I am asked this in a senior or staff-level interview, I would answer like this:
 
@@ -731,7 +731,7 @@ Finally, I would add performance budgets in CI/CD, monitor p75 metrics in produc
 
 ---
 
-# **14\. Practical Performance Budget Example**
+## 14. Practical Performance Budget Example
 
 For a React or Next.js application, I would define budgets like:
 
@@ -746,7 +746,7 @@ For a React or Next.js application, I would define budgets like:
 
 ---
 
-# **15\. Quick Revision Summary**
+## 15. Quick Revision Summary
 
 Remember this:
 
@@ -764,7 +764,7 @@ Remember this:
 
 ---
 
-# **16\. Best Short Interview Answer**
+## 16. Best Short Interview Answer
 
 Core Web Vitals are Google’s user experience metrics for measuring how fast, responsive, and stable a page feels. The current metrics are LCP for loading, INP for responsiveness, and CLS for visual stability. Earlier FID was used, but INP replaced it because INP measures responsiveness across the page lifecycle, not only the first interaction.
 

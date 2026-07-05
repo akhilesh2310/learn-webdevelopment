@@ -9,27 +9,27 @@ Related pages: [JavaScript Coding Questions](../javascript/javascript-coding-que
 
 This page is the React-specific coding and machine-coding entry point.
 
-# **React Coding Interview Questions**
+## React Coding Interview Questions
 
-## **Custom useDebounce Hook**
+## Custom useDebounce Hook
 
-## **Custom useThrottle Hook**
+## Custom useThrottle Hook
 
-## **Modal Component**
+## Modal Component
 
-## **Infinite Scroll**
+## Infinite Scroll
 
-## **Tree View**
+## Tree View
 
-## **Tabs**
+## Tabs
 
-## **Accordion**
+## Accordion
 
-## **File Explorer**
+## File Explorer
 
-## **Data Table**
+## Data Table
 
 Autocomplete:  
 [https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar](https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar)
 
-## **Common Machine Coding Problems**
+## Common Machine Coding Problems

@@ -5,42 +5,42 @@ sidebar_position: 23
 
 # Advanced JS
 
-## **Currying**
+## Currying
 
-## **Debouncing**
+## Debouncing
 
-## **Throttling**
+## Throttling
 
-## **Memoization**
+## Memoization
 
-## **Lazy Evaluation**
+## Lazy Evaluation
 
-## **Generators**
+## Generators
 
-## **Iterators**
+## Iterators
 
-## **Proxy**
+## Proxy
 
-## **Reflect**
+## Reflect
 
-## **Common Interview Topics/Questions please** 
+## Common Interview Topics/Questions please
 
 * Implement debounce  
 * Implement throttle  
 * Implement memoization  
 * Implement currying
 
-# **Advanced JavaScript Patterns**
+## Advanced JavaScript Patterns
 
 These topics are commonly asked in senior frontend interviews because they test how JavaScript handles functions, execution timing, caching, iteration, lazy computation, and object interception. In frontend apps, these patterns appear in search inputs, scroll handlers, expensive calculations, API caching, event handling, and reusable utilities.
 
 ---
 
-# **1\. Currying**
+## 1. Currying
 
 Currying is a technique where a function with multiple arguments is transformed into a sequence of functions, each taking one or fewer arguments at a time.
 
-## **Simple meaning**
+## Simple meaning
 
 Instead of this:
 
@@ -50,7 +50,7 @@ We call like this:
 
 add(1)(2)(3);
 
-## **Basic example**
+## Basic example
 
 function add(a) \{  
   return function (b) \{  
@@ -62,7 +62,7 @@ function add(a) \{
 
 console.log(add(1)(2)(3)); // 6
 
-## **Key mental model**
+## Key mental model
 
 Currying works using closures. Each returned function remembers the previous argument.
 
@@ -72,7 +72,7 @@ Step by step:
 * `(2)` returns another function and remembers `b = 2`.  
 * `(3)` finally calculates `1 + 2 + 3`.
 
-## **Practical frontend example**
+## Practical frontend example
 
 const hasPermission \= (requiredRole) \=\> (user) \=\> \{  
   return user.roles.includes(requiredRole);  
@@ -84,14 +84,15 @@ console.log(canEdit(\{ roles: \["viewer", "editor"\] \})); // true
 
 This is useful when we want to pre-configure a function and reuse it later.
 
-## **Architecture blueprint**
+## Architecture blueprint
 
 Breaking down a multi-argument function into a series of nested single-argument closures.
 
-| function buildApiUrl(baseUrl) \{   return function(version) \{     return function(endpoint) \{       return \`$\{baseUrl\}/$\{version\}/$\{endpoint\}\`;     \};   \}; \} const productionGateway \= buildApiUrl("https://api.production.com")("v1"); console.log(productionGateway("users")); // "https://api.production.com/v1/users" |
-| :---- |
+```js
+function buildApiUrl(baseUrl) {   return function(version) {     return function(endpoint) {       return `${baseUrl}/${version}/${endpoint}`;     };   }; } const productionGateway = buildApiUrl("https://api.production.com")("v1"); console.log(productionGateway("users")); // "https://api.production.com/v1/users"
+```
 
-## **Why currying is useful**
+## Why currying is useful
 
 * Reusability.  
 * Partial application.  
@@ -99,7 +100,7 @@ Breaking down a multi-argument function into a series of nested single-argument 
 * Cleaner utility functions.  
 * Pre-configured validators, filters, and event handlers.
 
-## **Common trap**
+## Common trap
 
 Currying is not the same as simply calling a function with fewer arguments unless the function is designed to return another function.
 
@@ -111,11 +112,11 @@ console.log(add(1)); // NaN
 
 Answer: `b` is `undefined`, so `1 + undefined` becomes `NaN`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Currying transforms a function with multiple arguments into a sequence of functions, each receiving one argument. It works through closures, where each function remembers the previous values. It is useful for partial application, reusable validators, filters, and function composition.
 
-## **Follow-up: Implement Infinite Currying**
+## Follow-up: Implement Infinite Currying
 
 function add(a) \{
 
@@ -155,25 +156,25 @@ function add(a) \{
 
 console.log(add(1)(2)(3) \== 6); // true
 
-### **Interview-ready answer**
+### Interview-ready answer
 
 Infinite currying uses closures to keep accumulating values indefinitely. The chain can be terminated using an empty call `()` or by overriding `valueOf`/`toString` so JavaScript returns the accumulated value during type coercion.
 
 ---
 
-# **2\. Debouncing**
+## 2. Debouncing
 
 Debouncing delays function execution until a certain time has passed after the last call.
 
-## **Simple meaning**
+## Simple meaning
 
 Run the function only after the user stops triggering the event.
 
-## **Key mental model**
+## Key mental model
 
 Debounce says: “Wait until things become quiet, then run.”
 
-## **Practical frontend example**
+## Practical frontend example
 
 Search input API call.
 
@@ -183,7 +184,7 @@ Without debounce, every keystroke may trigger an API call.
 // Without debounce: 5 API calls  
 // With debounce: 1 API call after user stops typing
 
-## **Basic debounce implementation**
+## Basic debounce implementation
 
 function debounce(fn, delay) \{  
   let timerId;
@@ -208,7 +209,7 @@ search("react");
 // After 500ms:  
 // "Searching: react"
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -217,7 +218,7 @@ Step by step:
 * If another call happens before delay, the timer resets.  
 * Function runs only after no new calls happen for the delay duration.
 
-## **Practical use cases**
+## Practical use cases
 
 * Search input.  
 * Auto-save draft.  
@@ -225,31 +226,31 @@ Step by step:
 * Form validation after typing stops.  
 * API calls after filter change.
 
-## **Common mistake**
+## Common mistake
 
 Using debounce for actions that must happen continuously during user activity.
 
 Example: For scroll progress updates, throttle is usually better than debounce.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Debouncing delays function execution until the event stops firing for a specified time. It is useful for search inputs, auto-save, resize handling, and expensive validation where we only care about the final user action.
 
 ---
 
-# **3\. Throttling**
+## 3. Throttling
 
 Throttling limits how often a function can run over time.
 
-## **Simple meaning**
+## Simple meaning
 
 Run the function at most once in a fixed time interval.
 
-## **Key mental model**
+## Key mental model
 
 Throttle says: “Run regularly, but not too often.”
 
-## **Practical frontend example**
+## Practical frontend example
 
 Scroll event.
 
@@ -257,7 +258,7 @@ Scroll event.
 // Without throttle: handler may run hundreds of times  
 // With throttle 200ms: handler runs around once every 200ms
 
-## **Basic throttle implementation**
+## Basic throttle implementation
 
 function throttle(fn, delay) \{  
   let lastCall \= 0;
@@ -278,7 +279,7 @@ const onScroll \= throttle(function () \{
 
 window.addEventListener("scroll", onScroll);
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -287,7 +288,7 @@ Step by step:
 * If enough time has passed, execute.  
 * Otherwise, ignore the call.
 
-## **Practical use cases**
+## Practical use cases
 
 * Scroll event.  
 * Window resize tracking.  
@@ -296,19 +297,19 @@ Step by step:
 * Drag events.  
 * Rate-limiting button clicks.
 
-## **Common mistake**
+## Common mistake
 
 Using throttle for search input. Search usually needs debounce because we want to wait until typing stops.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Throttling ensures a function runs at most once in a given interval. It is useful for high-frequency events like scroll, resize, mousemove, and drag where we need regular updates but want to avoid excessive execution.
 
 ---
 
-# **4\. Debounce vs Throttle**
+## 4. Debounce vs Throttle
 
-## **Simple meaning**
+## Simple meaning
 
 Debounce waits until events stop. Throttle runs at fixed intervals while events continue.
 
@@ -320,24 +321,24 @@ Debounce waits until events stop. Throttle runs at fixed intervals while events 
 | API calls | Reduces to final call | Limits frequency |
 | Example | Type search query | Track scroll position |
 
-## **Example**
+## Example
 
 For hotel search input:
 
 * Debounce: wait until user stops typing, then call search API.  
 * Throttle: while user scrolls hotel results, update sticky filters or load more results at controlled intervals.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Debounce delays execution until events stop firing, while throttle limits execution to once per interval. I use debounce for search and auto-save, and throttle for scroll, resize, mousemove, or drag events.
 
 ---
 
-# **5\. Memoization**
+## 5. Memoization
 
 Memoization caches function results so repeated calls with the same input return faster.
 
-## **Simple meaning**
+## Simple meaning
 
 If we already calculated something, reuse the cached result.
 
@@ -376,11 +377,11 @@ const square \= memoize(function (n) \{
 console.log(square(4)); // "Calculating..." 16  
 console.log(square(4)); // 16
 
-## **Key mental model**
+## Key mental model
 
 Memoization trades memory for speed.
 
-## **Practical frontend example**
+## Practical frontend example
 
 * Expensive filtering or sorting.  
 * Repeated calculations.  
@@ -392,7 +393,7 @@ const filteredProducts \= useMemo(() \=\> \{
   return products.filter((product) \=\> product.inStock);  
 \}, \[products\]);
 
-## **Important traps**
+## Important traps
 
 Memoization is useful only when:
 
@@ -414,35 +415,36 @@ Common mistake: Memoizing everything.
 
 Memoization adds memory overhead and complexity. If the calculation is cheap, memoization may not help.
 
-## **Closure-based example**
+## Closure-based example
 
 Using a hidden private `Map` object inside a closure scope to cache computational results and optimize expensive processing paths.
 
-| function memoize(expensiveFunction) \{   const cache \= new Map(); // Private cache container locked in closure   return function (...args) \{     const key \= JSON.stringify(args);     if (cache.has(key)) \{       console.log("Cache Hit for arguments:", args);       return cache.get(key);     \}     const result \= expensiveFunction.apply(this, args);     cache.set(key, result);     return result;   \}; \} const slowFactorial \= (n) \=\> (n \<= 1 ? 1 : n \* slowFactorial(n \- 1)); const fastFactorial \= memoize(slowFactorial); console.log(fastFactorial(5)); // Calculates manually: 120 console.log(fastFactorial(5)); // Cache Hit! Instantly outputs 120 from the closure map. |
-| :---- |
+```js
+function memoize(expensiveFunction) {   const cache = new Map(); // Private cache container locked in closure   return function (...args) {     const key = JSON.stringify(args);     if (cache.has(key)) {       console.log("Cache Hit for arguments:", args);       return cache.get(key);     }     const result = expensiveFunction.apply(this, args);     cache.set(key, result);     return result;   }; } const slowFactorial = (n) => (n <= 1 ? 1 : n * slowFactorial(n - 1)); const fastFactorial = memoize(slowFactorial); console.log(fastFactorial(5)); // Calculates manually: 120 console.log(fastFactorial(5)); // Cache Hit! Instantly outputs 120 from the closure map.
+```
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Memoization is an optimization where function results are cached based on input arguments. If the same inputs are used again, the cached result is returned. It improves performance for expensive repeated calculations but increases memory usage and should mainly be used with pure functions.
 
 ---
 
-# **6\. Lazy Evaluation**
+## 6. Lazy Evaluation
 
 Lazy evaluation means delaying computation until the value is actually needed.
 
-## **Simple meaning**
+## Simple meaning
 
 Do not calculate now. Calculate only when required.
 
-## **Eager example**
+## Eager example
 
 const result \= expensiveCalculation();  
 console.log("Page loaded");
 
 Here calculation runs immediately.
 
-## **Lazy example**
+## Lazy example
 
 function getResult() \{  
   return expensiveCalculation();  
@@ -453,13 +455,13 @@ console.log("Page loaded");
 // Later, only when needed:  
 const result \= getResult();
 
-## **Key mental model**
+## Key mental model
 
 Lazy evaluation avoids unnecessary work.
 
-## **Practical frontend examples**
+## Practical frontend examples
 
-### **Lazy state initialization in React**
+### Lazy state initialization in React
 
 const \[value\] \= useState(() \=\> \{  
   return expensiveInitialCalculation();  
@@ -467,7 +469,7 @@ const \[value\] \= useState(() \=\> \{
 
 The function runs only during initial render, not on every re-render.
 
-### **Dynamic import**
+### Dynamic import
 
 async function openEditor() \{  
   const \{ Editor \} \= await import("./Editor");  
@@ -476,24 +478,24 @@ async function openEditor() \{
 
 The editor code loads only when needed.
 
-## **Why it is useful**
+## Why it is useful
 
 * Improves initial load performance.  
 * Avoids unnecessary calculations.  
 * Helps defer expensive work.  
 * Useful with generators and dynamic imports.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Lazy evaluation delays computation until the value is actually needed. In frontend apps, it helps avoid unnecessary work, improve initial load time, and defer expensive calculations or module loading until required.
 
 ---
 
-# **7\. Iterators**
+## 7. Iterators
 
 An iterator is an object that defines how to access values one at a time.
 
-## **Simple meaning**
+## Simple meaning
 
 An iterator gives the next value when we call `.next()`.
 
@@ -514,14 +516,14 @@ console.log(iterator.next()); // \{ value: 2, done: false \}
 console.log(iterator.next()); // \{ value: 3, done: false \}  
 console.log(iterator.next()); // \{ value: undefined, done: true \}
 
-## **Key mental model**
+## Key mental model
 
 Iterator is a protocol. It must return an object with:
 
 * `value`  
 * `done`
 
-## **Iterable**
+## Iterable
 
 An iterable is an object that has `[Symbol.iterator]()`.
 
@@ -536,7 +538,7 @@ for (const value of arr) \{
 // 2  
 // 3
 
-## **Custom iterable**
+## Custom iterable
 
 const range \= \{  
   start: 1,  
@@ -560,17 +562,17 @@ const range \= \{
 
 console.log(\[...range\]); // \[1, 2, 3\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An iterator is an object with a `next()` method that returns `\{ value, done \}`. An iterable is an object that implements `[Symbol.iterator]()`. Arrays, strings, maps, and sets are built-in iterables, and custom objects can also be made iterable.
 
 ---
 
-# **8\. Generators**
+## 8. Generators
 
 Generators are special functions that can pause and resume execution using `yield`.
 
-## **Simple meaning**
+## Simple meaning
 
 A generator produces values one at a time.
 
@@ -587,11 +589,11 @@ console.log(iterator.next()); // \{ value: 2, done: false \}
 console.log(iterator.next()); // \{ value: 3, done: false \}  
 console.log(iterator.next()); // \{ value: undefined, done: true \}
 
-## **Key mental model**
+## Key mental model
 
 A generator automatically creates an iterator.
 
-## **How it works**
+## How it works
 
 * `function*` creates a generator function.  
 * Calling it does not execute the body immediately.  
@@ -599,7 +601,7 @@ A generator automatically creates an iterator.
 * `yield` pauses execution and returns a value.  
 * Next `.next()` continues after the previous `yield`.
 
-## **Practical use cases**
+## Practical use cases
 
 * Lazy sequences.  
 * Infinite data generation.  
@@ -608,7 +610,7 @@ A generator automatically creates an iterator.
 * State machines.  
 * Older async control flow patterns.
 
-## **Infinite generator**
+## Infinite generator
 
 function\* idGenerator() \{  
   let id \= 1;
@@ -624,7 +626,7 @@ console.log(ids.next().value); // 1
 console.log(ids.next().value); // 2  
 console.log(ids.next().value); // 3
 
-## **Generator with `for...of`**
+## Generator with `for...of`
 
 function\* range(start, end) \{  
   for (let i \= start; i \<= end; i++) \{  
@@ -634,17 +636,17 @@ function\* range(start, end) \{
 
 console.log(\[...range(1, 3)\]); // \[1, 2, 3\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A generator is a function declared with `function*` that can pause and resume using `yield`. It returns an iterator and produces values lazily. Generators are useful for custom iteration, lazy sequences, pagination flows, and generating values on demand.
 
 ---
 
-# **9\. Proxy**
+## 9. Proxy
 
 A Proxy lets us intercept and customize operations on an object, such as getting, setting, deleting, or checking properties.
 
-## **Simple meaning**
+## Simple meaning
 
 Proxy is a wrapper around an object that lets us control how the object behaves.
 
@@ -661,7 +663,7 @@ const proxyUser \= new Proxy(user, \{
 console.log(proxyUser.name); // "Akhilesh"  
 console.log(proxyUser.role); // "Not available"
 
-## **Key mental model**
+## Key mental model
 
 Proxy traps object operations.
 
@@ -674,7 +676,7 @@ Common traps:
 * `apply`  
 * `construct`
 
-## **Validation example**
+## Validation example
 
 const user \= \{  
   age: 30,  
@@ -698,7 +700,7 @@ console.log(proxyUser.age); // 35
 proxyUser.age \= \-1;  
 // Error: Age cannot be negative
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Validation.  
 * Logging.  
@@ -710,21 +712,21 @@ proxyUser.age \= \-1;
 
 Vue 3 uses Proxy-based reactivity internally.
 
-## **Important trap**
+## Important trap
 
 Proxy can add complexity and make behavior less obvious. Use it when interception is actually needed.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A Proxy wraps an object and allows us to intercept operations like reading, writing, deleting, or checking properties. It is useful for validation, logging, access control, and reactive systems, but it should be used carefully because it can make object behavior less predictable.
 
 ---
 
-# **10\. Reflect**
+## 10. Reflect
 
 `Reflect` provides methods for performing default object operations programmatically.
 
-## **Simple meaning**
+## Simple meaning
 
 Reflect is often used with Proxy to perform the normal/default behavior after intercepting an operation.
 
@@ -744,11 +746,11 @@ console.log(proxyUser.name);
 // "Reading name"  
 // "Akhilesh"
 
-## **Key mental model**
+## Key mental model
 
 Proxy intercepts. Reflect performs the default operation safely and consistently.
 
-## **Common Reflect methods**
+## Common Reflect methods
 
 Reflect.get(obj, "name");  
 Reflect.set(obj, "name", "Akhilesh");  
@@ -756,14 +758,14 @@ Reflect.has(obj, "name");
 Reflect.deleteProperty(obj, "name");  
 Reflect.ownKeys(obj);
 
-## **Why Reflect is useful**
+## Why Reflect is useful
 
 * Cleaner default behavior inside Proxy traps.  
 * More consistent return values.  
 * Avoids manually writing object operation logic.  
 * Works well with `receiver` in inheritance/prototype cases.
 
-## **Proxy \+ Reflect set example**
+## Proxy \+ Reflect set example
 
 const user \= \{\};
 
@@ -779,17 +781,17 @@ proxyUser.name \= "Akhilesh";
 
 console.log(user.name); // "Akhilesh"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `Reflect` provides methods for default object operations like get, set, has, and delete. It is commonly used inside Proxy traps to preserve normal object behavior after adding custom logic like logging or validation.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **Implementation Questions**
+## Implementation Questions
 
 This page owns the concepts and interview reasoning for currying, debouncing, throttling, and memoization.
 
@@ -807,9 +809,9 @@ Keep implementation details there so the coding-practice page stays the single s
 
 ---
 
-# **7\. Lazy Evaluation Interview Example**
+## 7. Lazy Evaluation Interview Example
 
-## **Problem**
+## Problem
 
 Explain lazy evaluation with a generator.
 
@@ -828,7 +830,7 @@ console.log("Before next");
 console.log(iterator.next().value); // "Start" then 1  
 console.log(iterator.next().value); // 2
 
-## **Why?**
+## Why?
 
 Step by step:
 
@@ -839,15 +841,15 @@ Step by step:
 * `yield 1` returns `1` and pauses.  
 * Next `.next()` resumes after `yield 1`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Lazy evaluation means work is delayed until the value is needed. Generators are a good example because calling a generator does not execute the body immediately. Execution starts only when `.next()` is called.
 
 ---
 
-# **8\. Proxy and Reflect Interview Example**
+## 8. Proxy and Reflect Interview Example
 
-## **Problem**
+## Problem
 
 Use Proxy to validate object writes.
 
@@ -873,17 +875,17 @@ console.log(proxyUser.age); // 35
 proxyUser.age \= \-1;  
 // Error: Age cannot be negative
 
-## **Why Reflect?**
+## Why Reflect?
 
 `Reflect.set()` performs the normal set operation and returns a boolean. It keeps the default behavior clean and consistent inside the proxy trap.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Proxy lets us intercept object operations like get and set. Reflect is commonly used inside Proxy traps to perform the default operation after adding custom behavior such as validation, logging, or access control.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -904,6 +906,6 @@ Proxy lets us intercept object operations like get and set. Reflect is commonly 
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 Currying, debouncing, throttling, memoization, lazy evaluation, generators, iterators, Proxy, and Reflect are advanced JavaScript concepts used to write efficient and flexible code. Currying uses closures to collect arguments over multiple function calls. Debouncing delays execution until events stop, while throttling limits execution frequency during continuous events. Memoization caches results to avoid repeated expensive work. Lazy evaluation delays computation until needed, and generators provide lazy iteration using `yield`. Iterators define the `next()` protocol, while iterables expose `[Symbol.iterator]()`. Proxy intercepts object operations, and Reflect helps perform default object behavior inside proxy traps. In interviews, the most important implementation questions are debounce, throttle, memoization, and currying.

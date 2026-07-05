@@ -11,7 +11,7 @@ sidebar_position: 1
 - [Code](./code.md) owns examples and implementation snippets.
 - [ChatGPT Notes](./chatgpt-notes.md) remains interview Q&A and preparation notes for now.
 
-# **TypeScript Interview Preparation Structure**
+## TypeScript Interview Preparation Structure
 
 [https://www.typescriptlang.org/cheatsheets/](https://www.typescriptlang.org/cheatsheets/)
 
@@ -31,17 +31,17 @@ sidebar_position: 1
 
 [https://zerotomastery.io/blog/typescript-interview-questions/](https://zerotomastery.io/blog/typescript-interview-questions/)
 
-# **TypeScript Interview Preparation Structure**
+## TypeScript Interview Preparation Structure
 
-# **1\. TypeScript Fundamentals**
+## 1. TypeScript Fundamentals
 
-## **Why TypeScript?**
+## Why TypeScript?
 
 * Problems TypeScript solves  
 * JavaScript vs TypeScript  
 * Compile-time vs Runtime
 
-## **Basic Types**
+## Basic Types
 
 * string  
 * number  
@@ -49,20 +49,20 @@ sidebar_position: 1
 * bigint  
 * symbol
 
-## **Special Types**
+## Special Types
 
 * any  
 * unknown  
 * void  
 * never
 
-## **null & undefined**
+## null & undefined
 
-## **Type Inference**
+## Type Inference
 
-## **Type Annotations**
+## Type Annotations
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * any vs unknown  
 * void vs never  
@@ -70,130 +70,130 @@ sidebar_position: 1
 
 ---
 
-# **2\. Functions in TypeScript**
+## 2. Functions in TypeScript
 
-## **Function Type Annotations**
+## Function Type Annotations
 
-## **Return Type Annotations**
+## Return Type Annotations
 
-## **Optional Parameters**
+## Optional Parameters
 
-## **Default Parameters**
+## Default Parameters
 
-## **Rest Parameters**
+## Rest Parameters
 
-## **Function Overloading**
+## Function Overloading
 
-## **Function Signatures**
+## Function Signatures
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Function overloading  
 * Explicit return types
 
 ---
 
-# **3\. Objects & Type Definitions**
+## 3. Objects & Type Definitions
 
-## **Typed Objects**
+## Typed Objects
 
-## **Nested Objects**
+## Nested Objects
 
-## **Readonly Properties**
+## Readonly Properties
 
-## **Optional Properties**
+## Optional Properties
 
-## **Index Signatures**
+## Index Signatures
 
-## **Dynamic Object Keys**
+## Dynamic Object Keys
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Creating flexible object types  
 * Dynamic key typing
 
 ---
 
-# **4\. Interfaces**
+## 4. Interfaces
 
-## **Interface Basics**
+## Interface Basics
 
-## **Extending Interfaces**
+## Extending Interfaces
 
-## **Multiple Interface Inheritance**
+## Multiple Interface Inheritance
 
-## **Interface Merging**
+## Interface Merging
 
-## **Interface for Functions**
+## Interface for Functions
 
-## **Interface for Classes**
+## Interface for Classes
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Interface inheritance  
 * Interface merging
 
 ---
 
-# **5\. Type Aliases**
+## 5. Type Aliases
 
-## **Type Alias Basics**
+## Type Alias Basics
 
-## **Object Types**
+## Object Types
 
-## **Function Types**
+## Function Types
 
-## **Union Types**
+## Union Types
 
-## **Intersection Types**
+## Intersection Types
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * type vs interface  
 * Union vs Intersection
 
 ---
 
-# **6\. Type Narrowing**
+## 6. Type Narrowing
 
-## **typeof Guards**
+## typeof Guards
 
-## **instanceof Guards**
+## instanceof Guards
 
-## **in Operator**
+## in Operator
 
-## **Equality Narrowing**
+## Equality Narrowing
 
-## **User Defined Type Guards**
+## User Defined Type Guards
 
-## **Assertion Functions**
+## Assertion Functions
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Type guards  
 * Narrowing union types
 
 ---
 
-# **7\. Generics**
+## 7. Generics
 
-## **Generic Functions**
+## Generic Functions
 
-## **Generic Interfaces**
+## Generic Interfaces
 
-## **Generic Type Aliases**
+## Generic Type Aliases
 
-## **Generic Classes**
+## Generic Classes
 
-## **Multiple Generic Parameters**
+## Multiple Generic Parameters
 
-## **Generic Constraints**
+## Generic Constraints
 
 \<T extends User\>
 
-## **Default Generic Types**
+## Default Generic Types
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Why Generics?  
 * Generic Constraints  
@@ -201,25 +201,25 @@ sidebar_position: 1
 
 ---
 
-# **8\. Advanced Types**
+## 8. Advanced Types
 
-## **keyof**
+## keyof
 
-## **typeof**
+## typeof
 
-## **Indexed Access Types**
+## Indexed Access Types
 
-## **Conditional Types**
+## Conditional Types
 
 T extends U ? X : Y
 
-## **infer Keyword**
+## infer Keyword
 
-## **Template Literal Types**
+## Template Literal Types
 
-## **Recursive Types**
+## Recursive Types
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * keyof usage  
 * Conditional Types  
@@ -227,52 +227,52 @@ T extends U ? X : Y
 
 ---
 
-# **9\. Mapped Types**
+## 9. Mapped Types
 
-## **Creating Types Dynamically**
+## Creating Types Dynamically
 
-## **Mapped Type Syntax**
+## Mapped Type Syntax
 
 \[K in keyof T\]
 
-## **Property Modifiers**
+## Property Modifiers
 
 * readonly  
 * optional
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Building custom utility types
 
 ---
 
-# **10\. Utility Types**
+## 10. Utility Types
 
-## **Partial**
+## Partial
 
-## **Required**
+## Required
 
-## **Readonly**
+## Readonly
 
-## **Pick**
+## Pick
 
-## **Omit**
+## Omit
 
-## **Record**
+## Record
 
-## **Exclude**
+## Exclude
 
-## **Extract**
+## Extract
 
-## **NonNullable**
+## NonNullable
 
-## **ReturnType**
+## ReturnType
 
-## **Parameters**
+## Parameters
 
-## **InstanceType**
+## InstanceType
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Implement Pick  
 * Implement Omit  
@@ -280,95 +280,95 @@ T extends U ? X : Y
 
 ---
 
-# **11\. Enums & Literal Types**
+## 11. Enums & Literal Types
 
-## **Numeric Enums**
+## Numeric Enums
 
-## **String Enums**
+## String Enums
 
-## **Const Enums**
+## Const Enums
 
-## **Literal Types**
+## Literal Types
 
-## **Union Literal Types**
+## Union Literal Types
 
 "success" | "error"
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Enum vs Union Types
 
 ---
 
-# **12\. Classes in TypeScript**
+## 12. Classes in TypeScript
 
-## **Class Syntax**
+## Class Syntax
 
-## **Access Modifiers**
+## Access Modifiers
 
 * public  
 * private  
 * protected
 
-## **Readonly Members**
+## Readonly Members
 
-## **Parameter Properties**
+## Parameter Properties
 
-## **Abstract Classes**
+## Abstract Classes
 
-## **Inheritance**
+## Inheritance
 
-## **Implementing Interfaces**
+## Implementing Interfaces
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Abstract Class vs Interface
 
 ---
 
-# **13\. Modules & Namespaces**
+## 13. Modules & Namespaces
 
-## **ES Modules**
+## ES Modules
 
-## **Import**
+## Import
 
-## **Export**
+## Export
 
-## **Re-exporting**
+## Re-exporting
 
-## **Namespace Basics**
+## Namespace Basics
 
-## **Module Resolution**
+## Module Resolution
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Namespace vs Module
 
 ---
 
-# **14\. Decorators (Important for Angular)**
+## 14. Decorators (Important for Angular)
 
-## **Class Decorators**
+## Class Decorators
 
-## **Method Decorators**
+## Method Decorators
 
-## **Property Decorators**
+## Property Decorators
 
-## **Parameter Decorators**
+## Parameter Decorators
 
-## **Metadata Reflection**
+## Metadata Reflection
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * How Angular uses decorators
 
 ---
 
-# **15\. TypeScript Configuration**
+## 15. TypeScript Configuration
 
-## **tsconfig.json**
+## tsconfig.json
 
-### **Important Options**
+### Important Options
 
 * strict  
 * noImplicitAny  
@@ -376,91 +376,91 @@ T extends U ? X : Y
 * target  
 * module
 
-## **Compilation Process**
+## Compilation Process
 
-## **Transpilation**
+## Transpilation
 
-## **Source Maps**
+## Source Maps
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * strict mode options  
 * TypeScript build flow
 
 ---
 
-# **16\. Declaration Files**
+## 16. Declaration Files
 
-## **.d.ts Files**
+## .d.ts Files
 
-## **Ambient Declarations**
+## Ambient Declarations
 
-## **Third Party Libraries**
+## Third Party Libraries
 
-## **DefinitelyTyped**
+## DefinitelyTyped
 
-## **@types Packages**
+## @types Packages
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * How TS types external JS libraries
 
 ---
 
-# **17\. TypeScript with React**
+## 17. TypeScript with React
 
-## **Typing Props**
+## Typing Props
 
-## **Typing State**
+## Typing State
 
-## **Typing Events**
+## Typing Events
 
-### **React Events**
+### React Events
 
 * ChangeEvent  
 * MouseEvent  
 * KeyboardEvent
 
-## **Typing Hooks**
+## Typing Hooks
 
-### **useState**
+### useState
 
-### **useReducer**
+### useReducer
 
-### **useRef**
+### useRef
 
-### **useContext**
+### useContext
 
-## **Generic Components**
+## Generic Components
 
-## **ForwardRef**
+## ForwardRef
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Typing reusable components  
 * Typing hooks correctly
 
 ---
 
-# **18\. Advanced TypeScript for Senior Engineers**
+## 18. Advanced TypeScript for Senior Engineers
 
-## **Discriminated Unions**
+## Discriminated Unions
 
-## **Exhaustiveness Checking**
+## Exhaustiveness Checking
 
-## **Complex Generic Patterns**
+## Complex Generic Patterns
 
-## **API Response Typing**
+## API Response Typing
 
-## **Domain Modeling**
+## Domain Modeling
 
-## **Strongly Typed State Management**
+## Strongly Typed State Management
 
-## **Type-safe Event Systems**
+## Type-safe Event Systems
 
-## **Type-safe Form Libraries**
+## Type-safe Form Libraries
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Designing scalable type systems  
 * Building reusable generic libraries  
@@ -468,11 +468,11 @@ T extends U ? X : Y
 
 ---
 
-# **Fastest Interview Preparation Order**
+## Fastest Interview Preparation Order
 
 If your goal is **job switch preparation**, study in this order:
 
-### **Phase 1 (Most Asked)**
+### Phase 1 (Most Asked)
 
 1. TypeScript Fundamentals  
 2. Interfaces  
@@ -482,7 +482,7 @@ If your goal is **job switch preparation**, study in this order:
 6. Type Narrowing  
 7. TypeScript with React
 
-### **Phase 2 (Senior Level)**
+### Phase 2 (Senior Level)
 
 8. Advanced Types  
 9. Mapped Types  
@@ -490,7 +490,7 @@ If your goal is **job switch preparation**, study in this order:
 11. Modules  
 12. tsconfig
 
-### **Phase 3 (Staff Level)**
+### Phase 3 (Staff Level)
 
 13. Declaration Files  
 14. Decorators  

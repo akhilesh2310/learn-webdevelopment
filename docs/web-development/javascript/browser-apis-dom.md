@@ -5,25 +5,25 @@ sidebar_position: 24
 
 # Browser APIs & DOM
 
-## **DOM Basics**
+## DOM Basics
 
-## **DOM Traversal**
+## DOM Traversal
 
-## **DOM Manipulation**
+## DOM Manipulation
 
-## **Event Handling**
+## Event Handling
 
 [https://javascript.info/introduction-browser-events](https://javascript.info/introduction-browser-events)
 
-## **Event Bubbling & Event Capturing**
+## Event Bubbling & Event Capturing
 
 [https://javascript.info/bubbling-and-capturing](https://javascript.info/bubbling-and-capturing)
 
-## **Event Delegation**
+## Event Delegation
 
 [https://javascript.info/event-delegation](https://javascript.info/event-delegation)
 
-## **Web APIs**
+## Web APIs
 
 * ## **LocalStorage & SessionStorage**
 
@@ -39,35 +39,35 @@ sidebar_position: 24
 
 * ## **Service Workers**
 
-## **Fetch API**
+## Fetch API
 
 https://javascript.info/fetch-api
 
-## **Timers**
+## Timers
 
 * setTimeout  
 * setInterval
 
 [https://javascript.info/settimeout-setinterval](https://javascript.info/settimeout-setinterval)
 
-## **Geolocation API**
+## Geolocation API
 
-## **Intersection Observer**
+## Intersection Observer
 
-## **Mutation Observer**
+## Mutation Observer
 
 https://javascript.info/mutation-observer
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Event delegation  
 * localStorage vs sessionStorage vs cookies
 
-## **1\. Storage Mechanisms: LocalStorage vs. SessionStorage vs. Cookies vs. IndexedDB**
+## 1. Storage Mechanisms: LocalStorage vs. SessionStorage vs. Cookies vs. IndexedDB
 
 These four APIs handle data persistence on the client side, but they serve fundamentally different architectural purposes.
 
-### **Architectural & Performance Breakdown**
+### Architectural & Performance Breakdown
 
 | Feature | LocalStorage | SessionStorage | Cookies | IndexedDB |
 | :---- | :---- | :---- | :---- | :---- |
@@ -78,19 +78,15 @@ These four APIs handle data persistence on the client side, but they serve funda
 | **Network Transfer** | Manual | Manual | Automatic via HTTP headers | Manual |
 | **Lifecycle** | Persistent until deleted | Tab/Window lifetime | Defined by Expires/Max-Age | Persistent until deleted |
 
-### 
+### Deep-Dive & Security Aspects
 
-### **Deep-Dive & Security Aspects**
-
-#### 
-
-#### **LocalStorage & SessionStorage (Web Storage)**
+#### LocalStorage & SessionStorage (Web Storage)
 
 * **The Mechanism:** Both share the same Storage interface. LocalStorage persists globally across tabs sharing the same origin. SessionStorage is scoped strictly to the specific top-level browsing context (tab); even if two tabs have the same URL, they get separate SessionStorage instances.  
 * **Performance Hit:** Because both APIs are **synchronous**, reading or writing large payloads blocks the main execution thread, potentially degrading UI rendering frame rates.  
 * **Security:** Highly vulnerable to **Cross-Site Scripting (XSS)**. If an attacker injects a malicious script, they can instantly steal everything via JSON.stringify(localStorage). **Never store JWTs, access tokens, or sensitive PII here.**
 
-#### **Cookies**
+#### Cookies
 
 * **The Mechanism:** Primarily designed for session management and server-side read access. They are automatically appended to every outgoing HTTP request matching the cookie's domain/path rules.  
 * **Security (The Hardening Layer):** Unlike Web Storage, cookies can be effectively hardened against XSS and **Cross-Site Request Forgery (CSRF)** using specific flags:  
@@ -102,17 +98,17 @@ These four APIs handle data persistence on the client side, but they serve funda
       * Lax (sent on top-level navigations), or   
       * None (requires Secure).
 
-#### **IndexedDB**
+#### IndexedDB
 
 * **The Mechanism:** A full transactional, object-oriented database embedded in the browser. It handles massive, structured datasets, supports indexing, and processes queries asynchronously using a request-based workflow (or wrapped in Promise-based libraries like idb).  
 * **Use Cases:** PWA offline synchronization, caching large structured application states, storing media assets as Blobs.  
 * **Security:** Governed by the **Same-Origin Policy (SOP)**. However, because it is accessible via client-side JS, it is still vulnerable to XSS extraction. If an attacker gains script execution, they can open your database and cursor through all stored records.
 
-## **2\. Background Processing: Web Workers vs. Service Workers**
+## 2. Background Processing: Web Workers vs. Service Workers
 
 While the storage APIs hold state, Workers give us multi-threading capabilities, moving heavy lift operations off the main execution thread.
 
-### **Architectural & Performance Breakdown**
+### Architectural & Performance Breakdown
 
 | Feature | Web Workers (Dedicated) | Service Workers |
 | :---- | :---- | :---- |
@@ -123,19 +119,15 @@ While the storage APIs hold state, Workers give us multi-threading capabilities,
 | **DOM Access** | No | No |
 | **Communication** | postMessage API | postMessage API or BroadcastChannel |
 
-### 
+### Deep-Dive & Security Aspects
 
-### **Deep-Dive & Security Aspects**
-
-#### 
-
-#### **Web Workers**
+#### Web Workers
 
 * **The Mechanism:** Standard OS-level OS threading simulated via the browser environment. They do not share memory with the main thread (unless using SharedArrayBuffer with atomics), meaning data passed via postMessage is deep-copied using the **Structured Clone Algorithm**, which can incur a performance overhead for massive payloads.  
 * **Use Cases:** Image/video manipulation, heavy cryptographic math, parsing massive JSON payloads, canvas rendering via OffscreenCanvas.  
 * **Security:** They run in an isolated execution context but share the same origin. Content Security Policies (CSP) must explicitly configure the worker-src directive to control which scripts can be spawned as workers, preventing attackers from launching unauthorized background execution threads.
 
-#### **Service Workers**
+#### Service Workers
 
 * **The Mechanism:** A specialized type of worker that acts as a programmable network proxy sitting between your web app, the browser cache, and the network. Because they run independently of the UI lifecycle, they can wake up in the background even when your website is completely closed.  
 * **Use Cases:** Progressive Web Apps (PWAs), offline fallback strategies, advanced asset caching (Cache Storage API), background data synchronization (SyncManager), and push notifications.  
@@ -143,7 +135,7 @@ While the storage APIs hold state, Workers give us multi-threading capabilities,
   * **Scope Constraints:** A service worker cannot intercept requests above its directory path unless the server explicitly sends a Service-Worker-Allowed HTTP response header.  
   * **Cache Poisoning:** If your application is compromised via XSS, an attacker could programmatically manipulate the Service Worker's cache to permanently serve malicious versions of your JS/HTML files, surviving subsequent deployments.
 
-## **Architecture Synthesis: Choosing Your Tech Stack**
+## Architecture Synthesis: Choosing Your Tech Stack
 
 When designing a modern, highly secure web application, these APIs are usually orchestrated together rather than used in isolation:
 
@@ -158,11 +150,11 @@ DOM and Web APIs are important frontend interview topics because they test how t
 
 ---
 
-## 1\. DOM Basics
+## 1. DOM Basics
 
 DOM stands for **Document Object Model**. It is the browser’s object-based representation of an HTML document.
 
-## **Simple meaning**
+## Simple meaning
 
 The browser converts HTML into a tree of nodes. JavaScript can read, update, add, or remove those nodes.
 
@@ -174,13 +166,13 @@ const app \= document.getElementById("app");
 
 console.log(app.tagName); // "DIV"
 
-## **Key mental model**
+## Key mental model
 
 HTML is the source text. DOM is the live object tree created by the browser.
 
 If JavaScript changes the DOM, the visible page can update.
 
-## **Common node types**
+## Common node types
 
 * `document`: root entry point.  
 * `Element`: HTML elements like `div`, `button`, `input`.  
@@ -188,7 +180,7 @@ If JavaScript changes the DOM, the visible page can update.
 * `Comment`: HTML comments.  
 * `DocumentFragment`: lightweight container for DOM nodes.
 
-## **Common selection methods**
+## Common selection methods
 
 document.getElementById("app");  
 document.querySelector(".card");  
@@ -196,7 +188,7 @@ document.querySelectorAll(".item");
 document.getElementsByClassName("item");  
 document.getElementsByTagName("div");
 
-## **Important trap**
+## Important trap
 
 `querySelectorAll` returns a static `NodeList`, while methods like `getElementsByClassName` return a live `HTMLCollection`.
 
@@ -204,17 +196,17 @@ const items \= document.querySelectorAll(".item");
 
 console.log(items.length); // Static length at query time
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 DOM is the browser’s live object representation of HTML. JavaScript can use DOM APIs to select, traverse, update, create, and remove elements. React abstracts most direct DOM manipulation, but understanding DOM is still important for events, refs, portals, accessibility, and browser APIs.
 
 ---
 
-## 2\. DOM Traversal
+## 2. DOM Traversal
 
 DOM traversal means moving between nodes in the DOM tree.
 
-## **Simple meaning**
+## Simple meaning
 
 Once we select an element, we can move to its parent, children, siblings, or closest matching ancestor.
 
@@ -224,7 +216,7 @@ console.log(item.parentElement);
 console.log(item.children);  
 console.log(item.nextElementSibling);
 
-## **Common traversal APIs**
+## Common traversal APIs
 
 element.parentElement;  
 element.children;  
@@ -235,7 +227,7 @@ element.nextElementSibling;
 element.closest(".container");  
 element.matches(".active");
 
-## **Practical example**
+## Practical example
 
 const button \= event.target.closest("button");
 
@@ -245,28 +237,28 @@ console.log(button.dataset.action);
 
 This is commonly used in event delegation.
 
-## **`children` vs `childNodes`**
+## `children` vs `childNodes`
 
 const container \= document.querySelector("\#container");
 
 console.log(container.children); // Only element nodes  
 console.log(container.childNodes); // Elements, text nodes, comments
 
-## **Important trap**
+## Important trap
 
 Whitespace in HTML can create text nodes. So `childNodes` may include text nodes for spaces/new lines.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 DOM traversal means navigating between DOM nodes using APIs like `parentElement`, `children`, `nextElementSibling`, `closest`, and `matches`. In real frontend code, `closest` and `matches` are especially useful for event delegation and finding relevant parent elements.
 
 ---
 
-## 3\. DOM Manipulation
+## 3. DOM Manipulation
 
 DOM manipulation means changing the page using JavaScript.
 
-## **Simple meaning**
+## Simple meaning
 
 We can create, update, insert, remove, or replace elements.
 
@@ -274,7 +266,7 @@ const title \= document.querySelector("h1");
 
 title.textContent \= "Updated title";
 
-## **Common APIs**
+## Common APIs
 
 document.createElement("div");  
 element.textContent \= "Hello";  
@@ -286,7 +278,7 @@ element.append(child);
 element.prepend(child);  
 element.remove();
 
-## **Create and append element**
+## Create and append element
 
 const li \= document.createElement("li");
 
@@ -294,7 +286,7 @@ li.textContent \= "New item";
 
 document.querySelector("ul").append(li);
 
-## **`textContent` vs `innerHTML`**
+## `textContent` vs `innerHTML`
 
 element.textContent \= userInput;
 
@@ -304,7 +296,7 @@ element.innerHTML \= "\<strong\>Hello\</strong\>";
 
 Use `innerHTML` only when you intentionally want to parse HTML.
 
-## **Important security trap**
+## Important security trap
 
 Never put untrusted user input directly into `innerHTML`.
 
@@ -314,7 +306,7 @@ Better:
 
 element.textContent \= userInput;
 
-## **Performance trap**
+## Performance trap
 
 Frequent DOM updates can cause layout/reflow cost. Batch updates when possible.
 
@@ -328,17 +320,17 @@ items.forEach((item) \=\> \{
 
 list.append(fragment);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 DOM manipulation means changing elements, attributes, classes, text, or structure using JavaScript. We should prefer safe APIs like `textContent` for user text, avoid unnecessary direct DOM updates, batch changes when possible, and be careful with `innerHTML` because it can create XSS risks.
 
 ---
 
-## 4\. Event Handling
+## 4. Event Handling
 
 Events are signals that something happened in the browser, like a click, key press, form submit, page load, or mouse movement.
 
-## **Simple meaning**
+## Simple meaning
 
 An event handler is a function that runs when an event happens.
 
@@ -348,7 +340,7 @@ button.addEventListener("click", function () \{
   console.log("Clicked");  
 \});
 
-## **Common event types**
+## Common event types
 
 * Mouse: `click`, `mousedown`, `mouseup`, `mousemove`  
 * Keyboard: `keydown`, `keyup`  
@@ -356,7 +348,7 @@ button.addEventListener("click", function () \{
 * Document: `DOMContentLoaded`  
 * CSS: `transitionend`
 
-## **`onclick` vs `addEventListener`**
+## `onclick` vs `addEventListener`
 
 button.onclick \= function () \{  
   console.log("One handler only");  
@@ -369,7 +361,7 @@ button.addEventListener("click", handler2);
 
 `addEventListener` supports multiple handlers and options.
 
-## **Event object**
+## Event object
 
 button.addEventListener("click", function (event) \{  
   console.log(event.type); // "click"  
@@ -377,14 +369,14 @@ button.addEventListener("click", function (event) \{
   console.log(event.currentTarget);  
 \});
 
-## **`target` vs `currentTarget`**
+## `target` vs `currentTarget`
 
 parent.addEventListener("click", function (event) \{  
   console.log(event.target); // Actual clicked element  
   console.log(event.currentTarget); // Element where listener is attached  
 \});
 
-## **Remove event listener**
+## Remove event listener
 
 function handleClick() \{  
   console.log("Clicked");  
@@ -393,7 +385,7 @@ function handleClick() \{
 button.addEventListener("click", handleClick);  
 button.removeEventListener("click", handleClick);
 
-## **Important trap**
+## Important trap
 
 This does not remove the listener:
 
@@ -402,27 +394,27 @@ button.removeEventListener("click", () \=\> console.log("Clicked"));
 
 Answer: Both arrow functions are different references.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event handling means responding to browser events using handlers. `addEventListener` is preferred because it supports multiple handlers and options like `capture`, `once`, and `passive`. A common trap is that `removeEventListener` needs the same function reference that was used while adding the listener.
 
 ---
 
-## 5\. Event Bubbling and Event Capturing
+## 5. Event Bubbling and Event Capturing
 
 Events move through the DOM in phases.
 
-## **Simple meaning**
+## Simple meaning
 
 When an event happens on an element, it does not only belong to that element. It travels through the DOM tree.
 
-## **Event phases**
+## Event phases
 
 1. **Capturing phase:** event travels from document/root down to the target.  
 2. **Target phase:** event reaches the actual target element.  
 3. **Bubbling phase:** event travels back up from target to ancestors.
 
-## **Example**
+## Example
 
 \<div id="parent"\>  
   \<button id="child"\>Click\</button\>  
@@ -443,7 +435,7 @@ When clicking the button:
 
 Why? The event happens on child, then bubbles up to parent.
 
-## **Capturing example**
+## Capturing example
 
 parent.addEventListener(  
   "click",  
@@ -462,7 +454,7 @@ Output:
 // "Parent capture"  
 // "Child"
 
-## **Stop bubbling**
+## Stop bubbling
 
 child.addEventListener("click", (event) \=\> \{  
   event.stopPropagation();  
@@ -471,21 +463,21 @@ child.addEventListener("click", (event) \=\> \{
 
 Now parent click handler will not run for this click.
 
-## **Important trap**
+## Important trap
 
 Use `stopPropagation()` carefully. It can break parent-level handlers, analytics, modals, dropdown closing, or event delegation.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event capturing is the phase where an event travels from the root down to the target. Event bubbling is the phase where it travels back from the target to its ancestors. By default, most event listeners run in the bubbling phase. We can listen during capture by passing `\{ capture: true \}` or `true`.
 
 ---
 
-## 6\. Event Delegation
+## 6. Event Delegation
 
 Event delegation means attaching one event listener to a parent instead of attaching listeners to many child elements.
 
-## **Simple meaning**
+## Simple meaning
 
 Handle child events from a common parent using event bubbling.
 
@@ -504,11 +496,11 @@ list.addEventListener("click", function (event) \{
   console.log(item.dataset.id);  
 \});
 
-## **Key mental model**
+## Key mental model
 
 Because clicks bubble up, the parent can catch clicks from its children.
 
-## **Why event delegation is useful**
+## Why event delegation is useful
 
 * Fewer event listeners.  
 * Better performance for large lists.  
@@ -516,7 +508,7 @@ Because clicks bubble up, the parent can catch clicks from its children.
 * Cleaner event management.  
 * Useful for tables, menus, dropdowns, lists, and grids.
 
-## **Practical frontend example**
+## Practical frontend example
 
 Instead of adding one listener to every row in a table, add one listener to the table body and detect which row was clicked.
 
@@ -528,7 +520,7 @@ tableBody.addEventListener("click", (event) \=\> \{
   console.log(row.dataset.rowId);  
 \});
 
-## **Important traps**
+## Important traps
 
 Always check that the matched element belongs to the intended container.
 
@@ -538,17 +530,17 @@ if (\!button || \!container.contains(button)) return;
 
 Some events do not bubble normally, like `focus` and `blur`. Use `focusin` and `focusout` if delegation is needed.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event delegation uses event bubbling to handle events from child elements at a parent level. It reduces the number of listeners and works well for dynamic lists or tables. We usually use `event.target`, `closest`, and `dataset` to identify the clicked child.
 
 ---
 
-## 7\. LocalStorage and SessionStorage
+## 7. LocalStorage and SessionStorage
 
 `localStorage` and `sessionStorage` are browser storage APIs for storing string key-value data.
 
-## **Simple meaning**
+## Simple meaning
 
 They let us store small amounts of data in the browser.
 
@@ -556,7 +548,7 @@ localStorage.setItem("theme", "dark");
 
 console.log(localStorage.getItem("theme")); // "dark"
 
-## **localStorage**
+## localStorage
 
 Data remains even after closing and reopening the browser.
 
@@ -564,7 +556,7 @@ localStorage.setItem("token", "abc");
 localStorage.removeItem("token");  
 localStorage.clear();
 
-## **sessionStorage**
+## sessionStorage
 
 Data remains only for the current tab session. It is cleared when the tab is closed.
 
@@ -572,7 +564,7 @@ sessionStorage.setItem("step", "2");
 
 console.log(sessionStorage.getItem("step")); // "2"
 
-## **Important points**
+## Important points
 
 * Stores only strings.  
 * Use `JSON.stringify` for objects.  
@@ -589,7 +581,7 @@ const savedUser \= JSON.parse(localStorage.getItem("user"));
 
 console.log(savedUser.name); // "Akhilesh"
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Theme preference.  
 * Language preference.  
@@ -598,28 +590,28 @@ console.log(savedUser.name); // "Akhilesh"
 * Recently viewed items.  
 * Feature flags cached locally.
 
-## **Common mistake**
+## Common mistake
 
 Do not store access tokens or sensitive information in localStorage if avoidable, because JavaScript can read it and XSS can steal it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `localStorage` and `sessionStorage` store string key-value data in the browser. `localStorage` persists across browser sessions, while `sessionStorage` is scoped to the current tab session. Both are synchronous and accessible by JavaScript, so they should not store sensitive data.
 
 ---
 
-## 8\. Cookies
+## 8. Cookies
 
 Cookies are small key-value data stored by the browser and commonly sent with HTTP requests.
 
-## **Simple meaning**
+## Simple meaning
 
 Cookies are mainly used for session management, authentication, tracking preferences, and server-client communication.
 
 document.cookie \= "theme=dark";  
 console.log(document.cookie);
 
-## **Cookie attributes**
+## Cookie attributes
 
 Common attributes:
 
@@ -630,7 +622,7 @@ Common attributes:
 * `HttpOnly`: not accessible by JavaScript, set by server.  
 * `SameSite`: controls cross-site sending behavior.
 
-## **Important security point**
+## Important security point
 
 `HttpOnly` cookies cannot be read by JavaScript. This helps protect tokens from XSS stealing.
 
@@ -638,37 +630,37 @@ Example server-set cookie:
 
 Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Lax
 
-## **Practical frontend point**
+## Practical frontend point
 
 Frontend JavaScript can create/read normal cookies using `document.cookie`, but cannot read or create `HttpOnly` cookies.
 
-## **Cookies vs localStorage**
+## Cookies vs localStorage
 
 Cookies can be automatically sent with HTTP requests. `localStorage` is not automatically sent.
 
-## **Common mistake**
+## Common mistake
 
 Storing sensitive tokens in JavaScript-readable cookies or localStorage can be risky. For secure auth, `HttpOnly`, `Secure`, and `SameSite` cookies are generally preferred.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Cookies are small browser-stored values that can be sent automatically with HTTP requests. They are commonly used for sessions and authentication. Security attributes like `HttpOnly`, `Secure`, and `SameSite` are important. Unlike localStorage, cookies can be automatically included in requests, but they have smaller storage limits and need careful security configuration.
 
 ---
 
-## 9\. IndexedDB
+## 9. IndexedDB
 
 IndexedDB is a browser database for storing larger and more structured client-side data.
 
-## **Simple meaning**
+## Simple meaning
 
 Use IndexedDB when localStorage is too small or too simple.
 
-## **Key mental model**
+## Key mental model
 
 `localStorage` is simple string storage. IndexedDB is an async database in the browser.
 
-## **Good use cases**
+## Good use cases
 
 * Offline-first apps.  
 * Large cached API responses.  
@@ -678,7 +670,7 @@ Use IndexedDB when localStorage is too small or too simple.
 * Progressive Web Apps.  
 * Large forms or drafts.
 
-## **Important points**
+## Important points
 
 * Asynchronous API.  
 * Stores objects, files, blobs, and structured data.  
@@ -686,21 +678,21 @@ Use IndexedDB when localStorage is too small or too simple.
 * More powerful but more complex than localStorage.  
 * Often used through helper libraries like `idb`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 IndexedDB is a client-side database for storing large and structured data in the browser. It is asynchronous and supports transactions, indexes, objects, and blobs. It is useful for offline-first apps, large caches, and PWAs, but it is more complex than localStorage.
 
 ---
 
-## 10\. Web Workers
+## 10. Web Workers
 
 Web Workers allow JavaScript to run code in a background thread separate from the main UI thread.
 
-## **Simple meaning**
+## Simple meaning
 
 Use Web Workers for heavy work that should not freeze the UI.
 
-## **Key mental model**
+## Key mental model
 
 Main thread handles UI. Worker handles CPU-heavy tasks.
 
@@ -719,7 +711,7 @@ self.onmessage \= function (event) \{
   self.postMessage(result);  
 \};
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Large data processing.  
 * CSV parsing.  
@@ -729,32 +721,32 @@ self.onmessage \= function (event) \{
 * Heavy calculations.  
 * Avoiding UI jank.
 
-## **Important limitations**
+## Important limitations
 
 * Workers cannot directly access the DOM.  
 * Communication happens using `postMessage`.  
 * Data is copied or transferred.  
 * Setup adds complexity.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Web Workers run JavaScript in a background thread, which helps keep the UI responsive during heavy computation. They communicate with the main thread using `postMessage`, but they cannot directly access or manipulate the DOM.
 
 ---
 
-## 11\. Service Workers
+## 11. Service Workers
 
 A Service Worker is a browser background script that can intercept network requests, cache resources, and enable offline behavior.
 
-## **Simple meaning**
+## Simple meaning
 
 Service Workers sit between the web app and network.
 
-## **Key mental model**
+## Key mental model
 
 The page asks for a resource. The Service Worker can decide to serve from cache, go to network, or update cache.
 
-## **Common use cases**
+## Common use cases
 
 * Offline support.  
 * Asset caching.  
@@ -763,13 +755,13 @@ The page asks for a resource. The Service Worker can decide to serve from cache,
 * Push notifications.  
 * Network request caching.
 
-## **Basic registration**
+## Basic registration
 
 if ("serviceWorker" in navigator) \{  
   navigator.serviceWorker.register("/service-worker.js");  
 \}
 
-## **Important points**
+## Important points
 
 * Runs separately from the page.  
 * Requires HTTPS, except localhost.  
@@ -778,17 +770,17 @@ if ("serviceWorker" in navigator) \{
 * Can intercept fetch requests.  
 * Lifecycle includes install, activate, and fetch events.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A Service Worker is a background script that can intercept network requests and cache resources. It is commonly used for PWAs, offline support, push notifications, and improving repeat-load performance. It cannot directly access the DOM and usually requires HTTPS.
 
 ---
 
-## 12\. Fetch API
+## 12. Fetch API
 
 Fetch is a browser API for making HTTP requests. It returns a promise.
 
-## **Simple meaning**
+## Simple meaning
 
 Use `fetch` to call APIs.
 
@@ -799,7 +791,7 @@ async function getUsers() \{
   return data;  
 \}
 
-## **Important behavior**
+## Important behavior
 
 `fetch` rejects on network failure, but it does not automatically reject for HTTP status codes like `404` or `500`.
 
@@ -813,7 +805,7 @@ async function request(url) \{
   return response.json();  
 \}
 
-## **POST example**
+## POST example
 
 async function createUser(user) \{  
   const response \= await fetch("/api/users", \{  
@@ -831,7 +823,7 @@ async function createUser(user) \{
   return response.json();  
 \}
 
-## **Practical frontend points**
+## Practical frontend points
 
 * Manage loading, success, and error states.  
 * Handle `response.ok`.  
@@ -839,17 +831,17 @@ async function createUser(user) \{
 * Avoid duplicate API calls.  
 * Handle retries and timeouts where needed.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Fetch is a promise-based browser API for HTTP requests. It rejects for network errors, but not for HTTP error statuses like `404` or `500`, so we should check `response.ok` manually. It is commonly used with `async/await`, error handling, and `AbortController`.
 
 ---
 
-## 13\. Timers: `setTimeout` and `setInterval`
+## 13. Timers: `setTimeout` and `setInterval`
 
 Timers schedule code to run later.
 
-## **`setTimeout`**
+## `setTimeout`
 
 Runs code once after a delay.
 
@@ -859,7 +851,7 @@ const timerId \= setTimeout(() \=\> \{
 
 clearTimeout(timerId);
 
-## **`setInterval`**
+## `setInterval`
 
 Runs code repeatedly after every delay.
 
@@ -869,11 +861,11 @@ const intervalId \= setInterval(() \=\> \{
 
 clearInterval(intervalId);
 
-## **Key mental model**
+## Key mental model
 
 Timers do not guarantee exact execution time. They schedule callbacks after at least the given delay, but the callback runs only when the call stack is free.
 
-## **Important trap**
+## Important trap
 
 `setInterval` can cause overlapping or delayed execution if the callback takes longer than the interval.
 
@@ -891,7 +883,7 @@ poll();
 
 This schedules the next call after the previous work finishes.
 
-## **React cleanup**
+## React cleanup
 
 useEffect(() \=\> \{  
   const intervalId \= setInterval(() \=\> \{  
@@ -903,17 +895,17 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `setTimeout` runs a callback once after a delay, while `setInterval` runs repeatedly. Timers are not exact because callbacks wait for the call stack to be free. In React or long-lived pages, timers should be cleaned up to avoid memory leaks.
 
 ---
 
-## 14\. Geolocation API
+## 14. Geolocation API
 
 The Geolocation API allows the browser to get the user’s location with permission.
 
-## **Simple meaning**
+## Simple meaning
 
 Use it when the app needs the user’s current location.
 
@@ -927,7 +919,7 @@ navigator.geolocation.getCurrentPosition(
   \}  
 );
 
-## **Common use cases**
+## Common use cases
 
 * Nearby stores.  
 * Ride booking.  
@@ -935,7 +927,7 @@ navigator.geolocation.getCurrentPosition(
 * Delivery address suggestions.  
 * Maps and navigation.
 
-## **Important points**
+## Important points
 
 * Requires user permission.  
 * Usually requires secure context.  
@@ -943,7 +935,7 @@ navigator.geolocation.getCurrentPosition(
 * Location may be inaccurate.  
 * Should handle loading, success, and error states.
 
-## **Watch location**
+## Watch location
 
 const watchId \= navigator.geolocation.watchPosition((position) \=\> \{  
   console.log(position.coords.latitude);  
@@ -951,17 +943,17 @@ const watchId \= navigator.geolocation.watchPosition((position) \=\> \{
 
 navigator.geolocation.clearWatch(watchId);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Geolocation API provides access to the user’s location after permission. It is useful for maps, nearby search, delivery, and ride apps. We must handle permission denial, errors, accuracy issues, and cleanup when using `watchPosition`.
 
 ---
 
-## 15\. Intersection Observer
+## 15. Intersection Observer
 
 Intersection Observer watches when an element enters or leaves the viewport or another container.
 
-## **Simple meaning**
+## Simple meaning
 
 Use it to detect visibility without manually listening to scroll events.
 
@@ -975,7 +967,7 @@ const observer \= new IntersectionObserver((entries) \=\> \{
 
 observer.observe(document.querySelector("\#target"));
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Lazy loading images.  
 * Infinite scroll.  
@@ -983,7 +975,7 @@ observer.observe(document.querySelector("\#target"));
 * Tracking ad impressions.  
 * Loading sections only when visible.
 
-## **Important options**
+## Important options
 
 const observer \= new IntersectionObserver(callback, \{  
   root: null,  
@@ -995,22 +987,22 @@ const observer \= new IntersectionObserver(callback, \{
 * `rootMargin`: margin around root.  
 * `threshold`: how much visibility is required.
 
-## **Cleanup**
+## Cleanup
 
 observer.unobserve(element);  
 observer.disconnect();
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Intersection Observer detects when an element becomes visible or hidden relative to the viewport or a container. It is better than manually handling scroll for use cases like lazy loading, infinite scroll, animations, and impression tracking.
 
 ---
 
-## 16\. Mutation Observer
+## 16. Mutation Observer
 
 Mutation Observer watches changes in the DOM.
 
-## **Simple meaning**
+## Simple meaning
 
 Use it when you need to react to DOM changes like added nodes, removed nodes, or attribute changes.
 
@@ -1026,14 +1018,14 @@ observer.observe(document.body, \{
   attributes: true,  
 \});
 
-## **Common mutation types**
+## Common mutation types
 
 * `childList`: child nodes added or removed.  
 * `attributes`: attributes changed.  
 * `characterData`: text content changed.  
 * `subtree`: observe descendants too.
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Integrating with third-party scripts.  
 * Tracking DOM changes outside React.  
@@ -1041,15 +1033,15 @@ observer.observe(document.body, \{
 * Detecting dynamically added elements.  
 * Custom analytics/debugging tools.
 
-## **Cleanup**
+## Cleanup
 
 observer.disconnect();
 
-## **Important trap**
+## Important trap
 
 Mutation Observer can become expensive if observing a large subtree with many changes. Keep observation scope narrow.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Mutation Observer watches DOM changes such as added nodes, removed nodes, attribute changes, or text changes. It is useful when DOM changes happen outside our direct control, such as third-party scripts, injected widgets, or legacy integrations. Always disconnect it when no longer needed.
 
@@ -1059,9 +1051,9 @@ Mutation Observer watches DOM changes such as added nodes, removed nodes, attrib
 
 ---
 
-## 1\. Explain Event Delegation
+## 1. Explain Event Delegation
 
-## **Answer**
+## Answer
 
 Event delegation means adding a single listener to a parent and handling events from child elements using event bubbling.
 
@@ -1075,7 +1067,7 @@ list.addEventListener("click", (event) \=\> \{
   console.log(item.dataset.id);  
 \});
 
-## **Why it is useful**
+## Why it is useful
 
 * Fewer event listeners.  
 * Better for large lists.  
@@ -1083,15 +1075,15 @@ list.addEventListener("click", (event) \=\> \{
 * Easier cleanup.  
 * Useful for tables, menus, lists, dropdowns, and grids.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event delegation uses event bubbling to handle child element events at a parent level. Instead of attaching listeners to every child, we attach one listener to the parent and identify the actual target using `event.target`, `closest`, or `dataset`. It improves performance and works well for dynamic elements.
 
 ---
 
-## 2\. localStorage vs sessionStorage vs cookies
+## 2. localStorage vs sessionStorage vs cookies
 
-## **Simple comparison**
+## Simple comparison
 
 | Feature | localStorage | sessionStorage | Cookies |
 | ----- | ----- | ----- | ----- |
@@ -1102,25 +1094,25 @@ Event delegation uses event bubbling to handle child element events at a parent 
 | Typical use | Preferences, non-sensitive cache | Per-tab temporary data | Sessions, auth, server communication |
 | Sensitive data | Avoid | Avoid | Prefer `HttpOnly Secure SameSite` |
 
-## **Examples**
+## Examples
 
 localStorage.setItem("theme", "dark");  
 sessionStorage.setItem("step", "2");  
 document.cookie \= "theme=dark";
 
-## **Security point**
+## Security point
 
 For authentication, `HttpOnly`, `Secure`, and `SameSite` cookies are generally safer than JavaScript-readable storage because JavaScript cannot read `HttpOnly` cookies.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `localStorage` persists across browser sessions, `sessionStorage` lasts only for the current tab session, and cookies can be sent automatically with HTTP requests. localStorage and sessionStorage are accessible by JavaScript and should not store sensitive data. For authentication, server-set `HttpOnly`, `Secure`, and `SameSite` cookies are generally safer.
 
 ---
 
-## 3\. What is Event Bubbling?
+## 3. What is Event Bubbling?
 
-## **Answer**
+## Answer
 
 Event bubbling means an event starts from the target element and moves upward through its ancestors.
 
@@ -1137,15 +1129,15 @@ Clicking child logs:
 // child  
 // parent
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event bubbling is the phase where an event moves from the target element up through its parent elements. It allows parent elements to listen for child events and is the foundation of event delegation.
 
 ---
 
-## 4\. What is Event Capturing?
+## 4. What is Event Capturing?
 
-## **Answer**
+## Answer
 
 Event capturing is the phase where the event travels from the root down to the target before bubbling back up.
 
@@ -1157,15 +1149,15 @@ parent.addEventListener(
   true  
 );
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Event capturing is the phase where an event travels from the root down to the target element. We can listen in the capture phase by passing `true` or `\{ capture: true \}` to `addEventListener`.
 
 ---
 
-## 5\. target vs currentTarget
+## 5. target vs currentTarget
 
-## **Answer**
+## Answer
 
 `event.target` is the actual element where the event started. `event.currentTarget` is the element where the listener is attached.
 
@@ -1174,15 +1166,15 @@ parent.addEventListener("click", (event) \=\> \{
   console.log(event.currentTarget); // parent  
 \});
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `event.target` points to the actual clicked element, while `event.currentTarget` points to the element whose event handler is currently running. This difference is important in event delegation.
 
 ---
 
-## 6\. What is the difference between preventDefault and stopPropagation?
+## 6. What is the difference between preventDefault and stopPropagation?
 
-## **Answer**
+## Answer
 
 `preventDefault()` stops the browser’s default behavior. `stopPropagation()` stops the event from moving further through the DOM.
 
@@ -1194,39 +1186,39 @@ button.addEventListener("click", (event) \=\> \{
   event.stopPropagation(); // Stops bubbling  
 \});
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `preventDefault()` prevents the browser’s default action, such as form submit or link navigation. `stopPropagation()` stops the event from bubbling or capturing further. They solve different problems.
 
 ---
 
-## 7\. Why use Intersection Observer instead of scroll event?
+## 7. Why use Intersection Observer instead of scroll event?
 
-## **Answer**
+## Answer
 
 Scroll events can fire very frequently and require manual calculations. Intersection Observer is browser-optimized and tells us when an element enters or leaves the viewport.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Intersection Observer is preferred for visibility detection because it is more efficient and cleaner than manually listening to scroll events and calculating positions. It is useful for lazy loading, infinite scroll, animations, and impression tracking.
 
 ---
 
-## 8\. When would you use IndexedDB over localStorage?
+## 8. When would you use IndexedDB over localStorage?
 
-## **Answer**
+## Answer
 
 Use IndexedDB when data is large, structured, or needs async database-like behavior.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I use localStorage for small non-sensitive string preferences. I use IndexedDB for large structured data, offline-first apps, cached API responses, files, blobs, or complex client-side storage requirements.
 
 ---
 
-## 9\. Web Worker vs Service Worker
+## 9. Web Worker vs Service Worker
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Web Worker | Service Worker |
 | ----- | ----- | ----- |
@@ -1236,15 +1228,15 @@ I use localStorage for small non-sensitive string preferences. I use IndexedDB f
 | Use case | CPU-heavy computation | PWA, offline, caching, push |
 | Lifetime | Usually tied to page | Can run independently from page |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A Web Worker is used to run CPU-heavy JavaScript in a background thread so the UI does not freeze. A Service Worker is used as a network proxy for caching, offline support, push notifications, and PWA behavior.
 
 ---
 
-## 10\. setTimeout vs setInterval
+## 10. setTimeout vs setInterval
 
-## **Answer**
+## Answer
 
 `setTimeout` runs once after a delay. `setInterval` runs repeatedly after every delay.
 
@@ -1256,7 +1248,7 @@ setInterval(() \=\> \{
   console.log("Repeated");  
 \}, 1000);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `setTimeout` schedules a callback once, while `setInterval` repeats it. Timers are not exact because callbacks run only when the call stack is free. For polling, recursive `setTimeout` is often safer than `setInterval` because it waits for the previous work to finish before scheduling the next call.
 

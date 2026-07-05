@@ -11,25 +11,25 @@ Related pages: [Frontend Architecture](../important/frontend-architecture.md), [
 
 Use this page for scalable React architecture, feature/domain structure, monorepos, design systems, shared component libraries, micro frontends, and senior/staff-level architecture answers.
 
-# **React Architecture**
+## React Architecture
 
-## **Feature Based Structure**
+## Feature Based Structure
 
-## **Domain Driven Structure**
+## Domain Driven Structure
 
-## **Monorepo**
+## Monorepo
 
-## **Design Systems**
+## Design Systems
 
-## **Shared Component Libraries**
+## Shared Component Libraries
 
-## **Micro Frontends**
+## Micro Frontends
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Scaling React applications
 
-# **React Architecture**
+## React Architecture
 
 React architecture means how we organize components, state, routes, APIs, shared utilities, design system, build system, testing, and deployment so the app can scale with features, teams, and business complexity.
 
@@ -47,9 +47,9 @@ Team scalability
 
 ---
 
-# **1\. What is React Architecture?**
+## 1. What is React Architecture?
 
-## **Simple meaning**
+## Simple meaning
 
 React architecture is the structure and design of a React application so it remains maintainable as it grows.
 
@@ -67,7 +67,7 @@ app/
 services/  
 design-system/
 
-## **Good React architecture should solve**
+## Good React architecture should solve
 
 * Where should components live?  
 * Where should API calls live?  
@@ -80,15 +80,15 @@ design-system/
 * How do we deploy independently if needed?  
 * How do we keep UI consistent?
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 React architecture is about organizing the application around clear boundaries so it can scale. It includes folder structure, feature ownership, shared components, state management, API layer, routing, testing, performance, design system, and deployment strategy.
 
 ---
 
-# **2\. Feature-Based Structure**
+## 2. Feature-Based Structure
 
-## **Simple meaning**
+## Simple meaning
 
 Feature-based structure organizes code by business feature instead of technical type.
 
@@ -110,7 +110,7 @@ features/
 shared/  
 app/
 
-## **Example structure**
+## Example structure
 
 src/  
   app/  
@@ -144,7 +144,7 @@ src/
     api/  
     types/
 
-## **Key mental model**
+## Key mental model
 
 Keep feature-specific code inside the feature.
 
@@ -153,7 +153,7 @@ Campaign-specific API → features/campaigns/api
 Campaign-specific hooks → features/campaigns/hooks  
 Reusable Button → shared/components
 
-## **Why feature-based structure scales well**
+## Why feature-based structure scales well
 
 * Easier feature ownership.  
 * Easier onboarding.  
@@ -163,7 +163,7 @@ Reusable Button → shared/components
 * Easier lazy loading by feature.  
 * Works well for team-based development.
 
-## **Common mistake**
+## Common mistake
 
 Putting everything into `shared`.
 
@@ -177,19 +177,19 @@ shared/
 
 These are not truly shared. They belong to their feature.
 
-## **Rule of thumb**
+## Rule of thumb
 
 Move code to `shared` only after it is reused by multiple features and has a stable generic API.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Feature-based structure organizes code by business capability. Each feature owns its components, hooks, API calls, types, and pages. Shared code is kept separately only when it is truly reusable. This scales better than grouping everything by technical folder because ownership and boundaries are clearer.
 
 ---
 
-# **3\. Domain-Driven Structure**
+## 3. Domain-Driven Structure
 
-## **Simple meaning**
+## Simple meaning
 
 Domain-driven structure organizes frontend code around business domains.
 
@@ -205,7 +205,7 @@ users
 permissions  
 inventory
 
-## **Example**
+## Example
 
 src/  
   domains/  
@@ -235,7 +235,7 @@ src/
     lib/  
     config/
 
-## **Key mental model**
+## Key mental model
 
 Domain-driven frontend architecture asks:
 
@@ -245,7 +245,7 @@ Not:
 
 Is this a component or hook?
 
-## **Domain layer examples**
+## Domain layer examples
 
 domain/campaign/model  
 → Campaign types, campaign status, campaign validation
@@ -259,7 +259,7 @@ domain/campaign/ui
 domain/campaign/hooks  
 → Campaign-specific hooks
 
-## **Why useful**
+## Why useful
 
 * Good for large business apps.  
 * Aligns code with product/domain language.  
@@ -268,21 +268,21 @@ domain/campaign/hooks
 * Easier to reason about complex workflows.  
 * Works well with microfrontends and monorepos.
 
-## **Common mistake**
+## Common mistake
 
 Over-engineering domain structure for small apps.
 
 For small apps, simple feature-based structure is enough. Domain-driven structure is more useful when the business complexity is high.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Domain-driven React structure organizes code around business domains like campaigns, reports, users, or billing. It helps large teams align frontend code with product ownership and business language. It is useful when the app has complex business workflows and multiple teams owning different domains.
 
 ---
 
-# **4\. Feature-Based vs Domain-Driven Structure**
+## 4. Feature-Based vs Domain-Driven Structure
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Feature-Based | Domain-Driven |
 | ----- | ----- | ----- |
@@ -293,15 +293,15 @@ Domain-driven React structure organizes code around business domains like campai
 | Complexity | Moderate | Higher |
 | Risk | Shared folder misuse | Over-engineering |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Feature-based structure groups code by product features, while domain-driven structure groups code by business domains. Both are better than purely technical folders for large apps. I would choose feature-based for most React apps and move toward domain-driven boundaries when business complexity and team ownership grow.
 
 ---
 
-# **5\. Monorepo**
+## 5. Monorepo
 
-## **Simple meaning**
+## Simple meaning
 
 A monorepo keeps multiple apps and packages in one repository.
 
@@ -321,13 +321,13 @@ repo/
     api-client/  
     design-tokens/
 
-## **Key mental model**
+## Key mental model
 
 One repository, many projects.
 
 A monorepo is useful when multiple apps share code, tooling, components, and standards.
 
-## **Common monorepo tools**
+## Common monorepo tools
 
 * Nx  
 * Turborepo  
@@ -335,7 +335,7 @@ A monorepo is useful when multiple apps share code, tooling, components, and sta
 * Yarn workspaces  
 * npm workspaces
 
-## **Why monorepo is useful**
+## Why monorepo is useful
 
 * Shared components.  
 * Shared TypeScript config.  
@@ -347,7 +347,7 @@ A monorepo is useful when multiple apps share code, tooling, components, and sta
 * Better visibility across teams.  
 * Build caching and affected builds with tools like Nx/Turborepo.
 
-## **Example packages**
+## Example packages
 
 packages/  
   ui/  
@@ -367,7 +367,7 @@ packages/
     date.ts  
     formatCurrency.ts
 
-## **Monorepo trade-offs**
+## Monorepo trade-offs
 
 * Requires strong ownership.  
 * Build pipeline can become complex.  
@@ -376,19 +376,19 @@ packages/
 * CI/CD must support affected builds.  
 * Large repo can slow down without caching.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A monorepo stores multiple apps and shared packages in one repository. It is useful when teams need shared components, utilities, design tokens, API clients, and consistent tooling. For large apps, monorepo tools like Nx or Turborepo help with dependency graph, build caching, affected builds, and scalable CI. The main challenge is maintaining clear package boundaries and ownership.
 
 ---
 
-# **6\. Design Systems**
+## 6. Design Systems
 
-## **Simple meaning**
+## Simple meaning
 
 A design system is a collection of reusable UI components, design tokens, guidelines, and patterns that keep product UI consistent.
 
-## **Design system includes**
+## Design system includes
 
 Design tokens  
 Reusable components  
@@ -399,7 +399,7 @@ Theming
 Testing  
 Versioning
 
-## **Design tokens**
+## Design tokens
 
 Design tokens are reusable design values.
 
@@ -415,7 +415,7 @@ Design tokens are reusable design values.
   \},  
 \};
 
-## **Component examples**
+## Component examples
 
 Button  
 Input  
@@ -429,7 +429,7 @@ Toast
 Drawer  
 Pagination
 
-## **Why design systems matter**
+## Why design systems matter
 
 * UI consistency.  
 * Faster development.  
@@ -439,7 +439,7 @@ Pagination
 * Shared language between design and engineering.  
 * Better quality through reusable tested components.
 
-## **Storybook**
+## Storybook
 
 Storybook is commonly used to document and test design-system components.
 
@@ -452,7 +452,7 @@ Good Storybook setup includes:
 * Visual regression testing.  
 * Usage guidelines.
 
-## **Common mistake**
+## Common mistake
 
 A design system should not become a dumping ground for feature-specific components.
 
@@ -473,15 +473,15 @@ features/
   campaigns/  
     CampaignApprovalTable.tsx
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A design system provides reusable components, design tokens, accessibility standards, and documentation to keep UI consistent across products. It improves development speed and quality, but it must stay generic. Feature-specific components should remain inside features, not inside the design system.
 
 ---
 
-# **7\. Shared Component Libraries**
+## 7. Shared Component Libraries
 
-## **Simple meaning**
+## Simple meaning
 
 A shared component library is a reusable package of components used across multiple apps or features.
 
@@ -491,7 +491,7 @@ Example:
 @company/design-tokens  
 @company/icons
 
-## **Good shared component design**
+## Good shared component design
 
 A shared component should be:
 
@@ -504,7 +504,7 @@ A shared component should be:
 * Not tightly coupled to one feature.  
 * Flexible enough without becoming too complex.
 
-## **Example**
+## Example
 
 type ButtonProps \= \{  
   variant?: "primary" | "secondary" | "danger";  
@@ -532,21 +532,21 @@ function Button(\{
   );  
 \}
 
-## **Versioning approaches**
+## Versioning approaches
 
-### **In monorepo**
+### In monorepo
 
 Shared packages can be consumed through workspace references.
 
 apps/admin imports packages/ui
 
-### **In separate package**
+### In separate package
 
 Publish to private npm registry.
 
 @company/ui@1.4.0
 
-## **Challenges**
+## Challenges
 
 * Breaking changes.  
 * Version mismatch.  
@@ -557,15 +557,15 @@ Publish to private npm registry.
 * Documentation maintenance.  
 * Backward compatibility.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A shared component library provides reusable UI components across apps or teams. A good shared component is generic, accessible, typed, documented, tested, and theme-aware. The main challenge is API stability and versioning because many apps may depend on the same component.
 
 ---
 
-# **8\. Micro Frontends**
+## 8. Micro Frontends
 
-## **Simple meaning**
+## Simple meaning
 
 Micro Frontends split a large frontend application into smaller independently owned and deployable frontend applications.
 
@@ -575,13 +575,13 @@ Shell App
   ├── Creative Review MFE  
   └── Admin MFE
 
-## **Key mental model**
+## Key mental model
 
 Micro Frontends are like microservices for frontend teams.
 
 Each team owns one vertical slice of the frontend.
 
-## **Common implementation approaches**
+## Common implementation approaches
 
 * Module Federation  
 * Single-SPA  
@@ -590,7 +590,7 @@ Each team owns one vertical slice of the frontend.
 * Build-time integration through packages  
 * Route-level app composition
 
-## **Shell and remote model**
+## Shell and remote model
 
 Shell / Container App  
   → handles routing, layout, auth, navigation
@@ -604,7 +604,7 @@ Example:
 /admin/reports   → Reports MFE  
 /admin/creatives → Creative Review MFE
 
-## **Why use Micro Frontends**
+## Why use Micro Frontends
 
 Use Micro Frontends when:
 
@@ -616,7 +616,7 @@ Use Micro Frontends when:
 * Large monolith UI slows development.  
 * Teams need strong domain boundaries.
 
-## **Benefits**
+## Benefits
 
 * Independent development.  
 * Independent deployment.  
@@ -626,7 +626,7 @@ Use Micro Frontends when:
 * Fault isolation at feature level.  
 * Teams can scale independently.
 
-## **Challenges**
+## Challenges
 
 * Shared dependency management.  
 * Bundle size duplication.  
@@ -640,7 +640,7 @@ Use Micro Frontends when:
 * Deployment orchestration.  
 * Performance monitoring.
 
-## **Cross-MFE communication**
+## Cross-MFE communication
 
 Prefer clear contracts.
 
@@ -656,14 +656,14 @@ Backend/API as source of truth
 
 Avoid random global variables and hidden coupling.
 
-## **Module Federation example mental model**
+## Module Federation example mental model
 
 Shell imports remote module at runtime
 
 campaignApp/CampaignRoutes  
 reportsApp/ReportsRoutes
 
-## **What should be shared?**
+## What should be shared?
 
 Usually share:
 
@@ -676,21 +676,21 @@ Usually share:
 
 Do not over-share feature logic across MFEs because it creates coupling.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Micro Frontends split a large frontend into independently owned and deployable applications. A shell app handles common layout, routing, auth, and integration, while remote apps own domain features. They are useful for large organizations and independent teams, but they add complexity around shared dependencies, routing, communication, performance, testing, and design consistency.
 
 ---
 
-# **9\. Scaling React Applications**
+## 9. Scaling React Applications
 
-## **Simple meaning**
+## Simple meaning
 
 Scaling a React app means keeping it maintainable and performant as features, codebase, teams, and users grow.
 
-## **Key areas to scale**
+## Key areas to scale
 
-### **1\. Code organization**
+### 1. Code organization
 
 Use feature/domain structure.
 
@@ -698,7 +698,7 @@ features/
 shared/  
 app/
 
-### **2\. State management**
+### 2. State management
 
 Choose state based on ownership.
 
@@ -706,7 +706,7 @@ Local state → useState/useReducer
 Shared app state → Context/Redux/Zustand  
 Server state → React Query/RTK Query/SWR/Apollo
 
-### **3\. API layer**
+### 3. API layer
 
 Do not scatter fetch calls everywhere.
 
@@ -715,7 +715,7 @@ Better:
 features/reports/api/reportApi.ts  
 shared/api/httpClient.ts
 
-### **4\. Component architecture**
+### 4. Component architecture
 
 Separate:
 
@@ -724,7 +724,7 @@ Feature components
 Shared UI components  
 Design-system components
 
-### **5\. Performance**
+### 5. Performance
 
 Use:
 
@@ -737,7 +737,7 @@ Use:
 * Avoid unnecessary re-renders.  
 * Proper server-state caching.
 
-### **6\. Testing**
+### 6. Testing
 
 Use test pyramid:
 
@@ -747,7 +747,7 @@ E2E tests
 Visual regression tests  
 Accessibility tests
 
-### **7\. Build and deployment**
+### 7. Build and deployment
 
 For large apps:
 
@@ -759,7 +759,7 @@ For large apps:
 * Versioned packages.  
 * Monitoring and rollback.
 
-### **8\. Team ownership**
+### 8. Team ownership
 
 Define boundaries:
 
@@ -768,15 +768,15 @@ Team B owns reports
 Team C owns design system  
 Team D owns platform shell
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 To scale a React app, I organize code by feature or domain, keep shared code generic, use a design system for consistency, separate client state from server state, define a clean API layer, lazy load large routes, optimize performance with measurement, and enforce testing and CI/CD. At team scale, clear ownership and boundaries are as important as technical choices.
 
 ---
 
-# **10\. Architecture Decision Guide**
+## 10. Architecture Decision Guide
 
-## **Simple decision table**
+## Simple decision table
 
 | Problem | Recommended approach |
 | ----- | ----- |
@@ -791,19 +791,19 @@ To scale a React app, I organize code by feature or domain, keep shared code gen
 | Performance issue | Measure first, then optimize |
 | Team ownership issue | Domain boundaries |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Architecture should match the problem size. I would not start with microfrontends for a small app. I would start with feature-based structure, add shared packages and a design system as reuse grows, use a monorepo when multiple apps share code, and consider microfrontends only when independent team ownership and deployment become important.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. How do you scale a React application?**
+## 1. How do you scale a React application?
 
-## **Answer**
+## Answer
 
 I scale React applications across code, state, performance, testing, and team ownership.
 
@@ -822,15 +822,15 @@ Key points:
 * Use CI/CD, linting, type checks, and bundle analysis.  
 * Define ownership boundaries for teams.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 To scale a React app, I start with feature-based architecture, clear state ownership, reusable shared components, and a clean API layer. As the app grows, I introduce a design system, monorepo packages, server-state caching, route-level code splitting, and strong testing/CI. For very large team-owned domains, I may consider microfrontends.
 
 ---
 
-# **2\. Feature-based vs technical folder structure**
+## 2. Feature-based vs technical folder structure
 
-## **Technical structure**
+## Technical structure
 
 components/  
 hooks/  
@@ -839,7 +839,7 @@ api/
 
 This is fine for small apps.
 
-## **Feature-based structure**
+## Feature-based structure
 
 features/  
   reports/  
@@ -850,15 +850,15 @@ features/
 
 Better for large apps.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Technical folders group files by file type, which works for small apps. Feature-based folders group files by business feature, which works better for large apps because related components, hooks, APIs, and types stay together. This improves ownership, maintainability, and feature deletion.
 
 ---
 
-# **3\. What should go into shared folder?**
+## 3. What should go into shared folder?
 
-## **Answer**
+## Answer
 
 Only generic reusable code should go into shared.
 
@@ -877,15 +877,15 @@ CampaignApprovalModal
 HotelSearchFilter  
 ReportSpecificTable
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Shared should contain stable reusable code used by multiple features. Feature-specific components should stay inside their feature. Moving code to shared too early creates coupling and makes the shared layer messy.
 
 ---
 
-# **4\. How do you design a component library?**
+## 4. How do you design a component library?
 
-## **Answer**
+## Answer
 
 A component library should include:
 
@@ -900,15 +900,15 @@ A component library should include:
 * Versioning and changelog.  
 * Clear contribution guidelines.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I design a component library as a product. Components should be accessible, typed, documented, theme-aware, tested, and stable. Storybook helps with documentation and review. Versioning and backward compatibility are important because many apps may consume the same components.
 
 ---
 
-# **5\. Design System vs Component Library**
+## 5. Design System vs Component Library
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Design System | Component Library |
 | ----- | ----- | ----- |
@@ -918,15 +918,15 @@ I design a component library as a product. Components should be accessible, type
 | Example | Color rules, spacing, UX patterns | Button, Modal, Input |
 | Goal | Consistency | Reuse |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A component library is the coded implementation of reusable components. A design system is broader: it includes design tokens, UX guidelines, accessibility standards, patterns, documentation, and components. The component library is one part of the design system.
 
 ---
 
-# **6\. Monorepo vs Polyrepo**
+## 6. Monorepo vs Polyrepo
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Monorepo | Polyrepo |
 | ----- | ----- | ----- |
@@ -937,15 +937,15 @@ A component library is the coded implementation of reusable components. A design
 | CI complexity | Needs affected builds/cache | Smaller isolated CI |
 | Ownership | Needs boundaries | Clear repo ownership |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A monorepo is useful when multiple apps share components, utilities, configs, and API clients. It improves consistency and cross-package refactoring. A polyrepo gives stronger isolation but makes sharing and coordinated changes harder. For large frontend platforms, monorepo works well if boundaries, ownership, and CI caching are properly handled.
 
 ---
 
-# **7\. When should you use Micro Frontends?**
+## 7. When should you use Micro Frontends?
 
-## **Answer**
+## Answer
 
 Use microfrontends when organizational scale needs it, not just because it sounds modern.
 
@@ -965,15 +965,15 @@ Avoid them when:
 * Shared state is tightly coupled.  
 * App complexity does not justify runtime integration cost.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I would use microfrontends when team independence, domain ownership, and independent deployments are more important than the added integration complexity. I would avoid them for small teams or apps where a modular monolith is enough.
 
 ---
 
-# **8\. Micro Frontends challenges**
+## 8. Micro Frontends challenges
 
-## **Answer**
+## Answer
 
 Main challenges:
 
@@ -988,15 +988,15 @@ Main challenges:
 * Deployment coordination.  
 * Monitoring and rollback.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Microfrontends solve team-scaling problems but add runtime integration complexity. The main challenges are shared dependency management, cross-MFE communication, routing, auth, design consistency, testing, bundle size, and deployment coordination. A strong shell architecture and clear contracts are essential.
 
 ---
 
-# **9\. How do you handle shared state in Micro Frontends?**
+## 9. How do you handle shared state in Micro Frontends?
 
-## **Answer**
+## Answer
 
 Avoid too much shared client state.
 
@@ -1009,15 +1009,15 @@ Prefer:
 * Shared store only for truly global state.  
 * Clear contracts between shell and remotes.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In microfrontends, I avoid a large shared global store because it couples teams. I prefer URL state, backend APIs, shell-provided auth/session, and event-based communication for cross-MFE events. If shared state is needed, it should be small, stable, and contract-driven.
 
 ---
 
-# **10\. How do you prevent architecture from becoming messy?**
+## 10. How do you prevent architecture from becoming messy?
 
-## **Answer**
+## Answer
 
 Use rules and boundaries:
 
@@ -1033,13 +1033,13 @@ Use rules and boundaries:
 * Bundle budgets.  
 * Regular cleanup.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Architecture stays clean when boundaries are enforced. I use feature/domain ownership, shared code guidelines, lint rules, code owners, TypeScript, testing standards, Storybook, bundle budgets, and architecture decision records. Without governance, even good architecture becomes messy over time.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -1058,6 +1058,6 @@ Architecture stays clean when boundaries are enforced. I use feature/domain owne
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 To scale React applications, I start with clear feature-based or domain-driven architecture. Feature-specific code stays inside its feature, while truly reusable components, hooks, utilities, and API clients go into shared packages. For UI consistency, I introduce a design system with tokens, reusable components, accessibility rules, and Storybook documentation. If multiple apps share code, a monorepo helps manage shared libraries, configs, and build caching. For very large organizations, microfrontends can provide independent team ownership and deployment, but they add complexity in routing, shared dependencies, communication, testing, and performance. A strong React architecture is not only about folders; it is about boundaries, ownership, state strategy, performance, testing, CI/CD, and long-term maintainability.

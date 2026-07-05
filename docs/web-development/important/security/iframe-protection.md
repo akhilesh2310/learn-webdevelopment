@@ -7,14 +7,14 @@ sidebar_position: 4
 
 Related canonical page: [Security Headers](security-headers.md).
 
-# **iFrame Protection**
+## iFrame Protection
 
-## **1\. What is iFrame Protection?**
+## 1. What is iFrame Protection?
 
 iFrame Protection refers to techniques and best practices used to **prevent a web page from being embedded inside an `<iframe>`** on another (potentially malicious) site, thus **protecting against attacks** like *clickjacking*, *phishing overlays*, or *data leakage*.  
  It also ensures **embedded content behaves safely** when using iframes intentionally.
 
-## **2\. When does it occur?**
+## 2. When does it occur?
 
 Vulnerabilities around iframe usage occur when:
 
@@ -24,7 +24,7 @@ Vulnerabilities around iframe usage occur when:
 
 * If **external content** is embedded into your site via iframes **without proper validation**.
 
-## **3\. How does it happen?**
+## 3. How does it happen?
 
 * Lack of HTTP security headers (like `X-Frame-Options` or `Content-Security-Policy: frame-ancestors`) allows **unrestricted iframe embedding**.
 
@@ -32,7 +32,7 @@ Vulnerabilities around iframe usage occur when:
 
 * Developers **embed external resources** via iframes without sandboxing or origin validation, introducing potential **third-party vulnerabilities**.
 
-## **4\. Why is it dangerous?**
+## 4. Why is it dangerous?
 
 * **Clickjacking**: Users are tricked into clicking hidden buttons (e.g., "transfer money", "share location", "like page").
 
@@ -44,9 +44,9 @@ Vulnerabilities around iframe usage occur when:
 
 * **Reputation Risk**: Exploits can degrade user trust and brand reputation.
 
-## **5\. Example**
+## 5. Example
 
-### **Generic Web Application**
+### Generic Web Application
 
 Imagine you have a banking web app `https://securebank.com`.  
  Without iframe protection:
@@ -59,7 +59,7 @@ CopyEdit
 
 * User thinks they're clicking a prize button but actually clicks inside your bank's iframe, unknowingly transferring money.
 
-### **ReactJS Application**
+### ReactJS Application
 
 React apps are still normal web apps under the hood. If a React app (`https://myreactapp.com`) doesn't set iframe protections:
 
@@ -71,9 +71,9 @@ CopyEdit
 
 ---
 
-## **6\. 🛡️ How to Prevent/Fix**
+## 6. 🛡️ How to Prevent/Fix
 
-### **6.1 In a Generic Web Application**
+### 6.1 In a Generic Web Application
 
 ✅ Set HTTP headers:
 
@@ -107,7 +107,7 @@ CopyEdit
 
 ---
 
-### **6.2 In ReactJS**
+### 6.2 In ReactJS
 
 ✅ Configure HTTP headers at server level:
 
@@ -153,7 +153,7 @@ CopyEdit
 
 ---
 
-## **7\. ✅ Summary**
+## 7. ✅ Summary
 
 | Aspect | Solution |
 | ----- | ----- |
@@ -164,7 +164,7 @@ CopyEdit
 | React client-side embed | `<iframe>` with `sandbox` |
 | Regular Monitoring | External iframe load check |
 
-# **📋 iFrame Protection Cheatsheet**
+## 📋 iFrame Protection Cheatsheet
 
 | Scenario | Security Header to Use | Example Configuration | Notes |
 | ----- | ----- | ----- | ----- |
@@ -177,9 +177,9 @@ CopyEdit
 
 ---
 
-# **⚡ Quick Code Snippets for Different Setups**
+## ⚡ Quick Code Snippets for Different Setups
 
-## **Node.js/Express Server Example**
+## Node.js/Express Server Example
 
 javascript  
 CopyEdit  
@@ -189,7 +189,7 @@ CopyEdit
   `next();`  
 `\});`
 
-## **Netlify / Vercel `_headers` File Example**
+## Netlify / Vercel `_headers` File Example
 
 bash  
 CopyEdit  
@@ -197,7 +197,7 @@ CopyEdit
   `X-Frame-Options: SAMEORIGIN`  
   `Content-Security-Policy: frame-ancestors 'self' https://partner.example.com;`
 
-## **React `<iframe>` Safe Embed Example**
+## React `<iframe>` Safe Embed Example
 
 jsx  
 CopyEdit  
@@ -209,7 +209,7 @@ CopyEdit
 
 ---
 
-# **🧠 Pro Tips**
+## 🧠 Pro Tips
 
 * **Prefer CSP (`frame-ancestors`)** over `X-Frame-Options` when possible — it’s newer and more flexible.
 

@@ -7,9 +7,9 @@ sidebar_position: 3
 
 ---
 
-## **🟦 TypeScript – Core Concepts for Interviews**
+## 🟦 TypeScript – Core Concepts for Interviews
 
-### **1\. Basic Types**
+### 1. Basic Types
 
 * `number`, `string`, `boolean`, `any`, `unknown`
 
@@ -17,13 +17,13 @@ sidebar_position: 3
 
 * `enum`, `tuple`
 
-### **2\. Type Inference & Annotations**
+### 2. Type Inference & Annotations
 
 * How TS infers types
 
 * When to use explicit annotations
 
-### **3\. Functions & Objects**
+### 3. Functions & Objects
 
 * Function type annotations
 
@@ -33,7 +33,7 @@ sidebar_position: 3
 
 * Readonly properties
 
-### **4\. Interfaces & Types**
+### 4. Interfaces & Types
 
 * `interface` vs `type`
 
@@ -45,7 +45,7 @@ sidebar_position: 3
 
 * Optional properties
 
-### **5\. Generics**
+### 5. Generics
 
 * Generic functions, interfaces, and classes
 
@@ -53,7 +53,7 @@ sidebar_position: 3
 
 * Default generic parameters
 
-### **6\. Advanced Types**
+### 6. Advanced Types
 
 * Conditional types (`T extends U ? X : Y`)
 
@@ -63,25 +63,25 @@ sidebar_position: 3
 
 * Type guards & user-defined guards
 
-### **7\. Type Narrowing**
+### 7. Type Narrowing
 
 * `typeof`, `instanceof`, `in`
 
 * Discriminated unions
 
-### **8\. Modules & Namespaces**
+### 8. Modules & Namespaces
 
 * Working with ES modules in TypeScript
 
 * Module resolution
 
-### **9\. Decorators (if applying for advanced roles or working with Angular)**
+### 9. Decorators (if applying for advanced roles or working with Angular)
 
 * Class, method, property, and parameter decorators
 
 * Metadata reflection
 
-### **10\. Tooling & Configuration**
+### 10. Tooling & Configuration
 
 * `tsconfig.json` options
 
@@ -108,9 +108,9 @@ TypeScript does not change JavaScript runtime behavior. It mainly improves devel
 
 ---
 
-## 1\. Basic Types
+## 1. Basic Types
 
-## **number, string, boolean**
+## number, string, boolean
 
 let age: number \= 32;  
 let name: string \= "Akhilesh";  
@@ -121,7 +121,7 @@ If we assign the wrong type:
 let age: number \= "32";  
 // Type 'string' is not assignable to type 'number'.
 
-## **any**
+## any
 
 `any` disables type checking.
 
@@ -134,7 +134,7 @@ value.toUpperCase(); // No TypeScript error, but can fail at runtime
 
 Use `any` only when absolutely necessary, because it removes TypeScript safety.
 
-## **unknown**
+## unknown
 
 `unknown` is safer than `any`.
 
@@ -149,7 +149,7 @@ if (typeof value \=== "string") \{
   console.log(value.toUpperCase());  
 \}
 
-## **any vs unknown**
+## any vs unknown
 
 | Point | any | unknown |
 | ----- | ----- | ----- |
@@ -158,7 +158,7 @@ if (typeof value \=== "string") \{
 | Runtime risk | High | Lower |
 | Best use | Avoid mostly | Safer alternative |
 
-## **void**
+## void
 
 `void` means a function does not return a meaningful value.
 
@@ -166,7 +166,7 @@ function logMessage(message: string): void \{
   console.log(message);  
 \}
 
-## **never**
+## never
 
 `never` means a value never exists because the function never completes normally.
 
@@ -180,7 +180,7 @@ function infiniteLoop(): never \{
   while (true) \{\}  
 \}
 
-## **null and undefined**
+## null and undefined
 
 let a: null \= null;  
 let b: undefined \= undefined;
@@ -194,7 +194,7 @@ Correct:
 
 let name: string | null \= null;
 
-## **Tuple**
+## Tuple
 
 A tuple is an array with fixed length and fixed types.
 
@@ -206,7 +206,7 @@ let user: \[number, string\] \= \["Akhilesh", 1\];
 // Type 'string' is not assignable to type 'number'.  
 // Type 'number' is not assignable to type 'string'.
 
-## **Enum**
+## Enum
 
 Enum gives names to constant values.
 
@@ -229,15 +229,15 @@ In modern TypeScript, union literals are often preferred for simple cases:
 
 type Role \= "admin" | "user" | "guest";
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 TypeScript provides basic types like `number`, `string`, `boolean`, `null`, `undefined`, `void`, `never`, tuples, and enums. `any` disables type safety, while `unknown` is safer because it forces type narrowing before usage. `never` represents values that never occur, usually for thrown errors, infinite loops, or exhaustive checks.
 
 ---
 
-## 2\. Type Inference & Annotations
+## 2. Type Inference & Annotations
 
-## **Type inference**
+## Type inference
 
 TypeScript can automatically infer types from assigned values.
 
@@ -247,7 +247,7 @@ name \= 123;
 
 TypeScript inferred `name` as `string`.
 
-## **Function return inference**
+## Function return inference
 
 function add(a: number, b: number) \{  
   return a \+ b;  
@@ -255,7 +255,7 @@ function add(a: number, b: number) \{
 
 TypeScript infers return type as `number`.
 
-## **Explicit annotations**
+## Explicit annotations
 
 We manually write the type.
 
@@ -265,7 +265,7 @@ function add(a: number, b: number): number \{
   return a \+ b;  
 \}
 
-## **When to use explicit annotations**
+## When to use explicit annotations
 
 Use explicit annotations for:
 
@@ -284,7 +284,7 @@ let userName: string;
 
 userName \= "Akhilesh";
 
-## **When inference is enough**
+## When inference is enough
 
 const count \= 10;  
 const isActive \= true;  
@@ -292,15 +292,15 @@ const title \= "Dashboard";
 
 No need to over-annotate obvious values.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 TypeScript infers types automatically from values, so we do not need annotations everywhere. I use explicit annotations for function parameters, public return types, API responses, complex objects, and shared contracts. Good TypeScript balances inference and explicitness.
 
 ---
 
-## 3\. Functions & Objects
+## 3. Functions & Objects
 
-## **Function type annotations**
+## Function type annotations
 
 function greet(name: string): string \{  
   return \`Hello $\{name\}\`;  
@@ -318,7 +318,7 @@ type Add \= (a: number, b: number) \=\> number;
 
 const add: Add \= (a, b) \=\> a \+ b;
 
-## **Optional parameters**
+## Optional parameters
 
 Optional parameters use `?`.
 
@@ -331,19 +331,19 @@ Optional parameters must usually come after required parameters.
 function greet(title?: string, name: string) \{\}  
 // A required parameter cannot follow an optional parameter.
 
-## **Default parameters**
+## Default parameters
 
 function greet(name: string \= "Guest"): string \{  
   return \`Hello $\{name\}\`;  
 \}
 
-## **Rest parameters**
+## Rest parameters
 
 function sum(...numbers: number\[\]): number \{  
   return numbers.reduce((total, num) \=\> total \+ num, 0);  
 \}
 
-## **Typed object structures**
+## Typed object structures
 
 type User \= \{  
   id: number;  
@@ -357,7 +357,7 @@ const user: User \= \{
   email: "akhilesh@example.com",  
 \};
 
-## **Optional properties**
+## Optional properties
 
 type User \= \{  
   id: number;  
@@ -365,7 +365,7 @@ type User \= \{
   phone?: string;  
 \};
 
-## **Readonly properties**
+## Readonly properties
 
 type User \= \{  
   readonly id: number;  
@@ -380,15 +380,15 @@ const user: User \= \{
 user.id \= 2;  
 // Cannot assign to 'id' because it is a read-only property.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 TypeScript allows us to type function parameters, return values, objects, optional fields, default parameters, rest parameters, and readonly properties. This makes function contracts and object shapes clear and catches incorrect usage during development.
 
 ---
 
-## 4\. Interfaces & Types
+## 4. Interfaces & Types
 
-## **interface**
+## interface
 
 `interface` is commonly used to define object shapes.
 
@@ -397,7 +397,7 @@ interface User \{
   name: string;  
 \}
 
-## **type**
+## type
 
 `type` can define object shapes, unions, intersections, function types, and more.
 
@@ -406,7 +406,7 @@ type User \= \{
   name: string;  
 \};
 
-## **interface vs type**
+## interface vs type
 
 | Point | interface | type |
 | ----- | ----- | ----- |
@@ -416,7 +416,7 @@ type User \= \{
 | Declaration merging | Yes | No |
 | Common use | Object contracts/classes | Flexible type composition |
 
-## **Extending interfaces**
+## Extending interfaces
 
 interface Person \{  
   name: string;  
@@ -426,7 +426,7 @@ interface Employee extends Person \{
   employeeId: number;  
 \}
 
-## **Type intersection**
+## Type intersection
 
 type Person \= \{  
   name: string;  
@@ -436,7 +436,7 @@ type Employee \= Person & \{
   employeeId: number;  
 \};
 
-## **Union type**
+## Union type
 
 Union means value can be one of multiple types.
 
@@ -444,7 +444,7 @@ type Status \= "loading" | "success" | "error";
 
 let status: Status \= "loading";
 
-## **Intersection type**
+## Intersection type
 
 Intersection combines multiple types.
 
@@ -459,7 +459,7 @@ type Admin \= \{
 
 type AdminUser \= User & Admin;
 
-## **Index signatures**
+## Index signatures
 
 Use index signatures when object keys are dynamic.
 
@@ -472,7 +472,7 @@ const scores: Scores \= \{
   english: 85,  
 \};
 
-## **Optional properties**
+## Optional properties
 
 interface User \{  
   id: number;  
@@ -480,19 +480,19 @@ interface User \{
   phone?: string;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `interface` and `type` can both define object shapes. I usually use `interface` for object contracts that may be extended or implemented by classes, and `type` for unions, intersections, utility types, and more flexible type composition. Union means either/or, while intersection means combining multiple types.
 
 ---
 
-## 5\. Generics
+## 5. Generics
 
-## **Simple meaning**
+## Simple meaning
 
 Generics allow us to write reusable code that works with different types while preserving type safety.
 
-## **Generic function**
+## Generic function
 
 function identity\<T\>(value: T): T \{  
   return value;  
@@ -506,7 +506,7 @@ TypeScript can also infer the generic type:
 const name \= identity("Akhilesh"); // string  
 const age \= identity(32); // number
 
-## **Why generics are useful**
+## Why generics are useful
 
 Without generics:
 
@@ -525,7 +525,7 @@ function getFirstItem\<T\>(items: T\[\]): T \{
 const first \= getFirstItem(\["React", "TypeScript"\]);  
 // first is string
 
-## **Generic interface**
+## Generic interface
 
 interface ApiResponse\<T\> \{  
   data: T;  
@@ -546,7 +546,7 @@ const response: ApiResponse\<User\> \= \{
   success: true,  
 \};
 
-## **Generic class**
+## Generic class
 
 class Store\<T\> \{  
   private value: T;
@@ -562,7 +562,7 @@ class Store\<T\> \{
 
 const stringStore \= new Store\<string\>("hello");
 
-## **Constraints with extends**
+## Constraints with extends
 
 Constraints limit what generic types are allowed.
 
@@ -575,7 +575,7 @@ getLength(\[1, 2, 3\]); // 3
 getLength(123);  
 // Argument of type 'number' is not assignable to parameter of type '\{ length: number; \}'.
 
-## **Default generic parameters**
+## Default generic parameters
 
 type ApiResponse\<T \= unknown\> \= \{  
   data: T;  
@@ -587,15 +587,15 @@ const response: ApiResponse \= \{
   success: true,  
 \};
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Generics let us create reusable type-safe functions, interfaces, and classes. Instead of using `any`, generics preserve the relationship between input and output types. Constraints with `extends` restrict allowed types, and default generic parameters provide fallback types.
 
 ---
 
-## 6\. Advanced Types
+## 6. Advanced Types
 
-## **Conditional types**
+## Conditional types
 
 Conditional types choose one type based on another type.
 
@@ -604,13 +604,13 @@ type IsString\<T\> \= T extends string ? true : false;
 type A \= IsString\<string\>; // true  
 type B \= IsString\<number\>; // false
 
-## **Practical conditional type**
+## Practical conditional type
 
 type ApiResult\<T\> \= T extends Error  
   ? \{ success: false; error: T \}  
   : \{ success: true; data: T \};
 
-## **keyof**
+## keyof
 
 `keyof` gives union of keys of a type.
 
@@ -622,7 +622,7 @@ type User \= \{
 type UserKeys \= keyof User;  
 // "id" | "name"
 
-## **Mapped types**
+## Mapped types
 
 Mapped types create new types by looping over keys.
 
@@ -635,9 +635,9 @@ type ReadonlyUser \= \{
   readonly \[K in keyof User\]: User\[K\];  
 \};
 
-## **Utility types**
+## Utility types
 
-### **Partial**
+### Partial
 
 Makes all properties optional.
 
@@ -648,7 +648,7 @@ type User \= \{
 
 type PartialUser \= Partial\<User\>;
 
-### **Required**
+### Required
 
 Makes all properties required.
 
@@ -659,19 +659,19 @@ type User \= \{
 
 type RequiredUser \= Required\<User\>;
 
-### **Pick**
+### Pick
 
 Selects specific properties.
 
 type UserPreview \= Pick\<User, "id" | "name"\>;
 
-### **Omit**
+### Omit
 
 Removes specific properties.
 
 type UserWithoutEmail \= Omit\<User, "email"\>;
 
-### **Record**
+### Record
 
 Creates object type with specific keys and value type.
 
@@ -683,7 +683,7 @@ const permissions: Record\<Role, string\[\]\> \= \{
   guest: \[\],  
 \};
 
-## **User-defined type guard**
+## User-defined type guard
 
 type User \= \{  
   id: number;  
@@ -705,19 +705,19 @@ function printUser(value: unknown) \{
   \}  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Advanced TypeScript types help transform and reason about types. Conditional types choose types based on conditions, mapped types transform object properties, `keyof` extracts keys, utility types like `Partial`, `Pick`, `Omit`, `Record`, and `Required` simplify common transformations, and type guards help narrow unknown values safely.
 
 ---
 
-## 7\. Type Narrowing
+## 7. Type Narrowing
 
-## **Simple meaning**
+## Simple meaning
 
 Type narrowing means reducing a broad type into a more specific type using checks.
 
-## **typeof**
+## typeof
 
 function print(value: string | number) \{  
   if (typeof value \=== "string") \{  
@@ -727,7 +727,7 @@ function print(value: string | number) \{
   \}  
 \}
 
-## **instanceof**
+## instanceof
 
 function handleDate(value: Date | string) \{  
   if (value instanceof Date) \{  
@@ -737,7 +737,7 @@ function handleDate(value: Date | string) \{
   \}  
 \}
 
-## **in operator**
+## in operator
 
 type Admin \= \{  
   role: "admin";  
@@ -757,7 +757,7 @@ function printAccount(account: Admin | User) \{
   \}  
 \}
 
-## **Discriminated unions**
+## Discriminated unions
 
 A discriminated union uses a common property to narrow types.
 
@@ -792,7 +792,7 @@ function renderState(state: State) \{
   \}  
 \}
 
-## **Exhaustive checking with never**
+## Exhaustive checking with never
 
 function renderState(state: State) \{  
   switch (state.status) \{  
@@ -813,15 +813,15 @@ function renderState(state: State) \{
 
 If a new status is added and not handled, TypeScript catches it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Type narrowing helps TypeScript understand the exact type inside a code block. Common narrowing techniques include `typeof`, `instanceof`, `in`, equality checks, user-defined type guards, and discriminated unions. Discriminated unions are especially useful for API state, reducers, and complex UI states.
 
 ---
 
-## 8\. Modules & Namespaces
+## 8. Modules & Namespaces
 
-## **ES modules in TypeScript**
+## ES modules in TypeScript
 
 TypeScript supports standard ES modules using `import` and `export`.
 
@@ -842,7 +842,7 @@ Better for type-only import:
 
 \import type \{ User \} from "./user";
 
-## **Default export**
+## Default export
 
 \export default function Button() \{  
   return "Button";  
@@ -850,14 +850,14 @@ Better for type-only import:
 
 \import Button from "./Button";
 
-## **Named export**
+## Named export
 
 \export function formatDate() \{\}  
 \export function formatCurrency() \{\}
 
 \import \{ formatDate, formatCurrency \} from "./formatters";
 
-## **Module resolution**
+## Module resolution
 
 Module resolution is how TypeScript finds imported files and types.
 
@@ -873,7 +873,7 @@ package.json types field
 index.d.ts  
 local files
 
-## **Path aliases**
+## Path aliases
 
 \{  
   "compilerOptions": \{  
@@ -889,7 +889,7 @@ Usage:
 
 \import \{ Button \} from "@shared/components/Button";
 
-## **Namespaces**
+## Namespaces
 
 Namespaces are older TypeScript syntax for grouping code.
 
@@ -903,21 +903,21 @@ Utils.formatDate(new Date());
 
 Modern TypeScript mostly prefers ES modules over namespaces.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 TypeScript works well with ES modules using `import` and `export`. Module resolution decides how TypeScript finds files and type declarations. For modern frontend apps, ES modules are preferred over namespaces. Namespaces are mostly seen in older TypeScript codebases or declaration files.
 
 ---
 
-## 9\. Decorators
+## 9. Decorators
 
-## **Simple meaning**
+## Simple meaning
 
 Decorators are special functions that can attach behavior or metadata to classes, methods, properties, or parameters.
 
 They are commonly used in Angular and some backend frameworks.
 
-## **Class decorator**
+## Class decorator
 
 function Controller(path: string) \{  
   return function (target: Function) \{  
@@ -928,7 +928,7 @@ function Controller(path: string) \{
 @Controller("/users")  
 class UserController \{\}
 
-## **Method decorator**
+## Method decorator
 
 function Log(  
   target: unknown,  
@@ -943,7 +943,7 @@ function Log(
   \};  
 \}
 
-## **Angular example**
+## Angular example
 
 @Component(\{  
   selector: "app-user",  
@@ -951,7 +951,7 @@ function Log(
 \})  
 \export class UserComponent \{\}
 
-## **Metadata reflection**
+## Metadata reflection
 
 Metadata reflection means storing and reading metadata about classes or members.
 
@@ -963,19 +963,19 @@ Frameworks can use metadata for:
 * Serialization  
 * Component configuration
 
-## **Important note**
+## Important note
 
 Decorator behavior depends on TypeScript version, configuration, and framework usage. For Angular interviews, decorators are very important. For React interviews, they are usually less important.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Decorators are functions used to add metadata or behavior to classes, methods, properties, or parameters. They are heavily used in Angular for components, services, dependency injection, and routing metadata. In React roles, decorators are usually less important unless the project uses Angular, NestJS, or decorator-based frameworks.
 
 ---
 
-## 10\. Tooling & Configuration
+## 10. Tooling & Configuration
 
-## **tsconfig.json**
+## tsconfig.json
 
 `tsconfig.json` controls how TypeScript checks and compiles the project.
 
@@ -996,7 +996,7 @@ Common options:
   \}  
 \}
 
-## **Important tsconfig options**
+## Important tsconfig options
 
 | Option | Meaning |
 | ----- | ----- |
@@ -1011,9 +1011,9 @@ Common options:
 | `outDir` | Output directory |
 | `declaration` | Generate `.d.ts` files |
 
-## **Compilation vs Transpilation**
+## Compilation vs Transpilation
 
-## **Transpilation**
+## Transpilation
 
 Transpilation means converting code syntax from one version/language to another.
 
@@ -1024,7 +1024,7 @@ Modern JavaScript → older JavaScript
 
 Tools like Babel, SWC, and esbuild often transpile very fast.
 
-## **Compilation**
+## Compilation
 
 Compilation in TypeScript usually includes type checking plus output generation.
 
@@ -1040,7 +1040,7 @@ tsc \--noEmit
 Vite/Webpack/SWC/Babel  
 → transpilation/bundling
 
-## **Type declaration files**
+## Type declaration files
 
 `.d.ts` files describe types for JavaScript code or libraries.
 
@@ -1062,7 +1062,7 @@ declare global \{
   \}  
 \}
 
-## **DefinitelyTyped and @types**
+## DefinitelyTyped and @types
 
 Some JavaScript libraries do not include their own TypeScript types.
 
@@ -1072,7 +1072,7 @@ npm install \--save-dev @types/lodash
 
 These types usually come from DefinitelyTyped.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `tsconfig.json` controls TypeScript behavior, including strictness, module resolution, JSX mode, path aliases, and output settings. TypeScript compilation can include type checking and JavaScript generation, while transpilation mainly converts syntax. `.d.ts` files provide type information for JavaScript code, globals, assets, or libraries, and `@types` packages provide community-maintained types for libraries.
 
@@ -1082,24 +1082,24 @@ These types usually come from DefinitelyTyped.
 
 ---
 
-## 1\. any vs unknown vs never
+## 1. any vs unknown vs never
 
-## **Answer**
+## Answer
 
 let a: any;  
 let b: unknown;
 
 `any` allows anything and disables type checking. `unknown` allows assignment but requires narrowing before use. `never` represents impossible values or functions that never return.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `any` removes type safety, `unknown` is a safer alternative that forces type checks before usage, and `never` represents code paths or values that should never happen. In production TypeScript, I prefer `unknown` over `any` when the type is not known.
 
 ---
 
-## 2\. interface vs type
+## 2. interface vs type
 
-## **Answer**
+## Answer
 
 Both can define object shapes.
 
@@ -1111,35 +1111,35 @@ type UserType \= \{
   id: number;  
 \};
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I use `interface` for extendable object contracts and class implementation. I use `type` for unions, intersections, utility types, and advanced type composition. Both are valid for object shapes, but `type` is more flexible and `interface` supports declaration merging.
 
 ---
 
-## 3\. Union vs Intersection
+## 3. Union vs Intersection
 
-## **Union**
+## Union
 
 Either this or that.
 
 type Status \= "loading" | "success" | "error";
 
-## **Intersection**
+## Intersection
 
 Combination of multiple types.
 
 type AdminUser \= User & Admin;
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Union means a value can be one of several types. Intersection means a value must satisfy multiple types at the same time. Unions are useful for states and variants, while intersections are useful for combining object capabilities.
 
 ---
 
-## 4\. What are generics?
+## 4. What are generics?
 
-## **Answer**
+## Answer
 
 Generics allow reusable type-safe code.
 
@@ -1147,15 +1147,15 @@ function wrap\<T\>(value: T): \{ value: T \} \{
   return \{ value \};  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Generics let functions, interfaces, and classes work with different types while preserving type information. They are better than `any` because they maintain the relationship between input and output types.
 
 ---
 
-## 5\. What are utility types?
+## 5. What are utility types?
 
-## **Answer**
+## Answer
 
 Utility types transform existing types.
 
@@ -1168,15 +1168,15 @@ Record\<Role, Permission\[\]\>
 Required\<User\>  
 Readonly\<User\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Utility types are built-in TypeScript helpers that transform types. They reduce duplication and make type definitions easier to maintain. Common examples are `Partial`, `Pick`, `Omit`, `Record`, `Required`, and `Readonly`.
 
 ---
 
-## 6\. What is type narrowing?
+## 6. What is type narrowing?
 
-## **Answer**
+## Answer
 
 Type narrowing means refining a broad type into a specific type.
 
@@ -1186,15 +1186,15 @@ function print(value: string | number) \{
   \}  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Type narrowing helps TypeScript understand the exact type inside a condition. It can be done using `typeof`, `instanceof`, `in`, equality checks, user-defined type guards, and discriminated unions.
 
 ---
 
-## 7\. What is a discriminated union?
+## 7. What is a discriminated union?
 
-## **Answer**
+## Answer
 
 A discriminated union uses a common property to identify each variant.
 
@@ -1203,15 +1203,15 @@ type State \=
   | \{ status: "success"; data: string\[\] \}  
   | \{ status: "error"; error: string \};
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A discriminated union is a union where each type has a common literal field, like `status` or `type`. It is very useful for API states, reducers, and UI state machines because TypeScript can safely narrow each case.
 
 ---
 
-## 8\. What is keyof?
+## 8. What is keyof?
 
-## **Answer**
+## Answer
 
 `keyof` creates a union of keys from a type.
 
@@ -1223,15 +1223,15 @@ type User \= \{
 type UserKey \= keyof User;  
 // "id" | "name"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `keyof` extracts the keys of a type as a union. It is commonly used with generics, mapped types, and safe object property access.
 
 ---
 
-## 9\. What are mapped types?
+## 9. What are mapped types?
 
-## **Answer**
+## Answer
 
 Mapped types create new types by iterating over keys.
 
@@ -1239,19 +1239,19 @@ type MyPartial\<T\> \= \{
   \[K in keyof T\]?: T\[K\];  
 \};
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Mapped types allow us to transform object types by looping over their keys. Utility types like `Partial`, `Readonly`, and `Required` are built using mapped types.
 
 ---
 
-## 10\. What is a .d.ts file?
+## 10. What is a .d.ts file?
 
-## **Answer**
+## Answer
 
 A `.d.ts` file contains type declarations without implementation.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `.d.ts` files provide type information for JavaScript libraries, global variables, modules, assets, or generated APIs. They help TypeScript understand code that does not directly contain TypeScript types.
 

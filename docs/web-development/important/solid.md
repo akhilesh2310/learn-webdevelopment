@@ -11,7 +11,7 @@ Here's a breakdown:
 
 ---
 
-### **S — Single Responsibility Principle (SRP)**
+### S — Single Responsibility Principle (SRP)
 
 **"A class/module/component should have only one reason to change."**
 
@@ -27,7 +27,7 @@ Here's a breakdown:
 
 ---
 
-### **O — Open/Closed Principle (OCP)**
+### O — Open/Closed Principle (OCP)
 
 **"Software entities should be open for extension, but closed for modification."**
 
@@ -39,7 +39,7 @@ Here's a breakdown:
 
 ---
 
-### **L — Liskov Substitution Principle (LSP)**
+### L — Liskov Substitution Principle (LSP)
 
 **"Subtypes must be substitutable for their base types."**
 
@@ -51,7 +51,7 @@ Here's a breakdown:
 
 ---
 
-### **I — Interface Segregation Principle (ISP)**
+### I — Interface Segregation Principle (ISP)
 
 **"Clients should not be forced to depend on interfaces they do not use."**
 
@@ -61,7 +61,7 @@ Here's a breakdown:
 
 ---
 
-### **D — Dependency Inversion Principle (DIP)**
+### D — Dependency Inversion Principle (DIP)
 
 **"High-level modules should not depend on low-level modules; both should depend on abstractions."**
 
@@ -73,7 +73,7 @@ Here's a breakdown:
 
 ---
 
-### **🔁 Real-world UI Use Case**
+### 🔁 Real-world UI Use Case
 
 In a React app:
 

@@ -9,7 +9,7 @@ sidebar_position: 9
 [https://www.w3schools.com/html/default.asp](https://www.w3schools.com/html/default.asp)  
 [https://www.w3schools.com/css/default.asp](https://www.w3schools.com/css/default.asp)
 
-## What is HTML ? 
+## What is HTML ?
 
 HTML stands for HyperText Markup language. We use HTML to develop html web pages.
 
@@ -92,8 +92,6 @@ Semantic HTML means using correct HTML elements for their correct purpose as muc
 Examples of **non-semantic** elements: \<div\> and \<span\> \- Tells nothing about its content.  
 Examples of **semantic** elements: \<header\>, \<footer\>, \<section\>, \<nav\>, \<form\>, \<table\>, and \<article\> \- Clearly defines its content.  
 Learn More: ​​[https://www.w3schools.com/html/html5\_semantic\_elements.asp](https://www.w3schools.com/html/html5_semantic_elements.asp)
-
-## 
 
 ## What is Accessibility?
 
@@ -218,7 +216,7 @@ Example:
 
 [https://www.w3schools.com/css/css\_combinators.asp](https://www.w3schools.com/css/css_combinators.asp)
 
-## What is CSS classes? 
+## What is CSS classes?
 
 ## What is pseudo classes?
 

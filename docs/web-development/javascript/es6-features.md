@@ -5,40 +5,40 @@ sidebar_position: 20
 
 # ES6+ Features
 
-## **Destructuring**
+## Destructuring
 
-## **Spread Operator**
+## Spread Operator
 
-## **Rest Operator**
+## Rest Operator
 
-## **Template Literals**
+## Template Literals
 
-## **Default Parameters**
+## Default Parameters
 
-## **Optional Chaining**
+## Optional Chaining
 
-## **Nullish Coalescing**
+## Nullish Coalescing
 
-## **Symbols**
+## Symbols
 
-## **BigInt**
+## BigInt
 
-## **Common Interview Topics/Questions** 
+## Common Interview Topics/Questions
 
 * Rest vs Spread  
 * Optional chaining behavior
 
-# **Modern JavaScript Features**
+## Modern JavaScript Features
 
 Modern JavaScript features like destructuring, spread/rest, template literals, default parameters, optional chaining, nullish coalescing, Symbols, and BigInt help write cleaner, safer, and more expressive code. These are commonly asked in frontend interviews because they appear frequently in React, API handling, object updates, and utility functions.
 
 ---
 
-# **1\. Destructuring**
+## 1. Destructuring
 
 Destructuring allows us to extract values from arrays or objects into variables in a shorter way.
 
-## **Simple meaning**
+## Simple meaning
 
 Instead of manually accessing properties or indexes, we unpack them directly.
 
@@ -52,7 +52,7 @@ const \{ name, role \} \= user;
 console.log(name); // "Akhilesh"  
 console.log(role); // "Frontend Engineer"
 
-## **Array destructuring**
+## Array destructuring
 
 const colors \= \["red", "green", "blue"\];
 
@@ -61,7 +61,7 @@ const \[first, second\] \= colors;
 console.log(first); // "red"  
 console.log(second); // "green"
 
-## **Object destructuring with rename**
+## Object destructuring with rename
 
 const user \= \{  
   id: 1,  
@@ -72,7 +72,7 @@ const \{ name: userName \} \= user;
 
 console.log(userName); // "Akhilesh"
 
-## **Default values**
+## Default values
 
 const user \= \{  
   name: "Akhilesh",  
@@ -83,7 +83,7 @@ const \{ name, role \= "Guest" \} \= user;
 console.log(name); // "Akhilesh"  
 console.log(role); // "Guest"
 
-## **Nested destructuring**
+## Nested destructuring
 
 const response \= \{  
   data: \{  
@@ -101,7 +101,7 @@ const \{
 
 console.log(name); // "Akhilesh"
 
-## **Practical React example**
+## Practical React example
 
 function UserCard(\{ user \}) \{  
   const \{ name, role \} \= user;
@@ -109,7 +109,7 @@ function UserCard(\{ user \}) \{
   return \`$\{name\} \- $\{role\}\`;  
 \}
 
-## **Important traps**
+## Important traps
 
 Destructuring from `undefined` or `null` throws.
 
@@ -136,17 +136,17 @@ const \{ name \= "Guest" \} \= user;
 
 console.log(name); // null
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Destructuring is a concise way to extract values from arrays or objects into variables. It is commonly used with API responses, React props, hooks, and function parameters. A key trap is that destructuring from `null` or `undefined` throws, so we often use defaults or optional chaining for safety.
 
 ---
 
-# **2\. Spread Operator**
+## 2. Spread Operator
 
 The spread operator `...` expands an array or object into individual elements or properties.
 
-## **Simple meaning**
+## Simple meaning
 
 Spread means “open this collection here.”
 
@@ -154,7 +154,7 @@ const nums \= \[1, 2, 3\];
 
 console.log(...nums); // 1 2 3
 
-## **Spread with arrays**
+## Spread with arrays
 
 const arr1 \= \[1, 2\];  
 const arr2 \= \[3, 4\];
@@ -163,7 +163,7 @@ const combined \= \[...arr1, ...arr2\];
 
 console.log(combined); // \[1, 2, 3, 4\]
 
-## **Spread with objects**
+## Spread with objects
 
 const user \= \{  
   name: "Akhilesh",  
@@ -178,7 +178,7 @@ const updatedUser \= \{
 console.log(updatedUser);  
 // \{ name: "Akhilesh", role: "UI Architect" \}
 
-## **Practical React example**
+## Practical React example
 
 setUser((prevUser) \=\> (\{  
   ...prevUser,  
@@ -187,7 +187,7 @@ setUser((prevUser) \=\> (\{
 
 This creates a new object instead of mutating previous state.
 
-## **Important traps**
+## Important traps
 
 Spread performs a shallow copy.
 
@@ -220,17 +220,17 @@ const updated \= \{
 
 console.log(updated.role); // "Architect"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The spread operator expands arrays or objects. It is commonly used for copying arrays, merging arrays, merging objects, and updating immutable state in React. The main trap is that spread creates only a shallow copy, so nested objects still share references.
 
 ---
 
-# **3\. Rest Operator**
+## 3. Rest Operator
 
 The rest operator also uses `...`, but it collects remaining values into an array or object.
 
-## **Simple meaning**
+## Simple meaning
 
 Rest means “collect the remaining values.”
 
@@ -240,7 +240,7 @@ function sum(...numbers) \{
 
 console.log(sum(1, 2, 3)); // 6
 
-## **Rest in array destructuring**
+## Rest in array destructuring
 
 const numbers \= \[1, 2, 3, 4\];
 
@@ -250,7 +250,7 @@ console.log(first); // 1
 console.log(second); // 2  
 console.log(rest); // \[3, 4\]
 
-## **Rest in object destructuring**
+## Rest in object destructuring
 
 const user \= \{  
   id: 1,  
@@ -263,7 +263,7 @@ const \{ id, ...profile \} \= user;
 console.log(id); // 1  
 console.log(profile); // \{ name: "Akhilesh", role: "Engineer" \}
 
-## **Practical React example**
+## Practical React example
 
 function Button(\{ label, ...buttonProps \}) \{  
   return \`\<button\>$\{label\}\</button\>\`;  
@@ -277,7 +277,7 @@ function Button(\{ label, ...buttonProps \}) \{
 
 Here rest collects remaining props, and spread passes them to the button.
 
-## **Important traps**
+## Important traps
 
 Rest parameter must be the last parameter.
 
@@ -286,17 +286,17 @@ function test(...args, last) \{\}
 
 Rest collects values. Spread expands values. Same syntax, opposite behavior depending on location.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The rest operator collects remaining values into an array or object. It is used in function parameters, array destructuring, and object destructuring. The important point is that rest collects values, while spread expands them.
 
 ---
 
-# **4\. Template Literals**
+## 4. Template Literals
 
 Template literals allow cleaner string creation using backticks.
 
-## **Simple meaning**
+## Simple meaning
 
 They support variable interpolation and multi-line strings.
 
@@ -304,7 +304,7 @@ const name \= "Akhilesh";
 
 console.log(\`Hello, $\{name\}\`); // "Hello, Akhilesh"
 
-## **Multi-line string**
+## Multi-line string
 
 const message \= \`Hello Akhilesh,  
 Welcome to the dashboard.\`;
@@ -313,18 +313,18 @@ console.log(message);
 // Hello Akhilesh,  
 // Welcome to the dashboard.
 
-## **Expression inside template literal**
+## Expression inside template literal
 
 const price \= 100;  
 const tax \= 18;
 
 console.log(\`Total price is $\{price \+ tax\}\`); // "Total price is 118"
 
-## **Practical frontend example**
+## Practical frontend example
 
 const endpoint \= \`/api/users/$\{userId\}/orders?page=$\{page\}\`;
 
-## **Tagged template literal**
+## Tagged template literal
 
 A tagged template lets a function process template literal parts.
 
@@ -337,17 +337,17 @@ const name \= "Akhilesh";
 
 tag\`Hello $\{name\}\`;
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Template literals use backticks and allow string interpolation, multi-line strings, and expressions inside `$\{\}`. They are useful for dynamic messages, URLs, class names, and readable string formatting.
 
 ---
 
-# **5\. Default Parameters**
+## 5. Default Parameters
 
 Default parameters allow function parameters to have default values when arguments are missing or `undefined`.
 
-## **Simple meaning**
+## Simple meaning
 
 If no value is passed, use a fallback value.
 
@@ -358,7 +358,7 @@ function greet(name \= "Guest") \{
 greet("Akhilesh"); // "Hello, Akhilesh"  
 greet(); // "Hello, Guest"
 
-## **Important behavior**
+## Important behavior
 
 Default value is used only for `undefined`, not for `null`.
 
@@ -369,7 +369,7 @@ function greet(name \= "Guest") \{
 greet(undefined); // "Guest"  
 greet(null); // null
 
-## **Default parameter can use previous parameter**
+## Default parameter can use previous parameter
 
 function createUser(name, role \= \`$\{name\}-user\`) \{  
   return \{ name, role \};  
@@ -378,7 +378,7 @@ function createUser(name, role \= \`$\{name\}-user\`) \{
 console.log(createUser("Akhilesh"));  
 // \{ name: "Akhilesh", role: "Akhilesh-user" \}
 
-## **Important trap: Parameter Scope**
+## Important trap: Parameter Scope
 
 Default parameters can create a separate Parameter Scope.
 
@@ -393,17 +393,17 @@ test(); // 1
 
 Why? `a = x` is evaluated in Parameter Scope before the Function Body Scope `var x = 2` is created.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Default parameters provide fallback values when arguments are missing or `undefined`. They do not apply to `null`. A deeper point is that default parameters are evaluated in the parameter scope before the function body runs.
 
 ---
 
-# **6\. Optional Chaining**
+## 6. Optional Chaining
 
 Optional chaining `?.` safely accesses nested properties without throwing when something is `null` or `undefined`.
 
-## **Simple meaning**
+## Simple meaning
 
 Use optional chaining when a value may not exist.
 
@@ -418,7 +418,7 @@ const user \= \{\};
 console.log(user.profile.email);  
 // TypeError: Cannot read properties of undefined (reading 'email')
 
-## **Optional chaining with objects**
+## Optional chaining with objects
 
 const response \= \{  
   data: \{  
@@ -431,7 +431,7 @@ const response \= \{
 console.log(response.data?.user?.name); // "Akhilesh"  
 console.log(response.error?.message); // undefined
 
-## **Optional chaining with functions**
+## Optional chaining with functions
 
 const logger \= \{  
   log: undefined,  
@@ -441,13 +441,13 @@ logger.log?.("Clicked");
 
 // No error
 
-## **Optional chaining with arrays**
+## Optional chaining with arrays
 
 const users \= \[\];
 
 console.log(users?.\[0\]?.name); // undefined
 
-## **Important behavior**
+## Important behavior
 
 Optional chaining only stops on `null` or `undefined`.
 
@@ -459,7 +459,7 @@ console.log(value.count?.toString()); // "0"
 
 Answer: It works because `0` is not `null` or `undefined`.
 
-## **Common mistake**
+## Common mistake
 
 Optional chaining does not protect the root variable if it is not declared.
 
@@ -468,17 +468,17 @@ console.log(user?.name);
 
 Why? `user` itself is not declared in scope.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Optional chaining safely accesses nested properties, function calls, or array indexes when a value may be `null` or `undefined`. It returns `undefined` instead of throwing. It does not stop for other falsy values like `0`, `false`, or `""`.
 
 ---
 
-# **7\. Nullish Coalescing**
+## 7. Nullish Coalescing
 
 Nullish coalescing `??` provides a fallback only when the left side is `null` or `undefined`.
 
-## **Simple meaning**
+## Simple meaning
 
 Use `??` when only missing values should use fallback.
 
@@ -486,7 +486,7 @@ const name \= null;
 
 console.log(name ?? "Guest"); // "Guest"
 
-## **Difference from `||`**
+## Difference from `||`
 
 `||` checks falsy values. `??` checks only `null` and `undefined`.
 
@@ -499,13 +499,13 @@ console.log("" ?? "default"); // ""
 console.log(false || true); // true  
 console.log(false ?? true); // false
 
-## **Practical frontend example**
+## Practical frontend example
 
 const pageSize \= userSettings.pageSize ?? 20;
 
 If `pageSize` is `0`, `??` preserves it. `||` would wrongly replace it.
 
-## **Common trap**
+## Common trap
 
 You cannot mix `??` with `||` or `&&` without parentheses.
 
@@ -518,17 +518,17 @@ const value \= (null || undefined) ?? "fallback";
 
 console.log(value); // "fallback"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Nullish coalescing provides a fallback only for `null` or `undefined`. It is safer than `||` when valid values like `0`, `false`, or empty string should not be replaced.
 
 ---
 
-# **8\. Symbols**
+## 8. Symbols
 
 A `Symbol` is a primitive value that creates a unique identifier.
 
-## **Simple meaning**
+## Simple meaning
 
 Every symbol is unique, even if the description is the same.
 
@@ -537,7 +537,7 @@ const id2 \= Symbol("id");
 
 console.log(id1 \=== id2); // false
 
-## **Key mental model**
+## Key mental model
 
 Use Symbol when you need a unique property key that avoids name collision.
 
@@ -550,7 +550,7 @@ const user \= \{
 
 console.log(user\[id\]); // 123
 
-## **Symbols are not included in normal object iteration**
+## Symbols are not included in normal object iteration
 
 const id \= Symbol("id");
 
@@ -562,14 +562,14 @@ const user \= \{
 console.log(Object.keys(user)); // \["name"\]  
 console.log(Object.getOwnPropertySymbols(user)); // \[Symbol(id)\]
 
-## **Global Symbol registry**
+## Global Symbol registry
 
 const s1 \= Symbol.for("app.id");  
 const s2 \= Symbol.for("app.id");
 
 console.log(s1 \=== s2); // true
 
-## **Practical use cases**
+## Practical use cases
 
 * Avoid property name collisions.  
 * Define internal metadata keys.  
@@ -598,17 +598,17 @@ const range \= \{
 
 console.log(\[...range\]); // \[1, 2, 3\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A Symbol is a primitive unique value often used as an object key to avoid property name collisions. Symbols are not included in normal `Object.keys()` iteration, and built-in symbols like `Symbol.iterator` allow objects to customize JavaScript behavior.
 
 ---
 
-# **9\. BigInt**
+## 9. BigInt
 
 `BigInt` is used to represent integers larger than JavaScript’s safe number limit.
 
-## **Simple meaning**
+## Simple meaning
 
 Use BigInt when normal `Number` cannot safely represent very large integers.
 
@@ -616,7 +616,7 @@ const big \= 9007199254740993n;
 
 console.log(big); // 9007199254740993n
 
-## **Why BigInt exists**
+## Why BigInt exists
 
 JavaScript numbers are floating-point values and can safely represent integers only up to `Number.MAX_SAFE_INTEGER`.
 
@@ -627,7 +627,7 @@ console.log(9007199254740991 \+ 2); // 9007199254740992
 
 Answer: Precision is lost after the safe integer limit.
 
-## **BigInt operations**
+## BigInt operations
 
 const a \= 10n;  
 const b \= 3n;
@@ -638,7 +638,7 @@ console.log(a / b); // 3n
 
 Answer: BigInt division removes the decimal part because BigInt represents integers only.
 
-## **Important trap**
+## Important trap
 
 You cannot mix BigInt and Number directly.
 
@@ -650,7 +650,7 @@ Correct:
 console.log(10n \+ BigInt(5)); // 15n  
 console.log(Number(10n) \+ 5); // 15
 
-## **Practical use cases**
+## Practical use cases
 
 * Very large IDs.  
 * Financial systems requiring precise integer representation.  
@@ -659,29 +659,29 @@ console.log(Number(10n) \+ 5); // 15
 
 In frontend apps, large IDs are often kept as strings to avoid precision issues.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 BigInt is a primitive type for representing integers larger than `Number.MAX_SAFE_INTEGER`. It is created using `n` or `BigInt()`. BigInt cannot be directly mixed with Number, and for frontend API IDs, large values are often handled as strings to avoid precision loss.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Rest vs Spread**
+## 1. Rest vs Spread
 
-## **Simple answer**
+## Simple answer
 
 Rest collects values. Spread expands values. Both use `...`, but their meaning depends on where they are used.
 
-## **Spread example**
+## Spread example
 
 const nums \= \[1, 2, 3\];
 
 console.log(...nums); // 1 2 3
 
-## **Rest example**
+## Rest example
 
 function sum(...nums) \{  
   return nums.reduce((total, num) \=\> total \+ num, 0);  
@@ -689,7 +689,7 @@ function sum(...nums) \{
 
 console.log(sum(1, 2, 3)); // 6
 
-## **In React props**
+## In React props
 
 function Button(\{ label, ...props \}) \{  
   return \<button \{...props\}\>\{label\}\</button\>;  
@@ -700,15 +700,15 @@ Here:
 * `...props` in parameter destructuring is rest, because it collects remaining props.  
 * `...props` inside JSX is spread, because it expands props onto the button.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Rest and spread use the same `...` syntax but do opposite things. Rest collects remaining values into an array or object, usually in function parameters or destructuring. Spread expands arrays or objects into individual values or properties, usually for copying, merging, or passing props.
 
 ---
 
-# **2\. Optional Chaining Behavior**
+## 2. Optional Chaining Behavior
 
-## **Simple answer**
+## Simple answer
 
 Optional chaining returns `undefined` instead of throwing when the value before `?.` is `null` or `undefined`.
 
@@ -723,7 +723,7 @@ const user \= \{\};
 console.log(user.profile.email);  
 // TypeError: Cannot read properties of undefined (reading 'email')
 
-## **Important behavior with falsy values**
+## Important behavior with falsy values
 
 const obj \= \{  
   count: 0,  
@@ -737,7 +737,7 @@ console.log(obj.name?.length); // 0
 
 Answer: Optional chaining does not stop for `0`, `false`, or `""`. It only stops for `null` or `undefined`.
 
-## **Function call behavior**
+## Function call behavior
 
 const analytics \= \{\};
 
@@ -747,22 +747,22 @@ analytics.track?.("button\_click");
 
 If `track` exists and is callable, it runs. If it is `null` or `undefined`, it returns `undefined`.
 
-## **Important trap**
+## Important trap
 
 Optional chaining does not protect undeclared variables.
 
 console.log(user?.name);  
 // ReferenceError: user is not defined
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Optional chaining safely accesses nested properties, array elements, or function calls. It short-circuits only when the value before `?.` is `null` or `undefined`, returning `undefined`. It does not short-circuit on other falsy values like `0`, `false`, or empty string, and it does not protect undeclared variables.
 
 ---
 
-# **3\. Nullish Coalescing vs OR**
+## 3. Nullish Coalescing vs OR
 
-## **Simple answer**
+## Simple answer
 
 `??` uses fallback only for `null` or `undefined`. `||` uses fallback for any falsy value.
 
@@ -775,21 +775,21 @@ console.log("" ?? "Guest"); // ""
 console.log(false || true); // true  
 console.log(false ?? true); // false
 
-## **Practical frontend example**
+## Practical frontend example
 
 const retryCount \= config.retryCount ?? 3;
 
 If `retryCount` is `0`, we preserve `0`. This is useful because `0` can be a valid configuration.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `??` is safer than `||` when `0`, `false`, or empty string are valid values. `??` only falls back for `null` or `undefined`, while `||` falls back for all falsy values.
 
 ---
 
-# **4\. Destructuring with Default Values**
+## 4. Destructuring with Default Values
 
-## **Simple answer**
+## Simple answer
 
 Default values in destructuring are used only when the extracted value is `undefined`.
 
@@ -803,7 +803,7 @@ const \{ name \= "Guest", role \= "User" \} \= user;
 console.log(name); // "Guest"  
 console.log(role); // null
 
-## **Important trap**
+## Important trap
 
 Destructuring from `undefined` throws.
 
@@ -820,15 +820,15 @@ const \{ name \= "Guest" \} \= user || \{\};
 
 console.log(name); // "Guest"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Destructuring default values apply only when the value is `undefined`, not when it is `null`. Also, destructuring from `null` or `undefined` throws, so we should provide a safe fallback object when needed.
 
 ---
 
-# **5\. Shallow Copy with Spread**
+## 5. Shallow Copy with Spread
 
-## **Simple answer**
+## Simple answer
 
 Spread creates a shallow copy, not a deep copy.
 
@@ -845,19 +845,19 @@ copy.address.city \= "Nagpur";
 
 console.log(user.address.city); // "Nagpur"
 
-## **Why?**
+## Why?
 
 The top-level object is copied, but nested objects are still shared by reference.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Spread is useful for copying arrays and objects, but it only creates a shallow copy. If the object has nested references, those references are shared. For deeply nested updates, we need nested spread, structured cloning, or immutable utilities depending on the case.
 
 ---
 
-# **6\. Default Parameters and `null`**
+## 6. Default Parameters and `null`
 
-## **Simple answer**
+## Simple answer
 
 Default parameters work only for `undefined`, not `null`.
 
@@ -869,15 +869,15 @@ greet(); // "Guest"
 greet(undefined); // "Guest"  
 greet(null); // null
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Default parameters are applied when the argument is missing or explicitly `undefined`. They are not applied for `null`, because `null` is treated as an intentional value.
 
 ---
 
-# **7\. Symbol Use Cases**
+## 7. Symbol Use Cases
 
-## **Simple answer**
+## Simple answer
 
 Symbols create unique keys and help avoid property name collisions.
 
@@ -891,15 +891,15 @@ const user \= \{
 console.log(Object.keys(user)); // \["name"\]  
 console.log(user\[id\]); // 123
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Symbols are useful for unique object keys, internal metadata, and customizing language behavior using built-in symbols like `Symbol.iterator`. Each normal `Symbol()` call creates a unique value.
 
 ---
 
-# **8\. BigInt Use Cases and Trap**
+## 8. BigInt Use Cases and Trap
 
-## **Simple answer**
+## Simple answer
 
 BigInt is used for integers beyond JavaScript’s safe number range.
 
@@ -909,18 +909,18 @@ const id \= 9007199254740993n;
 
 console.log(id); // 9007199254740993n
 
-## **Trap**
+## Trap
 
 console.log(10n \+ 5);  
 // TypeError: Cannot mix BigInt and other types, use explicit conversions
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 BigInt is used when we need exact representation of very large integers. It cannot be mixed directly with Number, so explicit conversion is required. In frontend apps, very large backend IDs are often treated as strings to avoid precision loss.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Feature | Key point |
 | ----- | ----- |
@@ -938,6 +938,6 @@ BigInt is used when we need exact representation of very large integers. It cann
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 Modern JavaScript features help write cleaner and safer code. Destructuring extracts values from arrays and objects. Spread expands arrays or objects, while rest collects remaining values. Template literals make dynamic strings easier. Default parameters provide fallback values for `undefined`. Optional chaining safely accesses nested data when values may be `null` or `undefined`, and nullish coalescing gives fallback only for nullish values. Symbols create unique identifiers, and BigInt handles integers beyond JavaScript’s safe number range. In interviews, the most important traps are rest vs spread, shallow copy with spread, optional chaining behavior, `??` vs `||`, and default parameters not applying to `null`.

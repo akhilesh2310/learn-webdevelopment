@@ -13,25 +13,25 @@ Use this page for communication decisions: parent to child, child to parent, sib
 
 Use [Advanced React Patterns](advanced-react-patterns.md) for deep reusable pattern design such as compound components, provider pattern, headless components, and custom hooks.
 
-# **6\. Component Communication Patterns**
+## 6. Component Communication Patterns
 
-## **Parent to Child**
+## Parent to Child
 
-## **Child to Parent**
+## Child to Parent
 
-## **Sibling Communication**
+## Sibling Communication
 
-## **Context Communication**
+## Context Communication
 
-## **Ref Communication**
+## Ref Communication
 
-## **Compound Components**
+## Compound Components
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Cross-component communication
 
-# **Component Communication Patterns in React**
+## Component Communication Patterns in React
 
 Component communication means how data, events, and behavior move between components. In React, the default model is **one-way data flow**: parent passes data down using props, and child sends events up using callbacks.
 
@@ -51,9 +51,9 @@ Compound Components
 
 ---
 
-# **1\. Parent to Child Communication**
+## 1. Parent to Child Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Parent passes data to child using props.
 
@@ -87,7 +87,7 @@ function UserCard(\{ user \}) \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Parent owns data
 
@@ -97,7 +97,7 @@ Child receives data as props
 
 Props are read-only from the child’s perspective.
 
-## **Passing functions as props**
+## Passing functions as props
 
 Parent can also pass functions to child.
 
@@ -119,15 +119,15 @@ function SaveButton(\{ onSave \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Parent-to-child communication happens through props. The parent owns the data and passes it to the child. The child should treat props as read-only and use them to render UI or call callback functions.
 
 ---
 
-# **2\. Child to Parent Communication**
+## 2. Child to Parent Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Child communicates with parent by calling a callback function passed by the parent.
 
@@ -169,7 +169,7 @@ function Child(\{ onMessageChange \}) \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Parent passes callback
 
@@ -185,7 +185,7 @@ Parent updates state
 
 Updated state flows down again
 
-## **Practical example**
+## Practical example
 
 function TodoPage() \{
 
@@ -235,19 +235,19 @@ function TodoForm(\{ onAddTodo \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Child-to-parent communication is done by passing a callback from the parent to the child. The child calls the callback with data, and the parent updates its state. This keeps state ownership clear and follows React’s one-way data flow.
 
 ---
 
-# **3\. Sibling Communication**
+## 3. Sibling Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Sibling components cannot directly communicate with each other. Their shared state should usually be moved to the nearest common parent.
 
-## **Problem**
+## Problem
 
 SearchInput       ResultsList
 
@@ -255,7 +255,7 @@ SearchInput       ResultsList
 
 Needs to share search query
 
-## **Solution: lift state up**
+## Solution: lift state up
 
 function SearchPage() \{
 
@@ -297,7 +297,7 @@ function ResultsList(\{ query \}) \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Sibling A event
 
@@ -309,7 +309,7 @@ Parent state update
 
 Sibling B receives updated props
 
-## **When lifting state is enough**
+## When lifting state is enough
 
 Use this when:
 
@@ -318,19 +318,19 @@ Use this when:
 * State is not truly global.  
 * Data flow is still easy to understand.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Sibling communication usually happens by lifting state to the nearest common parent. One sibling updates the parent through a callback, and the parent passes the updated state to the other sibling through props.
 
 ---
 
-# **4\. Context Communication**
+## 4. Context Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Context allows deeply nested components to access shared data without passing props through every level.
 
-## **Basic example**
+## Basic example
 
 const ThemeContext \= React.createContext("light");
 
@@ -368,7 +368,7 @@ function ThemeButton() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Context solves prop drilling.
 
@@ -380,7 +380,7 @@ Provider
 
 Any nested consumer can read value
 
-## **Good use cases**
+## Good use cases
 
 * Theme  
 * Auth user  
@@ -390,7 +390,7 @@ Any nested consumer can read value
 * App configuration  
 * Design system settings
 
-## **Common mistake**
+## Common mistake
 
 Do not use one huge context for frequently changing state.
 
@@ -410,7 +410,7 @@ Better:
 
 \</AuthProvider\>
 
-## **Memoize context value**
+## Memoize context value
 
 function AuthProvider(\{ children \}) \{
 
@@ -434,21 +434,21 @@ function AuthProvider(\{ children \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context is used for deeply shared values and avoiding prop drilling. It is good for theme, auth, locale, permissions, and configuration. But it should not be overused for frequently changing large state because context updates can re-render many consumers.
 
 ---
 
-# **5\. Ref Communication**
+## 5. Ref Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Refs allow a parent to directly access a DOM node or imperative methods exposed by a child.
 
 React prefers declarative communication through props, but refs are useful for specific imperative actions.
 
-## **DOM ref example**
+## DOM ref example
 
 function SearchBox() \{
 
@@ -474,7 +474,7 @@ function SearchBox() \{
 
 \}
 
-## **Parent accessing child with forwardRef**
+## Parent accessing child with forwardRef
 
 const CustomInput \= React.forwardRef(function CustomInput(props, ref) \{
 
@@ -504,7 +504,7 @@ function Parent() \{
 
 \}
 
-## **Exposing custom methods with useImperativeHandle**
+## Exposing custom methods with useImperativeHandle
 
 const CustomInput \= React.forwardRef(function CustomInput(props, ref) \{
 
@@ -562,7 +562,7 @@ function Parent() \{
 
 \}
 
-## **Good use cases**
+## Good use cases
 
 * Focus an input.  
 * Scroll to an element.  
@@ -571,7 +571,7 @@ function Parent() \{
 * Integrate third-party libraries.  
 * Expose limited imperative methods from reusable components.
 
-## **Common mistake**
+## Common mistake
 
 Do not use refs to replace normal React data flow.
 
@@ -583,15 +583,15 @@ Better:
 
 \<Child user=\{user\} /\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Ref communication is used for imperative actions like focus, scroll, measuring DOM, media controls, or third-party integrations. For normal data flow, props and state should be preferred. If a child needs to expose limited methods, use `forwardRef` with `useImperativeHandle`.
 
 ---
 
-# **6\. Compound Components**
+## 6. Compound Components
 
-## **Simple meaning**
+## Simple meaning
 
 Compound components are components that work together under one parent and share internal state implicitly.
 
@@ -613,13 +613,13 @@ Example API:
 
 \</Tabs\>
 
-## **Key mental model**
+## Key mental model
 
 Compound components make related components feel like one flexible component system.
 
 The parent manages state. Child components communicate through context.
 
-## **Basic implementation**
+## Basic implementation
 
 const TabsContext \= React.createContext(null);
 
@@ -717,7 +717,7 @@ function App() \{
 
 \}
 
-## **Why compound components are useful**
+## Why compound components are useful
 
 * Clean component API.  
 * Flexible composition.  
@@ -726,7 +726,7 @@ function App() \{
 * Children stay declarative.  
 * Useful for design systems.
 
-## **Common use cases**
+## Common use cases
 
 * Tabs  
 * Accordion  
@@ -738,19 +738,19 @@ function App() \{
 * Radio group  
 * Carousel
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Compound components are a pattern where related components work together under a shared parent. The parent manages shared state, and child components access it through context. This creates a flexible and readable API, commonly used in design systems for tabs, accordions, menus, dropdowns, and modals.
 
 ---
 
-# **7\. Cross-Component Communication**
+## 7. Cross-Component Communication
 
-## **Simple meaning**
+## Simple meaning
 
 Cross-component communication means sharing data or events between components that may not have a direct parent-child relationship.
 
-## **Common options**
+## Common options
 
 Nearby components
 
@@ -780,9 +780,9 @@ Microfrontends
 
 → Shared store / events / platform contract
 
-## **Example decision**
+## Example decision
 
-### **Case 1: Parent controls modal**
+### Case 1: Parent controls modal
 
 function Page() \{
 
@@ -804,7 +804,7 @@ function Page() \{
 
 Use props because parent owns the modal state.
 
-### **Case 2: Theme used everywhere**
+### Case 2: Theme used everywhere
 
 Use Context.
 
@@ -814,51 +814,51 @@ Use Context.
 
 \</ThemeProvider\>
 
-### **Case 3: Cart state used across app**
+### Case 3: Cart state used across app
 
 Use Zustand/Redux/Context depending on complexity.
 
-### **Case 4: API data used across pages**
+### Case 4: API data used across pages
 
 Use server-state library like React Query, RTK Query, SWR, or Apollo.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For cross-component communication, I choose the simplest pattern based on scope. If components are close, I lift state up. If deeply nested components need shared low-frequency data, I use Context. For complex global client state, I use Redux Toolkit or Zustand. For server state, I prefer React Query, RTK Query, SWR, or Apollo. For imperative cases, I use refs, and for decoupled app-wide events, I may use an event bus carefully.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. How do React components communicate?**
+## 1. How do React components communicate?
 
-## **Answer**
+## Answer
 
 React components communicate mainly through props, callbacks, context, refs, and shared state.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Parent-to-child communication happens through props. Child-to-parent communication happens through callback props. Sibling communication usually happens by lifting state to the nearest common parent. Deep communication can use Context. Imperative communication can use refs. Complex cross-feature communication may use Redux, Zustand, event bus, or server-state tools depending on the use case.
 
 ---
 
-# **2\. What is cross-component communication?**
+## 2. What is cross-component communication?
 
-## **Answer**
+## Answer
 
 Cross-component communication means sharing data, updates, or events between components that are not directly connected.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Cross-component communication can be handled by lifting state up, Context API, global state libraries like Redux or Zustand, refs for imperative actions, or event bus patterns for decoupled communication. The correct choice depends on how far the components are, how frequently data changes, and who should own the state.
 
 ---
 
-# **3\. How does child update parent state?**
+## 3. How does child update parent state?
 
-## **Answer**
+## Answer
 
 The parent passes a callback to the child. The child calls that callback.
 
@@ -880,29 +880,29 @@ function Child(\{ onChange \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A child cannot directly modify parent state. The parent passes a callback, and the child calls it with the required data. The parent updates its state and passes the new value back down as props.
 
 ---
 
-# **4\. How do siblings communicate?**
+## 4. How do siblings communicate?
 
-## **Answer**
+## Answer
 
 Siblings communicate through their common parent.
 
 Sibling A → Parent state → Sibling B
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Sibling components should communicate by lifting shared state to their nearest common parent. One sibling triggers state changes using a callback, and the other sibling receives updated data through props.
 
 ---
 
-# **5\. When should you use Context?**
+## 5. When should you use Context?
 
-## **Answer**
+## Answer
 
 Use Context when many deeply nested components need the same shared value.
 
@@ -915,15 +915,15 @@ Good examples:
 * Permissions  
 * App config
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context is useful when prop drilling becomes painful for shared values used across many levels. I use it for low-frequency global values like theme, auth, locale, permissions, and app configuration. I avoid putting frequently changing large state into one context because it can cause unnecessary re-renders.
 
 ---
 
-# **6\. When should you use refs for communication?**
+## 6. When should you use refs for communication?
 
-## **Answer**
+## Answer
 
 Use refs for imperative actions, not normal data flow.
 
@@ -936,15 +936,15 @@ Good examples:
 * Clear an input  
 * Integrate third-party widget
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Refs are useful when the parent needs to perform an imperative action on a child or DOM node. For normal data communication, props and state should be preferred. Refs should be used carefully because they bypass React’s normal declarative data flow.
 
 ---
 
-# **7\. What are compound components?**
+## 7. What are compound components?
 
-## **Answer**
+## Answer
 
 Compound components are related components that share state under a common parent and provide a clean, flexible API.
 
@@ -958,15 +958,15 @@ Example:
 
 \</Tabs\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Compound components are a composition pattern where a parent component manages shared state and child components access it, usually through context. This pattern is useful for building flexible design-system components like Tabs, Accordion, Select, Dropdown, Menu, Modal, and Stepper.
 
 ---
 
-# **8\. Props drilling vs Context**
+## 8. Props drilling vs Context
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Prop Drilling | Context |
 | ----- | ----- | ----- |
@@ -976,15 +976,15 @@ Compound components are a composition pattern where a parent component manages s
 | Re-render control | Easier to localize | Needs care |
 | Use case | Normal parent-child flow | Theme, auth, locale |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Prop drilling means passing props through intermediate components that do not need the data. Context avoids this by allowing deeply nested components to read data from a provider. Props are still preferred for normal direct communication because they are explicit. Context is better for deeply shared values.
 
 ---
 
-# **9\. Event bus in React: good or bad?**
+## 9. Event bus in React: good or bad?
 
-## **Answer**
+## Answer
 
 Event bus can be useful, but overuse makes data flow hidden.
 
@@ -998,13 +998,13 @@ Good use cases:
 
 Avoid it for normal parent-child or sibling communication.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An event bus can help with decoupled cross-module communication, but it should be used carefully. For normal React data flow, props, callbacks, Context, or state management libraries are usually better. Overusing event bus can make the app harder to debug because data flow becomes hidden.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Pattern | Best use case |
 | ----- | ----- |
@@ -1021,6 +1021,6 @@ An event bus can help with decoupled cross-module communication, but it should b
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 React component communication follows one-way data flow. Parent-to-child communication happens through props. Child-to-parent communication happens through callback props. Sibling communication usually happens by lifting state to the nearest common parent. Context is useful when deeply nested components need shared values like theme, auth, locale, permissions, or configuration. Refs are used for imperative actions like focus, scroll, measuring DOM, or exposing limited child methods with `forwardRef` and `useImperativeHandle`. Compound components use a shared parent and context to create flexible APIs for components like Tabs, Accordion, Select, Menu, and Modal. For complex cross-component communication, choose the simplest solution based on scope: lift state up for nearby components, Context for deep shared values, Redux/Zustand for global client state, server-state tools for API data, and event bus only for carefully controlled decoupled events.

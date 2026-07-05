@@ -8,7 +8,7 @@ sidebar_position: 10
 Interview questions prep link:  
 [https://github.com/sudheerj/angular-interview-questions](https://github.com/sudheerj/angular-interview-questions)
 
-## Explain **angular architecture** or key components of angular? 
+## Explain angular architecture or key components of angular?
 
 ## Or What are the main building blocks of an Angular application?
 
@@ -204,13 +204,12 @@ A way to insert DOM content from outside a component into the component's view i
 
 https://angular.io/guide/elements
 
-## Data binding in Angular:				
+## Data binding in Angular:
 
 From the source-to-view or class to template   
 From view-to-source (template to class)   
 Two-way sequence: view-to-source-to-view  
 						
-
 1. Interpolation \{\{ \}\}		  
 2. Property binding \[ \]  \-\> \[src\], \[href\], \[class.highlight\], \[style.color\] , \[title\], \[alt\]		  
 3. Event binding	()	  onclick, custom output event, onchange etc	  
@@ -225,7 +224,6 @@ The target of a data-binding is something in the DOM. Depending on the binding t
 
 ![][image10]	  
 						
-
 ## What is view encapsulation?
 
 It defines template and style encapsulation options available for Component's Component.
@@ -252,8 +250,6 @@ It defines template and style encapsulation options available for Component's Co
 Ref: [https://www.sitepoint.com/practical-guide-angular-directives/](https://www.sitepoint.com/practical-guide-angular-directives/)
 
 Used to manipulate elements that exist in the DOM or can add elements to or remove them from the DOM. Eg., ngFor, ngIf, and ngShow. There are **3 kinds of directives** in Angular:
-
-						
 
 1. **Components**—directives with a template (all components in angular are directive)  
     							  
@@ -299,7 +295,6 @@ Hosting a directive without a DOM element using NgContainer:
 
 **HostListener & HostBinding:** [https://codecraft.tv/courses/angular/custom-directives/hostlistener-and-hostbinding/](https://codecraft.tv/courses/angular/custom-directives/hostlistener-and-hostbinding/)  
 					
-
 ## Difference between Components and Directives?
 
 1. A component is always elements (‘E’) where directive can be an attribute, element name, comment or CSS class (‘E’, ‘A’, ‘C’, ‘M’). Templates are the mandatory property and always required in Component, but Directive doesn’t always require them.  
@@ -313,7 +308,6 @@ Hosting a directive without a DOM element using NgContainer:
 **But when not to use a component?**   
 The answer is – a component does not support “compile” and “pre-link” functions. So for manipulating DOM objects, we should use the directives.  
 				
-
 ### What are the key differences between a Component and a Directive in Angular?
 
 A Component is a directive that uses shadow DOM to create encapsulated visual behavior. Usually, components are used to create UI widgets by breaking up the application into smaller parts. In short, we can say that a component (@component) is a directive-with-a-template.
@@ -333,7 +327,7 @@ A Component is a directive that uses shadow DOM to create encapsulated visual be
 
 [https://angular.io/tutorial/toh-pt4](https://angular.io/tutorial/toh-pt4)
 
-### **What do you understand by services in Angular?**
+### What do you understand by services in Angular?
 
 In Angular, services are singleton objects that get instantiated only once during the lifetime of an application. An Angular service contains methods that are used to maintain the data throughout the life of an application. Angular services are used to organize as well as share business logic, models, or data and functions with various components of an Angular application.  
 Angular services offer some functions that can be invoked from an Angular component, such as a controller or directive.
@@ -346,35 +340,29 @@ A singleton is a class that allows only a single instance of itself to be create
 						  
 A singleton service is a service instance that is shared across components. There are two ways to make a service a singleton in Angular:  
 						
-
 1. Declare root for the value of the @Injectable() providedIn property  
     							  
 2. Include the service in the AppModule or in a module that’s only imported by the AppModule  
     							
-
-						  
 `import \{ Injectable \} from '@angular/core';`
 
 `@Injectable(\{ providedIn: 'root' \})`  
 `export class UserService \{ \}`  
       
-
 **This app module importing service:**  
            
 `@NgModule(\{`  
      `providers: [UserService]`  
 `\})`
 
-						
-
-## **Tree Shakeable Providers**
+## Tree Shakeable Providers
 
 These are a way to define services and other things to be used by Angular’s DI system in a way that can improve the performance of an Angular application.  
 						  
 Tree shaking is a step in a build process that removes unused code from a code base.  
 Removing unused code can be thought as “tree shaking,” or you can visualize the physical shaking of a tree and the remaining dead leaves falling off of the tree. By using tree shaking, we can make sure our application only includes the code that is needed for our application to run. With Tree Shaking Providers (TSP) we can use a different mechanism to register our services. Using this new TSP mechanism will provide the benefits of both tree shaking performance and dependency injection.
 
-## **Dependency injection in Angular?**
+## Dependency injection in Angular?
 
 Dependency injection (injectors, providers): [https://angular.io/guide/dependency-injection](https://angular.io/guide/dependency-injection)
 
@@ -386,7 +374,6 @@ An injector for an app (created automatically during bootstrap) instantiates dep
 						  
 Dependency injection (DI) is a pattern for obtaining objects that uses a registry to maintain a list of available objects and a service that allows you to request the object you need. Rather than having to pass around objects, you can ask for what you need when you need it.  
 						  
-				  
 `import \{ Injectable \} from '@angular/core';`  
               
 `@Injectable(\{`  
@@ -590,7 +577,7 @@ The RouterState is a tree of activated routes. Every node in this tree knows abo
 10. \}    
 11. 
 
-### RouterModule.forRoot() vs RouterModule.forChild()? 
+### RouterModule.forRoot() vs RouterModule.forChild()?
 
 **forRoot** creates a module that contains all the directives, the given routes, and the router service itself.  
 **forChild** creates a module that contains all the directives and the given routes, but does not include the router service. It registers the routers and uses the router service created at the root level.  
@@ -672,8 +659,6 @@ See an example of using a [resolve guard](https://angular.io/guide/router-tutori
 
 ## ComponentFactoryResolver
 
-## 
-
 ## RxJx (Observables, promise, and async-await, multicast a value)
 
 Callback methods subscribe complete
@@ -683,7 +668,7 @@ Ref: [https://www.javatpoint.com/rxjs-interview-questions](https://www.javatpoin
 Rxjs operator- forkjoin, switchmap, mergemap etc. // TODO  
 How to do the multiple asynchronous calls in angular? // TODO
 
-### What is Promises (ES6)? 
+### What is Promises (ES6)?
 
 Promises in JavaScript allow you to handle asynchronous operations synchronously. 
 
@@ -920,8 +905,6 @@ Most front-end applications use either XMLHttpRequest interface or the fetch() A
 
 [https://www.javatpoint.com/angular-http-interceptor](https://www.javatpoint.com/angular-http-interceptor)
 
-## 
-
 ## What is AOT  or JIT in Angular?
 
 Ref: [https://angular.io/guide/aot-compiler](https://angular.io/guide/aot-compiler)
@@ -938,7 +921,6 @@ An Angular application is made of several components and their HTML templates. B
 * **Smaller Angular framework download size** There's no need to download the Angular compiler if the app is already compiled. The compiler is roughly half of Angular itself, so omitting it dramatically reduces the application payload.  
 * **Detect template errors earlier** The AOT compiler detects and reports template binding errors during the build step before users can see them.  
 * **Better security** AOT compiles HTML templates and components into JavaScript files long before they are served to the client. With no templates to read and no risky client-side HTML or JavaScript evaluation, there are fewer opportunities for injection attacks.
-
 
 **What is JIT in Angular?**
 
@@ -996,7 +978,7 @@ The crucial advantages of using Angular Universal are as follows:
 * It can lead to a better SEO for your application. The reason is that many search engines expect pages in plain HTML. So, Angular Universal can ensure that your content is available on every search engine, and it is good for better SEO.  
 * The server-side rendered applications load faster than normal pages. It is because the rendered pages are available to the browser sooner.
 
-## //Todo// ViewChildren, ViewChild, ContentChildren & ContentChild: 
+## //Todo// ViewChildren, ViewChild, ContentChildren & ContentChild:
 
 [https://medium.com/@tkssharma/understanding-viewchildren-viewchild-contentchildren-and-contentchild-b16c9e0358e](https://medium.com/@tkssharma/understanding-viewchildren-viewchild-contentchildren-and-contentchild-b16c9e0358e)
 
@@ -1004,19 +986,18 @@ The crucial advantages of using Angular Universal are as follows:
 
 [https://medium.com/@damoresac/using-web-workers-on-angular-6-6fd0490d07b5](https://medium.com/@damoresac/using-web-workers-on-angular-6-6fd0490d07b5)
 
-## Base project structure & Webpack config: 
+## Base project structure & Webpack config:
 
 [https://jasonwatmore.com/post/2019/04/24/angular-7-tutorial-part-2-create-base-project-structure-webpack-config](https://jasonwatmore.com/post/2019/04/24/angular-7-tutorial-part-2-create-base-project-structure-webpack-config)
 
-## Unit Testing: 
+## Unit Testing:
 
 [https://medium.com/@selvarajchinnasamyks/angular-7-unit-testing-97dccfdca900](https://medium.com/@selvarajchinnasamyks/angular-7-unit-testing-97dccfdca900)
 
-## Mock backend: 
+## Mock backend:
 
 [https://jasonwatmore.com/post/2019/05/02/angular-7-mock-backend-example-for-backendless-development](https://jasonwatmore.com/post/2019/05/02/angular-7-mock-backend-example-for-backendless-development)  
  
-
 **NgRx:** State, actions & reducers: [https://dzone.com/articles/managing-state-in-angular-with-ngrxstore](https://dzone.com/articles/managing-state-in-angular-with-ngrxstore)  
 [https://blog.angularindepth.com/ngrx-tips-tricks-69feb20a42a7](https://blog.angularindepth.com/ngrx-tips-tricks-69feb20a42a7)  
 

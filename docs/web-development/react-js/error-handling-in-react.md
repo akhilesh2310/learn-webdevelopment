@@ -11,29 +11,29 @@ Related pages: [Error Handling](../important/error-handling.md), [React Hooks](r
 
 Use this page for React-specific error boundaries, async errors, API error states, global error handling, and production React error-handling patterns.
 
-# **10\. Error Handling**
+## 10. Error Handling
 
-## **Error Boundaries**
+## Error Boundaries
 
-## **Try Catch Limitations**
+## Try Catch Limitations
 
-## **Async Error Handling**
+## Async Error Handling
 
-## **API Error Handling**
+## API Error Handling
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * When Error Boundaries work
 
-# **React Error Handling**
+## React Error Handling
 
 Error handling in React is about preventing one broken component, failed API call, or unexpected runtime issue from breaking the whole user experience. React error handling usually has three layers: **Error Boundaries for render errors**, **try/catch for event handlers and async code**, and **API-level error handling for server/network failures**.
 
 ---
 
-# **1\. Error Boundaries**
+## 1. Error Boundaries
 
-## **Simple meaning**
+## Simple meaning
 
 An Error Boundary is a React component that catches rendering errors in its child component tree and shows fallback UI instead of crashing the whole app.
 
@@ -71,13 +71,13 @@ Usage:
   \<UserDashboard /\>  
 \</ErrorBoundary\>
 
-## **Key mental model**
+## Key mental model
 
 Error Boundary works like a safety wrapper around a part of the UI.
 
 If a child component throws during rendering, React catches it and renders fallback UI.
 
-## **What Error Boundaries catch**
+## What Error Boundaries catch
 
 Error Boundaries catch errors in:
 
@@ -97,7 +97,7 @@ function UserProfile(\{ user \}) \{
 
 If `user` is `null`, this throws during render. Error Boundary can catch it and show fallback UI.
 
-## **What Error Boundaries do not catch**
+## What Error Boundaries do not catch
 
 Error Boundaries do not catch errors in:
 
@@ -121,21 +121,21 @@ function SaveButton() \{
 
 Answer: Error Boundary will not catch this because the error happens inside an event handler.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An Error Boundary is a React component that catches rendering errors in its child tree and displays fallback UI. It catches errors during render, lifecycle methods, and constructors, but it does not catch event handler errors, async errors, promise rejections, timers, or server-side rendering errors.
 
 ---
 
-# **2\. Try Catch Limitations**
+## 2. Try Catch Limitations
 
-## **Simple meaning**
+## Simple meaning
 
 `try...catch` catches errors only in the code that runs inside the current execution flow.
 
 It does not catch errors that happen later asynchronously unless those errors are awaited or handled inside that async callback.
 
-## **Synchronous error**
+## Synchronous error
 
 try \{  
   throw new Error("Failed");  
@@ -143,7 +143,7 @@ try \{
   console.log(error.message); // "Failed"  
 \}
 
-## **Async callback trap**
+## Async callback trap
 
 try \{  
   setTimeout(() \=\> \{  
@@ -165,7 +165,7 @@ setTimeout(() \=\> \{
   \}  
 \}, 1000);
 
-## **React event handler example**
+## React event handler example
 
 function SaveButton() \{  
   function handleClick() \{  
@@ -179,7 +179,7 @@ function SaveButton() \{
   return \<button onClick=\{handleClick\}\>Save\</button\>;  
 \}
 
-## **Important point**
+## Important point
 
 Error Boundaries and `try...catch` solve different problems.
 
@@ -187,21 +187,21 @@ Error Boundaries and `try...catch` solve different problems.
 * `try...catch` catches event handler and imperative code errors.  
 * Async errors need promise handling or `try...catch` with `await`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `try...catch` catches synchronous errors in the current execution flow. It does not automatically catch errors inside timers, promises, or async callbacks unless those are handled inside the callback or awaited inside the `try` block. In React, event handler errors should be handled using local `try...catch`.
 
 ---
 
-# **3\. Async Error Handling**
+## 3. Async Error Handling
 
-## **Simple meaning**
+## Simple meaning
 
 Async errors usually come from promises, API calls, timers, or async functions.
 
 Handle them with `.catch()` or `try...catch` around `await`.
 
-## **Async/await example**
+## Async/await example
 
 async function loadUser() \{  
   try \{  
@@ -215,7 +215,7 @@ async function loadUser() \{
   \}  
 \}
 
-## **Promise example**
+## Promise example
 
 fetchUser()  
   .then((user) \=\> \{  
@@ -225,7 +225,7 @@ fetchUser()
     setError("Failed to load user");  
   \});
 
-## **Important trap**
+## Important trap
 
 async function loadUser() \{  
   try \{  
@@ -247,7 +247,7 @@ async function loadUser() \{
   \}  
 \}
 
-## **Async errors in React effects**
+## Async errors in React effects
 
 useEffect(() \=\> \{  
   async function loadUser() \{  
@@ -271,19 +271,19 @@ useEffect(async () \=\> \{
 
 Avoid this because `useEffect` expects either nothing or a cleanup function, not a promise.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Async errors should be handled using `.catch()` or `try...catch` with `await`. A common mistake is calling a promise inside `try` without awaiting it. In React effects, define an inner async function and handle errors inside it instead of making the effect callback itself async.
 
 ---
 
-# **4\. API Error Handling**
+## 4. API Error Handling
 
-## **Simple meaning**
+## Simple meaning
 
 API error handling means handling loading, success, HTTP errors, network errors, timeout/cancel cases, and user-friendly messages.
 
-## **Basic fetch handling**
+## Basic fetch handling
 
 async function request(url) \{  
   const response \= await fetch(url);
@@ -295,13 +295,13 @@ async function request(url) \{
   return response.json();  
 \}
 
-## **Important fetch behavior**
+## Important fetch behavior
 
 `fetch` rejects for network errors, but it does not reject automatically for HTTP errors like `400`, `404`, or `500`.
 
 So we must check `response.ok`.
 
-## **React API state example**
+## React API state example
 
 function UserPage() \{  
   const \[user, setUser\] \= React.useState(null);  
@@ -350,7 +350,7 @@ function UserPage() \{
   return \<h1\>\{user.name\}\</h1\>;  
 \}
 
-## **Good API error handling includes**
+## Good API error handling includes
 
 * Loading state.  
 * Error state.  
@@ -363,7 +363,7 @@ function UserPage() \{
 * Avoiding stale response updates.  
 * Handling expected errors differently from unexpected errors.
 
-## **Custom API error**
+## Custom API error
 
 class ApiError extends Error \{  
   constructor(message, status) \{  
@@ -383,19 +383,19 @@ async function request(url) \{
   return response.json();  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For API error handling, I handle both network errors and HTTP errors. Since `fetch` does not reject for `400` or `500`, I check `response.ok` and throw an error manually. In React, I usually maintain loading, error, data, and empty states, show user-friendly messages, log technical details, and cancel stale requests using `AbortController`.
 
 ---
 
-# **5\. Global Error Handling**
+## 5. Global Error Handling
 
-## **Simple meaning**
+## Simple meaning
 
 Global error handling is a fallback layer for unexpected errors that were not handled locally.
 
-## **Browser global error**
+## Browser global error
 
 window.addEventListener("error", (event) \=\> \{  
   console.log(event.message);  
@@ -403,13 +403,13 @@ window.addEventListener("error", (event) \=\> \{
   console.log(event.lineno);  
 \});
 
-## **Unhandled promise rejection**
+## Unhandled promise rejection
 
 window.addEventListener("unhandledrejection", (event) \=\> \{  
   console.log(event.reason);  
 \});
 
-## **React application-level setup**
+## React application-level setup
 
 In a React app, common layers are:
 
@@ -419,23 +419,23 @@ In a React app, common layers are:
 * Global error listeners for logging unexpected issues.  
 * Monitoring tools like Sentry, Datadog, New Relic, or similar.
 
-## **Important point**
+## Important point
 
 Global handlers should not replace local error handling. Expected errors should be handled close to where they happen.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Global error handling is a safety net for unexpected uncaught errors and unhandled promise rejections. In React apps, I combine global handlers with Error Boundaries, local async error handling, and proper API error states. Expected errors should still be handled locally.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. When do Error Boundaries work?**
+## 1. When do Error Boundaries work?
 
-## **Answer**
+## Answer
 
 Error Boundaries work when errors happen during React rendering, lifecycle methods, or constructors of child components.
 
@@ -451,14 +451,14 @@ function BrokenComponent() \{
 
 Answer: Error Boundary catches this because the error is thrown during render.
 
-## **They work for**
+## They work for
 
 * Render errors  
 * Class lifecycle errors  
 * Constructor errors  
 * Child component tree errors
 
-## **They do not work for**
+## They do not work for
 
 * Event handlers  
 * Async code  
@@ -468,15 +468,15 @@ Answer: Error Boundary catches this because the error is thrown during render.
 * Server-side rendering  
 * Errors inside the boundary itself
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Error Boundaries work for errors thrown during rendering, lifecycle methods, and constructors of child components. They do not catch event handler errors, async errors, promise rejections, timers, API failures directly, server-side rendering errors, or errors inside the boundary itself.
 
 ---
 
-# **2\. Why does Error Boundary not catch event handler errors?**
+## 2. Why does Error Boundary not catch event handler errors?
 
-## **Answer**
+## Answer
 
 Event handlers run after rendering, usually because of user interaction. They are not part of React’s render phase.
 
@@ -504,15 +504,15 @@ function Button() \{
   return \<button onClick=\{handleClick\}\>Click\</button\>;  
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Error Boundaries are designed to catch render-time errors in the component tree. Event handler errors happen later during user interaction, outside the render flow, so they should be handled with local `try...catch`.
 
 ---
 
-# **3\. How do you handle async errors in React?**
+## 3. How do you handle async errors in React?
 
-## **Answer**
+## Answer
 
 Use `try...catch` inside an async function, usually inside an effect or event handler.
 
@@ -572,15 +572,15 @@ useEffect(() \=\> \{
   \};  
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I handle async errors in React with `try...catch` around awaited promises, or `.catch()` for promise chains. In `useEffect`, I define an inner async function, handle loading/error states, and clean up using `AbortController` or a cancellation flag to avoid stale updates.
 
 ---
 
-# **4\. Error Boundary vs try/catch**
+## 4. Error Boundary vs try/catch
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Error Boundary | try/catch |
 | ----- | ----- | ----- |
@@ -591,15 +591,15 @@ I handle async errors in React with `try...catch` around awaited promises, or `.
 | Scope | Component subtree | Current code block |
 | Common use | UI crash recovery | Imperative/async logic |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Error Boundaries catch render-time errors in a React subtree and show fallback UI. `try...catch` handles errors in imperative code like event handlers, async functions, API calls, and parsing logic. In a good React app, we use both because they solve different problems.
 
 ---
 
-# **5\. How do you design error handling in a production React app?**
+## 5. How do you design error handling in a production React app?
 
-## **Answer**
+## Answer
 
 I usually design error handling at multiple levels:
 
@@ -610,7 +610,7 @@ I usually design error handling at multiple levels:
 * Global level: log unexpected errors and unhandled promise rejections.  
 * Observability: send errors with metadata to monitoring tools.
 
-## **Example flow**
+## Example flow
 
 API fails  
   ↓  
@@ -622,27 +622,27 @@ UI shows friendly message
   ↓  
 Logger records technical details
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In production, I handle expected errors close to where they happen and unexpected errors globally. API clients normalize server errors, components show loading/error/empty states, Error Boundaries catch render crashes, and global handlers log uncaught errors. This gives users a stable UI and gives engineers enough information to debug.
 
 ---
 
-# **6\. Can hooks replace Error Boundaries?**
+## 6. Can hooks replace Error Boundaries?
 
-## **Answer**
+## Answer
 
 Not fully.
 
 Error Boundaries currently require class components in core React. However, many teams use small reusable Error Boundary components or libraries that expose hook-like APIs around class-based boundaries.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Hooks do not directly replace Error Boundaries in core React because Error Boundaries are implemented using class lifecycle methods like `getDerivedStateFromError` and `componentDidCatch`. In practice, teams often create a reusable ErrorBoundary component and wrap routes, pages, or risky widgets with it.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -659,6 +659,6 @@ Hooks do not directly replace Error Boundaries in core React because Error Bound
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 React error handling should be designed in layers. Error Boundaries catch render-time errors in a child component tree and show fallback UI, but they do not catch event handler errors, async errors, promises, timers, or API failures directly. Event handler and imperative errors should be handled with local `try...catch`. Async errors should be handled with `.catch()` or `try...catch` around `await`. API errors should be normalized in the API layer, with proper loading, error, empty, and success states in the UI. In production apps, Error Boundaries, local error handling, API error handling, global error listeners, and monitoring tools work together to make the app more reliable and debuggable.

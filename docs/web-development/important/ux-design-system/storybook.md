@@ -5,9 +5,9 @@ sidebar_position: 2
 
 # Storybook
 
-### **Interview question and Answers: [https://chatgpt.com/c/6a3a89a1-31dc-83e8-adf4-8f042f8480c6](https://chatgpt.com/c/6a3a89a1-31dc-83e8-adf4-8f042f8480c6)**
+### Interview question and Answers: [https://chatgpt.com/c/6a3a89a1-31dc-83e8-adf4-8f042f8480c6](https://chatgpt.com/c/6a3a89a1-31dc-83e8-adf4-8f042f8480c6)
 
-### **1\. What is Storybook?**
+### 1. What is Storybook?
 
 Storybook is a frontend workshop for building, testing, and documenting UI components in isolation. Instead of running the full application, developers can open a component directly in Storybook and test all important states such as default, loading, disabled, error, empty, responsive, and permission-based states. Storybook officially describes this as a way to build UI components and pages in isolation, especially for hard-to-reach states and edge cases.
 
@@ -17,7 +17,7 @@ We used Storybook as the single source of truth for our reusable components. Eve
 
 ---
 
-### **2\. Why use Storybook in a Design System?**
+### 2. Why use Storybook in a Design System?
 
 Storybook is useful because it gives a common place to build, review, test, and document components.
 
@@ -37,7 +37,7 @@ Storybook was not just a component preview tool for us. We treated it as a desig
 
 ---
 
-### **3\. Recommended Folder Structure**
+### 3. Recommended Folder Structure
 
 design-system/  
  src/  
@@ -98,7 +98,7 @@ This scales better when the component library becomes large.
 
 ---
 
-### **4\. Storybook Story Naming Convention**
+### 4. Storybook Story Naming Convention
 
 Use predictable naming so teams can quickly find components.
 
@@ -124,7 +124,7 @@ Storybook supports `autodocs` tags to automatically generate documentation from 
 
 ---
 
-### **5\. What Stories Should Every Component Have?**
+### 5. What Stories Should Every Component Have?
 
 For each reusable component, create stories for all important states.
 
@@ -172,7 +172,7 @@ We made sure every component had stories for happy path, edge cases, accessibili
 
 ---
 
-### **6\. Example Storybook Story**
+### 6. Example Storybook Story
 
 \import type \{ Meta, StoryObj \} from '@storybook/react';  
 \import \{ Button \} from './Button';
@@ -219,7 +219,7 @@ type Story \= StoryObj\<typeof meta\>;
 \};  
 ---
 
-### **7\. Documentation Guidelines for Each Component**
+### 7. Documentation Guidelines for Each Component
 
 Every component should document:
 
@@ -264,7 +264,7 @@ Do not use Button for simple navigation text. Use Link instead.
 \- ghost  
 ---
 
-### **8\. Accessibility Guidelines in Storybook**
+### 8. Accessibility Guidelines in Storybook
 
 Accessibility should be part of the Storybook checklist, not an afterthought.
 
@@ -287,7 +287,7 @@ For accessibility, we added Storybook stories for keyboard states, focus states,
 
 ---
 
-### **9\. Interaction Testing in Storybook**
+### 9. Interaction Testing in Storybook
 
 For interactive components, stories should also test behavior.
 
@@ -313,7 +313,7 @@ Example:
 \};  
 ---
 
-### **10\. SEO Guidelines for Storybook Components**
+### 10. SEO Guidelines for Storybook Components
 
 SEO is not relevant for every component, but it matters for layout, content, navigation, and page-level components.
 
@@ -334,7 +334,7 @@ For SEO, we mainly applied guidelines at page-level and content-heavy components
 
 ---
 
-### **11\. Design Token Usage**
+### 11. Design Token Usage
 
 Do not hardcode values inside components.
 
@@ -368,7 +368,7 @@ We used design tokens to avoid hardcoded colors, spacing, typography, and shadow
 
 ---
 
-### **12\. Version Management**
+### 12. Version Management
 
 For a reusable component library, versioning is important.
 
@@ -400,7 +400,7 @@ We followed semantic versioning for the component library. Bug fixes were patch 
 
 ---
 
-### **13\. Pull Request Checklist for New Components**
+### 13. Pull Request Checklist for New Components
 
 Before adding a new component to the design system, I would check:
 
@@ -424,7 +424,7 @@ We did not allow random product-specific components into the shared design syste
 
 ---
 
-### **14\. Storybook Addons/Tools I Would Use**
+### 14. Storybook Addons/Tools I Would Use
 
 @storybook/addon-docs       \-\> documentation  
 @storybook/addon-a11y       \-\> accessibility checks  
@@ -437,7 +437,7 @@ Storybook also supports tags such as `dev`, `test`, and `autodocs`, which help c
 
 ---
 
-## **Final Interview Summary**
+## Final Interview Summary
 
 You can answer like this:
 

@@ -5,17 +5,17 @@ sidebar_position: 5
 
 # XSS (Cross-Site Scripting)
 
-# **Cross-Site Scripting (XSS)**
+## Cross-Site Scripting (XSS)
 
 ---
 
-## **1\. What is XSS?**
+## 1. What is XSS?
 
 Cross-Site Scripting (XSS) is a web security vulnerability that allows attackers to inject malicious scripts into webpages viewed by other users. These scripts execute in the user's browser and can steal sensitive data, hijack sessions, impersonate users, or perform malicious actions.
 
 ---
 
-## **2\. When does XSS occur?**
+## 2. When does XSS occur?
 
 XSS typically happens when:
 
@@ -37,7 +37,7 @@ Common scenarios include:
 
 ---
 
-## **3\. How does XSS happen?**
+## 3. How does XSS happen?
 
 Attackers craft malicious input containing executable scripts.  
  Types of XSS attacks include:
@@ -53,7 +53,7 @@ Attackers craft malicious input containing executable scripts.
 
 ---
 
-## **4\. Why is XSS dangerous?**
+## 4. Why is XSS dangerous?
 
 * **Data theft**: Access to cookies, tokens, and sensitive user information.
 
@@ -67,9 +67,9 @@ Attackers craft malicious input containing executable scripts.
 
 ---
 
-## **5\. Example**
+## 5. Example
 
-### **Generic Web Application Example**
+### Generic Web Application Example
 
 php  
 CopyEdit  
@@ -85,7 +85,7 @@ The script will execute in the victim’s browser.
 
 ---
 
-### **ReactJS Example**
+### ReactJS Example
 
 By default, React escapes values in JSX:
 
@@ -109,11 +109,11 @@ If unsanitized, this will directly inject and execute the script.
 
 ---
 
-## **6\. 🛡️ How to Prevent/Fix XSS**
+## 6. 🛡️ How to Prevent/Fix XSS
 
 ---
 
-### **6.1. In a Generic Web Application**
+### 6.1. In a Generic Web Application
 
 * **Escape Output**:  
    Always escape user inputs before rendering them into HTML, JavaScript, or attributes.
@@ -144,7 +144,7 @@ CopyEdit
 
 ---
 
-### **6.2. In ReactJS**
+### 6.2. In ReactJS
 
 * **Rely on React's automatic escaping**:  
    React automatically escapes content rendered in JSX.
@@ -170,7 +170,7 @@ CopyEdit
 
 ---
 
-## **7\. ✅ Summary**
+## 7. ✅ Summary
 
 | Aspect | Generic Web App | ReactJS |
 | ----- | ----- | ----- |
@@ -182,11 +182,11 @@ CopyEdit
 
 ---
 
-# **📚 Can XSS Attack LocalStorage?**
+## 📚 Can XSS Attack LocalStorage?
 
 ---
 
-## **1\. Quick Answer**
+## 1. Quick Answer
 
 * **XSS does not directly attack localStorage.**
 
@@ -200,7 +200,7 @@ CopyEdit
 
 ---
 
-## **2\. How It Happens**
+## 2. How It Happens
 
 * Applications often store sensitive information (like JWT tokens) in `localStorage`.
 
@@ -210,7 +210,7 @@ CopyEdit
 
 ---
 
-## **3\. Example Attack**
+## 3. Example Attack
 
 javascript  
 CopyEdit  
@@ -221,7 +221,7 @@ This malicious script reads the user's authentication token and sends it to the 
 
 ---
 
-## **4\. Why is This Dangerous?**
+## 4. Why is This Dangerous?
 
 * Theft of **authentication tokens**.
 
@@ -231,7 +231,7 @@ This malicious script reads the user's authentication token and sends it to the 
 
 ---
 
-## **5\. How to Protect**
+## 5. How to Protect
 
 ✅ **Prevent XSS**:
 
@@ -249,7 +249,7 @@ This malicious script reads the user's authentication token and sends it to the 
 
 ---
 
-## **6\. Key Takeaways**
+## 6. Key Takeaways
 
 | Question | Answer |
 | ----- | ----- |
@@ -259,7 +259,7 @@ This malicious script reads the user's authentication token and sends it to the 
 
 ---
 
-# **✅ Final Tip:**
+## ✅ Final Tip:
 
 "**Prevent XSS first. Secure localStorage second.**"  
  Without fixing XSS, localStorage will always be an easy target.

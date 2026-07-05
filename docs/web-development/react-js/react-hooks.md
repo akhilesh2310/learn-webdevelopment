@@ -13,35 +13,35 @@ Use this page for Hook API usage and examples.
 
 Use [React Performance](../important/performance/react-performance.md) for optimization decisions, profiler-first guidance, and when `React.memo`, `useMemo`, or `useCallback` are worth using.
 
-## 3\. React Hooks
+## 3. React Hooks
 
-## **useState**
+## useState
 
-## **useEffect**
+## useEffect
 
-### **Cleanup Function**
+### Cleanup Function
 
-### **Dependency Array**
+### Dependency Array
 
-## **useRef**
+## useRef
 
-## **useMemo**
+## useMemo
 
-## **useCallback**
+## useCallback
 
-## **useContext**
+## useContext
 
-## **useReducer**
+## useReducer
 
-## **useLayoutEffect**
+## useLayoutEffect
 
-## **useImperativeHandle**
+## useImperativeHandle
 
-## **Custom Hooks**
+## Custom Hooks
 
-## **Hook Rules**
+## Hook Rules
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * useEffect lifecycle  
 * useMemo vs useCallback  
@@ -53,9 +53,9 @@ React Hooks let functional components use React features like state, side effect
 
 ---
 
-## 1\. useState
+## 1. useState
 
-## **Simple meaning**
+## Simple meaning
 
 `useState` adds local state to a functional component.
 
@@ -75,13 +75,13 @@ function Counter() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 State is a snapshot for the current render.
 
 When we call `setState`, React schedules a new render with the updated state.
 
-## **Functional update**
+## Functional update
 
 Use functional update when next state depends on previous state.
 
@@ -103,7 +103,7 @@ setCount((prev) \=\> prev \+ 1);
 
 This increments by 2\.
 
-## **Lazy initialization**
+## Lazy initialization
 
 Use lazy initialization when initial state is expensive to calculate.
 
@@ -115,15 +115,15 @@ const \[items, setItems\] \= React.useState(() \=\> \{
 
 The function runs only during initial render.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useState` is used to manage local component state. Updating state schedules a re-render. Since state values are snapshots for the current render, functional updates should be used when the next state depends on the previous state.
 
 ---
 
-## 2\. useEffect
+## 2. useEffect
 
-## **Simple meaning**
+## Simple meaning
 
 `useEffect` runs side effects after React renders and commits updates to the DOM.
 
@@ -142,7 +142,7 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **Key mental model**
+## Key mental model
 
 Rendering should be pure. Effects are for work that happens outside rendering.
 
@@ -156,7 +156,7 @@ Commit DOM changes
 
 Run useEffect
 
-## **Basic example**
+## Basic example
 
 function UserPage() \{
 
@@ -182,15 +182,15 @@ function UserPage() \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useEffect` is used for side effects after rendering, such as API calls, subscriptions, timers, event listeners, and syncing with external systems. It runs after the DOM has been updated.
 
 ---
 
-## 3\. useEffect Cleanup Function
+## 3. useEffect Cleanup Function
 
-## **Simple meaning**
+## Simple meaning
 
 The cleanup function removes or cancels the side effect created by the effect.
 
@@ -210,14 +210,14 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **When cleanup runs**
+## When cleanup runs
 
 Cleanup runs:
 
 * Before the effect runs again because dependencies changed  
 * When the component unmounts
 
-## **Event listener cleanup**
+## Event listener cleanup
 
 React.useEffect(() \=\> \{
 
@@ -237,7 +237,7 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **API cancellation cleanup**
+## API cancellation cleanup
 
 React.useEffect(() \=\> \{
 
@@ -277,23 +277,23 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **StrictMode note**
+## StrictMode note
 
 In development StrictMode, React may run an extra setup plus cleanup cycle to find missing cleanup bugs. This is expected and does not happen in production.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The cleanup function in `useEffect` is used to clean subscriptions, timers, event listeners, observers, or pending requests. It runs before the effect re-runs and when the component unmounts. This prevents memory leaks and stale updates.
 
 ---
 
-## 4\. useEffect Dependency Array
+## 4. useEffect Dependency Array
 
-## **Simple meaning**
+## Simple meaning
 
 The dependency array controls when the effect runs.
 
-## **No dependency array**
+## No dependency array
 
 React.useEffect(() \=\> \{
 
@@ -301,7 +301,7 @@ React.useEffect(() \=\> \{
 
 \});
 
-## **Empty dependency array**
+## Empty dependency array
 
 React.useEffect(() \=\> \{
 
@@ -309,7 +309,7 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **With dependencies**
+## With dependencies
 
 React.useEffect(() \=\> \{
 
@@ -317,7 +317,7 @@ React.useEffect(() \=\> \{
 
 \}, \[userId\]);
 
-## **Common trap: missing dependency**
+## Common trap: missing dependency
 
 React.useEffect(() \=\> \{
 
@@ -335,7 +335,7 @@ React.useEffect(() \=\> \{
 
 \}, \[userId\]);
 
-## **Common trap: object/function dependency**
+## Common trap: object/function dependency
 
 const filters \= \{ status: "active" \};
 
@@ -361,21 +361,21 @@ React.useEffect(() \=\> \{
 
 \}, \[filters\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The dependency array tells React when to re-run an effect. No array means after every render, empty array means after initial mount, and values inside the array mean the effect re-runs when those values change. Missing dependencies can cause stale data bugs, while unstable object/function dependencies can cause unnecessary effect runs.
 
 ---
 
-## 5\. useRef
+## 5. useRef
 
-## **Simple meaning**
+## Simple meaning
 
 `useRef` stores a mutable value that persists across renders without causing re-render when changed.
 
 const inputRef \= React.useRef(null);
 
-## **DOM reference use case**
+## DOM reference use case
 
 function SearchBox() \{
 
@@ -401,7 +401,7 @@ function SearchBox() \{
 
 \}
 
-## **Store mutable value without re-render**
+## Store mutable value without re-render
 
 function Timer() \{
 
@@ -427,7 +427,7 @@ function Timer() \{
 
 \}
 
-## **Previous value**
+## Previous value
 
 function Counter(\{ count \}) \{
 
@@ -443,7 +443,7 @@ function Counter(\{ count \}) \{
 
 \}
 
-## **Important trap**
+## Important trap
 
 Changing `ref.current` does not trigger re-render.
 
@@ -451,15 +451,15 @@ ref.current \= 10;
 
 The UI will not update just because this value changed.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useRef` creates a mutable container that persists across renders. It is commonly used for DOM access, storing timer IDs, keeping previous values, storing mutable values without re-rendering, and integrating with third-party libraries. Updating `ref.current` does not cause a re-render.
 
 ---
 
-## 6\. useMemo
+## 6. useMemo
 
-## **Simple meaning**
+## Simple meaning
 
 `useMemo` caches the result of an expensive calculation between renders.
 
@@ -469,7 +469,7 @@ const filteredUsers \= React.useMemo(() \=\> \{
 
 \}, \[users\]);
 
-## **Key mental model**
+## Key mental model
 
 `useMemo` memoizes a value.
 
@@ -477,7 +477,7 @@ Same dependencies \-\> reuse old value
 
 Changed dependencies \-\> recalculate value
 
-## **Practical use case**
+## Practical use case
 
 function ProductList(\{ products, searchText \}) \{
 
@@ -495,7 +495,7 @@ function ProductList(\{ products, searchText \}) \{
 
 \}
 
-## **When to use**
+## When to use
 
 Use `useMemo` when:
 
@@ -504,7 +504,7 @@ Use `useMemo` when:
 * You need stable object/array reference  
 * You pass derived data to memoized child components
 
-## **Common mistake**
+## Common mistake
 
 Do not use `useMemo` for every calculation.
 
@@ -512,15 +512,15 @@ const total \= React.useMemo(() \=\> a \+ b, \[a, b\]);
 
 This is usually unnecessary because `a + b` is cheap.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useMemo` caches a calculated value between renders and recalculates it only when dependencies change. It is useful for expensive derived data or stable object/array references, but it should not be used everywhere because memoization also has overhead.
 
 ---
 
-## 7\. useCallback
+## 7. useCallback
 
-## **Simple meaning**
+## Simple meaning
 
 `useCallback` caches a function reference between renders.
 
@@ -530,7 +530,7 @@ const handleClick \= React.useCallback(() \=\> \{
 
 \}, \[\]);
 
-## **Key mental model**
+## Key mental model
 
 `useCallback` memoizes a function.
 
@@ -546,7 +546,7 @@ const handleClick \= React.useMemo(() \=\> \{
 
 \}, \[\]);
 
-## **Practical use case with memoized child**
+## Practical use case with memoized child
 
 const Child \= React.memo(function Child(\{ onSave \}) \{
 
@@ -570,7 +570,7 @@ function Parent(\{ userId \}) \{
 
 Without `useCallback`, a new function is created on every parent render, which can cause memoized child components to re-render.
 
-## **When to use**
+## When to use
 
 Use `useCallback` when:
 
@@ -579,21 +579,21 @@ Use `useCallback` when:
 * Custom hook returns stable functions  
 * Avoiding unnecessary effect re-runs caused by function identity
 
-## **Common mistake**
+## Common mistake
 
 Using `useCallback` everywhere does not automatically improve performance.
 
 It is useful when function identity matters.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useCallback` caches a function reference between renders. It is useful when passing callbacks to memoized child components or when a function is used as a dependency in another hook. `useCallback` does not avoid creating logic; it avoids changing the function reference unless dependencies change.
 
 ---
 
-## 8\. useMemo vs useCallback
+## 8. useMemo vs useCallback
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | useMemo | useCallback |
 | ----- | ----- | ----- |
@@ -603,7 +603,7 @@ It is useful when function identity matters.
 | Example | Filtered list | `onClick` handler |
 | Syntax | `useMemo(() => value, deps)` | `useCallback(fn, deps)` |
 
-## **Example**
+## Example
 
 const visibleItems \= React.useMemo(() \=\> \{
 
@@ -617,15 +617,15 @@ const handleSelect \= React.useCallback((item) \=\> \{
 
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useMemo` memoizes the result of a calculation, while `useCallback` memoizes a function reference. Use `useMemo` for expensive derived values and stable objects/arrays. Use `useCallback` when function identity matters, such as passing callbacks to memoized children or dependency arrays.
 
 ---
 
-## 9\. useContext
+## 9. useContext
 
-## **Simple meaning**
+## Simple meaning
 
 `useContext` reads a value from React Context without prop drilling.
 
@@ -639,7 +639,7 @@ function Button() \{
 
 \}
 
-## **Provider example**
+## Provider example
 
 function App() \{
 
@@ -655,7 +655,7 @@ function App() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Context is for values needed by many components at different levels.
 
@@ -667,7 +667,7 @@ Common examples:
 * Feature flags  
 * App configuration
 
-## **Important performance point**
+## Important performance point
 
 When context value changes, all consumers using that context can re-render.
 
@@ -693,15 +693,15 @@ const value \= React.useMemo(() \=\> \{
 
 \</ThemeContext.Provider\>;
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useContext` reads and subscribes to a context value. It helps avoid prop drilling for shared app-level data like theme, auth, locale, and feature flags. But context updates can re-render all consumers, so context should be split or memoized carefully for performance-sensitive state.
 
 ---
 
-## 10\. useReducer
+## 10. useReducer
 
-## **Simple meaning**
+## Simple meaning
 
 `useReducer` manages complex state using a reducer function.
 
@@ -741,13 +741,13 @@ function Counter() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Instead of directly setting state, we dispatch actions.
 
 UI event \-\> dispatch action \-\> reducer calculates next state
 
-## **When to use useReducer**
+## When to use useReducer
 
 Use it when:
 
@@ -757,7 +757,7 @@ Use it when:
 * You want reducer logic to be testable  
 * You want Redux-like local component state
 
-## **Example: form reducer**
+## Example: form reducer
 
 function formReducer(state, action) \{
 
@@ -785,15 +785,15 @@ function formReducer(state, action) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useReducer` is useful for complex state transitions. It uses a reducer function and dispatch actions to update state. I prefer `useState` for simple independent values and `useReducer` when state has multiple related fields or transition logic becomes complex.
 
 ---
 
-## 11\. useLayoutEffect
+## 11. useLayoutEffect
 
-## **Simple meaning**
+## Simple meaning
 
 `useLayoutEffect` is like `useEffect`, but it runs synchronously after DOM changes and before the browser paints.
 
@@ -805,7 +805,7 @@ React.useLayoutEffect(() \=\> \{
 
 \}, \[\]);
 
-## **Key mental model**
+## Key mental model
 
 Use it when you must measure or update layout before the user sees the screen.
 
@@ -827,7 +827,7 @@ Browser paints
 
 useEffect runs later
 
-## **Use cases**
+## Use cases
 
 * Measuring DOM size/position  
 * Preventing visual flicker  
@@ -835,21 +835,21 @@ useEffect runs later
 * Scroll position adjustment  
 * Layout-sensitive animations
 
-## **Important trap**
+## Important trap
 
 `useLayoutEffect` blocks painting. Overusing it can hurt performance.
 
 Use `useEffect` by default. Use `useLayoutEffect` only when visual correctness requires it.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useLayoutEffect` runs after DOM mutations but before the browser paints. It is useful for layout measurements and preventing visual flicker. Since it blocks painting, it should be used carefully and `useEffect` should be preferred for normal side effects.
 
 ---
 
-## 12\. useImperativeHandle
+## 12. useImperativeHandle
 
-## **Simple meaning**
+## Simple meaning
 
 `useImperativeHandle` customizes what a parent can access through a ref.
 
@@ -905,11 +905,11 @@ function Parent() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Normally React prefers declarative data flow. `useImperativeHandle` is for rare cases where parent needs imperative methods.
 
-## **Use cases**
+## Use cases
 
 * Expose `focus`  
 * Expose `scrollToTop`  
@@ -917,15 +917,15 @@ Normally React prefers declarative data flow. `useImperativeHandle` is for rare 
 * Integrate with third-party UI widgets  
 * Build reusable form/input components
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useImperativeHandle` lets a child component expose a custom ref API to its parent. It is usually used with `forwardRef`. It should be used rarely, mainly for imperative actions like focus, clear, scroll, or third-party integration.
 
 ---
 
-## 13\. Custom Hooks
+## 13. Custom Hooks
 
-## **Simple meaning**
+## Simple meaning
 
 A custom hook is a reusable function that uses React hooks.
 
@@ -979,7 +979,7 @@ function App() \{
 
 \}
 
-## **API call custom hook**
+## API call custom hook
 
 function useFetch(url) \{
 
@@ -1047,7 +1047,7 @@ function useFetch(url) \{
 
 \}
 
-## **Why custom hooks are useful**
+## Why custom hooks are useful
 
 * Reuse stateful logic  
 * Keep components clean  
@@ -1056,15 +1056,15 @@ function useFetch(url) \{
 * Easier testing of logic  
 * Better separation of concerns
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Custom hooks are reusable functions that encapsulate hook-based logic. They let us share stateful behavior like API fetching, window size tracking, localStorage sync, debounce, permissions, or form handling across components. A custom hook must start with `use` and follow the Rules of Hooks.
 
 ---
 
-## 14\. Hook Rules
+## 14. Hook Rules
 
-## **Rule 1: Call hooks only at the top level**
+## Rule 1: Call hooks only at the top level
 
 Do not call hooks inside:
 
@@ -1092,7 +1092,7 @@ if (\!isLoggedIn) \{
 
 \}
 
-## **Rule 2: Call hooks only from React functions**
+## Rule 2: Call hooks only from React functions
 
 Hooks can be called from:
 
@@ -1115,13 +1115,13 @@ function useThemeValue() \{
 
 \}
 
-## **Why rules exist**
+## Why rules exist
 
 React tracks hooks by call order.
 
 If hook order changes between renders, React cannot correctly match state/effect positions.
 
-## **Example problem**
+## Example problem
 
 function Component(\{ show \}) \{
 
@@ -1139,7 +1139,7 @@ function Component(\{ show \}) \{
 
 When `show` changes, hook order changes. React may associate state with the wrong hook.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Hooks must be called at the top level of React components or custom hooks because React relies on consistent hook call order between renders. Calling hooks conditionally, inside loops, nested functions, event handlers, or try/catch can break that order and cause incorrect state matching.
 
@@ -1149,13 +1149,13 @@ Hooks must be called at the top level of React components or custom hooks becaus
 
 ---
 
-## 1\. useEffect lifecycle
+## 1. useEffect lifecycle
 
-## **Simple answer**
+## Simple answer
 
 `useEffect` runs after render and commit. Its cleanup runs before the effect re-runs and when the component unmounts.
 
-## **Mount-like behavior**
+## Mount-like behavior
 
 React.useEffect(() \=\> \{
 
@@ -1169,7 +1169,7 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **Update behavior**
+## Update behavior
 
 React.useEffect(() \=\> \{
 
@@ -1183,7 +1183,7 @@ React.useEffect(() \=\> \{
 
 \}, \[userId\]);
 
-## **No dependency array**
+## No dependency array
 
 React.useEffect(() \=\> \{
 
@@ -1191,15 +1191,15 @@ React.useEffect(() \=\> \{
 
 \});
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useEffect` runs after React commits DOM updates. With an empty dependency array, it runs after mount and cleanup runs on unmount. With dependencies, it runs after mount and whenever dependencies change, and cleanup runs before the next effect execution. Without dependency array, it runs after every render.
 
 ---
 
-## 2\. useMemo vs useCallback
+## 2. useMemo vs useCallback
 
-## **Answer**
+## Answer
 
 `useMemo` caches a value. `useCallback` caches a function reference.
 
@@ -1215,15 +1215,15 @@ const handleClick \= React.useCallback(() \=\> \{
 
 \}, \[id\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useMemo` is for memoizing calculated values like filtered lists, sorted data, or stable objects. `useCallback` is for memoizing function references, usually when passing callbacks to memoized children or using functions in dependency arrays. Both should be used when they solve a real performance or stability problem, not by default everywhere.
 
 ---
 
-## 3\. useRef use cases
+## 3. useRef use cases
 
-## **Answer**
+## Answer
 
 `useRef` is useful when we need a value that persists across renders but does not trigger re-render.
 
@@ -1238,7 +1238,7 @@ Common use cases:
 * Integrate third-party libraries  
 * Avoid stale closure in some event listeners
 
-## **Example: latest value ref**
+## Example: latest value ref
 
 function Component(\{ value \}) \{
 
@@ -1266,15 +1266,15 @@ function Component(\{ value \}) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useRef` is used for DOM references and mutable values that should persist across renders without triggering re-render. It is useful for focusing inputs, storing timer IDs, keeping previous values, holding latest values for callbacks, and integrating with third-party libraries.
 
 ---
 
-## 4\. useState vs useReducer
+## 4. useState vs useReducer
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | useState | useReducer |
 | ----- | ----- | ----- |
@@ -1284,15 +1284,15 @@ function Component(\{ value \}) \{
 | Good for | Boolean, input, counter | Forms, state machines, complex transitions |
 | Testability | Basic | Reducer is easy to test |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useState` is best for simple independent state. `useReducer` is better when state has multiple related fields or complex transition logic. Reducers make state updates more predictable and easier to test.
 
 ---
 
-## 5\. useEffect vs useLayoutEffect
+## 5. useEffect vs useLayoutEffect
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | useEffect | useLayoutEffect |
 | ----- | ----- | ----- |
@@ -1301,15 +1301,15 @@ function Component(\{ value \}) \{
 | Best for | API calls, subscriptions, timers | DOM measurement, layout correction |
 | Default choice | Yes | Only when needed |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useEffect` runs after the browser paints, so it is best for normal side effects like API calls and subscriptions. `useLayoutEffect` runs after DOM changes but before paint, so it is useful for measuring layout or preventing flicker. Since it blocks paint, use it only when necessary.
 
 ---
 
-## 6\. Why hooks should not be called conditionally?
+## 6. Why hooks should not be called conditionally?
 
-## **Answer**
+## Answer
 
 React tracks hooks by their call order.
 
@@ -1331,15 +1331,15 @@ function Component(\{ enabled \}) \{
 
 If `enabled` changes, React cannot reliably know which state belongs to which hook.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Hooks cannot be called conditionally because React relies on the same hook call order on every render. If the order changes, React may connect the wrong internal state or effect to the wrong hook call.
 
 ---
 
-## 7\. What is stale closure in hooks?
+## 7. What is stale closure in hooks?
 
-## **Simple meaning**
+## Simple meaning
 
 A stale closure happens when a function remembers old state or props from a previous render.
 
@@ -1365,7 +1365,7 @@ function Counter() \{
 
 This logs the initial `count` because the effect captured the first render’s value.
 
-## **Fix 1: Add dependency**
+## Fix 1: Add dependency
 
 React.useEffect(() \=\> \{
 
@@ -1379,7 +1379,7 @@ React.useEffect(() \=\> \{
 
 \}, \[count\]);
 
-## **Fix 2: Use ref for latest value**
+## Fix 2: Use ref for latest value
 
 const countRef \= React.useRef(count);
 
@@ -1401,15 +1401,15 @@ React.useEffect(() \=\> \{
 
 \}, \[\]);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A stale closure happens when an effect, callback, or timer captures old state or props from a previous render. It can be fixed by adding correct dependencies, using functional state updates, or storing the latest value in a ref when needed.
 
 ---
 
-## 8\. What makes a good custom hook?
+## 8. What makes a good custom hook?
 
-## **Answer**
+## Answer
 
 A good custom hook:
 
@@ -1421,7 +1421,7 @@ A good custom hook:
 * Avoids unnecessary re-renders  
 * Does not hide too much business logic unexpectedly
 
-## **Example**
+## Example
 
 function useDebouncedValue(value, delay) \{
 
@@ -1451,7 +1451,7 @@ Usage:
 
 const debouncedSearch \= useDebouncedValue(searchText, 500);
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A good custom hook extracts reusable hook-based logic behind a clean API. It should handle its own effects and cleanup, follow the Rules of Hooks, and make components easier to read without hiding important behavior.
 

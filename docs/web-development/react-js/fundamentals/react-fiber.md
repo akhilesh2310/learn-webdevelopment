@@ -5,7 +5,7 @@ sidebar_position: 6
 
 # React Fiber
 
-# **React Fiberæ-**
+## React Fiberæ-
 
 React Fiber is the internal reconciliation engine introduced in React 16\. It completely changed how React manages UI updates internally.
 
@@ -17,7 +17,7 @@ React Fiber helps React update the UI in a smarter, more controlled, and non-blo
 
 ---
 
-## **The Problem Fiber Solved**
+## The Problem Fiber Solved
 
 Before React Fiber, React used the old **Stack Reconciler**.
 
@@ -35,11 +35,11 @@ React needed a way to split rendering work into smaller pieces and decide which 
 
 ---
 
-## **Key Capabilities of React Fiber**
+## Key Capabilities of React Fiber
 
 React Fiber gives React more control over rendering work.
 
-### **1\. Pause and Resume Work**
+### 1. Pause and Resume Work
 
 React can pause rendering work in the middle, allow the browser to handle urgent work like user input or painting, and then continue rendering later.
 
@@ -49,7 +49,7 @@ If the user is typing in an input while a large list is being rendered, React ca
 
 ---
 
-### **2\. Task Prioritization**
+### 2. Task Prioritization
 
 React can assign different priorities to different updates.
 
@@ -70,7 +70,7 @@ This helps React keep the application responsive.
 
 ---
 
-### **3\. Discard and Restart Work**
+### 3. Discard and Restart Work
 
 If React is working on an update and a newer, more important update comes in, React can discard the old unfinished work and start again with the latest state.
 
@@ -80,13 +80,13 @@ If React is rendering search results for `"rea"` and the user quickly types `"re
 
 ---
 
-## **How Fiber Works Internally**
+## How Fiber Works Internally
 
 React Fiber introduced a new internal data structure and a new rendering model.
 
 ---
 
-## **1\. Fiber Node Data Structure**
+## 1. Fiber Node Data Structure
 
 A **Fiber** is a plain JavaScript object that represents a unit of work in React.
 
@@ -117,7 +117,7 @@ That is why Fiber is sometimes described as a **custom virtual stack frame syste
 
 ---
 
-## **2\. Two-Phase Rendering Cycle**
+## 2. Two-Phase Rendering Cycle
 
 React Fiber works in two major phases:
 
@@ -131,7 +131,7 @@ Browser paints updated UI
 
 ---
 
-## **Render Phase**
+## Render Phase
 
 The render phase is where React figures out what needs to change.
 
@@ -153,7 +153,7 @@ Asynchronous and interruptible in modern React.
 
 ---
 
-## **Commit Phase**
+## Commit Phase
 
 The commit phase is where React applies the final changes to the real DOM.
 
@@ -174,7 +174,7 @@ Synchronous and non-interruptible.
 
 ---
 
-## **Render Phase vs Commit Phase**
+## Render Phase vs Commit Phase
 
 Render Phase  
 \- Happens in memory  
@@ -192,7 +192,7 @@ Commit Phase
 
 ---
 
-## **Double Buffering in React Fiber**
+## Double Buffering in React Fiber
 
 React Fiber uses a concept similar to **double buffering**.
 
@@ -212,13 +212,13 @@ This helps React prepare updates safely before showing them to the user.
 
 ---
 
-## **User-Facing Features Enabled by Fiber**
+## User-Facing Features Enabled by Fiber
 
 As a developer, we do not directly use Fiber. It is an internal React engine.
 
 But many modern React features are built on top of Fiber.
 
-### **1\. Concurrent Rendering**
+### 1. Concurrent Rendering
 
 Fiber allows React to prepare multiple rendering tasks with different priorities.
 
@@ -226,7 +226,7 @@ It does not mean React runs everything truly in parallel. Instead, React can pau
 
 ---
 
-### **2\. Suspense**
+### 2. Suspense
 
 Suspense allows React to pause rendering while waiting for something, such as lazy-loaded components or async data.
 
@@ -240,7 +240,7 @@ Fiber makes this kind of rendering control possible.
 
 ---
 
-### **3\. Transitions**
+### 3. Transitions
 
 `useTransition` allows us to mark some updates as non-urgent.
 
@@ -258,7 +258,7 @@ This keeps the UI responsive.
 
 ---
 
-### **4\. Error Boundaries**
+### 4. Error Boundaries
 
 Error Boundaries allow React to catch rendering errors in part of the component tree instead of crashing the entire application.
 
@@ -266,7 +266,7 @@ Fiber improved React’s ability to recover from rendering errors and safely upd
 
 ---
 
-## **Simple Interview Answer**
+## Simple Interview Answer
 
 React Fiber is React’s internal reconciliation engine introduced in React 16\. It replaced the old synchronous stack reconciler.
 

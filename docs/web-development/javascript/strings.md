@@ -5,15 +5,15 @@ sidebar_position: 17
 
 # Strings
 
-# **JavaScript Strings**
+## JavaScript Strings
 
 Strings are used to store and work with text data. In JavaScript, strings are **primitive values** and are **immutable**, meaning once created, the original string cannot be changed. String methods usually return a new string instead of modifying the existing one.
 
 ---
 
-# **1\. String Basics**
+## 1. String Basics
 
-## **Simple meaning**
+## Simple meaning
 
 A string is a sequence of characters.
 
@@ -27,7 +27,7 @@ const a \= "Hello";
 const b \= 'Hello';  
 const c \= \`Hello $\{name\}\`;
 
-## **Key mental model**
+## Key mental model
 
 Think of a string as an **immutable character sequence**.
 
@@ -43,7 +43,7 @@ console.log(str); // "hello"
 
 Answer: No error in non-strict mode, but the string does not change.
 
-## **Important points**
+## Important points
 
 * Strings are zero-indexed.  
 * `length` gives the number of UTF-16 code units, not always user-visible characters.  
@@ -58,27 +58,27 @@ for (const char of "abc") \{
 // "b"  
 // "c"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A string in JavaScript is an immutable sequence of characters. We can access characters by index and use string methods for searching, slicing, replacing, and transforming, but these methods return new strings instead of modifying the original string.
 
 ---
 
-# **2\. Common String Methods**
+## 2. Common String Methods
 
-## **Simple meaning**
+## Simple meaning
 
 String methods help us search, extract, transform, replace, split, and clean text.
 
-## **Common methods**
+## Common methods
 
-### **`length`**
+### `length`
 
 const str \= "React";
 
 console.log(str.length); // 5
 
-### **`charAt(index)` and index access**
+### `charAt(index)` and index access
 
 const str \= "React";
 
@@ -92,7 +92,7 @@ const str \= "React";
 console.log(str.charAt(10)); // ""  
 console.log(str\[10\]); // undefined
 
-### **`includes`**
+### `includes`
 
 Checks whether a substring exists.
 
@@ -100,14 +100,14 @@ const text \= "Frontend Engineer";
 
 console.log(text.includes("Engineer")); // true
 
-### **`startsWith` / `endsWith`**
+### `startsWith` / `endsWith`
 
 const file \= "profile.png";
 
 console.log(file.startsWith("profile")); // true  
 console.log(file.endsWith(".png")); // true
 
-### **`indexOf` / `lastIndexOf`**
+### `indexOf` / `lastIndexOf`
 
 const text \= "banana";
 
@@ -115,7 +115,7 @@ console.log(text.indexOf("a")); // 1
 console.log(text.lastIndexOf("a")); // 5  
 console.log(text.indexOf("z")); // \-1
 
-### **`slice(start, end)`**
+### `slice(start, end)`
 
 Extracts part of a string. End index is excluded.
 
@@ -125,7 +125,7 @@ console.log(str.slice(0, 4)); // "Java"
 console.log(str.slice(4)); // "Script"  
 console.log(str.slice(-6)); // "Script"
 
-### **`substring(start, end)`**
+### `substring(start, end)`
 
 Similar to `slice`, but negative indexes are treated as `0`.
 
@@ -134,13 +134,13 @@ const str \= "JavaScript";
 console.log(str.substring(0, 4)); // "Java"  
 console.log(str.substring(-4)); // "JavaScript"
 
-### **`toLowerCase` / `toUpperCase`**
+### `toLowerCase` / `toUpperCase`
 
 const email \= "AKHIL@TEST.COM";
 
 console.log(email.toLowerCase()); // "akhil@test.com"
 
-### **`trim`, `trimStart`, `trimEnd`**
+### `trim`, `trimStart`, `trimEnd`
 
 const input \= "  hello  ";
 
@@ -148,14 +148,14 @@ console.log(input.trim()); // "hello"
 console.log(input.trimStart()); // "hello  "  
 console.log(input.trimEnd()); // "  hello"
 
-### **`replace` and `replaceAll`**
+### `replace` and `replaceAll`
 
 const text \= "apple banana apple";
 
 console.log(text.replace("apple", "orange")); // "orange banana apple"  
 console.log(text.replaceAll("apple", "orange")); // "orange banana orange"
 
-### **`split`**
+### `split`
 
 Converts a string into an array.
 
@@ -163,11 +163,11 @@ const csv \= "react,js,ts";
 
 console.log(csv.split(",")); // \["react", "js", "ts"\]
 
-### **`repeat`**
+### `repeat`
 
 console.log("\*".repeat(5)); // "\*\*\*\*\*"
 
-## **Important traps**
+## Important traps
 
 `slice`, `substring`, and `substr` are different. `substr` is older and generally avoided.
 
@@ -184,15 +184,15 @@ const text \= "a-b-c";
 console.log(text.replace("-", "\_")); // "a\_b-c"  
 console.log(text.replaceAll("-", "\_")); // "a\_b\_c"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Common string methods include `includes`, `indexOf`, `slice`, `substring`, `split`, `replace`, `replaceAll`, `trim`, `toLowerCase`, and `toUpperCase`. Most of these methods return a new string because strings are immutable.
 
 ---
 
-# **3\. String Immutability**
+## 3. String Immutability
 
-## **Simple meaning**
+## Simple meaning
 
 String immutability means once a string is created, the original value cannot be changed.
 
@@ -212,7 +212,7 @@ str \= str.toUpperCase();
 
 console.log(str); // "HELLO"
 
-## **Key mental model**
+## Key mental model
 
 String methods do not modify the existing string. They return a new string.
 
@@ -223,7 +223,7 @@ const updated \= text.replace("R", "F");
 console.log(text); // "React"  
 console.log(updated); // "Feact"
 
-## **Important trap**
+## Important trap
 
 const str \= "hello";
 
@@ -233,7 +233,7 @@ console.log(str); // "hello"
 
 Answer: The original string does not change because strings are immutable.
 
-## **Why this matters in frontend**
+## Why this matters in frontend
 
 When cleaning form input, always assign the result.
 
@@ -251,23 +251,23 @@ email \= email.trim().toLowerCase();
 
 console.log(email); // "test@mail.com"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Strings in JavaScript are immutable. We cannot modify a string in place. Methods like `trim`, `replace`, and `toUpperCase` return a new string, so we need to store or return the updated value.
 
 ---
 
-# **4\. String Manipulation**
+## 4. String Manipulation
 
-## **Simple meaning**
+## Simple meaning
 
 String manipulation means changing, extracting, formatting, or analyzing text.
 
 In interviews, string manipulation is commonly used for problems like reversing strings, checking palindromes, counting characters, validating input, and comparing words.
 
-## **Practical examples**
+## Practical examples
 
-### **Clean user input**
+### Clean user input
 
 const input \= "  Akhilesh@Email.COM  ";
 
@@ -275,7 +275,7 @@ const normalized \= input.trim().toLowerCase();
 
 console.log(normalized); // "akhilesh@email.com"
 
-### **Create initials**
+### Create initials
 
 const name \= "Akhilesh Bamhore";
 
@@ -286,7 +286,7 @@ const initials \= name
 
 console.log(initials); // "AB"
 
-### **Capitalize first letter**
+### Capitalize first letter
 
 function capitalize(str) \{  
   if (\!str) return "";
@@ -296,13 +296,13 @@ function capitalize(str) \{
 
 console.log(capitalize("react")); // "React"
 
-### **Convert sentence to words**
+### Convert sentence to words
 
 const sentence \= "React is powerful";
 
 console.log(sentence.split(" ")); // \["React", "is", "powerful"\]
 
-## **Common mistakes**
+## Common mistakes
 
 * Forgetting that strings are immutable.  
 * Using `split("")` blindly for Unicode characters like emojis.  
@@ -310,15 +310,15 @@ console.log(sentence.split(" ")); // \["React", "is", "powerful"\]
 * Not removing spaces or punctuation when checking palindrome/anagram.  
 * Using nested loops where frequency map would be cleaner.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 String manipulation involves operations like trimming, normalizing, splitting, joining, replacing, reversing, and counting characters. In frontend work, it is useful for form cleanup, search, validation, formatting labels, generating slugs, and processing API text.
 
 ---
 
-# **5\. Reverse String**
+## 5. Reverse String
 
-## **Simple meaning**
+## Simple meaning
 
 Reversing a string means returning characters in the opposite order.
 
@@ -328,7 +328,7 @@ function reverseString(str) \{
 
 console.log(reverseString("hello")); // "olleh"
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -336,7 +336,7 @@ Step by step:
 \["h", "e", "l", "l", "o"\].reverse(); // \["o", "l", "l", "e", "h"\]  
 \["o", "l", "l", "e", "h"\].join(""); // "olleh"
 
-## **Manual approach**
+## Manual approach
 
 function reverseString(str) \{  
   let result \= "";
@@ -350,7 +350,7 @@ function reverseString(str) \{
 
 console.log(reverseString("React")); // "tcaeR"
 
-## **Two-pointer approach**
+## Two-pointer approach
 
 Strings are immutable, so convert to array first.
 
@@ -371,7 +371,7 @@ function reverseString(str) \{
 
 console.log(reverseString("hello")); // "olleh"
 
-## **Edge cases / traps**
+## Edge cases / traps
 
 * Empty string should return `""`.  
 * Single character should return same character.  
@@ -381,21 +381,21 @@ console.log(reverseString("hello")); // "olleh"
 console.log(reverseString("")); // ""  
 console.log(reverseString("a")); // "a"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 To reverse a string, I usually convert it to an array, reverse the array, and join it back. Since strings are immutable in JavaScript, direct in-place reversal is not possible. For interviews, I can also implement it manually using a loop or two-pointer approach.
 
 ---
 
-# **6\. Palindrome**
+## 6. Palindrome
 
-## **Simple meaning**
+## Simple meaning
 
 A palindrome is a string that reads the same forward and backward.
 
 Examples: `"madam"`, `"racecar"`, `"level"`.
 
-## **Basic solution**
+## Basic solution
 
 function isPalindrome(str) \{  
   const reversed \= str.split("").reverse().join("");
@@ -406,7 +406,7 @@ function isPalindrome(str) \{
 console.log(isPalindrome("madam")); // true  
 console.log(isPalindrome("hello")); // false
 
-## **Better solution with normalization**
+## Better solution with normalization
 
 For real interview problems, normalize the string first.
 
@@ -419,7 +419,7 @@ function isPalindrome(str) \{
 
 console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
 
-## **Two-pointer solution**
+## Two-pointer solution
 
 More efficient because it avoids creating a reversed string.
 
@@ -442,28 +442,28 @@ function isPalindrome(str) \{
 console.log(isPalindrome("racecar")); // true  
 console.log(isPalindrome("React")); // false
 
-## **Edge cases / traps**
+## Edge cases / traps
 
 * Case sensitivity: `"Madam"` should usually be treated as palindrome after lowercasing.  
 * Spaces/punctuation may need to be ignored.  
 * Empty string is usually considered palindrome.  
 * Clarify whether only alphanumeric characters should be checked.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A palindrome is a string that reads the same forward and backward. I usually normalize it by lowercasing and removing non-alphanumeric characters, then compare characters using two pointers from both ends.
 
 ---
 
-# **7\. Anagram**
+## 7. Anagram
 
-## **Simple meaning**
+## Simple meaning
 
 Two strings are anagrams if they contain the same characters with the same frequency, but possibly in a different order.
 
 Examples: `"listen"` and `"silent"`.
 
-## **Sorting approach**
+## Sorting approach
 
 function isAnagram(s1, s2) \{  
   const normalize \= (str) \=\>  
@@ -475,7 +475,7 @@ function isAnagram(s1, s2) \{
 console.log(isAnagram("listen", "silent")); // true  
 console.log(isAnagram("hello", "world")); // false
 
-## **Frequency map approach**
+## Frequency map approach
 
 Better for performance because sorting is usually `O(n log n)`.
 
@@ -502,7 +502,7 @@ function isAnagram(s1, s2) \{
 console.log(isAnagram("listen", "silent")); // true  
 console.log(isAnagram("rat", "car")); // false
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -512,7 +512,7 @@ Step by step:
 * Decrease counts using the second string.  
 * If a character is missing or count becomes invalid, return `false`.
 
-## **Edge cases / traps**
+## Edge cases / traps
 
 * Normalize case.  
 * Decide whether spaces and punctuation should be ignored.  
@@ -522,15 +522,15 @@ Step by step:
 console.log(isAnagram("aab", "aba")); // true  
 console.log(isAnagram("aab", "abb")); // false
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Two strings are anagrams if they have the same characters with the same frequencies. A simple solution is to sort both strings and compare them. A better solution is to use a frequency map, which avoids sorting and works in linear time.
 
 ---
 
-# **8\. Character Frequency**
+## 8. Character Frequency
 
-## **Simple meaning**
+## Simple meaning
 
 Character frequency means counting how many times each character appears in a string.
 
@@ -547,7 +547,7 @@ function charFrequency(str) \{
 console.log(charFrequency("banana"));  
 // \{ b: 1, a: 3, n: 2 \}
 
-## **With normalization**
+## With normalization
 
 function charFrequency(str) \{  
   const cleaned \= str.toLowerCase().replace(/\\s/g, "");  
@@ -563,7 +563,7 @@ function charFrequency(str) \{
 console.log(charFrequency("Hello World"));  
 // \{ h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1 \}
 
-## **Using `Map`**
+## Using `Map`
 
 function charFrequency(str) \{  
   const map \= new Map();
@@ -578,7 +578,7 @@ function charFrequency(str) \{
 console.log(charFrequency("banana"));  
 // Map(3) \{ "b" \=\> 1, "a" \=\> 3, "n" \=\> 2 \}
 
-## **Practical use cases**
+## Practical use cases
 
 * Anagram checking.  
 * Finding duplicate characters.  
@@ -587,7 +587,7 @@ console.log(charFrequency("banana"));
 * Input validation.  
 * Text analytics.
 
-## **Example: first non-repeating character**
+## Example: first non-repeating character
 
 function firstNonRepeatingChar(str) \{  
   const freq \= \{\};
@@ -605,15 +605,15 @@ function firstNonRepeatingChar(str) \{
 
 console.log(firstNonRepeatingChar("swiss")); // "w"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Character frequency is usually solved using an object or `Map`. We iterate through the string and count each character. This pattern is useful for anagrams, duplicate checks, first non-repeating character, and many string interview problems.
 
 ---
 
-# **9\. Common Interview Topics / Questions**
+## 9. Common Interview Topics / Questions
 
-## **1\. How do you reverse a string?**
+## 1. How do you reverse a string?
 
 Use `split("").reverse().join("")` for a simple solution, or use a manual loop/two-pointer approach to show deeper understanding.
 
@@ -623,7 +623,7 @@ function reverseString(str) \{
 
 console.log(reverseString("hello")); // "olleh"
 
-## **2\. How do you check if a string is a palindrome?**
+## 2. How do you check if a string is a palindrome?
 
 Normalize the string, then compare from both ends using two pointers.
 
@@ -644,7 +644,7 @@ function isPalindrome(str) \{
 
 console.log(isPalindrome("Madam")); // true
 
-## **3\. How do you check if two strings are anagrams?**
+## 3. How do you check if two strings are anagrams?
 
 Use a frequency map.
 
@@ -667,7 +667,7 @@ function isAnagram(s1, s2) \{
 
 console.log(isAnagram("listen", "silent")); // true
 
-## **4\. How do you count character frequency?**
+## 4. How do you count character frequency?
 
 Use an object or `Map`.
 
@@ -684,7 +684,7 @@ function charFrequency(str) \{
 console.log(charFrequency("banana"));  
 // \{ b: 1, a: 3, n: 2 \}
 
-## **5\. How do you find duplicate characters?**
+## 5. How do you find duplicate characters?
 
 function duplicateChars(str) \{  
   const freq \= \{\};  
@@ -703,7 +703,7 @@ function duplicateChars(str) \{
 
 console.log(duplicateChars("programming")); // \["r", "g", "m"\]
 
-## **6\. How do you find the first non-repeating character?**
+## 6. How do you find the first non-repeating character?
 
 function firstNonRepeatingChar(str) \{  
   const freq \= \{\};
@@ -723,9 +723,9 @@ console.log(firstNonRepeatingChar("aabbcdd")); // "c"
 
 ---
 
-# **10\. Important String Method Traps**
+## 10. Important String Method Traps
 
-## **`split("")` with emojis**
+## `split("")` with emojis
 
 console.log("😊".split("")); // \["\\ud83d", "\\ude0a"\]
 
@@ -735,14 +735,14 @@ Better:
 
 console.log(\[..."😊"\]); // \["😊"\]
 
-## **`replace` vs `replaceAll`**
+## `replace` vs `replaceAll`
 
 const text \= "one one one";
 
 console.log(text.replace("one", "two")); // "two one one"  
 console.log(text.replaceAll("one", "two")); // "two two two"
 
-## **`trim` does not mutate**
+## `trim` does not mutate
 
 let input \= "  hello  ";
 
@@ -758,7 +758,7 @@ input \= input.trim();
 
 console.log(input); // "hello"
 
-## **`toLowerCase` does not mutate**
+## `toLowerCase` does not mutate
 
 let email \= "TEST@MAIL.COM";
 
@@ -776,7 +776,7 @@ console.log(email); // "test@mail.com"
 
 ---
 
-# **11\. Quick Revision Summary**
+## 11. Quick Revision Summary
 
 | Topic | Key point |
 | ----- | ----- |
@@ -796,6 +796,6 @@ console.log(email); // "test@mail.com"
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 Strings in JavaScript are immutable sequences of characters. We can access characters by index and use methods like `slice`, `split`, `replace`, `trim`, `toLowerCase`, and `includes`, but these methods return new strings instead of changing the original. For interview problems, common patterns include reversing strings, palindrome checks, anagram checks, and character frequency counting. For simple problems, built-in methods are fine, but for stronger answers, two-pointer and frequency map approaches are usually preferred.

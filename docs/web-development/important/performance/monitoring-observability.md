@@ -5,7 +5,7 @@ sidebar_position: 7
 
 # Monitoring & Observability
 
-#### **6\. Monitoring & Profiling**
+#### 6. Monitoring & Profiling
 
 * Use tools like **Lighthouse**, **New Relic**, or **Datadog** to find bottlenecks.
 

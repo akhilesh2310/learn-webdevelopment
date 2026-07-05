@@ -48,15 +48,15 @@ JavaScript array methods are commonly asked because they test iteration, immutab
 | 29 | [unshift()](https://www.w3schools.com/jsref/jsref_unshift.asp) | Adds new elements to the beginning of an array, and returns the new length |
 | 30 | [valueOf()](https://www.w3schools.com/jsref/jsref_valueof_array.asp) | Returns the primitive value of an array |
 
-## 1\. `forEach`
+## 1. `forEach`
 
-## **Simple meaning**
+## Simple meaning
 
 `forEach` runs a function for every item in an array.
 
 It is mainly used for side effects like logging, updating external variables, calling functions, or triggering actions. It does **not** return a new array.
 
-## **Key mental model**
+## Key mental model
 
 Use `forEach` when you want to **do something**, not when you want to **create a transformed array**.
 
@@ -68,7 +68,7 @@ users.forEach((user) \=\> \{
 
 \});
 
-## **Important points**
+## Important points
 
 * Returns `undefined`.  
 * Does not create a new array.  
@@ -76,7 +76,7 @@ users.forEach((user) \=\> \{
 * Cannot be stopped using `break` or `return`.  
 * Not ideal for async `await` flow.
 
-## **Common trap**
+## Common trap
 
 const result \= \[1, 2, 3\].forEach((num) \=\> num \* 2);
 
@@ -84,21 +84,21 @@ console.log(result); // undefined
 
 Answer: `forEach` returns `undefined`, so it should not be used when you need a transformed array.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `forEach` is used to iterate over an array when we want side effects. It does not return a new array and always returns `undefined`. I use it for actions like logging, triggering calls, or updating external state, but not for transforming data.
 
 ---
 
-## 2\. `map`
+## 2. `map`
 
-## **Simple meaning**
+## Simple meaning
 
 `map` creates a **new array** by transforming each item.
 
 Use it when input and output array lengths should remain the same.
 
-## **Key mental model**
+## Key mental model
 
 Use `map` when you want to convert **array of A into array of B**.
 
@@ -108,7 +108,7 @@ const withTax \= prices.map((price) \=\> price \* 1.18);
 
 console.log(withTax); // \[118, 236, 354\]
 
-## **Practical frontend example**
+## Practical frontend example
 
 const users \= \[
 
@@ -122,7 +122,7 @@ const userNames \= users.map((user) \=\> user.name);
 
 console.log(userNames); // \["Akhil", "Rahul"\]
 
-## **Important points**
+## Important points
 
 * Returns a new array.  
 * Does not mutate original array unless callback mutates object references.  
@@ -131,7 +131,7 @@ console.log(userNames); // \["Akhil", "Rahul"\]
 
 users.map((user) \=\> \<UserCard key=\{user.id\} user=\{user\} /\>);
 
-## **Common mistake**
+## Common mistake
 
 const result \= \[1, 2, 3\].map((num) \=\> \{
 
@@ -153,19 +153,19 @@ const result \= \[1, 2, 3\].map((num) \=\> \{
 
 console.log(result); // \[2, 4, 6\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `map` is used when we want to transform every item in an array and return a new array of the same length. It is commonly used in frontend apps to convert API data into UI models or render lists in React.
 
 ---
 
-## 3\. `filter`
+## 3. `filter`
 
-## **Simple meaning**
+## Simple meaning
 
 `filter` creates a new array with only the items that pass a condition.
 
-## **Key mental model**
+## Key mental model
 
 Use `filter` when you want to **keep or remove items**.
 
@@ -175,7 +175,7 @@ const even \= numbers.filter((num) \=\> num % 2 \=== 0);
 
 console.log(even); // \[2, 4\]
 
-## **Practical frontend example**
+## Practical frontend example
 
 const products \= \[
 
@@ -189,14 +189,14 @@ const availableProducts \= products.filter((product) \=\> product.inStock);
 
 console.log(availableProducts); // \[\{ name: "Phone", inStock: true \}\]
 
-## **Important points**
+## Important points
 
 * Returns a new array.  
 * Does not mutate original array.  
 * Output length can be smaller or equal to original array.  
 * If no item matches, returns `[]`.
 
-## **Common trap**
+## Common trap
 
 const result \= \[1, 2, 3\].filter((num) \=\> num \* 2);
 
@@ -204,21 +204,21 @@ console.log(result); // \[1, 2, 3\]
 
 Why? `filter` expects a truthy/falsy condition. Since `num * 2` is truthy for all items, all items are kept.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `filter` is used to create a new array by keeping only the elements that match a condition. I use it for frontend cases like search filters, active records, selected items, and permission-based UI filtering.
 
 ---
 
-## 4\. `reduce`
+## 4. `reduce`
 
-## **Simple meaning**
+## Simple meaning
 
 `reduce` converts an array into a single result.
 
 That result can be a number, string, object, array, map, grouped data, or any accumulated value.
 
-## **Key mental model**
+## Key mental model
 
 Use `reduce` when you need to **accumulate** values.
 
@@ -228,7 +228,7 @@ const total \= numbers.reduce((acc, num) \=\> acc \+ num, 0);
 
 console.log(total); // 60
 
-## **How it works**
+## How it works
 
 array.reduce((accumulator, currentItem) \=\> \{
 
@@ -240,15 +240,15 @@ array.reduce((accumulator, currentItem) \=\> \{
 * `currentItem` is the current array item.  
 * `initialValue` is the starting value.
 
-## **Important reduce use cases**
+## Important reduce use cases
 
-### **1\. Sum**
+### 1. Sum
 
 const total \= \[10, 20, 30\].reduce((acc, num) \=\> acc \+ num, 0);
 
 console.log(total); // 60
 
-### **2\. Count occurrences**
+### 2. Count occurrences
 
 const items \= \["apple", "banana", "apple"\];
 
@@ -262,7 +262,7 @@ const count \= items.reduce((acc, item) \=\> \{
 
 console.log(count); // \{ apple: 2, banana: 1 \}
 
-### **3\. Group by property**
+### 3. Group by property
 
 const users \= \[
 
@@ -294,7 +294,7 @@ console.log(grouped);
 
 // \}
 
-### **4\. Convert array to object lookup**
+### 4. Convert array to object lookup
 
 const users \= \[
 
@@ -324,7 +324,7 @@ console.log(userById);
 
 This is very useful when repeated searching is needed.
 
-## **Important trap**
+## Important trap
 
 const total \= \[\].reduce((acc, num) \=\> acc \+ num);
 
@@ -336,19 +336,19 @@ Common mistake: Not passing `initialValue`.
 
 Always prefer passing the initial value.
 
-## **Trade-offs**
+## Trade-offs
 
 `reduce` is powerful, but it can become hard to read if too much logic is added inside it. For simple transformations, prefer `map` or `filter`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `reduce` is used when we want to convert an array into a single accumulated result. That result can be a number, object, array, grouped data, or lookup map. I use it for totals, grouping, counting, flattening, and converting arrays into object maps. I usually provide an initial value to avoid errors with empty arrays.
 
 ---
 
-## 5\. `find`
+## 5. `find`
 
-## **Simple meaning**
+## Simple meaning
 
 `find` returns the **first item** that matches a condition.
 
@@ -364,22 +364,22 @@ const user \= users.find((user) \=\> user.id \=== 2);
 
 console.log(user); // \{ id: 2, name: "Rahul" \}
 
-## **Important points**
+## Important points
 
 * Returns the first matching element.  
 * Returns `undefined` if no match is found.  
 * Stops once it finds a match.  
 * Useful for finding one object from API data.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `find` is used when we need the first matching item from an array. It returns the actual element, or `undefined` if nothing matches.
 
 ---
 
-## 6\. `findIndex`
+## 6. `findIndex`
 
-## **Simple meaning**
+## Simple meaning
 
 `findIndex` returns the index of the first item that matches a condition.
 
@@ -395,13 +395,13 @@ const index \= users.findIndex((user) \=\> user.id \=== 2);
 
 console.log(index); // 1
 
-## **Important points**
+## Important points
 
 * Returns index.  
 * Returns `-1` if no match is found.  
 * Useful when you need to update or remove a specific item by index.
 
-## **Practical example**
+## Practical example
 
 const cart \= \[
 
@@ -423,15 +423,15 @@ console.log(cart);
 
 // \[\{ id: 1, qty: 1 \}, \{ id: 2, qty: 4 \}\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `findIndex` is useful when we need the position of the first matching item. It returns the index if found, otherwise `-1`.
 
 ---
 
-## 7\. `some`
+## 7. `some`
 
-## **Simple meaning**
+## Simple meaning
 
 `some` checks whether **at least one item** passes a condition.
 
@@ -441,11 +441,11 @@ const hasEven \= numbers.some((num) \=\> num % 2 \=== 0);
 
 console.log(hasEven); // true
 
-## **Key mental model**
+## Key mental model
 
 Use `some` for **at least one**.
 
-## **Practical frontend example**
+## Practical frontend example
 
 const permissions \= \["read", "write"\];
 
@@ -453,21 +453,21 @@ const canEdit \= permissions.some((permission) \=\> permission \=== "write");
 
 console.log(canEdit); // true
 
-## **Important points**
+## Important points
 
 * Returns boolean.  
 * Stops as soon as condition is true.  
 * Good for validation, permission checks, and feature flags.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `some` returns `true` if at least one item satisfies the condition. It short-circuits once a match is found.
 
 ---
 
-## 8\. `every`
+## 8. `every`
 
-## **Simple meaning**
+## Simple meaning
 
 `every` checks whether **all items** pass a condition.
 
@@ -477,11 +477,11 @@ const allPassed \= scores.every((score) \=\> score \>= 40);
 
 console.log(allPassed); // true
 
-## **Key mental model**
+## Key mental model
 
 Use `every` for **all must pass**.
 
-## **Practical frontend example**
+## Practical frontend example
 
 const fields \= \[
 
@@ -495,7 +495,7 @@ const isFormValid \= fields.every((field) \=\> field.valid);
 
 console.log(isFormValid); // true
 
-## **Important trap**
+## Important trap
 
 const result \= \[\].every((item) \=\> item \> 0);
 
@@ -503,15 +503,15 @@ console.log(result); // true
 
 Why? For an empty array, `every` returns `true` because no item violates the condition.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `every` returns `true` only if all elements satisfy the condition. It short-circuits when it finds the first false condition.
 
 ---
 
-## 9\. `flat`
+## 9. `flat`
 
-## **Simple meaning**
+## Simple meaning
 
 `flat` creates a new array by flattening nested arrays.
 
@@ -519,7 +519,7 @@ const arr \= \[1, \[2, 3\], \[4\]\];
 
 console.log(arr.flat()); // \[1, 2, 3, 4\]
 
-## **Important points**
+## Important points
 
 * Default depth is `1`.  
 * Returns a new array.  
@@ -533,7 +533,7 @@ console.log(arr.flat(2)); // \[1, 2, 3, \[4\]\]
 
 console.log(arr.flat(Infinity)); // \[1, 2, 3, 4\]
 
-## **Practical frontend example**
+## Practical frontend example
 
 const pages \= \[
 
@@ -549,15 +549,15 @@ console.log(allItems); // \[\{ id: 1 \}, \{ id: 2 \}, \{ id: 3 \}, \{ id: 4 \}\]
 
 Useful in paginated API responses.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `flat` is used to flatten nested arrays. By default, it flattens one level, but we can pass a depth like `2` or `Infinity`.
 
 ---
 
-## 10\. `flatMap`
+## 10. `flatMap`
 
-## **Simple meaning**
+## Simple meaning
 
 `flatMap` does `map` first, then `flat(1)`.
 
@@ -567,11 +567,11 @@ const result \= arr.flatMap((num) \=\> \[num, num \* 2\]);
 
 console.log(result); // \[1, 2, 2, 4, 3, 6\]
 
-## **Key mental model**
+## Key mental model
 
 Use `flatMap` when each item can produce **zero, one, or many items**.
 
-## **Practical example**
+## Practical example
 
 const users \= \[
 
@@ -585,27 +585,27 @@ const tags \= users.flatMap((user) \=\> user.tags);
 
 console.log(tags); // \["react", "js", "ts"\]
 
-## **Important points**
+## Important points
 
 * Flattens only one level.  
 * More concise than `map(...).flat()`.  
 * Useful for nested API data.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `flatMap` maps each item and then flattens the result by one level. It is useful when one input item can produce multiple output items.
 
 ---
 
-## 11\. `sort`
+## 11. `sort`
 
-## **Simple meaning**
+## Simple meaning
 
 `sort` arranges array items.
 
 Important: `sort` **mutates the original array**.
 
-## **Default behavior**
+## Default behavior
 
 By default, JavaScript sorts values as strings.
 
@@ -617,7 +617,7 @@ console.log(nums); // \[10, 2, 30\]
 
 Why? Because values are compared as strings: `"10"`, `"2"`, `"30"`.
 
-## **Correct numeric sort**
+## Correct numeric sort
 
 const nums \= \[10, 2, 30\];
 
@@ -633,7 +633,7 @@ nums.sort((a, b) \=\> b \- a);
 
 console.log(nums); // \[30, 10, 2\]
 
-## **Sorting objects**
+## Sorting objects
 
 const products \= \[
 
@@ -659,7 +659,7 @@ console.log(products);
 
 // \]
 
-## **Sorting strings**
+## Sorting strings
 
 const names \= \["Rahul", "Akhil", "Neha"\];
 
@@ -667,7 +667,7 @@ names.sort((a, b) \=\> a.localeCompare(b));
 
 console.log(names); // \["Akhil", "Neha", "Rahul"\]
 
-## **Important trap**
+## Important trap
 
 const original \= \[3, 1, 2\];
 
@@ -689,15 +689,15 @@ console.log(original); // \[3, 1, 2\]
 
 console.log(sorted); // \[1, 2, 3\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `sort` is used to order array elements, but the important point is that it mutates the original array. By default, it sorts values as strings, so for numbers we should pass a comparator like `(a, b) => a - b`. For objects, we compare specific fields, and for strings, `localeCompare` is useful.
 
 ---
 
-## 12\. `Set`
+## 12. `Set`
 
-## **Simple meaning**
+## Simple meaning
 
 `Set` stores unique values.
 
@@ -709,11 +709,11 @@ const uniqueIds \= \[...new Set(ids)\];
 
 console.log(uniqueIds); // \[1, 2, 3\]
 
-## **Key mental model**
+## Key mental model
 
 Use `Set` when uniqueness matters.
 
-## **Important methods**
+## Important methods
 
 const set \= new Set();
 
@@ -731,7 +731,7 @@ set.delete(1);
 
 console.log(set.has(1)); // false
 
-## **Practical frontend example**
+## Practical frontend example
 
 const selectedIds \= new Set();
 
@@ -743,7 +743,7 @@ console.log(selectedIds.has(101)); // true
 
 Useful for selected rows, checked items, permission IDs, unique filters, and duplicate detection.
 
-## **Set vs Array**
+## Set vs Array
 
 | Point | Set | Array |
 | ----- | ----- | ----- |
@@ -753,7 +753,7 @@ Useful for selected rows, checked items, permission IDs, unique filters, and dup
 | Index access | No direct index | Supports index |
 | Best use | Unique IDs, duplicate checks | Rendering lists, ordered data |
 
-## **Important trap**
+## Important trap
 
 `Set` checks object references, not deep equality.
 
@@ -767,15 +767,15 @@ console.log(set.size); // 2
 
 Why? Both objects look same, but they are different references.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `Set` is a collection of unique values. It is useful for removing duplicates, checking existence quickly, and managing selected IDs. Compared to arrays, `Set` gives better uniqueness handling and faster lookup, but arrays are better when ordering and index-based access are needed.
 
 ---
 
-## 13\. `Map`
+## 13. `Map`
 
-## **Simple meaning**
+## Simple meaning
 
 `Map` stores key-value pairs.
 
@@ -791,11 +791,11 @@ console.log(userMap.get(1)); // "Akhil"
 
 console.log(userMap.has(2)); // true
 
-## **Key mental model**
+## Key mental model
 
 Use `Map` when you need a real key-value collection with frequent add, delete, lookup, or non-string keys.
 
-## **Practical frontend example**
+## Practical frontend example
 
 const cache \= new Map();
 
@@ -807,7 +807,7 @@ console.log(cache.get("/api/users"));
 
 Useful for caching API responses, storing metadata, lookup tables, and memoization.
 
-## **Map vs Object**
+## Map vs Object
 
 | Point | Map | Object |
 | ----- | ----- | ----- |
@@ -817,7 +817,7 @@ Useful for caching API responses, storing metadata, lookup tables, and memoizati
 | Prototype keys | No accidental prototype keys | Can have prototype conflicts |
 | Use case | Dynamic key-value collection | Structured data model |
 
-## **Important trap**
+## Important trap
 
 const obj \= \{\};
 
@@ -843,15 +843,15 @@ map.set(key2, "value2");
 
 console.log(map.size); // 2
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `Map` is a key-value collection where keys can be of any type. It is better than objects for dynamic collections, frequent lookups, insertions, deletions, and non-string keys. Objects are better for representing fixed structured data.
 
 ---
 
-## 14\. `WeakSet`
+## 14. `WeakSet`
 
-## **Simple meaning**
+## Simple meaning
 
 `WeakSet` stores only objects, and those object references are weak.
 
@@ -863,18 +863,18 @@ weakSet.add(user);
 
 console.log(weakSet.has(user)); // true
 
-## **Key mental model**
+## Key mental model
 
 Use `WeakSet` when you want to track objects temporarily without making the collection iterable or countable.
 
-## **Important points**
+## Important points
 
 * Only objects are allowed.  
 * Not iterable.  
 * No `.size`.  
 * Useful for tracking visited objects or private object markers.
 
-## **Common trap**
+## Common trap
 
 const weakSet \= new WeakSet();
 
@@ -882,15 +882,15 @@ weakSet.add(1);
 
 // TypeError: Invalid value used in weak set
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `WeakSet` stores object values weakly. It only accepts objects, is not iterable, and does not expose `.size`. For the memory-management angle, see [Memory Management](./memory-management.md).
 
 ---
 
-## 15\. `WeakMap`
+## 15. `WeakMap`
 
-## **Simple meaning**
+## Simple meaning
 
 `WeakMap` stores key-value pairs where keys must be objects, and those object keys are weakly referenced.
 
@@ -902,18 +902,18 @@ weakMap.set(user, \{ lastActive: Date.now() \});
 
 console.log(weakMap.get(user)); // \{ lastActive: 178... \}
 
-## **Key mental model**
+## Key mental model
 
 Use `WeakMap` when you want object-only keys and private object metadata.
 
-## **Important points**
+## Important points
 
 * Keys must be objects.  
 * Values can be any type.  
 * Not iterable.  
 * No `.size`.  
 
-## **WeakMap vs Map**
+## WeakMap vs Map
 
 | Point | Map | WeakMap |
 | ----- | ----- | ----- |
@@ -923,7 +923,7 @@ Use `WeakMap` when you want object-only keys and private object metadata.
 | `.size` | Yes | No |
 | Best use | General key-value data | Private metadata, memory-safe object tracking |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `WeakMap` is like `Map`, but its keys must be objects and it is not iterable. It is useful for private metadata and object associations. For the garbage-collection and leak-prevention angle, see [Memory Management](./memory-management.md).
 
@@ -933,9 +933,9 @@ Use `WeakMap` when you want object-only keys and private object metadata.
 
 ---
 
-## 1\. `map` vs `forEach`
+## 1. `map` vs `forEach`
 
-## **Simple answer**
+## Simple answer
 
 `map` returns a new transformed array. `forEach` returns `undefined` and is used for side effects.
 
@@ -949,7 +949,7 @@ console.log(mapped); // \[2, 4, 6\]
 
 console.log(forEachResult); // undefined
 
-## **Key differences**
+## Key differences
 
 | Point | `map` | `forEach` |
 | ----- | ----- | ----- |
@@ -959,7 +959,7 @@ console.log(forEachResult); // undefined
 | Output length | Same as input | No output |
 | React rendering | Commonly used | Not useful directly |
 
-## **Common mistake**
+## Common mistake
 
 // Wrong
 
@@ -971,15 +971,15 @@ users.map((user) \=\> \<UserCard key=\{user.id\} user=\{user\} /\>);
 
 Answer: React needs an array of elements, and `map` returns that array. `forEach` returns `undefined`.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `map` is used when we want to transform each item and return a new array. `forEach` is used when we only want side effects and do not need a return value. In React rendering, `map` is preferred because it returns an array of elements.
 
 ---
 
-## 2\. `filter` vs `find`
+## 2. `filter` vs `find`
 
-## **Simple answer**
+## Simple answer
 
 `filter` returns all matching items as an array. `find` returns only the first matching item.
 
@@ -999,15 +999,15 @@ console.log(users.find((user) \=\> user.active));
 
 // \{ id: 1, active: true \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Use `filter` when multiple items can match. Use `find` when we only need the first matching item.
 
 ---
 
-## 3\. `some` vs `every`
+## 3. `some` vs `every`
 
-## **Simple answer**
+## Simple answer
 
 `some` checks if at least one item passes. `every` checks if all items pass.
 
@@ -1017,15 +1017,15 @@ console.log(nums.some((num) \=\> num % 2 \=== 0)); // true
 
 console.log(nums.every((num) \=\> num % 2 \=== 0)); // false
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `some` is used for “at least one” condition, while `every` is used for “all must satisfy” condition. Both return boolean and short-circuit.
 
 ---
 
-## 4\. `reduce` use cases
+## 4. `reduce` use cases
 
-## **Common use cases**
+## Common use cases
 
 Use `reduce` for:
 
@@ -1037,7 +1037,7 @@ Use `reduce` for:
 * Creating lookup maps.  
 * Calculating derived values from API response.
 
-## **Example: cart total**
+## Example: cart total
 
 const cart \= \[
 
@@ -1055,7 +1055,7 @@ const total \= cart.reduce((acc, item) \=\> \{
 
 console.log(total); // 1050
 
-## **Example: group API data by status**
+## Example: group API data by status
 
 const tickets \= \[
 
@@ -1087,15 +1087,15 @@ console.log(grouped);
 
 // \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `reduce` is useful when we need to derive one final value from an array. That final value can be a number, object, array, grouped object, or lookup map. In frontend apps, I use it for cart totals, grouped API data, frequency counts, and converting arrays into maps for faster access.
 
 ---
 
-## 5\. `Set` vs `Array`
+## 5. `Set` vs `Array`
 
-## **Simple answer**
+## Simple answer
 
 Use `Array` for ordered lists. Use `Set` for unique values and fast existence checks.
 
@@ -1105,21 +1105,21 @@ const unique \= \[...new Set(arr)\];
 
 console.log(unique); // \[1, 2, 3\]
 
-## **Practical example**
+## Practical example
 
 const selectedIds \= new Set(\[101, 102\]);
 
 console.log(selectedIds.has(101)); // true
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An array is better for ordered lists, rendering, and index-based access. A `Set` is better when uniqueness and fast existence checks are important, such as selected IDs, duplicate removal, and permission checks.
 
 ---
 
-## 6\. `Map` vs `Object`
+## 6. `Map` vs `Object`
 
-## **Simple answer**
+## Simple answer
 
 Use `Object` for fixed structured data. Use `Map` for dynamic key-value collections.
 
@@ -1135,7 +1135,7 @@ const cache \= new Map();
 
 cache.set("/api/users", \[\{ id: 1 \}\]);
 
-## **Important difference**
+## Important difference
 
 const obj \= \{\};
 
@@ -1155,15 +1155,15 @@ map.set(key, "value");
 
 console.log(map.get(key)); // "value"
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Objects are good for representing structured data with known properties. `Map` is better for dynamic collections where keys can be any type, where frequent add/delete/lookup operations are needed, or where direct iteration and `.size` are useful.
 
 ---
 
-## 7\. Important `sort` interview points
+## 7. Important `sort` interview points
 
-## **Key points**
+## Key points
 
 * `sort` mutates the original array.  
 * Default sort converts values to strings.  
@@ -1185,7 +1185,7 @@ nums.sort((a, b) \=\> a \- b);
 
 console.log(nums); // \[2, 10, 30\]
 
-## **Sort comparator mental model**
+## Sort comparator mental model
 
 (a, b) \=\> a \- b
 
@@ -1193,15 +1193,15 @@ console.log(nums); // \[2, 10, 30\]
 * Positive result: `b` comes before `a`.  
 * Zero: order stays same.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 JavaScript `sort` mutates the original array and sorts values as strings by default. For numbers, we should pass a comparator like `(a, b) => a - b`. For objects, we compare the specific property, and if we need immutability, we sort a copied array.
 
 ---
 
-## 8\. Check duplicates in array
+## 8. Check duplicates in array
 
-## **Using `Set`**
+## Using `Set`
 
 function hasDuplicate(arr) \{
 
@@ -1213,7 +1213,7 @@ console.log(hasDuplicate(\[1, 2, 3\])); // false
 
 console.log(hasDuplicate(\[1, 2, 2\])); // true
 
-## **Using `some` \+ `indexOf`**
+## Using `some` \+ `indexOf`
 
 function hasDuplicate(arr) \{
 
@@ -1223,19 +1223,19 @@ function hasDuplicate(arr) \{
 
 console.log(hasDuplicate(\[1, 2, 2\])); // true
 
-## **Better answer**
+## Better answer
 
 For primitives, `Set` is cleaner and usually more efficient.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For primitive values, the simplest way to check duplicates is comparing `new Set(arr).size` with `arr.length`. If the size is smaller, duplicates exist.
 
 ---
 
-## 9\. Remove duplicates from array of objects
+## 9. Remove duplicates from array of objects
 
-## **Problem**
+## Problem
 
 `Set` does not remove duplicate objects by value because objects are compared by reference.
 
@@ -1243,7 +1243,7 @@ const users \= \[\{ id: 1 \}, \{ id: 1 \}\];
 
 console.log(new Set(users).size); // 2
 
-## **Solution using `Map`**
+## Solution using `Map`
 
 const users \= \[
 
@@ -1261,7 +1261,7 @@ console.log(uniqueUsers);
 
 // \[\{ id: 1, name: "A Updated" \}, \{ id: 2, name: "B" \}\]
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 For arrays of objects, `Set` is not enough because objects are compared by reference. A common approach is to use `Map` with a unique property like `id` as the key.
 
@@ -1286,7 +1286,7 @@ Key interview points to remember from this page:
 
 ---
 
-## 4\. Polyfill for `forEach`
+## 4. Polyfill for `forEach`
 
 Array.prototype.myForEach \= function (callback, thisArg) \{
 
@@ -1328,7 +1328,7 @@ Array.prototype.myForEach \= function (callback, thisArg) \{
 
 // 3
 
-## **Key interview points**
+## Key interview points
 
 * Returns `undefined`.  
 * Used for side effects.  
@@ -1336,7 +1336,7 @@ Array.prototype.myForEach \= function (callback, thisArg) \{
 
 ---
 
-## 5\. Polyfill for `find`
+## 5. Polyfill for `find`
 
 Array.prototype.myFind \= function (callback, thisArg) \{
 
@@ -1372,7 +1372,7 @@ const result \= \[1, 2, 3\].myFind((num) \=\> num \> 1);
 
 console.log(result); // 2
 
-## **Key interview points**
+## Key interview points
 
 * Returns first matching element.  
 * Returns `undefined` if not found.  
@@ -1380,7 +1380,7 @@ console.log(result); // 2
 
 ---
 
-## 6\. Polyfill for `some`
+## 6. Polyfill for `some`
 
 Array.prototype.mySome \= function (callback, thisArg) \{
 
@@ -1414,7 +1414,7 @@ Array.prototype.mySome \= function (callback, thisArg) \{
 
 console.log(\[1, 3, 4\].mySome((num) \=\> num % 2 \=== 0)); // true
 
-## **Key interview points**
+## Key interview points
 
 * Returns boolean.  
 * Stops when callback returns true.  
@@ -1422,7 +1422,7 @@ console.log(\[1, 3, 4\].mySome((num) \=\> num % 2 \=== 0)); // true
 
 ---
 
-## 7\. Polyfill for `every`
+## 7. Polyfill for `every`
 
 Array.prototype.myEvery \= function (callback, thisArg) \{
 
@@ -1456,7 +1456,7 @@ Array.prototype.myEvery \= function (callback, thisArg) \{
 
 console.log(\[2, 4, 6\].myEvery((num) \=\> num % 2 \=== 0)); // true
 
-## **Key interview points**
+## Key interview points
 
 * Returns boolean.  
 * Stops when callback returns false.  
@@ -1464,7 +1464,7 @@ console.log(\[2, 4, 6\].myEvery((num) \=\> num % 2 \=== 0)); // true
 
 ---
 
-## 8\. Polyfill for `flat`
+## 8. Polyfill for `flat`
 
 Array.prototype.myFlat \= function (depth \= 1\) \{
 
@@ -1498,7 +1498,7 @@ const result \= \[1, \[2, \[3, \[4\]\]\]\].myFlat(2);
 
 console.log(result); // \[1, 2, 3, \[4\]\]
 
-## **Key interview points**
+## Key interview points
 
 * Default depth is `1`.  
 * Returns a new array.  
@@ -1506,7 +1506,7 @@ console.log(result); // \[1, 2, 3, \[4\]\]
 
 ---
 
-## 9\. Polyfill for `flatMap`
+## 9. Polyfill for `flatMap`
 
 Array.prototype.myFlatMap \= function (callback, thisArg) \{
 
@@ -1518,16 +1518,16 @@ const result \= \[1, 2, 3\].myFlatMap((num) \=\> \[num, num \* 2\]);
 
 console.log(result); // \[1, 2, 2, 4, 3, 6\]
 
-## **Key interview points**
+## Key interview points
 
 * `flatMap` is equivalent to `map` followed by `flat(1)`.  
 * It flattens only one level.
 
 ---
 
-## 10\. Polyfill for duplicate check
+## 10. Polyfill for duplicate check
 
-## **Check duplicates for primitives**
+## Check duplicates for primitives
 
 function hasDuplicate(arr) \{
 
@@ -1549,7 +1549,7 @@ console.log(hasDuplicate(\[1, 2, 3\])); // false
 
 console.log(hasDuplicate(\[1, 2, 2\])); // true
 
-## **Remove duplicates for primitives**
+## Remove duplicates for primitives
 
 function removeDuplicates(arr) \{
 
@@ -1559,7 +1559,7 @@ function removeDuplicates(arr) \{
 
 console.log(removeDuplicates(\[1, 2, 2, 3\])); // \[1, 2, 3\]
 
-## **Remove duplicates from objects by key**
+## Remove duplicates from objects by key
 
 function removeDuplicatesByKey(arr, key) \{
 

@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Rendering
 
-## **⚙️ Types of Rendering in Modern Web Apps**
+## ⚙️ Types of Rendering in Modern Web Apps
 
 |  | Rendering Type | Description | Use Cases | Tools/Frameworks |
 | ----- | ----- | ----- | ----- | ----- |
@@ -16,9 +16,9 @@ sidebar_position: 3
 | **5** | **Streaming / RSC (React Server Components)** | Streams HTML chunks progressively from server. | Faster perceived load for large or dynamic pages | Next.js (app router) |
 |  | **Hydration** | Process of attaching interactivity to pre-rendered HTML | Used with SSR/SSG to enable client-side behavior | React, Vue, Svelte |
 
-## **✅ When to Use What?**
+## ✅ When to Use What?
 
-### **1\. SSR (Server-Side Rendering)**
+### 1. SSR (Server-Side Rendering)
 
 * **Choose when**:
 
@@ -36,7 +36,7 @@ sidebar_position: 3
 
   * Higher server load.
 
-### **2\. SSG (Static Site Generation)**
+### 2. SSG (Static Site Generation)
 
 * **Choose when**:
 
@@ -54,7 +54,7 @@ sidebar_position: 3
 
   * Not ideal for user-specific data.
 
-### **3\. ISR (Incremental Static Regeneration) *(Next.js only)***
+### 3. ISR (Incremental Static Regeneration) *(Next.js only)*
 
 * **Choose when**:
 
@@ -68,7 +68,7 @@ sidebar_position: 3
 
   * Slight complexity in caching and consistency.
 
-### **4\. CSR (Client-Side Rendering)**
+### 4. CSR (Client-Side Rendering)
 
 * **Choose when**:
 
@@ -84,7 +84,7 @@ sidebar_position: 3
 
   * Slower initial load; poor SEO if not handled properly.
 
-### **5\. Streaming / React Server Components (RSC)**
+### 5. Streaming / React Server Components (RSC)
 
 * **Choose when**:
 
@@ -102,7 +102,7 @@ sidebar_position: 3
 
 ---
 
-## **💡 Decision Tree**
+## 💡 Decision Tree
 
 `Is SEO critical?`  
 `├─ Yes ─> Is content dynamic?`  
@@ -111,7 +111,7 @@ sidebar_position: 3
 `└─ No ─> Use CSR`  
 ---
 
-## **🔍 What Is Hydration?**
+## 🔍 What Is Hydration?
 
 **Hydration** is the process by which a **client-side JavaScript framework (like React)** takes over a **pre-rendered HTML page** (from SSR or SSG) and "activates" it by:
 
@@ -125,7 +125,7 @@ It essentially turns a **static HTML page** into a **fully interactive web app**
 
 ---
 
-## **🔁 Hydration Lifecycle**
+## 🔁 Hydration Lifecycle
 
 1. **The server renders** the initial HTML on the backend (SSR or SSG).
 
@@ -149,7 +149,7 @@ It essentially turns a **static HTML page** into a **fully interactive web app**
 
 ---
 
-## **📦 Example in React**
+## 📦 Example in React
 
 `// Server renders this component`  
 `function Button() \{`  
@@ -163,7 +163,7 @@ It essentially turns a **static HTML page** into a **fully interactive web app**
 
 ---
 
-## **🤯 Why Is Hydration Necessary?**
+## 🤯 Why Is Hydration Necessary?
 
 Without hydration:
 
@@ -173,9 +173,9 @@ Without hydration:
 
 ---
 
-## **⚠️ Common Hydration Issues**
+## ⚠️ Common Hydration Issues
 
-### **1\. Mismatch Between Server and Client Render**
+### 1. Mismatch Between Server and Client Render
 
 * Server renders different content than client.
 
@@ -187,13 +187,13 @@ Without hydration:
 
   * Using browser-only APIs (e.g., `window`) during SSR
 
-### **2\. Performance Bottlenecks**
+### 2. Performance Bottlenecks
 
 * Hydration can be **slow** for large pages.
 
 * Especially bad if hydration blocks the main thread.
 
-### **3\. Redundant Work**
+### 3. Redundant Work
 
 * React rebuilds the virtual DOM even though the HTML is already there.
 
@@ -201,9 +201,9 @@ Without hydration:
 
 ---
 
-## **🧠 Advanced Topics**
+## 🧠 Advanced Topics
 
-### **🔹 Partial Hydration**
+### 🔹 Partial Hydration
 
 * Only some parts of the page are hydrated.
 
@@ -211,13 +211,13 @@ Without hydration:
 
 * Benefit: dramatically reduces JS sent to client.
 
-### **🔹 Progressive Hydration**
+### 🔹 Progressive Hydration
 
 * Hydrate parts of the page as needed, not all at once.
 
 * Frameworks like React 18 and Next.js App Router do this with `React.lazy` and `Suspense`.
 
-### **🔹 Streaming \+ Hydration (React 18\)**
+### 🔹 Streaming \+ Hydration (React 18\)
 
 * Server can stream HTML chunks and hydrate progressively.
 
@@ -225,27 +225,27 @@ Without hydration:
 
 ---
 
-## **🧪 Interview Follow-Up Questions (with Short Answers)**
+## 🧪 Interview Follow-Up Questions (with Short Answers)
 
-### **Q1: What’s the performance impact of hydration?**
+### Q1: What’s the performance impact of hydration?
 
 * It blocks the main thread; large apps can feel sluggish before hydration completes.
 
 * Optimization: split bundles, lazy load, progressive hydration.
 
-### **Q2: How do you debug hydration issues?**
+### Q2: How do you debug hydration issues?
 
 * Look for console warnings like “Text content did not match.”
 
 * Audit for browser-only logic in components that run on the server.
 
-### **Q3: Can you avoid hydration entirely?**
+### Q3: Can you avoid hydration entirely?
 
 * Yes, if the page is **purely static**, or by using **partial or island-based hydration** (e.g., Astro).
 
 * But for interactive apps, hydration is typically required.
 
-### **Q4: How does hydration differ from client-side rendering?**
+### Q4: How does hydration differ from client-side rendering?
 
 * CSR renders nothing on server — blank HTML shell.
 
@@ -253,7 +253,7 @@ Without hydration:
 
 ---
 
-## **✅ Summary**
+## ✅ Summary
 
 Hydration is:
 

@@ -24,7 +24,7 @@ Since React runs completely in the browser and cannot use traditional server-sid
 
 ## Implementation Options in React
 
-## **Option 1: Automatic Handling via Axios \[6\]**
+## Option 1: Automatic Handling via Axios \[6\]
 
 If you use Axios for API calls, it has built-in support for the Double Submit Cookie pattern. It automatically looks for the `XSRF-TOKEN` cookie and attaches it to the `X-XSRF-TOKEN` header. \[6, 7, 8\]
 
@@ -42,7 +42,7 @@ axios.defaults.xsrfCookieName \= 'XSRF-TOKEN';
 
 axios.defaults.xsrfHeaderName \= 'X-XSRF-TOKEN';
 
-## **Option 2: Manual Handling with the Fetch API**
+## Option 2: Manual Handling with the Fetch API
 
 If you are using the native `fetch` API, you must manually extract the token from the browser cookies using a utility function and include it in your request headers. \[1, 3\]
 
@@ -80,12 +80,11 @@ const updateUserData \= async (data) \=\> \{
 
   \});
 
-
   return response.json();
 
 \};
 
-## **Option 3: Initial Fetch Pattern**
+## Option 3: Initial Fetch Pattern
 
 If your backend does not automatically drop a CSRF cookie on initial load (common in headless REST APIs), your React app must deliberately fetch it when initializing or during the login phase. \[1, 2\]
 
@@ -158,7 +157,7 @@ Storing a JWT in a cookie with the HttpOnly flag protects it from XSS (Cross-Sit
 * **Do you use a JWT?** Yes, to authenticate the user.  
 * **Do you need a CSRF Token?** **Yes.** You must implement a CSRF token to protect that cookie.
 
-## **Scenario 2: JWT stored in LocalStorage / SessionStorage**
+## Scenario 2: JWT stored in LocalStorage / SessionStorage
 
 If your React app stores the JWT in localStorage and manually attaches it to the HTTP header (Authorization: Bearer \<your-jwt\>), your app is completely immune to CSRF. Browsers do not automatically attach localStorage data to cross-origin requests.
 

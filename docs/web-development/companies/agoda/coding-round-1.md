@@ -101,11 +101,11 @@ console.log(removeByK("deeedbbcccbdaa", 3)); // aa
 
 ## Retry Count
 
-### **Problem Summary**
+### Problem Summary
 
 You are given a maximum time difference limit called gap, an array of requestIds, and an array of timestamps sorted in increasing order. A **retry** occurs when two consecutive logs for the **same** requestId occur within a time difference of **at most gap**. Find the total number of retries across all request IDs.
 
-### **Test Case 1**
+### Test Case 1
 
 * **Input:**
   * gap = 10
@@ -116,7 +116,7 @@ You are given a maximum time difference limit called gap, an array of requestIds
   * **r2**: Pair is `(300, 302) -> diff 2 <= 10` (**Retry**).
 * **Output:** 2
 
-### **Test Case 2**
+### Test Case 2
 
 * **Input:**
   * gap = 5
@@ -152,14 +152,14 @@ function getRetryCount(gap, requests, timestamps) {
 
 ## Maximum Cost To Move Ones
 
-### **Problem Summary**
+### Problem Summary
 
 You are given a binary string $s$ of '0's and '1's. You want to shift all '1's to the right side (segregating the string) to achieve the **maximum possible total cost**.
 
 * You can move a '1' rightward across a block of consecutive zeros until it hits another '1' or the end of the string.
 * Moving a '1' past $k$ consecutive zeros in a single shift costs: `Cost = 1 + k`.
 
-### **Test Case 1**
+### Test Case 1
 
 * **Input:** s = "110100"
 * **Optimal Moves:**
@@ -168,7 +168,7 @@ You are given a binary string $s$ of '0's and '1's. You want to shift all '1's t
   3. Move the three consecutive '1's past the final two zeros one by one -> each moves 2 places (`cost = (1 + 2) x 3 = 9`).
 * **Output:** 13 ($2 + 2 + 9$)
 
-### **Test Case 2**
+### Test Case 2
 
 * **Input:** s = "101"
 * **Optimal Moves:**
@@ -208,7 +208,7 @@ function getMaxCost(s) {
 console.log(getMaxCost("110100")); // Output: 13
 ```
 
-### **Complexity Analysis:**
+### Complexity Analysis:
 
 * **Time Complexity:** $O(N)$ because we iterate through the string exactly once.
 * **Space Complexity**

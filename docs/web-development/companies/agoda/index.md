@@ -15,9 +15,9 @@ Core Web Development Concepts
 Performance Optimization  
 Testing Strategy
 
-# **Questions Recently Asked in Agoda Platform Round**
+## Questions Recently Asked in Agoda Platform Round
 
-## **Web Fundamentals**
+## Web Fundamentals
 
 Candidates reported questions like:
 
@@ -42,11 +42,7 @@ These were explicitly mentioned by candidates who recently completed Platform ro
 
 ---
 
-## 
-
-## 
-
-## **Performance Optimization**
+## Performance Optimization
 
 This seems to be Agoda's favorite area.
 
@@ -69,7 +65,7 @@ Several candidates specifically mentioned deep discussions on performance metric
 
 ---
 
-## **React Deep Dive – In Progress study**
+## React Deep Dive – In Progress study
 
 For Answers: [https://chatgpt.com/c/6a3118c5-0154-83ee-9c8d-7afa069c08f4](https://chatgpt.com/c/6a3118c5-0154-83ee-9c8d-7afa069c08f4)
 
@@ -155,7 +151,7 @@ One candidate explicitly mentioned React Fiber, memoization pitfalls, optimizati
 
 ---
 
-## **JavaScript Deep Dive**
+## JavaScript Deep Dive
 
 Questions reported:
 
@@ -176,7 +172,7 @@ A recent Agoda frontend candidate specifically mentioned closures, cache/memoiza
 
 ---
 
-## **Security**
+## Security
 
 Questions reported:
 
@@ -193,7 +189,7 @@ Multiple candidates mentioned web security as a dedicated section of the platfor
 
 ---
 
-## **Testing**
+## Testing
 
 Candidates reported:
 

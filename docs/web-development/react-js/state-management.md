@@ -13,35 +13,35 @@ Use this page for state ownership, local vs global state, Context, reducer patte
 
 Use [React Performance](../important/performance/react-performance.md) for render optimization strategy.
 
-## 4\. State Management
+## 4. State Management
 
-## **Local State**
+## Local State
 
-## **Lift State Up**
+## Lift State Up
 
-## **Context API**
+## Context API
 
-## **Reducer Pattern**
+## Reducer Pattern
 
-## **Redux Fundamentals**
+## Redux Fundamentals
 
-### **Store**
+### Store
 
-### **Reducers**
+### Reducers
 
-### **Actions**
+### Actions
 
-### **Middleware**
+### Middleware
 
-## **Redux Toolkit**
+## Redux Toolkit
 
-## **Zustand**
+## Zustand
 
-## **Recoil (Optional)**
+## Recoil (Optional)
 
-## **Server State vs Client State**
+## Server State vs Client State
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Context vs Redux  
 * Redux Toolkit advantages
@@ -58,9 +58,9 @@ The best state management answer is not “always use Redux”. The best answer 
 
 ---
 
-## 1\. Local State
+## 1. Local State
 
-## **Simple meaning**
+## Simple meaning
 
 Local state is state owned by one component.
 
@@ -82,7 +82,7 @@ function Counter() \{
 
 \}
 
-## **Common use cases**
+## Common use cases
 
 * Input value  
 * Modal open/close  
@@ -92,7 +92,7 @@ function Counter() \{
 * Small UI toggles  
 * Component-specific loading/error state
 
-## **Good example**
+## Good example
 
 function SearchInput() \{
 
@@ -114,19 +114,19 @@ function SearchInput() \{
 
 Here `searchText` is only needed by `SearchInput`, so local state is enough.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Local state is state managed inside a component using `useState` or `useReducer`. It is best for UI state that belongs to one component, such as input values, modal visibility, selected tab, or dropdown state.
 
 ---
 
-## 2\. Lift State Up
+## 2. Lift State Up
 
-## **Simple meaning**
+## Simple meaning
 
 Lifting state up means moving state from a child component to the nearest common parent so multiple children can share it.
 
-## **Problem**
+## Problem
 
 function SearchBox() \{
 
@@ -142,7 +142,7 @@ function Results() \{
 
 If `SearchBox` and `Results` both need `query`, move `query` to their parent.
 
-## **Correct approach**
+## Correct approach
 
 function SearchPage() \{
 
@@ -184,7 +184,7 @@ function Results(\{ query \}) \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 State should live at the lowest common parent that needs to coordinate it.
 
@@ -198,26 +198,26 @@ Child receives value as prop
 
 Child sends updates using callback prop
 
-## **When to lift state**
+## When to lift state
 
 * Two sibling components need same state  
 * Parent needs to control child behavior  
 * Multiple components need to stay in sync  
 * Child action affects another child
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Lifting state up means moving shared state to the nearest common parent and passing it down through props. This keeps state ownership clear and follows React’s one-way data flow.
 
 ---
 
-## 3\. Context API
+## 3. Context API
 
-## **Simple meaning**
+## Simple meaning
 
 Context API lets us pass data deeply through the component tree without manually passing props at every level.
 
-## **Basic example**
+## Basic example
 
 const ThemeContext \= React.createContext("light");
 
@@ -249,7 +249,7 @@ function Button() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Context solves prop drilling.
 
@@ -259,7 +259,7 @@ App → Layout → Sidebar → Menu → Button
 
 Passing `theme` through every level, Context lets `Button` read the value directly from the nearest provider.
 
-## **Good use cases**
+## Good use cases
 
 * Theme  
 * Auth user  
@@ -269,7 +269,7 @@ Passing `theme` through every level, Context lets `Button` read the value direct
 * Permission information  
 * Design-system settings
 
-## **Common mistake**
+## Common mistake
 
 Using Context for frequently changing large state can cause unnecessary re-renders.
 
@@ -295,7 +295,7 @@ const value \= React.useMemo(() \=\> \{
 
 \</AuthContext.Provider\>;
 
-## **Split context when needed**
+## Split context when needed
 
 Instead of one huge context:
 
@@ -313,15 +313,15 @@ Prefer smaller contexts:
 
 \</AuthProvider\>
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context API is used to avoid prop drilling for values needed by many components, such as theme, auth, locale, and feature flags. It is not always a full replacement for Redux because context updates can re-render all consumers. For frequently changing or complex global state, a dedicated state library may be better.
 
 ---
 
-## 4\. Reducer Pattern
+## 4. Reducer Pattern
 
-## **Simple meaning**
+## Simple meaning
 
 Reducer pattern manages state transitions using actions.
 
@@ -363,11 +363,11 @@ function Counter() \{
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Current state \+ action → reducer → next state
 
-## **When reducer pattern is useful**
+## When reducer pattern is useful
 
 * State has multiple related fields  
 * State changes depend on action type  
@@ -376,7 +376,7 @@ Current state \+ action → reducer → next state
 * You want to test state logic separately  
 * Form, wizard, filters, table, modal workflow
 
-## **Example: form state**
+## Example: form state
 
 const initialState \= \{
 
@@ -424,13 +424,13 @@ function formReducer(state, action) \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The reducer pattern centralizes state transition logic. It uses actions to describe what happened and a reducer to calculate the next state. It is useful when state is complex, has multiple related fields, or needs predictable transitions.
 
 ---
 
-## 5\. Redux Fundamentals
+## 5. Redux Fundamentals
 
 Redux is a predictable global state management library.
 
@@ -446,7 +446,7 @@ Dispatch → sends action to store
 
 Selector → reads data from store
 
-## **Redux flow**
+## Redux flow
 
 UI event
 
@@ -466,21 +466,21 @@ new state
 
 subscribed UI re-renders
 
-## **Simple mental model**
+## Simple mental model
 
 Redux is like a centralized state container with strict update rules.
 
 You cannot directly mutate the store. You dispatch actions, and reducers return the next state.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Redux is a predictable state management library where the application state lives in a central store. UI dispatches actions, reducers calculate the next state, and components subscribe to selected parts of the store.
 
 ---
 
-## 6\. Redux Store
+## 6. Redux Store
 
-## **Simple meaning**
+## Simple meaning
 
 The store holds the global application state.
 
@@ -498,7 +498,7 @@ The store holds the global application state.
 
 \});
 
-## **Key responsibilities**
+## Key responsibilities
 
 The store:
 
@@ -508,7 +508,7 @@ The store:
 * Notifies subscribers  
 * Supports middleware
 
-## **React setup**
+## React setup
 
 \import \{ Provider \} from "react-redux";
 
@@ -522,7 +522,7 @@ root.render(
 
 );
 
-## **Reading state**
+## Reading state
 
 \import \{ useSelector \} from "react-redux";
 
@@ -534,7 +534,7 @@ function UserName() \{
 
 \}
 
-## **Updating state**
+## Updating state
 
 \import \{ useDispatch \} from "react-redux";
 
@@ -554,15 +554,15 @@ function LoginButton() \{
 
 \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Redux store is the central place where application state is kept. Components read data using selectors and update data by dispatching actions. The store runs reducers and notifies subscribed components when selected state changes.
 
 ---
 
-## 7\. Redux Actions
+## 7. Redux Actions
 
-## **Simple meaning**
+## Simple meaning
 
 An action is a plain object that describes what happened.
 
@@ -578,7 +578,7 @@ An action is a plain object that describes what happened.
 
 \}
 
-## **Key mental model**
+## Key mental model
 
 Action does not update state by itself. It only describes an event.
 
@@ -586,7 +586,7 @@ Action \= what happened
 
 Reducer \= how state changes
 
-## **Example**
+## Example
 
 const loginAction \= \{
 
@@ -602,15 +602,15 @@ const loginAction \= \{
 
 \};
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 An action is an object that describes an event in the application. It usually has a `type` and optional `payload`. Actions are dispatched to the store, and reducers use them to calculate the next state.
 
 ---
 
-## 8\. Redux Reducers
+## 8. Redux Reducers
 
-## **Simple meaning**
+## Simple meaning
 
 A reducer is a pure function that takes current state and action, then returns next state.
 
@@ -650,7 +650,7 @@ function userReducer(state \= initialState, action) \{
 
 \}
 
-## **Key reducer rules**
+## Key reducer rules
 
 Reducers should:
 
@@ -661,7 +661,7 @@ Reducers should:
 * Not perform side effects  
 * Return new state
 
-## **Important note with Redux Toolkit**
+## Important note with Redux Toolkit
 
 Redux Toolkit uses Immer internally, so reducers can look like they are mutating state.
 
@@ -701,15 +701,15 @@ const userSlice \= createSlice(\{
 
 This is safe because Immer converts it into immutable updates internally.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A reducer is a pure function that receives current state and an action, then returns the next state. In classic Redux, reducers must update state immutably. In Redux Toolkit, we can write mutation-like code because Immer handles immutable updates internally.
 
 ---
 
-## 9\. Redux Middleware
+## 9. Redux Middleware
 
-## **Simple meaning**
+## Simple meaning
 
 Middleware runs between dispatching an action and the action reaching the reducer.
 
@@ -723,7 +723,7 @@ middleware
 
 reducer
 
-## **Why middleware is useful**
+## Why middleware is useful
 
 Middleware is used for:
 
@@ -735,7 +735,7 @@ Middleware is used for:
 * Side effects  
 * Request cancellation/retry flows
 
-## **Example concept**
+## Example concept
 
 const loggerMiddleware \= (store) \=\> (next) \=\> (action) \=\> \{
 
@@ -751,7 +751,7 @@ const loggerMiddleware \= (store) \=\> (next) \=\> (action) \=\> \{
 
 \};
 
-## **Async middleware**
+## Async middleware
 
 Redux reducers cannot perform async work. Middleware handles async flows.
 
@@ -762,21 +762,21 @@ Common options:
 * Redux Observable  
 * RTK Query for server state fetching/caching
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Middleware extends Redux dispatch behavior. It runs after an action is dispatched but before it reaches the reducer. It is commonly used for logging, async API calls, analytics, error handling, and side effects.
 
 ---
 
-## 10\. Redux Toolkit
+## 10. Redux Toolkit
 
-## **Simple meaning**
+## Simple meaning
 
 Redux Toolkit, also called RTK, is the modern recommended way to write Redux.
 
 It reduces boilerplate and includes best practices by default.
 
-## **Store setup**
+## Store setup
 
 \import \{ configureStore \} from "@reduxjs/toolkit";
 
@@ -792,7 +792,7 @@ It reduces boilerplate and includes best practices by default.
 
 \});
 
-## **Slice**
+## Slice
 
 A slice contains state, reducers, and generated actions for one feature.
 
@@ -836,7 +836,7 @@ const userSlice \= createSlice(\{
 
 \export default userSlice.reducer;
 
-## **Usage in component**
+## Usage in component
 
 function UserActions() \{
 
@@ -854,7 +854,7 @@ function UserActions() \{
 
 \}
 
-## **Redux Toolkit advantages**
+## Redux Toolkit advantages
 
 * Less boilerplate  
 * `configureStore` sets good defaults  
@@ -866,19 +866,19 @@ function UserActions() \{
 * Reduces common Redux mistakes  
 * RTK Query supports API fetching and caching
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Redux Toolkit is the modern recommended way to write Redux. It simplifies store setup, reduces boilerplate, generates action creators and reducers with `createSlice`, uses Immer for immutable updates, includes good defaults, and supports async logic and API caching through thunks and RTK Query.
 
 ---
 
-## 11\. Zustand
+## 11. Zustand
 
-## **Simple meaning**
+## Simple meaning
 
 Zustand is a lightweight state management library with a simple hook-based API.
 
-## **Basic example**
+## Basic example
 
 \import \{ create \} from "zustand";
 
@@ -916,7 +916,7 @@ function Counter() \{
 
 \}
 
-## **Why teams use Zustand**
+## Why teams use Zustand
 
 * Less boilerplate than Redux  
 * Simple hook-based API  
@@ -925,7 +925,7 @@ function Counter() \{
 * Selectors help reduce unnecessary re-renders  
 * Easy to create multiple stores
 
-## **Good use cases**
+## Good use cases
 
 * UI global state  
 * Filters  
@@ -934,26 +934,26 @@ function Counter() \{
 * Modals/toasts  
 * Lightweight app state
 
-## **Trade-offs**
+## Trade-offs
 
 * Less opinionated than Redux  
 * Large teams may need conventions  
 * Middleware/devtools patterns are not as standardized as Redux Toolkit  
 * Complex async and server-state cases may still need clear architecture
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Zustand is a lightweight hook-based state management library. It is simpler and less boilerplate-heavy than Redux, making it useful for small to medium global state. However, because it is less opinionated, large teams should define clear conventions for store structure, async flows, and testing.
 
 ---
 
-## 12\. Recoil Optional
+## 12. Recoil Optional
 
-## **Simple meaning**
+## Simple meaning
 
 Recoil is a state management library based on atoms and selectors.
 
-## **Atom**
+## Atom
 
 An atom is a small unit of state.
 
@@ -965,7 +965,7 @@ const countState \= atom(\{
 
 \});
 
-## **Selector**
+## Selector
 
 A selector derives state from atoms or other selectors.
 
@@ -983,7 +983,7 @@ const doubleCountState \= selector(\{
 
 \});
 
-## **Mental model**
+## Mental model
 
 Atom \= source state
 
@@ -991,25 +991,25 @@ Selector \= derived state
 
 Component \= subscribes to atom/selector
 
-## **Important interview note**
+## Important interview note
 
 Recoil can be discussed as an atom-based state management approach, but for new projects, verify the current maintenance status before choosing it. In modern React interviews, Redux Toolkit, Zustand, Jotai, React Query/TanStack Query, and Context are more common discussion points.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Recoil uses atoms for shared state and selectors for derived state. It is useful to understand as an atom-based model, but I would verify maintenance and ecosystem status before choosing it for a new production app.
 
 ---
 
-## 13\. Server State vs Client State
+## 13. Server State vs Client State
 
-## **Simple meaning**
+## Simple meaning
 
 Client state is owned by the frontend. Server state comes from the backend.
 
 This is one of the most important senior-level state management distinctions.
 
-## **Client state**
+## Client state
 
 Client state is UI/application state controlled by the frontend.
 
@@ -1024,7 +1024,7 @@ Examples:
 * Auth UI state  
 * Drag/drop state
 
-## **Server state**
+## Server state
 
 Server state is remote data fetched from APIs.
 
@@ -1038,7 +1038,7 @@ Examples:
 * Product list  
 * Permissions from backend
 
-## **Why server state is different**
+## Why server state is different
 
 Server state has extra problems:
 
@@ -1054,7 +1054,7 @@ Server state has extra problems:
 * Optimistic updates  
 * Synchronization with backend
 
-## **Common mistake**
+## Common mistake
 
 Putting all server data into Redux manually.
 
@@ -1067,15 +1067,15 @@ Better options:
 * SWR  
 * Apollo Client for GraphQL
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Client state is owned by the frontend, such as modal state, form state, theme, and selected UI options. Server state comes from APIs and needs caching, loading, error handling, refetching, retries, and invalidation. For server state, tools like RTK Query, TanStack Query, SWR, or Apollo are often better than manually managing everything in Redux.
 
 ---
 
-## 14\. Context vs Redux
+## 14. Context vs Redux
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Context API | Redux / Redux Toolkit |
 | ----- | ----- | ----- |
@@ -1088,7 +1088,7 @@ Client state is owned by the frontend, such as modal state, form state, theme, a
 | Large teams | Needs conventions | More structured |
 | Boilerplate | Low | Lower now with RTK, but still structured |
 
-## **When Context is enough**
+## When Context is enough
 
 Use Context for:
 
@@ -1100,7 +1100,7 @@ Use Context for:
 * App config  
 * Low-frequency global values
 
-## **When Redux is better**
+## When Redux is better
 
 Use Redux Toolkit when:
 
@@ -1114,19 +1114,19 @@ Use Redux Toolkit when:
 * State changes frequently and needs selectors  
 * You need RTK Query for API caching
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context is mainly for passing values deeply and avoiding prop drilling. Redux is a full state management solution with a store, actions, reducers, middleware, selectors, and DevTools. I use Context for simple low-frequency shared values like theme or auth, and Redux Toolkit for complex global state, predictable updates, debugging, middleware, or larger team-based applications.
 
 ---
 
-## 15\. Redux Toolkit Advantages
+## 15. Redux Toolkit Advantages
 
-## **Main advantages**
+## Main advantages
 
 Redux Toolkit improves Redux by reducing boilerplate and adding good defaults.
 
-## **Before Redux Toolkit**
+## Before Redux Toolkit
 
 Classic Redux often required:
 
@@ -1175,7 +1175,7 @@ function userReducer(state \= initialState, action) \{
 
 \}
 
-## **With Redux Toolkit**
+## With Redux Toolkit
 
 const userSlice \= createSlice(\{
 
@@ -1195,7 +1195,7 @@ const userSlice \= createSlice(\{
 
 \});
 
-## **Why this is better**
+## Why this is better
 
 * Less code  
 * Fewer files  
@@ -1207,15 +1207,15 @@ const userSlice \= createSlice(\{
 * DevTools easier  
 * Better feature-based organization
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Redux Toolkit is preferred because it removes much of the old Redux boilerplate. `createSlice` generates actions and reducers together, `configureStore` sets up good defaults, Immer allows safe mutation-like reducer code, and RTK Query can manage API caching. It makes Redux simpler, safer, and more consistent.
 
 ---
 
-## 16\. How to Choose State Management
+## 16. How to Choose State Management
 
-## **Simple decision tree**
+## Simple decision tree
 
 Only one component needs it?
 
@@ -1245,7 +1245,7 @@ Microfrontend or cross-app events?
 
 → Shared store, event bus, or platform-level contract
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I start with the simplest solution. Local UI state stays local. Shared sibling state is lifted up. Deep low-frequency app values go into Context. Complex state transitions use reducers. Complex global client state can use Redux Toolkit or Zustand. Server state should usually be managed by a data-fetching/cache tool like RTK Query, TanStack Query, SWR, or Apollo.
 
@@ -1255,27 +1255,27 @@ I start with the simplest solution. Local UI state stays local. Shared sibling s
 
 ---
 
-## 1\. Context vs Redux
+## 1. Context vs Redux
 
-## **Answer**
+## Answer
 
 Context and Redux solve different levels of state management.
 
 Context avoids prop drilling. Redux manages complex global state predictably.
 
-## **Example answer**
+## Example answer
 
 I use Context for values like theme, auth user, locale, or feature flags. I use Redux Toolkit when state updates are complex, many components need the same state, debugging matters, middleware is needed, or multiple teams need consistent state architecture.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Context is not a complete Redux replacement. Context is good for passing low-frequency shared values deeply. Redux Toolkit is better for complex global state, frequent updates, predictable state transitions, middleware, selectors, DevTools, and large team conventions.
 
 ---
 
-## 2\. Redux Toolkit advantages
+## 2. Redux Toolkit advantages
 
-## **Answer**
+## Answer
 
 Redux Toolkit makes Redux easier and safer.
 
@@ -1290,26 +1290,26 @@ It provides:
 * DevTools support  
 * RTK Query for API caching
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Redux Toolkit reduces Redux boilerplate and prevents common mistakes. It combines reducers and actions using `createSlice`, simplifies store setup with `configureStore`, uses Immer for immutable updates, and provides RTK Query for server-state fetching and caching.
 
 ---
 
-## 3\. When should state be local vs global?
+## 3. When should state be local vs global?
 
-## **Answer**
+## Answer
 
 State should be local unless multiple unrelated parts of the app need it.
 
-## **Local state examples**
+## Local state examples
 
 * Input text  
 * Modal open state  
 * Dropdown state  
 * Selected tab
 
-## **Global state examples**
+## Global state examples
 
 * Logged-in user  
 * Theme  
@@ -1318,15 +1318,15 @@ State should be local unless multiple unrelated parts of the app need it.
 * Shared filters  
 * App-wide notifications
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Keep state as close as possible to where it is used. Make it global only when many parts of the app need it or when coordination across features is required. Overusing global state makes apps harder to reason about.
 
 ---
 
-## 4\. What is server state?
+## 4. What is server state?
 
-## **Answer**
+## Answer
 
 Server state is data owned by the backend but displayed in the frontend.
 
@@ -1340,15 +1340,15 @@ Examples:
 
 It needs caching, loading, error, refetching, retry, and invalidation handling.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Server state is remote data fetched from APIs. Unlike client state, it can become stale and needs caching, refetching, retries, invalidation, and synchronization. That is why tools like RTK Query, TanStack Query, SWR, or Apollo are useful.
 
 ---
 
-## 5\. useReducer vs Redux
+## 5. useReducer vs Redux
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | useReducer | Redux Toolkit |
 | ----- | ----- | ----- |
@@ -1358,15 +1358,15 @@ Server state is remote data fetched from APIs. Unlike client state, it can becom
 | DevTools | Limited | Strong DevTools |
 | Best for | Complex local state | Complex global state |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 `useReducer` is good for complex local component state. Redux Toolkit is better when state must be shared globally, debugged with DevTools, updated through middleware, or managed consistently across many features.
 
 ---
 
-## 6\. Zustand vs Redux Toolkit
+## 6. Zustand vs Redux Toolkit
 
-## **Simple comparison**
+## Simple comparison
 
 | Point | Zustand | Redux Toolkit |
 | ----- | ----- | ----- |
@@ -1376,15 +1376,15 @@ Server state is remote data fetched from APIs. Unlike client state, it can becom
 | DevTools/middleware | Available | Strong ecosystem |
 | Team conventions | Need to define | More established |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Zustand is lightweight and simple, good for small to medium global state with less boilerplate. Redux Toolkit is more structured and better when large teams need predictable patterns, middleware, DevTools, and standardized architecture.
 
 ---
 
-## 7\. What are selectors?
+## 7. What are selectors?
 
-## **Answer**
+## Answer
 
 Selectors are functions used to read specific data from state.
 
@@ -1394,7 +1394,7 @@ Usage:
 
 const userName \= useSelector(selectUserName);
 
-## **Why selectors are useful**
+## Why selectors are useful
 
 * Encapsulate state shape  
 * Avoid repeated access logic  
@@ -1402,21 +1402,21 @@ const userName \= useSelector(selectUserName);
 * Can derive computed data  
 * Can be memoized for performance
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Selectors are functions that read or derive data from state. They hide the internal state shape from components and make state access reusable, testable, and easier to refactor.
 
 ---
 
-## 8\. What is middleware in Redux?
+## 8. What is middleware in Redux?
 
-## **Answer**
+## Answer
 
 Middleware is code that runs between dispatching an action and reaching the reducer.
 
 It is useful for logging, async calls, analytics, and side effects.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Redux middleware extends the dispatch pipeline. It can inspect actions, perform side effects, call APIs, log data, handle errors, or dispatch more actions before the reducer receives the final action.
 

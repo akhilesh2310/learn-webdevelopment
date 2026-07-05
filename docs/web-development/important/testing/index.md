@@ -7,11 +7,11 @@ sidebar_position: 1
 
 Experience with testing frameworks like **Jest**, **Jasmine**, **Karma**, and **Playwright** is valuable, especially in the context of frontend development and ensuring the quality and performance of web applications. Here’s a detailed breakdown of these frameworks and possible interview questions based on your experience with them:
 
-### **1\. Jest**
+### 1. Jest
 
 **Jest** is one of the most popular testing frameworks for JavaScript, especially for React applications. It is a testing framework that includes built-in assertion, mocking, and test-running capabilities, making it a one-stop tool for JavaScript testing.
 
-#### **Interview Question:**
+#### Interview Question:
 
 *"What are the advantages of using Jest for testing React applications?"*
 
@@ -29,7 +29,7 @@ Experience with testing frameworks like **Jest**, **Jasmine**, **Karma**, and **
 
 * **Watch Mode**: Jest can run tests in "watch mode," so it automatically runs relevant tests when files are changed, improving developer productivity.
 
-#### **Example Use Case:**
+#### Example Use Case:
 
 In a React app, you can test the behavior of a component using Jest’s mock functions:
 
@@ -45,11 +45,11 @@ CopyEdit
 
 ---
 
-### **2\. Jasmine**
+### 2. Jasmine
 
 **Jasmine** is a behavior-driven development (BDD) framework that is often used for unit testing in JavaScript. It allows writing tests in a more natural, readable syntax, which is particularly useful for BDD practices.
 
-#### **Interview Question:**
+#### Interview Question:
 
 *"How does Jasmine differ from Jest, and when would you use Jasmine over Jest?"*
 
@@ -61,7 +61,7 @@ CopyEdit
 
 * **Use Case for Jasmine**: Jasmine can be preferred if you're already in an established project that uses it, or for testing code that interacts heavily with a non-React frontend (e.g., AngularJS or other non-React apps).
 
-#### **Example:**
+#### Example:
 
 A simple Jasmine test to check the sum of two numbers might look like:
 
@@ -75,11 +75,11 @@ CopyEdit
 
 ---
 
-### **3\. Karma**
+### 3. Karma
 
 **Karma** is a test runner that works well with various testing frameworks like Jasmine, Mocha, and QUnit. It’s typically used for running unit tests in the browser, and it integrates well with other tools like **Jasmine**, **Jest**, and **Mocha**.
 
-#### **Interview Question:**
+#### Interview Question:
 
 *"What role does Karma play in a JavaScript testing workflow?"*
 
@@ -91,7 +91,7 @@ CopyEdit
 
 * **Continuous Integration (CI) Integration**: Karma is useful in CI/CD workflows because it allows tests to be run automatically on every commit or build, making it easier to catch bugs early.
 
-#### **Example:**
+#### Example:
 
 You can configure Karma with Jasmine as the test framework like this:
 
@@ -110,11 +110,11 @@ CopyEdit
 
 ---
 
-### **4\. Playwright**
+### 4. Playwright
 
 **Playwright** is a powerful framework for end-to-end (E2E) testing. It supports modern web applications and provides APIs for interacting with the browser, handling cross-browser testing, and simulating real user interactions.
 
-#### **Interview Question:**
+#### Interview Question:
 
 *"How is Playwright different from Selenium, and what advantages does it offer for E2E testing?"*
 
@@ -128,7 +128,7 @@ CopyEdit
 
 * **Headless Mode**: Like Selenium, Playwright supports headless browser testing, which is important for CI/CD pipelines.
 
-#### **Example:**
+#### Example:
 
 Playwright can be used to test a login page like this:
 
@@ -146,7 +146,7 @@ CopyEdit
 
 ---
 
-### **5\. Interview Question on Testing Best Practices:**
+### 5. Interview Question on Testing Best Practices:
 
 *"Can you explain some of the best practices you follow when writing unit, integration, and end-to-end tests?"*
 
@@ -174,7 +174,7 @@ CopyEdit
 
 ---
 
-### **Conclusion:**
+### Conclusion:
 
 Familiarity with **Jest**, **Jasmine**, **Karma**, and **Playwright** is valuable as each of these tools plays a distinct role in testing, ranging from unit testing to integration and E2E testing. When preparing for an interview, be ready to discuss the strengths and weaknesses of each tool, how they complement one another, and how they fit into a broader testing strategy for modern web applications. Additionally, showcasing your practical experience with these tools, such as examples and use cases, can demonstrate your deep understanding of testing in real-world scenarios.
 

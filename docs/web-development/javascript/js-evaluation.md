@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # JS Evaluation
 
-## **Language Basics**
+## Language Basics
 
 Background:  
 JavaScript was invented by Brendan Eich in 1995 and became an ECMA standard in 1997\.  
@@ -18,7 +18,7 @@ ECMAScript was developed by ECMA International after the organization adopted Ja
 2015-\> ES6 \- Partially supported in major browsers   
 2016-\> ES7, 2017-\> ES8, 2018-\> ES9
 
-## **ECMAScript (JavaScript) Evolution**
+## ECMAScript (JavaScript) Evolution
 
 | Version | Year | Important Features |
 | :---- | :---- | :---- |
@@ -45,11 +45,9 @@ In 1999, “Try and Catch” and regular expression has been added to JS or ES3.
 * Interpreted vs Compiled  
   * It’s a misconception that JS is purely interpreted. Modern engines use JIT (Just-In-Time) compilation. They parse code, optimize 'hot' segments into machine code at runtime, and interpret the rest. You get the development speed of an interpreted language with the execution performance of a compiled one
 
-## 
+## Most Important Releases for Interviews
 
-## **Most Important Releases for Interviews**
-
-### **ES5 (2009)**
+### ES5 (2009)
 
 "use strict";
 
@@ -57,7 +55,7 @@ arr.map();
 arr.filter();  
 arr.reduce();
 
-### **ES6 (2015) ⭐ Most Important**
+### ES6 (2015) ⭐ Most Important
 
 const name \= "Akhilesh";
 
@@ -69,24 +67,24 @@ const newArr \= \[...arr\];
 
 class User \{\}
 
-### **ES2017 (Async/Await)**
+### ES2017 (Async/Await)
 
 async function getData() \{  
  const data \= await fetch(url);  
 \}
 
-### **ES2020 (Optional Chaining)**
+### ES2020 (Optional Chaining)
 
 user?.address?.city;
 
 const value \= input ?? "default";
 
-### **ES2022 (Private Fields)**
+### ES2022 (Private Fields)
 
 class User \{  
  \#name \= "John";  
 \}
 
-## **Interview Answer (30 seconds)**
+## Interview Answer (30 seconds)
 
 ECMAScript is the standard specification for JavaScript. The most significant release was ES6 in 2015, which introduced modern JavaScript features such as `let`, `const`, arrow functions, classes, modules, destructuring, spread operator, and promises. Later versions added async/await (ES2017), optional chaining and nullish coalescing (ES2020), private class fields (ES2022), and utility methods like `findLast()` and `groupBy()` in recent releases. Today, modern browsers support almost all ECMAScript features.

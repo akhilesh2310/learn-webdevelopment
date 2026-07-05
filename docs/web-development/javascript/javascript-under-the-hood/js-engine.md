@@ -5,29 +5,29 @@ sidebar_position: 2
 
 # JS Engine
 
-## **JavaScript Engine**
+## JavaScript Engine
 
-## **V8 Engine**
+## V8 Engine
 
-## **Parsing**
+## Parsing
 
-## **Abstract Syntax Tree (AST)**
+## Abstract Syntax Tree (AST)
 
-## **JIT Compilation**
+## JIT Compilation
 
-## **Hidden Classes**
+## Hidden Classes
 
-## **Inline Caching**
+## Inline Caching
 
-## **Garbage Collector Internals**
+## Garbage Collector Internals
 
-# **JavaScript Engine & V8 Architecture**
+## JavaScript Engine & V8 Architecture
 
 ---
 
-# **1\. JavaScript Engine Overview**
+## 1. JavaScript Engine Overview
 
-## **What is a JavaScript Engine?**
+## What is a JavaScript Engine?
 
 A JavaScript Engine is a program that executes JavaScript code.
 
@@ -44,7 +44,7 @@ This process is called **Just-In-Time (JIT) Compilation**.
 
 ---
 
-## **Popular JavaScript Engines**
+## Popular JavaScript Engines
 
 | Browser/Runtime | Engine |
 | :---- | :---- |
@@ -57,7 +57,7 @@ This process is called **Just-In-Time (JIT) Compilation**.
 
 ---
 
-# **What is V8?**
+## What is V8?
 
 V8 is Google's high-performance JavaScript and WebAssembly engine written in C++.
 
@@ -71,7 +71,7 @@ Key Characteristics:
 
 ---
 
-# **V8 Execution Pipeline**
+## V8 Execution Pipeline
 
 JavaScript Source Code
 
@@ -125,11 +125,11 @@ JavaScript Source Code
 
 ---
 
-## **Why Multiple Compilation Stages?**
+## Why Multiple Compilation Stages?
 
 Different code paths require different optimization levels.
 
-### **Cold Code**
+### Cold Code
 
 Code that executes rarely.
 
@@ -145,7 +145,7 @@ No need for expensive optimization.
 
 ---
 
-### **Warm Code**
+### Warm Code
 
 Code that executes regularly.
 
@@ -157,7 +157,7 @@ Sparkplug compiles it quickly.
 
 ---
 
-### **Hot Code**
+### Hot Code
 
 Code executed thousands of times.
 
@@ -173,11 +173,11 @@ TurboFan heavily optimizes it.
 
 ---
 
-# **V8 Components**
+## V8 Components
 
 ---
 
-## **1\. Parser**
+## 1. Parser
 
 Responsibilities:
 
@@ -195,7 +195,7 @@ AST
 
 ---
 
-## **2\. Ignition (Interpreter)**
+## 2. Ignition (Interpreter)
 
 Responsibilities:
 
@@ -213,7 +213,7 @@ Ignition records:
 
 This information is called:
 
-### **Type Feedback**
+### Type Feedback
 
 Example:
 
@@ -241,7 +241,7 @@ TurboFan later uses this information.
 
 ---
 
-## **3\. Sparkplug**
+## 3. Sparkplug
 
 Introduced to bridge the gap between:
 
@@ -268,7 +268,7 @@ Fast but not Smart
 
 ---
 
-## **4\. TurboFan**
+## 4. TurboFan
 
 TurboFan is V8's optimizing compiler.
 
@@ -304,9 +304,9 @@ and generates optimized machine instructions.
 
 ---
 
-## **5\. Deoptimization (Deopt)**
+## 5. Deoptimization (Deopt)
 
-### **Why Deoptimization Exists**
+### Why Deoptimization Exists
 
 JavaScript is dynamic.
 
@@ -343,7 +343,7 @@ TurboFan:
 
 ---
 
-# **Interview Callout**
+## Interview Callout
 
 **Question: How does V8 optimize JavaScript?**
 
@@ -358,17 +358,17 @@ Expected Answer:
 
 ---
 
-# **2\. Parsing & Abstract Syntax Tree (AST)**
+## 2. Parsing & Abstract Syntax Tree (AST)
 
 ---
 
-## **What is Parsing?**
+## What is Parsing?
 
 Parsing converts raw JavaScript text into a structure the engine can understand.
 
 ---
 
-### **Phase 1: Lexical Analysis (Scanner)**
+### Phase 1: Lexical Analysis (Scanner)
 
 Input:
 
@@ -388,11 +388,11 @@ x
 
 These pieces are called:
 
-### **Tokens**
+### Tokens
 
 ---
 
-### **Phase 2: Syntax Analysis (Parser)**
+### Phase 2: Syntax Analysis (Parser)
 
 The parser checks whether the token sequence follows JavaScript grammar rules.
 
@@ -406,7 +406,7 @@ AST
 
 ---
 
-# **Abstract Syntax Tree (AST)**
+## Abstract Syntax Tree (AST)
 
 AST \= Abstract Syntax Tree
 
@@ -434,7 +434,7 @@ VariableDeclaration
 
 ---
 
-# **Why AST Matters**
+## Why AST Matters
 
 Many tools depend on AST:
 
@@ -446,11 +446,11 @@ Many tools depend on AST:
 
 ---
 
-# **V8 Parsing Strategies**
+## V8 Parsing Strategies
 
 ---
 
-## **Full Parsing**
+## Full Parsing
 
 Used when code is expected to run immediately.
 
@@ -472,7 +472,7 @@ Bytecode
 
 ---
 
-## **Pre-Parsing (Lazy Parsing)**
+## Pre-Parsing (Lazy Parsing)
 
 Used for functions that may never execute.
 
@@ -493,7 +493,7 @@ Only syntax validation occurs.
 
 ---
 
-## **Why Lazy Parsing?**
+## Why Lazy Parsing?
 
 Benefits:
 
@@ -507,11 +507,11 @@ V8 does not fully parse every function immediately. It lazily parses functions w
 
 ---
 
-# **3\. JIT Compilation**
+## 3. JIT Compilation
 
 ---
 
-## **Why JIT Exists**
+## Why JIT Exists
 
 JavaScript is dynamically typed.
 
@@ -529,7 +529,7 @@ Traditional Ahead-of-Time compilation becomes difficult.
 
 ---
 
-## **JIT Approach**
+## JIT Approach
 
 Run Code
 
@@ -553,11 +553,11 @@ Benefits:
 
 ---
 
-# **4\. Hidden Classes**
+## 4. Hidden Classes
 
 ---
 
-## **Problem**
+## Problem
 
 JavaScript objects behave like dynamic dictionaries.
 
@@ -569,15 +569,15 @@ A generic dictionary lookup is expensive.
 
 ---
 
-## **V8 Solution**
+## V8 Solution
 
-### **Hidden Classes (Shapes / Maps)**
+### Hidden Classes (Shapes / Maps)
 
 V8 creates internal metadata describing object structure.
 
 ---
 
-### **Example**
+### Example
 
 const point \= \{\};
 
@@ -637,7 +637,7 @@ Dictionary Search
 
 ---
 
-# **Senior Interview Trap**
+## Senior Interview Trap
 
 Bad:
 
@@ -689,11 +689,11 @@ Maximum optimization.
 
 ---
 
-# **5\. Inline Caching (IC)**
+## 5. Inline Caching (IC)
 
 ---
 
-## **Purpose**
+## Purpose
 
 Uses Hidden Class information to optimize property access.
 
@@ -725,9 +725,9 @@ Direct access.
 
 ---
 
-## **IC States**
+## IC States
 
-### **Monomorphic**
+### Monomorphic
 
 One Hidden Class observed.
 
@@ -735,7 +735,7 @@ Performance: Best
 
 ---
 
-### **Polymorphic**
+### Polymorphic
 
 2–4 Hidden Classes observed.
 
@@ -743,7 +743,7 @@ Performance: Good
 
 ---
 
-### **Megamorphic**
+### Megamorphic
 
 5+ Hidden Classes observed.
 
@@ -753,9 +753,9 @@ Optimization degrades.
 
 ---
 
-# **Interview Callout**
+## Interview Callout
 
-### **Why is Monomorphic Faster?**
+### Why is Monomorphic Faster?
 
 Because V8 can directly inline memory offsets.
 

@@ -5,9 +5,9 @@ sidebar_position: 2
 
 # Quick Q&A JS
 
-## **🟨 JavaScript Interview Preparation – Detailed Concepts, Questions & Answers**
+## 🟨 JavaScript Interview Preparation – Detailed Concepts, Questions & Answers
 
-### **1\. Language Fundamentals**
+### 1. Language Fundamentals
 
 **Q: What is the difference between `var`, `let`, and `const`?**
 
@@ -31,7 +31,7 @@ function test() \{
 
 ---
 
-### **2\. Execution Context & Scope**
+### 2. Execution Context & Scope
 
 **Q: What is a closure in JavaScript?**
 
@@ -50,7 +50,7 @@ counter(); // 2
 
 ---
 
-### **3\. Functions**
+### 3. Functions
 
 **Q: What is the difference between function declaration and expression?**
 
@@ -64,7 +64,7 @@ const notHoisted \= function() \{ console.log("Not hoisted"); \}
 
 ---
 
-### **4\. Asynchronous JavaScript**
+### 4. Asynchronous JavaScript
 
 **Q: How does the event loop work?**
 
@@ -78,7 +78,7 @@ console.log('End');
 
 ---
 
-### **5\. Object-Oriented JavaScript**
+### 5. Object-Oriented JavaScript
 
 **Q: How does prototypal inheritance work?**
 
@@ -92,7 +92,7 @@ dog.speak(); // Animal speaks
 
 ---
 
-### **6\. Data Structures**
+### 6. Data Structures
 
 **Q: What are the differences between Map and Object?**
 
@@ -111,7 +111,7 @@ console.log(map.get(2)); // 'two'
 
 ---
 
-### **7\. Error Handling**
+### 7. Error Handling
 
 **Q: What is the difference between `throw` and `try/catch`?**
 
@@ -129,7 +129,7 @@ try \{
 
 ---
 
-### **8\. Browser APIs**
+### 8. Browser APIs
 
 **Q: What is event delegation?**
 
@@ -143,7 +143,7 @@ document.getElementById('parent').addEventListener('click', function(e) \{
 
 ---
 
-### **9\. ES6+ Features**
+### 9. ES6+ Features
 
 **Q: What is the spread operator?**
 
@@ -154,7 +154,7 @@ const newArr \= \[...arr, 4\]; // \[1, 2, 3, 4\]
 
 ---
 
-### **10\. Miscellaneous**
+### 10. Miscellaneous
 
 **Q: What is currying?**
 
@@ -170,7 +170,7 @@ console.log(double(5)); // 10
 
 ---
 
-## **🟦 TypeScript Interview Preparation**
+## 🟦 TypeScript Interview Preparation
 
 TypeScript interview notes are maintained in the TypeScript section:
 

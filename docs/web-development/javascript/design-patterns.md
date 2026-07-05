@@ -5,19 +5,19 @@ sidebar_position: 26
 
 # Design Patterns
 
-## **Module Pattern**
+## Module Pattern
 
-## **Singleton Pattern**
+## Singleton Pattern
 
-## **Factory Pattern**
+## Factory Pattern
 
-## **Observer Pattern**
+## Observer Pattern
 
-## **Pub/Sub Pattern**
+## Pub/Sub Pattern
 
-## **Strategy Pattern**
+## Strategy Pattern
 
-## **Common Interview Topics**
+## Common Interview Topics
 
 * Observer vs Pub/Sub  
 * Singleton implementation
@@ -37,17 +37,17 @@ Decorators: [https://www.typescriptlang.org/docs/handbook/decorators.html](https
 
 [https://github.com/sudheerj/design-patterns](https://github.com/sudheerj/design-patterns)
 
-# **Design Patterns in JavaScript**
+## Design Patterns in JavaScript
 
 Design patterns are reusable solutions to common software design problems. In JavaScript and frontend apps, they help organize code, manage state, decouple modules, handle events, create flexible logic, and make large applications easier to maintain.
 
 ---
 
-# **1\. Module Pattern**
+## 1. Module Pattern
 
 The Module Pattern organizes related code into a single unit and hides internal implementation details.
 
-## **Simple meaning**
+## Simple meaning
 
 It gives us private data and public methods.
 
@@ -70,11 +70,11 @@ CounterModule.increment();
 console.log(CounterModule.getCount()); // 1  
 console.log(CounterModule.count); // undefined
 
-## **Key mental model**
+## Key mental model
 
 The inner variables stay private because of closures. Only returned methods can access them.
 
-## **How it works**
+## How it works
 
 Step by step:
 
@@ -84,7 +84,7 @@ Step by step:
 * Public methods close over private variables.  
 * Outside code cannot directly access private variables.
 
-## **Modern JavaScript module version**
+## Modern JavaScript module version
 
 // counter.js  
 let count \= 0;
@@ -104,7 +104,7 @@ increment();
 
 console.log(getCount()); // 1
 
-## **Practical frontend example**
+## Practical frontend example
 
 A small analytics module:
 
@@ -130,28 +130,28 @@ Analytics.track("button\_click");
 console.log(Analytics.getEvents());  
 // \[\{ eventName: "button\_click", time: 178... \}\]
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 * Good for encapsulation.  
 * Can hide implementation details cleanly.  
 * Too many module-level variables can create hidden shared state.  
 * In modern apps, ES Modules usually replace classic IIFE module pattern.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Module Pattern groups related code and hides private state using closures. It exposes only selected public methods. In older JavaScript, this was often done with IIFEs. In modern JavaScript, ES Modules provide module scope and are the preferred way to structure reusable code.
 
 ---
 
-# **2\. Singleton Pattern**
+## 2. Singleton Pattern
 
 The Singleton Pattern ensures only one instance of something exists and provides a global access point to it.
 
-## **Simple meaning**
+## Simple meaning
 
 Create one shared instance and reuse it everywhere.
 
-## **Basic implementation**
+## Basic implementation
 
 const AppConfig \= (function () \{  
   let instance;
@@ -179,11 +179,11 @@ const config2 \= AppConfig.getInstance();
 
 console.log(config1 \=== config2); // true
 
-## **Key mental model**
+## Key mental model
 
 The first call creates the instance. Later calls return the same object.
 
-## **Class-based implementation**
+## Class-based implementation
 
 class Logger \{  
   static instance;
@@ -207,7 +207,7 @@ const logger2 \= new Logger();
 
 console.log(logger1 \=== logger2); // true
 
-## **Practical frontend use cases**
+## Practical frontend use cases
 
 * Logger.  
 * App configuration.  
@@ -216,23 +216,23 @@ console.log(logger1 \=== logger2); // true
 * Shared cache.  
 * API client instance.
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 Singletons can become hidden global state. This can make testing harder and create tight coupling.
 
 Common mistake: Overusing Singleton for things that should be passed as dependencies.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Singleton Pattern ensures a class or module has only one instance and provides a way to access it globally. It is useful for shared services like logger, config, analytics, or API clients, but it should be used carefully because it can create hidden global state and make testing harder.
 
 ---
 
-# **3\. Factory Pattern**
+## 3. Factory Pattern
 
 The Factory Pattern creates objects without exposing the exact creation logic to the caller.
 
-## **Simple meaning**
+## Simple meaning
 
 A factory function decides what object to create.
 
@@ -255,11 +255,11 @@ function createUser(type, name) \{
 console.log(createUser("admin", "Akhilesh"));  
 // \{ name: "Akhilesh", role: "admin", canDelete: true \}
 
-## **Key mental model**
+## Key mental model
 
 The caller asks for an object. The factory handles the creation details.
 
-## **Practical frontend example**
+## Practical frontend example
 
 Create notification objects based on type:
 
@@ -295,7 +295,7 @@ function createNotification(type, message) \{
 console.log(createNotification("error", "Failed to save"));  
 // \{ message: "Failed to save", createdAt: 178..., type: "error", icon: "❌" \}
 
-## **Why it is useful**
+## Why it is useful
 
 * Centralizes object creation.  
 * Keeps caller code simple.  
@@ -303,7 +303,7 @@ console.log(createNotification("error", "Failed to save"));
 * Useful when object shape depends on type/config.  
 * Reduces repeated object creation logic.
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 * Too many `if/else` branches can become messy.  
 * For many types, use a map-based factory.
@@ -323,21 +323,21 @@ function createNotification(type, message) \{
 console.log(createNotification("success", "Saved"));  
 // \{ type: "success", icon: "✅", message: "Saved" \}
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Factory Pattern centralizes object creation logic. Instead of callers directly creating different object types, they ask a factory function to create the right object based on input. It is useful when object creation depends on type, configuration, or environment.
 
 ---
 
-# **4\. Observer Pattern**
+## 4. Observer Pattern
 
 The Observer Pattern allows one object, called the subject, to notify multiple observers when its state changes.
 
-## **Simple meaning**
+## Simple meaning
 
 One source changes. Many listeners get notified.
 
-## **Basic implementation**
+## Basic implementation
 
 class Subject \{  
   constructor() \{  
@@ -374,11 +374,11 @@ subject.notify("State changed");
 // "Observer 1: State changed"  
 // "Observer 2: State changed"
 
-## **Key mental model**
+## Key mental model
 
 The subject knows who is observing it and directly notifies observers.
 
-## **Practical frontend examples**
+## Practical frontend examples
 
 * Store subscriptions.  
 * Form state listeners.  
@@ -387,7 +387,7 @@ The subject knows who is observing it and directly notifies observers.
 * Reactive systems.  
 * Observable streams.
 
-## **Real-world example**
+## Real-world example
 
 class Store \{  
   constructor(initialState) \{  
@@ -425,28 +425,28 @@ unsubscribe();
 
 store.setState(\{ count: 2 \}); // No output
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 * Useful for one-to-many updates.  
 * Can create memory leaks if observers are not unsubscribed.  
 * Subject and observers are somewhat coupled because subject directly manages observers.  
 * Notification order can matter in some cases.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Observer Pattern defines a one-to-many relationship where a subject keeps a list of observers and notifies them when its state changes. It is useful for subscriptions, UI state updates, event listeners, and reactive systems. A common concern is cleanup, because forgetting to unsubscribe can cause memory leaks.
 
 ---
 
-# **5\. Pub/Sub Pattern**
+## 5. Pub/Sub Pattern
 
 Pub/Sub stands for Publish/Subscribe. It allows publishers and subscribers to communicate through topics or events without directly knowing each other.
 
-## **Simple meaning**
+## Simple meaning
 
 A publisher emits an event. Subscribers listening to that event get called.
 
-## **Basic implementation**
+## Basic implementation
 
 class EventBus \{  
   constructor() \{  
@@ -485,11 +485,11 @@ eventBus.publish("user:login", \{ name: "Akhilesh" \});
 
 unsubscribe();
 
-## **Key mental model**
+## Key mental model
 
 Publisher and subscriber do not directly know each other. The event bus sits in between.
 
-## **Practical frontend examples**
+## Practical frontend examples
 
 * Cross-module communication.  
 * Microfrontend communication.  
@@ -498,7 +498,7 @@ Publisher and subscriber do not directly know each other. The event bus sits in 
 * Global app events.  
 * Legacy app integration.
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 * Reduces direct coupling.  
 * Good for cross-module communication.  
@@ -507,21 +507,21 @@ Publisher and subscriber do not directly know each other. The event bus sits in 
 * Hidden data flow can make large apps harder to reason about.  
 * Need cleanup/unsubscribe to avoid memory leaks.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Pub/Sub allows different parts of an app to communicate through events or topics without directly referencing each other. A publisher emits an event, and subscribers listening to that event receive the data. It is useful for decoupled communication, but overuse can create hidden data flow and debugging issues.
 
 ---
 
-# **6\. Strategy Pattern**
+## 6. Strategy Pattern
 
 The Strategy Pattern lets us define multiple algorithms and choose one at runtime.
 
-## **Simple meaning**
+## Simple meaning
 
 Instead of many `if/else` conditions, put each behavior in a separate strategy and select the required one.
 
-## **Basic example**
+## Basic example
 
 const paymentStrategies \= \{  
   card(amount) \{  
@@ -549,11 +549,11 @@ function pay(amount, method) \{
 
 console.log(pay(100, "upi")); // "Paid 100 using UPI"
 
-## **Key mental model**
+## Key mental model
 
 The caller chooses what behavior is needed, and the strategy map executes the right algorithm.
 
-## **Practical frontend example**
+## Practical frontend example
 
 Sorting with multiple strategies:
 
@@ -581,7 +581,7 @@ function sortProducts(products, sortBy) \{
   return strategy(products);  
 \}
 
-## **Why it is useful**
+## Why it is useful
 
 * Avoids long conditional logic.  
 * Keeps algorithms separate.  
@@ -589,30 +589,30 @@ function sortProducts(products, sortBy) \{
 * Makes testing easier.  
 * Useful for sorting, filtering, validation, pricing, formatting, and feature-specific behavior.
 
-## **Trade-offs / common mistakes**
+## Trade-offs / common mistakes
 
 * Good when algorithms vary.  
 * Too much abstraction for simple cases can be unnecessary.  
 * Strategy names should be clear and consistent.  
 * Always handle invalid strategy safely.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 The Strategy Pattern defines multiple interchangeable algorithms and selects one at runtime. It helps replace long `if/else` or `switch` blocks with a clean strategy map. It is useful for sorting, validation, filtering, pricing, formatting, and configurable business logic.
 
 ---
 
-# **Common Interview Topics / Questions**
+## Common Interview Topics / Questions
 
 ---
 
-# **1\. Observer vs Pub/Sub**
+## 1. Observer vs Pub/Sub
 
-## **Simple answer**
+## Simple answer
 
 Observer has direct relationship between subject and observers. Pub/Sub uses an event bus or broker between publishers and subscribers.
 
-## **Comparison**
+## Comparison
 
 | Point | Observer Pattern | Pub/Sub Pattern |
 | ----- | ----- | ----- |
@@ -623,29 +623,29 @@ Observer has direct relationship between subject and observers. Pub/Sub uses an 
 | Use case | State changes, store subscriptions | Cross-module or app-wide events |
 | Debugging | Easier to trace | Can be harder if overused |
 
-## **Observer example**
+## Observer example
 
 store.subscribe(listener);  
 store.setState(\{ count: 1 \});
 
 The store directly knows and notifies listeners.
 
-## **Pub/Sub example**
+## Pub/Sub example
 
 eventBus.subscribe("user:login", listener);  
 eventBus.publish("user:login", user);
 
 The publisher does not know who is listening.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Observer and Pub/Sub both handle one-to-many communication, but the relationship is different. In Observer, the subject directly stores and notifies observers. In Pub/Sub, publishers and subscribers are decoupled through an event bus or broker. Observer is common for state subscriptions, while Pub/Sub is useful for cross-module communication.
 
 ---
 
-# **2\. Singleton Implementation**
+## 2. Singleton Implementation
 
-## **Basic implementation using closure**
+## Basic implementation using closure
 
 const Singleton \= (function () \{  
   let instance;
@@ -672,7 +672,7 @@ const b \= Singleton.getInstance();
 
 console.log(a \=== b); // true
 
-## **Class-based implementation**
+## Class-based implementation
 
 class ApiClient \{  
   static instance;
@@ -696,7 +696,7 @@ const client2 \= new ApiClient("/api");
 
 console.log(client1 \=== client2); // true
 
-## **ES Module singleton**
+## ES Module singleton
 
 In modern frontend apps, ES Modules naturally behave like singletons because a module is evaluated once and then cached.
 
@@ -714,15 +714,15 @@ class Logger \{
 
 logger.log("App started");
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 A singleton ensures only one instance of a service exists. It can be implemented using closures, static class properties, or ES Module exports. In modern JavaScript, exporting a single instance from a module is often the cleanest approach. But singletons should be used carefully because they introduce shared state and can make testing harder.
 
 ---
 
-# **3\. Factory vs Strategy**
+## 3. Factory vs Strategy
 
-## **Simple answer**
+## Simple answer
 
 Factory is about object creation. Strategy is about choosing behavior.
 
@@ -732,21 +732,21 @@ createNotification("success", "Saved");
 // Strategy  
 sortProducts(products, "priceLowToHigh");
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 Factory Pattern centralizes how objects are created. Strategy Pattern centralizes interchangeable behaviors or algorithms. Factory answers “what object should I create?”, while Strategy answers “which behavior should I run?”
 
 ---
 
-# **4\. When should you avoid Pub/Sub?**
+## 4. When should you avoid Pub/Sub?
 
-## **Answer**
+## Answer
 
 Avoid Pub/Sub when direct data flow is clearer.
 
 Pub/Sub can become hard to debug if events are scattered across the app.
 
-## **Common issues**
+## Common issues
 
 * Hidden data flow.  
 * Hard-to-track event names.  
@@ -755,15 +755,15 @@ Pub/Sub can become hard to debug if events are scattered across the app.
 * Difficult testing.  
 * No clear ownership of data.
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 I avoid Pub/Sub for normal parent-child communication or simple state updates. It is better for cross-cutting events like analytics, notifications, or microfrontend communication. Overusing it can make data flow hidden and debugging difficult.
 
 ---
 
-# **5\. Where are these patterns used in frontend apps?**
+## 5. Where are these patterns used in frontend apps?
 
-## **Examples**
+## Examples
 
 | Pattern | Frontend use case |
 | ----- | ----- |
@@ -774,13 +774,13 @@ I avoid Pub/Sub for normal parent-child communication or simple state updates. I
 | Pub/Sub | Event bus, microfrontends, app-wide notifications |
 | Strategy | Sorting, filtering, validation, pricing, formatting |
 
-## **Interview-ready answer**
+## Interview-ready answer
 
 In frontend apps, Module Pattern is used for code organization, Singleton for shared services, Factory for creating objects based on type, Observer for subscriptions and state updates, Pub/Sub for decoupled communication, and Strategy for runtime behavior selection like sorting, filtering, validation, or formatting.
 
 ---
 
-# **Quick Revision Summary**
+## Quick Revision Summary
 
 | Pattern | Key point |
 | ----- | ----- |
@@ -798,6 +798,6 @@ In frontend apps, Module Pattern is used for code organization, Singleton for sh
 
 ---
 
-# **Final Interview-Ready Combined Answer**
+## Final Interview-Ready Combined Answer
 
 JavaScript design patterns help structure code in a reusable and maintainable way. The Module Pattern encapsulates private state and exposes public methods. Singleton ensures only one shared instance exists, commonly used for logger, config, analytics, or API clients. Factory centralizes object creation. Observer allows a subject to directly notify subscribers when state changes. Pub/Sub decouples publishers and subscribers using an event bus. Strategy defines multiple algorithms and selects one at runtime, replacing long conditional logic. In interviews, the most important comparison is Observer vs Pub/Sub, where Observer has direct subject-to-observer communication, while Pub/Sub uses an intermediate event bus.

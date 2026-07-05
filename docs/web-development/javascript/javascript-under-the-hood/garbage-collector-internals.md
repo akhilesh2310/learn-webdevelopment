@@ -51,9 +51,9 @@ Reuse Memory Later
 
 The most important concept in Garbage Collection is:
 
-## **Reachable vs Unreachable Objects**
+## Reachable vs Unreachable Objects
 
-### **Reachable Object**
+### Reachable Object
 
 An object is considered alive if it can be reached from a root reference.
 
@@ -76,7 +76,7 @@ Object is reachable.
 
 ---
 
-### **Unreachable Object**
+### Unreachable Object
 
 let user \= \{  
  name: "John"  
@@ -110,7 +110,7 @@ Instead, memory is divided into generations.
 
 ---
 
-## **Why Generations?**
+## Why Generations?
 
 V8 is built around an important observation:
 
@@ -154,7 +154,7 @@ Heap
 
 ---
 
-## **Purpose**
+## Purpose
 
 Stores:
 
@@ -172,7 +172,7 @@ Most objects created here die quickly.
 
 ---
 
-## **Characteristics**
+## Characteristics
 
 | Property | Value |
 | ----- | ----- |
@@ -187,11 +187,11 @@ Most objects created here die quickly.
 
 New Space uses:
 
-## **Scavenger Collector**
+## Scavenger Collector
 
 Based on:
 
-## **Cheney's Copying Algorithm**
+## Cheney's Copying Algorithm
 
 ---
 
@@ -209,7 +209,7 @@ Both are equal-sized memory regions.
 
 ---
 
-## **Initial State**
+## Initial State
 
 From Space
 
@@ -323,7 +323,7 @@ These are considered long-lived.
 
 ---
 
-## **Promotion Rule**
+## Promotion Rule
 
 Typically:
 
@@ -351,7 +351,7 @@ Old Space
 
 ---
 
-## **Purpose**
+## Purpose
 
 Stores:
 
@@ -368,7 +368,7 @@ Global Config
 Cache Objects  
 ---
 
-## **Characteristics**
+## Characteristics
 
 | Property | Value |
 | ----- | ----- |
@@ -383,7 +383,7 @@ Cache Objects
 
 Old Space uses:
 
-## **Mark-Sweep-Compact**
+## Mark-Sweep-Compact
 
 This is much more sophisticated than Scavenger.
 
@@ -406,7 +406,7 @@ Find all reachable objects.
 
 ---
 
-## **Root References**
+## Root References
 
 Marking starts from roots.
 
@@ -455,19 +455,19 @@ Grey
 Black  
 ---
 
-## **White**
+## White
 
 Not Visited  
 Potentially Dead  
 ---
 
-## **Grey**
+## Grey
 
 Visited  
 Children Not Processed Yet  
 ---
 
-## **Black**
+## Black
 
 Visited  
 Children Already Processed  
@@ -546,7 +546,7 @@ Memory becomes fragmented.
 
 ---
 
-## **Why Fragmentation is Bad**
+## Why Fragmentation is Bad
 
 Need:
 
@@ -588,13 +588,13 @@ Benefits:
 
 ## Interview Callout
 
-### **Difference Between Sweep and Compact**
+### Difference Between Sweep and Compact
 
-#### **Sweep**
+#### Sweep
 
 Removes Dead Objects
 
-#### **Compact**
+#### Compact
 
 Moves Live Objects Together
 
@@ -630,7 +630,7 @@ Reduce pause time as much as possible.
 
 ---
 
-## **1\. Parallel GC**
+## 1. Parallel GC
 
 Uses multiple CPU threads.
 
@@ -648,7 +648,7 @@ Benefits:
 
 ---
 
-## **2\. Incremental GC**
+## 2. Incremental GC
 
 Instead of:
 
@@ -665,7 +665,7 @@ small chunks.
 
 ---
 
-### **Traditional GC**
+### Traditional GC
 
 App Runs  
      ↓  
@@ -674,7 +674,7 @@ STOP 200ms
 Continue  
 ---
 
-### **Incremental GC**
+### Incremental GC
 
 App  
 ↓  
@@ -690,7 +690,7 @@ Much smoother.
 
 ---
 
-## **3\. Concurrent GC**
+## 3. Concurrent GC
 
 Background threads perform GC work while JavaScript continues executing.
 
@@ -739,7 +739,7 @@ Compact
 
 ---
 
-## **Q1: Why does V8 use Generational GC?**
+## Q1: Why does V8 use Generational GC?
 
 **Answer:**
 
@@ -753,7 +753,7 @@ By separating short-lived and long-lived objects:
 
 ---
 
-## **Q2: Explain Cheney's Copying Algorithm.**
+## Q2: Explain Cheney's Copying Algorithm.
 
 **Answer:**
 
@@ -773,7 +773,7 @@ Benefits:
 
 ---
 
-## **Q3: Explain Mark-Sweep-Compact.**
+## Q3: Explain Mark-Sweep-Compact.
 
 **Answer:**
 
@@ -791,7 +791,7 @@ Benefits:
 
 ---
 
-## **Q4: What is Orinoco?**
+## Q4: What is Orinoco?
 
 **Answer:**
 
@@ -818,7 +818,7 @@ Heap
          Sweep  
          Compact
 
-### **Key Concepts**
+### Key Concepts
 
 * Reachable vs Unreachable  
 * Generational GC  

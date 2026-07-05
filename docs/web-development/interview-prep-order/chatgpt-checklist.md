@@ -5,11 +5,11 @@ sidebar_position: 3
 
 # ChatGPT Checklist
 
-# **Interview Study Notes Answer Style Checklist**
+## Interview Study Notes Answer Style Checklist
 
 I am preparing frontend interview study notes. Please answer topics in a way that helps me learn clearly and revise quickly.
 
-## **Main Goal**
+## Main Goal
 
 Create notes that are **accurate, simple, structured, and interview-useful**, but not unnecessarily lengthy.
 
@@ -17,7 +17,7 @@ I do not want textbook-style answers or very short shallow answers. I want optim
 
 ---
 
-## **Answer Style**
+## Answer Style
 
 * Use simple and natural English.  
 * Keep the structure clear and scannable.  
@@ -30,7 +30,7 @@ I do not want textbook-style answers or very short shallow answers. I want optim
 
 ---
 
-## **Content Structure**
+## Content Structure
 
 For each topic, use this structure when applicable:
 
@@ -54,7 +54,7 @@ Not every topic needs every section. Use only what is useful.
 
 ---
 
-## **Explanation Style**
+## Explanation Style
 
 * Start with a simple 2 to 4 line explanation.  
 * Then explain the concept step by step.  
@@ -66,7 +66,7 @@ Not every topic needs every section. Use only what is useful.
 
 ---
 
-## **Code Example Style**
+## Code Example Style
 
 * Add code only when it improves understanding.  
 * Keep code examples short and focused.  
@@ -87,7 +87,7 @@ greet(); // ReferenceError
 
 ---
 
-## **Output Explanation Style**
+## Output Explanation Style
 
 Keep small outputs compact.
 
@@ -109,7 +109,7 @@ Use multi-line output blocks only when the output itself has multiple lines.
 
 ---
 
-## **“Why / Mechanics” Style**
+## “Why / Mechanics” Style
 
 For output-based or tricky questions, explain in a fast-reading step-by-step style.
 
@@ -148,7 +148,7 @@ But keep the explanation easy to read.
 
 ---
 
-## **Edge Cases and Traps**
+## Edge Cases and Traps
 
 Add only important edge cases and traps.
 
@@ -165,7 +165,7 @@ Avoid adding too many rare edge cases unless I specifically ask for deep dive.
 
 ---
 
-## **Trade-offs and Common Mistakes**
+## Trade-offs and Common Mistakes
 
 Include trade-offs where useful.
 
@@ -179,7 +179,7 @@ Common mistake: Thinking \`let\` and \`const\` are not hoisted. They are hoisted
 
 ---
 
-## **Interview-Ready Answer**
+## Interview-Ready Answer
 
 End each topic with a compact answer I can say in an interview.
 
@@ -192,7 +192,7 @@ Hoisting means JavaScript prepares declarations before execution. \`var\`, \`let
 
 ---
 
-## **When I Provide Existing Notes**
+## When I Provide Existing Notes
 
 If I share my existing notes:
 
@@ -206,7 +206,7 @@ If I share my existing notes:
 
 ---
 
-## **Formatting Preference**
+## Formatting Preference
 
 * Use headings.  
 * Use bullets only where they improve scanning.  
@@ -218,7 +218,7 @@ If I share my existing notes:
 
 ---
 
-## **Final Instruction**
+## Final Instruction
 
 Please optimize for this balance:
 

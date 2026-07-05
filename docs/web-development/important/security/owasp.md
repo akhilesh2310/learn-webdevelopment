@@ -13,7 +13,7 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 ---
 
-### **🔟 Key OWASP Top 10 Items (Frontend-Relevant)**
+### 🔟 Key OWASP Top 10 Items (Frontend-Relevant)
 
 1. **A01: Broken Access Control**
 
@@ -87,7 +87,7 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 ---
 
-### **Bonus: Additional Concerns Not in OWASP but Frontend-Relevant**
+### Bonus: Additional Concerns Not in OWASP but Frontend-Relevant
 
 * **Content Security Policy (CSP)**: Helps mitigate XSS by whitelisting allowed sources.
 
@@ -95,9 +95,9 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 * **DOM Clobbering / Prototype Pollution**: Be cautious when parsing or applying user-controlled HTML.
 
-### **🔐 1\. Cross-Site Scripting (XSS) – \[A03: Injection\]**
+### 🔐 1. Cross-Site Scripting (XSS) – \[A03: Injection\]
 
-#### **🔸 React**
+#### 🔸 React
 
 React automatically escapes content, but **`dangerouslySetInnerHTML`** is unsafe.
 
@@ -123,7 +123,7 @@ CopyEdit
 
 `<div dangerouslySetInnerHTML=\{\{ __html: DOMPurify.sanitize(userInput) \}\} />`
 
-#### **🔸 Angular**
+#### 🔸 Angular
 
 Angular templates are also auto-sanitized, but **bypassing security** is dangerous.
 
@@ -145,7 +145,7 @@ CopyEdit
 
 ---
 
-### **🔐 2\. Broken Access Control – \[A01\]**
+### 🔐 2. Broken Access Control – \[A01\]
 
 **Never hide UI elements assuming that means security.**
 
@@ -161,9 +161,9 @@ CopyEdit
 
 ---
 
-### **🔐 3\. Token Storage & Auth – \[A07: Identification & Authentication Failures\]**
+### 🔐 3. Token Storage & Auth – \[A07: Identification & Authentication Failures\]
 
-#### **❌ Risky Token Storage:**
+#### ❌ Risky Token Storage:
 
 ts
 
@@ -171,7 +171,7 @@ CopyEdit
 
 `localStorage.setItem("accessToken", token); // vulnerable to XSS`
 
-#### **✅ Recommended:**
+#### ✅ Recommended:
 
 * Use **HttpOnly cookies** for storing tokens — frontend JS can’t access them.
 
@@ -179,7 +179,7 @@ CopyEdit
 
 ---
 
-### **🔐 4\. Loading External Scripts – \[A08: Integrity Failures\]**
+### 🔐 4. Loading External Scripts – \[A08: Integrity Failures\]
 
 Use **Subresource Integrity (SRI)** when loading from CDNs.
 
@@ -193,9 +193,9 @@ Use **Subresource Integrity (SRI)** when loading from CDNs.
 
 ---
 
-### **🔐 5\. Error Handling – \[A09: Logging and Monitoring Failures\]**
+### 🔐 5. Error Handling – \[A09: Logging and Monitoring Failures\]
 
-#### **✅ In React:**
+#### ✅ In React:
 
 `import * as Sentry from "@sentry/react";`
 
@@ -209,7 +209,7 @@ Use **Subresource Integrity (SRI)** when loading from CDNs.
 
 ---
 
-### **🔐 6\. Content Security Policy (CSP) (XSS prevention layer)**
+### 🔐 6. Content Security Policy (CSP) (XSS prevention layer)
 
 Set in server response headers:
 
@@ -219,7 +219,7 @@ Set in server response headers:
 
 ---
 
-### **🔐 7\. Prevent Clickjacking**
+### 🔐 7. Prevent Clickjacking
 
 Add header via backend:
 
@@ -231,7 +231,7 @@ CopyEdit
 
 ---
 
-### **✅ Secure Coding Checklist (Frontend)**
+### ✅ Secure Coding Checklist (Frontend)
 
 | 🔧 Area | ✅ Safe Practice |
 | ----- | ----- |
@@ -244,7 +244,7 @@ CopyEdit
 | HTML Templates | Auto-sanitized by framework – do not bypass |
 | Network | Enforce HTTPS, CSP headers, and X-Frame-Options |
 
-### **🔍 How Clickjacking Works:**
+### 🔍 How Clickjacking Works:
 
 A common clickjacking attack involves:
 
@@ -256,7 +256,7 @@ A common clickjacking attack involves:
 
 ---
 
-### **💡 Example Scenario:**
+### 💡 Example Scenario:
 
 Suppose you're logged into your bank account in another tab.
 
@@ -268,7 +268,7 @@ Suppose you're logged into your bank account in another tab.
 
 ---
 
-### **🔒 How to Prevent Clickjacking:**
+### 🔒 How to Prevent Clickjacking:
 
 Web developers can prevent clickjacking using:
 
@@ -303,13 +303,13 @@ CopyEdit
 
 ---
 
-## **🔥 1\. What is XSS (Cross-Site Scripting)?**
+## 🔥 1. What is XSS (Cross-Site Scripting)?
 
 **XSS** is a security vulnerability that allows attackers to **inject malicious JavaScript** into web pages viewed by other users. It's usually used to steal cookies, session tokens, or perform actions on behalf of a user.
 
 ---
 
-### **⚙️ How XSS Works:**
+### ⚙️ How XSS Works:
 
 1. An attacker inputs a malicious script into a form, comment field, URL, or other input that the server or frontend renders without validation or escaping.
 
@@ -327,7 +327,7 @@ CopyEdit
 
 ---
 
-### **🧪 Example of XSS Attack:**
+### 🧪 Example of XSS Attack:
 
 Suppose a blog shows comments without escaping:
 
@@ -343,7 +343,7 @@ When any user views the comment, the script runs.
 
 ---
 
-### **✅ How to Prevent XSS:**
+### ✅ How to Prevent XSS:
 
 * Always **escape HTML special characters** (`<`, `>`, `"`).
 
@@ -355,13 +355,13 @@ When any user views the comment, the script runs.
 
 ---
 
-## **💣 2\. What is SQL Injection?**
+## 💣 2. What is SQL Injection?
 
 **SQL Injection** is an attack that lets an attacker execute **malicious SQL queries** on your database by injecting code into user input fields.
 
 ---
 
-### **⚙️ How SQL Injection Works:**
+### ⚙️ How SQL Injection Works:
 
 1. Application dynamically builds SQL queries using unsanitized user input.
 
@@ -369,7 +369,7 @@ When any user views the comment, the script runs.
 
 ---
 
-### **🧪 Example of SQL Injection:**
+### 🧪 Example of SQL Injection:
 
 Suppose your login form runs:
 
@@ -399,7 +399,7 @@ CopyEdit
 
 ---
 
-### **✅ How to Prevent SQL Injection:**
+### ✅ How to Prevent SQL Injection:
 
 **Use prepared statements** / parameterized queries:
 
@@ -420,7 +420,7 @@ CopyEdit
 
 * Apply **least privilege** to DB accounts.
 
-### **🔐 A01:2021 – Broken Access Control**
+### 🔐 A01:2021 – Broken Access Control
 
 * **What it is:** Occurs when restrictions on authenticated users are not properly enforced, allowing unauthorized actions.
 
@@ -438,7 +438,7 @@ CopyEdit
 
 ---
 
-### **🔐 A02:2021 – Cryptographic Failures**
+### 🔐 A02:2021 – Cryptographic Failures
 
 * **What it is:** Previously known as "Sensitive Data Exposure," this involves failures in cryptographic systems leading to data breaches.[Medium+1OWASP+1](https://medium.com/%40ajay.monga73/comparison-of-the-first-owasp-top-10-and-owasp-top-10-2021-995c8729c054?utm_source=chatgpt.com)
 
@@ -456,7 +456,7 @@ CopyEdit
 
 ---
 
-### **💣 A03:2021 – Injection**
+### 💣 A03:2021 – Injection
 
 * **What it is:** Occurs when untrusted data is sent to an interpreter as part of a command or query, leading to unintended execution.
 
@@ -474,7 +474,7 @@ CopyEdit
 
 ---
 
-### **🛠️ A04:2021 – Insecure Design**
+### 🛠️ A04:2021 – Insecure Design
 
 * **What it is:** Introduced in 2021, this refers to security flaws resulting from inadequate design and architectural decisions.
 
@@ -492,7 +492,7 @@ CopyEdit
 
 ---
 
-### **⚙️ A05:2021 – Security Misconfiguration**
+### ⚙️ A05:2021 – Security Misconfiguration
 
 * **What it is:** Refers to improper configurations that leave the application vulnerable to attacks.[Wikipedia+1Wikipedia+1](https://en.wikipedia.org/wiki/Application_security?utm_source=chatgpt.com)
 
@@ -510,7 +510,7 @@ CopyEdit
 
 ---
 
-### **🧱 A06:2021 – Vulnerable and Outdated Components**
+### 🧱 A06:2021 – Vulnerable and Outdated Components
 
 * **What it is:** Using components with known vulnerabilities can compromise the entire application.[Medium+2OWASP+2OWASP+2](https://owasp.org/Top10/?utm_source=chatgpt.com)
 
@@ -528,7 +528,7 @@ CopyEdit
 
 ---
 
-### **🔑 A07:2021 – Identification and Authentication Failures**
+### 🔑 A07:2021 – Identification and Authentication Failures
 
 * **What it is:** Previously "Broken Authentication," this involves flaws in identity verification mechanisms.
 
@@ -546,7 +546,7 @@ CopyEdit
 
 ---
 
-### **🧩 A08:2021 – Software and Data Integrity Failures**
+### 🧩 A08:2021 – Software and Data Integrity Failures
 
 * **What it is:** Introduced in 2021, this pertains to code and infrastructure that do not protect against integrity violations.
 
@@ -564,7 +564,7 @@ CopyEdit
 
 ---
 
-### **📋 A09:2021 – Security Logging and Monitoring Failures**
+### 📋 A09:2021 – Security Logging and Monitoring Failures
 
 * **What it is:** Insufficient logging and monitoring can delay detection of breaches and hinder incident response.
 
@@ -582,7 +582,7 @@ CopyEdit
 
 ---
 
-### **🌐 A10:2021 – Server-Side Request Forgery (SSRF)**
+### 🌐 A10:2021 – Server-Side Request Forgery (SSRF)
 
 * **What it is:** Occurs when an application fetches a remote resource without validating the user-supplied URL, leading to internal resource access.
 

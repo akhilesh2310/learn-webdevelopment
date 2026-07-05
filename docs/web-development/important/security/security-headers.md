@@ -7,23 +7,23 @@ sidebar_position: 6
 
 Related canonical pages: [XSS](xss-cross-site-scripting.md), [iFrame Protection](iframe-protection.md).
 
-# **Security Headers**
+## Security Headers
 
-## **1\. What is Security Headers?**
+## 1. What is Security Headers?
 
 Security headers are HTTP response headers used to enhance the security of a web application by instructing the browser on how to handle certain aspects of web page behavior, security policies, and resource access. These headers help to protect the application from various vulnerabilities like Cross-Site Scripting (XSS), Clickjacking, and other malicious attacks.
 
-## **2\. When does it occur?**
+## 2. When does it occur?
 
 Security headers should be implemented as soon as you start working on a web application, ideally in the early stages of development or during the configuration of your web server. It's critical to continuously review and update these headers to adapt to emerging threats and to ensure ongoing protection. A lack of proper security headers can expose your web application to attacks and vulnerabilities.
 
-## **3\. How does it happen?**
+## 3. How does it happen?
 
 Security headers are not set by default in most web servers and applications. Without these headers, browsers may interpret content in an unsafe way, potentially allowing attackers to exploit vulnerabilities. The absence of certain security headers, like Content Security Policy (CSP), can leave your site vulnerable to XSS or other injection attacks.
 
 For example, if an attacker can inject malicious scripts into your application, a lack of a CSP header might allow the browser to execute it, leading to data theft or unauthorized actions.
 
-## **4\. Why is it dangerous?**
+## 4. Why is it dangerous?
 
 Without security headers, attackers may be able to bypass certain browser protections, which can result in a range of issues, such as:
 
@@ -35,19 +35,19 @@ Without security headers, attackers may be able to bypass certain browser protec
 
 In short, failing to set proper security headers exposes your app to a variety of common attacks, compromising the safety of your users and application.
 
-## **5\. Example**
+## 5. Example
 
-### **In a Generic Web Application:**
+### In a Generic Web Application:
 
 Imagine a banking application where an attacker might inject malicious JavaScript to steal login credentials. If a **Content Security Policy (CSP)** header isn’t set, this malicious script may be executed by the browser, compromising the user's data.
 
-### **In ReactJS:**
+### In ReactJS:
 
 In a ReactJS app, imagine if you allow inline script execution through React's dangerouslySetInnerHTML without a proper CSP. This could enable an attacker to inject harmful scripts, risking XSS vulnerabilities.
 
-## **6\. 🛡️ How to Prevent/Fix**
+## 6. 🛡️ How to Prevent/Fix
 
-### **6.1 In a Generic Web Application**
+### 6.1 In a Generic Web Application
 
 * **Content Security Policy (CSP)**: Define which resources can be loaded and executed by the browser, reducing the risk of XSS attacks.
 
@@ -92,7 +92,7 @@ CopyEdit
 
 * 
 
-### **6.2 In ReactJS**
+### 6.2 In ReactJS
 
 **Set Headers in the Server Configuration**: If your React app is served via an Express.js backend or similar, you can set these headers in your server configuration. Example with Express:
 
@@ -125,7 +125,7 @@ CopyEdit
 
 * 
 
-## **7\. ✅ Summary**
+## 7. ✅ Summary
 
 | Security Header | Purpose | Example Header |
 | ----- | ----- | ----- |

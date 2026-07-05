@@ -12,8 +12,9 @@ sidebar_position: 1
 [**https://www.interviewbit.com/javascript-interview-questions**](https://www.interviewbit.com/javascript-interview-questions/)  
 [**https://github.com/sudheerj/javascript-interview-questions**](https://github.com/sudheerj/javascript-interview-questions)
 
-| console.log(name); // undefined var name \= "Akhilesh"; |
-| :---- |
+```js
+console.log(name); // undefined var name = "Akhilesh";
+```
 
 Learn:    
 [https://www.w3schools.com/js/](https://www.w3schools.com/js/)  

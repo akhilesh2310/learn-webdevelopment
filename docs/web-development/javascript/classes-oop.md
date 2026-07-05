@@ -5,7 +5,7 @@ sidebar_position: 15
 
 # Classes & OOP
 
-# **JavaScript OOP, ES6 Classes**
+## JavaScript OOP, ES6 Classes
 
 JavaScript supports Object-Oriented Programming, but internally it is based on **prototypes**, not traditional class-based inheritance like Java or C\#.
 
@@ -17,12 +17,13 @@ In JavaScript, classes look like traditional classes, but behind the scenes they
 
 ---
 
-# **1\. ES6 Classes**
+## 1. ES6 Classes
 
 A class is a blueprint for creating objects with shared properties and methods.
 
-| console.log(name); // undefined var name \= "Akhilesh"; |
-| :---- |
+```js
+console.log(name); // undefined var name = "Akhilesh";
+```
 
 class User \{
 
@@ -58,12 +59,13 @@ is found through the prototype chain.
 
 ---
 
-# **2\. Constructor**
+## 2. Constructor
 
 A constructor is a special method that runs automatically when we create an object using `new`.
 
-| console.log(name); // undefined var name \= "Akhilesh"; |
-| :---- |
+```js
+console.log(name); // undefined var name = "Akhilesh";
+```
 
 class User \{
 
@@ -116,7 +118,7 @@ class Admin extends User \{
 
 ---
 
-# **3\. Inheritance**
+## 3. Inheritance
 
 Inheritance means one class can reuse properties and methods from another class.
 
@@ -182,7 +184,7 @@ Button is a Theme is a Layout is a Component → can become messy
 
 ---
 
-# **4\. Encapsulation**
+## 4. Encapsulation
 
 Encapsulation means keeping data and related methods together, while hiding internal details from outside code.
 
@@ -230,7 +232,7 @@ With encapsulation, we control updates through methods like `deposit()` or `with
 
 ---
 
-# **5\. Abstraction**
+## 5. Abstraction
 
 Abstraction means exposing only what is necessary and hiding implementation details.
 
@@ -286,7 +288,7 @@ Encapsulation hides data. Abstraction hides complexity.
 
 ---
 
-# **6\. Polymorphism**
+## 6. Polymorphism
 
 Polymorphism means different objects can have the same method name but behave differently.
 
@@ -360,7 +362,7 @@ Same interface, different behavior.
 
 ---
 
-# **7\. Static Methods**
+## 7. Static Methods
 
 Static methods belong to the class itself, not to class instances.
 
@@ -398,7 +400,7 @@ Static methods cannot directly access instance properties through `this`.
 
 ---
 
-# **8\. Getters and Setters**
+## 8. Getters and Setters
 
 Getters and setters allow you to read and update object properties like normal properties, but with controlled logic behind the scenes.
 
@@ -493,7 +495,7 @@ class User \{
 
 ---
 
-# **9\. Composition vs Inheritance**
+## 9. Composition vs Inheritance
 
 Inheritance means building a class from another class.
 
@@ -561,7 +563,7 @@ Prefer composition when behavior needs to be mixed and reused across unrelated o
 
 ---
 
-# **10\. Class vs Prototype**
+## 10. Class vs Prototype
 
 Before ES6 classes, JavaScript objects were commonly created using constructor functions and prototypes.
 
@@ -630,7 +632,7 @@ class User \{
 
 ---
 
-# **11\. OOP in JavaScript**
+## 11. OOP in JavaScript
 
 OOP means organizing code around objects that contain data and behavior.
 
@@ -684,21 +686,21 @@ In frontend apps, OOP is useful for services, SDK clients, validators, state mac
 
 ---
 
-# **Common Interview Questions**
+## Common Interview Questions
 
-## **1\. What is the difference between class and prototype in JavaScript?**
+## 1. What is the difference between class and prototype in JavaScript?
 
 ES6 classes are cleaner syntax for working with prototypes. Internally, JavaScript still uses prototype-based inheritance. Before ES6, we used constructor functions and `Constructor.prototype`. With classes, the syntax is easier to read and closer to traditional OOP.
 
 ---
 
-## **2\. Is JavaScript class-based or prototype-based?**
+## 2. Is JavaScript class-based or prototype-based?
 
 JavaScript is prototype-based. ES6 classes make it look class-based, but behind the scenes, objects still inherit from other objects through the prototype chain.
 
 ---
 
-## **3\. How did we create classes before ES6?**
+## 3. How did we create classes before ES6?
 
 [https://www.phpied.com/3-ways-to-define-a-javascript-class/](https://www.phpied.com/3-ways-to-define-a-javascript-class/)
 
@@ -748,7 +750,7 @@ class User \{
 
 Historically, developers used three common approaches:
 
-### **1\. Object Literal**
+### 1. Object Literal
 
 Useful for creating a single object.
 
@@ -766,7 +768,7 @@ const user \= \{
 
 Limitation: not reusable for creating multiple similar objects.
 
-### **2\. Constructor Function**
+### 2. Constructor Function
 
 Useful for creating multiple instances.
 
@@ -784,7 +786,7 @@ function User(name) \{
 
 Limitation: every instance gets its own copy of `greet()`, which wastes memory.
 
-### **3\. Constructor \+ Prototype (Most Common)**
+### 3. Constructor \+ Prototype (Most Common)
 
 function User(name) \{
 
@@ -802,7 +804,7 @@ This pattern allowed object creation and method sharing before the `class` synta
 
 ---
 
-## **4\. What happens when we use the `new` keyword?**
+## 4. What happens when we use the `new` keyword?
 
 When we call a function or class with `new`, JavaScript:
 
@@ -818,13 +820,13 @@ const user \= new User("Akhilesh");
 
 ---
 
-## **5\. What is inheritance in JavaScript?**
+## 5. What is inheritance in JavaScript?
 
 Inheritance means one object or class can access properties and methods from another. In ES6, we use `extends`. Internally, JavaScript uses the prototype chain.
 
 ---
 
-## **6\. What is the difference between `__proto__` and `prototype`?**
+## 6. What is the difference between `__proto__` and `prototype`?
 
 `prototype` exists on constructor functions and classes. It is used to define methods shared by instances.
 
@@ -834,7 +836,7 @@ user.\_\_proto\_\_ \=== User.prototype; // true
 
 ---
 
-## **7\. What is encapsulation in JavaScript?**
+## 7. What is encapsulation in JavaScript?
 
 Encapsulation means keeping data and behavior together and restricting direct access to internal data. In modern JavaScript, private fields using `#` provide real privacy.
 
@@ -852,7 +854,7 @@ class User \{
 
 ---
 
-## **8\. What is abstraction in JavaScript?**
+## 8. What is abstraction in JavaScript?
 
 Abstraction means hiding internal implementation and exposing a simple public API.
 
@@ -860,7 +862,7 @@ Example: `apiClient.get("/users")` hides headers, tokens, retries, and fetch log
 
 ---
 
-## **9\. What is polymorphism in JavaScript?**
+## 9. What is polymorphism in JavaScript?
 
 Polymorphism means different objects can expose the same method but implement it differently.
 
@@ -868,7 +870,7 @@ Example: `Circle.area()` and `Rectangle.area()` both use `area()`, but each calc
 
 ---
 
-## **10\. What are static methods?**
+## 10. What are static methods?
 
 Static methods belong to the class itself, not instances. They are useful for helper methods that do not depend on instance data.
 
@@ -886,7 +888,7 @@ DateUtils.format(new Date());
 
 ---
 
-## **11\. What are getters and setters?**
+## 11. What are getters and setters?
 
 Getters and setters allow controlled access to object properties. They look like normal property access, but internally run functions.
 
@@ -896,7 +898,7 @@ user.fullName \= "John Doe";
 
 ---
 
-## **12\. Composition vs inheritance: which is better?**
+## 12. Composition vs inheritance: which is better?
 
 Neither is always better. Inheritance is good for clear `is-a` relationships. Composition is better when you want to combine reusable behaviors flexibly.
 
@@ -904,7 +906,7 @@ In large frontend applications, composition is often preferred because requireme
 
 ---
 
-## **13\. Can you call a class without `new`?**
+## 13. Can you call a class without `new`?
 
 No.
 
@@ -916,7 +918,7 @@ Class constructors must be called with `new`.
 
 ---
 
-## **14\. Are classes hoisted in JavaScript?**
+## 14. Are classes hoisted in JavaScript?
 
 Classes are hoisted but not initialized, similar to `let` and `const`. Accessing them before declaration throws a ReferenceError.
 
@@ -926,7 +928,7 @@ class User \{\}
 
 ---
 
-## **15\. What is method overriding?**
+## 15. What is method overriding?
 
 Method overriding means a child class provides its own version of a parent class method.
 
@@ -954,6 +956,6 @@ Here, `Admin` overrides `login()`.
 
 ---
 
-# **Compact Interview-Ready Answer**
+## Compact Interview-Ready Answer
 
 JavaScript supports OOP, but it is prototype-based internally. ES6 classes provide a cleaner syntax over prototypes. A class is used to create objects, a constructor initializes instance data, and methods are shared through the prototype. Inheritance is done using `extends` and `super`, while encapsulation can be achieved using private fields like `#balance`. Abstraction hides internal complexity, polymorphism allows the same method name to behave differently, and static methods belong to the class itself. In modern JavaScript and frontend architecture, I prefer composition over inheritance when behavior needs to be reused flexibly.

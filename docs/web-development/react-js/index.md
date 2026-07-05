@@ -26,7 +26,7 @@ sidebar_position: 1
 - [Rendering Components](./rendering-components.md)
 - [React Under The Hood](./react-under-the-hood.md)
 
-# **React Interview Preparation**
+## React Interview Preparation
 
 ---
 

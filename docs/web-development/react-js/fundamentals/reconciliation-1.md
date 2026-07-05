@@ -7,7 +7,7 @@ sidebar_position: 2
 
 Related canonical pages: [React Fiber](react-fiber.md), [Rendering Components](../rendering-components.md), [React Performance](../../important/performance/react-performance.md).
 
-## **React Reconciliation**
+## React Reconciliation
 
 React Reconciliation is the internal process React uses to compare the **previous React tree** with the **new React tree** after a component’s state or props change.
 
@@ -22,7 +22,7 @@ Instead of destroying and rebuilding the entire DOM every time something changes
 
 ---
 
-## **Why Reconciliation Is Needed**
+## Why Reconciliation Is Needed
 
 Updating the real DOM is expensive compared to working with JavaScript objects.
 
@@ -38,7 +38,7 @@ So React uses reconciliation to answer:
 
 ---
 
-## **The Core Problem**
+## The Core Problem
 
 Comparing two trees perfectly is expensive.
 
@@ -55,7 +55,7 @@ React’s reconciliation is efficient, but it is not guaranteed to always produc
 
 ---
 
-## **How React’s Diffing Algorithm Works**
+## How React’s Diffing Algorithm Works
 
 React compares the old React tree and the new React tree from top to bottom.
 
@@ -63,7 +63,7 @@ It mainly follows these rules.
 
 ---
 
-## **1\. Different Element Types**
+## 1. Different Element Types
 
 If the element type changes, React destroys the old subtree and creates a new one.
 
@@ -105,7 +105,7 @@ New component is mounted
 Old local state is lost  
 ---
 
-## **2\. Same DOM Element Type**
+## 2. Same DOM Element Type
 
 If the DOM element type is the same, React reuses the existing DOM node and only updates the changed attributes.
 
@@ -127,7 +127,7 @@ The `title` is unchanged, so React does not touch it.
 
 ---
 
-## **3\. Same Component Type**
+## 3. Same Component Type
 
 If the component type is the same, React preserves the component identity and keeps its state.
 
@@ -155,7 +155,7 @@ State is preserved
 Component re-renders  
 ---
 
-## **The Role of Keys in Lists**
+## The Role of Keys in Lists
 
 Keys are very important when React reconciles lists.
 
@@ -207,7 +207,7 @@ Keys help React preserve correct identity during reconciliation. They help React
 
 ---
 
-## **Why Index as Key Is Risky**
+## Why Index as Key Is Risky
 
 Using index as key is risky when the list is dynamic.
 
@@ -236,7 +236,7 @@ Items are never inserted or removed from the middle
 Items do not have local state  
 ---
 
-## **State Preservation and State Reset**
+## State Preservation and State Reset
 
 React preserves state when the component stays in the same position with the same type.
 
@@ -272,7 +272,7 @@ State is reset.
 
 ---
 
-## **Resetting State Using Key**
+## Resetting State Using Key
 
 Sometimes we intentionally want React to reset component state.
 
@@ -309,7 +309,7 @@ If the user switches from user `1` to user `2`, React creates a fresh form inste
 
 ---
 
-## **Reconciliation vs Virtual DOM**
+## Reconciliation vs Virtual DOM
 
 Virtual DOM and reconciliation are related, but they are not the same thing.
 
@@ -336,7 +336,7 @@ Virtual DOM \= UI representation
 Reconciliation \= comparison process  
 ---
 
-## **Reconciliation vs Diffing**
+## Reconciliation vs Diffing
 
 These two terms are closely related but not exactly the same.
 
@@ -352,7 +352,7 @@ Reconciliation is the overall process, and diffing is the comparison step inside
 
 ---
 
-## **Where Reconciliation Fits in React Rendering**
+## Where Reconciliation Fits in React Rendering
 
 The flow looks like this:
 
@@ -374,13 +374,13 @@ The step where React compares the old tree and new tree is called **Reconciliati
 
 ---
 
-## **Render Phase vs Commit Phase**
+## Render Phase vs Commit Phase
 
 React updates happen in two major phases.
 
 ---
 
-## **1\. Render Phase**
+## 1. Render Phase
 
 In the render phase, React:
 
@@ -412,7 +412,7 @@ function UserList() \{
 \}  
 ---
 
-## **2\. Commit Phase**
+## 2. Commit Phase
 
 In the commit phase, React:
 
@@ -434,7 +434,7 @@ Reconciliation
 Commit DOM updates  
 ---
 
-## **React Fiber**
+## React Fiber
 
 React Fiber is the modern internal architecture behind React’s rendering and reconciliation system.
 
@@ -467,7 +467,7 @@ Fiber helps React support features like:
 
 ---
 
-## **Reconciliation and Fiber**
+## Reconciliation and Fiber
 
 React Fiber is the internal architecture that performs reconciliation.
 
@@ -485,7 +485,7 @@ Diffing \= Algorithm used to find what changed
 
 ---
 
-## **Practical Example**
+## Practical Example
 
 function Counter() \{  
  const \[count, setCount\] \= React.useState(0);
@@ -516,7 +516,7 @@ React does not recreate the whole DOM.
 
 ---
 
-## **Reconciliation and Component Re-render**
+## Reconciliation and Component Re-render
 
 When a parent component re-renders, React also calls its child components by default.
 
@@ -544,7 +544,7 @@ These are not always the same thing.
 
 ---
 
-## **Real-World Example: Hotel Search Page**
+## Real-World Example: Hotel Search Page
 
 Imagine an Agoda-like hotel search page.
 
@@ -590,7 +590,7 @@ For example, if a hotel card has local state like expanded details, selected roo
 
 ---
 
-## **Practical Optimization Tips**
+## Practical Optimization Tips
 
 Use stable keys in lists. Avoid `Math.random()`, `Date.now()`, or array index keys for dynamic lists.
 
@@ -608,9 +608,9 @@ Use virtualization for very large lists instead of rendering hundreds or thousan
 
 ---
 
-## **Common Interview Traps**
+## Common Interview Traps
 
-### **Trap 1: Saying React updates the whole DOM**
+### Trap 1: Saying React updates the whole DOM
 
 Incorrect:
 
@@ -621,7 +621,7 @@ Correct:
 React may re-render components in memory, but it updates only the necessary parts of the real DOM.  
 ---
 
-### **Trap 2: Saying Virtual DOM itself makes React fast**
+### Trap 2: Saying Virtual DOM itself makes React fast
 
 The Virtual DOM helps, but the full performance story includes:
 
@@ -637,7 +637,7 @@ Virtual DOM comparison also has a cost.
 
 ---
 
-### **Trap 3: Saying keys prevent re-rendering**
+### Trap 3: Saying keys prevent re-rendering
 
 Keys do not directly prevent re-rendering.
 
@@ -647,7 +647,7 @@ For preventing unnecessary child re-renders, tools like `React.memo`, `useMemo`,
 
 ---
 
-### **Trap 4: Confusing render phase and commit phase**
+### Trap 4: Confusing render phase and commit phase
 
 **Render phase:** React calculates what changed. Reconciliation mainly happens during the render phase.
 
@@ -655,6 +655,6 @@ For preventing unnecessary child re-renders, tools like `React.memo`, `useMemo`,
 
 ---
 
-## **Compact Interview-Ready Answer**
+## Compact Interview-Ready Answer
 
 React Reconciliation is the process React uses to compare the previous React tree with the new React tree after state or props change. React uses an O(n) heuristic diffing algorithm instead of an expensive generic tree comparison. If element types are different, React replaces the subtree. If element types are the same, React reuses the existing DOM node or component instance and updates only the changed props or children. For lists, React uses keys to preserve correct item identity across insertions, deletions, and reordering. Reconciliation happens during the render phase, and actual DOM updates happen during the commit phase. React Fiber improves this process by allowing rendering work to be split, prioritized, paused, resumed, or discarded.
