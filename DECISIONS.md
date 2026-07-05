@@ -44,3 +44,12 @@ Large restructuring should be planned before execution.
 ## Decision 009: Base64 Image Cleanup
 
 Base64 images should be extracted into real image files in a later image cleanup phase.
+
+## Decision 010: Approved Deduplication Ownership Rules
+
+Date: 2026-07-05
+
+Duplicate cleanup must follow the approved ownership rules in `approved-deduplication-decisions.md`.
+
+Summary:
+Company pages keep interview context, Quick Questions becomes quick revision/index style, System Design Basic Concepts keeps system-design-facing summaries, React Fiber remains a separate deep dive, Reconciliation 1 is canonical, TypeScript ownership is split by concepts/examples/interview Q&A, Micro Frontends will become canonical later, caching remains split by domain, and no knowledge should be lost during deduplication.
