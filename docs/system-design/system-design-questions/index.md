@@ -189,24 +189,4 @@ These simulate how you'd build a scalable and reusable *system*, not just a comp
 
 ---
 
-### **💡 Pro Tips for Answering Component Design:**
-
-* **Start with UX expectations:** who uses it, where, on what device
-
-* **Discuss the API/Props**: controlled/uncontrolled, configuration flexibility
-
-* **Accessibility matters**: ARIA, tabIndex, screen readers
-
-* **State & side effects**: internal state vs global context
-
-* **Styling strategy**: Tailwind, CSS modules, custom themes
-
-* **Performance**: debouncing, memoization, virtualization
-
-* **Reusability**: generic typing, slots/children, composability
-
-* **Testing strategy**: Unit \+ visual regression (Storybook \+ Chromatic)
-
-* **Versioning / rollout**: How to ship with confidence
-
----
+For answer structure and component-design response tips, see the [Interview Guide](../interview-guide/index.md).

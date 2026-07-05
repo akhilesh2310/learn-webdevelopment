@@ -494,107 +494,29 @@ System design must be production-grade. Expect questions on:
 
 ### **🔧 Design a Collaborative Document Editor (Like Google Docs)**
 
-#### **📘 Prompt:**
+Practice prompt: **"Design a Collaborative Document Editor (like Google Docs)"** — focused on the **Frontend** for a Staff Software Engineer (L6) interview.
 
-You are tasked with designing the **frontend architecture** for a **collaborative real-time document editing web app** that allows multiple users to edit, comment, and view documents simultaneously.
+For the full problem-specific prompt, requirements, solution outline, and notes, see [Google Docs](../system-design-questions/google-docs.md).
 
-You need to **focus on the frontend system**, but be aware of how it interacts with the backend.
+## **🧩 Pro Tips for Answering Component Design**
 
----
+* **Start with UX expectations:** who uses it, where, on what device
 
-### **✅ Requirements:**
+* **Discuss the API/Props**: controlled/uncontrolled, configuration flexibility
 
-#### **1\. Functional Requirements:**
+* **Accessibility matters**: ARIA, tabIndex, screen readers
 
-* Multiple users can **edit the same document** in real-time
+* **State & side effects**: internal state vs global context
 
-* **Rich text editing** (bold, italics, headers, bullet points, etc.)
+* **Styling strategy**: Tailwind, CSS modules, custom themes
 
-* **User cursors** should be visible in real-time
+* **Performance**: debouncing, memoization, virtualization
 
-* **Comments** and **suggestion mode** should be supported
+* **Reusability**: generic typing, slots/children, composability
 
-* **Document versioning** and history tracking
+* **Testing strategy**: Unit \+ visual regression (Storybook \+ Chromatic)
 
-#### **2\. Non-Functional Requirements:**
-
-* Must work on both desktop and mobile (responsive design)
-
-* Scalable to **millions of users**
-
-* Low latency (\< 100ms) for updates
-
-* Offline editing support and auto-reconnect
-
-* Accessible (ARIA, keyboard nav, screen readers)
-
----
-
-### **💬 Clarify These (Ambiguity Handling):**
-
-* Are users anonymous or authenticated?
-
-* How long is the document (e.g., 10 pages or 1000)?
-
-* Are there collaboration constraints? (e.g., max users per doc?)
-
-* Should editing be possible offline? If so, how should it sync?
-
-* Should we support multiple document formats (e.g., PDF export)?
-
----
-
-## **🧠 Structure Your Response**
-
-### **1\. Clarify Scope**
-
-* Ask product-level and technical clarifying questions
-
-* Define MVP vs scalable version
-
-### **2\. High-Level Architecture**
-
-* Layout structure: App shell, Editor component, Sidebar, Toolbar
-
-* State management strategy (Redux? Zustand? React Context?)
-
-* Real-time sync via WebSocket or WebRTC?
-
-* Service workers for offline
-
-* Component architecture: Editor \> Text Blocks \> Inline Formatting
-
-### **3\. Real-Time Collaboration Design**
-
-* Data sync model (CRDT vs OT)
-
-* Cursor tracking and conflict resolution
-
-* WebSocket reconnection, fallback strategy
-
-### **4\. Performance Optimization**
-
-* Lazy rendering of document chunks
-
-* Debouncing updates
-
-* Code splitting, bundle size management
-
-### **5\. Scalability & Resilience**
-
-* How to handle thousands of concurrent users
-
-* Error boundaries, retries, offline queuing
-
-* Logging and monitoring (frontend observability)
-
-### **6\. Accessibility & UX Considerations**
-
-* WCAG compliance
-
-* Keyboard shortcuts
-
-* Visual indicators for multiple collaborators
+* **Versioning / rollout**: How to ship with confidence
 
 ---
 
@@ -615,6 +537,4 @@ You need to **focus on the frontend system**, but be aware of how it interacts w
 
 ## **🛠️ Want to Practice Now?**
 
-**"Design a Collaborative Document Editor (like Google Docs)"** — focused on the **Frontend** for a Staff Software Engineer (L6) interview.
-
-For the full problem-specific solution, see [Google Docs](../system-design-questions/google-docs.md).
+Start with the [Question Bank](../system-design-questions/index.md), then open a dedicated design problem page for a full solution.
