@@ -67,15 +67,6 @@ const systemDesignSidebar = [
           'system-design/system-design-questions/airline-management-system',
         ],
       },
-      {
-        type: 'category',
-        label: 'DSA Roadmap',
-        link: {
-          type: 'doc',
-          id: 'system-design/dsa-roadmap/index',
-        },
-        items: ['system-design/dsa-roadmap/solved'],
-      },
       'system-design/worked-22nd-aug',
     ],
   },

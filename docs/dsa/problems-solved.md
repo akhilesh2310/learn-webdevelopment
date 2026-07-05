@@ -16,3 +16,4 @@ sidebar_position: 6
 | 547\. Number of Provinces | [https://leetcode.com/problems/number-of-provinces/description/](https://leetcode.com/problems/number-of-provinces/description/)  |
 | todo | [https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1?page=4\&sortBy=submissions](https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1?page=4&sortBy=submissions)  |
 | 994\. Rotting Oranges | [https://leetcode.com/problems/rotting-oranges/](https://leetcode.com/problems/rotting-oranges/)  |
+| Unique Email Addresses | [https://leetcode.com/problems/unique-email-addresses/submissions/1743643086/](https://leetcode.com/problems/unique-email-addresses/submissions/1743643086/) |
