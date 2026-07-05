@@ -1078,33 +1078,7 @@ Basic throttle may skip the final call. Sometimes we want the last event to run 
 
 ## **Implementation**
 
-function throttle(fn, delay) \{  
-  let lastCall \= 0;  
-  let timerId \= null;  
-  let lastArgs;  
-  let lastThis;
-
-  return function (...args) \{  
-    const now \= Date.now();  
-    const remaining \= delay \- (now \- lastCall);
-
-    lastArgs \= args;  
-    lastThis \= this;
-
-    if (remaining \<= 0\) \{  
-      clearTimeout(timerId);  
-      timerId \= null;  
-      lastCall \= now;  
-      fn.apply(lastThis, lastArgs);  
-    \} else if (\!timerId) \{  
-      timerId \= setTimeout(() \=\> \{  
-        lastCall \= Date.now();  
-        timerId \= null;  
-        fn.apply(lastThis, lastArgs);  
-      \}, remaining);  
-    \}  
-  \};  
-\}
+The canonical trailing-call throttle implementation is maintained in [JavaScript Coding Questions](./javascript-coding-questions.md).
 
 ## **Why trailing matters**
 

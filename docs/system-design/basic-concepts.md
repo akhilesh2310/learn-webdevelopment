@@ -161,69 +161,11 @@ For the full browser JavaScript Event Loop explanation and execution-order examp
 
 ---
 
-Would you like these compiled into a PDF or Notion-style notes for interview prep? I can also create more grouped by topics like browser internals, JS engines, frontend frameworks, etc.
-
-4o
-
-##### **You said:**
-
-What is render tree?
-
-###### **ChatGPT said:**
-
-Great question\!
-
 ### **What is a Render Tree in a Web Browser?**
 
-The **Render Tree** is a structure built by the browser that combines both the **DOM (Document Object Model)** and the **CSSOM (CSS Object Model)** to determine what actually gets **painted on the screen**.
+The Render Tree is the browser's visible rendering structure created from the DOM and CSSOM. In system design discussions, it matters because layout, paint, and composite work can affect frontend performance.
 
----
-
-### **How is the Render Tree Constructed?**
-
-1. **HTML Parsing → DOM Tree:**  
-    The browser parses the HTML and constructs the DOM tree — a representation of all HTML elements.
-
-2. **CSS Parsing → CSSOM Tree:**  
-    CSS files are parsed into the CSSOM tree, which holds the styles of elements.
-
-3. **DOM \+ CSSOM → Render Tree:**  
-    The browser then combines both to create the Render Tree. It includes only the **visible elements** (e.g., elements with `display: none` are excluded).
-
----
-
-### **Example:**
-
-html  
-CopyEdit  
-`<html>`  
-  `<body>`  
-    `<div style="display: none;">Hidden</div>`  
-    `<p style="color: red;">Visible Text</p>`  
-  `</body>`  
-`</html>`
-
-* **DOM Tree:** includes both `<div>` and `<p>`.
-
-* **CSSOM Tree:** includes styles like `display: none` and `color: red`.
-
-* **Render Tree:** includes only the `<p>` with the applied style `color: red`.
-
----
-
-### **Why is the Render Tree Important?**
-
-The Render Tree is used for:
-
-* **Layout:** Calculating the position and size of each visible element.
-
-* **Painting:** Filling pixels on the screen.
-
-Any change in the DOM or CSSOM may trigger:
-
-* **Recalculate Style → Layout → Paint → Composite**
-
-These operations can affect performance, so understanding the Render Tree helps in optimizing rendering.
+For the full Render Tree flow, examples, and reflow/repaint/composite details, see [Browser Rendering Pipeline](../web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline.md).
 
 ## **1\. Client-Side Storage**
 

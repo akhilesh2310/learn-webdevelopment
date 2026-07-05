@@ -165,52 +165,6 @@ For the full explanation and execution-order examples, see [Event Loop](../javas
 
 ### **What is a Render Tree in a Web Browser?**
 
-The **Render Tree** is a structure built by the browser that combines both the **DOM (Document Object Model)** and the **CSSOM (CSS Object Model)** to determine what actually gets **painted on the screen**.
+Quick answer: the Render Tree combines the DOM and CSSOM into the visible structure the browser uses for layout, painting, and compositing.
 
----
-
-### **How is the Render Tree Constructed?**
-
-1. **HTML Parsing → DOM Tree:**  
-    The browser parses the HTML and constructs the DOM tree — a representation of all HTML elements.
-
-2. **CSS Parsing → CSSOM Tree:**  
-    CSS files are parsed into the CSSOM tree, which holds the styles of elements.
-
-3. **DOM \+ CSSOM → Render Tree:**  
-    The browser then combines both to create the Render Tree. It includes only the **visible elements** (e.g., elements with `display: none` are excluded).
-
----
-
-### **Example:**
-
-html  
-CopyEdit  
-`<html>`  
-  `<body>`  
-    `<div style="display: none;">Hidden</div>`  
-    `<p style="color: red;">Visible Text</p>`  
-  `</body>`  
-`</html>`
-
-* **DOM Tree:** includes both `<div>` and `<p>`.
-
-* **CSSOM Tree:** includes styles like `display: none` and `color: red`.
-
-* **Render Tree:** includes only the `<p>` with the applied style `color: red`.
-
----
-
-### **Why is the Render Tree Important?**
-
-The Render Tree is used for:
-
-* **Layout:** Calculating the position and size of each visible element.
-
-* **Painting:** Filling pixels on the screen.
-
-Any change in the DOM or CSSOM may trigger:
-
-* **Recalculate Style → Layout → Paint → Composite**
-
-These operations can affect performance, so understanding the Render Tree helps in optimizing rendering.
+For the full Render Tree flow, examples, and performance details, see [Browser Rendering Pipeline](../javascript/javascript-under-the-hood/browser-rendering-pipeline.md).
