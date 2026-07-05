@@ -136,12 +136,33 @@ const webDevelopmentSidebar = [
       },
       {
         type: 'category',
-        label: 'Important',
+        label: 'Core Engineering',
         link: {type: 'doc', id: 'web-development/important/index'},
         items: [
           {
             type: 'category',
-            label: 'Security',
+            label: 'Performance',
+            link: {type: 'doc', id: 'web-development/important/performance/index'},
+            items: [
+              'web-development/important/performance/generic-web-performance',
+              'web-development/important/performance/core-web-vitals',
+              'web-development/important/performance/lighthouse-and-tools',
+              'web-development/important/performance/rendering',
+              'web-development/important/performance/react-performance',
+              'web-development/important/performance/nextjs-performance',
+              'web-development/important/performance/monitoring-observability',
+            ],
+          },
+          'web-development/important/error-handling',
+          {
+            type: 'category',
+            label: 'Testing & Quality',
+            link: {type: 'doc', id: 'web-development/important/testing/index'},
+            items: ['web-development/important/testing/react-testing'],
+          },
+          {
+            type: 'category',
+            label: 'Security & Auth',
             link: {type: 'doc', id: 'web-development/important/security/index'},
             items: [
               'web-development/important/security/jwt-csrf',
@@ -152,24 +173,11 @@ const webDevelopmentSidebar = [
               'web-development/important/security/react-security',
             ],
           },
-          {
-            type: 'category',
-            label: 'Performance',
-            link: {type: 'doc', id: 'web-development/important/performance/index'},
-            items: [
-              'web-development/important/performance/core-web-vitals',
-              'web-development/important/performance/rendering',
-              'web-development/important/performance/react-performance',
-            ],
-          },
+          'web-development/important/caching',
+          'web-development/important/observability',
+          'web-development/important/frontend-architecture',
           'web-development/important/quick-questions',
           'web-development/important/accessibility',
-          {
-            type: 'category',
-            label: 'Testing',
-            link: {type: 'doc', id: 'web-development/important/testing/index'},
-            items: ['web-development/important/testing/react-testing'],
-          },
           'web-development/important/backend-for-fe-bff',
           'web-development/important/solid',
           {
@@ -302,7 +310,7 @@ const webDevelopmentSidebar = [
       },
       'web-development/html-css',
       'web-development/angular',
-      'web-development/video-tutorial',
+      'web-development/resources',
     ],
   },
 ] satisfies SidebarsConfig[string];

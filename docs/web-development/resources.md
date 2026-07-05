@@ -1,11 +1,12 @@
 ---
-title: Video Tutorial
+title: Resources
 sidebar_position: 11
 ---
 
-# Video Tutorial
+# Resources
 
-Videos:  
+## Video Tutorials
+
 Must watch: [https://www.youtube.com/watch?v=H1clDRvG2Cs\&ab\_channel=LEARNINGPARTNER](https://www.youtube.com/watch?v=H1clDRvG2Cs&ab_channel=LEARNINGPARTNER)
 
 [https://www.youtube.com/watch?v=jzwIx8XDl5s\&list=PL7JmcZV0UQtXnBjzBSCMgRtwE0P-EbDne\&index=1\&ab\_channel=LEARNINGPARTNER](https://www.youtube.com/watch?v=jzwIx8XDl5s&list=PL7JmcZV0UQtXnBjzBSCMgRtwE0P-EbDne&index=1&ab_channel=LEARNINGPARTNER)
@@ -24,7 +25,7 @@ Must watch: [https://www.youtube.com/watch?v=H1clDRvG2Cs\&ab\_channel=LEARNINGPA
 
 [https://www.udemy.com/course/react-the-complete-guide-incl-redux/?couponCode=ST13MT80425G3](https://www.udemy.com/course/react-the-complete-guide-incl-redux/?couponCode=ST13MT80425G3)
 
-# Learn React With This ONE Project
+## Learn React With This ONE Project
 
 [https://www.youtube.com/watch?v=G6D9cBaLViA\&ab\_channel=TechWithTim](https://www.youtube.com/watch?v=G6D9cBaLViA&ab_channel=TechWithTim)
 
