@@ -25,7 +25,13 @@ Before 2015, `var` was the only way to declare variables. It is function-scoped,
 * Scope: Function-scoped.
 
 ```js
-function varExample() {   if (true) {     var greeting = "Hello from inside the if!";   }   // This works! 'greeting' leaked out of the if-block.   console.log(greeting);  } varExample();
+function varExample() {
+  if (true) {
+    var greeting = "Hello from inside the if!";
+  }
+  // This works! 'greeting' leaked out of the if-block. console.log(greeting);
+}
+varExample();
 ```
 
 ## 2. `let` (The Modern Variable)
@@ -37,7 +43,15 @@ Introduced in ES6 (2015), `let` fixed the leaking issue of `var`. It is block-sc
 * Scope: Block-scoped.
 
 ```js
-let count = 1; count = 2; // Perfectly fine, we are reassigning it. if (true) {   let secret = "I am hidden";   console.log(secret); // Works here } // console.log(secret); // ❌ ReferenceError: secret is not defined
+let count = 1;
+count = 2;
+// Perfectly fine, we are reassigning it. if (true) {
+  let secret = "I am hidden";
+  console.log(secret);
+  // Works here
+}
+// console.log(secret);
+// ❌ ReferenceError: secret is not defined
 ```
 
 ## 3. `const` (The Constant)
@@ -49,7 +63,16 @@ let count = 1; count = 2; // Perfectly fine, we are reassigning it. if (true) { 
 * Scope: Block-scoped.
 
 ```js
-const pi = 3.14159; // pi = 3; // ❌ TypeError: Assignment to constant variable. // The Object Catch: const user = { name: "Alice" }; user.name = "Bob"; //  This works! You can change the properties *inside* the object. // user = { name: "Charlie" }; // ❌ TypeError: You cannot reassign the variable itself.
+const pi = 3.14159;
+// pi = 3;
+// ❌ TypeError: Assignment to constant variable. // The Object Catch: const user = {
+  name: "Alice"
+};
+user.name = "Bob";
+// This works! You can change the properties *inside* the object. // user = {
+  name: "Charlie"
+};
+// ❌ TypeError: You cannot reassign the variable itself.
 ```
 
 ## Key Differences Summary
@@ -104,7 +127,19 @@ JavaScript categorizes values into two main buckets: **Primitive types** and **R
 The `typeof` operator tells you the data type of a value.
 
 ```js
-console.log(typeof "Hello");     // "string" console.log(typeof 42);          // "number" console.log(typeof true);        // "boolean" console.log(typeof undefined);   // "undefined" console.log(typeof Symbol());    // "symbol" console.log(typeof 10n);         // "bigint" console.log(typeof { name: "A" });// "object" console.log(typeof [1, 2, 3]);   // "object" (Arrays are objects!) console.log(typeof function(){});// "function" (Special object type)
+console.log(typeof "Hello");
+// "string" console.log(typeof 42);
+// "number" console.log(typeof true);
+// "boolean" console.log(typeof undefined);
+// "undefined" console.log(typeof Symbol());
+// "symbol" console.log(typeof 10n);
+// "bigint" console.log(typeof {
+  name: "A"
+});
+// "object" console.log(typeof [1, 2, 3]);
+// "object" (Arrays are objects!) console.log(typeof function(){
+});
+// "function" (Special object type)
 ```
 
 #### ⚠️ The Famous `typeof null` Bug
@@ -137,7 +172,11 @@ JavaScript is a **dynamically typed** language. Variables can hold any type, and
 This is when **you** intentionally convert a type using built-in functions. It is clean and readable.
 
 ```js
-let strValue = "123"; let numValue = Number(strValue); // Explicitly turns string into a number 123 let age = 30; let ageStr = String(age); // Explicitly turns number into a string "30"
+let strValue = "123";
+let numValue = Number(strValue);
+// Explicitly turns string into a number 123 let age = 30;
+let ageStr = String(age);
+// Explicitly turns number into a string "30"
 ```
 
 #### 2. Implicit Coercion (Automatic)
@@ -145,7 +184,10 @@ let strValue = "123"; let numValue = Number(strValue); // Explicitly turns strin
 This is when **JavaScript** converts types automatically behind your back. It usually happens when you apply operators to different types.
 
 ```js
-// String Coercion: The '+' operator prefers strings if one side is a string console.log("5" + 2); // "52" (Number 2 is converted to "2" and glued together) // Number Coercion: Other operators (-, *, /) convert strings to numbers console.log("5" - 2); // 3 (String "5" becomes number 5) console.log("5" * "2"); // 10 (Both strings become numbers)
+// String Coercion: The '+' operator prefers strings if one side is a string console.log("5" + 2);
+// "52" (Number 2 is converted to "2" and glued together) // Number Coercion: Other operators (-, *, /) convert strings to numbers console.log("5" - 2);
+// 3 (String "5" becomes number 5) console.log("5" * "2");
+// 10 (Both strings become numbers)
 ```
 
 ## ✅ Truthy & Falsy Values
@@ -227,7 +269,13 @@ Expect these exact conceptual traps during technical screening rounds:
 * **`null`:** Is an **intentional assignment**. You explicitly tell the engine: "This variable should be empty right now."
 
 ```js
-let a;  console.log(a); // undefined (System default) let b = null; console.log(b); // null (Intentional) console.log(null == undefined);  // true  (Both mean an absence of value) console.log(null === undefined); // false (Different types)
+let a;
+console.log(a);
+// undefined (System default) let b = null;
+console.log(b);
+// null (Intentional) console.log(null == undefined);
+// true (Both mean an absence of value) console.log(null === undefined);
+// false (Different types)
 ```
 
 #### Puzzle 2: `undefined` vs `not defined`
@@ -256,7 +304,17 @@ function updateNumber(num) {   num = 100; } let score = 50; updateNumber(score);
 When you pass an object, JS passes a copy of the **memory address pointer**. Both variables now point to the exact same space in heap memory.
 
 ```js
-function updateProfile(obj) {   obj.age = 40; // Modifies the property at that memory address } let user = { name: "Bob", age: 25 }; updateProfile(user); console.log(user.age); // 40 (The outside object was changed!)
+function updateProfile(obj) {
+  obj.age = 40;
+  // Modifies the property at that memory address
+}
+let user = {
+  name: "Bob",
+  age: 25
+};
+updateProfile(user);
+console.log(user.age);
+// 40 (The outside object was changed!)
 ```
 
 ##### The Ultimate Trap Variant
@@ -264,7 +322,20 @@ function updateProfile(obj) {   obj.age = 40; // Modifies the property at that m
 What if you overwrite the whole object inside the function?
 
 ```js
-function replaceProfile(obj) {   obj = { name: "Alice", age: 30 }; // Assigns obj to a BRAND NEW address pointer } let manager = { name: "Charlie", age: 50 }; replaceProfile(manager); console.log(manager.name); // "Charlie" (Stays the same!)
+function replaceProfile(obj) {
+  obj = {
+    name: "Alice",
+    age: 30
+  };
+  // Assigns obj to a BRAND NEW address pointer
+}
+let manager = {
+  name: "Charlie",
+  age: 50
+};
+replaceProfile(manager);
+console.log(manager.name);
+// "Charlie" (Stays the same!)
 ```
 
 **Reason:** By using `obj = \{...\}`, you broke the link to the original memory address. You pointed the internal argument variable to a brand new object in memory, leaving the outside object untouched.

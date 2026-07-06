@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # React Fundamentals
 
-Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](reconciliation-1.md), [React Performance](../../important/performance/react-performance.md).
+Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](reconciliation-1.md), [React Performance](../../performance/react-performance.md).
 
 ## 1. React Fundamentals
 
@@ -1721,7 +1721,7 @@ React is efficient because of several design choices:
 * Lazy loading and code splitting
 * Strong ecosystem
 
-For full optimization strategy, profiler-first guidance, `React.memo`, `useMemo`, `useCallback`, virtualization, bundle optimization, and senior-level performance tradeoffs, study [React Performance](../../important/performance/react-performance.md).
+For full optimization strategy, profiler-first guidance, `React.memo`, `useMemo`, `useCallback`, virtualization, bundle optimization, and senior-level performance tradeoffs, study [React Performance](../../performance/react-performance.md).
 
 For Fiber scheduling details, study [React Fiber](./react-fiber.md) and [React Under The Hood](../react-under-the-hood.md).
 

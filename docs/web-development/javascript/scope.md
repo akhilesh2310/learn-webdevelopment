@@ -34,7 +34,15 @@ Variable shadowing occurs when a variable declared within a specific scope, like
 When this happens, the outer variable becomes temporarily inaccessible inside the inner scope. The JavaScript engine resolves the variable name by looking at the closest local scope first, moving outward only if it does not find a match.
 
 ```js
-const userRole = 'Admin'; // Outer variable function checkPermissions() {   const userRole = 'Guest'; // Shadowing variable   console.log(`Inner scope role: ${userRole}`);    // Output: Inner scope role: Guest   // The outer 'userRole' is shadowed here. } checkPermissions(); console.log(`Global scope role: ${userRole}`);  // Output: Inner scope role: Admin // The outer variable remains untouched.
+const userRole = 'Admin';
+// Outer variable function checkPermissions() {
+  const userRole = 'Guest';
+  // Shadowing variable console.log(`Inner scope role: ${userRole}`);
+  // Output: Inner scope role: Guest // The outer 'userRole' is shadowed here.
+}
+checkPermissions();
+console.log(`Global scope role: ${userRole}`);
+// Output: Inner scope role: Admin // The outer variable remains untouched.
 ```
 
 ## The var Trap
@@ -42,13 +50,23 @@ const userRole = 'Admin'; // Outer variable function checkPermissions() {   cons
 Interviews will often throw `var` into the mix to test the difference between block scope and function scope. Because `var` is function-scoped, it behaves differently inside blocks:
 
 ```js
-var status = 'active'; if (true) {   var status = 'pending'; // This is NOT shadowing. It overwrites the outer variable!   console.log(status); // 'pending' } console.log(status); // 'pending' - The outer variable was mutated.
+var status = 'active';
+if (true) {
+  var status = 'pending';
+  // This is NOT shadowing. It overwrites the outer variable! console.log(status);
+  // 'pending'
+}
+console.log(status);
+// 'pending' - The outer variable was mutated.
 ```
 
 Conversely, if you use a function block, `var` will shadow:
 
 ```js
-var status = 'active'; function update() {   var status = 'pending'; // This IS shadowing because it's inside a function.   console.log(status); // 'pending' } update(); console.log(status); // 'active'
+var status = 'active';
+function update() {
+  var status = 'pending';
+  // This IS shadowing because it's inside a function. console.log(status); // 'pending' } update(); console.log(status); // 'active'
 ```
 
 ## Memory & Performance Implication

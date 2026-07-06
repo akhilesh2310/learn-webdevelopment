@@ -48,15 +48,16 @@ sidebar_position: 3
 ### 🔧 Component Breakdown:
 
 php-template  
-CopyEdit  
-`<AppShell>`  
- `├── <Sidebar> (file list, share, version history)`  
- `├── <Editor>`  
- `│     ├── <Toolbar> (formatting, undo/redo, comments)`  
- `│     ├── <TextBlock> (paragraph-level)`  
- `│     ├── <CommentBubble>`  
- `│     └── <UserCursor>`  
- `└── <PresenceIndicator> (avatars of active users)`
+```text
+<AppShell>
+├── <Sidebar> (file list, share, version history)
+├── <Editor>
+│     ├── <Toolbar> (formatting, undo/redo, comments)
+│     ├── <TextBlock> (paragraph-level)
+│     ├── <CommentBubble>
+│     └── <UserCursor>
+└── <PresenceIndicator> (avatars of active users)
+```
 
 ---
 
@@ -96,13 +97,13 @@ CopyEdit
 
 * Shared document state via Yjs (or similar), synced across clients
 
-ts  
-CopyEdit  
-`const useDocStore = create((set) => ({`  
-  `doc: new Y.Doc(),`  
-  `users: [],`  
-  `addUser: (user) => set((s) => ({ users: [...s.users, user] }))`  
-`}));`
+```ts
+const useDocStore = create((set) => ({
+doc: new Y.Doc(),
+users: [],
+addUser: (user) => set((s) => ({ users: [...s.users, user] }))
+}));
+```
 
 ---
 
@@ -178,4 +179,4 @@ CopyEdit
 
 ![][image6]
 
-[image6]: /img/docs/system-design/system-design-questions/google-docs/google-docs-01.png
+[image6]: /img/docs/system-design/frontend-system-design/design-google-docs/design-google-docs-01.png

@@ -5,13 +5,13 @@ sidebar_position: 3
 
 # React Hooks
 
-Related canonical page: [React Performance](../important/performance/react-performance.md) for optimization trade-offs around `React.memo`, `useMemo`, and `useCallback`.
+Related canonical page: [React Performance](../performance/react-performance.md) for optimization trade-offs around `React.memo`, `useMemo`, and `useCallback`.
 
 ## Ownership
 
 Use this page for Hook API usage and examples.
 
-Use [React Performance](../important/performance/react-performance.md) for optimization decisions, profiler-first guidance, and when `React.memo`, `useMemo`, or `useCallback` are worth using.
+Use [React Performance](../performance/react-performance.md) for optimization decisions, profiler-first guidance, and when `React.memo`, `useMemo`, or `useCallback` are worth using.
 
 ## 3. React Hooks
 

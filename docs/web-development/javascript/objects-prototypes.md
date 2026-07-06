@@ -52,7 +52,14 @@ In JavaScript, an object is a collection of key-value pairs. There are three pri
 The most common way to create an object using curly braces `\{\}`.
 
 ```js
-const user = {   name: "Amit",   role: "Developer" }; // NOTE: You can technically use `new Object()`, but it is a bad practice: const badExample = new Object({ name: "Amit" }); // Avoid this! // Literal syntax is faster, cleaner, and preferred for readability.
+const user = {
+  name: "Amit",
+  role: "Developer"
+};
+// NOTE: You can technically use `new Object()`, but it is a bad practice: const badExample = new Object({
+  name: "Amit"
+});
+// Avoid this! // Literal syntax is faster, cleaner, and preferred for readability.
 ```
 
 ### Method B: Constructor Functions & The `new` Keyword
@@ -69,7 +76,12 @@ When JavaScript hits the `new` keyword, it executes exactly **4 internal steps**
 4. It automatically returns the newly created object, unless you manually return a different object.
 
 ```js
-function Person(name, role) {   // 'this' is automatically pointed to our new empty instance   this.name = name;   this.role = role;   // Automatically returns 'this' at the end } const user1 = new Person("Amit", "Developer");
+function Person(name, role) {
+  // 'this' is automatically pointed to our new empty instance this.name = name;
+  this.role = role;
+  // Automatically returns 'this' at the end
+}
+const user1 = new Person("Amit", "Developer");
 ```
 
 ### Method C: `Object.create()`
@@ -77,7 +89,15 @@ function Person(name, role) {   // 'this' is automatically pointed to our new em
 This creates a new object and allows you to manually specify its prototype link directly, bypassing the constructor function approach.
 
 ```js
-const machineBlueprint = {   start() { return "Engine running..."; } }; // Create a new object whose __proto__ points directly to machineBlueprint const myCar = Object.create(machineBlueprint); myCar.brand = "Tesla"; console.log(myCar.start()); // "Engine running..." (Inherited via the chain)
+const machineBlueprint = {
+  start() {
+    return "Engine running...";
+  }
+};
+// Create a new object whose __proto__ points directly to machineBlueprint const myCar = Object.create(machineBlueprint);
+myCar.brand = "Tesla";
+console.log(myCar.start());
+// "Engine running..." (Inherited via the chain)
 ```
 
 ## Object Manipulation
@@ -105,7 +125,20 @@ const player = { name: "Virat" }; player.score = 100; // Adding a property delet
 * **Syntax:** `Object.assign(target, ...sources)`
 
 ```js
-const baseConfig = { theme: "dark", notifications: true }; const userConfig = { notifications: false, status: "active" }; // Warning: This updates baseConfig directly! const finalConfig = Object.assign(baseConfig, userConfig);  console.log(finalConfig); // { theme: "dark", notifications: false, status: "active" }
+const baseConfig = {
+  theme: "dark",
+  notifications: true
+};
+const userConfig = {
+  notifications: false,
+  status: "active"
+};
+// Warning: This updates baseConfig directly! const finalConfig = Object.assign(baseConfig, userConfig);
+console.log(finalConfig);
+// {
+  theme: "dark",
+  notifications: false, status: "active"
+}
 ```
 
 ### Object Iteration Utilities
@@ -113,7 +146,15 @@ const baseConfig = { theme: "dark", notifications: true }; const userConfig = { 
 When you need to turn an object into an array structure for loops or filtering, JavaScript provides a matrix of native utilities:
 
 ```js
-const product = { id: 101, price: 500 }; console.log(Object.keys(product));   // ["id", "price"] (Array of keys) console.log(Object.values(product)); // [101, 500]      (Array of values) const entries = Object.entries(product);  console.log(entries);                // [ ["id", 101], ["price", 500] ] (Key-Value matrix)
+const product = {
+  id: 101,
+  price: 500
+};
+console.log(Object.keys(product));
+// ["id", "price"] (Array of keys) console.log(Object.values(product));
+// [101, 500] (Array of values) const entries = Object.entries(product);
+console.log(entries);
+// [ ["id", 101], ["price", 500] ] (Key-Value matrix)
 ```
 
 #### 🔄 Reversing the Matrix with `Object.fromEntries()`
@@ -121,7 +162,13 @@ const product = { id: 101, price: 500 }; console.log(Object.keys(product));   //
 Introduced in ES2019, `Object.fromEntries()` does the exact opposite of `Object.entries()`. It takes an array matrix of key-value pairs and builds a standard object out of them.
 
 ```js
-const technicalMatrix = [ ["role", "Lead"], ["experience", 13] ]; const engineerProfile = Object.fromEntries(technicalMatrix); console.log(engineerProfile); // { role: "Lead", experience: 13 }
+const technicalMatrix = [ ["role", "Lead"], ["experience", 13] ];
+const engineerProfile = Object.fromEntries(technicalMatrix);
+console.log(engineerProfile);
+// {
+  role: "Lead",
+  experience: 13
+}
 ```
 
 ## Property Descriptors
@@ -142,7 +189,16 @@ There are **four core attributes**:
 #### 🛠️ How to define them manually
 
 ```js
-const bankUser = {}; Object.defineProperty(bankUser, "accountNumber", {   value: 987654321,   writable: false,      // Read-Only   enumerable: false,    // Hidden from loops/keys   configurable: false   // Permanent, cannot be deleted }); bankUser.accountNumber = 1111; // Fails silently (Throws error in Strict Mode) console.log(Object.keys(bankUser)); // [] (It is completely invisible) delete bankUser.accountNumber; // Fails silently
+const bankUser = {
+};
+Object.defineProperty(bankUser, "accountNumber", {
+  value: 987654321,
+  writable: false, // Read-Only enumerable: false, // Hidden from loops/keys configurable: false // Permanent, cannot be deleted
+});
+bankUser.accountNumber = 1111;
+// Fails silently (Throws error in Strict Mode) console.log(Object.keys(bankUser));
+// [] (It is completely invisible) delete bankUser.accountNumber;
+// Fails silently
 ```
 
 ## 🧬 5. Prototypes & The Prototype Chain
@@ -169,7 +225,26 @@ When you attempt to look up a property or run a method on an object:
 Before modern classes (`class`) were added to the language, senior developers handled inheritance manually using functions and prototype linkages:
 
 ```js
-// 1. Base Parent Constructor function Animal(name) {   this.name = name; } Animal.prototype.eat = function() {   return `${this.name} is eating.`; }; // 2. Child Constructor function Dog(name, breed) {   Animal.call(this, name); // Step 1: Inherit base instance properties   this.breed = breed; } // Step 2: Link Dog's prototype to Animal's prototype chain Dog.prototype = Object.create(Animal.prototype); // Step 3: Repair the constructor link (otherwise it points to Animal) Dog.prototype.constructor = Dog; Dog.prototype.bark = function() {   return "Woof!"; }; const myPet = new Dog("Bruno", "Labrador"); console.log(myPet.eat());  // "Bruno is eating." (Inherited) console.log(myPet.bark()); // "Woof!" (Local prototype method)
+// 1. Base Parent Constructor function Animal(name) {
+  this.name = name;
+}
+Animal.prototype.eat = function() {
+  return `${this.name} is eating.`;
+};
+// 2. Child Constructor function Dog(name, breed) {
+  Animal.call(this,
+  name);
+  // Step 1: Inherit base instance properties this.breed = breed;
+}
+// Step 2: Link Dog's prototype to Animal's prototype chain Dog.prototype = Object.create(Animal.prototype);
+// Step 3: Repair the constructor link (otherwise it points to Animal) Dog.prototype.constructor = Dog;
+Dog.prototype.bark = function() {
+  return "Woof!";
+};
+const myPet = new Dog("Bruno", "Labrador");
+console.log(myPet.eat());
+// "Bruno is eating." (Inherited) console.log(myPet.bark());
+// "Woof!" (Local prototype method)
 ```
 
 ## 👥 6. Deep Copy vs. Shallow Copy
@@ -181,7 +256,18 @@ Copies only the top-level keys. If an object contains nested objects, the copy m
 * **Built using:** `\{ ...obj \}` or `Object.assign(\{\}, obj)`.
 
 ```js
-const original = { name: "Alice", details: { age: 25 } }; const shallowCopy = { ...original }; shallowCopy.details.age = 99; // Mutates the shared inner memory! console.log(original.details.age); // 99 (The original was accidentally broken!)
+const original = {
+  name: "Alice",
+  details: {
+    age: 25
+  }
+};
+const shallowCopy = {
+  ...original
+};
+shallowCopy.details.age = 99;
+// Mutates the shared inner memory! console.log(original.details.age);
+// 99 (The original was accidentally broken!)
 ```
 
 ### Deep Copy
@@ -192,7 +278,16 @@ Completely recreates all nested layers, splitting all memory references between 
 * **Legacy Alternative:** `JSON.parse(JSON.stringify(obj))` (Be careful: this breaks if your object has functions, `undefined`, or `Map`/`Set` types).
 
 ```js
-const originalData = { name: "Alice", details: { age: 25 } }; const deepCopy = structuredClone(originalData); deepCopy.details.age = 99;  console.log(originalData.details.age); // 25 (The original remains safe!)
+const originalData = {
+  name: "Alice",
+  details: {
+    age: 25
+  }
+};
+const deepCopy = structuredClone(originalData);
+deepCopy.details.age = 99;
+console.log(originalData.details.age);
+// 25 (The original remains safe!)
 ```
 
 ## ⚠️ 7. High-Frequency Interview Corner Cases & Puzzles
@@ -231,7 +326,16 @@ function Member(id) {   this.id = id; } const currentMember = Member(55); consol
 **Question:** Take an inventory object and filter out any items whose stock value is lower than 100\. You must return a clean, unmutated object layout.
 
 ```js
-const inventory = { apples: 50, bananas: 200, oranges: 12 }; // The Senior Engineer approach: Chain entries, filter, and fromEntries together const filteredInventory = Object.fromEntries(   Object.entries(inventory).filter(([key, value]) => value >= 100) ); console.log(filteredInventory); // { bananas: 200 }
+const inventory = {
+  apples: 50,
+  bananas: 200,
+  oranges: 12
+};
+// The Senior Engineer approach: Chain entries, filter, and fromEntries together const filteredInventory = Object.fromEntries( Object.entries(inventory).filter(([key, value]) => value >= 100) );
+console.log(filteredInventory);
+// {
+  bananas: 200
+}
 ```
 
 * **Reasoning:** We break the object down into an array matrix using `Object.entries()`, apply standard array filtering on the values, and immediately pass that matrix back into `Object.fromEntries()` to rebuild the final object structure cleanly.
@@ -253,7 +357,17 @@ const car = {   brand: "Toyota",   getBrand() { return this.brand; } }; const re
 **Question:** If you apply `Object.freeze()` to an object containing nested structures, can you still modify the nested properties?
 
 ```js
-const company = { name: "TechCorp", location: { city: "NY" } }; Object.freeze(company); company.name = "NewCorp";  company.location.city = "LA";  console.log(company.name); console.log(company.location.city);
+const company = {
+  name: "TechCorp",
+  location: {
+    city: "NY"
+  }
+};
+Object.freeze(company);
+company.name = "NewCorp";
+company.location.city = "LA";
+console.log(company.name);
+console.log(company.location.city);
 ```
 
 **Answer:** Logs `"TechCorp"` and `"LA"`.

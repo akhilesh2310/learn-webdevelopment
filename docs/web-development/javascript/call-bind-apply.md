@@ -26,7 +26,14 @@ Invokes the target function **immediately**. It accepts the desired this context
 * **Syntax:** func.call(context, arg1, arg2, ...)
 
 ```js
-function greet(greeting, punctuation) {   console.log(`${greeting}, I am ${this.name}${punctuation}`); } const user = { name: "Amit" }; // Executes immediately greet.call(user, "Hello", "!"); // "Hello, I am Amit!"
+function greet(greeting, punctuation) {
+  console.log(`${greeting}, I am ${this.name}${punctuation}`);
+}
+const user = {
+  name: "Amit"
+};
+// Executes immediately greet.call(user, "Hello", "!");
+// "Hello, I am Amit!"
 ```
 
 #### 2. apply()
@@ -36,7 +43,8 @@ Invokes the target function **immediately**. It works identically to call(), but
 * **Syntax:** func.apply(context, \[arg1, arg2, ...\])
 
 ```js
-// Uses the same function and object from above greet.apply(user, ["Hi", "."]); // "Hi, I am Amit." 💡 Memory Trick to distinguish call vs apply: Call = Comma-separated arguments. Apply = Array of arguments.
+// Uses the same function and object from above greet.apply(user, ["Hi", "."]);
+// "Hi, I am Amit." 💡 Memory Trick to distinguish call vs apply: Call = Comma-separated arguments. Apply = Array of arguments.
 ```
 
 #### 3. bind()
@@ -46,7 +54,15 @@ Does **not** execute the function immediately. Instead, it generates and returns
 * **Syntax:** const boundFunc \= func.bind(context, arg1, arg2)
 
 ```js
-const userProfile = {   name: "Sania",   logActivity(activity) {     console.log(`${this.name} performed: ${activity}`);   } }; // Returns a new function instance, does not execute yet const preLockedLog = userProfile.logActivity.bind(userProfile); // Fired later in the codebase preLockedLog("Code Review"); // "Sania performed: Code Review"
+const userProfile = {
+  name: "Sania",
+  logActivity(activity) {
+    console.log(`${this.name} performed: ${activity}`);
+  }
+};
+// Returns a new function instance, does not execute yet const preLockedLog = userProfile.logActivity.bind(userProfile);
+// Fired later in the codebase preLockedLog("Code Review");
+// "Sania performed: Code Review"
 ```
 
 ### ⚖️ Side-by-Side Comparison Matrix
@@ -64,7 +80,23 @@ const userProfile = {   name: "Sania",   logActivity(activity) {     console.log
 Imagine building an e-commerce platform where you have distinct user entities, but you want to validate them without copying validation code onto every single object.
 
 ```js
-const validator = {   validateEmail() {     const emailRegex = /^[^\\s@]+@[^\\s@]+\.[^\\s@]+$/;     return emailRegex.test(this.email);   } }; const leadUser = { email: "lead@production.com" }; const legacyCustomer = { email: "invalid-email-string" }; // Borrowing the validator method for separate raw data objects const isLeadValid = validator.validateEmail.call(leadUser); const isCustomerValid = validator.validateEmail.call(legacyCustomer); console.log(isLeadValid);     // true console.log(isCustomerValid); // false
+const validator = {
+  validateEmail() {
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\.[^\\s@]+$/;
+    return emailRegex.test(this.email);
+  }
+};
+const leadUser = {
+  email: "lead@production.com"
+};
+const legacyCustomer = {
+  email: "invalid-email-string"
+};
+// Borrowing the validator method for separate raw data objects const isLeadValid = validator.validateEmail.call(leadUser);
+const isCustomerValid = validator.validateEmail.call(legacyCustomer);
+console.log(isLeadValid);
+// true console.log(isCustomerValid);
+// false
 ```
 
 #### Use Case 2: Using apply() with Variadic Functions (Math Calculations)
@@ -72,7 +104,8 @@ const validator = {   validateEmail() {     const emailRegex = /^[^\\s@]+@[^\\s@
 Some native utility methods (like Math.max) accept individual numbers but cannot read a raw data array directly. While modern code often uses the spread operator (...), apply() remains a classic production interview test pattern.
 
 ```js
-const salaryList = [4500, 9200, 3100, 12000, 8500]; // Pass null/undefined as context because Math.max doesn't care about a 'this' object const topSalary = Math.max.apply(null, salaryList);  console.log(topSalary); // 12000
+const salaryList = [4500, 9200, 3100, 12000, 8500];
+// Pass null/undefined as context because Math.max doesn't care about a 'this' object const topSalary = Math.max.apply(null, salaryList); console.log(topSalary); // 12000
 ```
 
 #### Use Case 3: Preserving Context in Asynchronous Callbacks (bind)
@@ -80,7 +113,17 @@ const salaryList = [4500, 9200, 3100, 12000, 8500]; // Pass null/undefined as co
 When passing an object method as an event handler or timer callback, the context is stripped by default. bind() guarantees the function maintains its structural environment.
 
 ```js
-const digitalClock = {   time: "12:00 PM",   render() {     console.log(`The current time is ${this.time}`);   },   start() {     // ❌ THE TRAP: 'this.render' drops context inside setTimeout     // setTimeout(this.render, 1000); // Logs: "The current time is undefined"     // ✅ THE FIX: Permanently lock context to digitalClock before passing it     setTimeout(this.render.bind(this), 1000);   } }; digitalClock.start();
+const digitalClock = {
+  time: "12:00 PM",
+  render() {
+    console.log(`The current time is ${this.time}`);
+  },
+  start() {
+    // ❌ THE TRAP: 'this.render' drops context inside setTimeout // setTimeout(this.render, 1000);
+    // Logs: "The current time is undefined" // ✅ THE FIX: Permanently lock context to digitalClock before passing it setTimeout(this.render.bind(this), 1000);
+  }
+};
+digitalClock.start();
 ```
 
 ### ⚠️ High-Frequency Interview Corner Cases & Puzzles
@@ -102,7 +145,18 @@ const device = {   brand: "Apple",   getBrand() { return "Local Device: " + this
 **Question:** Can you re-bind a function that has already been bound? What does this code print?
 
 ```js
-function display() {   console.log(this.name); } const obj1 = { name: "Context One" }; const obj2 = { name: "Context Two" }; const bound1 = display.bind(obj1); const bound2 = bound1.bind(obj2); bound2();
+function display() {
+  console.log(this.name);
+}
+const obj1 = {
+  name: "Context One"
+};
+const obj2 = {
+  name: "Context Two"
+};
+const bound1 = display.bind(obj1);
+const bound2 = bound1.bind(obj2);
+bound2();
 ```
 
 **Answer:** It prints "Context One".

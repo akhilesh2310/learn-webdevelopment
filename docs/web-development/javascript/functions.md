@@ -59,7 +59,10 @@ Introduced in ES6, arrow functions provide a shorter syntax for writing function
 #### 🛠️ Syntax Examples
 
 ```js
-// Single parameter, single expression return (implicit return) const double = x => x * 2; // Multiple parameters, block body (requires explicit return) const add = (a, b) => {   return a + b; };
+// Single parameter, single expression return (implicit return) const double = x => x * 2;
+// Multiple parameters, block body (requires explicit return) const add = (a, b) => {
+  return a + b;
+};
 ```
 
 ## ⚖️ Regular Functions vs. Arrow Functions (The Interview Goldmine)
@@ -231,7 +234,18 @@ A callback is a function passed as an argument to another function, which is exe
 Before Promises and `async/await` were added to the language, developers nested multiple callbacks deeply inside one another to handle sequential asynchronous tasks. This created unreadable, fragile code patterns colloquially known as **Callback Hell** or the **Pyramid of Doom**.
 
 ```js
-// THE PITFALL: Callback Hell Example getUserData(userId, (user) => {   getPermissions(user.role, (permissions) => {     getFeatureFlags(permissions, (flags) => {       renderDashboard(flags, () => {         console.log("Dashboard Loaded!");       });     });   }); });
+// THE PITFALL: Callback Hell Example getUserData(userId, (user) => {
+  getPermissions(user.role,
+  (permissions) => {
+    getFeatureFlags(permissions,
+    (flags) => {
+      renderDashboard(flags,
+      () => {
+        console.log("Dashboard Loaded!");
+      });
+    });
+  });
+});
 ```
 
 #### 🛠️ How to fix it (Promisification)
@@ -239,7 +253,28 @@ Before Promises and `async/await` were added to the language, developers nested 
 To fix callback hell in older codebases, you can wrap callback-based functions inside a modern Promise structure. This allows you to flatten out your async operations into clean, sequential syntax steps.
 
 ```js
-// Wrapping a callback-based utility into a Promise const fetchPermissionsPromise = (role) => {   return new Promise((resolve, reject) => {     getPermissions(role, (err, permissions) => {       if (err) reject(err);       else resolve(permissions);     });   }); }; // Usage with async/await async function loadDashboard(userId) {   try {     const user = await getUserDataPromise(userId);     const permissions = await fetchPermissionsPromise(user.role);     const flags = await getFeatureFlagsPromise(permissions);     renderDashboard(flags);   } catch (error) {     console.error("Dashboard failed to initialize:", error);   } }
+// Wrapping a callback-based utility into a Promise const fetchPermissionsPromise = (role) => {
+  return new Promise((resolve,
+  reject) => {
+    getPermissions(role,
+    (err,
+    permissions) => {
+      if (err) reject(err);
+      else resolve(permissions);
+    });
+  });
+};
+// Usage with async/await async function loadDashboard(userId) {
+  try {
+    const user = await getUserDataPromise(userId);
+    const permissions = await fetchPermissionsPromise(user.role);
+    const flags = await getFeatureFlagsPromise(permissions);
+    renderDashboard(flags);
+  }
+  catch (error) {
+    console.error("Dashboard failed to initialize:", error);
+  }
+}
 ```
 
 #### 4. Immediately Invoked Function Expressions (IIFE)
@@ -266,7 +301,26 @@ An IIFE is a function that is defined and executed immediately upon creation. It
 You can use an IIFE to build a secure state container. It hides internal variables from the outside world while exposing select control functions to the rest of your app.
 
 ```js
-const counterModule = (function() {   // Private variable locked inside the IIFE scope   let count = 0;    return {     increment() {       count++;       return count;     },     decrement() {       count--;       return count;     },     getCount() {       return count;     }   }; })(); // Usage: console.log(counterModule.increment()); // 1 console.log(counterModule.increment()); // 2 console.log(counterModule.count);       // undefined (Cannot access private state directly!)
+const counterModule = (function() {
+  // Private variable locked inside the IIFE scope let count = 0;
+  return {
+    increment() {
+      count++;
+      return count;
+    },
+    decrement() {
+      count--;
+      return count;
+    },
+    getCount() {
+      return count;
+    }
+  };
+})();
+// Usage: console.log(counterModule.increment());
+// 1 console.log(counterModule.increment());
+// 2 console.log(counterModule.count);
+// undefined (Cannot access private state directly!)
 ```
 
 #### 5. Pure Functions
@@ -287,7 +341,13 @@ A function is considered pure if it satisfies two strict rules:
 Pure functions make your code predictable, easy to test, and safe from unexpected state bugs. Because they depend entirely on their inputs, you can run them repeatedly without worrying about breaking unrelated parts of your app.
 
 ```js
-// ❌ IMPURE FUNCTION: Modifies external variables and yields unpredictable results let discountPercent = 10; const calculatePriceImpure = (price) => {   return price - (price * (discountPercent / 100)); }; // ✅ PURE FUNCTION: Self-contained, safe, and entirely predictable const calculatePricePure = (price, discount) => {   return price - (price * (discount / 100)); };
+// ❌ IMPURE FUNCTION: Modifies external variables and yields unpredictable results let discountPercent = 10;
+const calculatePriceImpure = (price) => {
+  return price - (price * (discountPercent / 100));
+};
+// ✅ PURE FUNCTION: Self-contained, safe, and entirely predictable const calculatePricePure = (price, discount) => {
+  return price - (price * (discount / 100));
+};
 ```
 
 #### ⚠️ Engineering Challenges: What counts as a Side Effect?
@@ -323,7 +383,17 @@ Instead of building giant monolithic functions that try to do everything at once
 By default, standard mathematical composition runs from **right to left**. Let's build a clean, custom `compose` utility using `Array.prototype.reduceRight`:
 
 ```js
-// Custom Right-to-Left Composition Engine const compose = (...functions) => (initialValue) => {   return functions.reduceRight((currentValue, currentFunction) => {     return currentFunction(currentValue);   }, initialValue); }; // Individual, single-purpose formatting utilities const trimText = str => str.trim(); const capitalize = str => str.toUpperCase(); const addExclamation = str => `${str}!!!`; // Compose them into a single validation pipeline const prepareAlertMessage = compose(addExclamation, capitalize, trimText); // Execution order: trimText -> capitalize -> addExclamation console.log(prepareAlertMessage("   hello frontend engineer   "));  // Output: "HELLO FRONTEND ENGINEER!!!"
+// Custom Right-to-Left Composition Engine const compose = (...functions) => (initialValue) => {
+  return functions.reduceRight((currentValue, currentFunction) => {
+    return currentFunction(currentValue);
+  }, initialValue);
+};
+// Individual, single-purpose formatting utilities const trimText = str => str.trim();
+const capitalize = str => str.toUpperCase();
+const addExclamation = str => `${str}!!!`;
+// Compose them into a single validation pipeline const prepareAlertMessage = compose(addExclamation, capitalize, trimText);
+// Execution order: trimText -> capitalize -> addExclamation console.log(prepareAlertMessage(" hello frontend engineer "));
+// Output: "HELLO FRONTEND ENGINEER!!!"
 ```
 
 #### 🚀 Bonus: What is Piping?
@@ -331,5 +401,12 @@ By default, standard mathematical composition runs from **right to left**. Let's
 Because reading composition logic from right to left can sometimes feel counterintuitive, developers often use a **Pipe** utility instead. A pipe functions exactly like composition, but runs in the natural human reading direction: **left to right**.
 
 ```js
-// Custom Left-to-Right Piping Engine const pipe = (...functions) => (initialValue) => {   return functions.reduce((currentValue, currentFunction) => {     return currentFunction(currentValue);   }, initialValue); }; const processWorkflow = pipe(trimText, capitalize, addExclamation); console.log(processWorkflow("   hello frontend engineer   ")); // Output: "HELLO FRONTEND ENGINEER!!!"
+// Custom Left-to-Right Piping Engine const pipe = (...functions) => (initialValue) => {
+  return functions.reduce((currentValue, currentFunction) => {
+    return currentFunction(currentValue);
+  }, initialValue);
+};
+const processWorkflow = pipe(trimText, capitalize, addExclamation);
+console.log(processWorkflow(" hello frontend engineer "));
+// Output: "HELLO FRONTEND ENGINEER!!!"
 ```

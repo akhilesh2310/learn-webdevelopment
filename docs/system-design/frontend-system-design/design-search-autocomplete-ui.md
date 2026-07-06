@@ -482,8 +482,8 @@ Highlight pros/cons of each approach and justify your final decision.
 
 * **A/B test** suggestion ranking models
 
-[image1]: /img/docs/system-design/system-design-questions/autocomplete/autocomplete-01.png
-[image2]: /img/docs/system-design/system-design-questions/autocomplete/autocomplete-02.png
-[image3]: /img/docs/system-design/system-design-questions/autocomplete/autocomplete-03.png
-[image4]: /img/docs/system-design/system-design-questions/autocomplete/autocomplete-04.png
-[image5]: /img/docs/system-design/system-design-questions/autocomplete/autocomplete-05.png
+[image1]: /img/docs/system-design/frontend-system-design/design-search-autocomplete-ui/design-search-autocomplete-ui-01.png
+[image2]: /img/docs/system-design/frontend-system-design/design-search-autocomplete-ui/design-search-autocomplete-ui-02.png
+[image3]: /img/docs/system-design/frontend-system-design/design-search-autocomplete-ui/design-search-autocomplete-ui-03.png
+[image4]: /img/docs/system-design/frontend-system-design/design-search-autocomplete-ui/design-search-autocomplete-ui-04.png
+[image5]: /img/docs/system-design/frontend-system-design/design-search-autocomplete-ui/design-search-autocomplete-ui-05.png

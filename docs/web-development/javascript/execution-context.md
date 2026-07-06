@@ -72,5 +72,23 @@ An interviewer will ask you to write a recursive utility (like deep-cloning an o
 To prevent stack overflows in deeply nested logic, convert the recursive structure to an iterative one, or use a **Trampoline function**. A trampoline wraps the recursive call in a function, flattening the stack execution to one frame at a time.
 
 ```js
-// FIX: Trampolining const trampoline = (fn) => (...args) => {     let result = fn(...args);     while (typeof result === 'function') {         result = result(); // Execute one step at a time, clearing the stack frame     }     return result; }; const safelyCount = (max) => {     const run = (current) => {         if (current >= max) return current;         return () => run(current + 1); // Returns a function instead of self-invoking directly     };     return run(0); }; const total = trampoline(safelyCount)(200000); // Handled cleanly without overflowing console.log(total); // 200000
+// FIX: Trampolining const trampoline = (fn) => (...args) => {
+  let result = fn(...args);
+  while (typeof result === 'function') {
+    result = result();
+    // Execute one step at a time, clearing the stack frame
+  }
+  return result;
+};
+const safelyCount = (max) => {
+  const run = (current) => {
+    if (current >= max) return current;
+    return () => run(current + 1);
+    // Returns a function instead of self-invoking directly
+  };
+  return run(0);
+};
+const total = trampoline(safelyCount)(200000);
+// Handled cleanly without overflowing console.log(total);
+// 200000
 ```

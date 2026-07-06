@@ -9,7 +9,7 @@ sidebar_position: 1
 
 - [TS Concepts](./ts-concepts.md) owns detailed TypeScript concept explanations.
 - [Code](./code.md) owns examples and implementation snippets.
-- [ChatGPT Notes](./chatgpt-notes.md) remains interview Q&A and preparation notes for now.
+- [TypeScript Interview Q&A](./interview-qa.md) remains interview Q&A and preparation notes for now.
 
 ## TypeScript Interview Preparation Structure
 

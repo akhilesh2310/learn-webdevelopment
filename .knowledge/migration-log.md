@@ -39,6 +39,16 @@ This log records where original Google Docs content was migrated and what migrat
 - Small concept topics were kept as headings inside grouped study pages with TODO markers where no notes exist yet.
 - Low-information placeholder design problems were grouped into `docs/system-design/system-design-question-bank/company-asked.md` to avoid an overly long sidebar.
 - 2026-07-06: Coding Round notes were moved from `docs/system-design/system-design-basics/interview-framework.md` to `docs/dsa/coding-round.md`. System Design now links to the DSA canonical page instead of duplicating the content.
+- 2026-07-06: Web Development was restructured from the vague `important/` and `node-js/` folders into explicit study sections:
+  - `core-engineering/`
+  - `frontend-architecture/`
+  - `performance/`
+  - `security-auth/`
+  - `testing-quality/`
+  - `ux-design-system/`
+  - `build-devops-delivery/`
+  - `backend-for-frontend-node-js/`
+- Existing notes were moved without intentional content deletion. Angular and HTML & CSS were left unchanged.
 
 ## Important Rules
 

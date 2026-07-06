@@ -89,7 +89,16 @@ This is useful when we want to pre-configure a function and reuse it later.
 Breaking down a multi-argument function into a series of nested single-argument closures.
 
 ```js
-function buildApiUrl(baseUrl) {   return function(version) {     return function(endpoint) {       return `${baseUrl}/${version}/${endpoint}`;     };   }; } const productionGateway = buildApiUrl("https://api.production.com")("v1"); console.log(productionGateway("users")); // "https://api.production.com/v1/users"
+function buildApiUrl(baseUrl) {
+  return function(version) {
+    return function(endpoint) {
+      return `${baseUrl}/${version}/${endpoint}`;
+    };
+  };
+}
+const productionGateway = buildApiUrl("https://api.production.com")("v1");
+console.log(productionGateway("users"));
+// "https://api.production.com/v1/users"
 ```
 
 ## Why currying is useful
@@ -420,7 +429,24 @@ Memoization adds memory overhead and complexity. If the calculation is cheap, me
 Using a hidden private `Map` object inside a closure scope to cache computational results and optimize expensive processing paths.
 
 ```js
-function memoize(expensiveFunction) {   const cache = new Map(); // Private cache container locked in closure   return function (...args) {     const key = JSON.stringify(args);     if (cache.has(key)) {       console.log("Cache Hit for arguments:", args);       return cache.get(key);     }     const result = expensiveFunction.apply(this, args);     cache.set(key, result);     return result;   }; } const slowFactorial = (n) => (n <= 1 ? 1 : n * slowFactorial(n - 1)); const fastFactorial = memoize(slowFactorial); console.log(fastFactorial(5)); // Calculates manually: 120 console.log(fastFactorial(5)); // Cache Hit! Instantly outputs 120 from the closure map.
+function memoize(expensiveFunction) {
+  const cache = new Map();
+  // Private cache container locked in closure return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) {
+      console.log("Cache Hit for arguments:", args);
+      return cache.get(key);
+    }
+    const result = expensiveFunction.apply(this, args);
+    cache.set(key, result);
+    return result;
+  };
+}
+const slowFactorial = (n) => (n <= 1 ? 1 : n * slowFactorial(n - 1));
+const fastFactorial = memoize(slowFactorial);
+console.log(fastFactorial(5));
+// Calculates manually: 120 console.log(fastFactorial(5));
+// Cache Hit! Instantly outputs 120 from the closure map.
 ```
 
 ## Interview-ready answer

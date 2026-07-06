@@ -5,13 +5,13 @@ sidebar_position: 4
 
 # State Management
 
-Related pages: [React Hooks](react-hooks.md), [Component Communication Patterns](component-communication-patterns.md), [React Performance](../important/performance/react-performance.md), [Caching](../important/caching.md).
+Related pages: [React Hooks](react-hooks.md), [Component Communication Patterns](component-communication-patterns.md), [React Performance](../performance/react-performance.md), [Caching](../core-engineering/caching.md).
 
 ## Ownership
 
 Use this page for state ownership, local vs global state, Context, reducer pattern, Redux, Zustand, server state vs client state, and state-management decision making.
 
-Use [React Performance](../important/performance/react-performance.md) for render optimization strategy.
+Use [React Performance](../performance/react-performance.md) for render optimization strategy.
 
 ## 4. State Management
 

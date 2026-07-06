@@ -20,7 +20,7 @@ This page is the hub for JavaScript runtime internals.
 
 - [React Under The Hood](../../react-js/react-under-the-hood.md)
 - [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md)
-- [Node.js Notes](../../node-js/chatgpt-node.md)
+- [Node.js Notes](../../backend-for-frontend-node-js/node-js-interview-qa.md)
 
 ## Engine Notes
 

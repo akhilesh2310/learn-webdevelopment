@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # React Reconciliation
 
-Related canonical pages: [React Fiber](react-fiber.md), [Rendering Components](../rendering-components.md), [React Performance](../../important/performance/react-performance.md).
+Related canonical pages: [React Fiber](react-fiber.md), [Rendering Components](../rendering-components.md), [React Performance](../../performance/react-performance.md).
 
 ## React Reconciliation
 

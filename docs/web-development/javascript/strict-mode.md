@@ -40,7 +40,12 @@ You trigger it by typing the exact string "use strict"; (or 'use strict';) at th
 ```
 
 ```js
-// Non-strict mode out here x = 10; // Works fine (creates a global variable) function strictFunction() {   "use strict";   // Strict mode applies ONLY inside this function   y = 20; // ReferenceError: y is not defined }
+// Non-strict mode out here x = 10;
+// Works fine (creates a global variable) function strictFunction() {
+  "use strict";
+  // Strict mode applies ONLY inside this function y = 20;
+  // ReferenceError: y is not defined
+}
 ```
 
 ### 🛠️ How does it work? (Key Changes & Behavior)

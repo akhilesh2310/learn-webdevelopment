@@ -53,22 +53,22 @@ Additionally, **new roads can be added dynamically before the toll increases**.
 
 ### **Example Input:**
 
-js  
-CopyEdit  
-`N = 4`  
-`K = 4`  
-`roads = [[0,1,5], [1,2,10], [2,3,5], [0,3,20]]`  
-`M = 2`  
-`inc = 2`  
-`newRoads = [[1,3,7]]`  
-`A = 0`  
-`B = 3`
+```js
+N = 4
+K = 4
+roads = [[0,1,5], [1,2,10], [2,3,5], [0,3,20]]
+M = 2
+inc = 2
+newRoads = [[1,3,7]]
+A = 0
+B = 3
+```
 
 ### **Expected Output:**
 
-js  
-CopyEdit  
-`[15, 21, 27]  // Initial, after 1st increment, after 2nd increment`
+```js
+[15, 21, 27]  // Initial, after 1st increment, after 2nd increment
+```
 
 Explanation:
 

@@ -43,7 +43,27 @@ To explain closures at a senior level, you must reference how the JS engine mana
 This layout creates an encapsulated data structure (a secure stack or wallet) where the underlying data store cannot be wiped out or overridden directly.
 
 ```js
-function createSecureStack() {   // This array is completely hidden from the outside world   const items = [];    return {     push(item) {       items.push(item);     },     pop() {       return items.pop();     },     peek() {       return items[items.length - 1];     }   }; } const stack = createSecureStack(); stack.push(10); stack.push(20); console.log(stack.pop()); // 20 stack.items = [];         // Fails! Outside code cannot access or clear the internal array. console.log(stack.peek()); // 10 (The true internal array remains completely safe)
+function createSecureStack() {
+  // This array is completely hidden from the outside world const items = [];
+  return {
+    push(item) {
+      items.push(item);
+    },
+    pop() {
+      return items.pop();
+    },
+    peek() {
+      return items[items.length - 1];
+    }
+  };
+}
+const stack = createSecureStack();
+stack.push(10);
+stack.push(20);
+console.log(stack.pop());
+// 20 stack.items = [];
+// Fails! Outside code cannot access or clear the internal array. console.log(stack.peek());
+// 10 (The true internal array remains completely safe)
 ```
 
 #### 2. Function Factories (MDN & JavaScriptTutorial.net)
@@ -51,7 +71,16 @@ function createSecureStack() {   // This array is completely hidden from the out
 An outer function accepts initialization arguments and returns a custom-tailored inner function configuration.
 
 ```js
-function createGreeter(greetingPrefix) {   // greetingPrefix is permanently locked into this specific instance closure   return function(userName) {     return `${greetingPrefix}, ${userName}!`;   }; } const sayHi = createGreeter("Hi"); const sayHello = createGreeter("Hello"); console.log(sayHi("John"));    // "Hi, John!" console.log(sayHello("John")); // "Hello, John!"
+function createGreeter(greetingPrefix) {
+  // greetingPrefix is permanently locked into this specific instance closure return function(userName) {
+    return `${greetingPrefix}, ${userName}!`;
+  };
+}
+const sayHi = createGreeter("Hi");
+const sayHello = createGreeter("Hello");
+console.log(sayHi("John"));
+// "Hi, John!" console.log(sayHello("John"));
+// "Hello, John!"
 ```
 
 #### 3. Advanced Optimization: Memoization (Caching Engine)
@@ -75,7 +104,15 @@ Because closures hold permanent live references to their parent scope variables,
 You must explicitly break the reference connection path by nullifying the pointer reference variable once its operational lifecycle completes.
 
 ```js
-function loadLargeData() {   let massiveDataArray = new Array(1000000).fill("🚨 Heavy Memory Data");   return function logData() {     console.log(massiveDataArray[0]);   }; } let leakyClosure = loadLargeData(); leakyClosure();  // FIX: Set to null so the Garbage Collector can safely reclaim the array allocation leakyClosure = null;
+function loadLargeData() {
+  let massiveDataArray = new Array(1000000).fill("🚨 Heavy Memory Data");
+  return function logData() {
+    console.log(massiveDataArray[0]);
+  };
+}
+let leakyClosure = loadLargeData();
+leakyClosure();
+// FIX: Set to null so the Garbage Collector can safely reclaim the array allocation leakyClosure = null;
 ```
 
 ### 🎯 High-Frequency Interview Puzzles & Corner Cases
@@ -91,7 +128,17 @@ The full output question, `let` fix, and IIFE fix are maintained in [Hoisting](.
 **Question:** What does this code print, and why? How do you fix it?
 
 ```js
-const userSession = {   count: 0,   init() {     return function() {       this.count++;       console.log(this.count);     };   } }; const increment = userSession.init(); increment();
+const userSession = {
+  count: 0,
+  init() {
+    return function() {
+      this.count++;
+      console.log(this.count);
+    };
+  }
+};
+const increment = userSession.init();
+increment();
 ```
 
 * **Output:** `NaN` (Not a Number).  
@@ -107,7 +154,18 @@ init() {     return () => { // Correctly captures 'this' from the userSession ob
 **Question:** What is output to the console during this execution sequence?
 
 ```js
-function createLiveClosure() {   let value = 100;   return {     read: () => value,     change: (newValue) => value = newValue   }; } const closureBox = createLiveClosure(); const currentStoredValue = closureBox.read(); // Copies the current primitive value closureBox.change(500); console.log(closureBox.read()); console.log(currentStoredValue);
+function createLiveClosure() {
+  let value = 100;
+  return {
+    read: () => value,
+    change: (newValue) => value = newValue
+  };
+}
+const closureBox = createLiveClosure();
+const currentStoredValue = closureBox.read();
+// Copies the current primitive value closureBox.change(500);
+console.log(closureBox.read());
+console.log(currentStoredValue);
 ```
 
 * **Output:** Logs `500`, then `100`.  
@@ -129,7 +187,25 @@ function createLiveClosure() {   let value = 100;   return {     read: () => val
 **Question:** What is the output tracking here?
 
 ```js
-function createComplexCounter() {   let globalCount = 0;   return {     increment() { globalCount++; return globalCount; },     decrement() { globalCount--; return globalCount; }   }; } const instanceA = createComplexCounter(); const instanceB = createComplexCounter(); console.log(instanceA.increment()); // 1 console.log(instanceA.increment()); // 2 console.log(instanceB.increment()); // 1 console.log(instanceA.decrement()); // 1
+function createComplexCounter() {
+  let globalCount = 0;
+  return {
+    increment() {
+      globalCount++;
+      return globalCount;
+    }, decrement() {
+      globalCount--;
+      return globalCount;
+    }
+  };
+}
+const instanceA = createComplexCounter();
+const instanceB = createComplexCounter();
+console.log(instanceA.increment());
+// 1 console.log(instanceA.increment());
+// 2 console.log(instanceB.increment());
+// 1 console.log(instanceA.decrement());
+// 1
 ```
 
 * **Output:** `1`, `2`, `1`, `1`.  
@@ -140,7 +216,20 @@ function createComplexCounter() {   let globalCount = 0;   return {     incremen
 **Question:** Does destructuring methods out of a closure block break their access to the private state?
 
 ```js
-function createSecretService() {   let agentCode = "007";   return {     getCode: () => agentCode,     setCode: (newCode) => agentCode = newCode   }; } const { getCode, setCode } = createSecretService(); setCode("999"); console.log(getCode());
+function createSecretService() {
+  let agentCode = "007";
+  return {
+    getCode: () => agentCode,
+    setCode: (newCode) => agentCode = newCode
+  };
+}
+const {
+  getCode,
+  setCode
+}
+= createSecretService();
+setCode("999");
+console.log(getCode());
 ```
 
 * **Output:** `"999"`.  

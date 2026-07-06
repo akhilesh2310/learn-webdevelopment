@@ -176,6 +176,6 @@ TypeScript interview notes are maintained in the TypeScript section:
 
 * [TypeScript Concepts](../../typescript/ts-concepts.md)
 * [TypeScript Code](../../typescript/code.md)
-* [TypeScript Interview Notes](../../typescript/chatgpt-notes.md)
+* [TypeScript Interview Notes](../../typescript/interview-qa.md)
 
 Keep this page focused on JavaScript quick revision.

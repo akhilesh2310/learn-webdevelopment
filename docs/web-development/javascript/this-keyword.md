@@ -54,7 +54,17 @@ If you want to manually force a function to use a specific object as its `this` 
 * **`bind(context)`:** Does not run the function immediately. Instead, it returns a **brand-new function copy** with its `this` context permanently locked to your target object.
 
 ```js
-function displayInfo(city, country) {   console.log(`${this.name} from ${city}, ${country}`); } const personInstance = { name: "Rohan" }; // Immediate Execution Examples displayInfo.call(personInstance, "Mumbai", "India"); displayInfo.apply(personInstance, ["Mumbai", "India"]); // Deferred Execution Example const permanentLog = displayInfo.bind(personInstance, "Tokyo", "Japan"); permanentLog(); // Outputs: "Rohan from Tokyo, Japan"
+function displayInfo(city, country) {
+  console.log(`${this.name} from ${city}, ${country}`);
+}
+const personInstance = {
+  name: "Rohan"
+};
+// Immediate Execution Examples displayInfo.call(personInstance, "Mumbai", "India");
+displayInfo.apply(personInstance, ["Mumbai", "India"]);
+// Deferred Execution Example const permanentLog = displayInfo.bind(personInstance, "Tokyo", "Japan");
+permanentLog();
+// Outputs: "Rohan from Tokyo, Japan"
 ```
 
 ### 4. `new` Binding (Constructor Context)
@@ -70,7 +80,14 @@ function Car(model) {   this.model = model; // 'this' points to the newly built 
 Arrow functions (`=>`) do **not** possess their own `this` context. They treat `this` exactly like a regular variable—looking outward to inherit it lexically from the parent execution scope block that physically surrounds them.
 
 ```js
-const userProfile = {   name: "Sania",   greet: () => {     // Arrow function looks outward to global scope layout to resolve 'this'     console.log(this.name);    } }; userProfile.greet(); // undefined (points to global window object)
+const userProfile = {
+  name: "Sania",
+  greet: () => {
+    // Arrow function looks outward to global scope layout to resolve 'this' console.log(this.name);
+  }
+};
+userProfile.greet();
+// undefined (points to global window object)
 ```
 
 ## ⚠️ High-Frequency Interview Puzzles & Pitfalls
@@ -92,7 +109,15 @@ const profile = {   username: "Dev123",   display() {     console.log(this.usern
 **Question:** What is the output of this loop callback code, and how do you resolve the breakdown using modern engineering practices?
 
 ```js
-const group = {   title: "Frontend Team",   members: ["Alice", "Bob"],   showMembers() {     this.members.forEach(function(member) {       console.log(`${member} is in ${this.title}`);     });   } }; group.showMembers();
+const group = {
+  title: "Frontend Team",
+  members: ["Alice", "Bob"], showMembers() {
+    this.members.forEach(function(member) {
+      console.log(`${member} is in ${this.title}`);
+    });
+  }
+};
+group.showMembers();
 ```
 
 **Answer:** Logs `"Alice is in undefined"` and `"Bob is in undefined"`.
@@ -104,7 +129,17 @@ const group = {   title: "Frontend Team",   members: ["Alice", "Bob"],   showMem
 Because arrow functions do not create their own `this` context, they look outward to capture it. Replacing the regular function with an arrow function forces it to safely capture the `this` from the surrounding `showMembers()` method context, which points directly to the `group` object.
 
 ```js
-const group = {   title: "Frontend Team",   members: ["Alice", "Bob"],   showMembers() {     // Arrow function captures 'this' lexically from showMembers method context     this.members.forEach((member) => {       console.log(`${member} is in ${this.title}`); // Works perfectly!     });   } }; group.showMembers();  // Output:  // "Alice is in Frontend Team" // "Bob is in Frontend Team"
+const group = {
+  title: "Frontend Team",
+  members: ["Alice", "Bob"], showMembers() {
+    // Arrow function captures 'this' lexically from showMembers method context this.members.forEach((member) => {
+      console.log(`${member} is in ${this.title}`);
+      // Works perfectly!
+    });
+  }
+};
+group.showMembers();
+// Output: // "Alice is in Frontend Team" // "Bob is in Frontend Team"
 ```
 
 In a Service Worker, the this keyword refers to the **ServiceWorkerGlobalScope**. This is the global execution context of the service worker, which is completely separate from the main browser window's window object.

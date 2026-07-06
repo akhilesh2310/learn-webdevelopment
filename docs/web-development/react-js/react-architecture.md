@@ -5,7 +5,7 @@ sidebar_position: 12
 
 # React Architecture
 
-Related pages: [Frontend Architecture](../important/frontend-architecture.md), [Folder Structure](folder-structure.md), [State Management](state-management.md), [Advanced React Patterns](advanced-react-patterns.md), [Micro Frontends](../important/micro-frontends.md).
+Related pages: [Frontend Architecture](../frontend-architecture/), [Folder Structure](../frontend-architecture/folder-structure.md), [State Management](state-management.md), [Advanced React Patterns](advanced-react-patterns.md), [Micro Frontends](../frontend-architecture/micro-frontends.md).
 
 ## Ownership
 

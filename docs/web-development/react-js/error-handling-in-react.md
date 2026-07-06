@@ -5,7 +5,7 @@ sidebar_position: 10
 
 # Error Handling in React
 
-Related pages: [Error Handling](../important/error-handling.md), [React Hooks](react-hooks.md), [Forms](forms.md), [Observability](../important/observability.md).
+Related pages: [Error Handling](../core-engineering/error-handling.md), [React Hooks](react-hooks.md), [Forms](forms.md), [Observability](../core-engineering/observability.md).
 
 ## Ownership
 

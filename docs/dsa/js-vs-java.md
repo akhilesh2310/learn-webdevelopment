@@ -131,82 +131,84 @@ FIFO (First-In-First-Out) structure used in BFS, task scheduling, etc.
 
 Hierarchical structure used in binary trees, BSTs, and recursive algorithms.
 
-| JavaScript | Java |
-| :---: | :---: |
+### JavaScript
 
-js  
-CopyEdit  
-`class TreeNode {`  
-  `constructor(val) {`  
-    `this.val = val;`  
-    `this.left = null;`  
-    `this.right = null;`  
-  `}`  
-`}`
+```js
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
 
-|
+### Java
 
-java  
-CopyEdit  
-`class TreeNode {`  
-  `int val;`  
-  `TreeNode left, right;`  
-  `TreeNode(int val) {`  
-    `this.val = val;`  
-  `}`  
-`}`  
-```` ``` | ````
+```java
+class TreeNode {
+  int val;
+  TreeNode left, right;
 
-`---`
+  TreeNode(int val) {
+    this.val = val;
+  }
+}
+```
 
-`## ✅ 10. **Graph (Adjacency List)**`    
-`Represents connections between nodes, used in DFS, BFS, shortest path algorithms.`
+---
 
-`| JavaScript | Java |`  
-`|------------|------|`  
-```` ```js ````  
-`let graph = new Map();`  
-`graph.set(0, [1, 2]);`
+## ✅ 10. **Graph (Adjacency List)**
 
-|
+Represents connections between nodes, used in DFS, BFS, shortest path algorithms.
 
-java  
-CopyEdit  
-`Map<Integer, List<Integer>> graph = new HashMap<>();`  
-`graph.put(0, Arrays.asList(1, 2));`  
-```` ``` | ````
+### JavaScript
 
-`---`
+```js
+let graph = new Map();
+graph.set(0, [1, 2]);
+```
 
-`## ✅ 11. **Linked List Node**`    
-`Linear structure made of nodes with references; useful in custom data structures.`
+### Java
 
-`| JavaScript | Java |`  
-`|------------|------|`  
-```` ```js ````  
-`class ListNode {`  
-  `constructor(val) {`  
-    `this.val = val;`  
-    `this.next = null;`  
-  `}`  
-`}`
+```java
+Map<Integer, List<Integer>> graph = new HashMap<>();
+graph.put(0, Arrays.asList(1, 2));
+```
 
-|
+---
 
-java  
-CopyEdit  
-`class ListNode {`  
-  `int val;`  
-  `ListNode next;`  
-  `ListNode(int val) {`  
-    `this.val = val;`  
-  `}`  
-`}`  
-```` ``` | ````
+## ✅ 11. **Linked List Node**
 
-`---`
+Linear structure made of nodes with references; useful in custom data structures.
 
-`Would you like me to generate this as a **PDF cheat sheet** or **code snippet folder** so you can refer to it offline as well?`
+### JavaScript
+
+```js
+class ListNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+```
+
+### Java
+
+```java
+class ListNode {
+  int val;
+  ListNode next;
+
+  ListNode(int val) {
+    this.val = val;
+  }
+}
+```
+
+---
+
+Would you like me to generate this as a **PDF cheat sheet** or **code snippet folder** so you can refer to it offline as well?
 
 ### **🔁 Functions**
 
@@ -234,10 +236,184 @@ For easier DSA coding in Java:
 
 * Use `Scanner sc = new Scanner(System.in);` for input.
 
-| JavaScript | Java |
-| :---- | :---- |
-| class Solution \{     // Function to return a list containing the DFS traversal of the graph.          nodeList \= \[\]; // 0, 2, 3, 1     visited \= \{\}; // "0": true, '2': true, 3,1          helperDFS(adj, node) \{         this.nodeList.push(node);         this.visited\[node\] \= true;                  for (let nextNode of adj\[node\]) \{ // node 0, \[2,3,1\]                          if (\!this.visited\[nextNode\]) \{                                  this.helperDFS(adj, nextNode);                              \}                      \}              \}          dfs(adj) \{         // code here         this.helperDFS(adj, 0);         return this.nodeList;     \}      \} // let obj \= new Solution(); let ans \= obj.dfs(adj);  | import java.util.\*; class Solution \{     // Function to return a list containing the DFS traversal of the graph.     public ArrayList\<Integer\> dfsOfGraph(int V, ArrayList\<ArrayList\<Integer\>\> adj) \{                  boolean\[\] visited \= new boolean\[V\];         ArrayList\<Integer\> dfs \= new ArrayList\<\>();                         dfs(0, visited, dfs, adj);         return dfs;     \}          public void dfs(int node, boolean\[\] visited, ArrayList\<Integer\> dfs, ArrayList\<ArrayList\<Integer\>\> adj) \{         visited\[node\] \= true;         dfs.add(node);                        for (int i: adj.get(node)) \{                    if (\!visited\[i\]) \{                            dfs(i, visited, dfs, adj);                        \}              \}              \} \}  /// Solution sol \= new Solution();         List\<Integer\> result \= sol.dfs(V, adj);         System.out.println(result); // Output: \[0, 2, 3, 1\]  |
-|  |  |
-| class Solution \{     isBalanced(s) \{         // code here         const map \= \{             '(' : ')', '\{' : '\}', '\[' : '\]'         \}         const stack \= \[\];                  for (const char of s) \{             if(map\[char\]) \{                 stack.push(char);             \} else if (char \=== ')' || char \=== '\}' || char \=== '\]') \{                 if (stack.length \=== 0 || map\[stack.pop()\] \!== char) \{                     return false;                 \}             \}         \}         return stack.length \=== 0;     \} \}  | class Solution \{     //Function to check if brackets are balanced or not.     static boolean isBalanced(String x)     \{         // add your code here                  Map\<Character, Character\> map \= new HashMap\<\>();         map.put('(', ')');         map.put('\{', '\}');         map.put('\[', '\]');         Stack\<Character\> stack \= new Stack\<\>();         for (char ch : x.toCharArray()) \{             if (map.containsKey(ch)) \{                 stack.push(ch);             \} else if (ch \== ')' || ch \== '\}' || ch \== '\]') \{                 if (stack.isEmpty() || map.get(stack.pop()) \!= ch) \{                     return false;                 \}             \}         \}         return stack.isEmpty();     \} \}   |
-| JavaScript BFS | Java BFS |
-| // User function Template for javascript class Solution \{     // Function to return Breadth First Search Traversal of the given graph.          visited \= \{\};     queue \= \[\];     nodeList \= \[\];          bfs(adj) \{         // Code here         this.visited\[0\] \= true;         this.queue.push(0);              while (this.queue.length) \{                          const frontNode \= this.queue.shift();             this.nodeList.push(frontNode);                           for (let nextNode of adj\[frontNode\]) \{                                  if (\!this.visited\[nextNode\]) \{                     this.visited\[nextNode\] \= true;                     this.queue.push(nextNode);                 \}                  \}         \};                  return this.nodeList;     \} \}  | // User function Template for Java class Solution \{     // Function to return Breadth First Search Traversal of given graph.     public ArrayList\<Integer\> bfs(ArrayList\<ArrayList\<Integer\>\> adj) \{         // code here         int V \= adj.size();  // total number of vertices         boolean\[\] visited \= new boolean\[V\];         ArrayList\<Integer\> nodeList \= new ArrayList\<\>();         Queue\<Integer\> queue \= new LinkedList\<\>();                  visited\[0\] \= true;         queue.add(0);                  while (\!queue.isEmpty()) \{                          int node \= queue.poll();             nodeList.add(node);                          for (int adjNode : adj.get(node)) \{                 if (\!visited\[adjNode\]) \{                     visited\[adjNode\] \= true;                     queue.add(adjNode);                 \}                              \}                      \}                  return nodeList;              \} \}   |
+### JavaScript DFS Example
+
+```js
+class Solution {
+  // Function to return a list containing the DFS traversal of the graph.
+  nodeList = []; // 0, 2, 3, 1
+  visited = {}; // "0": true, '2': true, 3,1
+
+  helperDFS(adj, node) {
+    this.nodeList.push(node);
+    this.visited[node] = true;
+
+    for (let nextNode of adj[node]) {
+      // node 0, [2,3,1]
+      if (!this.visited[nextNode]) {
+        this.helperDFS(adj, nextNode);
+      }
+    }
+  }
+
+  dfs(adj) {
+    // code here
+    this.helperDFS(adj, 0);
+    return this.nodeList;
+  }
+}
+
+// let obj = new Solution();
+// let ans = obj.dfs(adj);
+```
+
+### Java DFS Example
+
+```java
+import java.util.*;
+
+class Solution {
+  // Function to return a list containing the DFS traversal of the graph.
+  public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+    boolean[] visited = new boolean[V];
+    ArrayList<Integer> dfs = new ArrayList<>();
+
+    dfs(0, visited, dfs, adj);
+    return dfs;
+  }
+
+  public void dfs(int node, boolean[] visited, ArrayList<Integer> dfs, ArrayList<ArrayList<Integer>> adj) {
+    visited[node] = true;
+    dfs.add(node);
+
+    for (int i : adj.get(node)) {
+      if (!visited[i]) {
+        dfs(i, visited, dfs, adj);
+      }
+    }
+  }
+}
+
+/// Solution sol = new Solution();
+/// List<Integer> result = sol.dfs(V, adj);
+/// System.out.println(result); // Output: [0, 2, 3, 1]
+```
+
+### JavaScript Balanced Brackets Example
+
+```js
+class Solution {
+  isBalanced(s) {
+    // code here
+    const map = {
+      '(': ')',
+      '{': '}',
+      '[': ']',
+    };
+    const stack = [];
+
+    for (const char of s) {
+      if (map[char]) {
+        stack.push(char);
+      } else if (char === ')' || char === '}' || char === ']') {
+        if (stack.length === 0 || map[stack.pop()] !== char) {
+          return false;
+        }
+      }
+    }
+    return stack.length === 0;
+  }
+}
+```
+
+### Java Balanced Brackets Example
+
+```java
+class Solution {
+  // Function to check if brackets are balanced or not.
+  static boolean isBalanced(String x) {
+    // add your code here
+
+    Map<Character, Character> map = new HashMap<>();
+    map.put('(', ')');
+    map.put('{', '}');
+    map.put('[', ']');
+    Stack<Character> stack = new Stack<>();
+    for (char ch : x.toCharArray()) {
+      if (map.containsKey(ch)) {
+        stack.push(ch);
+      } else if (ch == ')' || ch == '}' || ch == ']') {
+        if (stack.isEmpty() || map.get(stack.pop()) != ch) {
+          return false;
+        }
+      }
+    }
+    return stack.isEmpty();
+  }
+}
+```
+
+### JavaScript BFS Example
+
+```js
+// User function Template for javascript
+class Solution {
+  // Function to return Breadth First Search Traversal of the given graph.
+  visited = {};
+  queue = [];
+  nodeList = [];
+
+  bfs(adj) {
+    // Code here
+    this.visited[0] = true;
+    this.queue.push(0);
+
+    while (this.queue.length) {
+      const frontNode = this.queue.shift();
+      this.nodeList.push(frontNode);
+
+      for (let nextNode of adj[frontNode]) {
+        if (!this.visited[nextNode]) {
+          this.visited[nextNode] = true;
+          this.queue.push(nextNode);
+        }
+      }
+    }
+
+    return this.nodeList;
+  }
+}
+```
+
+### Java BFS Example
+
+```java
+// User function Template for Java
+class Solution {
+  // Function to return Breadth First Search Traversal of given graph.
+  public ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
+    // code here
+    int V = adj.size(); // total number of vertices
+    boolean[] visited = new boolean[V];
+    ArrayList<Integer> nodeList = new ArrayList<>();
+    Queue<Integer> queue = new LinkedList<>();
+
+    visited[0] = true;
+    queue.add(0);
+
+    while (!queue.isEmpty()) {
+      int node = queue.poll();
+      nodeList.add(node);
+
+      for (int adjNode : adj.get(node)) {
+        if (!visited[adjNode]) {
+          visited[adjNode] = true;
+          queue.add(adjNode);
+        }
+      }
+    }
+
+    return nodeList;
+  }
+}
+```

@@ -149,7 +149,15 @@ Why: The `var` keyword is function-scoped. There is exactly one shared variable 
 Pre-ES6 fix with IIFE:
 
 ```js
-for (var i = 1; i <= 3; i++) {   (function (capturedIndex) {     setTimeout(function () {       console.log('after ' + capturedIndex + ' second(s): ' + capturedIndex);     }, capturedIndex * 1000);   })(i); }
+for (var i = 1;
+i <= 3;
+i++) {
+  (function (capturedIndex) {
+    setTimeout(function () {
+      console.log('after ' + capturedIndex + ' second(s): ' + capturedIndex);
+    }, capturedIndex * 1000);
+  })(i);
+}
 ```
 
 Modern fix with `let`:

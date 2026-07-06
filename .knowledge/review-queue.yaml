@@ -30,7 +30,7 @@ review_queue:
     topic: Micro Frontends
     issue: The migrated Micro Frontends page is TODO-only.
     suggested_locations:
-      - docs/web-development/important/micro-frontends.md
+      - docs/web-development/frontend-architecture/micro-frontends.md
     confidence: medium
     status: open
     notes: Identified in migration-audit.md. Review against source-notes/2. Web Development.md before editing.

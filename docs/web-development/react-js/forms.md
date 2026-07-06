@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Forms
 
-Related pages: [State Management](state-management.md), [React Hooks](react-hooks.md), [Error Handling in React](error-handling-in-react.md), [React Performance](../important/performance/react-performance.md).
+Related pages: [State Management](state-management.md), [React Hooks](react-hooks.md), [Error Handling in React](error-handling-in-react.md), [React Performance](../performance/react-performance.md).
 
 ## Ownership
 

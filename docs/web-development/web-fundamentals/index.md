@@ -20,11 +20,11 @@ This is the entry point for browser, network, runtime, and page-loading fundamen
 
 ## Related Core Engineering Topics
 
-- [Performance](../important/performance/)
-- [Rendering](../important/performance/rendering.md)
-- [Caching](../important/caching.md)
-- [Security & Auth](../important/security/)
-- [Memory Management](../important/memory-management.md)
+- [Performance](../performance/)
+- [Rendering](../performance/rendering-performance.md)
+- [Caching](../core-engineering/caching.md)
+- [Security & Auth](../security-auth/)
+- [Memory Management](../core-engineering/memory-management.md)
 
 ## Topics Covered
 

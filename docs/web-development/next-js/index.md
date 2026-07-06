@@ -31,4 +31,4 @@ Next.js interview preparation structure.
 
 ## Full Interview Q&A
 
-- [ChatGPT Next](./chatgpt-next.md)
+- [Next.js Interview Q&A](./next-js-interview-qa.md)

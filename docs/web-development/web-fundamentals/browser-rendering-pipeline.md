@@ -219,23 +219,67 @@ Bad
 Bad Example
 
 ```js
-for (const el of elements) {   const width = el.offsetWidth;   el.style.width = width + 10 + "px"; } What Happens Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout  ↓ Read Layout  ↓ Write Layout The browser repeatedly recalculates the layout. Result ❌ Jank ❌ FPS drops ❌ Slow UI
+for (const el of elements) {
+  const width = el.offsetWidth;
+  el.style.width = width + 10 + "px";
+}
 ```
+
+What Happens
+
+Read Layout  
+↓  
+Write Layout  
+↓  
+Read Layout  
+↓  
+Write Layout  
+↓  
+Read Layout  
+↓  
+Write Layout
+
+The browser repeatedly recalculates the layout.
+
+Result
+
+❌ Jank  
+❌ FPS drops  
+❌ Slow UI
 
 ## ---
 
 ## Fix 1: Batch Reads and Writes
 
 ```js
-const widths = elements.map(el => el.offsetWidth); elements.forEach((el, i) => {   el.style.width =     widths[i] + 10 + "px"; }); Optimized Flow Read Read Read Read Write Write Write Write
+const widths = elements.map((el) => el.offsetWidth);
+
+elements.forEach((el, i) => {
+  el.style.width = widths[i] + 10 + "px";
+});
 ```
+
+Optimized Flow
+
+Read  
+Read  
+Read  
+Read  
+Write  
+Write  
+Write  
+Write
 
 ## ---
 
 ## Fix 2: requestAnimationFrame
 
 ```js
-requestAnimationFrame(() => {   elements.forEach(el => {     el.style.transform =       "translateX(10px)";   }); });
+requestAnimationFrame(() => {
+  elements.forEach((el) => {
+    el.style.transform = "translateX(10px)";
+  });
+});
 ```
 
 ## This schedules updates before the next paint cycle.
@@ -836,5 +880,5 @@ Pixels on Screen
 
 This level of explanation is typically expected for Staff Engineer or Senior Frontend interviews.
 
-[image3]: /img/docs/web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline/browser-rendering-pipeline-01.png
-[image4]: /img/docs/web-development/javascript/javascript-under-the-hood/browser-rendering-pipeline/browser-rendering-pipeline-02.png
+[image3]: /img/docs/web-development/web-fundamentals/browser-rendering-pipeline/browser-rendering-pipeline-01.png
+[image4]: /img/docs/web-development/web-fundamentals/browser-rendering-pipeline/browser-rendering-pipeline-02.png

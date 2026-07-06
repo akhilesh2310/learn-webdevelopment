@@ -76,7 +76,14 @@ The single best way to prove you understand the event loop in an interview is by
 **Question:** What is the exact print output sequence of this script?
 
 ```js
-console.log("1: Script Start"); setTimeout(() => {   console.log("2: setTimeout Callback"); }, 0); Promise.resolve().then(() => {   console.log("3: Promise Callback"); }); console.log("4: Script End");
+console.log("1: Script Start");
+setTimeout(() => {
+  console.log("2: setTimeout Callback");
+}, 0);
+Promise.resolve().then(() => {
+  console.log("3: Promise Callback");
+});
+console.log("4: Script End");
 ```
 
 ##### 📋 Step-by-Step Execution Analysis:
@@ -99,7 +106,18 @@ console.log("1: Script Start"); setTimeout(() => {   console.log("2: setTimeout 
 **Question:** What does this puzzle print out? Be careful with where the promise starts.
 
 ```js
-console.log("Start"); setTimeout(() => {   console.log("Timeout"); }, 0); new Promise((resolve) => {   console.log("Inside Constructor");   resolve(); }).then(() => {   console.log("Promise Then"); }); console.log("End");
+console.log("Start");
+setTimeout(() => {
+  console.log("Timeout");
+},
+0);
+new Promise((resolve) => {
+  console.log("Inside Constructor");
+  resolve();
+}).then(() => {
+  console.log("Promise Then");
+});
+console.log("End");
 ```
 
 ##### 📋 Step-by-Step Execution Analysis:
@@ -123,7 +141,16 @@ console.log("Start"); setTimeout(() => {   console.log("Timeout"); }, 0); new Pr
 **Question:** What happens to the application if we recursively queue microtasks? Will the setTimeout code ever run?
 
 ```js
-function starveEventLoop() {   Promise.resolve().then(() => {     starveEventLoop(); // Recursively scheduling another microtask   }); } setTimeout(() => {   console.log("Will I ever print?"); }, 0); starveEventLoop();
+function starveEventLoop() {
+  Promise.resolve().then(() => {
+    starveEventLoop();
+    // Recursively scheduling another microtask
+  });
+}
+setTimeout(() => {
+  console.log("Will I ever print?");
+}, 0);
+starveEventLoop();
 ```
 
 **Answer:** The application UI will completely freeze, and the setTimeout console log **will never run**.

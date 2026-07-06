@@ -104,6 +104,24 @@ docs/
     toll-increase.md
     problems-solved.md
   web-development/
+    interview-prep-order/
+    companies/
+    web-fundamentals/
+    javascript/
+    typescript/
+    react-js/
+    next-js/
+    core-engineering/
+    frontend-architecture/
+    performance/
+    security-auth/
+    testing-quality/
+    ux-design-system/
+    build-devops-delivery/
+    backend-for-frontend-node-js/
+    html-css.md
+    angular.md
+    resources.md
   system-design/
     system-design-basics/
     core-concepts/
@@ -141,7 +159,69 @@ DSA is intentionally simple: it has direct pages only and no nested categories. 
 
 ```text
 docs/web-development/
+  interview-prep-order/
+  companies/
+  web-fundamentals/
+  javascript/
+  typescript/
+  react-js/
+  next-js/
+  core-engineering/
+    index.md
+    error-handling.md
+    caching.md
+    observability.md
+    memory-management.md
+    solid.md
+    code-review-checklist.md
+    quick-questions.md
+  frontend-architecture/
+    index.md
+    folder-structure.md
+    micro-frontends.md
+    ...
+  performance/
+    index.md
+    core-web-vitals.md
+    lighthouse-and-tools.md
+    rendering-performance.md
+    react-performance.md
+    nextjs-performance.md
+    ...
+  security-auth/
+    index.md
+    jwt-csrf-token-storage.md
+    owasp.md
+    iframe-clickjacking-protection.md
+    xss-cross-site-scripting.md
+    security-headers.md
+    react-security.md
+    frontend-security-checklist.md
+  testing-quality/
+  ux-design-system/
+  build-devops-delivery/
+  backend-for-frontend-node-js/
+  html-css.md
+  angular.md
+  resources.md
 ```
+
+Web Development was restructured on 2026-07-06 using `web-development-restructure-plan.md`.
+
+Canonical ownership rules:
+
+- `web-fundamentals/` owns browser/page-load/network fundamentals.
+- `javascript/`, `typescript/`, `react-js/`, and `next-js/` keep technology-specific notes.
+- `core-engineering/` owns cross-cutting engineering basics such as caching, error handling, observability, memory management, SOLID, quick questions, and code review.
+- `frontend-architecture/` owns folder structure, micro-frontends, API layer strategy, feature flags, RBAC, multi-tenant UI, and scalability.
+- `performance/` owns common performance strategy across generic web, React, and Next.js.
+- `security-auth/` owns XSS, CSRF, JWT/token storage, headers, clickjacking, OWASP, and frontend security checklist.
+- `testing-quality/` owns testing strategy and testing tools.
+- `ux-design-system/` owns accessibility, Storybook, design tokens, theming, and design system governance.
+- `build-devops-delivery/` owns build tools, CI/CD, GitHub Actions, release, Docker/Kubernetes basics, and delivery practices.
+- `backend-for-frontend-node-js/` owns Node.js, Express, BFF, API aggregation, GraphQL server basics, rate limiting, logging, and backend-for-frontend concerns.
+
+The old `docs/web-development/important/` and `docs/web-development/node-js/` folders are no longer canonical.
 
 ### System Design
 
@@ -244,24 +324,6 @@ Do not flatten imported notes into one large folder. Preserve hierarchy so the s
 
 Google Docs Markdown exports may contain many `#` headings that are not real top-level tabs. Do not automatically promote every exported `#` heading into a first-level sidebar item. Use the known tab/category names as boundaries, then keep subsequent headings as child pages under the current category until the next known tab/category appears.
 
-## Reset Notes
-
-The generated documentation from the failed migration was removed from `docs/`. The current docs pages are placeholders only:
-
-- `docs/intro.md`
-- `docs/web-development.md`
-
-DSA has since been migrated from `source-notes/1. DSA.md` into `docs/dsa/` as direct pages only.
-System Design has since been migrated from `source-notes/3. System Design.md` into `docs/system-design/` using the approved six-item hierarchy.
-
-`sidebars.ts` keeps the existing sidebar IDs used by `docusaurus.config.ts`, but each sidebar now shows the same reset menu:
-
-- `dsaSidebar`: migrated DSA category with direct pages.
-- `webDevelopmentSidebar`: reset menu.
-- `systemDesignSidebar`: migrated System Design category with direct pages and two nested categories.
-
-The Engineering Handbook sidebar item is a placeholder link until that section is intentionally recreated.
-
 ## Phase 1 Migration Notes
 
 Phase 1 migrated source files from `source-notes/` into Docusaurus docs without editing the source files.
@@ -276,7 +338,7 @@ Source-to-docs mapping:
 Phase 1 was corrected after the first mechanical split, then later reset. The approved future migration should use `knowledge-hierarchy.md` as the blueprint instead of inferring structure from generated docs.
 
 - DSA: Resources, Concepts, Recently Asked, JS vs JAVA, Toll Increase, Problems Solved.
-- Web Development: Interview Prep Order, Companies, Important, JavaScript, TypeScript, React.js, Next.js, Node.js, HTML & CSS, Angular, Video Tutorial.
+- Web Development: Interview Prep Order, Companies, Web Fundamentals, JavaScript, TypeScript, React.js, Next.js, Core Engineering, Frontend Architecture, Performance, Security & Auth, Testing & Quality, UX / Design System, Build / Delivery, BFF / Node.js, HTML & CSS, Angular, Resources.
 - System Design: Interview Pattern, Basic Concepts, Resources, System Design Questions, DSA Roadmap, Worked 22nd Aug.
 
 Any other exported top-level heading is treated as a child page inside the active known category. Categories with intro content have an `index.md`; categories without intro content use `_category_.json` with a generated index instead of an empty Markdown file.
