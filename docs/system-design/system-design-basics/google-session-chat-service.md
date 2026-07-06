@@ -85,12 +85,13 @@ This page preserves notes from a Google interview preparation session. The chat 
 
 ## Session Diagrams
 
-![][image7]
+![Chat service session diagram 1](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-01.png)
 
-![][image8]
+![Chat service session diagram 2](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-02.png)
 
-![][image9]  
-![][image10]  
+![Chat service session diagram 3](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-03.png)
+
+![Chat service session diagram 4](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-04.png)
 
 ## Raw Session Notes
 
@@ -98,7 +99,7 @@ The text below is preserved from rough session notes and needs manual cleanup la
 
 > On that but you are all we want to reduce the latency but may be like save for that you may have to choose like less integrated but you are taking that is it as a design you if you can show that it is like really giving you good saving on the leader is very very important system ID
 
-![][image11]
+![Chat service raw session note 1](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-05.png)
 
 > I will put a cash should not be even li messageke I have to make it like less contin message that is
 >
@@ -106,11 +107,4 @@ The text below is preserved from rough session notes and needs manual cleanup la
 >
 > ing
 
-![][image12]
-
-[image7]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-01.png
-[image8]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-02.png
-[image9]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-03.png
-[image10]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-04.png
-[image11]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-05.png
-[image12]: /img/docs/system-design/worked-22nd-aug/worked-22nd-aug-06.png
+![Chat service raw session note 2](/img/docs/system-design/system-design-basics/google-session-chat-service/google-session-chat-service-06.png)
