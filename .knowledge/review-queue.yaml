@@ -12,13 +12,19 @@
 
 review_queue:
   - id: review-system-design-todo-pages
-    topic: System Design Questions
-    issue: Multiple System Design question pages are TODO-only after migration.
+    topic: System Design Placeholders
+    issue: Multiple System Design pages and grouped sections are TODO-only after the 2026-07-06 restructure.
     suggested_locations:
-      - docs/system-design/system-design-questions/
+      - docs/system-design/core-concepts/
+      - docs/system-design/backend-distributed-system-design/
+      - docs/system-design/data-storage-design/
+      - docs/system-design/api-communication-design/
+      - docs/system-design/cloud-devops-infra/
+      - docs/system-design/security-system-design/
+      - docs/system-design/system-design-question-bank/
     confidence: medium
     status: open
-    notes: Identified in migration-audit.md. Review against source-notes/3. System Design.md before editing.
+    notes: Updated after System Design restructure. Review grouped TODO sections and placeholder design-problem pages before adding content.
 
   - id: review-web-development-micro-frontends
     topic: Micro Frontends

@@ -90,43 +90,42 @@ Do not add Blog or other top-level navigation items.
 
 ## Documentation Structure
 
-The documentation is partially migrated. DSA and System Design have been migrated, while Web Development remains a reset placeholder:
-
-Migration audit note: `migration-audit.md` now reports that DSA, System Design, and Web Development have all been migrated and audited. Some older sections below still describe the earlier reset state and should be reconciled in a dedicated context-refresh pass.
+The documentation has been migrated into `docs/` and is being actively refined through canonical-topic ownership, duplicate cleanup, and no-loss restructuring.
 
 ```text
 docs/
   intro.md
   dsa/
     resources.md
+    coding-round.md
     concepts.md
     recently-asked.md
     js-vs-java.md
     toll-increase.md
     problems-solved.md
-  web-development.md
+  web-development/
   system-design/
-    interview-pattern.md
-    basic-concepts.md
+    system-design-basics/
+    core-concepts/
+    frontend-system-design/
+    backend-distributed-system-design/
+    data-storage-design/
+    api-communication-design/
+    cloud-devops-infra/
+    security-system-design/
+    system-design-question-bank/
+    system-design-templates/
     resources.md
-    system-design-questions/
-      index.md
-      autocomplete.md
-      google-search.md
-      ...
-    dsa-roadmap/
-      index.md
-      solved.md
-    worked-22nd-aug.md
 ```
 
-Do not treat the Web Development placeholder page as migrated content. The approved hierarchy should be reviewed in `knowledge-hierarchy.md` before recreating nested docs.
+System Design was restructured on 2026-07-06 using `system-design-restructure-plan.md`. The old `docs/system-design/interview-guide/` and `docs/system-design/system-design-questions/` folders are no longer canonical.
 
 ### DSA
 
 ```text
 docs/dsa/
   resources.md
+  coding-round.md
   concepts.md
   recently-asked.md
   js-vs-java.md
@@ -136,46 +135,51 @@ docs/dsa/
 
 DSA is intentionally simple: it has direct pages only and no nested categories. `Concepts` is intentionally present even when the source section is empty.
 
+`docs/dsa/coding-round.md` is the canonical page for coding interview round expectations, algorithmic problem solving, DSA patterns, and coding-round execution notes. System Design pages may link to it but should not duplicate the content.
+
 ### Web Development
 
 ```text
-docs/web-development.md
+docs/web-development/
 ```
 
 ### System Design
 
 ```text
 docs/system-design/
-  interview-pattern.md
-  basic-concepts.md
-  resources.md
-  system-design-questions/
-    _category_.json
+  system-design-basics/
     index.md
-    autocomplete.md
+    interview-framework.md
+    google-session-chat-service.md
+  core-concepts/
+    index.md
+    scalability-reliability.md
+    caching-cdn.md
+    databases-partitioning.md
+    queues-event-driven-systems.md
+    rate-limiting-resilience.md
+    observability.md
+  frontend-system-design/
+    index.md
+    design-google-docs.md
+    design-search-autocomplete-ui.md
+    ...
+  backend-distributed-system-design/
+    index.md
+    url-shortener.md
     google-search.md
-    google-docs.md
-    google-sheets.md
-    google-drive-dropbox.md
-    google-maps.md
-    instagram.md
-    facebook-news-feed.md
-    twitter.md
-    netflix.md
-    youtube.md
-    whatsapp-messenger.md
-    url-shortening-service.md
-    web-crawler.md
-    uber-ola.md
-    traffic-control-system.md
-    bookmyshow.md
-    airbnb.md
-    airline-management-system.md
-  dsa-roadmap/
-    _category_.json
-    index.md
-    solved.md
-  worked-22nd-aug.md
+    chat-system.md
+    news-feed.md
+    file-upload-system.md
+    video-streaming.md
+    ...
+  data-storage-design/
+  api-communication-design/
+  cloud-devops-infra/
+  security-system-design/
+  system-design-question-bank/
+  system-design-templates/
+  resources.md
 ```
 
 ### Engineering Handbook
@@ -205,32 +209,28 @@ docs/engineering-handbook/
 `dsaSidebar` now shows a collapsible `DSA` category with these direct pages:
 
 - Resources
+- Coding Round
 - Concepts
 - Recently Asked
 - JS vs JAVA
 - Toll Increase
 - Problems Solved
 
-`systemDesignSidebar` now shows a collapsible `System Design` category with these approved main sidebar items:
+`systemDesignSidebar` now shows a reduced, study-friendly `System Design` structure:
 
-- Interview Pattern
-- Basic Concepts
+- System Design Basics
+- Core Concepts
+- Frontend System Design
+- Backend / Distributed Systems
+- Data & Storage
+- API & Communication
+- Cloud / Infra
+- Security
+- Question Bank
+- Templates
 - Resources
-- System Design Questions
-- DSA Roadmap
-- Worked 22nd Aug
 
-`System Design Questions` is a collapsible category with detected interview problem pages. `DSA Roadmap` is a collapsible category with `Solved`.
-
-`webDevelopmentSidebar` currently shows the minimal reset menu while its migration is restarted:
-
-- Introduction
-- DSA
-- Web Development
-- System Design
-- Engineering Handbook
-
-When migration resumes, use `knowledge-hierarchy.md` to decide whether to reintroduce autogenerated directories, generated category indexes, or explicit sidebar entries.
+Small concepts should be grouped as headings inside study pages instead of becoming separate sidebar pages. For example, scalability, availability, latency, and throughput belong inside `docs/system-design/core-concepts/scalability-reliability.md` until there is enough content to justify separate pages.
 
 ## Google Docs Migration Strategy
 

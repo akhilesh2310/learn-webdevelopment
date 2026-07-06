@@ -21,6 +21,26 @@ topics:
     last_reviewed: null
     notes: Initial canonical topic example from migrated DSA docs.
 
+  - id: dsa-coding-round
+    title: Coding Round
+    canonical_path: docs/dsa/coding-round.md
+    domain: DSA
+    category: Interview Prep
+    aliases:
+      - coding interview
+      - coding round
+      - dsa interview round
+      - algorithm coding interview
+    tags:
+      - dsa
+      - interview
+      - coding
+    related_topics:
+      - dsa-resources
+    status: migrated
+    last_reviewed: 2026-07-06
+    notes: Canonical page for coding round expectations moved out of System Design because it is focused on algorithmic problem solving and DSA patterns.
+
   - id: js-event-loop
     title: Event Loop
     canonical_path: docs/web-development/javascript/event-loop.md
@@ -309,9 +329,9 @@ topics:
 
   - id: system-design-autocomplete
     title: Autocomplete
-    canonical_path: docs/system-design/system-design-questions/autocomplete.md
+    canonical_path: docs/system-design/frontend-system-design/design-search-autocomplete-ui.md
     domain: System Design
-    category: System Design Questions
+    category: Frontend System Design
     aliases:
       - autocomplete system design
       - typeahead
@@ -322,5 +342,69 @@ topics:
     related_topics:
       - system-design-google-search
     status: migrated
-    last_reviewed: null
-    notes: Initial canonical topic example from migrated System Design docs.
+    last_reviewed: 2026-07-06
+    notes: Canonical frontend autocomplete design page moved during System Design restructure. Backend autocomplete has a separate TODO page under Backend / Distributed Systems.
+
+  - id: system-design-interview-framework
+    title: Interview Framework
+    canonical_path: docs/system-design/system-design-basics/interview-framework.md
+    domain: System Design
+    category: System Design Basics
+    aliases:
+      - system design interview framework
+      - design round framework
+      - requirement gathering
+      - functional requirements
+      - non functional requirements
+      - tradeoffs
+    tags:
+      - system-design
+      - interview
+      - framework
+    related_topics:
+      - system-design-templates
+      - system-design-question-bank
+    status: migrated
+    last_reviewed: 2026-07-06
+    notes: Canonical page for system design interview flow. Smaller flow topics such as requirements, capacity estimation, API design, data model, high-level design, deep dive, trade-offs, bottlenecks, and final summary are headings inside this page.
+
+  - id: system-design-google-docs
+    title: Design Google Docs
+    canonical_path: docs/system-design/frontend-system-design/design-google-docs.md
+    domain: System Design
+    category: Frontend System Design
+    aliases:
+      - google docs system design
+      - collaborative document editor
+      - collaborative editor
+    tags:
+      - system-design
+      - frontend-system-design
+      - collaboration
+    related_topics:
+      - system-design-interview-framework
+      - system-design-autocomplete
+    status: migrated
+    last_reviewed: 2026-07-06
+    notes: Frontend-focused Google Docs design problem moved from the old System Design Questions folder.
+
+  - id: system-design-question-bank
+    title: System Design Question Bank
+    canonical_path: docs/system-design/system-design-question-bank/index.md
+    domain: System Design
+    category: Question Bank
+    aliases:
+      - system design questions
+      - system design practice questions
+      - staff system design questions
+    tags:
+      - system-design
+      - interview
+      - question-bank
+    related_topics:
+      - system-design-interview-framework
+      - system-design-google-docs
+      - system-design-autocomplete
+    status: migrated
+    last_reviewed: 2026-07-06
+    notes: Canonical question-bank entry after System Design restructure. Company asked and lower-confidence placeholders are grouped here to avoid an overly long sidebar.

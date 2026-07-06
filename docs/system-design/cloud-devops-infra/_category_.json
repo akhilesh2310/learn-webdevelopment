@@ -1,0 +1,8 @@
+{
+  "label": "Cloud / Infra",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "system-design/cloud-devops-infra/index"
+  }
+}

@@ -22,6 +22,24 @@ This log records where original Google Docs content was migrated and what migrat
 - `migration-audit.md` reports that the current Docusaurus sidebars build successfully.
 - `migration-audit.md` identifies TODO-only pages and Base64 image cleanup as follow-up work.
 
+## Structural Cleanup
+
+- 2026-07-06: System Design was restructured into a reduced, study-friendly sidebar:
+  - `system-design-basics/`
+  - `core-concepts/`
+  - `frontend-system-design/`
+  - `backend-distributed-system-design/`
+  - `data-storage-design/`
+  - `api-communication-design/`
+  - `cloud-devops-infra/`
+  - `security-system-design/`
+  - `system-design-question-bank/`
+  - `system-design-templates/`
+- Existing content from the old `interview-guide/` and `system-design-questions/` folders was moved or merged into the new structure without intentional content deletion.
+- Small concept topics were kept as headings inside grouped study pages with TODO markers where no notes exist yet.
+- Low-information placeholder design problems were grouped into `docs/system-design/system-design-question-bank/company-asked.md` to avoid an overly long sidebar.
+- 2026-07-06: Coding Round notes were moved from `docs/system-design/system-design-basics/interview-framework.md` to `docs/dsa/coding-round.md`. System Design now links to the DSA canonical page instead of duplicating the content.
+
 ## Important Rules
 
 - `source-notes/` is read-only.
