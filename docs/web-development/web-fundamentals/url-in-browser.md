@@ -9,442 +9,333 @@ Related canonical page: [Browser Rendering Pipeline](browser-rendering-pipeline.
 
 ## What Happens When You Enter a URL in the Browser?
 
-Suppose the user enters: [https://www.agoda.com](https://www.agoda.com)
+Suppose the user enters:
+
+```text
+https://www.agoda.com/search?city=bangkok
+```
 
 ## High-Level Flow
 
-1\. URL Parsing  
-2\. DNS Resolution  
-3\. TCP Connection  
-4\. TLS Handshake  
-5\. HTTP Request  
-6\. Server Processing  
-7\. HTTP Response  
-8\. Browser Rendering  
-9\. JavaScript Execution  
-10\. Page Becomes Interactive
-
----
+1. URL parsing
+2. DNS resolution
+3. TCP connection
+4. TLS handshake
+5. HTTP request
+6. Server processing
+7. HTTP response
+8. Browser rendering
+9. JavaScript execution
+10. Page becomes interactive
 
 ## Step 1: URL Parsing
 
-Browser first parses: https://www.agoda.com/search?city=bangkok
+The browser first parses the URL into its components:
 
-Components:
+- Protocol: `https`
+- Host: `www.agoda.com`
+- Path: `/search`
+- Query: `city=bangkok`
 
-* Protocol: https  
-* Host: www.agoda.com  
-* Path: /search  
-* Query: city=bangkok
-
-Browser validates the URL and checks whether it already knows the IP address.
-
----
+The browser validates the URL and checks whether it already knows the IP address.
 
 ## Step 2: DNS Resolution
 
-Goal: →  [www.agoda.com](http://www.agoda.com) → IP Address
+The browser resolves the domain name to an IP address.
 
-Example: [www.agoda.com](http://www.agoda.com) → 104.x.x.x
+```text
+www.agoda.com -> 104.x.x.x
+```
 
-**Browser checks caches in order:**
+### Browser Checks Caches in Order
 
-* ### **Browser Cache:** Chrome DNS Cache
+1. Browser DNS cache
+2. Operating system DNS cache
+3. Router cache
+4. ISP DNS server
 
-* ### **OS Cache:** Operating System DNS Cache
+If the IP is not found, the recursive resolver eventually queries:
 
-* ### **Router Cache:** Home/Office Router
+```text
+Root server -> .com TLD server -> agoda.com name server -> IP address
+```
 
-* ### **ISP DNS Server**
+### Follow-Up: Why Is DNS Caching Important?
 
-**If not found:** Recursive resolver eventually queries:
-
-Root Server → .com TLD Server → agoda.com Name Server → Returns IP address.  
----
-
-## Follow-Up Question
-
-**Why is DNS caching important?**
-
-Answer:
-
-* Reduces latency  
-* Reduces DNS traffic  
-* Improves page load speed
-
----
+- Reduces latency
+- Reduces DNS traffic
+- Improves page load speed
 
 ## Step 3: TCP Connection
 
-Once IP is known: Browser establishes TCP connection. Uses 3-Way Handshake.
+Once the IP address is known, the browser establishes a TCP connection using a three-way handshake.
 
-* Client → SYN  
-* Server → SYN ACK  
-* Client → ACK
+```text
+Client -> SYN
+Server -> SYN ACK
+Client -> ACK
+```
 
-Connection established.
+TCP provides:
 
-Purpose:
+- Reliable communication
+- Packet ordering
+- Error recovery
 
-* Reliable communication  
-* Packet ordering  
-* Error recovery
+### Follow-Up: Why Not Send Data Immediately?
 
----
+Both sides first need to agree on:
 
-## Follow-Up
+- Connection setup
+- Sequence numbers
+- Communication parameters
 
-**Why not send data immediately?**
+## Step 4: TLS Handshake
 
-Because both sides need to agree on:
+For HTTPS, the browser performs a TLS handshake before sending sensitive data.
 
-* Connection setup  
-* Sequence numbers  
-* Communication parameters
+TLS provides:
 
----
+- Encryption
+- Authentication
+- Integrity
 
-## Step 4: TLS (Transport Layer Security Handshake) (HTTPS)
+The browser verifies the server certificate by checking certificate validity, certificate authority, and domain matching. After this, session keys are created and traffic becomes encrypted.
 
-For HTTPS: [https://www.agoda.com](https://www.agoda.com), Browser performs TLS handshake.
+### Follow-Up: Why HTTPS Instead of HTTP?
 
-Purpose: Encryption, Authentication, Integrity
-
-The browser verifies the server certificate. Checks: Certificate validity, Certificate Authority, Domain matching, then session keys are created. After this, Traffic becomes encrypted
-
----
-
-## Follow-Up
-
-**Why HTTPS instead of HTTP?**
-
-HTTP:
-
-* Plain text
-
-HTTPS:
-
-* Encrypted  
-* Secure  
-* Tamper resistant
-
----
+HTTP sends data as plain text. HTTPS encrypts the data, protects it from tampering, and verifies that the browser is talking to the expected server.
 
 ## Step 5: HTTP Request
 
-Browser sends:
+The browser sends an HTTP request.
 
-GET /search HTTP/1.1  
+```http
+GET /search HTTP/1.1
 Host: www.agoda.com
+```
 
-Along with:
+The request may include:
 
-* Cookies  
-* Headers  
-* Authentication Tokens
+- Cookies
+- Headers
+- Authentication tokens
+- Language preferences
+- User-Agent
+- Cache headers
 
-Example:
+Example headers:
 
-Authorization: Bearer xxxx  
+```http
+Authorization: Bearer xxxx
 Accept: application/json
-
----
-
-## Follow-Up
-
-**What else is sent?**
-
-Typically:
-
-* Cookies  
-* Language preferences  
-* User Agent  
-* Cache headers
-
----
+```
 
 ## Step 6: Server Processing
 
-Server receives request. Possible flow:
+The server receives the request. A common backend flow looks like this:
 
-Load Balancer → API Gateway → Backend Services → Database
+```text
+Load balancer -> API gateway -> Backend services -> Database
+```
 
-Server generates response.
-
----
+The server then generates a response.
 
 ## Step 7: HTTP Response
 
-Example:
+Example response headers:
 
-200 OK  
+```http
+HTTP/1.1 200 OK
 Content-Type: text/html
+```
 
-Body contains:
+Example HTML body:
 
-\<html\>  
- ...  
-\</html\>
+```html
+<html>
+  ...
+</html>
+```
 
-Or for SPA:
+For a single-page application, the response often includes a root element and a script bundle.
 
-\<div id="root"\>\</div\>  
-\<script src="main.js"\>\</script\>
-
----
+```html
+<div id="root"></div>
+<script src="main.js"></script>
+```
 
 ## Step 8: Browser Rendering Pipeline
 
 This is where interviewers often spend most of the time.
 
----
+### HTML Parsing
 
-## HTML Parsing
+The browser reads HTML and creates the DOM tree.
 
-The browser reads HTML.
+```html
+<body>
+  <h1>Hello</h1>
+</body>
+```
 
-Creates:
+```text
+Document
+└── body
+    └── h1
+```
 
-DOM Tree
+### CSS Parsing
 
-Example:
+The browser parses CSS and creates the CSSOM.
 
-\<body\>  
-  \<h1\>Hello\</h1\>  
-\</body\>
+### Render Tree
 
-Produces:
+The browser combines the DOM and CSSOM to create the render tree. Only visible elements participate.
 
-Document  
- └─ body  
-     └─ h1
+```css
+display: none;
+```
 
----
+Elements with `display: none` are not included in the render tree.
 
-## CSS Parsing
+### Layout
 
-Browser parses CSS.
+The browser computes each visible element's position, width, and height. This is also called reflow.
 
-Creates:
+### Paint
 
-CSSOM
+The browser converts elements into pixels, including text, colors, borders, and images.
 
----
+### Composite
 
-## Render Tree
+The GPU combines layers and the final screen appears.
 
-Combines:
-
-DOM  
-\+  
-CSSOM
-
-Result:
-
-Render Tree
-
-Only visible elements participate.
-
-Example:
-
-display:none
-
-Not included.
-
----
-
-## Layout
-
-Browser computes:
-
-Position  
-Width  
-Height
-
-For every visible element.
-
-Also called:
-
-Reflow
-
----
-
-## Paint
-
-Browser converts elements into pixels.
-
-Text  
-Colors  
-Borders  
-Images
-
----
-
-## Composite
-
-GPU combines layers.
-
-Final screen appears.
-
----
-
-## Follow-Up Question
-
-## Reflow vs Repaint
+## Follow-Up: Reflow vs Repaint
 
 ### Reflow
 
-Layout recalculation.
+Reflow is a layout recalculation.
 
-Example:
+```js
+element.style.width = "500px";
+```
 
-element.style.width \= "500px";
-
-Browser recalculates layout.
-
-Expensive.
-
----
+The browser recalculates layout, so reflow is expensive.
 
 ### Repaint
 
-Only visual changes.
+Repaint updates visual appearance without changing layout.
 
-Example:
+```js
+element.style.background = "red";
+```
 
-element.style.background \= "red";
-
-No layout change.
-
-Only repaint.
-
-Cheaper.
-
----
+No layout change is needed, so repaint is cheaper than reflow.
 
 ## Step 9: JavaScript Execution
 
-When browser encounters:
+When the browser encounters a script tag, the JavaScript engine executes it.
 
-\<script src="app.js"\>\</script\>
+```html
+<script src="app.js"></script>
+```
 
-JavaScript engine executes.
+In Chrome, the JavaScript engine is V8.
 
-For Chrome:
+JavaScript execution includes:
 
-V8
-
-Tasks:
-
-Parse  
-Compile  
-Execute
+- Parse
+- Compile
+- Execute
 
 JavaScript may:
 
-Modify DOM  
-Fetch APIs  
-Add Event Listeners
+- Modify the DOM
+- Fetch APIs
+- Add event listeners
 
----
+### Follow-Up: Why Can JavaScript Delay Rendering?
 
-## Follow-Up
+Traditional scripts block HTML parsing while they download and execute.
 
-**Why can JavaScript delay rendering?**
+```html
+<script src="main.js"></script>
+```
 
-Traditional scripts:
+Use `defer` if the script needs the DOM or depends on other scripts. Use `async` if the script is independent and should execute as soon as possible.
 
-\<script src="main.js"\>\</script\>
+```html
+<script src="main.js" defer></script>
+<script src="analytics.js" async></script>
+```
 
-Block HTML parsing.
-
-Solutions:
-
-\<script defer\>
-
-or
-
-\<script async\>
-
-Use defer if your script needs to manipulate the DOM or relies on other scripts. Use async if the script is completely independent (like analytics) and you want it to execute as fast as possible.
-
-Quick Selection Guide
+### Quick Selection Guide
 
 | Attribute | HTML Parsing | Execution Timing | Execution Order | Best Used For |
-| ----- | ----- | ----- | ----- | ----- |
-| async | Not blocked during download. Blocked *only* during execution. | Executes the exact moment it finishes downloading. | Independent of order. Smaller/faster scripts run first. | Independent scripts like [Google Analytics](https://www.w3schools.com/tags/att_script_async.asp), ads, or tracking pixels. |
-| defer | Never blocked. | Executes only after the entire HTML document is fully parsed. | Strict document order. Scripts run exactly how they are ordered in the code. | Core application scripts, UI initializers, or any script interacting with DOM elements. |
+| :---- | :---- | :---- | :---- | :---- |
+| `async` | Not blocked during download; blocked only during execution. | Executes as soon as it finishes downloading. | No order guarantee. | Independent scripts like analytics, ads, or tracking pixels. |
+| `defer` | Never blocked. | Executes after the HTML document is parsed. | Preserves document order. | Core application scripts, UI initializers, and DOM-dependent scripts. |
 
----
+### Key Behavioral Differences
 
-Key Behavioral Differences
+**Impact on HTML parsing**
 
-**1\. Impact on HTML Parsing**
+- `async`: downloads in the background, then pauses HTML parsing when it executes.
+- `defer`: downloads in the background and waits until the DOM is fully parsed.
 
-* async: The browser downloads the script file in the background while parsing HTML. However, as soon as the download finishes, the browser pauses HTML parsing to execute the script, then resumes parsing afterward.  
-* defer: The browser downloads the script file in the background. It never interrupts the HTML parser. The script waits patiently and runs only after the full DOM tree is built.
+**Execution order**
 
-2\. Execution Order
-
-* async: Zero order guarantee. If you have script1.js followed by script2.js, but script2.js is a smaller file and finishes downloading first, script2.js will execute first.  
-* defer: Strict sequential guarantee. Even if script2.js finishes downloading way before script1.js, the browser forces it to wait until script1.js has finished executing.
-
----
+- `async`: no order guarantee. Smaller or faster scripts can run first.
+- `defer`: strict document order.
 
 ## Step 10: Page Becomes Interactive
 
-React application starts.
+For React applications, React starts and attaches interactivity.
 
-Example:
-
-ReactDOM.createRoot(...)
+```js
+ReactDOM.createRoot(rootElement).render(<App />);
+```
 
 React attaches:
 
-* Event handlers  
-* State  
-* Components
+- Event handlers
+- State
+- Components
 
-This process is called: **Hydration (SSR apps)** or **Client-side rendering,** depending on the architecture.
-
----
+This process is called **hydration** for SSR apps or **client-side rendering** for client-rendered apps.
 
 ## IC4-Level Performance Talking Points
 
-If the interviewer asks:
-
-**"How would you make this process faster?"**
-
-Mention:
+If the interviewer asks, "How would you make this process faster?", mention the following areas.
 
 ### Network
 
-* DNS caching  
-* HTTP/2  
-* HTTP/3  
-* CDN
+- DNS caching
+- HTTP/2
+- HTTP/3
+- CDN
 
 ### Assets
 
-* Compression (Brotli, Gzip)  
-* Image optimization  
-* Lazy loading
+- Compression with Brotli or Gzip
+- Image optimization
+- Lazy loading
 
 ### JavaScript
 
-* Code splitting  
-* Tree shaking  
-* Dynamic imports
+- Code splitting
+- Tree shaking
+- Dynamic imports
 
 ### Rendering
 
-* Minimize reflows  
-* Virtualization  
-* Memoization
+- Minimize reflows
+- Virtualization
+- Memoization
 
----
+## Strong 2-Minute Interview Answer
 
-## A Strong 2-Minute Interview Answer
+When a user enters a URL, the browser first parses it and resolves the domain through DNS to obtain an IP address. It then establishes a TCP connection and, for HTTPS, performs a TLS handshake to create a secure encrypted connection. The browser sends an HTTP request, and the server responds with HTML, CSS, JavaScript, and other assets.
 
-When a user enters a URL, the browser first parses it and resolves the domain through DNS to obtain an IP address. It then establishes a TCP connection and, for HTTPS, performs a TLS handshake to create a secure encrypted connection. The browser sends an HTTP request, and the server responds with HTML, CSS, JavaScript, and other assets. The browser parses HTML into a DOM tree and CSS into a CSSOM tree, combines them into a render tree, performs layout calculations, paints pixels, and composites layers to display the page. JavaScript is then executed, which can modify the DOM and make additional network requests. Finally, frameworks like React hydrate or render the UI and attach event handlers, making the page fully interactive.  
----
+The browser parses HTML into a DOM tree and CSS into a CSSOM tree, combines them into a render tree, performs layout calculations, paints pixels, and composites layers to display the page. JavaScript is then executed, which can modify the DOM and make additional network requests. Finally, frameworks like React hydrate or render the UI and attach event handlers, making the page fully interactive.

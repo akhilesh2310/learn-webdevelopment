@@ -5,109 +5,142 @@ sidebar_position: 8
 
 # Strict Mode
 
-## 📜 Strict Mode ("use strict")
+Strict mode is an ES5 feature that puts JavaScript into a stricter execution mode. It turns silent mistakes into errors and removes some confusing legacy behavior.
 
-### ❓ What is it?
+## Enabling Strict Mode
 
-Strict Mode is a feature introduced in ECMAScript 5 (ES5) that allows you to place a program, or a single function, into a "strict" operating context. When active, JavaScript changes its behavior: it stops ignoring minor syntax mistakes and instead actively throws runtime errors.
+Use the exact string `"use strict";` at the top of a file or function.
 
-### 💡 Why does it exist?
-
-JavaScript was originally created in a hurry, which led to some poorly designed language behaviors (like automatically creating global variables when you mistyped a name).
-
-Strict Mode exists to:
-
-* **Catch bugs early:** It turns silent, hard-to-find mistakes into loud, immediate errors.  
-* **Fix Optimization Blockers:** It helps JavaScript engines (like Google's V8) optimize your code so it runs faster, by removing confusing language quirks.  
-* **Secure the code:** It prevents accidental access to the global object, making your application more secure.  
-* **Prepare for the future:** It bans certain syntax features that were planned for newer versions of ECMAScript.
-
-### ⏱️ When & Where do you use it?
-
-#### When to use it:
-
-You should use it in almost all modern JavaScript files. However, if you are writing modern React or TypeScript apps, **you rarely have to type it manually**. Modern build tools (Webpack, Vite) and ES Modules automatically apply strict mode to your code behind the scenes.
-
-#### Where to place it:
-
-You trigger it by typing the exact string "use strict"; (or 'use strict';) at the very top of a file or a function.
-
-* **File-level (Global):** Applies to all code inside that file.  
-* **Function-level:** Applies *only* to code inside that specific function.
+### File-Level Strict Mode
 
 ```js
-// Global strict mode "use strict"; let x = 10;  function myBlock() {   // Automatically strict because the file is strict }
+"use strict";
+
+let x = 10;
+
+function myBlock() {
+  // This function is strict because the file is strict.
+}
 ```
 
+### Function-Level Strict Mode
+
 ```js
-// Non-strict mode out here x = 10;
-// Works fine (creates a global variable) function strictFunction() {
+function strictFunction() {
   "use strict";
-  // Strict mode applies ONLY inside this function y = 20;
+
+  y = 20;
   // ReferenceError: y is not defined
 }
 ```
 
-### 🛠️ How does it work? (Key Changes & Behavior)
+Modern ES modules, React builds, TypeScript, Vite, and Webpack output commonly run in strict mode automatically, so you often do not write it manually in modern apps.
 
-Here is a side-by-side comparison of how JavaScript changes when Strict Mode is turned on.
+## Why Strict Mode Exists
 
-| Scenario | Without Strict Mode (Sloppy Mode) | With Strict Mode |
+Strict mode helps JavaScript:
+
+- Catch bugs early.
+- Prevent accidental global variables.
+- Make failed writes throw errors instead of failing silently.
+- Make engine optimizations easier.
+- Reserve future language syntax.
+
+## Behavior Changes
+
+| Scenario | Sloppy Mode | Strict Mode |
 | :---- | :---- | :---- |
-| **Forgetting to declare a variable** | Creates a global variable automatically. | Throws a ReferenceError. |
-| **this inside a regular function** | Points to the window or global object. | Is exactly undefined. |
-| **Writing to a read-only property** | Fails silently (does nothing, no error). | Throws a TypeError. |
-| **Deleting an undeletable thing** | Fails silently (returns false). | Throws a SyntaxError. |
-| **Duplicate parameter names** | Uses the last one specified. | Throws a SyntaxError. |
+| Forgetting to declare a variable | Creates a global variable automatically | Throws `ReferenceError` |
+| `this` inside a plain function call | Defaults to `window` or `global` | Stays `undefined` |
+| Writing to a read-only property | Fails silently | Throws `TypeError` |
+| Deleting undeletable values | Fails silently | Throws `SyntaxError` |
+| Duplicate parameter names | Allowed in some cases | Throws `SyntaxError` |
 
-## ⚠️ Interview Corner Cases & Output Questions
+## Interview Puzzles
 
-Interviewers love to test if you know the exact breaking points of strict mode. Here are the most common puzzle scenarios:
-
-#### Puzzle 1: The Accidental Global Variable
-
-**Question:** What happens when this code runs?
+### Puzzle 1: Accidental Global Variable
 
 ```js
-function createUser() {   "use strict";   username = "JohnDoe";  } createUser();
+function createUser() {
+  "use strict";
+
+  username = "JohnDoe";
+}
+
+createUser();
 ```
 
-**Answer:** It throws a ReferenceError: username is not defined.
+Output:
 
-* **Reason:** Without strict mode, JS would look up the scope chain, fail to find username, and create it as a global variable (window.username \= "JohnDoe"). In strict mode, creating undeclared variables is completely blocked.
+```text
+ReferenceError: username is not defined
+```
 
-#### Puzzle 2: The Lost this Context
+Without strict mode, JavaScript would create `window.username`. In strict mode, assigning to an undeclared variable is blocked.
 
-**Question:** What is the output of the following code?
+### Puzzle 2: Lost `this` Context
 
 ```js
-"use strict"; function showThis() {   console.log(this); } showThis();
+"use strict";
+
+function showThis() {
+  console.log(this);
+}
+
+showThis();
 ```
 
-**Answer:** It logs undefined.
+Output:
 
-* **Reason:** In standard (sloppy) mode, if a regular function is called without a clear owner (like showThis()), this automatically defaults to the global window object. Strict mode removes this default behavior to prevent developers from accidentally modifying global state.
+```text
+undefined
+```
 
-#### Puzzle 3: Modifying Read-Only Properties
+In sloppy mode, a plain function call defaults `this` to the global object. Strict mode removes this default behavior.
 
-**Question:** Does this code break? If so, why?
+### Puzzle 3: Modifying Read-Only Properties
 
 ```js
-"use strict"; const person = {}; Object.defineProperty(person, "id", {   value: 101,   writable: false // This makes the property read-only }); person.id = 202;
+"use strict";
+
+const person = {};
+
+Object.defineProperty(person, "id", {
+  value: 101,
+  writable: false,
+});
+
+person.id = 202;
 ```
 
-**Answer:** Yes, it throws a TypeError: Cannot assign to read only property 'id'.
+Output:
 
-* **Reason:** In non-strict mode, person.id \= 202 would just fail quietly, and person.id would remain 101. Strict mode forces JavaScript to alert you when an operation fails to execute.
+```text
+TypeError: Cannot assign to read only property 'id'
+```
 
-#### Puzzle 4: Duplicate Arguments
+In non-strict mode, the assignment would fail silently. Strict mode throws immediately.
 
-**Question:** What happens here?
+### Puzzle 4: Duplicate Parameters
 
 ```js
-function sum(a, a, b) {   "use strict";   return a + a + b; }
+function sum(a, a, b) {
+  "use strict";
+
+  return a + a + b;
+}
 ```
 
-**Answer:** It throws a SyntaxError: Duplicate parameter name not allowed in this context.
+Output:
 
-* **Reason:** Strict mode makes duplicate parameter names illegal because they cause confusion about which variable you are actually trying to read or update.
+```text
+SyntaxError: Duplicate parameter name not allowed in this context
+```
+
+Strict mode makes duplicate parameter names illegal because they make code ambiguous.
+
+## Interview Answer
+
+Strict mode is a safer JavaScript execution mode introduced in ES5. It prevents common bugs such as accidental global variables, makes silent failures throw errors, changes plain function `this` from the global object to `undefined`, and disallows confusing syntax such as duplicate parameters.
+
+In modern JavaScript, ES modules and build tools often enable strict mode automatically.

@@ -5,90 +5,147 @@ sidebar_position: 4
 
 # Execution Context
 
-## Execution Context & Call Stack
+In JavaScript, everything runs inside an execution context. The call stack is the mechanism the engine uses to manage which execution context is currently running.
 
-In JavaScript, everything happens inside an Execution Context, and the Call Stack is the mechanism used to manage the order in which these contexts execute.
+## Core Terms
 
-* Global Execution Context  
-* Function Execution Context  
-* Creation Phase  
-* Execution Phase  
-* Function invocation stack or Call Stack  
-* Stack overflow
+- **Global Execution Context (GEC):** the default context created when a script starts.
+- **Function Execution Context (FEC):** a new context created every time a function is called.
+- **Creation Phase:** the phase where declarations, scope links, and `this` bindings are prepared.
+- **Execution Phase:** the phase where code runs line by line.
+- **Call Stack:** the stack that tracks currently active execution contexts.
+- **Stack Overflow:** an error caused by pushing too many frames onto the call stack.
 
-**An Execution Context (EC)** is an abstract environment created by the JavaScript engine to evaluate and execute JS code. Think of it as a wrapper container that manages the variables, functions, and **this** binding available to executing code.
+## What Is an Execution Context?
 
-#### 1. Global Execution Context (GEC)
+An execution context is an abstract environment created by the JavaScript engine to evaluate and execute code. It manages the variables, functions, scope chain, and `this` binding available to the currently executing code.
 
-* **What it is:** The default, base context created when your script first runs.  
-* **Mechanics:** It creates two things automatically: the global object (`window` in browsers, `global` in Node.js) and the `this` variable pointing to that global object.  
-* **Quantity:** There is exactly **one** GEC per JavaScript program.
+## Global Execution Context
 
-#### 2. Function Execution Context (FEC)
+The global execution context is created when the script first runs.
 
-* **What it is:** A completely new context created **every single time** a function is invoked (called).  
-* **Mechanics:** Each function gets its own unique context containing its local arguments, variables, and its own scope rules. Unlike the GEC, FECs are ephemeral—they are born on invocation and typically destroyed upon completion.
+- It creates the global object: `window` in browsers and `global` in Node.js.
+- It binds `this` to the global object in non-module browser scripts.
+- There is exactly one global execution context per JavaScript program.
 
-#### 3. The Call Stack (Function Invocation Stack)
+## Function Execution Context
 
-JavaScript utilizes a **Call Stack** (a Last-In, First-Out / LIFO data structure) to track its location in the program.
+A function execution context is created every time a function is invoked.
 
-* When code starts, the **GEC** is pushed to the bottom of the stack.  
-* When a function is invoked, a new **FEC** is created and pushed onto the top of the stack.  
-* The engine always executes the context at the *very top* of the stack.  
-* When a function returns, its FEC is popped off the stack, and control returns to the context below it.
+Each function call gets its own context containing:
 
-#### 🚀 The Anatomy of a Lifecycle: Creation vs. Execution Phase
+- Local variables
+- Function arguments
+- Scope references
+- Its own `this` binding rules
 
-Every Execution Context goes through a two-phase lifecycle. This separation is the root cause of concepts like Hoisting.
+Function execution contexts are temporary. They are created when the function starts and usually removed when the function returns.
 
-##### Phase 1: Creation Phase (Compilation/Parsing)
+## The Call Stack
 
-Before a single line of executable code runs, the engine scans the code block and constructs the context:
+JavaScript uses a call stack, which is a Last-In, First-Out (LIFO) data structure.
 
-1. **Creates the Lexical Environment:**  
-   * **Environment Record:** Allocates memory space for function declarations and variables.  
-   * **Outer Environment Reference:** Sets up a link to its parent scope (creating the Scope Chain).  
-2. **Binds `this`:** Determines the value of the `this` keyword (dynamic based on how the function is called).
-
-##### Phase 2: Execution Phase
-
-The engine walks through the code line-by-line (using its Just-In-Time compiler). It assigns values to variables, updates memory coordinates, and fires off function execution.
-
-### 💥 Interview Corner Case: Stack Overflow
-
-Because the Call Stack is allocated a fixed, finite block of memory by the browser engine (e.g., V8), pushing too many contexts onto it causes a **Stack Overflow** (`RangeError: Maximum call stack size exceeded`).
-
-#### Production Hazard: Unbounded Recursion
-
-An interviewer will ask you to write a recursive utility (like deep-cloning an object or traversing a DOM tree) and then ask how it breaks. If the recursion tree is deeper than the engine's stack limit (\~10,000 frames), it crashes.
-
-```js
-// TRAP: Direct Unbounded Recursion function recurse() {     recurse();  } recurse(); // Uncaught RangeError: Maximum call stack size exceeded
+```text
+Top of stack
+┌────────────────────────┐
+│ Function context       │
+├────────────────────────┤
+│ Function context       │
+├────────────────────────┤
+│ Global context         │
+└────────────────────────┘
+Bottom of stack
 ```
 
-#### The Senior Engineer Fix: Trampolining & Tail-Call Optimization (TCO)
+How it works:
 
-To prevent stack overflows in deeply nested logic, convert the recursive structure to an iterative one, or use a **Trampoline function**. A trampoline wraps the recursive call in a function, flattening the stack execution to one frame at a time.
+1. When code starts, the global execution context is pushed onto the stack.
+2. When a function is called, a function execution context is created and pushed on top.
+3. The engine always executes the context at the top of the stack.
+4. When a function returns, its context is popped off the stack.
+
+## Creation Phase vs Execution Phase
+
+Every execution context goes through two phases. This separation explains concepts like hoisting.
+
+### Creation Phase
+
+Before executable code runs, the engine scans the code and prepares the context.
+
+During this phase, the engine:
+
+- Creates the lexical environment.
+- Allocates memory for declarations.
+- Sets up the outer environment reference, which creates the scope chain.
+- Determines the value of `this`.
+
+### Execution Phase
+
+During execution, the engine runs code line by line.
+
+In this phase, the engine:
+
+- Assigns values to variables.
+- Executes function calls.
+- Updates memory references.
+- Pushes and pops execution contexts on the call stack.
+
+## Stack Overflow
+
+The call stack has a finite size. If too many execution contexts are pushed onto it, the engine throws an error such as:
+
+```text
+RangeError: Maximum call stack size exceeded
+```
+
+### Unbounded Recursion
+
+Recursive utilities such as deep cloning or DOM traversal can crash if the recursion depth is larger than the engine's stack limit.
 
 ```js
-// FIX: Trampolining const trampoline = (fn) => (...args) => {
+function recurse() {
+  recurse();
+}
+
+recurse();
+// RangeError: Maximum call stack size exceeded
+```
+
+## Preventing Stack Overflows
+
+For deeply nested logic, convert recursion to iteration or use a trampoline function. A trampoline returns the next function to run instead of calling it immediately, keeping stack usage flat.
+
+```js
+const trampoline = (fn) => (...args) => {
   let result = fn(...args);
-  while (typeof result === 'function') {
+
+  while (typeof result === "function") {
     result = result();
-    // Execute one step at a time, clearing the stack frame
   }
+
   return result;
 };
+
 const safelyCount = (max) => {
   const run = (current) => {
-    if (current >= max) return current;
+    if (current >= max) {
+      return current;
+    }
+
     return () => run(current + 1);
-    // Returns a function instead of self-invoking directly
   };
+
   return run(0);
 };
+
 const total = trampoline(safelyCount)(200000);
-// Handled cleanly without overflowing console.log(total);
+
+console.log(total);
 // 200000
 ```
+
+## Interview Answer
+
+An execution context is the environment the JavaScript engine creates to run code. The global execution context is created first, and every function call creates a new function execution context. These contexts are managed by the call stack, which runs in LIFO order.
+
+Each execution context has a creation phase, where declarations and scope links are prepared, and an execution phase, where the code actually runs. If too many function calls are pushed onto the stack, usually because of unbounded recursion, JavaScript throws a stack overflow error.

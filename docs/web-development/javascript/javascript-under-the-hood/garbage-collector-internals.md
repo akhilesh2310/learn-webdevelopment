@@ -5,830 +5,353 @@ sidebar_position: 5
 
 # Garbage Collector Internals
 
-## Garbage Collector (GC) Internals
+JavaScript automatically manages memory. When objects are no longer reachable, the engine can reclaim their memory and reuse it later.
 
----
+Without garbage collection, every allocation would keep consuming memory until the application eventually crashed.
 
-## Why Do We Need Garbage Collection?
+```js
+function createUser() {
+  const user = {
+    name: "Akhilesh",
+    age: 34,
+  };
+}
+```
 
-**JavaScript automatically manages memory.**
+After `createUser` finishes, `user` is no longer reachable from the active program, so its object can be collected.
 
-When objects are no longer needed, the JavaScript engine reclaims that memory so it can be reused.
+## Garbage Collection Basics
 
-Without garbage collection:
+Garbage collection is the process of identifying unused objects, freeing their memory, and making that memory reusable.
 
-function createUser() \{  
- const user \= \{  
-   name: "Akhilesh",  
-   age: 34  
- \};  
-\}
+```text
+Identify unused objects
+        |
+        v
+Free their memory
+        |
+        v
+Reuse memory later
+```
 
-Every function call would keep consuming memory forever.
+The key concept is reachability.
 
-Eventually:
+## Reachable vs Unreachable
 
-Application Crash  
-↓  
-Out Of Memory Error
+An object is alive if it can be reached from a root reference.
 
-Garbage Collection solves this problem.
+```js
+const user = {
+  name: "John",
+};
+```
 
----
+Conceptually:
 
-## What is Garbage Collection?
+```text
+Global object
+    |
+    v
+  user
+    |
+    v
+{ name: "John" }
+```
 
-Garbage Collection (GC) is the process of:
+Because the object is reachable, the garbage collector will not remove it.
 
-Identify Unused Objects  
-       ↓  
-Free Their Memory  
-       ↓  
-Reuse Memory Later  
----
+If the reference is removed, the object can become unreachable.
 
-## Reachability Concept
+```js
+let user = {
+  name: "John",
+};
 
-The most important concept in Garbage Collection is:
+user = null;
+```
 
-## Reachable vs Unreachable Objects
+No references remain to the original object, so it can be collected.
 
-### Reachable Object
+Common roots include:
 
-An object is considered alive if it can be reached from a root reference.
-
-Example:
-
-const user \= \{  
- name: "John"  
-\};  
-Global Object  
-     │  
-     ▼  
-   user  
-     │  
-     ▼  
-\{name:"John"\}
-
-Object is reachable.
-
-**GC will NOT remove it.**
-
----
-
-### Unreachable Object
-
-let user \= \{  
- name: "John"  
-\};
-
-user \= null;
-
-Now:
-
-Global Object
-
-user → null
-
-\{name:"John"\}
-
-No references remain.
-
-Object becomes:
-
-UNREACHABLE
-
-**GC can safely remove it.**
-
----
+- Global object references.
+- Local variables on the call stack.
+- Closures.
+- DOM references.
+- Active timers and event listeners.
 
 ## V8 Memory Architecture
 
-V8 does not store all objects in a single memory area.
+V8 divides heap memory into generations because most objects die young.
 
-Instead, memory is divided into generations.
+```text
+Heap
+├── New Space (young generation)
+└── Old Space (old generation)
+```
 
----
+Short-lived objects start in New Space. Objects that survive enough collections can be promoted to Old Space.
 
-## Why Generations?
+## New Space
 
-V8 is built around an important observation:
+New Space stores newly created and short-lived objects.
 
-Most objects die young.
+```js
+function handleClick() {
+  const tempData = {};
+}
+```
 
-Example:
+`tempData` usually dies quickly, so collecting it in a small young-generation space is efficient.
 
-function handleClick() \{  
- const tempData \= \{\};  
-\}
-
-The object exists for only a few milliseconds.
-
-Most objects never survive long enough to become long-term data.
-
-Because of this, V8 separates memory into:
-
-Heap  
-│  
-├── New Space (Young Generation)  
-│  
-└── Old Space (Old Generation)  
----
-
-## V8 Heap Structure
-
-\+--------------------------------+  
-|             HEAP                 |  
-\+--------------------------------+  
-|                                        |  
-|  New Space (Young Generation)  |  
-|                                        |  
-\+--------------------------------+  
-|                                        |  
-|  Old Space (Long-lived Objects)|  
-|                                        |  
-\+--------------------------------+  
----
-
-## New Space (Young Generation)
-
----
-
-## Purpose
-
-Stores:
-
-* Newly created objects  
-* Temporary objects  
-* Short-lived allocations
-
-Example:
-
-function calculate() \{  
- const temp \= \{\};  
-\}
-
-Most objects created here die quickly.
-
----
-
-## Characteristics
-
-| Property | Value |
-| ----- | ----- |
+| Property | New Space |
+| --- | --- |
 | Size | Small |
-| Allocation Speed | Very Fast |
-| Object Lifetime | Short |
-| Collection Frequency | Frequent |
+| Allocation speed | Very fast |
+| Object lifetime | Usually short |
+| Collection frequency | Frequent |
 
----
+## Scavenger and Cheney's Copying Algorithm
 
-## New Space Collector
+New Space uses a Scavenger collector based on Cheney's copying algorithm. New Space is split into two equal regions: From Space and To Space.
 
-New Space uses:
-
-## Scavenger Collector
-
-Based on:
-
-## Cheney's Copying Algorithm
-
----
-
-## Cheney's Copying Algorithm
-
-New Space is divided into:
-
-New Space  
-│  
-├── From Space  
-│  
+```text
+New Space
+├── From Space
 └── To Space
+```
 
-Both are equal-sized memory regions.
+Initial state:
 
----
+```text
+From Space: [A][B][C][D]
+To Space:   [empty]
+```
 
-## Initial State
+If `A` and `C` are reachable while `B` and `D` are dead, GC copies only the live objects.
 
-From Space
+```text
+From Space: [A][B][C][D]
+To Space:   [A][C]
+```
 
-\[A\]  
-\[B\]  
-\[C\]  
-\[D\]
+Then the spaces swap roles.
 
-To Space
-
-\[Empty\]
-
-Objects are allocated inside:
-
-From Space  
----
-
-## GC Cycle Begins
-
-Suppose:
-
-A → Reachable  
-C → Reachable
-
-B → Dead  
-D → Dead  
----
-
-## Step 1: Mark Live Objects
-
-Engine identifies:
-
-Live Objects
-
-A  
-C  
----
-
-## Step 2: Copy Survivors
-
-Only live objects are copied into To Space.
-
-From Space
-
-\[A\]  
-\[B\]  
-\[C\]  
-\[D\]
-
-To Space
-
-\[A\]  
-\[C\]
-
-Dead objects disappear automatically.
-
----
-
-## Step 3: Swap Spaces
-
-Before
-
-From Space → Active  
-To Space   → Empty
+```text
+Before:
+From Space -> active
+To Space   -> empty
 
 After:
-
-From Space → Empty  
-To Space   → Active
-
-Roles are swapped.
-
----
-
-## Result
-
-Before
-
-\[A\]\[B\]\[C\]\[D\]
-
-After
-
-\[A\]\[C\]
+From Space -> empty
+To Space   -> active
+```
 
 Benefits:
 
-* Dead objects removed  
-* Memory compacted automatically  
-* No fragmentation
+- Dead objects disappear quickly.
+- Memory is compacted automatically.
+- Fragmentation is avoided in young generation collection.
 
----
-
-## Why is Scavenger Fast?
-
-Instead of scanning the entire heap:
-
-Copy Live Objects  
-Ignore Dead Objects
-
-Most young objects die quickly.
-
-So copying cost remains very low.
-
----
+Scavenger is fast because it focuses on copying live young objects, and most young objects die quickly.
 
 ## Object Promotion
 
-Some objects survive multiple GC cycles.
+Objects that survive multiple young-generation collections are considered long-lived and can be promoted to Old Space.
 
-These are considered long-lived.
+```text
+Survive GC
+    |
+    v
+Survive GC again
+    |
+    v
+Promote to Old Space
+```
 
----
+Example long-lived data:
 
-## Promotion Rule
+```js
+const appState = {
+  currentUser: {},
+};
+```
 
-Typically:
-
-Survive GC  
-     ↓  
-Survive GC Again  
-     ↓  
-Promote To Old Space  
----
-
-Example:
-
-const appState \= \{  
- currentUser: \{\}  
-\};
-
-Application state remains alive for a long time.
-
-Eventually moves into:
-
-Old Space  
----
+Application state, caches, global config, and large persistent structures often move into Old Space.
 
 ## Old Space
 
----
+Old Space stores long-lived objects.
 
-## Purpose
+| Property | Old Space |
+| --- | --- |
+| Size | Larger |
+| Object lifetime | Long |
+| Collection frequency | Lower |
+| Collection cost | Higher |
 
-Stores:
+Old Space uses Mark-Sweep-Compact.
 
-* Long-lived objects  
-* Application state  
-* Cached data  
-* Large data structures
+```text
+Mark -> Sweep -> Compact
+```
 
-Examples:
+### Mark
 
-Redux Store  
-React Context  
-Global Config  
-Cache Objects  
----
+Marking finds all reachable objects by starting from root references and traversing references.
 
-## Characteristics
+```js
+const user = {
+  profile: {
+    name: "John",
+  },
+};
+```
 
-| Property | Value |
-| ----- | ----- |
-| Size | Large |
-| Collection Frequency | Low |
-| Collection Cost | High |
-| Object Lifetime | Long |
-
----
-
-## Major Garbage Collection
-
-Old Space uses:
-
-## Mark-Sweep-Compact
-
-This is much more sophisticated than Scavenger.
-
----
-
-## Mark-Sweep-Compact Overview
-
-Mark  
- ↓  
-Sweep  
- ↓  
-Compact  
----
-
-## Phase 1: Mark
-
-Goal:
-
-Find all reachable objects.
-
----
-
-## Root References
-
-Marking starts from roots.
-
-Examples:
-
-Window Object  
-Global Variables  
-Call Stack  
-DOM References  
-Closures  
----
-
-Example:
-
-const user \= \{  
- profile: \{  
-   name: "John"  
- \}  
-\};
-
-Graph:
-
-Window  
- │  
- ▼  
-user  
- │  
- ▼  
-profile  
- │  
- ▼  
+```text
+Window
+  |
+  v
+user
+  |
+  v
+profile
+  |
+  v
 name
+```
 
-All are reachable.
+All reachable objects are marked alive.
 
-Marked as alive.
+V8 uses a three-color marking model:
 
----
+| Color | Meaning |
+| --- | --- |
+| White | Not visited, potentially dead |
+| Grey | Visited, children not processed yet |
+| Black | Visited, children processed |
 
-## Three Color Marking Algorithm
+After traversal, black objects are alive and remaining white objects are garbage.
 
-V8 internally uses:
+### Sweep
 
-White  
-Grey  
-Black  
----
+Sweep removes unreachable objects and records the freed memory.
 
-## White
+```text
+Before: [A][B][C][D]
+Alive:   A     C
+After:  [A][ ][C][ ]
+```
 
-Not Visited  
-Potentially Dead  
----
+Free blocks are placed into free lists so future allocations can reuse them.
 
-## Grey
+### Compact
 
-Visited  
-Children Not Processed Yet  
----
+After many GC cycles, memory can become fragmented.
 
-## Black
+```text
+Fragmented: [A][ ][ ][B][ ][C]
+Compacted:  [A][B][C][ ][ ][ ]
+```
 
-Visited  
-Children Already Processed  
----
-
-Example:
-
-White  
-↓  
-Grey  
-↓  
-Black
-
-After traversal:
-
-Black \= Alive  
-White \= Garbage  
----
-
-## Phase 2: Sweep
-
-After marking:
-
-Black Objects → Keep
-
-White Objects → Delete  
----
-
-Example
-
-Before:
-
-\[A\]\[B\]\[C\]\[D\]
-
-Marked:
-
-A \= Alive  
-C \= Alive
-
-Sweep:
-
-\[A\]\[ \]\[C\]\[ \]
-
-Freed memory becomes available.
-
----
-
-## Free Lists
-
-Instead of immediately reallocating memory:
-
-V8 stores free blocks in:
-
-Free Lists
-
-Example:
-
-\[A\]\[ \]\[C\]\[ \]
-
-Available regions:
-
-Free Block 1  
-Free Block 2
-
-Future allocations reuse them.
-
----
-
-## Problem: Fragmentation
-
-After many GC cycles:
-
-\[A\]\[ \]\[ \]\[B\]\[ \]\[C\]
-
-Memory becomes fragmented.
-
----
-
-## Why Fragmentation is Bad
-
-Need:
-
-Large Object \= 3 Blocks
-
-Available:
-
-1 Block  
-1 Block  
-1 Block
-
-Enough memory exists.
-
-But not contiguous.
-
-Allocation fails.
-
----
-
-## Phase 3: Compact
-
-Compaction solves fragmentation.
-
-Before:
-
-\[A\]\[ \]\[ \]\[B\]\[ \]\[C\]
-
-After:
-
-\[A\]\[B\]\[C\]\[ \]\[ \]\[ \]
+Compaction moves live objects together to create larger contiguous free regions.
 
 Benefits:
 
-* Faster allocation  
-* Better cache locality  
-* Reduced fragmentation
-
----
-
-## Interview Callout
-
-### Difference Between Sweep and Compact
-
-#### Sweep
-
-Removes Dead Objects
-
-#### Compact
-
-Moves Live Objects Together
-
-to eliminate fragmentation.
-
----
+- Faster allocation.
+- Better cache locality.
+- Less fragmentation.
 
 ## Orinoco Garbage Collector
 
-Modern V8 GC framework.
+Orinoco is V8's modern garbage collection framework. Its goal is to reduce stop-the-world pauses.
 
-Introduced to reduce:
+During a stop-the-world pause, JavaScript execution pauses while GC work happens. Long pauses can make user interactions feel frozen.
 
-Stop-The-World Pauses  
----
+Orinoco reduces pause time through:
 
-## What is Stop-The-World?
+- Parallel GC: multiple threads work on GC at the same time.
+- Incremental GC: GC work is split into smaller chunks.
+- Concurrent GC: background threads perform GC work while JavaScript continues running.
 
-During GC:
+Conceptually:
 
-JavaScript Execution  
-       STOPS
+```text
+Traditional:
+App runs -> GC pause -> App continues
 
-User interactions freeze temporarily.
+Incremental:
+App -> GC slice -> App -> GC slice -> App
 
-Goal:
-
-Reduce pause time as much as possible.
-
----
-
-## Orinoco Optimizations
-
----
-
-## 1. Parallel GC
-
-Uses multiple CPU threads.
-
-Thread 1  
-Thread 2  
-Thread 3  
-Thread 4
-
-Work happens simultaneously.
-
-Benefits:
-
-* Faster GC completion  
-* Better CPU utilization
-
----
-
-## 2. Incremental GC
-
-Instead of:
-
-200ms Pause
-
-V8 performs:
-
-20ms  
-20ms  
-20ms  
-20ms
-
-small chunks.
-
----
-
-### Traditional GC
-
-App Runs  
-     ↓  
-STOP 200ms  
-     ↓  
-Continue  
----
-
-### Incremental GC
-
-App  
-↓  
-GC Slice  
-↓  
-App  
-↓  
-GC Slice  
-↓  
-App
-
-Much smoother.
-
----
-
-## 3. Concurrent GC
-
-Background threads perform GC work while JavaScript continues executing.
-
-Main Thread  
-  │  
-Application Running  
-Background Thread  
-  │  
-Marking  
-Sweeping
-
-Simultaneously.
-
----
+Concurrent:
+Main thread:       Application running
+Background thread: Marking and sweeping
+```
 
 ## Complete V8 GC Flow
 
-Object Created  
-      │  
-      ▼  
-  New Space  
-      │  
-      ▼  
-Scavenger GC  
-      │  
-      ▼  
-Survives?  
-  │  
-  ├─ No → Delete  
-  │  
-  └─ Yes  
-        │  
-        ▼  
-  Promote  
-        │  
-        ▼  
-   Old Space  
-        │  
-        ▼  
-Mark  
-Sweep  
-Compact  
----
+```text
+Object created
+      |
+      v
+  New Space
+      |
+      v
+Scavenger GC
+      |
+      v
+Survives?
+  |       |
+  no      yes
+  |       |
+  v       v
+delete  promote
+          |
+          v
+       Old Space
+          |
+          v
+ Mark -> Sweep -> Compact
+```
 
-## Senior-Level Interview Questions
+## Senior Interview Questions
 
----
+### Why does V8 use generational GC?
 
-## Q1: Why does V8 use Generational GC?
+V8 uses generational GC because most objects die young. Separating short-lived and long-lived objects keeps young-generation collections fast and makes expensive old-generation collections less frequent.
 
-**Answer:**
+### Explain Cheney's copying algorithm.
 
-Because most objects die young.
+New Space is divided into From Space and To Space. During GC, live objects are copied to To Space, dead objects are ignored, and the two spaces swap roles. This gives fast cleanup and automatic compaction.
 
-By separating short-lived and long-lived objects:
+### Explain Mark-Sweep-Compact.
 
-* Young generation collections remain very fast.  
-* Old generation collections happen less frequently.  
-* Overall GC cost is significantly reduced.
+Mark finds reachable objects. Sweep removes unreachable objects. Compact moves surviving objects together to reduce fragmentation.
 
----
+### What is Orinoco?
 
-## Q2: Explain Cheney's Copying Algorithm.
+Orinoco is V8's modern GC framework. It reduces pause times using parallel, incremental, and concurrent garbage collection.
 
-**Answer:**
+## Quick Revision
 
-New Space is divided into From Space and To Space.
+```text
+Heap
+├── New Space
+│   └── Scavenger
+│       └── Cheney copying
+└── Old Space
+    └── Mark-Sweep-Compact
+```
 
-During GC:
+Key concepts:
 
-1. Live objects are copied to To Space.  
-2. Dead objects are ignored.  
-3. Spaces are swapped.
-
-Benefits:
-
-* Fast cleanup  
-* Automatic compaction  
-* No fragmentation
-
----
-
-## Q3: Explain Mark-Sweep-Compact.
-
-**Answer:**
-
-**Mark**
-
-* Find reachable objects.
-
-**Sweep**
-
-* Remove unreachable objects.
-
-**Compact**
-
-* Move surviving objects together to remove fragmentation.
-
----
-
-## Q4: What is Orinoco?
-
-**Answer:**
-
-Orinoco is V8's modern garbage collection framework that reduces pause times using:
-
-* Parallel GC  
-* Incremental GC  
-* Concurrent GC
-
-This allows applications to remain responsive while memory is being reclaimed.
-
----
-
-## Quick Revision Sheet
-
-Heap  
-│  
-├── New Space  
-│     └── Scavenger  
-│           └── Cheney Copying  
-│  
-└── Old Space  
-     └── Mark  
-         Sweep  
-         Compact
-
-### Key Concepts
-
-* Reachable vs Unreachable  
-* Generational GC  
-* From Space / To Space  
-* Promotion  
-* Three Color Marking  
-* Free Lists  
-* Fragmentation  
-* Compaction  
-* Orinoco  
-* Parallel GC  
-* Incremental GC  
-* Concurrent GC
+- Reachable vs unreachable.
+- Generational GC.
+- From Space and To Space.
+- Promotion.
+- Three-color marking.
+- Free lists.
+- Fragmentation.
+- Compaction.
+- Orinoco.
+- Parallel, incremental, and concurrent GC.

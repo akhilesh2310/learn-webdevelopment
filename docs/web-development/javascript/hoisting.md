@@ -5,75 +5,105 @@ sidebar_position: 7
 
 # Hoisting
 
-## Hoisting and Temporal Dead Zone
+Hoisting is the JavaScript behavior where declarations are registered in memory during the creation phase before code executes.
 
-Hoisting is a JavaScript mechanism where variable, function, class, or import declarations are registered in memory during the compile phase before the code actually executes
+The key idea: `var`, `let`, `const`, and function declarations are all hoisted, but they behave differently because they are initialized differently.
 
-The key idea is:
+## Variable Hoisting
 
-`var`, `let`, `const`, and functions are all hoisted, but they behave differently because they are initialized differently.
+### `var`
 
-## 1. Variable Hoisting: `var` vs `let` / `const`
-
-### `Var:` `var` declarations are hoisted and initialized with `undefined`.
+`var` declarations are hoisted and initialized with `undefined`.
 
 ```js
-console.log(name); // undefined var name = "Akhilesh";
+console.log(name);
+// undefined
+
+var name = "Akhilesh";
 ```
 
 JavaScript roughly prepares it like this:
 
 ```js
-var name; // initialized as undefined console.log(name); name = "Akhilesh";
+var name;
+
+console.log(name);
+
+name = "Akhilesh";
 ```
 
-So accessing a `var` variable before its declaration does not throw an error. It returns `undefined`.
+Accessing a `var` variable before its declaration does not throw an error. It returns `undefined`.
 
-### `let` and `const:` `let` and `const` are also hoisted, but they are not initialized immediately.
+### `let` and `const`
+
+`let` and `const` are also hoisted, but they are not initialized immediately.
 
 ```js
-console.log(data); // ReferenceError let data = "Production Ready Data";
+console.log(data);
+// ReferenceError
+
+let data = "Production Ready Data";
 ```
 
-The variable exists in the scope, but JavaScript does not allow access before the declaration line is executed. This period is called the **Temporal Dead Zone (TDZ)**.
+The variable exists in the scope, but JavaScript does not allow access before the declaration line runs. This period is called the Temporal Dead Zone (TDZ).
 
 ```js
-{   // TDZ starts for data   console.log(data); // ReferenceError   let data = "Production Ready Data"; // TDZ ends here }
+{
+  // TDZ starts for data
+  console.log(data);
+  // ReferenceError
+
+  let data = "Production Ready Data";
+  // TDZ ends here
+}
 ```
 
-Important point: `let` and `const` are hoisted, but they stay unusable until their declaration line is executed.
+Important: `let` and `const` are hoisted, but they stay unusable until their declaration line is executed.
 
-## 2. Function Hoisting
+## Function Hoisting
 
-### Function declarations: are fully hoisted.
+### Function Declarations
 
-That means both the function name and function body are available during the creation phase.
+Function declarations are fully hoisted. Both the function name and function body are available during the creation phase.
 
 ```js
-sayHello(); // Hello function sayHello() {   console.log("Hello"); }
+sayHello();
+// Hello
+
+function sayHello() {
+  console.log("Hello");
+}
 ```
 
-This works because JavaScript stores the full function before the execution phase starts.
+### Function Expressions
 
-### Function expressions and arrow functions: are not fully hoisted like function declarations.
-
-They follow the hoisting behavior of the variable they are assigned to.
+Function expressions and arrow functions are not fully hoisted like function declarations. They follow the hoisting behavior of the variable they are assigned to.
 
 ```js
-greet(); // TypeError: greet is not a function var greet = function () {   console.log("Hi"); };
+greet();
+// TypeError: greet is not a function
+
+var greet = function () {
+  console.log("Hi");
+};
 ```
 
-Here, `greet` is hoisted as `undefined`. So calling it before assignment means JavaScript is trying to call `undefined` as a function.
+Here, `greet` is hoisted as `undefined`. Calling it before assignment means JavaScript tries to call `undefined`.
 
 With `let` or `const`, the error is different:
 
 ```js
-greet(); // ReferenceError: Cannot access 'greet' before initialization const greet = () => {   console.log("Hi"); };
+greet();
+// ReferenceError: Cannot access 'greet' before initialization
+
+const greet = () => {
+  console.log("Hi");
+};
 ```
 
 Here, `greet` is in the Temporal Dead Zone.
 
-## 3. Quick Comparison
+## Quick Comparison
 
 | Declaration Type | Hoisted? | Initialized Before Execution? | Access Before Declaration |
 | :---- | :---- | :---- | :---- |
@@ -84,77 +114,105 @@ Here, `greet` is in the Temporal Dead Zone.
 | Function expression with `var` | Variable is hoisted | `undefined` | `TypeError` if called |
 | Function expression with `let` / `const` | Variable is hoisted | No | `ReferenceError` |
 
-## Interview Puzzles and Output Questions
+## Interview Puzzles
 
-## Puzzle 1: Function vs Variable Hoisting Collision
+### Puzzle 1: Function vs Variable Hoisting Collision
 
-### Question: What prints, and why?
+What prints, and why?
 
 ```js
-var testingHoisting = 10; function testingHoisting() {   console.log("Executed Function"); } console.log(typeof testingHoisting);
+var testingHoisting = 10;
+
+function testingHoisting() {
+  console.log("Executed Function");
+}
+
+console.log(typeof testingHoisting);
 ```
 
-### Answer It prints: `number`
+Output:
 
-### Why?
-
-During the creation phase, the function declaration `testingHoisting` is hoisted first and stores the full function in memory.
-
-Then JavaScript sees: `var testingHoisting;` Since the identifier already exists, JavaScript does not overwrite the function with `undefined`. During the execution phase, this line runs: `testingHoisting = 10;` Now the function reference is replaced by the number `10`.
-
-So: `console.log(typeof testingHoisting);` prints: `number`
-
-### Key takeaway: Function declarations can win during the creation phase, but runtime assignment can still overwrite them.
-
-## Puzzle 2: The Loop Scoping Trap
-
-```js
-for (var i = 0; i < 3; i++) {   setTimeout(() => {     console.log(i);   }, 100); }
+```text
+number
 ```
 
-### Answer : It prints: `3  3  3`
+During the creation phase, the function declaration is hoisted first and stores the full function in memory. Then JavaScript sees `var testingHoisting;`. Since the identifier already exists, JavaScript does not overwrite the function with `undefined`.
 
-### Why? `var` is function-scoped, not block-scoped. So there is only one shared `i` variable for the entire loop. By the time the `setTimeout` callbacks run, the loop has already finished and the shared `i` has become `3`.
+During execution, `testingHoisting = 10` replaces the function reference with the number `10`, so `typeof testingHoisting` prints `number`.
 
-### Modern fix: use `let`
+Key takeaway: function declarations can win during creation, but runtime assignment can still overwrite them.
+
+### Puzzle 2: The Loop Scoping Trap
 
 ```js
-for (let i = 0; i < 3; i++) {   setTimeout(() => {     console.log(i);   }, 100); }
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 100);
+}
 ```
 
-Output: `0 1 2`, With `let`, JavaScript creates a new block-scoped `i` for each loop iteration.
+Output:
 
-### Legacy fix: use IIFE
-
-If you cannot use `let`, you can create a new function scope using an IIFE.
-
-```js
-for (var i = 0; i < 3; i++) {   (function (capturedI) {     setTimeout(() => {       console.log(capturedI);     }, 100);   })(i); }
+```text
+3
+3
+3
 ```
 
-Output: `0 1 2`, Here, each iteration passes the current value of `i` into a new function scope.
+`var` is function-scoped, so the loop has one shared `i`. By the time callbacks run, the loop has finished and `i` is `3`.
 
-### Key takeaway: `var` creates one shared variable. `let` creates a fresh variable per loop iteration.
-
-### Delayed message variant
+Modern fix:
 
 ```js
-for (var i = 1; i <= 3; i++) {   setTimeout(function () {     console.log('after ' + i + ' second(s): ' + i);   }, i * 1000); }
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 100);
+}
 ```
 
-Output: Logs `after 4 second(s): 4` three separate times.
+Output:
 
-Why: The `var` keyword is function-scoped. There is exactly one shared variable `i` allocated for the entire loop block. The asynchronous `setTimeout` callbacks form a closure over this same shared variable. By the time the event loop executes the first callback, the synchronous loop has already completed and left `i` as `4`.
+```text
+0
+1
+2
+```
 
-Pre-ES6 fix with IIFE:
+With `let`, JavaScript creates a new block-scoped `i` for each iteration.
+
+Legacy fix with an IIFE:
 
 ```js
-for (var i = 1;
-i <= 3;
-i++) {
+for (var i = 0; i < 3; i++) {
+  (function (capturedI) {
+    setTimeout(() => {
+      console.log(capturedI);
+    }, 100);
+  })(i);
+}
+```
+
+### Delayed Message Variant
+
+```js
+for (var i = 1; i <= 3; i++) {
+  setTimeout(function () {
+    console.log("after " + i + " second(s): " + i);
+  }, i * 1000);
+}
+```
+
+This logs `after 4 second(s): 4` three times because all callbacks close over the same shared `var i`.
+
+Pre-ES6 fix with an IIFE:
+
+```js
+for (var i = 1; i <= 3; i++) {
   (function (capturedIndex) {
     setTimeout(function () {
-      console.log('after ' + capturedIndex + ' second(s): ' + capturedIndex);
+      console.log("after " + capturedIndex + " second(s): " + capturedIndex);
     }, capturedIndex * 1000);
   })(i);
 }
@@ -163,7 +221,11 @@ i++) {
 Modern fix with `let`:
 
 ```js
-for (let i = 1; i <= 3; i++) {   setTimeout(function () {     console.log('after ' + i + ' second(s): ' + i);   }, i * 1000); }
+for (let i = 1; i <= 3; i++) {
+  setTimeout(function () {
+    console.log("after " + i + " second(s): " + i);
+  }, i * 1000);
+}
 ```
 
 ## Puzzle 3: TDZ Execution Timing
@@ -171,95 +233,77 @@ for (let i = 1; i <= 3; i++) {   setTimeout(function () {     console.log('after
 Does this throw an error?
 
 ```js
-function processData() {   console.log(payload); } let payload = { status: 200 }; processData();
+function processData() {
+  console.log(payload);
+}
+
+let payload = { status: 200 };
+
+processData();
 ```
 
-### Answer: No, it does not throw an error. It logs: `\{ status: 200 \}`
+Answer: no. It logs:
 
-### Why? : TDZ is not only about where the code appears visually. It is about when the variable is accessed during execution.
+```text
+{ status: 200 }
+```
 
-Here, `processData` is defined before `payload`, but it is not called immediately. By the time this runs: processData(); the line below has already executed: `let payload = \{ status: 200 \};`
-
-So the TDZ for `payload` has already ended.
-
-### Key takeaway: TDZ depends on execution timing, not just code position.
+TDZ is about when the variable is accessed during execution, not only where it appears visually. `processData` is defined before `payload`, but it is called only after `payload` has been initialized.
 
 ## Puzzle 4: Parameter Scope with Default Arguments
 
 ```js
-let x = 1; function foo(x, y = function () {     x = 2;     console.log(x);   }) {   var x = 3;   y();   console.log(x); } foo(5); console.log(x);
+let x = 1;
+
+function foo(
+  x,
+  y = function () {
+    x = 2;
+    console.log(x);
+  },
+) {
+  var x = 3;
+  y();
+  console.log(x);
+}
+
+foo(5);
+console.log(x);
 ```
 
-### Answer : It prints: `2 3 1`
+Output:
 
-**Answer & Mechanics:** Prints `2`, `3`, `1`. This tests your absolute mastery of **Parameter Scoping** (ES6 default arguments).
+```text
+2
+3
+1
+```
 
-1. When a function has default parameters, a **third intermediate scope environment** is created between the Parent Scope (Global) and the Function Body Scope.  
-2. The parameters `x` and `y` sit in this intermediate Parameter Scope. `x` initializes to `5`.  
-3. Inside the function body, `var x = 3` creates a *distinct local variable* `x` inside the body scope, shadow-masking the parameter `x`.  
-4. When `y()` executes, its lexical scope chain traces back to where it was authored (the Parameter Scope). It modifies the parameter `x` to `2` and logs `2`.  
-5. The inner function body `console.log(x)` looks at its own local scope, printing its distinct local value `3`.  
-6. The global `x` on the outside was never touched, remaining `1`.
+This tests parameter scope with default arguments. When a function has default parameters, JavaScript can create a separate parameter scope between the outer scope and the function body scope.
 
-### Answer & Mechanics
+```text
+Global Scope -> Parameter Scope -> Function Body Scope
+```
 
-### Answer: It prints `2, 3, 1`.
+Step by step:
 
-### This tests parameter scope with default arguments. When a function has default parameters, JavaScript can create a separate Parameter Scope between the outer scope and the function body scope.
+1. `let x = 1` creates the global `x`.
+2. `foo(5)` initializes the parameter `x` with `5`.
+3. The default parameter `y` is a function that closes over the parameter scope.
+4. `var x = 3` creates a separate local `x` in the function body scope.
+5. `y()` updates the parameter-scope `x` to `2` and logs `2`.
+6. `console.log(x)` inside the function body logs the body-scope `x`, which is `3`.
+7. `console.log(x)` outside logs the global `x`, which is still `1`.
 
-### So we have three relevant scopes:
+Key takeaway: default parameters can create a separate parameter scope. A function created inside a default parameter closes over that parameter scope, while `var x` inside the body belongs to the function body scope.
 
-### Global Scope → Parameter Scope → Function Body Scope
-
-### Step by step:
-
-### `let x = 1;`
-
-### This creates global `x = 1`.
-
-### `foo(5);`
-
-### When `foo` is called, the parameter `x` gets value `5`. The default parameter `y` is a function, and it closes over the Parameter Scope, not the function body scope.
-
-### `y = function () \{`
-
-### `x = 2;`
-
-### `console.log(x);`
-
-### `\};`
-
-### Inside the function body:
-
-### `var x = 3;`
-
-### This creates a separate local `x` in the Function Body Scope, so it shadows the parameter `x`.
-
-### When `y()` runs, it follows its lexical scope chain and updates the parameter-scope `x` from `5` to `2`.
-
-### `y(); // logs 2`
-
-### Then this line runs inside the function body:
-
-### `console.log(x); // logs 3`
-
-### It logs the body-scope `x`, not the parameter-scope `x`.
-
-### Finally:
-
-### `console.log(x); // logs 1`
-
-### This logs the global `x`, which was never changed.
-
-### Key takeaway: Default parameters can create a separate Parameter Scope. A function created inside a default parameter closes over that Parameter Scope, while `var x` inside the body belongs to the Function Body Scope.
-
-## Interview-Ready Answer
+## Interview Answer
 
 Hoisting means JavaScript prepares declarations before executing the code. `var`, `let`, `const`, and functions are all hoisted, but they behave differently.
 
-* `var` is hoisted and initialized with `undefined`.  
-* `let` and `const` are hoisted but not initialized, which creates the **Temporal Dead Zone (TDZ)**.  
-* Function declarations are fully hoisted with their body, so they can be called before declaration.  
-* Function expressions and arrow functions follow the hoisting behavior of the variable they are assigned to.
+- `var` is hoisted and initialized with `undefined`.
+- `let` and `const` are hoisted but not initialized, which creates the Temporal Dead Zone.
+- Function declarations are fully hoisted with their body, so they can be called before declaration.
+- Function expressions and arrow functions follow the hoisting behavior of the variable they are assigned to.
 
-The main interview trap is that `let` and `const` are **not non-hoisted**. They are hoisted, but they remain inaccessible until their declaration is executed.
+The main interview trap is that `let` and `const` are not non-hoisted. They are hoisted, but they remain inaccessible until their declaration is executed.

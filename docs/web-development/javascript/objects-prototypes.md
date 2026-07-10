@@ -5,371 +5,393 @@ sidebar_position: 10
 
 # Objects & Prototypes
 
-**Objects**
+This page covers objects, object creation, property descriptors, prototype links, prototype-chain behavior, and copy semantics.
 
-[https://www.w3schools.com/js/js\_object\_definition.asp](https://www.w3schools.com/js/js_object_definition.asp)
+Class and OOP interview explanations are maintained in [Classes & OOP](./classes-oop.md).
 
-## How to create classes in JavaScript or before EcmaScript 5?
+## References
 
-[https://www.phpied.com/3-ways-to-define-a-javascript-class/](https://www.phpied.com/3-ways-to-define-a-javascript-class/)
+- [W3Schools JavaScript Object Definitions](https://www.w3schools.com/js/js_object_definition.asp)
+- [3 Ways to Define a JavaScript Class](https://www.phpied.com/3-ways-to-define-a-javascript-class/)
+- [JavaScript Prototypes](https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866)
+- [Understanding JavaScript Prototypes](https://www.pluralsight.com/blog/software-development/understanding-javascript-prototypes)
+- [Prototype and Inheritance](https://hackernoon.com/understanding-javascript-prototype-and-inheritance-d55a9a23bde2)
 
-Class and OOP interview explanations are maintained in [Classes & OOP](./classes-oop.md). This page focuses on objects, object creation, property descriptors, prototype links, and prototype-chain behavior.
+## Objects in JavaScript
 
-## Understanding Prototype in JavaScript
+In JavaScript, all non-primitive values are objects or object-like values.
 
-[https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866](https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866)  
-[https://www.pluralsight.com/blog/software-development/understanding-javascript-prototypes](https://www.pluralsight.com/blog/software-development/understanding-javascript-prototypes)  
-[https://hackernoon.com/understanding-javascript-prototype-and-inheritance-d55a9a23bde2](https://hackernoon.com/understanding-javascript-prototype-and-inheritance-d55a9a23bde2)
+Examples include:
 
-## In JavaScript, Objects are King.
-
-#### If you Understand Objects, you Understand JavaScript.
-
-In JavaScript, almost "everything" is an object.
-
-* Objects are objects  
-* Maths are objects  
-* Functions are objects  
-* Dates are objects  
-* Arrays are objects  
-* Maps are objects  
-* Sets are objects
-
-All JavaScript values, except primitives, are objects.
+- Plain objects
+- Arrays
+- Functions
+- Dates
+- Maps
+- Sets
 
 ## Object Creation
 
-* Object Literal  
-* Constructor Function  
-* Object.create()
+### Object Literal
 
-## 📦 1. Object Creation Methods
-
-In JavaScript, an object is a collection of key-value pairs. There are three primary ways to create them, each serving a different architectural purpose.
-
-### Method A: Object Literal
-
-The most common way to create an object using curly braces `\{\}`.
+The object literal is the most common and preferred way to create a plain object.
 
 ```js
 const user = {
   name: "Amit",
-  role: "Developer"
+  role: "Developer",
 };
-// NOTE: You can technically use `new Object()`, but it is a bad practice: const badExample = new Object({
-  name: "Amit"
-});
-// Avoid this! // Literal syntax is faster, cleaner, and preferred for readability.
 ```
 
-### Method B: Constructor Functions & The `new` Keyword
+Avoid `new Object()` for ordinary object creation because literal syntax is cleaner and more readable.
 
-A constructor is a standard function used as a blueprint to stamp out multiple similar objects. Invoking it with the `new` keyword completely changes how it runs.
+```js
+const badExample = new Object({
+  name: "Amit",
+});
+```
 
-#### 🧠 What happens under the hood when you use `new`?
+### Constructor Function
 
-When JavaScript hits the `new` keyword, it executes exactly **4 internal steps**:
-
-1. It creates a brand-new, empty object instance: `\{\}`.  
-2. It links this new object’s hidden prototype pointer (`__proto__`) directly to the constructor function’s `.prototype` object space.  
-3. It points the `this` keyword to our newly created object and runs the code inside the function block.  
-4. It automatically returns the newly created object, unless you manually return a different object.
+A constructor function is a regular function used with `new` to create multiple similar objects.
 
 ```js
 function Person(name, role) {
-  // 'this' is automatically pointed to our new empty instance this.name = name;
+  this.name = name;
   this.role = role;
-  // Automatically returns 'this' at the end
 }
+
 const user1 = new Person("Amit", "Developer");
 ```
 
-### Method C: `Object.create()`
+When JavaScript sees `new`, it:
 
-This creates a new object and allows you to manually specify its prototype link directly, bypassing the constructor function approach.
+1. Creates a new empty object.
+2. Links the new object's prototype to the constructor function's `.prototype`.
+3. Binds `this` to the new object.
+4. Returns the new object unless the constructor explicitly returns another object.
+
+### `Object.create()`
+
+`Object.create()` creates a new object with a manually specified prototype.
 
 ```js
 const machineBlueprint = {
   start() {
     return "Engine running...";
-  }
+  },
 };
-// Create a new object whose __proto__ points directly to machineBlueprint const myCar = Object.create(machineBlueprint);
+
+const myCar = Object.create(machineBlueprint);
 myCar.brand = "Tesla";
+
 console.log(myCar.start());
-// "Engine running..." (Inherited via the chain)
+// Engine running...
 ```
 
 ## Object Manipulation
 
-* Adding properties  
-* Deleting properties  
-* Object.keys()  
-* Object.values()  
-* Object.entries()
-
-## 🔄 2. Object Manipulation & Iteration Utilities
-
-### Modifying Properties & `Object.assign()`
-
-Properties can be added or updated dynamically using dot notation (`obj.prop`) or bracket notation (`obj["prop"]`). They can be permanently erased using the `delete` keyword.
+Properties can be added, updated, and deleted dynamically.
 
 ```js
-const player = { name: "Virat" }; player.score = 100; // Adding a property delete player.score; // Deleting a property
+const player = { name: "Virat" };
+
+player.score = 100;
+delete player.score;
 ```
 
-#### Merging Objects with `Object.assign()`
+### `Object.assign()`
 
-`Object.assign()` copies all properties from one or more *source* objects into a *target* object.
-
-* **Syntax:** `Object.assign(target, ...sources)`
+`Object.assign(target, ...sources)` copies properties from source objects into a target object.
 
 ```js
 const baseConfig = {
   theme: "dark",
-  notifications: true
+  notifications: true,
 };
+
 const userConfig = {
   notifications: false,
-  status: "active"
+  status: "active",
 };
-// Warning: This updates baseConfig directly! const finalConfig = Object.assign(baseConfig, userConfig);
+
+const finalConfig = Object.assign(baseConfig, userConfig);
+
 console.log(finalConfig);
-// {
-  theme: "dark",
-  notifications: false, status: "active"
-}
+// { theme: "dark", notifications: false, status: "active" }
 ```
 
-### Object Iteration Utilities
+Important: `Object.assign()` mutates the first argument.
 
-When you need to turn an object into an array structure for loops or filtering, JavaScript provides a matrix of native utilities:
+Use an empty object when you want a safe merge:
+
+```js
+const safeConfig = Object.assign({}, baseConfig, userConfig);
+```
+
+## Object Iteration Utilities
+
+Use object iteration utilities to turn objects into array structures for mapping, filtering, or reconstruction.
 
 ```js
 const product = {
   id: 101,
-  price: 500
+  price: 500,
 };
+
 console.log(Object.keys(product));
-// ["id", "price"] (Array of keys) console.log(Object.values(product));
-// [101, 500] (Array of values) const entries = Object.entries(product);
-console.log(entries);
-// [ ["id", 101], ["price", 500] ] (Key-Value matrix)
+// ["id", "price"]
+
+console.log(Object.values(product));
+// [101, 500]
+
+console.log(Object.entries(product));
+// [["id", 101], ["price", 500]]
 ```
 
-#### 🔄 Reversing the Matrix with `Object.fromEntries()`
+### `Object.fromEntries()`
 
-Introduced in ES2019, `Object.fromEntries()` does the exact opposite of `Object.entries()`. It takes an array matrix of key-value pairs and builds a standard object out of them.
+`Object.fromEntries()` does the reverse of `Object.entries()`.
 
 ```js
-const technicalMatrix = [ ["role", "Lead"], ["experience", 13] ];
+const technicalMatrix = [
+  ["role", "Lead"],
+  ["experience", 13],
+];
+
 const engineerProfile = Object.fromEntries(technicalMatrix);
+
 console.log(engineerProfile);
-// {
-  role: "Lead",
-  experience: 13
-}
+// { role: "Lead", experience: 13 }
 ```
 
 ## Property Descriptors
 
-## 🔒 3. Property Descriptors
+Every object property has a descriptor that controls how the property behaves.
 
-### ❓ What are they?
+Core descriptor attributes:
 
-Every property inside an object has a hidden configuration block called a **Property Descriptor**. This tells JavaScript exactly how you are allowed to interact with that property.
-
-There are **four core attributes**:
-
-1. `value`: The actual data stored inside the property.  
-2. `writable`: If `false`, the property's value cannot be overwritten.  
-3. `enumerable`: If `false`, the property is completely hidden from loops and `Object.keys()`.  
-4. `configurable`: If `false`, the property cannot be deleted and its descriptor configurations cannot be altered.
-
-#### 🛠️ How to define them manually
+- `value`: the value stored in the property.
+- `writable`: whether the value can be overwritten.
+- `enumerable`: whether the property appears in loops and `Object.keys()`.
+- `configurable`: whether the property can be deleted or reconfigured.
 
 ```js
-const bankUser = {
-};
+const bankUser = {};
+
 Object.defineProperty(bankUser, "accountNumber", {
   value: 987654321,
-  writable: false, // Read-Only enumerable: false, // Hidden from loops/keys configurable: false // Permanent, cannot be deleted
+  writable: false,
+  enumerable: false,
+  configurable: false,
 });
+
 bankUser.accountNumber = 1111;
-// Fails silently (Throws error in Strict Mode) console.log(Object.keys(bankUser));
-// [] (It is completely invisible) delete bankUser.accountNumber;
-// Fails silently
+
+console.log(Object.keys(bankUser));
+// []
+
+delete bankUser.accountNumber;
 ```
 
-## 🧬 5. Prototypes & The Prototype Chain
+In strict mode, writing to a non-writable property throws an error. Outside strict mode, it can fail silently.
 
-Understanding Prototype in JavaScript  
-[https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866](https://medium.com/backticks-tildes/javascript-prototypes-ee46810e4866)  
-[https://www.pluralsight.com/blog/software-development/understanding-javascript-prototypes](https://www.pluralsight.com/blog/software-development/understanding-javascript-prototypes)  
-[https://hackernoon.com/understanding-javascript-prototype-and-inheritance-d55a9a23bde2](https://hackernoon.com/understanding-javascript-prototype-and-inheritance-d55a9a23bde2)
+## Prototypes and the Prototype Chain
 
-### ❓ What are they?
+JavaScript uses prototype-based inheritance. Every object has an internal prototype link, available through `Object.getPrototypeOf(obj)`.
 
-JavaScript uses a **prototype-based inheritance model**. Every object contains a hidden link (`__proto__` or accessed via `Object.getPrototypeOf()`) pointing to a parent **Prototype Object**.
+When JavaScript looks up a property:
 
-#### ⛓️ How the Prototype Chain Works
+1. It checks the object itself.
+2. If missing, it checks the object's prototype.
+3. It continues walking up the prototype chain.
+4. It stops at `null`.
 
-When you attempt to look up a property or run a method on an object:
+### Classic Prototype Inheritance
 
-1. JavaScript checks the current object directly.  
-2. If it is missing, it travels up the hidden `__proto__` link to check the parent prototype.  
-3. It repeats this search up the chain until it finds the property or hits `Object.prototype.__proto__`, which is `null`. If it hits `null` without finding it, it returns `undefined`.
-
-#### 🛠️ Prototype Inheritance (The Classic Way)
-
-Before modern classes (`class`) were added to the language, senior developers handled inheritance manually using functions and prototype linkages:
+Before `class`, inheritance was commonly handled with constructor functions and prototype links.
 
 ```js
-// 1. Base Parent Constructor function Animal(name) {
+function Animal(name) {
   this.name = name;
 }
-Animal.prototype.eat = function() {
+
+Animal.prototype.eat = function () {
   return `${this.name} is eating.`;
 };
-// 2. Child Constructor function Dog(name, breed) {
-  Animal.call(this,
-  name);
-  // Step 1: Inherit base instance properties this.breed = breed;
+
+function Dog(name, breed) {
+  Animal.call(this, name);
+  this.breed = breed;
 }
-// Step 2: Link Dog's prototype to Animal's prototype chain Dog.prototype = Object.create(Animal.prototype);
-// Step 3: Repair the constructor link (otherwise it points to Animal) Dog.prototype.constructor = Dog;
-Dog.prototype.bark = function() {
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function () {
   return "Woof!";
 };
+
 const myPet = new Dog("Bruno", "Labrador");
+
 console.log(myPet.eat());
-// "Bruno is eating." (Inherited) console.log(myPet.bark());
-// "Woof!" (Local prototype method)
+// Bruno is eating.
+
+console.log(myPet.bark());
+// Woof!
 ```
 
-## 👥 6. Deep Copy vs. Shallow Copy
+## Shallow Copy vs Deep Copy
 
 ### Shallow Copy
 
-Copies only the top-level keys. If an object contains nested objects, the copy merely copies the **memory addresses**, meaning both the original and copy point to the same internal data.
-
-* **Built using:** `\{ ...obj \}` or `Object.assign(\{\}, obj)`.
+A shallow copy copies only top-level properties. Nested objects are still shared by reference.
 
 ```js
 const original = {
   name: "Alice",
   details: {
-    age: 25
-  }
+    age: 25,
+  },
 };
+
 const shallowCopy = {
-  ...original
+  ...original,
 };
+
 shallowCopy.details.age = 99;
-// Mutates the shared inner memory! console.log(original.details.age);
-// 99 (The original was accidentally broken!)
+
+console.log(original.details.age);
+// 99
 ```
+
+Common shallow-copy tools:
+
+- `{ ...obj }`
+- `Object.assign({}, obj)`
 
 ### Deep Copy
 
-Completely recreates all nested layers, splitting all memory references between the original and the new copy.
-
-* **Built using:** `structuredClone(obj)` (Modern Native Browser API).  
-* **Legacy Alternative:** `JSON.parse(JSON.stringify(obj))` (Be careful: this breaks if your object has functions, `undefined`, or `Map`/`Set` types).
+A deep copy recreates nested layers so the original and copy do not share nested references.
 
 ```js
 const originalData = {
   name: "Alice",
   details: {
-    age: 25
-  }
+    age: 25,
+  },
 };
+
 const deepCopy = structuredClone(originalData);
+
 deepCopy.details.age = 99;
+
 console.log(originalData.details.age);
-// 25 (The original remains safe!)
+// 25
 ```
 
-## ⚠️ 7. High-Frequency Interview Corner Cases & Puzzles
+Modern option: `structuredClone(obj)`.
 
-### Puzzle 1: The `Object.assign()` Target Mutation Trap
+Legacy option: `JSON.parse(JSON.stringify(obj))`, but it loses functions, `undefined`, `Map`, `Set`, and other non-JSON values.
 
-**Question:** What does this code print? Explain the architectural bug.
+## Interview Puzzles
+
+### Puzzle 1: `Object.assign()` Target Mutation
 
 ```js
-const defaults = { host: "localhost" }; const custom = { port: 8080 }; const config = Object.assign(defaults, custom); config.host = "production.com"; console.log(defaults.host);
+const defaults = { host: "localhost" };
+const custom = { port: 8080 };
+
+const config = Object.assign(defaults, custom);
+
+config.host = "production.com";
+
+console.log(defaults.host);
 ```
 
-**Answer:** It prints `"production.com"`.
+Output:
 
-* **The Trap:** `Object.assign(target, source)` **mutates the first argument object directly** while running. Because `defaults` was passed first, it was permanently modified.  
-* **The Fix:** Always pass an empty object `\{\}` as the very first argument to receive the values safely without altering your baseline templates.
+```text
+production.com
+```
+
+`Object.assign()` mutates its first argument. Use `Object.assign({}, defaults, custom)` to avoid mutating the original object.
+
+### Puzzle 2: Forgetting `new`
 
 ```js
-const config = Object.assign({}, defaults, custom); // Safe merge pattern
+function Member(id) {
+  this.id = id;
+}
+
+const currentMember = Member(55);
+
+console.log(currentMember);
+console.log(window.id);
 ```
 
-### Puzzle 2: Forgetting the `new` Keyword
+In a non-strict browser script, `currentMember` is `undefined`, and `window.id` becomes `55`. Without `new`, `this` defaults to the global object.
 
-**Question:** What happens if you run a constructor function but forget to include the `new` keyword?
-
-```js
-function Member(id) {   this.id = id; } const currentMember = Member(55); console.log(currentMember); console.log(window.id);
-```
-
-**Answer:** `currentMember` becomes `undefined`, and `window.id` becomes `55`.
-
-* **The Trap:** Without `new`, `Member` is called as a basic standalone function. Because of this, `this` defaults to the global `window` object. The function assigns `window.id = 55` and returns no value (`undefined`).
-
-### Puzzle 3: Filtering Object Fields with Matrices
-
-**Question:** Take an inventory object and filter out any items whose stock value is lower than 100\. You must return a clean, unmutated object layout.
+### Puzzle 3: Filtering Object Fields
 
 ```js
 const inventory = {
   apples: 50,
   bananas: 200,
-  oranges: 12
+  oranges: 12,
 };
-// The Senior Engineer approach: Chain entries, filter, and fromEntries together const filteredInventory = Object.fromEntries( Object.entries(inventory).filter(([key, value]) => value >= 100) );
+
+const filteredInventory = Object.fromEntries(
+  Object.entries(inventory).filter(([, value]) => value >= 100),
+);
+
 console.log(filteredInventory);
-// {
-  bananas: 200
-}
+// { bananas: 200 }
 ```
 
-* **Reasoning:** We break the object down into an array matrix using `Object.entries()`, apply standard array filtering on the values, and immediately pass that matrix back into `Object.fromEntries()` to rebuild the final object structure cleanly.
+The object is converted to entries, filtered as an array, and rebuilt with `Object.fromEntries()`.
 
-### Puzzle 4: The Implicit Binding Loss
-
-**Question:** What is the output of this code, and why does it fail?
+### Puzzle 4: Implicit Binding Loss
 
 ```js
-const car = {   brand: "Toyota",   getBrand() { return this.brand; } }; const retrieveBrand = car.getBrand; console.log(retrieveBrand());
+const car = {
+  brand: "Toyota",
+  getBrand() {
+    return this.brand;
+  },
+};
+
+const retrieveBrand = car.getBrand;
+
+console.log(retrieveBrand());
 ```
 
-**Answer:** It prints `undefined`.
+The method is executed as a plain function, so it loses the `car` receiver. In strict mode this returns `undefined`; in sloppy mode it may read from the global object.
 
-* **Reasoning:** Although `retrieveBrand` references the `getBrand` method, it is ultimately executed on the final line as a plain, standalone function call (`retrieveBrand()`). Because there is no object dot `.` context attached to the execution line, it triggers **Default Binding**, causing `this` to point to the global object instead of `car`.
-
-### Puzzle 5: Deep Freezing Nested Objects
-
-**Question:** If you apply `Object.freeze()` to an object containing nested structures, can you still modify the nested properties?
+### Puzzle 5: Shallow `Object.freeze()`
 
 ```js
 const company = {
   name: "TechCorp",
   location: {
-    city: "NY"
-  }
+    city: "NY",
+  },
 };
+
 Object.freeze(company);
+
 company.name = "NewCorp";
 company.location.city = "LA";
+
 console.log(company.name);
 console.log(company.location.city);
 ```
 
-**Answer:** Logs `"TechCorp"` and `"LA"`.
+Output:
 
-* **Reasoning:** `Object.freeze()` and `Object.seal()` are **shallow actions**. They lock only the top-level primitive values and reference pointers of an object. The internal properties of nested objects remain fully mutable unless you recursively travel through them and freeze every sub-layer individually.
+```text
+TechCorp
+LA
+```
+
+`Object.freeze()` is shallow. It freezes top-level properties, but nested objects remain mutable unless recursively frozen.
