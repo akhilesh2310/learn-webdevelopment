@@ -7,7 +7,7 @@ sidebar_position: 4
 
 Related canonical page: [Security Headers](security-headers.md).
 
-## iFrame Protection
+**iFrame Protection**
 
 ## 1. What is iFrame Protection?
 
@@ -71,11 +71,11 @@ React apps are still normal web apps under the hood. If a React app (`https://my
 
 ---
 
-## 6. 🛡️ How to Prevent/Fix
+## 6. How to Prevent/Fix
 
 ### 6.1 In a Generic Web Application
 
-✅ Set HTTP headers:
+✅ **Set HTTP headers:**
 
 * **`X-Frame-Options: DENY`**
    Completely disallow framing by any site.
@@ -83,9 +83,8 @@ React apps are still normal web apps under the hood. If a React app (`https://my
 * **`X-Frame-Options: SAMEORIGIN`**
    Allow framing only by your own site.
 
-✅ Use Content Security Policy (CSP):
+✅ **Use Content Security Policy (CSP):**
 
-http
 ```text
 Content-Security-Policy: frame-ancestors 'self';
 ```
@@ -94,7 +93,7 @@ Content-Security-Policy: frame-ancestors 'self';
 
 * You can also allow trusted partners specifically: `'self' https://trustedpartner.com`
 
-✅ Validate and sandbox third-party iframes:
+✅ **Validate and sandbox third-party iframes:**
 
 ```html
 <iframe src="https://example.com" sandbox="allow-scripts allow-same-origin"></iframe>
@@ -102,7 +101,7 @@ Content-Security-Policy: frame-ancestors 'self';
 
 * Use the `sandbox` attribute to limit iframe permissions.
 
-✅ Monitor and Audit:
+✅ **Monitor and Audit:**
 
 * Regularly check if your pages are being embedded externally.
 
@@ -110,19 +109,19 @@ Content-Security-Policy: frame-ancestors 'self';
 
 ### 6.2 In ReactJS
 
-✅ Configure HTTP headers at server level:
+✅ **Configure HTTP headers at server level:**
 
 * If you're using **Node.js/Express** backend for React deployment:
 
 ```js
 app.use((req, res, next) => {
-res.setHeader("X-Frame-Options", "DENY");
-res.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
-next();
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
+  next();
 });
 ```
 
-✅ If hosting on Vercel/Netlify:
+✅ **If hosting on Vercel/Netlify:**
 
 * Configure `headers` in `vercel.json` or `_headers` file:
 
@@ -132,19 +131,19 @@ X-Frame-Options: DENY
 Content-Security-Policy: frame-ancestors 'self'
 ```
 
-✅ For iframe embeds you create:
+✅ **For iframe embeds you create:**
 
 * Always use **sandboxed iframes**:
 
 ```jsx
 <iframe
-src="https://trustedcontent.com"
-sandbox="allow-scripts allow-same-origin"
-title="Trusted Content"
+  src="https://trustedcontent.com"
+  sandbox="allow-scripts allow-same-origin"
+  title="Trusted Content"
 />
 ```
 
-✅ Use CSP meta tag in HTML when possible:
+✅ **Use CSP meta tag in HTML when possible:**
 
 ```html
 <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self';" />
@@ -154,7 +153,7 @@ title="Trusted Content"
 
 ---
 
-## 7. ✅ Summary
+## 7. Summary
 
 | Aspect | Solution |
 | ----- | ----- |
@@ -180,17 +179,17 @@ title="Trusted Content"
 
 ## ⚡ Quick Code Snippets for Different Setups
 
-## Node.js/Express Server Example
+### Node.js/Express Server Example
 
 ```js
 app.use((req, res, next) => {
-res.setHeader("X-Frame-Options", "DENY"); // Highest protection
-res.setHeader("Content-Security-Policy", "frame-ancestors 'self';"); // Modern protection
-next();
+  res.setHeader("X-Frame-Options", "DENY"); // Highest protection
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self';"); // Modern protection
+  next();
 });
 ```
 
-## Netlify / Vercel `_headers` File Example
+### Netlify / Vercel `_headers` File Example
 
 ```bash
 /*
@@ -198,13 +197,13 @@ X-Frame-Options: SAMEORIGIN
 Content-Security-Policy: frame-ancestors 'self' https://partner.example.com;
 ```
 
-## React `<iframe>` Safe Embed Example
+### React `<iframe>` Safe Embed Example
 
 ```jsx
 <iframe
-src="https://trustedcontent.com"
-sandbox="allow-scripts allow-same-origin"
-title="Safe Embed"
+  src="https://trustedcontent.com"
+  sandbox="allow-scripts allow-same-origin"
+  title="Safe Embed"
 />
 ```
 

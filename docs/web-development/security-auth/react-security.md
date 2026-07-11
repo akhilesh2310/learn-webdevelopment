@@ -14,7 +14,7 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ## XSS
 
-* ## **dangerouslySetInnerHTML**
+* **dangerouslySetInnerHTML**
 
 ## Authentication & Authorization
 

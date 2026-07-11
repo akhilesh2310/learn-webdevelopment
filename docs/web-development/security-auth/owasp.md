@@ -13,7 +13,7 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 ---
 
-### 🔟 Key OWASP Top 10 Items (Frontend-Relevant)
+## 🔟 Key OWASP Top 10 Items (Frontend-Relevant)
 
 1. **A01: Broken Access Control**
 
@@ -87,7 +87,7 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 ---
 
-### Bonus: Additional Concerns Not in OWASP but Frontend-Relevant
+## Bonus: Additional Concerns Not in OWASP but Frontend-Relevant
 
 * **Content Security Policy (CSP)**: Helps mitigate XSS by whitelisting allowed sources.
 
@@ -95,9 +95,9 @@ The **OWASP Top 10** primarily targets web application security concerns, and wh
 
 * **DOM Clobbering / Prototype Pollution**: Be cautious when parsing or applying user-controlled HTML.
 
-### 🔐 1. Cross-Site Scripting (XSS) – \[A03: Injection\]
+## 🔐 1. Cross-Site Scripting (XSS) – \[A03: Injection\]
 
-#### 🔸 React
+### 🔸 React
 
 React automatically escapes content, but **`dangerouslySetInnerHTML`** is unsafe.
 
@@ -119,7 +119,7 @@ import DOMPurify from 'dompurify';
 <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(userInput) }} />
 ```
 
-#### 🔸 Angular
+### 🔸 Angular
 
 Angular templates are also auto-sanitized, but **bypassing security** is dangerous.
 
@@ -137,31 +137,31 @@ this.sanitizer.bypassSecurityTrustHtml(userInput);
 
 ---
 
-### 🔐 2. Broken Access Control – \[A01\]
+## 🔐 2. Broken Access Control – \[A01\]
 
 **Never hide UI elements assuming that means security.**
 
-`// ❌ Only hiding is not enough`
+```jsx
+// ❌ Only hiding is not enough
+{user.isAdmin && <button>Delete User</button>}
 
-`\{user.isAdmin && <button>Delete User</button>\}`
-
-`// ✅ Always enforce on the backend too`
-
-`// Block unauthorized actions even if the button is clicked via dev tools`
+// ✅ Always enforce on the backend too.
+// Block unauthorized actions even if the button is clicked via dev tools.
+```
 
 🔐 **Frontend is for UX, not security enforcement.**
 
 ---
 
-### 🔐 3. Token Storage & Auth – \[A07: Identification & Authentication Failures\]
+## 🔐 3. Token Storage & Auth – \[A07: Identification & Authentication Failures\]
 
-#### ❌ Risky Token Storage:
+### ❌ Risky Token Storage:
 
 ```ts
 localStorage.setItem("accessToken", token); // vulnerable to XSS
 ```
 
-#### ✅ Recommended:
+### ✅ Recommended:
 
 * Use **HttpOnly cookies** for storing tokens — frontend JS can’t access them.
 
@@ -169,51 +169,53 @@ localStorage.setItem("accessToken", token); // vulnerable to XSS
 
 ---
 
-### 🔐 4. Loading External Scripts – \[A08: Integrity Failures\]
+## 🔐 4. Loading External Scripts – \[A08: Integrity Failures\]
 
 Use **Subresource Integrity (SRI)** when loading from CDNs.
 
-`<script src="https://cdn.example.com/lib.js"`
-
-        `integrity="sha384-xyz123"`
-
-        `crossorigin="anonymous"></script>`
+```html
+<script
+  src="https://cdn.example.com/lib.js"
+  integrity="sha384-xyz123"
+  crossorigin="anonymous"
+></script>
+```
 
 ✅ Also pin dependency versions in `package.json` and use `npm audit` or `yarn audit`.
 
 ---
 
-### 🔐 5. Error Handling – \[A09: Logging and Monitoring Failures\]
+## 🔐 5. Error Handling – \[A09: Logging and Monitoring Failures\]
 
-#### ✅ In React:
+### ✅ In React:
 
-`import * as Sentry from "@sentry/react";`
+```jsx
+import * as Sentry from "@sentry/react";
 
-`<Sentry.ErrorBoundary fallback=\{<Fallback />\}>`
-
-  `<App />`
-
-`</Sentry.ErrorBoundary>`
+<Sentry.ErrorBoundary fallback={<Fallback />}>
+  <App />
+</Sentry.ErrorBoundary>
+```
 
 🔍 Log unhandled promise rejections or suspicious behavior.
 
 ---
 
-### 🔐 6. Content Security Policy (CSP) (XSS prevention layer)
+## 🔐 6. Content Security Policy (CSP) (XSS prevention layer)
 
 Set in server response headers:
 
-`Content-Security-Policy: default-src 'self'; script-src 'self'`
+```text
+Content-Security-Policy: default-src 'self'; script-src 'self'
+```
 
 ✅ Disallow inline scripts unless strictly required.
 
 ---
 
-### 🔐 7. Prevent Clickjacking
+## 🔐 7. Prevent Clickjacking
 
 Add header via backend:
-
-mathematica
 
 ```text
 X-Frame-Options: DENY
@@ -221,7 +223,7 @@ X-Frame-Options: DENY
 
 ---
 
-### ✅ Secure Coding Checklist (Frontend)
+## ✅ Secure Coding Checklist (Frontend)
 
 | 🔧 Area | ✅ Safe Practice |
 | ----- | ----- |
@@ -234,7 +236,7 @@ X-Frame-Options: DENY
 | HTML Templates | Auto-sanitized by framework – do not bypass |
 | Network | Enforce HTTPS, CSP headers, and X-Frame-Options |
 
-### 🔍 How Clickjacking Works:
+## 🔍 How Clickjacking Works:
 
 A common clickjacking attack involves:
 
@@ -246,7 +248,7 @@ A common clickjacking attack involves:
 
 ---
 
-### 💡 Example Scenario:
+## 💡 Example Scenario:
 
 Suppose you're logged into your bank account in another tab.
 
@@ -258,7 +260,7 @@ Suppose you're logged into your bank account in another tab.
 
 ---
 
-### 🔒 How to Prevent Clickjacking:
+## 🔒 How to Prevent Clickjacking:
 
 Web developers can prevent clickjacking using:
 
@@ -272,25 +274,19 @@ Web developers can prevent clickjacking using:
 
 Example:
 
- http
 ```text
 Content-Security-Policy: frame-ancestors 'self'
 ```
 
-*
 * **JavaScript frame busting (less secure)**
 
 Detect if your page is inside an iframe and break out:
 
 ```js
 if (top !== self) {
-
-top.location = self.location;
-
+  top.location = self.location;
 }
 ```
-
-*
 
 ---
 
@@ -362,9 +358,7 @@ When any user views the comment, the script runs.
 
 Suppose your login form runs:
 
-sql
-
-```text
+```sql
 SELECT * FROM users WHERE username = '$username' AND password = '$password'
 ```
 
@@ -376,9 +370,7 @@ An attacker enters:
 
 Final query:
 
-sql
-
-```text
+```sql
 SELECT * FROM users WHERE username = '' OR 1=1 --' AND password = 'anything'
 ```
 
@@ -400,7 +392,6 @@ ps.setString(1, username);
 ps.setString(2, password);
 ```
 
-*
 * **Avoid string concatenation** in queries.
 
 * Use ORM frameworks (like Sequelize, Hibernate).

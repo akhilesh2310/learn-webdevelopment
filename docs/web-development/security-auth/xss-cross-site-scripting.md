@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # XSS (Cross-Site Scripting)
 
-## Cross-Site Scripting (XSS)
+**Cross-Site Scripting (XSS)**
 
 ---
 
@@ -71,7 +71,6 @@ Attackers craft malicious input containing executable scripts.
 
 ### Generic Web Application Example
 
-php
 ```text
 <div>Welcome, <?php echo $_GET['name']; ?>!</div>
 ```
@@ -96,23 +95,26 @@ return <div>{name}</div>;
 ```
 
 React renders it safely as text:
- `<div>&lt;script&gt;alert('XSS')&lt;/script&gt;`
+
+```html
+<div>&lt;script&gt;alert('XSS')&lt;/script&gt;
+```
 
 ---
 
-⚠️ But **dangerous use** of `dangerouslySetInnerHTML` can cause XSS:
+:::warning
+But **dangerous use** of `dangerouslySetInnerHTML` can cause XSS:
 
 ```jsx
 return <div dangerouslySetInnerHTML={{ __html: name }} />;
 ```
 
 If unsanitized, this will directly inject and execute the script.
+:::
 
 ---
 
-## 6. 🛡️ How to Prevent/Fix XSS
-
----
+## 6. How to Prevent/Fix XSS
 
 ### 6.1. In a Generic Web Application
 
@@ -127,12 +129,10 @@ If unsanitized, this will directly inject and execute the script.
 
  Example:
 
- pgsql
 ```text
 Content-Security-Policy: default-src 'self';
 ```
 
-*
 * **Set HTTP-only Cookies**:
    Cookies storing session data should be HTTP-only to prevent JavaScript access.
 
@@ -163,7 +163,6 @@ const safeHTML = DOMPurify.sanitize(userInput);
 return <div dangerouslySetInnerHTML={{ __html: safeHTML }} />;
 ```
 
-*
 * **Validate/Sanitize Backend Data**:
    React frontend should not assume backend data is safe.
 
@@ -172,7 +171,7 @@ return <div dangerouslySetInnerHTML={{ __html: safeHTML }} />;
 
 ---
 
-## 7. ✅ Summary
+## 7. Summary
 
 | Aspect | Generic Web App | ReactJS |
 | ----- | ----- | ----- |
@@ -184,7 +183,7 @@ return <div dangerouslySetInnerHTML={{ __html: safeHTML }} />;
 
 ---
 
-## 📚 Can XSS Attack LocalStorage?
+## Can XSS Attack LocalStorage?
 
 ---
 

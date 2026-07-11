@@ -183,32 +183,43 @@ I am preparing for interview with 13 years of experience as UI architect and I w
 **"Discover the nuances of “**Security Headers: Implement security headers effectively to fortify your frontend against various threats, leveraging key configurations for enhanced protection.**”, understanding its what, when, how, why, examples, and solutions to fix or prevent vulnerabilities, explained in the context of both a generic web application and ReactJS."**
 
 **Answer in the following template format:**
-`# [Topic Name]`
 
-`## 1. What is [Topic Name]?`
-`(Explain what it is.)`
+```md
+# [Topic Name]
 
-`## 2. When does it occur?`
-`(Explain when the vulnerability/problem occurs and when we need to fix it.)`
+## 1. What is [Topic Name]?
 
-`## 3. How does it happen?`
-`(Describe the mechanisms or scenarios how this happens and how to fix it.)`
+(Explain what it is.)
 
-`## 4. Why is it dangerous?`
-`(Explain the risks and consequences and why we need to fix it.)`
+## 2. When does it occur?
 
-`## 5. Example`
-`(Provide examples in both generic web app and ReactJS.)`
+(Explain when the vulnerability/problem occurs and when we need to fix it.)
 
-`## 6. 🛡️ How to Prevent/Fix`
+## 3. How does it happen?
 
-`### 6.1 In a Generic Web Application`
-`- (List steps.)`
+(Describe the mechanisms or scenarios how this happens and how to fix it.)
 
-`### 6.2 In ReactJS`
-`- (List steps.)`
+## 4. Why is it dangerous?
 
-`## 7. ✅ Summary`
-`(Quick table or bullet points.)`
+(Explain the risks and consequences and why we need to fix it.)
+
+## 5. Example
+
+(Provide examples in both generic web app and ReactJS.)
+
+## 6. How to Prevent/Fix
+
+### 6.1 In a Generic Web Application
+
+- (List steps.)
+
+### 6.2 In ReactJS
+
+- (List steps.)
+
+## 7. Summary
+
+(Quick table or bullet points.)
+```
 
 ---
