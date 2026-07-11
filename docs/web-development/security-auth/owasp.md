@@ -7,7 +7,7 @@ sidebar_position: 3
 
 Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-csrf-token-storage.md), [Security Headers](security-headers.md), [iFrame Protection](iframe-clickjacking-protection.md).
 
-The Open Worldwide Application Security Project is an online community that produces freely available articles, methodologies, documentation, tools, and technologies in the fields of IoT, system software and web application security. 
+The Open Worldwide Application Security Project is an online community that produces freely available articles, methodologies, documentation, tools, and technologies in the fields of IoT, system software and web application security.
 
 The **OWASP Top 10** primarily targets web application security concerns, and while many are server-side, several are highly relevant to **frontend engineers**—especially those building in **React, Angular, Vue, or plain JS/TS**. Here's a list of the **most frontend-relevant OWASP Top 10 items (2021 version)** with explanations:
 
@@ -272,12 +272,12 @@ Web developers can prevent clickjacking using:
 
 Example:
 
- http  
+ http
 ```text
 Content-Security-Policy: frame-ancestors 'self'
 ```
 
-*   
+*
 * **JavaScript frame busting (less secure)**
 
 Detect if your page is inside an iframe and break out:
@@ -290,7 +290,7 @@ top.location = self.location;
 }
 ```
 
-* 
+*
 
 ---
 
@@ -400,7 +400,7 @@ ps.setString(1, username);
 ps.setString(2, password);
 ```
 
-*   
+*
 * **Avoid string concatenation** in queries.
 
 * Use ORM frameworks (like Sequelize, Hibernate).

@@ -31,7 +31,7 @@ Use [Component Communication Patterns](component-communication-patterns.md) for 
 
 ## Common Interview Topics
 
-* HOC vs Custom Hooks  
+* HOC vs Custom Hooks
 * Render Props
 
 ## Advanced React Patterns
@@ -50,16 +50,16 @@ const EnhancedComponent \= withFeature(BaseComponent);
 
 ## Basic example
 
-function withLogger(WrappedComponent) \{  
-  return function EnhancedComponent(props) \{  
+function withLogger(WrappedComponent) \{
+  return function EnhancedComponent(props) \{
     console.log("Props:", props);
 
-    return \<WrappedComponent \{...props\} /\>;  
-  \};  
+    return \<WrappedComponent \{...props\} /\>;
+  \};
 \}
 
-function UserCard(\{ name \}) \{  
-  return \<h2\>\{name\}\</h2\>;  
+function UserCard(\{ name \}) \{
+  return \<h2\>\{name\}\</h2\>;
 \}
 
 const UserCardWithLogger \= withLogger(UserCard);
@@ -72,44 +72,44 @@ Usage:
 
 HOC wraps a component and adds extra behavior.
 
-Original Component  
-      ↓  
-HOC adds behavior  
-      ↓  
+Original Component
+      ↓
+HOC adds behavior
+      ↓
 Enhanced Component
 
 ## Practical use cases
 
-* Authentication wrapper.  
-* Permission-based rendering.  
-* Logging.  
-* Analytics.  
-* Feature flags.  
-* Error tracking.  
-* Injecting common props.  
+* Authentication wrapper.
+* Permission-based rendering.
+* Logging.
+* Analytics.
+* Feature flags.
+* Error tracking.
+* Injecting common props.
 * Legacy code reuse.
 
 ## Example: auth HOC
 
-function withAuth(WrappedComponent) \{  
-  return function AuthenticatedComponent(props) \{  
+function withAuth(WrappedComponent) \{
+  return function AuthenticatedComponent(props) \{
     const user \= useAuthUser();
 
-    if (\!user) \{  
-      return \<p\>Please login\</p\>;  
+    if (\!user) \{
+      return \<p\>Please login\</p\>;
     \}
 
-    return \<WrappedComponent \{...props\} user=\{user\} /\>;  
-  \};  
+    return \<WrappedComponent \{...props\} user=\{user\} /\>;
+  \};
 \}
 
 ## Common problems with HOC
 
-* Wrapper hell.  
-* Prop name collisions.  
-* Harder debugging.  
-* Component tree becomes deeper.  
-* Static methods need hoisting.  
+* Wrapper hell.
+* Prop name collisions.
+* Harder debugging.
+* Component tree becomes deeper.
+* Static methods need hoisting.
 * TypeScript typing can become complex.
 
 ## Interview-ready answer
@@ -128,80 +128,80 @@ Render Props is a pattern where a component receives a function prop and uses th
 
 ## Basic example
 
-function MouseTracker(\{ render \}) \{  
-  const \[position, setPosition\] \= React.useState(\{  
-    x: 0,  
-    y: 0,  
+function MouseTracker(\{ render \}) \{
+  const \[position, setPosition\] \= React.useState(\{
+    x: 0,
+    y: 0,
   \});
 
-  function handleMouseMove(event) \{  
-    setPosition(\{  
-      x: event.clientX,  
-      y: event.clientY,  
-    \});  
+  function handleMouseMove(event) \{
+    setPosition(\{
+      x: event.clientX,
+      y: event.clientY,
+    \});
   \}
 
-  return (  
-    \<div onMouseMove=\{handleMouseMove\}\>  
-      \{render(position)\}  
-    \</div\>  
-  );  
+  return (
+    \<div onMouseMove=\{handleMouseMove\}\>
+      \{render(position)\}
+    \</div\>
+  );
 \}
 
 Usage:
 
-\<MouseTracker  
-  render=\{(position) \=\> (  
-    \<p\>  
-      X: \{position.x\}, Y: \{position.y\}  
-    \</p\>  
-  )\}  
+\<MouseTracker
+  render=\{(position) \=\> (
+    \<p\>
+      X: \{position.x\}, Y: \{position.y\}
+    \</p\>
+  )\}
 /\>
 
 ## Children as function
 
 Render props are often written using `children`.
 
-function Toggle(\{ children \}) \{  
+function Toggle(\{ children \}) \{
   const \[isOn, setIsOn\] \= React.useState(false);
 
-  return children(\{  
-    isOn,  
-    toggle: () \=\> setIsOn((prev) \=\> \!prev),  
-  \});  
+  return children(\{
+    isOn,
+    toggle: () \=\> setIsOn((prev) \=\> \!prev),
+  \});
 \}
 
 Usage:
 
-\<Toggle\>  
-  \{(\{ isOn, toggle \}) \=\> (  
-    \<button onClick=\{toggle\}\>  
-      \{isOn ? "ON" : "OFF"\}  
-    \</button\>  
-  )\}  
+\<Toggle\>
+  \{(\{ isOn, toggle \}) \=\> (
+    \<button onClick=\{toggle\}\>
+      \{isOn ? "ON" : "OFF"\}
+    \</button\>
+  )\}
 \</Toggle\>
 
 ## Key mental model
 
 The component owns behavior. The caller controls rendering.
 
-Component provides state/logic  
-      ↓  
+Component provides state/logic
+      ↓
 Render function decides UI
 
 ## Practical use cases
 
-* Reusable state logic.  
-* Flexible UI rendering.  
-* Library components.  
-* Data fetching wrappers.  
-* Toggle/dropdown/tooltip behavior.  
+* Reusable state logic.
+* Flexible UI rendering.
+* Library components.
+* Data fetching wrappers.
+* Toggle/dropdown/tooltip behavior.
 * Older code before hooks.
 
 ## Common problems
 
-* Nested render props can become hard to read.  
-* Inline render functions can affect memoization.  
+* Nested render props can become hard to read.
+* Inline render functions can affect memoization.
 * Custom hooks are usually simpler now.
 
 ## Interview-ready answer
@@ -218,93 +218,93 @@ Compound components are multiple components that work together under one parent.
 
 Example API:
 
-\<Tabs defaultValue="profile"\>  
-  \<Tabs.List\>  
-    \<Tabs.Tab value="profile"\>Profile\</Tabs.Tab\>  
-    \<Tabs.Tab value="settings"\>Settings\</Tabs.Tab\>  
+\<Tabs defaultValue="profile"\>
+  \<Tabs.List\>
+    \<Tabs.Tab value="profile"\>Profile\</Tabs.Tab\>
+    \<Tabs.Tab value="settings"\>Settings\</Tabs.Tab\>
   \</Tabs.List\>
 
-  \<Tabs.Panel value="profile"\>Profile content\</Tabs.Panel\>  
-  \<Tabs.Panel value="settings"\>Settings content\</Tabs.Panel\>  
+  \<Tabs.Panel value="profile"\>Profile content\</Tabs.Panel\>
+  \<Tabs.Panel value="settings"\>Settings content\</Tabs.Panel\>
 \</Tabs\>
 
 ## Key mental model
 
 Parent manages shared state. Children communicate through context.
 
-Tabs parent owns activeTab  
-      ↓  
-Tabs.Tab updates activeTab  
-      ↓  
+Tabs parent owns activeTab
+      ↓
+Tabs.Tab updates activeTab
+      ↓
 Tabs.Panel reads activeTab
 
 ## Basic example
 
 const TabsContext \= React.createContext(null);
 
-function Tabs(\{ defaultValue, children \}) \{  
+function Tabs(\{ defaultValue, children \}) \{
   const \[activeTab, setActiveTab\] \= React.useState(defaultValue);
 
-  const value \= React.useMemo(() \=\> \{  
-    return \{  
-      activeTab,  
-      setActiveTab,  
-    \};  
+  const value \= React.useMemo(() \=\> \{
+    return \{
+      activeTab,
+      setActiveTab,
+    \};
   \}, \[activeTab\]);
 
-  return (  
-    \<TabsContext.Provider value=\{value\}\>  
-      \{children\}  
-    \</TabsContext.Provider\>  
-  );  
+  return (
+    \<TabsContext.Provider value=\{value\}\>
+      \{children\}
+    \</TabsContext.Provider\>
+  );
 \}
 
-function Tab(\{ value, children \}) \{  
-  const context \= React.useContext(TabsContext);  
+function Tab(\{ value, children \}) \{
+  const context \= React.useContext(TabsContext);
   const isActive \= context.activeTab \=== value;
 
-  return (  
-    \<button  
-      type="button"  
-      aria-selected=\{isActive\}  
-      onClick=\{() \=\> context.setActiveTab(value)\}  
-    \>  
-      \{children\}  
-    \</button\>  
-  );  
+  return (
+    \<button
+      type="button"
+      aria-selected=\{isActive\}
+      onClick=\{() \=\> context.setActiveTab(value)\}
+    \>
+      \{children\}
+    \</button\>
+  );
 \}
 
-function Panel(\{ value, children \}) \{  
+function Panel(\{ value, children \}) \{
   const context \= React.useContext(TabsContext);
 
-  if (context.activeTab \!== value) \{  
-    return null;  
+  if (context.activeTab \!== value) \{
+    return null;
   \}
 
-  return \<div\>\{children\}\</div\>;  
+  return \<div\>\{children\}\</div\>;
 \}
 
-Tabs.Tab \= Tab;  
+Tabs.Tab \= Tab;
 Tabs.Panel \= Panel;
 
 ## Good use cases
 
-* Tabs.  
-* Accordion.  
-* Menu.  
-* Dropdown.  
-* Modal.  
-* Stepper.  
-* Select.  
-* Radio group.  
+* Tabs.
+* Accordion.
+* Menu.
+* Dropdown.
+* Modal.
+* Stepper.
+* Select.
+* Radio group.
 * Carousel.
 
 ## Why useful
 
-* Clean API.  
-* Flexible composition.  
-* Less prop drilling.  
-* Good for design systems.  
+* Clean API.
+* Flexible composition.
+* Less prop drilling.
+* Good for design systems.
 * Parent-child relationship is clear.
 
 ## Interview-ready answer
@@ -321,67 +321,67 @@ A custom hook is a reusable function that contains hook-based logic.
 
 Its name must start with `use`.
 
-function useToggle(initialValue \= false) \{  
+function useToggle(initialValue \= false) \{
   const \[value, setValue\] \= React.useState(initialValue);
 
-  const toggle \= React.useCallback(() \=\> \{  
-    setValue((prev) \=\> \!prev);  
+  const toggle \= React.useCallback(() \=\> \{
+    setValue((prev) \=\> \!prev);
   \}, \[\]);
 
-  return \{  
-    value,  
-    setValue,  
-    toggle,  
-  \};  
+  return \{
+    value,
+    setValue,
+    toggle,
+  \};
 \}
 
 Usage:
 
-function ToggleButton() \{  
+function ToggleButton() \{
   const \{ value, toggle \} \= useToggle();
 
-  return (  
-    \<button onClick=\{toggle\}\>  
-      \{value ? "ON" : "OFF"\}  
-    \</button\>  
-  );  
+  return (
+    \<button onClick=\{toggle\}\>
+      \{value ? "ON" : "OFF"\}
+    \</button\>
+  );
 \}
 
 ## Key mental model
 
 Custom hooks reuse logic, not UI.
 
-Custom Hook \= reusable stateful behavior  
+Custom Hook \= reusable stateful behavior
 Component \= UI
 
 ## Common custom hook examples
 
-* `useFetch`  
-* `useDebounce`  
-* `useLocalStorage`  
-* `useWindowSize`  
-* `usePrevious`  
-* `useAuth`  
-* `usePermissions`  
-* `useOutsideClick`  
+* `useFetch`
+* `useDebounce`
+* `useLocalStorage`
+* `useWindowSize`
+* `usePrevious`
+* `useAuth`
+* `usePermissions`
+* `useOutsideClick`
 * `useInfiniteScroll`
 
 ## Example: `useDebounce`
 
-function useDebouncedValue(value, delay) \{  
+function useDebouncedValue(value, delay) \{
   const \[debouncedValue, setDebouncedValue\] \= React.useState(value);
 
-  React.useEffect(() \=\> \{  
-    const timerId \= setTimeout(() \=\> \{  
-      setDebouncedValue(value);  
+  React.useEffect(() \=\> \{
+    const timerId \= setTimeout(() \=\> \{
+      setDebouncedValue(value);
     \}, delay);
 
-    return () \=\> \{  
-      clearTimeout(timerId);  
-    \};  
+    return () \=\> \{
+      clearTimeout(timerId);
+    \};
   \}, \[value, delay\]);
 
-  return debouncedValue;  
+  return debouncedValue;
 \}
 
 Usage:
@@ -390,11 +390,11 @@ const debouncedSearch \= useDebouncedValue(searchText, 500);
 
 ## Why useful
 
-* Reuses stateful logic.  
-* Keeps components clean.  
-* Easier testing.  
-* Avoids wrapper hell.  
-* Works well with TypeScript.  
+* Reuses stateful logic.
+* Keeps components clean.
+* Easier testing.
+* Avoids wrapper hell.
+* Works well with TypeScript.
 * Better than HOC/render props for most logic reuse.
 
 ## Interview-ready answer
@@ -409,81 +409,81 @@ Custom hooks are reusable functions that extract hook-based logic from component
 
 The Provider Pattern makes shared data available to many nested components using Context.
 
-\<AuthProvider\>  
-  \<App /\>  
+\<AuthProvider\>
+  \<App /\>
 \</AuthProvider\>
 
 ## Basic example
 
 const AuthContext \= React.createContext(null);
 
-function AuthProvider(\{ children \}) \{  
+function AuthProvider(\{ children \}) \{
   const \[user, setUser\] \= React.useState(null);
 
-  const login \= React.useCallback((userData) \=\> \{  
-    setUser(userData);  
+  const login \= React.useCallback((userData) \=\> \{
+    setUser(userData);
   \}, \[\]);
 
-  const logout \= React.useCallback(() \=\> \{  
-    setUser(null);  
+  const logout \= React.useCallback(() \=\> \{
+    setUser(null);
   \}, \[\]);
 
-  const value \= React.useMemo(() \=\> \{  
-    return \{  
-      user,  
-      login,  
-      logout,  
-    \};  
+  const value \= React.useMemo(() \=\> \{
+    return \{
+      user,
+      login,
+      logout,
+    \};
   \}, \[user, login, logout\]);
 
-  return (  
-    \<AuthContext.Provider value=\{value\}\>  
-      \{children\}  
-    \</AuthContext.Provider\>  
-  );  
+  return (
+    \<AuthContext.Provider value=\{value\}\>
+      \{children\}
+    \</AuthContext.Provider\>
+  );
 \}
 
-function useAuth() \{  
+function useAuth() \{
   const context \= React.useContext(AuthContext);
 
-  if (\!context) \{  
-    throw new Error("useAuth must be used inside AuthProvider");  
+  if (\!context) \{
+    throw new Error("useAuth must be used inside AuthProvider");
   \}
 
-  return context;  
+  return context;
 \}
 
 Usage:
 
-function Header() \{  
+function Header() \{
   const \{ user, logout \} \= useAuth();
 
-  return (  
-    \<header\>  
-      \<span\>\{user?.name\}\</span\>  
-      \<button onClick=\{logout\}\>Logout\</button\>  
-    \</header\>  
-  );  
+  return (
+    \<header\>
+      \<span\>\{user?.name\}\</span\>
+      \<button onClick=\{logout\}\>Logout\</button\>
+    \</header\>
+  );
 \}
 
 ## Key mental model
 
 Provider owns shared state. Custom hook exposes clean access.
 
-Provider stores shared value  
-      ↓  
-Context makes it available  
-      ↓  
+Provider stores shared value
+      ↓
+Context makes it available
+      ↓
 Custom hook reads it safely
 
 ## Good use cases
 
-* Auth.  
-* Theme.  
-* Locale.  
-* Permissions.  
-* Feature flags.  
-* Design system configuration.  
+* Auth.
+* Theme.
+* Locale.
+* Permissions.
+* Feature flags.
+* Design system configuration.
 * App shell settings.
 
 ## Common mistake
@@ -502,95 +502,95 @@ The Provider Pattern uses Context to provide shared data or behavior to nested c
 
 The Controlled Component Pattern means the parent controls the state, and the child receives value and change handler as props.
 
-function Parent() \{  
+function Parent() \{
   const \[value, setValue\] \= React.useState("");
 
-  return (  
-    \<TextInput  
-      value=\{value\}  
-      onChange=\{setValue\}  
-    /\>  
-  );  
+  return (
+    \<TextInput
+      value=\{value\}
+      onChange=\{setValue\}
+    /\>
+  );
 \}
 
-function TextInput(\{ value, onChange \}) \{  
-  return (  
-    \<input  
-      value=\{value\}  
-      onChange=\{(event) \=\> onChange(event.target.value)\}  
-    /\>  
-  );  
+function TextInput(\{ value, onChange \}) \{
+  return (
+    \<input
+      value=\{value\}
+      onChange=\{(event) \=\> onChange(event.target.value)\}
+    /\>
+  );
 \}
 
 ## Key mental model
 
 Parent owns state. Child displays value and reports changes.
 
-Parent state  
-  ↓  
-value prop  
-  ↓  
-Child UI  
-  ↓  
-onChange callback  
-  ↓  
+Parent state
+  ↓
+value prop
+  ↓
+Child UI
+  ↓
+onChange callback
+  ↓
 Parent updates state
 
 ## Useful for reusable components
 
-function Modal(\{ open, onOpenChange, children \}) \{  
+function Modal(\{ open, onOpenChange, children \}) \{
   if (\!open) return null;
 
-  return (  
-    \<div role="dialog"\>  
-      \{children\}  
-      \<button onClick=\{() \=\> onOpenChange(false)\}\>  
-        Close  
-      \</button\>  
-    \</div\>  
-  );  
+  return (
+    \<div role="dialog"\>
+      \{children\}
+      \<button onClick=\{() \=\> onOpenChange(false)\}\>
+        Close
+      \</button\>
+    \</div\>
+  );
 \}
 
 Usage:
 
-function Page() \{  
+function Page() \{
   const \[open, setOpen\] \= React.useState(false);
 
-  return (  
-    \<Modal open=\{open\} onOpenChange=\{setOpen\}\>  
-      Content  
-    \</Modal\>  
-  );  
+  return (
+    \<Modal open=\{open\} onOpenChange=\{setOpen\}\>
+      Content
+    \</Modal\>
+  );
 \}
 
 ## Controlled \+ uncontrolled support
 
 Reusable libraries often support both.
 
-function Toggle(\{  
-  checked,  
-  defaultChecked \= false,  
-  onCheckedChange,  
-\}) \{  
-  const \[internalChecked, setInternalChecked\] \=  
+function Toggle(\{
+  checked,
+  defaultChecked \= false,
+  onCheckedChange,
+\}) \{
+  const \[internalChecked, setInternalChecked\] \=
     React.useState(defaultChecked);
 
-  const isControlled \= checked \!== undefined;  
+  const isControlled \= checked \!== undefined;
   const actualChecked \= isControlled ? checked : internalChecked;
 
-  function updateChecked(nextValue) \{  
-    if (\!isControlled) \{  
-      setInternalChecked(nextValue);  
+  function updateChecked(nextValue) \{
+    if (\!isControlled) \{
+      setInternalChecked(nextValue);
     \}
 
-    onCheckedChange?.(nextValue);  
+    onCheckedChange?.(nextValue);
   \}
 
-  return (  
-    \<button onClick=\{() \=\> updateChecked(\!actualChecked)\}\>  
-      \{actualChecked ? "ON" : "OFF"\}  
-    \</button\>  
-  );  
+  return (
+    \<button onClick=\{() \=\> updateChecked(\!actualChecked)\}\>
+      \{actualChecked ? "ON" : "OFF"\}
+    \</button\>
+  );
 \}
 
 ## Interview-ready answer
@@ -611,86 +611,86 @@ They let the consumer control the markup and design.
 
 Headless component \= logic without visual opinion.
 
-Library/component provides behavior  
+Library/component provides behavior
 Consumer provides UI
 
 ## Example: headless toggle with render prop
 
-function HeadlessToggle(\{ children \}) \{  
+function HeadlessToggle(\{ children \}) \{
   const \[checked, setChecked\] \= React.useState(false);
 
   const toggle \= () \=\> setChecked((prev) \=\> \!prev);
 
-  return children(\{  
-    checked,  
-    toggle,  
-  \});  
+  return children(\{
+    checked,
+    toggle,
+  \});
 \}
 
 Usage:
 
-\<HeadlessToggle\>  
-  \{(\{ checked, toggle \}) \=\> (  
-    \<button onClick=\{toggle\}\>  
-      \{checked ? "Enabled" : "Disabled"\}  
-    \</button\>  
-  )\}  
+\<HeadlessToggle\>
+  \{(\{ checked, toggle \}) \=\> (
+    \<button onClick=\{toggle\}\>
+      \{checked ? "Enabled" : "Disabled"\}
+    \</button\>
+  )\}
 \</HeadlessToggle\>
 
 ## Example: headless hook
 
-function useToggle(initialValue \= false) \{  
+function useToggle(initialValue \= false) \{
   const \[checked, setChecked\] \= React.useState(initialValue);
 
-  const toggle \= React.useCallback(() \=\> \{  
-    setChecked((prev) \=\> \!prev);  
+  const toggle \= React.useCallback(() \=\> \{
+    setChecked((prev) \=\> \!prev);
   \}, \[\]);
 
-  return \{  
-    checked,  
-    setChecked,  
-    toggle,  
-  \};  
+  return \{
+    checked,
+    setChecked,
+    toggle,
+  \};
 \}
 
 Usage:
 
-function CustomToggle() \{  
+function CustomToggle() \{
   const \{ checked, toggle \} \= useToggle();
 
-  return (  
-    \<button  
-      className=\{checked ? "active" : ""\}  
-      onClick=\{toggle\}  
-    \>  
-      \{checked ? "ON" : "OFF"\}  
-    \</button\>  
-  );  
+  return (
+    \<button
+      className=\{checked ? "active" : ""\}
+      onClick=\{toggle\}
+    \>
+      \{checked ? "ON" : "OFF"\}
+    \</button\>
+  );
 \}
 
 ## Real use cases
 
-* Headless dropdown.  
-* Headless select.  
-* Headless modal.  
-* Headless tabs.  
-* Headless tooltip.  
-* Headless table.  
+* Headless dropdown.
+* Headless select.
+* Headless modal.
+* Headless tabs.
+* Headless tooltip.
+* Headless table.
 * Headless form controls.
 
 ## Why useful
 
-* Full styling control.  
-* Good for design systems.  
-* Logic is reusable.  
-* UI is not locked to one design.  
+* Full styling control.
+* Good for design systems.
+* Logic is reusable.
+* UI is not locked to one design.
 * Works well across products with different themes.
 
 ## Trade-offs
 
-* Consumer writes more UI code.  
-* Accessibility must be handled carefully.  
-* API design must be very clear.  
+* Consumer writes more UI code.
+* Accessibility must be handled carefully.
+* API design must be very clear.
 * More flexible but sometimes more complex.
 
 ## Interview-ready answer
@@ -723,14 +723,14 @@ const ProtectedPage \= withAuth(Page);
 
 ## Custom hook example
 
-function Page() \{  
+function Page() \{
   const user \= useAuthUser();
 
-  if (\!user) \{  
-    return \<Login /\>;  
+  if (\!user) \{
+    return \<Login /\>;
   \}
 
-  return \<Dashboard /\>;  
+  return \<Dashboard /\>;
 \}
 
 ## Interview-ready answer
@@ -745,20 +745,20 @@ HOCs wrap components and return enhanced components, while custom hooks extract 
 
 Render Props is a pattern where a component receives a function and calls it to render UI.
 
-\<Toggle\>  
-  \{(\{ isOn, toggle \}) \=\> (  
-    \<button onClick=\{toggle\}\>  
-      \{isOn ? "ON" : "OFF"\}  
-    \</button\>  
-  )\}  
+\<Toggle\>
+  \{(\{ isOn, toggle \}) \=\> (
+    \<button onClick=\{toggle\}\>
+      \{isOn ? "ON" : "OFF"\}
+    \</button\>
+  )\}
 \</Toggle\>
 
 ## Why useful
 
-* Shares behavior.  
-* Consumer controls UI.  
-* Flexible rendering.  
-* Useful before hooks.  
+* Shares behavior.
+* Consumer controls UI.
+* Flexible rendering.
+* Useful before hooks.
 * Still appears in some libraries.
 
 ## Interview-ready answer
@@ -791,9 +791,9 @@ HOCs reuse logic by wrapping a component, while Render Props reuse logic by pass
 
 Compound components are related components that share state under a parent.
 
-\<Tabs defaultValue="profile"\>  
-  \<Tabs.Tab value="profile"\>Profile\</Tabs.Tab\>  
-  \<Tabs.Panel value="profile"\>Profile content\</Tabs.Panel\>  
+\<Tabs defaultValue="profile"\>
+  \<Tabs.Tab value="profile"\>Profile\</Tabs.Tab\>
+  \<Tabs.Panel value="profile"\>Profile content\</Tabs.Panel\>
 \</Tabs\>
 
 ## Interview-ready answer
@@ -808,8 +808,8 @@ Compound Components are useful when multiple related components need to work tog
 
 The Provider Pattern uses Context to provide shared data or behavior to nested components.
 
-\<AuthProvider\>  
-  \<App /\>  
+\<AuthProvider\>
+  \<App /\>
 \</AuthProvider\>
 
 ## Interview-ready answer

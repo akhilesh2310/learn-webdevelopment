@@ -17,15 +17,15 @@ Next.js is a React framework used to build production-ready web applications.
 
 React mainly focuses on building UI, while Next.js adds important production features like:
 
-* File-based routing  
-* Server-side rendering  
-* Static site generation  
-* API routes / route handlers  
-* Image optimization  
-* SEO support  
-* Code splitting  
-* Caching  
-* Middleware  
+* File-based routing
+* Server-side rendering
+* Static site generation
+* API routes / route handlers
+* Image optimization
+* SEO support
+* Code splitting
+* Caching
+* Middleware
 * Full-stack capabilities
 
 **Simple answer:**
@@ -40,19 +40,19 @@ Plain React usually renders mostly on the client side. That means the browser do
 
 Next.js gives more rendering options:
 
-* Render at build time  
-* Render on every request  
-* Render on the server  
-* Render on the client  
+* Render at build time
+* Render on every request
+* Render on the server
+* Render on the client
 * Mix server and client components
 
 This improves:
 
-* Initial page load  
-* SEO  
-* Performance  
-* Developer experience  
-* Routing structure  
+* Initial page load
+* SEO
+* Performance
+* Developer experience
+* Routing structure
 * Production scalability
 
 **Interview answer:**
@@ -67,13 +67,13 @@ In Next.js, routes are created based on files and folders.
 
 In App Router:
 
-app/  
- page.tsx              \-\> /  
- about/  
-   page.tsx            \-\> /about  
- products/  
-   page.tsx            \-\> /products  
- products/\[id\]/  
+app/
+ page.tsx              \-\> /
+ about/
+   page.tsx            \-\> /about
+ products/
+   page.tsx            \-\> /products
+ products/\[id\]/
    page.tsx            \-\> /products/:id
 
 The folder structure becomes the route structure.
@@ -88,31 +88,31 @@ File-based routing means we do not manually configure routes like React Router. 
 
 **Pages Router** uses the `pages` directory.
 
-pages/  
- index.tsx  
- about.tsx  
+pages/
+ index.tsx
+ about.tsx
  products/\[id\].tsx
 
 It uses APIs like:
 
-getServerSideProps  
-getStaticProps  
+getServerSideProps
+getStaticProps
 getStaticPaths
 
 **App Router** uses the `app` directory.
 
-app/  
- page.tsx  
- layout.tsx  
+app/
+ page.tsx
+ layout.tsx
  products/\[id\]/page.tsx
 
 It supports:
 
-* React Server Components  
-* Nested layouts  
-* Streaming  
-* Suspense  
-* Server Actions / Server Functions  
+* React Server Components
+* Nested layouts
+* Streaming
+* Suspense
+* Server Actions / Server Functions
 * Route Handlers
 
 The App Router is the newer router and supports newer React features like Server Components and Suspense.
@@ -133,33 +133,33 @@ By default, components inside the App Router are Server Components unless we add
 
 Server Components can:
 
-* Fetch data directly on the server  
-* Access backend resources  
-* Reduce client-side JavaScript  
-* Improve performance  
+* Fetch data directly on the server
+* Access backend resources
+* Reduce client-side JavaScript
+* Improve performance
 * Keep sensitive logic away from the browser
 
 Example:
 
-\export default async function ProductsPage() \{  
- const res \= await fetch('https://api.example.com/products');  
+\export default async function ProductsPage() \{
+ const res \= await fetch('https://api.example.com/products');
  const products \= await res.json();
 
- return (  
-   \<div\>  
-     \{products.map((product: any) \=\> (  
-       \<p key=\{product.id\}\>\{product.name\}\</p\>  
-     ))\}  
-   \</div\>  
- );  
+ return (
+   \<div\>
+     \{products.map((product: any) \=\> (
+       \<p key=\{product.id\}\>\{product.name\}\</p\>
+     ))\}
+   \</div\>
+ );
 \}
 
 **Important:**
 
 Server Components cannot use browser-only hooks like:
 
-useState  
-useEffect  
+useState
+useEffect
 useRef
 
 **Interview answer:**
@@ -178,20 +178,20 @@ We create a Client Component by adding:
 
 \import \{ useState \} from 'react';
 
-\export default function Counter() \{  
+\export default function Counter() \{
  const \[count, setCount\] \= useState(0);
 
- return \<button onClick=\{() \=\> setCount(count \+ 1)\}\>\{count\}\</button\>;  
+ return \<button onClick=\{() \=\> setCount(count \+ 1)\}\>\{count\}\</button\>;
 \}
 
 Client Components are needed when we use:
 
-* `useState`  
-* `useEffect`  
-* Event handlers  
-* Browser APIs  
-* Form interactions  
-* Animations  
+* `useState`
+* `useEffect`
+* Event handlers
+* Browser APIs
+* Form interactions
+* Animations
 * Client-side libraries
 
 **Interview answer:**
@@ -226,29 +226,29 @@ In SSR, the page is rendered on the server for every request.
 
 In Pages Router:
 
-\export async function getServerSideProps() \{  
- const res \= await fetch('https://api.example.com/user');  
+\export async function getServerSideProps() \{
+ const res \= await fetch('https://api.example.com/user');
  const user \= await res.json();
 
- return \{  
-   props: \{ user \},  
- \};  
+ return \{
+   props: \{ user \},
+ \};
 \}
 
 `getServerSideProps` fetches data and renders the page at request time.
 
 **Use SSR when:**
 
-* Data changes frequently  
-* Page is user-specific  
-* SEO is required  
+* Data changes frequently
+* Page is user-specific
+* SEO is required
 * Data must be fresh on every request
 
 Example:
 
-* Booking details page  
-* User dashboard  
-* Price availability page  
+* Booking details page
+* User dashboard
+* Price availability page
 * Order summary page
 
 **Interview answer:**
@@ -265,28 +265,28 @@ The HTML is generated at build time and served as a static file.
 
 In Pages Router:
 
-\export async function getStaticProps() \{  
- const res \= await fetch('https://api.example.com/blogs');  
+\export async function getStaticProps() \{
+ const res \= await fetch('https://api.example.com/blogs');
  const blogs \= await res.json();
 
- return \{  
-   props: \{ blogs \},  
- \};  
+ return \{
+   props: \{ blogs \},
+ \};
 \}
 
 `getStaticProps` is used to fetch data and generate static pages.
 
 **Use SSG when:**
 
-* Data does not change frequently  
-* Page can be generated before users request it  
+* Data does not change frequently
+* Page can be generated before users request it
 * Speed is important
 
 Example:
 
-* Blog pages  
-* Documentation  
-* Marketing pages  
+* Blog pages
+* Documentation
+* Marketing pages
 * Product landing pages
 
 **Interview answer:**
@@ -303,28 +303,28 @@ It allows static pages to be regenerated after deployment without rebuilding the
 
 Example in Pages Router:
 
-\export async function getStaticProps() \{  
+\export async function getStaticProps() \{
  const data \= await getProducts();
 
- return \{  
-   props: \{ data \},  
-   revalidate: 60,  
- \};  
+ return \{
+   props: \{ data \},
+   revalidate: 60,
+ \};
 \}
 
 This means the page can be regenerated after 60 seconds.
 
 **Use ISR when:**
 
-* You want static performance  
-* Data changes occasionally  
+* You want static performance
+* Data changes occasionally
 * Full rebuild is expensive
 
 Example:
 
-* Product listing  
-* Hotel details  
-* News article  
+* Product listing
+* Hotel details
+* News article
 * Category pages
 
 **Interview answer:**
@@ -360,32 +360,32 @@ Example:
 
 \import \{ useEffect, useState \} from 'react';
 
-\export default function UserProfile() \{  
+\export default function UserProfile() \{
  const \[user, setUser\] \= useState\<any\>(null);
 
- useEffect(() \=\> \{  
-   fetch('/api/user')  
-     .then((res) \=\> res.json())  
-     .then(setUser);  
+ useEffect(() \=\> \{
+   fetch('/api/user')
+     .then((res) \=\> res.json())
+     .then(setUser);
  \}, \[\]);
 
  if (\!user) return \<p\>Loading...\</p\>;
 
- return \<p\>\{user.name\}\</p\>;  
+ return \<p\>\{user.name\}\</p\>;
 \}
 
 **Use CSR when:**
 
-* Data is private  
-* SEO is not important  
-* UI is highly interactive  
+* Data is private
+* SEO is not important
+* UI is highly interactive
 * Data depends on browser state
 
 Example:
 
-* User preferences  
-* Internal dashboard widgets  
-* Filters  
+* User preferences
+* Internal dashboard widgets
+* Filters
 * Charts
 
 **Interview answer:**
@@ -398,11 +398,11 @@ CSR is useful for interactive browser-only parts of the app, but I avoid using i
 
 In App Router, Server Components can fetch data directly using async/await.
 
-\export default async function Page() \{  
- const res \= await fetch('https://api.example.com/products');  
+\export default async function Page() \{
+ const res \= await fetch('https://api.example.com/products');
  const products \= await res.json();
 
- return \<ProductList products=\{products\} /\>;  
+ return \<ProductList products=\{products\} /\>;
 \}
 
 Next.js supports fetching data in Server Components using `fetch`, ORMs, or databases.
@@ -419,10 +419,10 @@ Caching means storing data or rendered output so future requests can be served f
 
 Next.js has caching at different levels:
 
-* Request memoization  
-* Data cache  
-* Full route cache  
-* Router cache  
+* Request memoization
+* Data cache
+* Full route cache
+* Router cache
 * CDN cache
 
 In newer Next.js versions, caching behavior has changed in some areas. For example, Next.js 15 changed some defaults for GET Route Handlers and Client Router Cache from cached by default to uncached by default.
@@ -435,17 +435,17 @@ Caching in Next.js helps avoid repeated data fetching and rendering. It improves
 
 ## 15. How do you disable caching for a fetch request?
 
-const res \= await fetch('https://api.example.com/products', \{  
- cache: 'no-store',  
+const res \= await fetch('https://api.example.com/products', \{
+ cache: 'no-store',
 \});
 
 Use this when data should always be fresh.
 
 Example:
 
-* User balance  
-* Live booking price  
-* Payment status  
+* User balance
+* Live booking price
+* Payment status
 * Admin dashboard
 
 **Interview answer:**
@@ -456,10 +456,10 @@ I use `cache: 'no-store'` when I want the data to be fetched fresh on every requ
 
 ## 16. How do you revalidate cached data?
 
-const res \= await fetch('https://api.example.com/products', \{  
- next: \{  
-   revalidate: 60,  
- \},  
+const res \= await fetch('https://api.example.com/products', \{
+ next: \{
+   revalidate: 60,
+ \},
 \});
 
 This means cached data can be revalidated after 60 seconds.
@@ -476,26 +476,26 @@ I use `next.revalidate` when the data can be cached for some time but should eve
 
 Example:
 
-\export default function DashboardLayout(\{  
- children,  
-\}: \{  
- children: React.ReactNode;  
-\}) \{  
- return (  
-   \<div\>  
-     \<aside\>Sidebar\</aside\>  
-     \<main\>\{children\}\</main\>  
-   \</div\>  
- );  
+\export default function DashboardLayout(\{
+ children,
+\}: \{
+ children: React.ReactNode;
+\}) \{
+ return (
+   \<div\>
+     \<aside\>Sidebar\</aside\>
+     \<main\>\{children\}\</main\>
+   \</div\>
+ );
 \}
 
 Layouts are useful for:
 
-* Common header  
-* Sidebar  
-* Footer  
-* Navigation  
-* Providers  
+* Common header
+* Sidebar
+* Footer
+* Navigation
+* Providers
 * Shared page shell
 
 **Interview answer:**
@@ -510,9 +510,9 @@ Layouts are useful for:
 
 Use it when you want:
 
-* Page transition reset  
-* Animation restart  
-* Component remount  
+* Page transition reset
+* Animation restart
+* Component remount
 * State reset between routes
 
 **Interview answer:**
@@ -525,8 +525,8 @@ Use it when you want:
 
 `loading.tsx` shows a loading UI while a route segment is loading.
 
-\export default function Loading() \{  
- return \<p\>Loading products...\</p\>;  
+\export default function Loading() \{
+ return \<p\>Loading products...\</p\>;
 \}
 
 It is built on React Suspense.
@@ -543,19 +543,19 @@ It is built on React Suspense.
 
 'use client';
 
-\export default function Error(\{  
- error,  
- reset,  
-\}: \{  
- error: Error;  
- reset: () \=\> void;  
-\}) \{  
- return (  
-   \<div\>  
-     \<p\>Something went wrong\</p\>  
-     \<button onClick=\{reset\}\>Try again\</button\>  
-   \</div\>  
- );  
+\export default function Error(\{
+ error,
+ reset,
+\}: \{
+ error: Error;
+ reset: () \=\> void;
+\}) \{
+ return (
+   \<div\>
+     \<p\>Something went wrong\</p\>
+     \<button onClick=\{reset\}\>Try again\</button\>
+   \</div\>
+ );
 \}
 
 **Interview answer:**
@@ -568,16 +568,16 @@ It is built on React Suspense.
 
 `not-found.tsx` renders custom 404 UI for a route segment.
 
-\export default function NotFound() \{  
- return \<h1\>Product not found\</h1\>;  
+\export default function NotFound() \{
+ return \<h1\>Product not found\</h1\>;
 \}
 
 You can trigger it using:
 
 \import \{ notFound \} from 'next/navigation';
 
-if (\!product) \{  
- notFound();  
+if (\!product) \{
+ notFound();
 \}
 
 **Interview answer:**
@@ -598,12 +598,12 @@ URL:
 
 Access param:
 
-\export default function ProductPage(\{  
- params,  
-\}: \{  
- params: \{ id: string \};  
-\}) \{  
- return \<p\>Product ID: \{params.id\}\</p\>;  
+\export default function ProductPage(\{
+ params,
+\}: \{
+ params: \{ id: string \};
+\}) \{
+ return \<p\>Product ID: \{params.id\}\</p\>;
 \}
 
 **Interview answer:**
@@ -620,18 +620,18 @@ app/docs/\[...slug\]/page.tsx
 
 Matches:
 
-/docs/react  
-/docs/react/hooks  
+/docs/react
+/docs/react/hooks
 /docs/react/hooks/use-state
 
 Example:
 
-\export default function DocsPage(\{  
- params,  
-\}: \{  
- params: \{ slug: string\[\] \};  
-\}) \{  
- return \<p\>\{params.slug.join('/')\}\</p\>;  
+\export default function DocsPage(\{
+ params,
+\}: \{
+ params: \{ slug: string\[\] \};
+\}) \{
+ return \<p\>\{params.slug.join('/')\}\</p\>;
 \}
 
 **Interview answer:**
@@ -644,12 +644,12 @@ Catch-all routes are useful for nested paths like documentation, category trees,
 
 `generateStaticParams` is used in App Router to generate static pages for dynamic routes.
 
-\export async function generateStaticParams() \{  
+\export async function generateStaticParams() \{
  const products \= await getProducts();
 
- return products.map((product) \=\> (\{  
-   id: product.id,  
- \}));  
+ return products.map((product) \=\> (\{
+   id: product.id,
+ \}));
 \}
 
 **Interview answer:**
@@ -664,24 +664,24 @@ Metadata is used for SEO and social sharing.
 
 Example:
 
-\export const metadata \= \{  
- title: 'Products',  
- description: 'Browse all products',  
+\export const metadata \= \{
+ title: 'Products',
+ description: 'Browse all products',
 \};
 
 Dynamic metadata:
 
-\export async function generateMetadata(\{  
- params,  
-\}: \{  
- params: \{ id: string \};  
-\}) \{  
+\export async function generateMetadata(\{
+ params,
+\}: \{
+ params: \{ id: string \};
+\}) \{
  const product \= await getProduct(params.id);
 
- return \{  
-   title: product.name,  
-   description: product.description,  
- \};  
+ return \{
+   title: product.name,
+   description: product.description,
+ \};
 \}
 
 **Interview answer:**
@@ -694,23 +694,23 @@ Metadata in Next.js helps manage SEO fields like title, description, Open Graph 
 
 Route Handlers allow us to create backend-like API endpoints inside the App Router.
 
-app/api/products/route.ts  
-\export async function GET() \{  
- return Response.json(\[  
-   \{ id: 1, name: 'Laptop' \},  
-   \{ id: 2, name: 'Phone' \},  
- \]);  
+app/api/products/route.ts
+\export async function GET() \{
+ return Response.json(\[
+   \{ id: 1, name: 'Laptop' \},
+   \{ id: 2, name: 'Phone' \},
+ \]);
 \}
 
 POST example:
 
-\export async function POST(request: Request) \{  
+\export async function POST(request: Request) \{
  const body \= await request.json();
 
- return Response.json(\{  
-   message: 'Product created',  
-   data: body,  
- \});  
+ return Response.json(\{
+   message: 'Product created',
+   data: body,
+ \});
 \}
 
 **Interview answer:**
@@ -725,23 +725,23 @@ Server Actions, now commonly described in docs as React Server Functions, allow 
 
 Example:
 
-async function createUser(formData: FormData) \{  
+async function createUser(formData: FormData) \{
  'use server';
 
  const name \= formData.get('name');
 
- await db.user.create(\{  
-   data: \{ name: String(name) \},  
- \});  
+ await db.user.create(\{
+   data: \{ name: String(name) \},
+ \});
 \}
 
-\export default function Page() \{  
- return (  
-   \<form action=\{createUser\}\>  
-     \<input name="name" /\>  
-     \<button type="submit"\>Create\</button\>  
-   \</form\>  
- );  
+\export default function Page() \{
+ return (
+   \<form action=\{createUser\}\>
+     \<input name="name" /\>
+     \<button type="submit"\>Create\</button\>
+   \</form\>
+ );
 \}
 
 **Interview answer:**
@@ -770,19 +770,19 @@ I use Route Handlers when I need a real HTTP endpoint, like webhooks or APIs con
 
 Authentication can be implemented using:
 
-* HttpOnly cookies  
-* Session-based auth  
-* JWT  
-* NextAuth/Auth.js  
-* Custom auth service  
+* HttpOnly cookies
+* Session-based auth
+* JWT
+* NextAuth/Auth.js
+* Custom auth service
 * Middleware for route protection
 
 Common flow:
 
-1. User logs in.  
-2. Server validates credentials.  
-3. Server sets secure HttpOnly cookie.  
-4. Middleware or server checks session.  
+1. User logs in.
+2. Server validates credentials.
+3. Server sets secure HttpOnly cookie.
+4. Middleware or server checks session.
 5. Protected pages render only for authenticated users.
 
 **Interview answer:**
@@ -795,21 +795,21 @@ For secure authentication, I prefer HttpOnly secure cookies because tokens are n
 
 Using middleware:
 
-\import \{ NextResponse \} from 'next/server';  
+\import \{ NextResponse \} from 'next/server';
 \import type \{ NextRequest \} from 'next/server';
 
-\export function middleware(request: NextRequest) \{  
+\export function middleware(request: NextRequest) \{
  const token \= request.cookies.get('token');
 
- if (\!token) \{  
-   return NextResponse.redirect(new URL('/login', request.url));  
+ if (\!token) \{
+   return NextResponse.redirect(new URL('/login', request.url));
  \}
 
- return NextResponse.next();  
+ return NextResponse.next();
 \}
 
-\export const config \= \{  
- matcher: \['/dashboard/:path\*'\],  
+\export const config \= \{
+ matcher: \['/dashboard/:path\*'\],
 \};
 
 **Interview answer:**
@@ -824,11 +824,11 @@ Middleware runs before a request is completed.
 
 It can be used for:
 
-* Authentication redirects  
-* Localization  
-* A/B testing  
-* URL rewrites  
-* Bot detection  
+* Authentication redirects
+* Localization
+* A/B testing
+* URL rewrites
+* Bot detection
 * Geo-based routing
 
 **Interview answer:**
@@ -843,23 +843,23 @@ Next.js provides the `Image` component.
 
 \import Image from 'next/image';
 
-\export default function ProductImage() \{  
- return (  
-   \<Image  
-     src="/product.png"  
-     alt="Product"  
-     width=\{400\}  
-     height=\{300\}  
-   /\>  
- );  
+\export default function ProductImage() \{
+ return (
+   \<Image
+     src="/product.png"
+     alt="Product"
+     width=\{400\}
+     height=\{300\}
+   /\>
+ );
 \}
 
 Benefits:
 
-* Lazy loading  
-* Responsive images  
-* Size optimization  
-* Better performance  
+* Lazy loading
+* Responsive images
+* Size optimization
+* Better performance
 * Prevents layout shift when dimensions are provided
 
 **Interview answer:**
@@ -894,18 +894,18 @@ Example:
 
 \import \{ useRouter \} from 'next/navigation';
 
-\export default function Button() \{  
+\export default function Button() \{
  const router \= useRouter();
 
- return \<button onClick=\{() \=\> router.push('/dashboard')\}\>Go\</button\>;  
+ return \<button onClick=\{() \=\> router.push('/dashboard')\}\>Go\</button\>;
 \}
 
 Common APIs:
 
-useRouter  
-usePathname  
-useSearchParams  
-redirect  
+useRouter
+usePathname
+useSearchParams
+redirect
 notFound
 
 **Interview answer:**
@@ -924,12 +924,12 @@ Dynamic import example:
 
 \import dynamic from 'next/dynamic';
 
-const HeavyChart \= dynamic(() \=\> import('./HeavyChart'), \{  
- ssr: false,  
+const HeavyChart \= dynamic(() \=\> import('./HeavyChart'), \{
+ ssr: false,
 \});
 
-\export default function Dashboard() \{  
- return \<HeavyChart /\>;  
+\export default function Dashboard() \{
+ return \<HeavyChart /\>;
 \}
 
 **Interview answer:**
@@ -944,17 +944,17 @@ Code splitting reduces initial bundle size by loading only the code required for
 
 Use it for:
 
-* Heavy charts  
-* Rich text editors  
-* Maps  
-* Modals  
-* Large dashboards  
+* Heavy charts
+* Rich text editors
+* Maps
+* Modals
+* Large dashboards
 * Browser-only libraries
 
 Example:
 
-const Map \= dynamic(() \=\> import('./Map'), \{  
- ssr: false,  
+const Map \= dynamic(() \=\> import('./Map'), \{
+ ssr: false,
 \});
 
 **Interview answer:**
@@ -965,17 +965,17 @@ const Map \= dynamic(() \=\> import('./Map'), \{
 
 ## 37. What does `ssr: false` mean?
 
-const ClientOnlyMap \= dynamic(() \=\> import('./Map'), \{  
- ssr: false,  
+const ClientOnlyMap \= dynamic(() \=\> import('./Map'), \{
+ ssr: false,
 \});
 
 It means the component will not be rendered on the server.
 
 Use it when a library depends on browser-only APIs like:
 
-window  
-document  
-localStorage  
+window
+document
+localStorage
 navigator
 
 **Interview answer:**
@@ -1006,16 +1006,16 @@ I keep secrets in server-only environment variables. Anything exposed to the bro
 
 Important techniques:
 
-* Prefer Server Components where possible  
-* Use static rendering or ISR for stable pages  
-* Avoid unnecessary Client Components  
-* Use `next/image`  
-* Use dynamic imports for heavy components  
-* Cache API responses carefully  
-* Use streaming and Suspense  
-* Reduce third-party scripts  
-* Analyze bundle size  
-* Avoid large global providers  
+* Prefer Server Components where possible
+* Use static rendering or ISR for stable pages
+* Avoid unnecessary Client Components
+* Use `next/image`
+* Use dynamic imports for heavy components
+* Cache API responses carefully
+* Use streaming and Suspense
+* Reduce third-party scripts
+* Analyze bundle size
+* Avoid large global providers
 * Use pagination or virtualization for large lists
 
 **Interview answer:**
@@ -1028,20 +1028,20 @@ I optimize Next.js apps by reducing client-side JavaScript, using Server Compone
 
 Next.js helps SEO through:
 
-* Server-rendered HTML  
-* Static generation  
-* Metadata API  
-* Dynamic metadata  
-* Open Graph tags  
-* Sitemap  
-* Robots.txt  
+* Server-rendered HTML
+* Static generation
+* Metadata API
+* Dynamic metadata
+* Open Graph tags
+* Sitemap
+* Robots.txt
 * Canonical URLs
 
 Example:
 
-\export const metadata \= \{  
- title: 'Best Hotels in Bangalore',  
- description: 'Find the best hotels in Bangalore',  
+\export const metadata \= \{
+ title: 'Best Hotels in Bangalore',
+ description: 'Find the best hotels in Bangalore',
 \};
 
 **Interview answer:**
@@ -1074,18 +1074,18 @@ Hydration means converting server-rendered HTML into an interactive React applic
 
 Common causes:
 
-* Different server and client output  
-* Using `window` during server rendering  
-* Random values during render  
-* Time-based values during render  
-* Browser extensions modifying HTML  
-* Invalid HTML nesting  
+* Different server and client output
+* Using `window` during server rendering
+* Random values during render
+* Time-based values during render
+* Browser extensions modifying HTML
+* Invalid HTML nesting
 * Different locale formatting
 
 Bad example:
 
-\export default function Page() \{  
- return \<p\>\{Date.now()\}\</p\>;  
+\export default function Page() \{
+ return \<p\>\{Date.now()\}\</p\>;
 \}
 
 Server and client values may differ.
@@ -1096,14 +1096,14 @@ Better:
 
 \import \{ useEffect, useState \} from 'react';
 
-\export default function Time() \{  
+\export default function Time() \{
  const \[time, setTime\] \= useState\<number | null\>(null);
 
- useEffect(() \=\> \{  
-   setTime(Date.now());  
+ useEffect(() \=\> \{
+   setTime(Date.now());
  \}, \[\]);
 
- return \<p\>\{time\}\</p\>;  
+ return \<p\>\{time\}\</p\>;
 \}
 
 **Interview answer:**
@@ -1122,15 +1122,15 @@ Example:
 
 \import \{ Suspense \} from 'react';
 
-\export default function Page() \{  
- return (  
-   \<\>  
-     \<Header /\>  
-     \<Suspense fallback=\{\<p\>Loading products...\</p\>\}\>  
-       \<Products /\>  
-     \</Suspense\>  
-   \</\>  
- );  
+\export default function Page() \{
+ return (
+   \<\>
+     \<Header /\>
+     \<Suspense fallback=\{\<p\>Loading products...\</p\>\}\>
+       \<Products /\>
+     \</Suspense\>
+   \</\>
+ );
 \}
 
 **Interview answer:**
@@ -1143,8 +1143,8 @@ Streaming improves perceived performance by allowing the server to send UI in ch
 
 Suspense is used to show fallback UI while async components load.
 
-\<Suspense fallback=\{\<ProductSkeleton /\>\}\>  
- \<ProductList /\>  
+\<Suspense fallback=\{\<ProductSkeleton /\>\}\>
+ \<ProductList /\>
 \</Suspense\>
 
 **Interview answer:**
@@ -1157,36 +1157,36 @@ Suspense lets us show loading UI for async server components or lazy-loaded comp
 
 Example structure:
 
-src/  
- app/  
-   layout.tsx  
-   page.tsx  
-   dashboard/  
-     page.tsx  
-     loading.tsx  
+src/
+ app/
+   layout.tsx
+   page.tsx
+   dashboard/
+     page.tsx
+     loading.tsx
      error.tsx
 
- components/  
-   ui/  
+ components/
+   ui/
    shared/
 
- features/  
-   products/  
-     components/  
-     hooks/  
-     services/  
+ features/
+   products/
+     components/
+     hooks/
+     services/
      types.ts
 
- lib/  
-   api.ts  
-   auth.ts  
+ lib/
+   api.ts
+   auth.ts
    utils.ts
 
- server/  
-   db.ts  
+ server/
+   db.ts
    actions/
 
- styles/  
+ styles/
  types/
 
 **Interview answer:**
@@ -1201,25 +1201,25 @@ State can be divided into:
 
 **Local UI state**
 
-useState  
+useState
 useReducer
 
 **Server state**
 
-React Query  
-SWR  
-Server Components  
+React Query
+SWR
+Server Components
 fetch
 
 **Global client state**
 
-Context  
-Redux  
+Context
+Redux
 Zustand
 
 **URL state**
 
-searchParams  
+searchParams
 useSearchParams
 
 **Interview answer:**
@@ -1232,28 +1232,28 @@ I avoid putting everything in global state. Server data should stay on the serve
 
 Options:
 
-* Normal React form with client submit  
-* React Hook Form  
-* Server Actions  
-* Route Handler API  
+* Normal React form with client submit
+* React Hook Form
+* Server Actions
+* Route Handler API
 * Zod/Yup validation
 
 Example with Server Action:
 
-async function submitForm(formData: FormData) \{  
+async function submitForm(formData: FormData) \{
  'use server';
 
- const email \= formData.get('email');  
- // validate and save  
+ const email \= formData.get('email');
+ // validate and save
 \}
 
-\export default function Page() \{  
- return (  
-   \<form action=\{submitForm\}\>  
-     \<input name="email" /\>  
-     \<button\>Submit\</button\>  
-   \</form\>  
- );  
+\export default function Page() \{
+ return (
+   \<form action=\{submitForm\}\>
+     \<input name="email" /\>
+     \<button\>Submit\</button\>
+   \</form\>
+ );
 \}
 
 **Interview answer:**
@@ -1266,25 +1266,25 @@ For simple server mutations, Server Actions are clean. For complex client valida
 
 Good practices:
 
-* Use `try/catch`  
-* Return proper status codes  
-* Show error boundaries  
-* Use `error.tsx`  
-* Log errors on the server  
+* Use `try/catch`
+* Return proper status codes
+* Show error boundaries
+* Use `error.tsx`
+* Log errors on the server
 * Avoid exposing sensitive errors to users
 
 Route Handler example:
 
-\export async function GET() \{  
- try \{  
-   const data \= await getData();  
-   return Response.json(data);  
- \} catch \{  
-   return Response.json(  
-     \{ message: 'Failed to fetch data' \},  
-     \{ status: 500 \}  
-   );  
- \}  
+\export async function GET() \{
+ try \{
+   const data \= await getData();
+   return Response.json(data);
+ \} catch \{
+   return Response.json(
+     \{ message: 'Failed to fetch data' \},
+     \{ status: 500 \}
+   );
+ \}
 \}
 
 **Interview answer:**
@@ -1297,16 +1297,16 @@ I handle errors at multiple levels: API layer with proper status codes, UI layer
 
 Options:
 
-* `loading.tsx`  
-* Suspense fallback  
-* Skeleton UI  
-* Button-level loading state  
+* `loading.tsx`
+* Suspense fallback
+* Skeleton UI
+* Button-level loading state
 * React Query loading states
 
 Example:
 
-\export default function Loading() \{  
- return \<ProductSkeleton /\>;  
+\export default function Loading() \{
+ return \<ProductSkeleton /\>;
 \}
 
 **Interview answer:**
@@ -1321,14 +1321,14 @@ Server redirect:
 
 \import \{ redirect \} from 'next/navigation';
 
-\export default function Page() \{  
+\export default function Page() \{
  const isLoggedIn \= false;
 
- if (\!isLoggedIn) \{  
-   redirect('/login');  
+ if (\!isLoggedIn) \{
+   redirect('/login');
  \}
 
- return \<p\>Dashboard\</p\>;  
+ return \<p\>Dashboard\</p\>;
 \}
 
 Client redirect:
@@ -1337,7 +1337,7 @@ Client redirect:
 
 \import \{ useRouter \} from 'next/navigation';
 
-const router \= useRouter();  
+const router \= useRouter();
 router.push('/login');
 
 **Interview answer:**
@@ -1363,12 +1363,12 @@ I prefer server redirects for auth and data-based redirects because they avoid r
 
 Server Component:
 
-\export default function Page(\{  
- searchParams,  
-\}: \{  
- searchParams: \{ q?: string \};  
-\}) \{  
- return \<p\>Search: \{searchParams.q\}\</p\>;  
+\export default function Page(\{
+ searchParams,
+\}: \{
+ searchParams: \{ q?: string \};
+\}) \{
+ return \<p\>Search: \{searchParams.q\}\</p\>;
 \}
 
 Client Component:
@@ -1377,9 +1377,9 @@ Client Component:
 
 \import \{ useSearchParams \} from 'next/navigation';
 
-\export default function SearchText() \{  
- const searchParams \= useSearchParams();  
- return \<p\>\{searchParams.get('q')\}\</p\>;  
+\export default function SearchText() \{
+ const searchParams \= useSearchParams();
+ return \<p\>\{searchParams.get('q')\}\</p\>;
 \}
 
 **Interview answer:**
@@ -1396,15 +1396,15 @@ Use URL query params:
 
 Server Component:
 
-\export default async function ProductsPage(\{  
- searchParams,  
-\}: \{  
- searchParams: \{ page?: string \};  
-\}) \{  
- const page \= Number(searchParams.page || 1);  
+\export default async function ProductsPage(\{
+ searchParams,
+\}: \{
+ searchParams: \{ page?: string \};
+\}) \{
+ const page \= Number(searchParams.page || 1);
  const products \= await getProducts(\{ page \});
 
- return \<ProductList products=\{products\} /\>;  
+ return \<ProductList products=\{products\} /\>;
 \}
 
 **Interview answer:**
@@ -1421,14 +1421,14 @@ URL:
 
 Server:
 
-\export default async function HotelsPage(\{  
- searchParams,  
-\}: \{  
- searchParams: \{ city?: string; sort?: string \};  
-\}) \{  
+\export default async function HotelsPage(\{
+ searchParams,
+\}: \{
+ searchParams: \{ city?: string; sort?: string \};
+\}) \{
  const hotels \= await getHotels(searchParams);
 
- return \<HotelList hotels=\{hotels\} /\>;  
+ return \<HotelList hotels=\{hotels\} /\>;
 \}
 
 **Interview answer:**
@@ -1441,14 +1441,14 @@ For filters and sorting, I prefer keeping state in the URL. It improves shareabi
 
 Important points:
 
-* Use HttpOnly secure cookies  
-* Validate auth on server  
-* Validate authorization in APIs/server actions  
-* Never expose secrets with `NEXT_PUBLIC_`  
-* Sanitize user-generated content  
-* Use CSRF protection where needed  
-* Use security headers  
-* Validate input with Zod/Yup  
+* Use HttpOnly secure cookies
+* Validate auth on server
+* Validate authorization in APIs/server actions
+* Never expose secrets with `NEXT_PUBLIC_`
+* Sanitize user-generated content
+* Use CSRF protection where needed
+* Use security headers
+* Validate input with Zod/Yup
 * Avoid trusting client-side checks only
 
 Next.js docs mention that Server Action requests compare origin with host to help prevent CSRF, and extra allowed origins can be configured.
@@ -1463,14 +1463,14 @@ I secure Next.js apps by keeping secrets on the server, using HttpOnly cookies, 
 
 Example:
 
-\export default async function AdminPage() \{  
+\export default async function AdminPage() \{
  const user \= await getCurrentUser();
 
- if (user.role \!== 'admin') \{  
-   redirect('/unauthorized');  
+ if (user.role \!== 'admin') \{
+   redirect('/unauthorized');
  \}
 
- return \<AdminDashboard /\>;  
+ return \<AdminDashboard /\>;
 \}
 
 **Interview answer:**
@@ -1483,12 +1483,12 @@ RBAC should be enforced on the server, not only in the UI. The UI can hide butto
 
 Common deployment options:
 
-* Vercel  
-* AWS  
-* Docker  
-* Kubernetes  
-* Netlify  
-* Node server  
+* Vercel
+* AWS
+* Docker
+* Kubernetes
+* Netlify
+* Node server
 * Static export for static sites
 
 **Interview answer:**
@@ -1503,10 +1503,10 @@ Edge Runtime allows code to run closer to users at edge locations.
 
 Useful for:
 
-* Middleware  
-* Lightweight auth checks  
-* Redirects  
-* A/B testing  
+* Middleware
+* Lightweight auth checks
+* Redirects
+* A/B testing
 * Geo-based personalization
 
 But it has limitations compared to Node.js runtime.
@@ -1521,15 +1521,15 @@ Edge Runtime is useful for low-latency request processing close to the user, but
 
 Common issues:
 
-* Hydration mismatch  
-* Too many Client Components  
-* Large JavaScript bundle  
-* Incorrect caching  
-* Stale data  
-* Slow SSR pages  
-* Exposed environment variables  
-* Middleware doing too much work  
-* Unoptimized images  
+* Hydration mismatch
+* Too many Client Components
+* Large JavaScript bundle
+* Incorrect caching
+* Stale data
+* Slow SSR pages
+* Exposed environment variables
+* Middleware doing too much work
+* Unoptimized images
 * Third-party scripts blocking rendering
 
 **Interview answer:**
@@ -1542,16 +1542,16 @@ Most Next.js production issues come from incorrect rendering strategy, overusing
 
 For a scalable app, I would focus on:
 
-* App Router with feature-based structure  
-* Server Components by default  
-* Client Components only for interactivity  
-* URL-driven filters and pagination  
-* Route-level loading and error boundaries  
-* Proper caching and revalidation  
-* Auth enforced on server  
-* Observability and error logging  
-* Bundle analysis  
-* Reusable design system  
+* App Router with feature-based structure
+* Server Components by default
+* Client Components only for interactivity
+* URL-driven filters and pagination
+* Route-level loading and error boundaries
+* Proper caching and revalidation
+* Auth enforced on server
+* Observability and error logging
+* Bundle analysis
+* Reusable design system
 * CI/CD and testing strategy
 
 **Interview answer:**
@@ -1566,10 +1566,10 @@ I would design a scalable Next.js app by separating server and client concerns c
 
 Next.js may not be necessary when:
 
-* App is fully internal and SEO does not matter  
-* App is purely client-side dashboard  
-* Team does not need SSR/SSG  
-* Backend/frontend separation is strict  
+* App is fully internal and SEO does not matter
+* App is purely client-side dashboard
+* Team does not need SSR/SSG
+* Backend/frontend separation is strict
 * Static Vite React app is enough
 
 **Answer:**
@@ -1604,10 +1604,10 @@ Because Client Components increase JavaScript sent to the browser.
 
 More client JS means:
 
-* Slower load  
-* More hydration cost  
-* Bigger bundle  
-* More browser work  
+* Slower load
+* More hydration cost
+* Bigger bundle
+* More browser work
 * More chances of hydration issues
 
 **Answer:**
@@ -1620,14 +1620,14 @@ I avoid unnecessary Client Components because they increase client-side JavaScri
 
 I would check:
 
-1. Is the page SSR when it could be static?  
-2. Are we fetching too much data?  
-3. Are API calls sequential instead of parallel?  
-4. Are too many components marked `'use client'`?  
-5. Are images optimized?  
-6. Is bundle size large?  
-7. Are third-party scripts blocking?  
-8. Is caching configured correctly?  
+1. Is the page SSR when it could be static?
+2. Are we fetching too much data?
+3. Are API calls sequential instead of parallel?
+4. Are too many components marked `'use client'`?
+5. Are images optimized?
+6. Is bundle size large?
+7. Are third-party scripts blocking?
+8. Is caching configured correctly?
 9. Are large lists virtualized?
 
 **Answer:**
@@ -1640,11 +1640,11 @@ I first measure using Lighthouse, Web Vitals, server logs, and bundle analyzer. 
 
 Approaches:
 
-* Fetch in Server Component and pass data down  
-* Use request memoization  
-* Use React Query/SWR on client  
-* Avoid fetching same data in multiple child components  
-* Centralize shared data fetching  
+* Fetch in Server Component and pass data down
+* Use request memoization
+* Use React Query/SWR on client
+* Avoid fetching same data in multiple child components
+* Centralize shared data fetching
 * Cache stable data
 
 **Answer:**
@@ -1657,18 +1657,18 @@ I prevent duplicate calls by fetching data at the right level, reusing server-fe
 
 Options:
 
-* WebSocket  
-* Server-Sent Events  
-* Polling  
-* React Query refetch intervals  
+* WebSocket
+* Server-Sent Events
+* Polling
+* React Query refetch intervals
 * External real-time services
 
 Example use cases:
 
-* Notification system  
-* Live booking status  
-* Chat  
-* Ad campaign metrics  
+* Notification system
+* Live booking status
+* Chat
+* Ad campaign metrics
 * Stock/price updates
 
 **Answer:**
@@ -1681,11 +1681,11 @@ Next.js can render the initial page, but real-time updates usually happen on the
 
 Testing strategy:
 
-* Unit tests for utilities  
-* Component tests with React Testing Library  
-* Integration tests for forms and flows  
-* E2E tests with Playwright or Cypress  
-* API/Route Handler tests  
+* Unit tests for utilities
+* Component tests with React Testing Library
+* Integration tests for forms and flows
+* E2E tests with Playwright or Cypress
+* API/Route Handler tests
 * Visual regression for UI-critical pages
 
 **Answer:**

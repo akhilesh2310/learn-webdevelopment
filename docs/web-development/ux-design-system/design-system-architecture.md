@@ -87,7 +87,7 @@ Good question\! Let’s go step-by-step:
 
 ## How to Create and Use a Design System in React.js
 
-Think of it like **building a Lego set**:  
+Think of it like **building a Lego set**:
  You create small blocks (components) → combine them → build pages → create a consistent product.
 
 ---
@@ -128,10 +128,10 @@ Organize your folder like this (Atomic Design structure):
 - HomePage.jsx
 ```
 
-🔵 **Atoms** \= Smallest (Button, Input)  
- 🟢 **Molecules** \= Group of Atoms (Input \+ Label \= FormField)  
- 🟣 **Organisms** \= Group of Molecules (Navbar, Footer)  
- 🟠 **Templates** \= Page Skeletons  
+🔵 **Atoms** \= Smallest (Button, Input)
+ 🟢 **Molecules** \= Group of Atoms (Input \+ Label \= FormField)
+ 🟣 **Organisms** \= Group of Molecules (Navbar, Footer)
+ 🟠 **Templates** \= Page Skeletons
  🟡 **Pages** \= Fully ready pages with real data
 
 ---
@@ -306,12 +306,12 @@ border: none;
 
 ---
 
-✅ **This way, you create a Design System in React using Atomic Design principles.**  
+✅ **This way, you create a Design System in React using Atomic Design principles.**
  ✅ **You can reuse components everywhere, change styles easily, and work faster across your team.**
 
 ---
 
-Would you also like me to show how to **separate your design system into a private NPM package** (so you can install and use it across multiple React projects)? 🚀  
+Would you also like me to show how to **separate your design system into a private NPM package** (so you can install and use it across multiple React projects)? 🚀
  It’s a real-world next step\!
 
 4o
@@ -322,7 +322,7 @@ yes
 
 ###### ChatGPT said:
 
-Awesome\! 🚀  
+Awesome\! 🚀
  Let's take it step-by-step on **how to separate your React Design System into a reusable private NPM package**:
 
 ---
@@ -472,7 +472,7 @@ You can publish to GitHub Packages too:
 
 Add this to `.npmrc`:
 
-less  
+less
 ```text
 @your-github-username:registry=https://npm.pkg.github.com
 ```

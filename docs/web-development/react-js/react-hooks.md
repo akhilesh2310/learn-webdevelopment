@@ -43,8 +43,8 @@ Use [React Performance](../performance/react-performance.md) for optimization de
 
 ## Common Interview Topics
 
-* useEffect lifecycle  
-* useMemo vs useCallback  
+* useEffect lifecycle
+* useMemo vs useCallback
 * useRef use cases
 
 ## React Hooks
@@ -129,11 +129,11 @@ The function runs only during initial render.
 
 Common side effects:
 
-* API calls  
-* Subscriptions  
-* Timers  
-* Event listeners  
-* DOM integration  
+* API calls
+* Subscriptions
+* Timers
+* Event listeners
+* DOM integration
 * Syncing with external systems
 
 React.useEffect(() \=\> \{
@@ -214,7 +214,7 @@ React.useEffect(() \=\> \{
 
 Cleanup runs:
 
-* Before the effect runs again because dependencies changed  
+* Before the effect runs again because dependencies changed
 * When the component unmounts
 
 ## Event listener cleanup
@@ -499,9 +499,9 @@ function ProductList(\{ products, searchText \}) \{
 
 Use `useMemo` when:
 
-* Calculation is expensive  
-* Same calculation repeats often  
-* You need stable object/array reference  
+* Calculation is expensive
+* Same calculation repeats often
+* You need stable object/array reference
 * You pass derived data to memoized child components
 
 ## Common mistake
@@ -574,9 +574,9 @@ Without `useCallback`, a new function is created on every parent render, which c
 
 Use `useCallback` when:
 
-* Passing callback to `React.memo` child  
-* Function is dependency of another hook  
-* Custom hook returns stable functions  
+* Passing callback to `React.memo` child
+* Function is dependency of another hook
+* Custom hook returns stable functions
 * Avoiding unnecessary effect re-runs caused by function identity
 
 ## Common mistake
@@ -661,10 +661,10 @@ Context is for values needed by many components at different levels.
 
 Common examples:
 
-* Theme  
-* Auth user  
-* Locale  
-* Feature flags  
+* Theme
+* Auth user
+* Locale
+* Feature flags
 * App configuration
 
 ## Important performance point
@@ -751,10 +751,10 @@ UI event \-\> dispatch action \-\> reducer calculates next state
 
 Use it when:
 
-* State has multiple related fields  
-* Next state depends on action type  
-* State transition logic is complex  
-* You want reducer logic to be testable  
+* State has multiple related fields
+* Next state depends on action type
+* State transition logic is complex
+* You want reducer logic to be testable
 * You want Redux-like local component state
 
 ## Example: form reducer
@@ -829,10 +829,10 @@ useEffect runs later
 
 ## Use cases
 
-* Measuring DOM size/position  
-* Preventing visual flicker  
-* Tooltip positioning  
-* Scroll position adjustment  
+* Measuring DOM size/position
+* Preventing visual flicker
+* Tooltip positioning
+* Scroll position adjustment
 * Layout-sensitive animations
 
 ## Important trap
@@ -911,10 +911,10 @@ Normally React prefers declarative data flow. `useImperativeHandle` is for rare 
 
 ## Use cases
 
-* Expose `focus`  
-* Expose `scrollToTop`  
-* Expose `clear`  
-* Integrate with third-party UI widgets  
+* Expose `focus`
+* Expose `scrollToTop`
+* Expose `clear`
+* Integrate with third-party UI widgets
 * Build reusable form/input components
 
 ## Interview-ready answer
@@ -1049,11 +1049,11 @@ function useFetch(url) \{
 
 ## Why custom hooks are useful
 
-* Reuse stateful logic  
-* Keep components clean  
-* Share behavior across components  
-* Encapsulate effects and cleanup  
-* Easier testing of logic  
+* Reuse stateful logic
+* Keep components clean
+* Share behavior across components
+* Encapsulate effects and cleanup
+* Easier testing of logic
 * Better separation of concerns
 
 ## Interview-ready answer
@@ -1068,10 +1068,10 @@ Custom hooks are reusable functions that encapsulate hook-based logic. They let 
 
 Do not call hooks inside:
 
-* Conditions  
-* Loops  
-* Nested functions  
-* Event handlers  
+* Conditions
+* Loops
+* Nested functions
+* Event handlers
 * `try/catch/finally`
 
 Bad:
@@ -1096,7 +1096,7 @@ if (\!isLoggedIn) \{
 
 Hooks can be called from:
 
-* React functional components  
+* React functional components
 * Custom hooks
 
 Bad:
@@ -1229,13 +1229,13 @@ const handleClick \= React.useCallback(() \=\> \{
 
 Common use cases:
 
-* Access DOM nodes  
-* Focus input  
-* Store timer ID  
-* Store previous value  
-* Store latest callback  
-* Store mutable object  
-* Integrate third-party libraries  
+* Access DOM nodes
+* Focus input
+* Store timer ID
+* Store previous value
+* Store latest callback
+* Store mutable object
+* Integrate third-party libraries
 * Avoid stale closure in some event listeners
 
 ## Example: latest value ref
@@ -1413,12 +1413,12 @@ A stale closure happens when an effect, callback, or timer captures old state or
 
 A good custom hook:
 
-* Starts with `use`  
-* Has a clear responsibility  
-* Hides reusable stateful logic  
-* Handles cleanup internally  
-* Exposes a small clean API  
-* Avoids unnecessary re-renders  
+* Starts with `use`
+* Has a clear responsibility
+* Hides reusable stateful logic
+* Handles cleanup internally
+* Exposes a small clean API
+* Avoids unnecessary re-renders
 * Does not hide too much business logic unexpectedly
 
 ## Example

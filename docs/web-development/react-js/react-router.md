@@ -229,12 +229,12 @@ This renders when the URL is exactly:
 
 ## Why nested routes are useful
 
-* Shared layouts.  
-* Dashboard pages.  
-* Account sections.  
-* Admin modules.  
-* Settings pages.  
-* Master-detail screens.  
+* Shared layouts.
+* Dashboard pages.
+* Account sections.
+* Admin modules.
+* Settings pages.
+* Master-detail screens.
 * Route-based code organization.
 
 ## Interview-ready answer
@@ -685,11 +685,11 @@ A layout route renders common UI around child pages.
 
 Common examples:
 
-* App shell  
-* Header  
-* Sidebar  
-* Footer  
-* Auth layout  
+* App shell
+* Header
+* Sidebar
+* Footer
+* Auth layout
 * Dashboard layout
 
 function AppLayout() \{
@@ -786,9 +786,9 @@ function App() \{
 
 ## Why useful
 
-* Reduces initial bundle size.  
-* Improves first load performance.  
-* Good for large apps.  
+* Reduces initial bundle size.
+* Improves first load performance.
+* Good for large apps.
 * Useful for admin, reports, dashboards, and rarely visited pages.
 
 ## Interview-ready answer
@@ -991,16 +991,16 @@ For simple apps, fetching inside components or using React Query/RTK Query is co
 
 For large apps:
 
-* Group routes by feature.  
-* Use layout routes.  
-* Lazy load route components.  
-* Protect private sections.  
-* Keep route constants centralized if needed.  
-* Use dynamic params for entity pages.  
-* Use query params for filters/search/pagination.  
-* Add 404 and unauthorized pages.  
-* Track navigation analytics.  
-* Handle loading and error states.  
+* Group routes by feature.
+* Use layout routes.
+* Lazy load route components.
+* Protect private sections.
+* Keep route constants centralized if needed.
+* Use dynamic params for entity pages.
+* Use query params for filters/search/pagination.
+* Add 404 and unauthorized pages.
+* Track navigation analytics.
+* Handle loading and error states.
 * Keep routing consistent with permissions.
 
 ## Interview-ready answer

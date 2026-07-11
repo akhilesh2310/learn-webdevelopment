@@ -43,7 +43,7 @@ Use [React Performance](../performance/react-performance.md) for render optimiza
 
 ## Common Interview Topics
 
-* Context vs Redux  
+* Context vs Redux
 * Redux Toolkit advantages
 
 ## React State Management
@@ -84,12 +84,12 @@ function Counter() \{
 
 ## Common use cases
 
-* Input value  
-* Modal open/close  
-* Dropdown open/close  
-* Selected tab  
-* Hover state  
-* Small UI toggles  
+* Input value
+* Modal open/close
+* Dropdown open/close
+* Selected tab
+* Hover state
+* Small UI toggles
 * Component-specific loading/error state
 
 ## Good example
@@ -200,9 +200,9 @@ Child sends updates using callback prop
 
 ## When to lift state
 
-* Two sibling components need same state  
-* Parent needs to control child behavior  
-* Multiple components need to stay in sync  
+* Two sibling components need same state
+* Parent needs to control child behavior
+* Multiple components need to stay in sync
 * Child action affects another child
 
 ## Interview-ready answer
@@ -261,12 +261,12 @@ Passing `theme` through every level, Context lets `Button` read the value direct
 
 ## Good use cases
 
-* Theme  
-* Auth user  
-* Locale/language  
-* Feature flags  
-* App configuration  
-* Permission information  
+* Theme
+* Auth user
+* Locale/language
+* Feature flags
+* App configuration
+* Permission information
 * Design-system settings
 
 ## Common mistake
@@ -369,11 +369,11 @@ Current state \+ action → reducer → next state
 
 ## When reducer pattern is useful
 
-* State has multiple related fields  
-* State changes depend on action type  
-* State transition logic is complex  
-* You want predictable updates  
-* You want to test state logic separately  
+* State has multiple related fields
+* State changes depend on action type
+* State transition logic is complex
+* You want predictable updates
+* You want to test state logic separately
 * Form, wizard, filters, table, modal workflow
 
 ## Example: form state
@@ -502,10 +502,10 @@ The store holds the global application state.
 
 The store:
 
-* Holds state  
-* Allows dispatching actions  
-* Runs reducers  
-* Notifies subscribers  
+* Holds state
+* Allows dispatching actions
+* Runs reducers
+* Notifies subscribers
 * Supports middleware
 
 ## React setup
@@ -654,11 +654,11 @@ function userReducer(state \= initialState, action) \{
 
 Reducers should:
 
-* Be pure  
-* Not mutate existing state directly in classic Redux  
-* Not call APIs  
-* Not generate random values  
-* Not perform side effects  
+* Be pure
+* Not mutate existing state directly in classic Redux
+* Not call APIs
+* Not generate random values
+* Not perform side effects
 * Return new state
 
 ## Important note with Redux Toolkit
@@ -727,12 +727,12 @@ reducer
 
 Middleware is used for:
 
-* Logging  
-* Async API calls  
-* Analytics  
-* Error reporting  
-* Authentication token handling  
-* Side effects  
+* Logging
+* Async API calls
+* Analytics
+* Error reporting
+* Authentication token handling
+* Side effects
 * Request cancellation/retry flows
 
 ## Example concept
@@ -757,9 +757,9 @@ Redux reducers cannot perform async work. Middleware handles async flows.
 
 Common options:
 
-* Redux Thunk  
-* Redux Saga  
-* Redux Observable  
+* Redux Thunk
+* Redux Saga
+* Redux Observable
 * RTK Query for server state fetching/caching
 
 ## Interview-ready answer
@@ -856,14 +856,14 @@ function UserActions() \{
 
 ## Redux Toolkit advantages
 
-* Less boilerplate  
-* `configureStore` sets good defaults  
-* `createSlice` generates actions and reducers  
-* Immer allows simpler immutable updates  
-* Built-in thunk middleware  
-* DevTools setup is easier  
-* Encourages feature-based slices  
-* Reduces common Redux mistakes  
+* Less boilerplate
+* `configureStore` sets good defaults
+* `createSlice` generates actions and reducers
+* Immer allows simpler immutable updates
+* Built-in thunk middleware
+* DevTools setup is easier
+* Encourages feature-based slices
+* Reduces common Redux mistakes
 * RTK Query supports API fetching and caching
 
 ## Interview-ready answer
@@ -918,27 +918,27 @@ function Counter() \{
 
 ## Why teams use Zustand
 
-* Less boilerplate than Redux  
-* Simple hook-based API  
-* No required Provider for basic usage  
-* Good for small to medium global state  
-* Selectors help reduce unnecessary re-renders  
+* Less boilerplate than Redux
+* Simple hook-based API
+* No required Provider for basic usage
+* Good for small to medium global state
+* Selectors help reduce unnecessary re-renders
 * Easy to create multiple stores
 
 ## Good use cases
 
-* UI global state  
-* Filters  
-* User preferences  
-* Feature-level stores  
-* Modals/toasts  
+* UI global state
+* Filters
+* User preferences
+* Feature-level stores
+* Modals/toasts
 * Lightweight app state
 
 ## Trade-offs
 
-* Less opinionated than Redux  
-* Large teams may need conventions  
-* Middleware/devtools patterns are not as standardized as Redux Toolkit  
+* Less opinionated than Redux
+* Large teams may need conventions
+* Middleware/devtools patterns are not as standardized as Redux Toolkit
 * Complex async and server-state cases may still need clear architecture
 
 ## Interview-ready answer
@@ -1015,13 +1015,13 @@ Client state is UI/application state controlled by the frontend.
 
 Examples:
 
-* Modal open/close  
-* Selected tab  
-* Form input before submit  
-* Theme  
-* Sidebar collapsed state  
-* Local filters  
-* Auth UI state  
+* Modal open/close
+* Selected tab
+* Form input before submit
+* Theme
+* Sidebar collapsed state
+* Local filters
+* Auth UI state
 * Drag/drop state
 
 ## Server state
@@ -1030,28 +1030,28 @@ Server state is remote data fetched from APIs.
 
 Examples:
 
-* User profile from API  
-* Hotel search results  
-* Booking details  
-* Notifications  
-* Reports data  
-* Product list  
+* User profile from API
+* Hotel search results
+* Booking details
+* Notifications
+* Reports data
+* Product list
 * Permissions from backend
 
 ## Why server state is different
 
 Server state has extra problems:
 
-* Loading state  
-* Error state  
-* Refetching  
-* Caching  
-* Stale data  
-* Pagination  
-* Retry  
-* Deduping requests  
-* Background refresh  
-* Optimistic updates  
+* Loading state
+* Error state
+* Refetching
+* Caching
+* Stale data
+* Pagination
+* Retry
+* Deduping requests
+* Background refresh
+* Optimistic updates
 * Synchronization with backend
 
 ## Common mistake
@@ -1062,9 +1062,9 @@ This creates too much boilerplate for caching, refetching, loading, and invalida
 
 Better options:
 
-* RTK Query  
-* TanStack Query / React Query  
-* SWR  
+* RTK Query
+* TanStack Query / React Query
+* SWR
 * Apollo Client for GraphQL
 
 ## Interview-ready answer
@@ -1092,26 +1092,26 @@ Client state is owned by the frontend, such as modal state, form state, theme, a
 
 Use Context for:
 
-* Theme  
-* Locale  
-* Auth user  
-* Permissions  
-* Feature flags  
-* App config  
+* Theme
+* Locale
+* Auth user
+* Permissions
+* Feature flags
+* App config
 * Low-frequency global values
 
 ## When Redux is better
 
 Use Redux Toolkit when:
 
-* Many components need shared state  
-* State transitions are complex  
-* You need predictable global updates  
-* You need strong debugging/devtools  
-* You need middleware  
-* Many teams/features share state  
-* You need consistent architecture  
-* State changes frequently and needs selectors  
+* Many components need shared state
+* State transitions are complex
+* You need predictable global updates
+* You need strong debugging/devtools
+* You need middleware
+* Many teams/features share state
+* You need consistent architecture
+* State changes frequently and needs selectors
 * You need RTK Query for API caching
 
 ## Interview-ready answer
@@ -1130,11 +1130,11 @@ Redux Toolkit improves Redux by reducing boilerplate and adding good defaults.
 
 Classic Redux often required:
 
-* Action types  
-* Action creators  
-* Reducers  
-* Immutable update logic  
-* Manual store setup  
+* Action types
+* Action creators
+* Reducers
+* Immutable update logic
+* Manual store setup
 * Middleware setup
 
 Example classic Redux style:
@@ -1197,14 +1197,14 @@ const userSlice \= createSlice(\{
 
 ## Why this is better
 
-* Less code  
-* Fewer files  
-* Fewer mistakes  
-* Actions generated automatically  
-* Immutable updates handled by Immer  
-* Store setup simplified  
-* Middleware defaults included  
-* DevTools easier  
+* Less code
+* Fewer files
+* Fewer mistakes
+* Actions generated automatically
+* Immutable updates handled by Immer
+* Store setup simplified
+* Middleware defaults included
+* DevTools easier
 * Better feature-based organization
 
 ## Interview-ready answer
@@ -1281,13 +1281,13 @@ Redux Toolkit makes Redux easier and safer.
 
 It provides:
 
-* `configureStore`  
-* `createSlice`  
-* Auto-generated actions  
-* Immer-based immutable updates  
-* Built-in thunk middleware  
-* Good defaults  
-* DevTools support  
+* `configureStore`
+* `createSlice`
+* Auto-generated actions
+* Immer-based immutable updates
+* Built-in thunk middleware
+* Good defaults
+* DevTools support
 * RTK Query for API caching
 
 ## Interview-ready answer
@@ -1304,18 +1304,18 @@ State should be local unless multiple unrelated parts of the app need it.
 
 ## Local state examples
 
-* Input text  
-* Modal open state  
-* Dropdown state  
+* Input text
+* Modal open state
+* Dropdown state
 * Selected tab
 
 ## Global state examples
 
-* Logged-in user  
-* Theme  
-* Permissions  
-* Cart  
-* Shared filters  
+* Logged-in user
+* Theme
+* Permissions
+* Cart
+* Shared filters
 * App-wide notifications
 
 ## Interview-ready answer
@@ -1332,10 +1332,10 @@ Server state is data owned by the backend but displayed in the frontend.
 
 Examples:
 
-* User profile  
-* Search results  
-* Reports  
-* Booking data  
+* User profile
+* Search results
+* Reports
+* Booking data
 * Notifications
 
 It needs caching, loading, error, refetching, retry, and invalidation handling.
@@ -1396,10 +1396,10 @@ const userName \= useSelector(selectUserName);
 
 ## Why selectors are useful
 
-* Encapsulate state shape  
-* Avoid repeated access logic  
-* Improve maintainability  
-* Can derive computed data  
+* Encapsulate state shape
+* Avoid repeated access logic
+* Improve maintainability
+* Can derive computed data
 * Can be memoized for performance
 
 ## Interview-ready answer

@@ -37,38 +37,38 @@ Error handling in React is about preventing one broken component, failed API cal
 
 An Error Boundary is a React component that catches rendering errors in its child component tree and shows fallback UI instead of crashing the whole app.
 
-class ErrorBoundary extends React.Component \{  
-  constructor(props) \{  
+class ErrorBoundary extends React.Component \{
+  constructor(props) \{
     super(props);
 
-    this.state \= \{  
-      hasError: false,  
-    \};  
+    this.state \= \{
+      hasError: false,
+    \};
   \}
 
-  static getDerivedStateFromError(error) \{  
-    return \{  
-      hasError: true,  
-    \};  
+  static getDerivedStateFromError(error) \{
+    return \{
+      hasError: true,
+    \};
   \}
 
-  componentDidCatch(error, info) \{  
-    console.error("Error caught by boundary:", error, info);  
+  componentDidCatch(error, info) \{
+    console.error("Error caught by boundary:", error, info);
   \}
 
-  render() \{  
-    if (this.state.hasError) \{  
-      return \<h2\>Something went wrong.\</h2\>;  
+  render() \{
+    if (this.state.hasError) \{
+      return \<h2\>Something went wrong.\</h2\>;
     \}
 
-    return this.props.children;  
-  \}  
+    return this.props.children;
+  \}
 \}
 
 Usage:
 
-\<ErrorBoundary\>  
-  \<UserDashboard /\>  
+\<ErrorBoundary\>
+  \<UserDashboard /\>
 \</ErrorBoundary\>
 
 ## Key mental model
@@ -81,18 +81,18 @@ If a child component throws during rendering, React catches it and renders fallb
 
 Error Boundaries catch errors in:
 
-* Rendering  
-* Lifecycle methods  
+* Rendering
+* Lifecycle methods
 * Constructors of child components
 
 Example:
 
-function UserProfile(\{ user \}) \{  
-  return \<h1\>\{user.name.toUpperCase()\}\</h1\>;  
+function UserProfile(\{ user \}) \{
+  return \<h1\>\{user.name.toUpperCase()\}\</h1\>;
 \}
 
-\<ErrorBoundary\>  
-  \<UserProfile user=\{null\} /\>  
+\<ErrorBoundary\>
+  \<UserProfile user=\{null\} /\>
 \</ErrorBoundary\>;
 
 If `user` is `null`, this throws during render. Error Boundary can catch it and show fallback UI.
@@ -101,22 +101,22 @@ If `user` is `null`, this throws during render. Error Boundary can catch it and 
 
 Error Boundaries do not catch errors in:
 
-* Event handlers  
-* Async code  
-* `setTimeout`  
-* Promise callbacks  
-* API failures directly  
-* Server-side rendering  
+* Event handlers
+* Async code
+* `setTimeout`
+* Promise callbacks
+* API failures directly
+* Server-side rendering
 * Errors thrown inside the Error Boundary itself
 
 Example:
 
-function SaveButton() \{  
-  function handleClick() \{  
-    throw new Error("Click failed");  
+function SaveButton() \{
+  function handleClick() \{
+    throw new Error("Click failed");
   \}
 
-  return \<button onClick=\{handleClick\}\>Save\</button\>;  
+  return \<button onClick=\{handleClick\}\>Save\</button\>;
 \}
 
 Answer: Error Boundary will not catch this because the error happens inside an event handler.
@@ -137,54 +137,54 @@ It does not catch errors that happen later asynchronously unless those errors ar
 
 ## Synchronous error
 
-try \{  
-  throw new Error("Failed");  
-\} catch (error) \{  
-  console.log(error.message); // "Failed"  
+try \{
+  throw new Error("Failed");
+\} catch (error) \{
+  console.log(error.message); // "Failed"
 \}
 
 ## Async callback trap
 
-try \{  
-  setTimeout(() \=\> \{  
-    throw new Error("Timer failed");  
-  \}, 1000);  
-\} catch (error) \{  
-  console.log("Caught");  
+try \{
+  setTimeout(() \=\> \{
+    throw new Error("Timer failed");
+  \}, 1000);
+\} catch (error) \{
+  console.log("Caught");
 \}
 
 Answer: `"Caught"` does not log because the error happens later, outside the current call stack.
 
 Correct:
 
-setTimeout(() \=\> \{  
-  try \{  
-    throw new Error("Timer failed");  
-  \} catch (error) \{  
-    console.log(error.message); // "Timer failed"  
-  \}  
+setTimeout(() \=\> \{
+  try \{
+    throw new Error("Timer failed");
+  \} catch (error) \{
+    console.log(error.message); // "Timer failed"
+  \}
 \}, 1000);
 
 ## React event handler example
 
-function SaveButton() \{  
-  function handleClick() \{  
-    try \{  
-      riskyOperation();  
-    \} catch (error) \{  
-      console.error(error);  
-    \}  
+function SaveButton() \{
+  function handleClick() \{
+    try \{
+      riskyOperation();
+    \} catch (error) \{
+      console.error(error);
+    \}
   \}
 
-  return \<button onClick=\{handleClick\}\>Save\</button\>;  
+  return \<button onClick=\{handleClick\}\>Save\</button\>;
 \}
 
 ## Important point
 
 Error Boundaries and `try...catch` solve different problems.
 
-* Error Boundary catches render tree errors.  
-* `try...catch` catches event handler and imperative code errors.  
+* Error Boundary catches render tree errors.
+* `try...catch` catches event handler and imperative code errors.
 * Async errors need promise handling or `try...catch` with `await`.
 
 ## Interview-ready answer
@@ -203,70 +203,70 @@ Handle them with `.catch()` or `try...catch` around `await`.
 
 ## Async/await example
 
-async function loadUser() \{  
-  try \{  
+async function loadUser() \{
+  try \{
     const user \= await fetchUser();
 
-    setUser(user);  
-  \} catch (error) \{  
-    setError("Failed to load user");  
-  \} finally \{  
-    setLoading(false);  
-  \}  
+    setUser(user);
+  \} catch (error) \{
+    setError("Failed to load user");
+  \} finally \{
+    setLoading(false);
+  \}
 \}
 
 ## Promise example
 
-fetchUser()  
-  .then((user) \=\> \{  
-    setUser(user);  
-  \})  
-  .catch((error) \=\> \{  
-    setError("Failed to load user");  
+fetchUser()
+  .then((user) \=\> \{
+    setUser(user);
+  \})
+  .catch((error) \=\> \{
+    setError("Failed to load user");
   \});
 
 ## Important trap
 
-async function loadUser() \{  
-  try \{  
-    fetchUser();  
-  \} catch (error) \{  
-    console.log("Caught");  
-  \}  
+async function loadUser() \{
+  try \{
+    fetchUser();
+  \} catch (error) \{
+    console.log("Caught");
+  \}
 \}
 
 Answer: If `fetchUser()` rejects, `"Caught"` may not log because the promise was not awaited.
 
 Correct:
 
-async function loadUser() \{  
-  try \{  
-    await fetchUser();  
-  \} catch (error) \{  
-    console.log("Caught");  
-  \}  
+async function loadUser() \{
+  try \{
+    await fetchUser();
+  \} catch (error) \{
+    console.log("Caught");
+  \}
 \}
 
 ## Async errors in React effects
 
-useEffect(() \=\> \{  
-  async function loadUser() \{  
-    try \{  
+useEffect(() \=\> \{
+  async function loadUser() \{
+    try \{
       const user \= await fetchUser();
 
-      setUser(user);  
-    \} catch (error) \{  
-      setError("Failed to load user");  
-    \}  
+      setUser(user);
+    \} catch (error) \{
+      setError("Failed to load user");
+    \}
   \}
 
-  loadUser();  
+  loadUser();
 \}, \[\]);
 
 Do not make the `useEffect` callback itself `async`.
 
-useEffect(async () \=\> \{  
-  await fetchUser();  
+useEffect(async () \=\> \{
+  await fetchUser();
 \}, \[\]);
 
 Avoid this because `useEffect` expects either nothing or a cleanup function, not a promise.
@@ -285,14 +285,14 @@ API error handling means handling loading, success, HTTP errors, network errors,
 
 ## Basic fetch handling
 
-async function request(url) \{  
+async function request(url) \{
   const response \= await fetch(url);
 
-  if (\!response.ok) \{  
-    throw new Error(\`HTTP error: $\{response.status\}\`);  
+  if (\!response.ok) \{
+    throw new Error(\`HTTP error: $\{response.status\}\`);
   \}
 
-  return response.json();  
+  return response.json();
 \}
 
 ## Important fetch behavior
@@ -303,84 +303,84 @@ So we must check `response.ok`.
 
 ## React API state example
 
-function UserPage() \{  
-  const \[user, setUser\] \= React.useState(null);  
-  const \[loading, setLoading\] \= React.useState(false);  
+function UserPage() \{
+  const \[user, setUser\] \= React.useState(null);
+  const \[loading, setLoading\] \= React.useState(false);
   const \[error, setError\] \= React.useState(null);
 
-  React.useEffect(() \=\> \{  
+  React.useEffect(() \=\> \{
     const controller \= new AbortController();
 
-    async function loadUser() \{  
-      setLoading(true);  
+    async function loadUser() \{
+      setLoading(true);
       setError(null);
 
-      try \{  
-        const response \= await fetch("/api/user", \{  
-          signal: controller.signal,  
+      try \{
+        const response \= await fetch("/api/user", \{
+          signal: controller.signal,
         \});
 
-        if (\!response.ok) \{  
-          throw new Error(\`HTTP error: $\{response.status\}\`);  
+        if (\!response.ok) \{
+          throw new Error(\`HTTP error: $\{response.status\}\`);
         \}
 
         const data \= await response.json();
 
-        setUser(data);  
-      \} catch (error) \{  
+        setUser(data);
+      \} catch (error) \{
         if (error.name \=== "AbortError") return;
 
-        setError("Unable to load user");  
-      \} finally \{  
-        setLoading(false);  
-      \}  
+        setError("Unable to load user");
+      \} finally \{
+        setLoading(false);
+      \}
     \}
 
     loadUser();
 
-    return () \=\> \{  
-      controller.abort();  
-    \};  
+    return () \=\> \{
+      controller.abort();
+    \};
   \}, \[\]);
 
-  if (loading) return \<p\>Loading...\</p\>;  
-  if (error) return \<p\>\{error\}\</p\>;  
+  if (loading) return \<p\>Loading...\</p\>;
+  if (error) return \<p\>\{error\}\</p\>;
   if (\!user) return null;
 
-  return \<h1\>\{user.name\}\</h1\>;  
+  return \<h1\>\{user.name\}\</h1\>;
 \}
 
 ## Good API error handling includes
 
-* Loading state.  
-* Error state.  
-* Empty state.  
-* Retry option.  
-* User-friendly error message.  
-* Technical logging for debugging.  
-* `response.ok` check.  
-* Request cancellation with `AbortController`.  
-* Avoiding stale response updates.  
+* Loading state.
+* Error state.
+* Empty state.
+* Retry option.
+* User-friendly error message.
+* Technical logging for debugging.
+* `response.ok` check.
+* Request cancellation with `AbortController`.
+* Avoiding stale response updates.
 * Handling expected errors differently from unexpected errors.
 
 ## Custom API error
 
-class ApiError extends Error \{  
-  constructor(message, status) \{  
-    super(message);  
-    this.name \= "ApiError";  
-    this.status \= status;  
-  \}  
+class ApiError extends Error \{
+  constructor(message, status) \{
+    super(message);
+    this.name \= "ApiError";
+    this.status \= status;
+  \}
 \}
 
-async function request(url) \{  
+async function request(url) \{
   const response \= await fetch(url);
 
-  if (\!response.ok) \{  
-    throw new ApiError("Request failed", response.status);  
+  if (\!response.ok) \{
+    throw new ApiError("Request failed", response.status);
   \}
 
-  return response.json();  
+  return response.json();
 \}
 
 ## Interview-ready answer
@@ -397,26 +397,26 @@ Global error handling is a fallback layer for unexpected errors that were not ha
 
 ## Browser global error
 
-window.addEventListener("error", (event) \=\> \{  
-  console.log(event.message);  
-  console.log(event.filename);  
-  console.log(event.lineno);  
+window.addEventListener("error", (event) \=\> \{
+  console.log(event.message);
+  console.log(event.filename);
+  console.log(event.lineno);
 \});
 
 ## Unhandled promise rejection
 
-window.addEventListener("unhandledrejection", (event) \=\> \{  
-  console.log(event.reason);  
+window.addEventListener("unhandledrejection", (event) \=\> \{
+  console.log(event.reason);
 \});
 
 ## React application-level setup
 
 In a React app, common layers are:
 
-* Error Boundaries for UI render crashes.  
-* Local `try...catch` for event handlers and async code.  
-* API error handling for expected server/network failures.  
-* Global error listeners for logging unexpected issues.  
+* Error Boundaries for UI render crashes.
+* Local `try...catch` for event handlers and async code.
+* API error handling for expected server/network failures.
+* Global error listeners for logging unexpected issues.
 * Monitoring tools like Sentry, Datadog, New Relic, or similar.
 
 ## Important point
@@ -439,33 +439,33 @@ Global error handling is a safety net for unexpected uncaught errors and unhandl
 
 Error Boundaries work when errors happen during React rendering, lifecycle methods, or constructors of child components.
 
-function BrokenComponent() \{  
+function BrokenComponent() \{
   throw new Error("Render failed");
 
-  return \<div\>Hello\</div\>;  
+  return \<div\>Hello\</div\>;
 \}
 
-\<ErrorBoundary\>  
-  \<BrokenComponent /\>  
+\<ErrorBoundary\>
+  \<BrokenComponent /\>
 \</ErrorBoundary\>;
 
 Answer: Error Boundary catches this because the error is thrown during render.
 
 ## They work for
 
-* Render errors  
-* Class lifecycle errors  
-* Constructor errors  
+* Render errors
+* Class lifecycle errors
+* Constructor errors
 * Child component tree errors
 
 ## They do not work for
 
-* Event handlers  
-* Async code  
-* Promises  
-* `setTimeout`  
-* API failures directly  
-* Server-side rendering  
+* Event handlers
+* Async code
+* Promises
+* `setTimeout`
+* API failures directly
+* Server-side rendering
 * Errors inside the boundary itself
 
 ## Interview-ready answer
@@ -480,28 +480,28 @@ Error Boundaries work for errors thrown during rendering, lifecycle methods, and
 
 Event handlers run after rendering, usually because of user interaction. They are not part of React’s render phase.
 
-function Button() \{  
-  function handleClick() \{  
-    throw new Error("Click failed");  
+function Button() \{
+  function handleClick() \{
+    throw new Error("Click failed");
   \}
 
-  return \<button onClick=\{handleClick\}\>Click\</button\>;  
+  return \<button onClick=\{handleClick\}\>Click\</button\>;
 \}
 
 Error Boundary will not catch this.
 
 Correct handling:
 
-function Button() \{  
-  function handleClick() \{  
-    try \{  
-      riskyOperation();  
-    \} catch (error) \{  
-      console.error(error);  
-    \}  
+function Button() \{
+  function handleClick() \{
+    try \{
+      riskyOperation();
+    \} catch (error) \{
+      console.error(error);
+    \}
   \}
 
-  return \<button onClick=\{handleClick\}\>Click\</button\>;  
+  return \<button onClick=\{handleClick\}\>Click\</button\>;
 \}
 
 ## Interview-ready answer
@@ -516,60 +516,60 @@ Error Boundaries are designed to catch render-time errors in the component tree.
 
 Use `try...catch` inside an async function, usually inside an effect or event handler.
 
-useEffect(() \=\> \{  
+useEffect(() \=\> \{
   let cancelled \= false;
 
-  async function loadData() \{  
-    try \{  
+  async function loadData() \{
+    try \{
       const data \= await fetchData();
 
-      if (\!cancelled) \{  
-        setData(data);  
-      \}  
-    \} catch (error) \{  
-      if (\!cancelled) \{  
-        setError("Failed to load data");  
-      \}  
-    \}  
+      if (\!cancelled) \{
+        setData(data);
+      \}
+    \} catch (error) \{
+      if (\!cancelled) \{
+        setError("Failed to load data");
+      \}
+    \}
   \}
 
   loadData();
 
-  return () \=\> \{  
-    cancelled \= true;  
-  \};  
+  return () \=\> \{
+    cancelled \= true;
+  \};
 \}, \[\]);
 
 Better with `AbortController` for fetch:
 
-useEffect(() \=\> \{  
+useEffect(() \=\> \{
   const controller \= new AbortController();
 
-  async function loadData() \{  
-    try \{  
-      const response \= await fetch("/api/data", \{  
-        signal: controller.signal,  
+  async function loadData() \{
+    try \{
+      const response \= await fetch("/api/data", \{
+        signal: controller.signal,
       \});
 
-      if (\!response.ok) \{  
-        throw new Error(\`HTTP error: $\{response.status\}\`);  
+      if (\!response.ok) \{
+        throw new Error(\`HTTP error: $\{response.status\}\`);
       \}
 
       const data \= await response.json();
 
-      setData(data);  
-    \} catch (error) \{  
+      setData(data);
+    \} catch (error) \{
       if (error.name \=== "AbortError") return;
 
-      setError("Failed to load data");  
-    \}  
+      setError("Failed to load data");
+    \}
   \}
 
   loadData();
 
-  return () \=\> \{  
-    controller.abort();  
-  \};  
+  return () \=\> \{
+    controller.abort();
+  \};
 \}, \[\]);
 
 ## Interview-ready answer
@@ -603,23 +603,23 @@ Error Boundaries catch render-time errors in a React subtree and show fallback U
 
 I usually design error handling at multiple levels:
 
-* Component level: local validation and user-friendly messages.  
-* API layer: normalize API errors and throw custom errors.  
-* Page level: loading, error, empty, success states.  
-* Error Boundary level: fallback UI for render crashes.  
-* Global level: log unexpected errors and unhandled promise rejections.  
+* Component level: local validation and user-friendly messages.
+* API layer: normalize API errors and throw custom errors.
+* Page level: loading, error, empty, success states.
+* Error Boundary level: fallback UI for render crashes.
+* Global level: log unexpected errors and unhandled promise rejections.
 * Observability: send errors with metadata to monitoring tools.
 
 ## Example flow
 
-API fails  
-  ↓  
-API client throws normalized ApiError  
-  ↓  
-Page catches error  
-  ↓  
-UI shows friendly message  
-  ↓  
+API fails
+  ↓
+API client throws normalized ApiError
+  ↓
+Page catches error
+  ↓
+UI shows friendly message
+  ↓
 Logger records technical details
 
 ## Interview-ready answer

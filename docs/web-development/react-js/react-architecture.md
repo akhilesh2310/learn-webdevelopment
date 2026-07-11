@@ -35,14 +35,14 @@ React architecture means how we organize components, state, routes, APIs, shared
 
 For senior/staff interviews, the best answer is not just folder structure. The best answer should cover:
 
-Code organization  
-Feature ownership  
-Shared components  
-State boundaries  
-API layer  
-Performance  
-Testing  
-Deployment  
+Code organization
+Feature ownership
+Shared components
+State boundaries
+API layer
+Performance
+Testing
+Deployment
 Team scalability
 
 ---
@@ -55,29 +55,29 @@ React architecture is the structure and design of a React application so it rema
 
 A small React app can survive with simple folders like:
 
-components/  
-pages/  
+components/
+pages/
 utils/
 
 But a large app needs clearer boundaries:
 
-features/  
-shared/  
-app/  
-services/  
+features/
+shared/
+app/
+services/
 design-system/
 
 ## Good React architecture should solve
 
-* Where should components live?  
-* Where should API calls live?  
-* How should state be managed?  
-* How do teams own features?  
-* How do we reuse components?  
-* How do we avoid duplicate code?  
-* How do we test features?  
-* How do we split bundles?  
-* How do we deploy independently if needed?  
+* Where should components live?
+* Where should API calls live?
+* How should state be managed?
+* How do teams own features?
+* How do we reuse components?
+* How do we avoid duplicate code?
+* How do we test features?
+* How do we split bundles?
+* How do we deploy independently if needed?
 * How do we keep UI consistent?
 
 ## Interview-ready answer
@@ -94,73 +94,73 @@ Feature-based structure organizes code by business feature instead of technical 
 
 Instead of this:
 
-components/  
-hooks/  
-services/  
-utils/  
+components/
+hooks/
+services/
+utils/
 pages/
 
 Use this:
 
-features/  
-  campaigns/  
-  reports/  
-  creatives/  
-  users/  
-shared/  
+features/
+  campaigns/
+  reports/
+  creatives/
+  users/
+shared/
 app/
 
 ## Example structure
 
-src/  
-  app/  
-    routes/  
-    providers/  
-    store/  
+src/
+  app/
+    routes/
+    providers/
+    store/
     App.tsx
 
-  features/  
-    campaigns/  
-      components/  
-      hooks/  
-      api/  
-      types/  
-      utils/  
-      pages/  
+  features/
+    campaigns/
+      components/
+      hooks/
+      api/
+      types/
+      utils/
+      pages/
       index.ts
 
-    reports/  
-      components/  
-      hooks/  
-      api/  
-      types/  
-      pages/  
+    reports/
+      components/
+      hooks/
+      api/
+      types/
+      pages/
       index.ts
 
-  shared/  
-    components/  
-    hooks/  
-    utils/  
-    api/  
+  shared/
+    components/
+    hooks/
+    utils/
+    api/
     types/
 
 ## Key mental model
 
 Keep feature-specific code inside the feature.
 
-Campaign-specific table → features/campaigns/components  
-Campaign-specific API → features/campaigns/api  
-Campaign-specific hooks → features/campaigns/hooks  
+Campaign-specific table → features/campaigns/components
+Campaign-specific API → features/campaigns/api
+Campaign-specific hooks → features/campaigns/hooks
 Reusable Button → shared/components
 
 ## Why feature-based structure scales well
 
-* Easier feature ownership.  
-* Easier onboarding.  
-* Less confusion about where code belongs.  
-* Reduces accidental coupling.  
-* Easier deletion of old features.  
-* Easier lazy loading by feature.  
+* Easier feature ownership.
+* Easier onboarding.
+* Less confusion about where code belongs.
+* Reduces accidental coupling.
+* Easier deletion of old features.
+* Easier lazy loading by feature.
 * Works well for team-based development.
 
 ## Common mistake
@@ -169,10 +169,10 @@ Putting everything into `shared`.
 
 Bad:
 
-shared/  
-  components/  
-    CampaignTable.tsx  
-    ReportFilters.tsx  
+shared/
+  components/
+    CampaignTable.tsx
+    ReportFilters.tsx
     CreativeReviewModal.tsx
 
 These are not truly shared. They belong to their feature.
@@ -197,42 +197,42 @@ It is similar to feature-based structure but more focused on business concepts a
 
 Example domains:
 
-campaigns  
-creatives  
-reports  
-billing  
-users  
-permissions  
+campaigns
+creatives
+reports
+billing
+users
+permissions
 inventory
 
 ## Example
 
-src/  
-  domains/  
-    campaign/  
-      model/  
-      api/  
-      ui/  
-      hooks/  
+src/
+  domains/
+    campaign/
+      model/
+      api/
+      ui/
+      hooks/
       routes/
 
-    creative/  
-      model/  
-      api/  
-      ui/  
-      hooks/  
+    creative/
+      model/
+      api/
+      ui/
+      hooks/
       routes/
 
-    reporting/  
-      model/  
-      api/  
-      ui/  
-      hooks/  
+    reporting/
+      model/
+      api/
+      ui/
+      hooks/
       routes/
 
-  shared/  
-    ui/  
-    lib/  
+  shared/
+    ui/
+    lib/
     config/
 
 ## Key mental model
@@ -247,25 +247,25 @@ Is this a component or hook?
 
 ## Domain layer examples
 
-domain/campaign/model  
+domain/campaign/model
 → Campaign types, campaign status, campaign validation
 
-domain/campaign/api  
+domain/campaign/api
 → Campaign API functions
 
-domain/campaign/ui  
+domain/campaign/ui
 → Campaign-specific UI components
 
-domain/campaign/hooks  
+domain/campaign/hooks
 → Campaign-specific hooks
 
 ## Why useful
 
-* Good for large business apps.  
-* Aligns code with product/domain language.  
-* Helps teams own business areas.  
-* Reduces cross-domain coupling.  
-* Easier to reason about complex workflows.  
+* Good for large business apps.
+* Aligns code with product/domain language.
+* Helps teams own business areas.
+* Reduces cross-domain coupling.
+* Easier to reason about complex workflows.
 * Works well with microfrontends and monorepos.
 
 ## Common mistake
@@ -307,18 +307,18 @@ A monorepo keeps multiple apps and packages in one repository.
 
 Example:
 
-repo/  
-  apps/  
-    admin-portal/  
-    customer-web/  
+repo/
+  apps/
+    admin-portal/
+    customer-web/
     storybook/
 
-  packages/  
-    ui/  
-    eslint-config/  
-    ts-config/  
-    utils/  
-    api-client/  
+  packages/
+    ui/
+    eslint-config/
+    ts-config/
+    utils/
+    api-client/
     design-tokens/
 
 ## Key mental model
@@ -329,51 +329,51 @@ A monorepo is useful when multiple apps share code, tooling, components, and sta
 
 ## Common monorepo tools
 
-* Nx  
-* Turborepo  
-* pnpm workspaces  
-* Yarn workspaces  
+* Nx
+* Turborepo
+* pnpm workspaces
+* Yarn workspaces
 * npm workspaces
 
 ## Why monorepo is useful
 
-* Shared components.  
-* Shared TypeScript config.  
-* Shared ESLint/prettier config.  
-* Shared utility packages.  
-* Shared API clients.  
-* Consistent tooling.  
-* Easier cross-package refactoring.  
-* Better visibility across teams.  
+* Shared components.
+* Shared TypeScript config.
+* Shared ESLint/prettier config.
+* Shared utility packages.
+* Shared API clients.
+* Consistent tooling.
+* Easier cross-package refactoring.
+* Better visibility across teams.
 * Build caching and affected builds with tools like Nx/Turborepo.
 
 ## Example packages
 
-packages/  
-  ui/  
-    Button.tsx  
-    Modal.tsx  
+packages/
+  ui/
+    Button.tsx
+    Modal.tsx
     DataTable.tsx
 
-  api-client/  
-    campaignApi.ts  
+  api-client/
+    campaignApi.ts
     reportingApi.ts
 
-  design-tokens/  
-    colors.ts  
+  design-tokens/
+    colors.ts
     spacing.ts
 
-  utils/  
-    date.ts  
+  utils/
+    date.ts
     formatCurrency.ts
 
 ## Monorepo trade-offs
 
-* Requires strong ownership.  
-* Build pipeline can become complex.  
-* Versioning strategy is important.  
-* Bad boundaries can create tight coupling.  
-* CI/CD must support affected builds.  
+* Requires strong ownership.
+* Build pipeline can become complex.
+* Versioning strategy is important.
+* Bad boundaries can create tight coupling.
+* CI/CD must support affected builds.
 * Large repo can slow down without caching.
 
 ## Interview-ready answer
@@ -390,53 +390,53 @@ A design system is a collection of reusable UI components, design tokens, guidel
 
 ## Design system includes
 
-Design tokens  
-Reusable components  
-Accessibility rules  
-Component documentation  
-Usage guidelines  
-Theming  
-Testing  
+Design tokens
+Reusable components
+Accessibility rules
+Component documentation
+Usage guidelines
+Theming
+Testing
 Versioning
 
 ## Design tokens
 
 Design tokens are reusable design values.
 
-\export const tokens \= \{  
-  colors: \{  
-    primary: "\#2563eb",  
-    danger: "\#dc2626",  
-  \},  
-  spacing: \{  
-    sm: "8px",  
-    md: "16px",  
-    lg: "24px",  
-  \},  
+\export const tokens \= \{
+  colors: \{
+    primary: "\#2563eb",
+    danger: "\#dc2626",
+  \},
+  spacing: \{
+    sm: "8px",
+    md: "16px",
+    lg: "24px",
+  \},
 \};
 
 ## Component examples
 
-Button  
-Input  
-Select  
-Modal  
-Tooltip  
-Tabs  
-DataTable  
-DatePicker  
-Toast  
-Drawer  
+Button
+Input
+Select
+Modal
+Tooltip
+Tabs
+DataTable
+DatePicker
+Toast
+Drawer
 Pagination
 
 ## Why design systems matter
 
-* UI consistency.  
-* Faster development.  
-* Better accessibility.  
-* Less duplicate UI code.  
-* Easier theming.  
-* Shared language between design and engineering.  
+* UI consistency.
+* Faster development.
+* Better accessibility.
+* Less duplicate UI code.
+* Easier theming.
+* Shared language between design and engineering.
 * Better quality through reusable tested components.
 
 ## Storybook
@@ -445,11 +445,11 @@ Storybook is commonly used to document and test design-system components.
 
 Good Storybook setup includes:
 
-* Component examples.  
-* Props documentation.  
-* Interaction states.  
-* Accessibility checks.  
-* Visual regression testing.  
+* Component examples.
+* Props documentation.
+* Interaction states.
+* Accessibility checks.
+* Visual regression testing.
 * Usage guidelines.
 
 ## Common mistake
@@ -458,19 +458,19 @@ A design system should not become a dumping ground for feature-specific componen
 
 Bad:
 
-design-system/  
-  CampaignApprovalTable.tsx  
+design-system/
+  CampaignApprovalTable.tsx
   HotelSearchWidget.tsx
 
 Better:
 
-design-system/  
-  Button.tsx  
-  DataTable.tsx  
+design-system/
+  Button.tsx
+  DataTable.tsx
   Modal.tsx
 
-features/  
-  campaigns/  
+features/
+  campaigns/
     CampaignApprovalTable.tsx
 
 ## Interview-ready answer
@@ -487,49 +487,49 @@ A shared component library is a reusable package of components used across multi
 
 Example:
 
-@company/ui  
-@company/design-tokens  
+@company/ui
+@company/design-tokens
 @company/icons
 
 ## Good shared component design
 
 A shared component should be:
 
-* Reusable.  
-* Accessible.  
-* Well-typed.  
-* Theme-aware.  
-* Tested.  
-* Documented.  
-* Not tightly coupled to one feature.  
+* Reusable.
+* Accessible.
+* Well-typed.
+* Theme-aware.
+* Tested.
+* Documented.
+* Not tightly coupled to one feature.
 * Flexible enough without becoming too complex.
 
 ## Example
 
-type ButtonProps \= \{  
-  variant?: "primary" | "secondary" | "danger";  
-  size?: "sm" | "md" | "lg";  
-  disabled?: boolean;  
-  children: React.ReactNode;  
-  onClick?: () \=\> void;  
+type ButtonProps \= \{
+  variant?: "primary" | "secondary" | "danger";
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+  children: React.ReactNode;
+  onClick?: () \=\> void;
 \};
 
-function Button(\{  
-  variant \= "primary",  
-  size \= "md",  
-  disabled,  
-  children,  
-  onClick,  
-\}: ButtonProps) \{  
-  return (  
-    \<button  
-      className=\{\`btn btn-$\{variant\} btn-$\{size\}\`\}  
-      disabled=\{disabled\}  
-      onClick=\{onClick\}  
-    \>  
-      \{children\}  
-    \</button\>  
-  );  
+function Button(\{
+  variant \= "primary",
+  size \= "md",
+  disabled,
+  children,
+  onClick,
+\}: ButtonProps) \{
+  return (
+    \<button
+      className=\{\`btn btn-$\{variant\} btn-$\{size\}\`\}
+      disabled=\{disabled\}
+      onClick=\{onClick\}
+    \>
+      \{children\}
+    \</button\>
+  );
 \}
 
 ## Versioning approaches
@@ -548,13 +548,13 @@ Publish to private npm registry.
 
 ## Challenges
 
-* Breaking changes.  
-* Version mismatch.  
-* Component API design.  
-* Theme customization.  
-* Accessibility ownership.  
-* Design-engineering sync.  
-* Documentation maintenance.  
+* Breaking changes.
+* Version mismatch.
+* Component API design.
+* Theme customization.
+* Accessibility ownership.
+* Design-engineering sync.
+* Documentation maintenance.
 * Backward compatibility.
 
 ## Interview-ready answer
@@ -569,10 +569,10 @@ A shared component library provides reusable UI components across apps or teams.
 
 Micro Frontends split a large frontend application into smaller independently owned and deployable frontend applications.
 
-Shell App  
-  ├── Campaign MFE  
-  ├── Reports MFE  
-  ├── Creative Review MFE  
+Shell App
+  ├── Campaign MFE
+  ├── Reports MFE
+  ├── Creative Review MFE
   └── Admin MFE
 
 ## Key mental model
@@ -583,61 +583,61 @@ Each team owns one vertical slice of the frontend.
 
 ## Common implementation approaches
 
-* Module Federation  
-* Single-SPA  
-* Web Components  
-* iframe-based integration  
-* Build-time integration through packages  
+* Module Federation
+* Single-SPA
+* Web Components
+* iframe-based integration
+* Build-time integration through packages
 * Route-level app composition
 
 ## Shell and remote model
 
-Shell / Container App  
+Shell / Container App
   → handles routing, layout, auth, navigation
 
-Remote Apps  
+Remote Apps
   → own feature-specific UI and logic
 
 Example:
 
-/admin/campaigns → Campaign MFE  
-/admin/reports   → Reports MFE  
+/admin/campaigns → Campaign MFE
+/admin/reports   → Reports MFE
 /admin/creatives → Creative Review MFE
 
 ## Why use Micro Frontends
 
 Use Micro Frontends when:
 
-* App is very large.  
-* Multiple teams need independent ownership.  
-* Teams need independent deployments.  
-* Different features have different release cycles.  
-* Legacy migration is needed.  
-* Large monolith UI slows development.  
+* App is very large.
+* Multiple teams need independent ownership.
+* Teams need independent deployments.
+* Different features have different release cycles.
+* Legacy migration is needed.
+* Large monolith UI slows development.
 * Teams need strong domain boundaries.
 
 ## Benefits
 
-* Independent development.  
-* Independent deployment.  
-* Clear team ownership.  
-* Smaller domain-specific apps.  
-* Easier legacy migration.  
-* Fault isolation at feature level.  
+* Independent development.
+* Independent deployment.
+* Clear team ownership.
+* Smaller domain-specific apps.
+* Easier legacy migration.
+* Fault isolation at feature level.
 * Teams can scale independently.
 
 ## Challenges
 
-* Shared dependency management.  
-* Bundle size duplication.  
-* Runtime integration complexity.  
-* Cross-MFE communication.  
-* Routing coordination.  
-* Authentication sharing.  
-* Design consistency.  
-* Version mismatch.  
-* Testing across MFEs.  
-* Deployment orchestration.  
+* Shared dependency management.
+* Bundle size duplication.
+* Runtime integration complexity.
+* Cross-MFE communication.
+* Routing coordination.
+* Authentication sharing.
+* Design consistency.
+* Version mismatch.
+* Testing across MFEs.
+* Deployment orchestration.
 * Performance monitoring.
 
 ## Cross-MFE communication
@@ -646,12 +646,12 @@ Prefer clear contracts.
 
 Options:
 
-Props from shell  
-Shared auth/session service  
-Custom events  
-Shared event bus  
-Shared store carefully  
-URL/query params  
+Props from shell
+Shared auth/session service
+Custom events
+Shared event bus
+Shared store carefully
+URL/query params
 Backend/API as source of truth
 
 Avoid random global variables and hidden coupling.
@@ -660,18 +660,18 @@ Avoid random global variables and hidden coupling.
 
 Shell imports remote module at runtime
 
-campaignApp/CampaignRoutes  
+campaignApp/CampaignRoutes
 reportsApp/ReportsRoutes
 
 ## What should be shared?
 
 Usually share:
 
-* React and React DOM as singleton  
-* Design system  
-* Design tokens  
-* Auth utilities  
-* API client contracts  
+* React and React DOM as singleton
+* Design system
+* Design tokens
+* Auth utilities
+* API client contracts
 * Logging/monitoring utilities
 
 Do not over-share feature logic across MFEs because it creates coupling.
@@ -694,16 +694,16 @@ Scaling a React app means keeping it maintainable and performant as features, co
 
 Use feature/domain structure.
 
-features/  
-shared/  
+features/
+shared/
 app/
 
 ### 2. State management
 
 Choose state based on ownership.
 
-Local state → useState/useReducer  
-Shared app state → Context/Redux/Zustand  
+Local state → useState/useReducer
+Shared app state → Context/Redux/Zustand
 Server state → React Query/RTK Query/SWR/Apollo
 
 ### 3. API layer
@@ -712,60 +712,60 @@ Do not scatter fetch calls everywhere.
 
 Better:
 
-features/reports/api/reportApi.ts  
+features/reports/api/reportApi.ts
 shared/api/httpClient.ts
 
 ### 4. Component architecture
 
 Separate:
 
-Page components  
-Feature components  
-Shared UI components  
+Page components
+Feature components
+Shared UI components
 Design-system components
 
 ### 5. Performance
 
 Use:
 
-* Code splitting.  
-* Lazy loading.  
-* Memoization where needed.  
-* List virtualization.  
-* Bundle analysis.  
-* Image optimization.  
-* Avoid unnecessary re-renders.  
+* Code splitting.
+* Lazy loading.
+* Memoization where needed.
+* List virtualization.
+* Bundle analysis.
+* Image optimization.
+* Avoid unnecessary re-renders.
 * Proper server-state caching.
 
 ### 6. Testing
 
 Use test pyramid:
 
-Unit tests  
-Integration tests  
-E2E tests  
-Visual regression tests  
+Unit tests
+Integration tests
+E2E tests
+Visual regression tests
 Accessibility tests
 
 ### 7. Build and deployment
 
 For large apps:
 
-* CI/CD pipeline.  
-* Build caching.  
-* Affected builds.  
-* Preview environments.  
-* Automated smoke tests.  
-* Versioned packages.  
+* CI/CD pipeline.
+* Build caching.
+* Affected builds.
+* Preview environments.
+* Automated smoke tests.
+* Versioned packages.
 * Monitoring and rollback.
 
 ### 8. Team ownership
 
 Define boundaries:
 
-Team A owns campaigns  
-Team B owns reports  
-Team C owns design system  
+Team A owns campaigns
+Team B owns reports
+Team C owns design system
 Team D owns platform shell
 
 ## Interview-ready answer
@@ -809,17 +809,17 @@ I scale React applications across code, state, performance, testing, and team ow
 
 Key points:
 
-* Organize code by feature/domain.  
-* Keep shared code truly reusable.  
-* Use design system for consistency.  
-* Separate client state and server state.  
-* Use route-based code splitting.  
-* Use lazy loading for heavy features.  
-* Use React Query/RTK Query for server state.  
-* Use Redux/Zustand only when global client state needs it.  
-* Use Storybook for shared components.  
-* Add unit, integration, E2E, visual, and accessibility testing.  
-* Use CI/CD, linting, type checks, and bundle analysis.  
+* Organize code by feature/domain.
+* Keep shared code truly reusable.
+* Use design system for consistency.
+* Separate client state and server state.
+* Use route-based code splitting.
+* Use lazy loading for heavy features.
+* Use React Query/RTK Query for server state.
+* Use Redux/Zustand only when global client state needs it.
+* Use Storybook for shared components.
+* Add unit, integration, E2E, visual, and accessibility testing.
+* Use CI/CD, linting, type checks, and bundle analysis.
 * Define ownership boundaries for teams.
 
 ## Interview-ready answer
@@ -832,20 +832,20 @@ To scale a React app, I start with feature-based architecture, clear state owner
 
 ## Technical structure
 
-components/  
-hooks/  
-utils/  
+components/
+hooks/
+utils/
 api/
 
 This is fine for small apps.
 
 ## Feature-based structure
 
-features/  
-  reports/  
-    components/  
-    hooks/  
-    api/  
+features/
+  reports/
+    components/
+    hooks/
+    api/
     types/
 
 Better for large apps.
@@ -864,17 +864,17 @@ Only generic reusable code should go into shared.
 
 Good shared examples:
 
-Button  
-Modal  
-useDebounce  
-formatDate  
-httpClient  
+Button
+Modal
+useDebounce
+formatDate
+httpClient
 types shared across domains
 
 Bad shared examples:
 
-CampaignApprovalModal  
-HotelSearchFilter  
+CampaignApprovalModal
+HotelSearchFilter
 ReportSpecificTable
 
 ## Interview-ready answer
@@ -889,15 +889,15 @@ Shared should contain stable reusable code used by multiple features. Feature-sp
 
 A component library should include:
 
-* Reusable generic components.  
-* Design tokens.  
-* TypeScript types.  
-* Accessibility support.  
-* Theming support.  
-* Storybook documentation.  
-* Unit and interaction tests.  
-* Visual regression tests.  
-* Versioning and changelog.  
+* Reusable generic components.
+* Design tokens.
+* TypeScript types.
+* Accessibility support.
+* Theming support.
+* Storybook documentation.
+* Unit and interaction tests.
+* Visual regression tests.
+* Versioning and changelog.
 * Clear contribution guidelines.
 
 ## Interview-ready answer
@@ -951,18 +951,18 @@ Use microfrontends when organizational scale needs it, not just because it sound
 
 Use them when:
 
-* Multiple teams own different domains.  
-* Independent deployment is required.  
-* The frontend monolith is too large.  
-* Legacy migration needs gradual replacement.  
-* Different features have separate release cycles.  
+* Multiple teams own different domains.
+* Independent deployment is required.
+* The frontend monolith is too large.
+* Legacy migration needs gradual replacement.
+* Different features have separate release cycles.
 * Strong domain isolation is needed.
 
 Avoid them when:
 
-* One small team owns the app.  
-* Deployment can remain unified.  
-* Shared state is tightly coupled.  
+* One small team owns the app.
+* Deployment can remain unified.
+* Shared state is tightly coupled.
 * App complexity does not justify runtime integration cost.
 
 ## Interview-ready answer
@@ -977,15 +977,15 @@ I would use microfrontends when team independence, domain ownership, and indepen
 
 Main challenges:
 
-* Shared dependency versioning.  
-* Runtime failures.  
-* Bundle duplication.  
-* Routing integration.  
-* Auth/session sharing.  
-* Cross-app communication.  
-* Design consistency.  
-* Testing full user journeys.  
-* Deployment coordination.  
+* Shared dependency versioning.
+* Runtime failures.
+* Bundle duplication.
+* Routing integration.
+* Auth/session sharing.
+* Cross-app communication.
+* Design consistency.
+* Testing full user journeys.
+* Deployment coordination.
 * Monitoring and rollback.
 
 ## Interview-ready answer
@@ -1002,11 +1002,11 @@ Avoid too much shared client state.
 
 Prefer:
 
-* URL params for navigation state.  
-* Backend/API as source of truth.  
-* Shell-provided auth/session.  
-* Custom events for decoupled events.  
-* Shared store only for truly global state.  
+* URL params for navigation state.
+* Backend/API as source of truth.
+* Shell-provided auth/session.
+* Custom events for decoupled events.
+* Shared store only for truly global state.
 * Clear contracts between shell and remotes.
 
 ## Interview-ready answer
@@ -1021,16 +1021,16 @@ In microfrontends, I avoid a large shared global store because it couples teams.
 
 Use rules and boundaries:
 
-* Feature ownership.  
-* Shared code review.  
-* Dependency rules.  
-* Lint boundaries.  
-* TypeScript strict mode.  
-* Storybook for shared UI.  
-* Testing standards.  
-* Architecture decision records.  
-* Code owners.  
-* Bundle budgets.  
+* Feature ownership.
+* Shared code review.
+* Dependency rules.
+* Lint boundaries.
+* TypeScript strict mode.
+* Storybook for shared UI.
+* Testing standards.
+* Architecture decision records.
+* Code owners.
+* Bundle budgets.
 * Regular cleanup.
 
 ## Interview-ready answer

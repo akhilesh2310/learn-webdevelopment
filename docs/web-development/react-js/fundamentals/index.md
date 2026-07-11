@@ -39,9 +39,9 @@ Related canonical pages: [React Fiber](react-fiber.md), [React Reconciliation](r
 
 ## Common Interview Topics/Questions please
 
-* Virtual DOM  
-* Why React is fast  
-* Props vs State  
+* Virtual DOM
+* Why React is fast
+* Props vs State
 * StringMode
 
 React.isStringMode
@@ -96,14 +96,14 @@ React became popular because it gives a clean way to build complex UIs.
 
 Its strengths are:
 
-* Component-based architecture  
-* Declarative UI  
-* Reusable components  
-* Strong ecosystem  
-* Good performance model  
-* Unidirectional data flow  
-* Works well for large applications  
-* Can be used with TypeScript  
+* Component-based architecture
+* Declarative UI
+* Reusable components
+* Strong ecosystem
+* Good performance model
+* Unidirectional data flow
+* Works well for large applications
+* Can be used with TypeScript
 * Can support SPA, SSR, SSG, and hybrid apps through frameworks like Next.js
 
 ### Simple real-world example
@@ -288,12 +288,12 @@ Today, the line between SPA and MPA is not always strict.
 
 Frameworks like Next.js can support:
 
-* Server-side rendering  
-* Static generation  
-* Client-side navigation  
-* Partial hydration  
-* API routes  
-* Streaming  
+* Server-side rendering
+* Static generation
+* Client-side navigation
+* Partial hydration
+* API routes
+* Streaming
 * Hybrid pages
 
 So a modern React app may behave like an SPA after initial load, but still use server rendering for performance and SEO.
@@ -2041,11 +2041,11 @@ Reconciliation is the process where React compares the old React tree with the n
 
 Common causes:
 
-* State update  
-* Parent re-render  
-* Props change  
-* Context value change  
-* External store update  
+* State update
+* Parent re-render
+* Props change
+* Context value change
+* External store update
 * Route change
 
 ## 6. Does re-render always mean DOM update?

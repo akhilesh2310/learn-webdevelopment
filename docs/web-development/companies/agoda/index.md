@@ -7,12 +7,12 @@ sidebar_position: 1
 
 Related canonical pages: [Event Loop](../../javascript/event-loop.md), [React Performance](../../performance/react-performance.md), [React Fiber](../../react-js/fundamentals/react-fiber.md), [React Reconciliation](../../react-js/fundamentals/reconciliation-1.md), [XSS](../../security-auth/xss-cross-site-scripting.md), [JWT & CSRF](../../security-auth/jwt-csrf-token-storage.md).
 
-Agoda Prep doc:  
-[https://docs.google.com/document/d/1yX\_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0](https://docs.google.com/document/d/1yX_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0)
+Agoda Prep doc:
+- [https://docs.google.com/document/d/1yX_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0](https://docs.google.com/document/d/1yX_jfwpp8W7Y8D8VpaXFFl-CyOUZtW5p3yQ2EN-9hX8/edit?tab=t.0)
 
-Web Protocols & Security  
-Core Web Development Concepts  
-Performance Optimization  
+Web Protocols & Security
+Core Web Development Concepts
+Performance Optimization
 Testing Strategy
 
 ## Questions Recently Asked in Agoda Platform Round
@@ -21,21 +21,21 @@ Testing Strategy
 
 Candidates reported questions like:
 
-* What happens when you type a URL? **\- Done**  
-  * How does DNS resolution work**? \- Done**  
-* How does a browser render a page?  **\- Done**  
-  * Explain the Critical Rendering Path.  
-  * Reflow vs Repaint.  
-  * What causes layout shifts?  
-  * Why is transform faster than top/left?  
-  * What is GPU acceleration?  
-  * What is Layout Thrashing?  
-* HTTP vs HTTPS.  
-* HTTP/1.1 vs HTTP/2 vs HTTP/3.  
-* Cookies vs LocalStorage vs SessionStorage.  
-* CDN architecture.  
-* Browser caching strategies.  
-* ETag vs Cache-Control.  
+* What happens when you type a URL? **\- Done**
+  * How does DNS resolution work**? \- Done**
+* How does a browser render a page?  **\- Done**
+  * Explain the Critical Rendering Path.
+  * Reflow vs Repaint.
+  * What causes layout shifts?
+  * Why is transform faster than top/left?
+  * What is GPU acceleration?
+  * What is Layout Thrashing?
+* HTTP vs HTTPS.
+* HTTP/1.1 vs HTTP/2 vs HTTP/3.
+* Cookies vs LocalStorage vs SessionStorage.
+* CDN architecture.
+* Browser caching strategies.
+* ETag vs Cache-Control.
 * Service Workers.
 
 These were explicitly mentioned by candidates who recently completed Platform rounds.
@@ -48,17 +48,17 @@ This seems to be Agoda's favorite area.
 
 Reported questions:
 
-* What are Core Web Vitals?  
-  * Explain LCP.  
-  * Explain CLS.  
-  * Explain INP.  
-* How would you improve page performance?  
-* How do bundlers affect performance?  
-* Tree shaking.  
-* Code splitting.  
-* Lazy loading.  
-* Image optimization.  
-* Virtualization for large lists.  
+* What are Core Web Vitals?
+  * Explain LCP.
+  * Explain CLS.
+  * Explain INP.
+* How would you improve page performance?
+* How do bundlers affect performance?
+* Tree shaking.
+* Code splitting.
+* Lazy loading.
+* Image optimization.
+* Virtualization for large lists.
 * Bundle analysis techniques.
 
 Several candidates specifically mentioned deep discussions on performance metrics.
@@ -71,19 +71,19 @@ For Answers: [https://chatgpt.com/c/6a3118c5-0154-83ee-9c8d-7afa069c08f4](https:
 
 Questions reported:
 
-* Virtual DOM. **\- done**  
-  * [https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react](https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react)  
-  * React Reconciliation. **\- done**  
-  * React diffing algorithm. **\- done**  
-  * React Fiber. **\- done**  
-* React.memo.  
-* useMemo.  
-* useCallback.  
-* Why components re-render.  
-* Context vs Redux.  
-* State management tradeoffs.  
-* Controlled vs uncontrolled components.  
-* Hooks internals.  
+* Virtual DOM. **\- done**
+  * [https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react](https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react)
+  * React Reconciliation. **\- done**
+  * React diffing algorithm. **\- done**
+  * React Fiber. **\- done**
+* React.memo.
+* useMemo.
+* useCallback.
+* Why components re-render.
+* Context vs Redux.
+* State management tradeoffs.
+* Controlled vs uncontrolled components.
+* Hooks internals.
 * Performance pitfalls in React.
 
 One candidate explicitly mentioned React Fiber, memoization pitfalls, optimization techniques, Context API vs Redux, and React fundamentals.
@@ -138,15 +138,15 @@ One candidate explicitly mentioned React Fiber, memoization pitfalls, optimizati
 
 ↳ Follow-up: Output-based question testing Promise vs setTimeout ordering
 
-1. React Render vs Commit Phase  
-2. Concurrent Rendering  
-3. Suspense Internals  
-4. React Fiber Lanes & Scheduling  
-5. Server Components  
-6. SSR vs CSR vs SSG vs ISR  
-7. React Context Performance Patterns  
-8. React Profiler Deep Dive  
-9. State Colocation vs Global State  
+1. React Render vs Commit Phase
+2. Concurrent Rendering
+3. Suspense Internals
+4. React Fiber Lanes & Scheduling
+5. Server Components
+6. SSR vs CSR vs SSG vs ISR
+7. React Context Performance Patterns
+8. React Profiler Deep Dive
+9. State Colocation vs Global State
 10. React 18 Architecture Changes
 
 ---
@@ -155,17 +155,17 @@ One candidate explicitly mentioned React Fiber, memoization pitfalls, optimizati
 
 Questions reported:
 
-* Event Loop.  
-* Closures.  
-* Hoisting.  
-* Scope.  
-* Promises.  
-* Async/Await.  
-* Microtask Queue.  
-* Macro Task Queue.  
-* Debounce.  
-* Throttle.  
-* Memoization.  
+* Event Loop.
+* Closures.
+* Hoisting.
+* Scope.
+* Promises.
+* Async/Await.
+* Microtask Queue.
+* Macro Task Queue.
+* Debounce.
+* Throttle.
+* Memoization.
 * Prototypal Inheritance.
 
 A recent Agoda frontend candidate specifically mentioned closures, cache/memoization, event loop, and advanced JS topics.
@@ -176,13 +176,13 @@ A recent Agoda frontend candidate specifically mentioned closures, cache/memoiza
 
 Questions reported:
 
-* HTTPS handshake.  
-* Authentication vs Authorization.  
-* JWT.  
-* XSS.  
-* CSRF.  
-* CORS.  
-* SameSite Cookies.  
+* HTTPS handshake.
+* Authentication vs Authorization.
+* JWT.
+* XSS.
+* CSRF.
+* CORS.
+* SameSite Cookies.
 * Content Security Policy.
 
 Multiple candidates mentioned web security as a dedicated section of the platform interview.
@@ -193,10 +193,10 @@ Multiple candidates mentioned web security as a dedicated section of the platfor
 
 Candidates reported:
 
-* Unit Testing.  
-* Integration Testing.  
-* E2E Testing.  
-* Jest.  
-* Mocking.  
-* Testing Pyramid.  
+* Unit Testing.
+* Integration Testing.
+* E2E Testing.
+* Jest.
+* Mocking.
+* Testing Pyramid.
 * Frontend testing strategy.

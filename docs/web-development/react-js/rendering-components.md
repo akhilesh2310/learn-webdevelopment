@@ -35,7 +35,7 @@ Use [React Performance](../performance/react-performance.md) for optimization st
 
 ## Common Interview Topics
 
-* Why component re-renders  
+* Why component re-renders
 * Render vs Commit phase
 
 ## Component Lifecycle & Rendering
@@ -134,12 +134,12 @@ The render phase is where React calculates what the UI should look like.
 
 During render phase:
 
-* React calls component functions.  
-* Components return JSX.  
-* JSX becomes React elements.  
-* React builds the next UI tree.  
-* Reconciliation happens.  
-* React figures out what changed.  
+* React calls component functions.
+* Components return JSX.
+* JSX becomes React elements.
+* React builds the next UI tree.
+* Reconciliation happens.
+* React figures out what changed.
 * No real DOM changes happen yet.
 
 ## Example
@@ -202,10 +202,10 @@ The commit phase is where React applies final changes to the real DOM.
 
 During commit phase:
 
-* DOM nodes are created, updated, or removed.  
-* Refs are attached or detached.  
-* `useLayoutEffect` runs.  
-* Browser paints.  
+* DOM nodes are created, updated, or removed.
+* Refs are attached or detached.
+* `useLayoutEffect` runs.
+* Browser paints.
 * `useEffect` runs after paint.
 
 ## Example
@@ -457,10 +457,10 @@ Unmounting means the component is removed from the UI.
 
 This can happen when:
 
-* Route changes.  
-* Conditional rendering removes the component.  
-* Parent unmounts.  
-* List item is removed.  
+* Route changes.
+* Conditional rendering removes the component.
+* Parent unmounts.
+* List item is removed.
 * Key changes and React recreates component.
 
 ## Example
@@ -523,12 +523,12 @@ Cleanup means removing side effects created by a component.
 
 ## Common cleanup use cases
 
-* Clear timers.  
-* Remove event listeners.  
-* Cancel API requests.  
-* Disconnect WebSocket.  
-* Unsubscribe from stores.  
-* Disconnect observers.  
+* Clear timers.
+* Remove event listeners.
+* Cancel API requests.
+* Disconnect WebSocket.
+* Unsubscribe from stores.
+* Disconnect observers.
 * Destroy third-party widget instances.
 
 ## Event listener cleanup
@@ -767,9 +767,9 @@ If provider value changes, consumers can re-render.
 
 Examples:
 
-* Redux store update.  
-* Zustand store update.  
-* React Query cache update.  
+* Redux store update.
+* Zustand store update.
+* React Query cache update.
 * Custom external store.
 
 ### 6. Key change
@@ -854,23 +854,23 @@ A re-render is just recalculation.
 
 The expensive part can be:
 
-* Heavy calculations during render.  
-* Rendering very large lists.  
-* Passing unstable props to memoized children.  
-* Causing unnecessary DOM updates.  
+* Heavy calculations during render.
+* Rendering very large lists.
+* Passing unstable props to memoized children.
+* Causing unnecessary DOM updates.
 * Running expensive effects too often.
 
 ## How to reduce unnecessary re-renders
 
 Use:
 
-* Better state placement.  
-* Split components.  
-* `React.memo` for expensive children.  
-* `useMemo` for expensive derived values.  
-* `useCallback` for stable callbacks.  
-* Context splitting.  
-* Selectors for global stores.  
+* Better state placement.
+* Split components.
+* `React.memo` for expensive children.
+* `useMemo` for expensive derived values.
+* `useCallback` for stable callbacks.
+* Context splitting.
+* Selectors for global stores.
 * List virtualization for large lists.
 
 ## Interview-ready answer
@@ -993,11 +993,11 @@ A component re-renders when React needs to recalculate its UI.
 
 Common reasons:
 
-* Its state changed.  
-* Its props changed.  
-* Its parent re-rendered.  
-* A context value it uses changed.  
-* An external store subscription changed.  
+* Its state changed.
+* Its props changed.
+* Its parent re-rendered.
+* A context value it uses changed.
+* An external store subscription changed.
 * Its key changed.
 
 ## Interview-ready answer
@@ -1082,14 +1082,14 @@ Use the right optimization based on the cause.
 
 Common options:
 
-* Keep state close to where it is used.  
-* Split large components.  
-* Avoid unnecessary global state.  
-* Use `React.memo` for expensive children.  
-* Use `useMemo` for expensive calculations.  
-* Use `useCallback` for stable callbacks.  
-* Split context providers.  
-* Use selectors in Redux/Zustand.  
+* Keep state close to where it is used.
+* Split large components.
+* Avoid unnecessary global state.
+* Use `React.memo` for expensive children.
+* Use `useMemo` for expensive calculations.
+* Use `useCallback` for stable callbacks.
+* Split context providers.
+* Use selectors in Redux/Zustand.
 * Virtualize large lists.
 
 ## Interview-ready answer

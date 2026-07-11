@@ -55,15 +55,15 @@ React can assign different priorities to different updates.
 
 High-priority updates:
 
-* Typing in an input  
-* Clicking a button  
-* Hover interactions  
+* Typing in an input
+* Clicking a button
+* Hover interactions
 * Visible UI updates
 
 Low-priority updates:
 
-* Rendering a large background list  
-* Updating offscreen UI  
+* Rendering a large background list
+* Updating offscreen UI
 * Non-urgent transitions
 
 This helps React keep the application responsive.
@@ -94,21 +94,21 @@ React creates Fiber nodes to represent work for components, elements, and DOM no
 
 Each Fiber node contains useful information like:
 
-* Component type  
-* Props  
-* State  
-* Parent reference  
-* Child reference  
-* Sibling reference  
-* Work priority  
+* Component type
+* Props
+* State
+* Parent reference
+* Child reference
+* Sibling reference
+* Work priority
 * Effects to apply later
 
 Unlike the old recursive stack-based approach, Fiber uses a linked structure.
 
 Each Fiber node has pointers such as:
 
-child    → first child  
-sibling  → next sibling  
+child    → first child
+sibling  → next sibling
 return   → parent
 
 This structure allows React to manually walk through the tree, pause at a node, resume later, skip work, or restart work if needed.
@@ -121,12 +121,12 @@ That is why Fiber is sometimes described as a **custom virtual stack frame syste
 
 React Fiber works in two major phases:
 
-State/props change  
-      ↓  
-Render Phase  
-      ↓  
-Commit Phase  
-      ↓  
+State/props change
+      ↓
+Render Phase
+      ↓
+Commit Phase
+      ↓
 Browser paints updated UI
 
 ---
@@ -137,10 +137,10 @@ The render phase is where React figures out what needs to change.
 
 In this phase, React:
 
-* Calls components  
-* Creates a new work-in-progress Fiber tree  
-* Compares old Fiber tree with the new Fiber tree  
-* Performs reconciliation and diffing  
+* Calls components
+* Creates a new work-in-progress Fiber tree
+* Compares old Fiber tree with the new Fiber tree
+* Performs reconciliation and diffing
 * Decides what DOM changes are needed
 
 This phase happens in memory and does not directly update the real DOM.
@@ -161,9 +161,9 @@ Once React has finished calculating all required changes, it commits those chang
 
 In this phase, React:
 
-* Updates the real DOM  
-* Runs layout effects  
-* Updates refs  
+* Updates the real DOM
+* Runs layout effects
+* Updates refs
 * Makes the changes visible to the user
 
 The commit phase must be fast and consistent, so React does not interrupt it.
@@ -176,18 +176,18 @@ Synchronous and non-interruptible.
 
 ## Render Phase vs Commit Phase
 
-Render Phase  
-\- Happens in memory  
-\- Builds work-in-progress tree  
-\- Performs reconciliation and diffing  
-\- Can be paused  
-\- Can be restarted  
+Render Phase
+\- Happens in memory
+\- Builds work-in-progress tree
+\- Performs reconciliation and diffing
+\- Can be paused
+\- Can be restarted
 \- Can be discarded
 
-Commit Phase  
-\- Updates the real DOM  
-\- Runs final side effects  
-\- Cannot be paused  
+Commit Phase
+\- Updates the real DOM
+\- Runs final side effects
+\- Cannot be paused
 \- Must complete once started
 
 ---
@@ -198,10 +198,10 @@ React Fiber uses a concept similar to **double buffering**.
 
 React keeps two trees:
 
-Current Tree  
+Current Tree
 The tree currently shown on the screen
 
-Work-in-Progress Tree  
+Work-in-Progress Tree
 The new tree React is preparing in memory
 
 React prepares the work-in-progress tree without affecting the current UI.
@@ -232,8 +232,8 @@ Suspense allows React to pause rendering while waiting for something, such as la
 
 Example:
 
-\<Suspense fallback=\{\<Loader /\>\}\>  
-  \<LazyComponent /\>  
+\<Suspense fallback=\{\<Loader /\>\}\>
+  \<LazyComponent /\>
 \</Suspense\>
 
 Fiber makes this kind of rendering control possible.
@@ -250,8 +250,8 @@ Typing in an input should be urgent, but rendering a large filtered list can be 
 
 const \[isPending, startTransition\] \= useTransition();
 
-startTransition(() \=\> \{  
-  setSearchResults(filteredResults);  
+startTransition(() \=\> \{
+  setSearchResults(filteredResults);
 \});
 
 This keeps the UI responsive.

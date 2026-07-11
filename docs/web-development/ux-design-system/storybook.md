@@ -23,12 +23,12 @@ Storybook is useful because it gives a common place to build, review, test, and 
 
 Main benefits:
 
-* Build components independently from the application.  
-* Document props, variants, design rules, and usage examples.  
-* Validate accessibility early.  
-* Review UI changes with designers before integration.  
-* Reduce duplicate components across teams.  
-* Improve consistency across products.  
+* Build components independently from the application.
+* Document props, variants, design rules, and usage examples.
+* Validate accessibility early.
+* Review UI changes with designers before integration.
+* Reduce duplicate components across teams.
+* Improve consistency across products.
 * Use stories as test cases for visual, interaction, and accessibility testing.
 
 **Staff-level answer:**
@@ -39,59 +39,59 @@ Storybook was not just a component preview tool for us. We treated it as a desig
 
 ### 3. Recommended Folder Structure
 
-design-system/  
- src/  
-   components/  
-     Button/  
-       Button.tsx  
-       Button.types.ts  
-       Button.styles.ts  
-       Button.stories.tsx  
-       Button.test.tsx  
-       index.ts  
-     Input/  
-       Input.tsx  
-       Input.types.ts  
-       Input.styles.ts  
-       Input.stories.tsx  
-       Input.test.tsx  
+design-system/
+ src/
+   components/
+     Button/
+       Button.tsx
+       Button.types.ts
+       Button.styles.ts
+       Button.stories.tsx
+       Button.test.tsx
+       index.ts
+     Input/
+       Input.tsx
+       Input.types.ts
+       Input.styles.ts
+       Input.stories.tsx
+       Input.test.tsx
        index.ts
 
-   tokens/  
-     colors.ts  
-     typography.ts  
-     spacing.ts  
-     shadows.ts  
-     radius.ts  
+   tokens/
+     colors.ts
+     typography.ts
+     spacing.ts
+     shadows.ts
+     radius.ts
      index.ts
 
-   themes/  
-     light.ts  
-     dark.ts  
-     brandA.ts  
+   themes/
+     light.ts
+     dark.ts
+     brandA.ts
      brandB.ts
 
-   hooks/  
+   hooks/
    utils/
 
    index.ts
 
- .storybook/  
-   main.ts  
-   preview.ts  
+ .storybook/
+   main.ts
+   preview.ts
    manager.ts
 
- package.json  
- tsconfig.json  
+ package.json
+ tsconfig.json
  vite.config.ts
 
 For a design system, I would prefer **component-based folders** over only atomic folders because each component keeps its source, stories, tests, styles, and exports together.
 
 Example:
 
-components/Button/Button.tsx  
-components/Button/Button.stories.tsx  
-components/Button/Button.test.tsx  
+components/Button/Button.tsx
+components/Button/Button.stories.tsx
+components/Button/Button.test.tsx
 components/Button/index.ts
 
 This scales better when the component library becomes large.
@@ -102,20 +102,20 @@ This scales better when the component library becomes large.
 
 Use predictable naming so teams can quickly find components.
 
-Foundation/Colors  
-Foundation/Typography  
-Components/Button  
-Components/Input  
-Components/Modal  
-Patterns/SearchBox  
+Foundation/Colors
+Foundation/Typography
+Components/Button
+Components/Input
+Components/Modal
+Patterns/SearchBox
 Layouts/AppShell
 
 Example:
 
-const meta \= \{  
- title: 'Components/Button',  
- component: Button,  
- tags: \['autodocs'\],  
+const meta \= \{
+ title: 'Components/Button',
+ component: Button,
+ tags: \['autodocs'\],
 \} satisfies Meta\<typeof Button\>;
 
 \export default meta;
@@ -130,40 +130,40 @@ For each reusable component, create stories for all important states.
 
 Example for `Button`:
 
-Button  
- Default  
- Primary  
- Secondary  
- Disabled  
- Loading  
- WithIcon  
- FullWidth  
- Small  
- Medium  
+Button
+ Default
+ Primary
+ Secondary
+ Disabled
+ Loading
+ WithIcon
+ FullWidth
+ Small
+ Medium
  Large
 
 For form components:
 
-Input  
- Default  
- WithPlaceholder  
- Disabled  
- ReadOnly  
- Error  
- Success  
- WithHelperText  
+Input
+ Default
+ WithPlaceholder
+ Disabled
+ ReadOnly
+ Error
+ Success
+ WithHelperText
  Required
 
 For data components:
 
-Table  
- Default  
- Loading  
- Empty  
- Error  
- WithPagination  
- WithSorting  
- WithSelection  
+Table
+ Default
+ Loading
+ Empty
+ Error
+ WithPagination
+ WithSorting
+ WithSelection
  Responsive
 
 **Good interview line:**
@@ -174,28 +174,28 @@ We made sure every component had stories for happy path, edge cases, accessibili
 
 ### 6. Example Storybook Story
 
-\import type \{ Meta, StoryObj \} from '@storybook/react';  
+\import type \{ Meta, StoryObj \} from '@storybook/react';
 \import \{ Button \} from './Button';
 
-const meta \= \{  
- title: 'Components/Button',  
- component: Button,  
- tags: \['autodocs'\],  
- args: \{  
-   children: 'Click Me',  
-   variant: 'primary',  
-   size: 'medium',  
- \},  
- argTypes: \{  
-   variant: \{  
-     control: 'select',  
-     options: \['primary', 'secondary', 'danger'\],  
-   \},  
-   size: \{  
-     control: 'select',  
-     options: \['small', 'medium', 'large'\],  
-   \},  
- \},  
+const meta \= \{
+ title: 'Components/Button',
+ component: Button,
+ tags: \['autodocs'\],
+ args: \{
+   children: 'Click Me',
+   variant: 'primary',
+   size: 'medium',
+ \},
+ argTypes: \{
+   variant: \{
+     control: 'select',
+     options: \['primary', 'secondary', 'danger'\],
+   \},
+   size: \{
+     control: 'select',
+     options: \['small', 'medium', 'large'\],
+   \},
+ \},
 \} satisfies Meta\<typeof Button\>;
 
 \export default meta;
@@ -204,64 +204,64 @@ type Story \= StoryObj\<typeof meta\>;
 
 \export const Primary: Story \= \{\};
 
-\export const Disabled: Story \= \{  
- args: \{  
-   disabled: true,  
-   children: 'Disabled Button',  
- \},  
+\export const Disabled: Story \= \{
+ args: \{
+   disabled: true,
+   children: 'Disabled Button',
+ \},
 \};
 
-\export const Loading: Story \= \{  
- args: \{  
-   loading: true,  
-   children: 'Saving...',  
- \},  
-\};  
+\export const Loading: Story \= \{
+ args: \{
+   loading: true,
+   children: 'Saving...',
+ \},
+\};
 ---
 
 ### 7. Documentation Guidelines for Each Component
 
 Every component should document:
 
-Component name  
-Purpose  
-When to use  
-When not to use  
-Props API  
-Variants  
-Accessibility behavior  
-Keyboard behavior  
-Design token usage  
-Responsive behavior  
-Do and Don't examples  
-Code examples  
-Known limitations  
+Component name
+Purpose
+When to use
+When not to use
+Props API
+Variants
+Accessibility behavior
+Keyboard behavior
+Design token usage
+Responsive behavior
+Do and Don't examples
+Code examples
+Known limitations
 Changelog/version notes
 
 Example:
 
 \# Button
 
-\#\# Purpose  
+\#\# Purpose
 Use Button to trigger an action such as submit, save, cancel, or navigate.
 
-\#\# When to use  
+\#\# When to use
 Use for important user actions.
 
-\#\# When not to use  
+\#\# When not to use
 Do not use Button for simple navigation text. Use Link instead.
 
-\#\# Accessibility  
-\- Must have readable text or aria-label.  
-\- Must support keyboard focus.  
-\- Disabled state should be visually clear.  
+\#\# Accessibility
+\- Must have readable text or aria-label.
+\- Must support keyboard focus.
+\- Disabled state should be visually clear.
 \- Loading state should prevent duplicate submission.
 
-\#\# Variants  
-\- primary  
-\- secondary  
-\- danger  
-\- ghost  
+\#\# Variants
+\- primary
+\- secondary
+\- danger
+\- ghost
 ---
 
 ### 8. Accessibility Guidelines in Storybook
@@ -270,13 +270,13 @@ Accessibility should be part of the Storybook checklist, not an afterthought.
 
 For every component:
 
-* Use semantic HTML first.  
-* Support keyboard navigation.  
-* Provide visible focus state.  
-* Use proper ARIA only when needed.  
-* Check color contrast.  
-* Test screen-reader labels for icon-only buttons.  
-* Validate disabled, error, and loading states.  
+* Use semantic HTML first.
+* Support keyboard navigation.
+* Provide visible focus state.
+* Use proper ARIA only when needed.
+* Check color contrast.
+* Test screen-reader labels for icon-only buttons.
+* Validate disabled, error, and loading states.
 * Avoid inaccessible custom controls.
 
 Storybook supports accessibility testing through its testing flow. Accessibility tests can run in the Storybook UI and CI, and violations can be inspected in the Accessibility panel.
@@ -293,24 +293,24 @@ For interactive components, stories should also test behavior.
 
 Example cases:
 
-Dropdown opens on click  
-Modal closes on Escape  
-Form shows error after invalid submit  
-Tabs switch with keyboard  
+Dropdown opens on click
+Modal closes on Escape
+Form shows error after invalid submit
+Tabs switch with keyboard
 Autocomplete filters results
 
 Storybook interaction tests are written inside stories using a `play` function. The play function can simulate user actions like click, type, and submit, then assert the expected result. These tests can be debugged in the Storybook UI and automated through Vitest or CI.
 
 Example:
 
-\export const FilledForm: Story \= \{  
- play: async (\{ canvas, userEvent \}) \=\> \{  
-   await userEvent.type(canvas.getByLabelText('Email'), 'test@example.com');  
+\export const FilledForm: Story \= \{
+ play: async (\{ canvas, userEvent \}) \=\> \{
+   await userEvent.type(canvas.getByLabelText('Email'), 'test@example.com');
    await userEvent.click(canvas.getByRole('button', \{ name: 'Submit' \}));
 
-   await expect(canvas.getByText('Form submitted')).toBeInTheDocument();  
- \},  
-\};  
+   await expect(canvas.getByText('Form submitted')).toBeInTheDocument();
+ \},
+\};
 ---
 
 ### 10. SEO Guidelines for Storybook Components
@@ -319,13 +319,13 @@ SEO is not relevant for every component, but it matters for layout, content, nav
 
 For SEO-sensitive components:
 
-* Use semantic HTML: `header`, `nav`, `main`, `section`, `article`, `footer`.  
-* Use proper heading hierarchy: only one logical `h1` per page.  
-* Avoid rendering important content only after client-side interaction.  
-* Use accessible links instead of clickable `div`s.  
-* Support SSR where needed.  
-* Avoid layout shifts for images, cards, banners, and skeletons.  
-* Provide alt text guidelines for image components.  
+* Use semantic HTML: `header`, `nav`, `main`, `section`, `article`, `footer`.
+* Use proper heading hierarchy: only one logical `h1` per page.
+* Avoid rendering important content only after client-side interaction.
+* Use accessible links instead of clickable `div`s.
+* Support SSR where needed.
+* Avoid layout shifts for images, cards, banners, and skeletons.
+* Provide alt text guidelines for image components.
 * Ensure components do not break metadata or structured content.
 
 **Interview-ready line:**
@@ -340,26 +340,26 @@ Do not hardcode values inside components.
 
 Avoid:
 
-color: '\#1976d2';  
-padding: '12px';  
+color: '\#1976d2';
+padding: '12px';
 border-radius: '4px';
 
 Prefer:
 
-color: tokens.colors.primary\[600\];  
-padding: tokens.spacing.md;  
+color: tokens.colors.primary\[600\];
+padding: tokens.spacing.md;
 borderRadius: tokens.radius.sm;
 
 Design tokens should cover:
 
-colors  
-typography  
-spacing  
-border radius  
-shadows  
-z-index  
-breakpoints  
-motion  
+colors
+typography
+spacing
+border radius
+shadows
+z-index
+breakpoints
+motion
 opacity
 
 **Interview answer:**
@@ -374,24 +374,24 @@ For a reusable component library, versioning is important.
 
 Recommended approach:
 
-Patch: bug fix, no breaking change  
-Minor: new component or backward-compatible feature  
+Patch: bug fix, no breaking change
+Minor: new component or backward-compatible feature
 Major: breaking API or visual behavior change
 
 Example:
 
-1.0.0 \-\> initial release  
-1.0.1 \-\> fixed button disabled style  
-1.1.0 \-\> added loading variant  
+1.0.0 \-\> initial release
+1.0.1 \-\> fixed button disabled style
+1.1.0 \-\> added loading variant
 2.0.0 \-\> changed Button prop from type to variant
 
 Use:
 
-Semantic Versioning  
-Changesets  
-Changelog  
-Release notes  
-NPM/GitHub package registry  
+Semantic Versioning
+Changesets
+Changelog
+Release notes
+NPM/GitHub package registry
 CI pipeline for publishing
 
 **Interview-ready answer:**
@@ -404,18 +404,18 @@ We followed semantic versioning for the component library. Bug fixes were patch 
 
 Before adding a new component to the design system, I would check:
 
-Component follows design tokens  
-Props are typed properly  
-No hardcoded styles  
-Stories cover all important states  
-Autodocs enabled  
-Accessibility checked  
-Keyboard behavior verified  
-Responsive behavior covered  
-Unit/interaction tests added where needed  
-Component is reusable, not product-specific  
-API is simple and stable  
-Changelog entry added  
+Component follows design tokens
+Props are typed properly
+No hardcoded styles
+Stories cover all important states
+Autodocs enabled
+Accessibility checked
+Keyboard behavior verified
+Responsive behavior covered
+Unit/interaction tests added where needed
+Component is reusable, not product-specific
+API is simple and stable
+Changelog entry added
 Design review completed
 
 **Strong Staff-level answer:**
@@ -426,11 +426,11 @@ We did not allow random product-specific components into the shared design syste
 
 ### 14. Storybook Addons/Tools I Would Use
 
-@storybook/addon-docs       \-\> documentation  
-@storybook/addon-a11y       \-\> accessibility checks  
-@storybook/addon-controls   \-\> live prop editing  
-@storybook/test             \-\> interaction testing  
-MSW                         \-\> mock API responses  
+@storybook/addon-docs       \-\> documentation
+@storybook/addon-a11y       \-\> accessibility checks
+@storybook/addon-controls   \-\> live prop editing
+@storybook/test             \-\> interaction testing
+MSW                         \-\> mock API responses
 Chromatic or visual testing \-\> visual regression
 
 Storybook also supports tags such as `dev`, `test`, and `autodocs`, which help control whether stories appear in the sidebar, are included in tests, or generate documentation.

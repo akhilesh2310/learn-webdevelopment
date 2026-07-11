@@ -313,9 +313,9 @@ Sibling B receives updated props
 
 Use this when:
 
-* Siblings are close in the component tree.  
-* Only a few components need the shared state.  
-* State is not truly global.  
+* Siblings are close in the component tree.
+* Only a few components need the shared state.
+* State is not truly global.
 * Data flow is still easy to understand.
 
 ## Interview-ready answer
@@ -382,12 +382,12 @@ Any nested consumer can read value
 
 ## Good use cases
 
-* Theme  
-* Auth user  
-* Locale/language  
-* Permissions  
-* Feature flags  
-* App configuration  
+* Theme
+* Auth user
+* Locale/language
+* Permissions
+* Feature flags
+* App configuration
 * Design system settings
 
 ## Common mistake
@@ -564,11 +564,11 @@ function Parent() \{
 
 ## Good use cases
 
-* Focus an input.  
-* Scroll to an element.  
-* Measure DOM size.  
-* Control media player.  
-* Integrate third-party libraries.  
+* Focus an input.
+* Scroll to an element.
+* Measure DOM size.
+* Control media player.
+* Integrate third-party libraries.
 * Expose limited imperative methods from reusable components.
 
 ## Common mistake
@@ -719,23 +719,23 @@ function App() \{
 
 ## Why compound components are useful
 
-* Clean component API.  
-* Flexible composition.  
-* Avoids prop drilling.  
-* Parent manages shared state.  
-* Children stay declarative.  
+* Clean component API.
+* Flexible composition.
+* Avoids prop drilling.
+* Parent manages shared state.
+* Children stay declarative.
 * Useful for design systems.
 
 ## Common use cases
 
-* Tabs  
-* Accordion  
-* Menu  
-* Select  
-* Modal  
-* Dropdown  
-* Stepper  
-* Radio group  
+* Tabs
+* Accordion
+* Menu
+* Select
+* Modal
+* Dropdown
+* Stepper
+* Radio group
 * Carousel
 
 ## Interview-ready answer
@@ -908,11 +908,11 @@ Use Context when many deeply nested components need the same shared value.
 
 Good examples:
 
-* Theme  
-* Auth  
-* Locale  
-* Feature flags  
-* Permissions  
+* Theme
+* Auth
+* Locale
+* Feature flags
+* Permissions
 * App config
 
 ## Interview-ready answer
@@ -929,11 +929,11 @@ Use refs for imperative actions, not normal data flow.
 
 Good examples:
 
-* Focus input  
-* Scroll to section  
-* Measure DOM  
-* Play/pause video  
-* Clear an input  
+* Focus input
+* Scroll to section
+* Measure DOM
+* Play/pause video
+* Clear an input
 * Integrate third-party widget
 
 ## Interview-ready answer
@@ -990,10 +990,10 @@ Event bus can be useful, but overuse makes data flow hidden.
 
 Good use cases:
 
-* Analytics events  
-* Toast notifications  
-* Microfrontend communication  
-* Legacy integration  
+* Analytics events
+* Toast notifications
+* Microfrontend communication
+* Legacy integration
 * Cross-cutting app events
 
 Avoid it for normal parent-child or sibling communication.

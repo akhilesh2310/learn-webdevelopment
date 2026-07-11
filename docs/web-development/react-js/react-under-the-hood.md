@@ -206,14 +206,14 @@ Commit only final result
 
 You do not need to memorize internal fields, but conceptually a Fiber tracks:
 
-* Component type  
-* Props  
-* State  
-* Parent/child/sibling relationship  
-* DOM node reference  
-* Pending updates  
-* Effects to run  
-* Priority lanes  
+* Component type
+* Props
+* State
+* Parent/child/sibling relationship
+* DOM node reference
+* Pending updates
+* Effects to run
+* Priority lanes
 * Alternate fiber for current vs work-in-progress tree
 
 ## Current tree and work-in-progress tree
@@ -270,10 +270,10 @@ Background work
 
 Lanes allow React to:
 
-* Track multiple pending updates simultaneously.  
-* Merge compatible updates.  
-* Interrupt lower-priority work.  
-* Resume work later.  
+* Track multiple pending updates simultaneously.
+* Merge compatible updates.
+* Interrupt lower-priority work.
+* Resume work later.
 * Support concurrent rendering efficiently.
 
 ### Simplified Lane categories
@@ -366,11 +366,11 @@ JavaScript runs on the main thread. If React does heavy rendering continuously, 
 
 Scheduler helps React:
 
-* Prioritize urgent work.  
-* Delay less important work.  
-* Yield control back to the browser.  
-* Keep the UI responsive.  
-* Continue work later.  
+* Prioritize urgent work.
+* Delay less important work.
+* Yield control back to the browser.
+* Keep the UI responsive.
+* Continue work later.
 * Avoid blocking user interactions.
 
 ## Scheduler \+ Lanes
@@ -531,11 +531,11 @@ If `TabContent` is heavy, React can keep the UI responsive while preparing the t
 
 ## What concurrent rendering helps with
 
-* Heavy route changes.  
-* Large filtered lists.  
-* Slow tab switches.  
-* Suspense loading.  
-* Keeping input responsive.  
+* Heavy route changes.
+* Large filtered lists.
+* Slow tab switches.
+* Suspense loading.
+* Keeping input responsive.
 * Preparing UI without blocking urgent interaction.
 
 ## Common misunderstanding
@@ -694,10 +694,10 @@ Child is ready?
 
 ## Common use cases
 
-* Lazy-loaded components.  
-* Streaming server rendering.  
-* Selective hydration.  
-* Framework-level data fetching.  
+* Lazy-loaded components.
+* Streaming server rendering.
+* Selective hydration.
+* Framework-level data fetching.
 * Code splitting.
 
 ## Lazy component example
@@ -820,10 +820,10 @@ React reuses existing DOM instead of destroying and recreating it.
 
 ## Why hydration matters
 
-* Faster first contentful paint.  
-* Better SEO.  
-* Better perceived performance.  
-* Useful for SSR and static generation.  
+* Faster first contentful paint.
+* Better SEO.
+* Better perceived performance.
+* Useful for SSR and static generation.
 * Allows HTML to be visible before JavaScript is fully ready.
 
 ## Hydration mismatch
@@ -882,12 +882,12 @@ React calculates the next UI.
 
 During render phase:
 
-* React calls components.  
-* Components return React elements.  
-* Reconciliation happens.  
-* Fiber work is built.  
-* Lane priorities are evaluated.  
-* Work can be interrupted in concurrent rendering.  
+* React calls components.
+* Components return React elements.
+* Reconciliation happens.
+* Fiber work is built.
+* Lane priorities are evaluated.
+* Work can be interrupted in concurrent rendering.
 * No DOM changes are applied yet.
 
 Render must be pure.
@@ -910,10 +910,10 @@ React applies changes to the real DOM.
 
 During commit phase:
 
-* DOM nodes are inserted, updated, or removed.  
-* Refs are attached/detached.  
-* `useLayoutEffect` runs.  
-* Browser may paint.  
+* DOM nodes are inserted, updated, or removed.
+* Refs are attached/detached.
+* `useLayoutEffect` runs.
+* Browser may paint.
 * `useEffect` runs after paint.
 
 ## Important point

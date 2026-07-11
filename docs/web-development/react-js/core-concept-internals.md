@@ -38,7 +38,7 @@ The notes below are preserved for no-loss reference, but this page should not be
 
 ## Common Interview Topics
 
-* Fiber  
+* Fiber
 * Reconciliation
 
 ## React Internals
@@ -145,15 +145,15 @@ A Fiber node is an internal object that represents work related to a component.
 
 Conceptually, a Fiber node tracks things like:
 
-* Component type  
-* Props  
-* State  
-* Parent fiber  
-* Child fiber  
-* Sibling fiber  
-* DOM node reference  
-* Pending updates  
-* Effects to apply  
+* Component type
+* Props
+* State
+* Parent fiber
+* Child fiber
+* Sibling fiber
+* DOM node reference
+* Pending updates
+* Effects to apply
 * Priority information
 
 You do not need to memorize all fields for interviews. The important point is that Fiber turns the UI tree into a work tree.
@@ -210,9 +210,9 @@ Because the component type changed, React replaces the old subtree.
 
 React compares:
 
-* Element type  
-* Props  
-* Children  
+* Element type
+* Props
+* Children
 * Keys in lists
 
 ## Same element type
@@ -309,10 +309,10 @@ Keys are not just for avoiding warnings. They help React preserve identity.
 
 Bad keys can cause:
 
-* Wrong item state reuse  
-* Input value bugs  
-* Animation bugs  
-* Extra re-renders  
+* Wrong item state reuse
+* Input value bugs
+* Animation bugs
+* Extra re-renders
 * Incorrect UI behavior
 
 ## Interview-ready answer
@@ -347,10 +347,10 @@ JavaScript runs on the main thread. If React does too much work at once, the UI 
 
 Scheduling helps React:
 
-* Prioritize urgent updates  
-* Delay less urgent updates  
-* Keep UI responsive  
-* Interrupt rendering work when needed  
+* Prioritize urgent updates
+* Delay less urgent updates
+* Keep UI responsive
+* Interrupt rendering work when needed
 * Continue rendering later
 
 ## Example
@@ -451,11 +451,11 @@ If rendering the next tab is heavy, React can keep the UI responsive during the 
 
 ## What concurrent rendering helps with
 
-* Keeping input responsive  
-* Heavy UI updates  
-* Transitions  
-* Suspense boundaries  
-* Avoiding blocked UI during large renders  
+* Keeping input responsive
+* Heavy UI updates
+* Transitions
+* Suspense boundaries
+* Avoiding blocked UI during large renders
 * Preparing UI in the background
 
 ## Common misunderstanding
@@ -614,10 +614,10 @@ React calculates what the UI should look like.
 
 In this phase:
 
-* React calls components.  
-* New React elements are created.  
-* Reconciliation happens.  
-* Fiber work is prepared.  
+* React calls components.
+* New React elements are created.
+* Reconciliation happens.
+* Fiber work is prepared.
 * Work may be paused or restarted in concurrent rendering.
 
 Render phase should be pure.
@@ -638,10 +638,10 @@ React applies changes to the real DOM.
 
 In this phase:
 
-* DOM nodes are inserted/updated/removed.  
-* Refs are attached.  
-* Layout effects run.  
-* Browser can paint.  
+* DOM nodes are inserted/updated/removed.
+* Refs are attached.
+* Layout effects run.
+* Browser can paint.
 * Normal effects run after paint.
 
 ## Interview-ready answer
@@ -664,11 +664,11 @@ It represents each component or element as a unit of work.
 
 ## Key points
 
-* Breaks rendering into small units.  
-* Enables interruptible rendering.  
-* Supports scheduling and prioritization.  
-* Maintains current and work-in-progress trees.  
-* Powers concurrent rendering.  
+* Breaks rendering into small units.
+* Enables interruptible rendering.
+* Supports scheduling and prioritization.
+* Maintains current and work-in-progress trees.
+* Powers concurrent rendering.
 * Separates render work from commit work.
 
 ## Interview-ready answer

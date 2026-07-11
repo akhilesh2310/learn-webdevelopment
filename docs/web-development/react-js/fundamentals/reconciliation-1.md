@@ -17,7 +17,7 @@ Instead of destroying and rebuilding the entire DOM every time something changes
 
 **A very important point:**
 
-* Re-rendering and DOM update are not the same thing.  
+* Re-rendering and DOM update are not the same thing.
 * A component may re-render, but React may still decide that no real DOM change is needed.
 
 ---
@@ -30,10 +30,10 @@ If React recreated the full DOM tree on every state change, large applications w
 
 So React uses reconciliation to answer:
 
-* What changed in the UI?  
-* Can React reuse the existing DOM node or component?  
-* Should React update props, text, or children?  
-* Should React preserve or reset component state?  
+* What changed in the UI?
+* Can React reuse the existing DOM node or component?
+* Should React update props, text, or children?
+* Should React preserve or reset component state?
 * Should React add, remove, or move list items?
 
 ---
@@ -48,7 +48,7 @@ For a large UI, this would be too slow.
 
 So React uses an **O(n) heuristic diffing algorithm** based on two main assumptions:
 
-1. Elements of different types produce different trees.  
+1. Elements of different types produce different trees.
 2. Developers can use stable `key` props to help React identify children across renders.
 
 React’s reconciliation is efficient, but it is not guaranteed to always produce the mathematically minimum number of DOM operations. It produces a practical and efficient update plan based on these assumptions.
@@ -99,10 +99,10 @@ So it unmounts `UserProfile` and mounts `AdminProfile`.
 
 Result:
 
-Old component is unmounted  
-Cleanup effects run  
-New component is mounted  
-Old local state is lost  
+Old component is unmounted
+Cleanup effects run
+New component is mounted
+Old local state is lost
 ---
 
 ## 2. Same DOM Element Type
@@ -111,10 +111,10 @@ If the DOM element type is the same, React reuses the existing DOM node and only
 
 Example:
 
-// Before  
+// Before
 \<div className="before" title="Greeting" /\>
 
-// After  
+// After
 \<div className="after" title="Greeting" /\>
 
 The type is still `div`.
@@ -133,14 +133,14 @@ If the component type is the same, React preserves the component identity and ke
 
 Example:
 
-function UserCard(\{ name \}) \{  
- return \<h2\>\{name\}\</h2\>;  
+function UserCard(\{ name \}) \{
+ return \<h2\>\{name\}\</h2\>;
 \}
 
-// Before  
+// Before
 \<UserCard name="Akhilesh" /\>
 
-// After  
+// After
 \<UserCard name="Rahul" /\>
 
 The component type is still `UserCard`.
@@ -149,10 +149,10 @@ React reuses the same component instance, passes new props, and re-renders its i
 
 Result:
 
-Component is reused  
-Props are updated  
-State is preserved  
-Component re-renders  
+Component is reused
+Props are updated
+State is preserved
+Component re-renders
 ---
 
 ## The Role of Keys in Lists
@@ -165,36 +165,36 @@ This can cause problems when items are inserted, deleted, sorted, or reordered.
 
 Bad example:
 
-items.map((item, index) \=\> (  
- \<li key=\{index\}\>\{item.text\}\</li\>  
+items.map((item, index) \=\> (
+ \<li key=\{index\}\>\{item.text\}\</li\>
 ));
 
 Using index as key can cause wrong state preservation.
 
 For example:
 
-Wrong input value  
-Wrong checkbox selected  
-Wrong expanded row  
-Wrong selected item  
+Wrong input value
+Wrong checkbox selected
+Wrong expanded row
+Wrong selected item
 Wrong local state attached to another row
 
 Better example:
 
-items.map((item) \=\> (  
- \<li key=\{item.id\}\>\{item.text\}\</li\>  
+items.map((item) \=\> (
+ \<li key=\{item.id\}\>\{item.text\}\</li\>
 ));
 
 A stable unique key helps React understand that the same item still exists, even if its position changes.
 
 Example:
 
-Before:  
-key=1 → Akhilesh  
+Before:
+key=1 → Akhilesh
 key=2 → Rahul
 
-After sorting:  
-key=2 → Rahul  
+After sorting:
+key=2 → Rahul
 key=1 → Akhilesh
 
 React can correctly match the old and new items using keys.
@@ -213,13 +213,13 @@ Using index as key is risky when the list is dynamic.
 
 Example:
 
-Initial list:  
-index 0 → Akhilesh  
+Initial list:
+index 0 → Akhilesh
 index 1 → Rahul
 
-After inserting Neha at the top:  
-index 0 → Neha  
-index 1 → Akhilesh  
+After inserting Neha at the top:
+index 0 → Neha
+index 1 → Akhilesh
 index 2 → Rahul
 
 React may reuse the old state based on index.
@@ -230,10 +230,10 @@ This is why index keys are dangerous for dynamic lists.
 
 Index as key is acceptable only when:
 
-The list is static  
-Items are never reordered  
-Items are never inserted or removed from the middle  
-Items do not have local state  
+The list is static
+Items are never reordered
+Items are never inserted or removed from the middle
+Items do not have local state
 ---
 
 ## State Preservation and State Reset
@@ -242,12 +242,12 @@ React preserves state when the component stays in the same position with the sam
 
 Example:
 
-function App(\{ isAdmin \}) \{  
- return (  
-   \<div\>  
-     \{isAdmin ? \<UserForm /\> : \<UserForm /\>\}  
-   \</div\>  
- );  
+function App(\{ isAdmin \}) \{
+ return (
+   \<div\>
+     \{isAdmin ? \<UserForm /\> : \<UserForm /\>\}
+   \</div\>
+ );
 \}
 
 Both branches render the same component type: `UserForm`.
@@ -256,12 +256,12 @@ So React preserves the state.
 
 But if the component type changes:
 
-function App(\{ isAdmin \}) \{  
- return (  
-   \<div\>  
-     \{isAdmin ? \<AdminForm /\> : \<UserForm /\>\}  
-   \</div\>  
- );  
+function App(\{ isAdmin \}) \{
+ return (
+   \<div\>
+     \{isAdmin ? \<AdminForm /\> : \<UserForm /\>\}
+   \</div\>
+ );
 \}
 
 React sees different component types.
@@ -286,23 +286,23 @@ React treats it as a new component.
 
 Result:
 
-Old UserForm is unmounted  
-New UserForm is mounted  
+Old UserForm is unmounted
+New UserForm is mounted
 Form state is reset
 
 This is useful in:
 
-Edit forms  
-Profile pages  
-Tabs  
-Modals  
-Detail pages  
+Edit forms
+Profile pages
+Tabs
+Modals
+Detail pages
 Multi-step flows
 
 Example:
 
-function UserDetails(\{ userId \}) \{  
- return \<UserForm key=\{userId\} userId=\{userId\} /\>;  
+function UserDetails(\{ userId \}) \{
+ return \<UserForm key=\{userId\} userId=\{userId\} /\>;
 \}
 
 If the user switches from user `1` to user `2`, React creates a fresh form instead of keeping the old form state.
@@ -321,19 +321,19 @@ Example JSX:
 
 Conceptually, React represents it as an object:
 
-\{  
- type: "h1",  
- props: \{  
-   children: "Hello"  
- \}  
+\{
+ type: "h1",
+ props: \{
+   children: "Hello"
+ \}
 \}
 
 Reconciliation is the process of comparing the previous React tree with the new React tree.
 
 Simple difference:
 
-Virtual DOM \= UI representation  
-Reconciliation \= comparison process  
+Virtual DOM \= UI representation
+Reconciliation \= comparison process
 ---
 
 ## Reconciliation vs Diffing
@@ -356,18 +356,18 @@ Reconciliation is the overall process, and diffing is the comparison step inside
 
 The flow looks like this:
 
-State or props change  
-      ↓  
-React calls the component again  
-      ↓  
-Component returns new JSX  
-      ↓  
-JSX becomes a new React element tree  
-      ↓  
-React compares old tree and new tree  
-      ↓  
-React decides what changed  
-      ↓  
+State or props change
+      ↓
+React calls the component again
+      ↓
+Component returns new JSX
+      ↓
+JSX becomes a new React element tree
+      ↓
+React compares old tree and new tree
+      ↓
+React decides what changed
+      ↓
 React updates the real DOM
 
 The step where React compares the old tree and new tree is called **Reconciliation**.
@@ -384,9 +384,9 @@ React updates happen in two major phases.
 
 In the render phase, React:
 
-* Calls component functions  
-* Creates the new React tree  
-* Compares it with the previous tree  
+* Calls component functions
+* Creates the new React tree
+* Compares it with the previous tree
 * Figures out what changed
 
 **Reconciliation mainly happens during the render phase.**
@@ -395,43 +395,43 @@ The render phase can be paused, restarted, or abandoned in modern React. That is
 
 Bad example:
 
-function UserList() \{  
+function UserList() \{
  localStorage.setItem("rendered", "true"); // avoid side effect during render
 
- return \<div\>User List\</div\>;  
+ return \<div\>User List\</div\>;
 \}
 
 Better example:
 
-function UserList() \{  
- React.useEffect(() \=\> \{  
-   localStorage.setItem("rendered", "true");  
+function UserList() \{
+ React.useEffect(() \=\> \{
+   localStorage.setItem("rendered", "true");
  \}, \[\]);
 
- return \<div\>User List\</div\>;  
-\}  
+ return \<div\>User List\</div\>;
+\}
 ---
 
 ## 2. Commit Phase
 
 In the commit phase, React:
 
-Applies DOM changes  
-Updates refs  
-Runs layout effects  
+Applies DOM changes
+Updates refs
+Runs layout effects
 Runs effects after paint
 
 The commit phase is synchronous because the real DOM must be updated consistently.
 
 Simple flow:
 
-State/props change  
-     ↓  
-Component re-render  
-     ↓  
-Reconciliation  
-     ↓  
-Commit DOM updates  
+State/props change
+     ↓
+Component re-render
+     ↓
+Reconciliation
+     ↓
+Commit DOM updates
 ---
 
 ## React Fiber
@@ -444,11 +444,11 @@ Fiber allows React to split rendering work into smaller units.
 
 This helps React:
 
-* Pause rendering work  
-* Resume rendering work  
-* Prioritize urgent updates  
-* Discard outdated rendering work  
-* Keep the UI responsive  
+* Pause rendering work
+* Resume rendering work
+* Prioritize urgent updates
+* Discard outdated rendering work
+* Keep the UI responsive
 * Support concurrent rendering
 
 Example:
@@ -459,10 +459,10 @@ Rendering a large filtered list can be treated as lower priority.
 
 Fiber helps React support features like:
 
-* Concurrent rendering  
-* Transitions  
-* Interruptible rendering  
-* Priority scheduling  
+* Concurrent rendering
+* Transitions
+* Interruptible rendering
+* Priority scheduling
 * Better responsiveness
 
 ---
@@ -487,29 +487,29 @@ Diffing \= Algorithm used to find what changed
 
 ## Practical Example
 
-function Counter() \{  
+function Counter() \{
  const \[count, setCount\] \= React.useState(0);
 
- return (  
-   \<div\>  
-     \<h1\>Counter\</h1\>  
-     \<p\>\{count\}\</p\>  
-     \<button onClick=\{() \=\> setCount(count \+ 1)\}\>  
-       Increment  
-     \</button\>  
-   \</div\>  
- );  
+ return (
+   \<div\>
+     \<h1\>Counter\</h1\>
+     \<p\>\{count\}\</p\>
+     \<button onClick=\{() \=\> setCount(count \+ 1)\}\>
+       Increment
+     \</button\>
+   \</div\>
+ );
 \}
 
 When the button is clicked:
 
-1\. setCount updates state.  
-2\. Counter re-renders.  
-3\. React creates a new React tree.  
-4\. React compares old tree and new tree.  
-5\. h1 is same.  
-6\. button is same.  
-7\. p text changed.  
+1\. setCount updates state.
+2\. Counter re-renders.
+3\. React creates a new React tree.
+4\. React compares old tree and new tree.
+5\. h1 is same.
+6\. button is same.
+7\. p text changed.
 8\. React updates only the text inside p.
 
 React does not recreate the whole DOM.
@@ -524,10 +524,10 @@ But calling a component again does not always mean the real DOM will change.
 
 Example:
 
-function App() \{  
+function App() \{
   const \[count, setCount\] \= useState(0);
 
-  return \<Title text="Hello" /\>;  
+  return \<Title text="Hello" /\>;
 \}
 
 When `count` changes, `App` re-renders and `Title` may also be called again.
@@ -548,40 +548,40 @@ These are not always the same thing.
 
 Imagine an Agoda-like hotel search page.
 
-function HotelSearchPage() \{  
- const \[filters, setFilters\] \= React.useState(\{\});  
+function HotelSearchPage() \{
+ const \[filters, setFilters\] \= React.useState(\{\});
  const \[hotels, setHotels\] \= React.useState(\[\]);
 
- return (  
-   \<div\>  
-     \<FilterPanel filters=\{filters\} onChange=\{setFilters\} /\>  
-     \<HotelList hotels=\{hotels\} /\>  
-   \</div\>  
- );  
+ return (
+   \<div\>
+     \<FilterPanel filters=\{filters\} onChange=\{setFilters\} /\>
+     \<HotelList hotels=\{hotels\} /\>
+   \</div\>
+ );
 \}
 
 When the user changes a filter:
 
-1\. State changes.  
-2\. HotelSearchPage re-renders.  
-3\. React creates a new React tree.  
-4\. React compares old and new tree.  
-5\. FilterPanel props changed.  
-6\. HotelList props may change if hotel data changed.  
+1\. State changes.
+2\. HotelSearchPage re-renders.
+3\. React creates a new React tree.
+4\. React compares old and new tree.
+5\. FilterPanel props changed.
+6\. HotelList props may change if hotel data changed.
 7\. React commits only the required DOM updates.
 
 For hotel cards, stable keys are important:
 
-\{hotels.map((hotel) \=\> (  
- \<HotelCard key=\{hotel.id\} hotel=\{hotel\} /\>  
+\{hotels.map((hotel) \=\> (
+ \<HotelCard key=\{hotel.id\} hotel=\{hotel\} /\>
 ))\}
 
 If the user sorts by price, rating, or distance, React can still identify each hotel correctly using `hotel.id`.
 
 Bad version:
 
-\{hotels.map((hotel, index) \=\> (  
- \<HotelCard key=\{index\} hotel=\{hotel\} /\>  
+\{hotels.map((hotel, index) \=\> (
+ \<HotelCard key=\{index\} hotel=\{hotel\} /\>
 ))\}
 
 This can cause wrong state preservation when the order changes.
@@ -618,19 +618,19 @@ React updates the entire DOM on every state change.
 
 Correct:
 
-React may re-render components in memory, but it updates only the necessary parts of the real DOM.  
+React may re-render components in memory, but it updates only the necessary parts of the real DOM.
 ---
 
 ### Trap 2: Saying Virtual DOM itself makes React fast
 
 The Virtual DOM helps, but the full performance story includes:
 
-* Reconciliation  
-* Efficient diffing  
-* Batched updates  
-* Fiber scheduling  
-* Memoization where needed  
-* Stable keys  
+* Reconciliation
+* Efficient diffing
+* Batched updates
+* Fiber scheduling
+* Memoization where needed
+* Stable keys
 * Avoiding unnecessary renders
 
 Virtual DOM comparison also has a cost.

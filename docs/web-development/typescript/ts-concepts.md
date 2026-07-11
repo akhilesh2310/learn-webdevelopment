@@ -97,11 +97,11 @@ TypeScript is JavaScript with static type checking. It helps catch many bugs dur
 
 Simple mental model:
 
-JavaScript  
+JavaScript
 → runs at runtime
 
-TypeScript  
-→ checks types at compile time  
+TypeScript
+→ checks types at compile time
 → then becomes JavaScript
 
 TypeScript does not change JavaScript runtime behavior. It mainly improves developer safety, readability, refactoring, and large-scale maintainability.
@@ -112,13 +112,13 @@ TypeScript does not change JavaScript runtime behavior. It mainly improves devel
 
 ## number, string, boolean
 
-let age: number \= 32;  
-let name: string \= "Akhilesh";  
+let age: number \= 32;
+let name: string \= "Akhilesh";
 let isActive: boolean \= true;
 
 If we assign the wrong type:
 
-let age: number \= "32";  
+let age: number \= "32";
 // Type 'string' is not assignable to type 'number'.
 
 ## any
@@ -127,7 +127,7 @@ let age: number \= "32";
 
 let value: any \= 10;
 
-value \= "hello";  
+value \= "hello";
 value \= true;
 
 value.toUpperCase(); // No TypeScript error, but can fail at runtime
@@ -140,13 +140,13 @@ Use `any` only when absolutely necessary, because it removes TypeScript safety.
 
 let value: unknown \= "hello";
 
-value.toUpperCase();  
+value.toUpperCase();
 // 'value' is of type 'unknown'.
 
 We must narrow it first:
 
-if (typeof value \=== "string") \{  
-  console.log(value.toUpperCase());  
+if (typeof value \=== "string") \{
+  console.log(value.toUpperCase());
 \}
 
 ## any vs unknown
@@ -162,32 +162,32 @@ if (typeof value \=== "string") \{
 
 `void` means a function does not return a meaningful value.
 
-function logMessage(message: string): void \{  
-  console.log(message);  
+function logMessage(message: string): void \{
+  console.log(message);
 \}
 
 ## never
 
 `never` means a value never exists because the function never completes normally.
 
-function throwError(message: string): never \{  
-  throw new Error(message);  
+function throwError(message: string): never \{
+  throw new Error(message);
 \}
 
 Another example:
 
-function infiniteLoop(): never \{  
-  while (true) \{\}  
+function infiniteLoop(): never \{
+  while (true) \{\}
 \}
 
 ## null and undefined
 
-let a: null \= null;  
+let a: null \= null;
 let b: undefined \= undefined;
 
 With `strictNullChecks`, `null` and `undefined` are not automatically allowed everywhere.
 
-let name: string \= null;  
+let name: string \= null;
 // Type 'null' is not assignable to type 'string'.
 
 Correct:
@@ -202,27 +202,27 @@ let user: \[number, string\] \= \[1, "Akhilesh"\];
 
 Wrong order gives error:
 
-let user: \[number, string\] \= \["Akhilesh", 1\];  
-// Type 'string' is not assignable to type 'number'.  
+let user: \[number, string\] \= \["Akhilesh", 1\];
+// Type 'string' is not assignable to type 'number'.
 // Type 'number' is not assignable to type 'string'.
 
 ## Enum
 
 Enum gives names to constant values.
 
-enum Role \{  
-  Admin,  
-  User,  
-  Guest,  
+enum Role \{
+  Admin,
+  User,
+  Guest,
 \}
 
 let role: Role \= Role.Admin;
 
 String enum:
 
-enum Status \{  
-  Active \= "ACTIVE",  
-  Inactive \= "INACTIVE",  
+enum Status \{
+  Active \= "ACTIVE",
+  Inactive \= "INACTIVE",
 \}
 
 In modern TypeScript, union literals are often preferred for simple cases:
@@ -241,16 +241,16 @@ TypeScript provides basic types like `number`, `string`, `boolean`, `null`, `und
 
 TypeScript can automatically infer types from assigned values.
 
-let name \= "Akhilesh";  
-name \= 123;  
+let name \= "Akhilesh";
+name \= 123;
 // Type 'number' is not assignable to type 'string'.
 
 TypeScript inferred `name` as `string`.
 
 ## Function return inference
 
-function add(a: number, b: number) \{  
-  return a \+ b;  
+function add(a: number, b: number) \{
+  return a \+ b;
 \}
 
 TypeScript infers return type as `number`.
@@ -261,21 +261,21 @@ We manually write the type.
 
 let age: number \= 32;
 
-function add(a: number, b: number): number \{  
-  return a \+ b;  
+function add(a: number, b: number): number \{
+  return a \+ b;
 \}
 
 ## When to use explicit annotations
 
 Use explicit annotations for:
 
-* Function parameters  
-* Public function return types  
-* API responses  
-* Complex objects  
-* Variables initialized later  
-* Shared types  
-* Library code  
+* Function parameters
+* Public function return types
+* API responses
+* Complex objects
+* Variables initialized later
+* Shared types
+* Library code
 * Places where readability matters
 
 Example:
@@ -286,8 +286,8 @@ userName \= "Akhilesh";
 
 ## When inference is enough
 
-const count \= 10;  
-const isActive \= true;  
+const count \= 10;
+const isActive \= true;
 const title \= "Dashboard";
 
 No need to over-annotate obvious values.
@@ -302,14 +302,14 @@ TypeScript infers types automatically from values, so we do not need annotations
 
 ## Function type annotations
 
-function greet(name: string): string \{  
-  return \`Hello $\{name\}\`;  
+function greet(name: string): string \{
+  return \`Hello $\{name\}\`;
 \}
 
 Arrow function:
 
-const add \= (a: number, b: number): number \=\> \{  
-  return a \+ b;  
+const add \= (a: number, b: number): number \=\> \{
+  return a \+ b;
 \};
 
 Function type:
@@ -322,62 +322,62 @@ const add: Add \= (a, b) \=\> a \+ b;
 
 Optional parameters use `?`.
 
-function greet(name: string, title?: string): string \{  
-  return title ? \`$\{title\} $\{name\}\` : name;  
+function greet(name: string, title?: string): string \{
+  return title ? \`$\{title\} $\{name\}\` : name;
 \}
 
 Optional parameters must usually come after required parameters.
 
-function greet(title?: string, name: string) \{\}  
+function greet(title?: string, name: string) \{\}
 // A required parameter cannot follow an optional parameter.
 
 ## Default parameters
 
-function greet(name: string \= "Guest"): string \{  
-  return \`Hello $\{name\}\`;  
+function greet(name: string \= "Guest"): string \{
+  return \`Hello $\{name\}\`;
 \}
 
 ## Rest parameters
 
-function sum(...numbers: number\[\]): number \{  
-  return numbers.reduce((total, num) \=\> total \+ num, 0);  
+function sum(...numbers: number\[\]): number \{
+  return numbers.reduce((total, num) \=\> total \+ num, 0);
 \}
 
 ## Typed object structures
 
-type User \= \{  
-  id: number;  
-  name: string;  
-  email: string;  
+type User \= \{
+  id: number;
+  name: string;
+  email: string;
 \};
 
-const user: User \= \{  
-  id: 1,  
-  name: "Akhilesh",  
-  email: "akhilesh@example.com",  
+const user: User \= \{
+  id: 1,
+  name: "Akhilesh",
+  email: "akhilesh@example.com",
 \};
 
 ## Optional properties
 
-type User \= \{  
-  id: number;  
-  name: string;  
-  phone?: string;  
+type User \= \{
+  id: number;
+  name: string;
+  phone?: string;
 \};
 
 ## Readonly properties
 
-type User \= \{  
-  readonly id: number;  
-  name: string;  
+type User \= \{
+  readonly id: number;
+  name: string;
 \};
 
-const user: User \= \{  
-  id: 1,  
-  name: "Akhilesh",  
+const user: User \= \{
+  id: 1,
+  name: "Akhilesh",
 \};
 
-user.id \= 2;  
+user.id \= 2;
 // Cannot assign to 'id' because it is a read-only property.
 
 ## Interview-ready answer
@@ -392,18 +392,18 @@ TypeScript allows us to type function parameters, return values, objects, option
 
 `interface` is commonly used to define object shapes.
 
-interface User \{  
-  id: number;  
-  name: string;  
+interface User \{
+  id: number;
+  name: string;
 \}
 
 ## type
 
 `type` can define object shapes, unions, intersections, function types, and more.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
 ## interface vs type
@@ -418,22 +418,22 @@ type User \= \{
 
 ## Extending interfaces
 
-interface Person \{  
-  name: string;  
+interface Person \{
+  name: string;
 \}
 
-interface Employee extends Person \{  
-  employeeId: number;  
+interface Employee extends Person \{
+  employeeId: number;
 \}
 
 ## Type intersection
 
-type Person \= \{  
-  name: string;  
+type Person \= \{
+  name: string;
 \};
 
-type Employee \= Person & \{  
-  employeeId: number;  
+type Employee \= Person & \{
+  employeeId: number;
 \};
 
 ## Union type
@@ -448,13 +448,13 @@ let status: Status \= "loading";
 
 Intersection combines multiple types.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type Admin \= \{  
-  permissions: string\[\];  
+type Admin \= \{
+  permissions: string\[\];
 \};
 
 type AdminUser \= User & Admin;
@@ -463,21 +463,21 @@ type AdminUser \= User & Admin;
 
 Use index signatures when object keys are dynamic.
 
-type Scores \= \{  
-  \[subject: string\]: number;  
+type Scores \= \{
+  \[subject: string\]: number;
 \};
 
-const scores: Scores \= \{  
-  math: 90,  
-  english: 85,  
+const scores: Scores \= \{
+  math: 90,
+  english: 85,
 \};
 
 ## Optional properties
 
-interface User \{  
-  id: number;  
-  name: string;  
-  phone?: string;  
+interface User \{
+  id: number;
+  name: string;
+  phone?: string;
 \}
 
 ## Interview-ready answer
@@ -494,70 +494,70 @@ Generics allow us to write reusable code that works with different types while p
 
 ## Generic function
 
-function identity\<T\>(value: T): T \{  
-  return value;  
+function identity\<T\>(value: T): T \{
+  return value;
 \}
 
-const a \= identity\<string\>("hello");  
+const a \= identity\<string\>("hello");
 const b \= identity\<number\>(123);
 
 TypeScript can also infer the generic type:
 
-const name \= identity("Akhilesh"); // string  
+const name \= identity("Akhilesh"); // string
 const age \= identity(32); // number
 
 ## Why generics are useful
 
 Without generics:
 
-function getFirstItem(items: any\[\]): any \{  
-  return items\[0\];  
+function getFirstItem(items: any\[\]): any \{
+  return items\[0\];
 \}
 
 This loses type safety.
 
 With generics:
 
-function getFirstItem\<T\>(items: T\[\]): T \{  
-  return items\[0\];  
+function getFirstItem\<T\>(items: T\[\]): T \{
+  return items\[0\];
 \}
 
-const first \= getFirstItem(\["React", "TypeScript"\]);  
+const first \= getFirstItem(\["React", "TypeScript"\]);
 // first is string
 
 ## Generic interface
 
-interface ApiResponse\<T\> \{  
-  data: T;  
-  success: boolean;  
-  message?: string;  
+interface ApiResponse\<T\> \{
+  data: T;
+  success: boolean;
+  message?: string;
 \}
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-const response: ApiResponse\<User\> \= \{  
-  data: \{  
-    id: 1,  
-    name: "Akhilesh",  
-  \},  
-  success: true,  
+const response: ApiResponse\<User\> \= \{
+  data: \{
+    id: 1,
+    name: "Akhilesh",
+  \},
+  success: true,
 \};
 
 ## Generic class
 
-class Store\<T\> \{  
+class Store\<T\> \{
   private value: T;
 
-  constructor(value: T) \{  
-    this.value \= value;  
+  constructor(value: T) \{
+    this.value \= value;
   \}
 
-  getValue(): T \{  
-    return this.value;  
-  \}  
+  getValue(): T \{
+    return this.value;
+  \}
 \}
 
 const stringStore \= new Store\<string\>("hello");
@@ -566,25 +566,25 @@ const stringStore \= new Store\<string\>("hello");
 
 Constraints limit what generic types are allowed.
 
-function getLength\<T extends \{ length: number \}\>(value: T): number \{  
-  return value.length;  
+function getLength\<T extends \{ length: number \}\>(value: T): number \{
+  return value.length;
 \}
 
-getLength("hello"); // 5  
-getLength(\[1, 2, 3\]); // 3  
-getLength(123);  
+getLength("hello"); // 5
+getLength(\[1, 2, 3\]); // 3
+getLength(123);
 // Argument of type 'number' is not assignable to parameter of type '\{ length: number; \}'.
 
 ## Default generic parameters
 
-type ApiResponse\<T \= unknown\> \= \{  
-  data: T;  
-  success: boolean;  
+type ApiResponse\<T \= unknown\> \= \{
+  data: T;
+  success: boolean;
 \};
 
-const response: ApiResponse \= \{  
-  data: "anything",  
-  success: true,  
+const response: ApiResponse \= \{
+  data: "anything",
+  success: true,
 \};
 
 ## Interview-ready answer
@@ -601,38 +601,38 @@ Conditional types choose one type based on another type.
 
 type IsString\<T\> \= T extends string ? true : false;
 
-type A \= IsString\<string\>; // true  
+type A \= IsString\<string\>; // true
 type B \= IsString\<number\>; // false
 
 ## Practical conditional type
 
-type ApiResult\<T\> \= T extends Error  
-  ? \{ success: false; error: T \}  
+type ApiResult\<T\> \= T extends Error
+  ? \{ success: false; error: T \}
   : \{ success: true; data: T \};
 
 ## keyof
 
 `keyof` gives union of keys of a type.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type UserKeys \= keyof User;  
+type UserKeys \= keyof User;
 // "id" | "name"
 
 ## Mapped types
 
 Mapped types create new types by looping over keys.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type ReadonlyUser \= \{  
-  readonly \[K in keyof User\]: User\[K\];  
+type ReadonlyUser \= \{
+  readonly \[K in keyof User\]: User\[K\];
 \};
 
 ## Utility types
@@ -641,9 +641,9 @@ type ReadonlyUser \= \{
 
 Makes all properties optional.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
 type PartialUser \= Partial\<User\>;
@@ -652,9 +652,9 @@ type PartialUser \= Partial\<User\>;
 
 Makes all properties required.
 
-type User \= \{  
-  id?: number;  
-  name?: string;  
+type User \= \{
+  id?: number;
+  name?: string;
 \};
 
 type RequiredUser \= Required\<User\>;
@@ -677,32 +677,32 @@ Creates object type with specific keys and value type.
 
 type Role \= "admin" | "user" | "guest";
 
-const permissions: Record\<Role, string\[\]\> \= \{  
-  admin: \["create", "delete"\],  
-  user: \["read"\],  
-  guest: \[\],  
+const permissions: Record\<Role, string\[\]\> \= \{
+  admin: \["create", "delete"\],
+  user: \["read"\],
+  guest: \[\],
 \};
 
 ## User-defined type guard
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-function isUser(value: unknown): value is User \{  
-  return (  
-    typeof value \=== "object" &&  
-    value \!== null &&  
-    "id" in value &&  
-    "name" in value  
-  );  
+function isUser(value: unknown): value is User \{
+  return (
+    typeof value \=== "object" &&
+    value \!== null &&
+    "id" in value &&
+    "name" in value
+  );
 \}
 
-function printUser(value: unknown) \{  
-  if (isUser(value)) \{  
-    console.log(value.name);  
-  \}  
+function printUser(value: unknown) \{
+  if (isUser(value)) \{
+    console.log(value.name);
+  \}
 \}
 
 ## Interview-ready answer
@@ -719,96 +719,96 @@ Type narrowing means reducing a broad type into a more specific type using check
 
 ## typeof
 
-function print(value: string | number) \{  
-  if (typeof value \=== "string") \{  
-    console.log(value.toUpperCase());  
-  \} else \{  
-    console.log(value.toFixed(2));  
-  \}  
+function print(value: string | number) \{
+  if (typeof value \=== "string") \{
+    console.log(value.toUpperCase());
+  \} else \{
+    console.log(value.toFixed(2));
+  \}
 \}
 
 ## instanceof
 
-function handleDate(value: Date | string) \{  
-  if (value instanceof Date) \{  
-    console.log(value.getFullYear());  
-  \} else \{  
-    console.log(value.toUpperCase());  
-  \}  
+function handleDate(value: Date | string) \{
+  if (value instanceof Date) \{
+    console.log(value.getFullYear());
+  \} else \{
+    console.log(value.toUpperCase());
+  \}
 \}
 
 ## in operator
 
-type Admin \= \{  
-  role: "admin";  
-  permissions: string\[\];  
+type Admin \= \{
+  role: "admin";
+  permissions: string\[\];
 \};
 
-type User \= \{  
-  role: "user";  
-  email: string;  
+type User \= \{
+  role: "user";
+  email: string;
 \};
 
-function printAccount(account: Admin | User) \{  
-  if ("permissions" in account) \{  
-    console.log(account.permissions);  
-  \} else \{  
-    console.log(account.email);  
-  \}  
+function printAccount(account: Admin | User) \{
+  if ("permissions" in account) \{
+    console.log(account.permissions);
+  \} else \{
+    console.log(account.email);
+  \}
 \}
 
 ## Discriminated unions
 
 A discriminated union uses a common property to narrow types.
 
-type LoadingState \= \{  
-  status: "loading";  
+type LoadingState \= \{
+  status: "loading";
 \};
 
-type SuccessState \= \{  
-  status: "success";  
-  data: string\[\];  
+type SuccessState \= \{
+  status: "success";
+  data: string\[\];
 \};
 
-type ErrorState \= \{  
-  status: "error";  
-  error: string;  
+type ErrorState \= \{
+  status: "error";
+  error: string;
 \};
 
 type State \= LoadingState | SuccessState | ErrorState;
 
 Usage:
 
-function renderState(state: State) \{  
-  switch (state.status) \{  
-    case "loading":  
+function renderState(state: State) \{
+  switch (state.status) \{
+    case "loading":
       return "Loading...";
 
-    case "success":  
+    case "success":
       return state.data.join(", ");
 
-    case "error":  
-      return state.error;  
-  \}  
+    case "error":
+      return state.error;
+  \}
 \}
 
 ## Exhaustive checking with never
 
-function renderState(state: State) \{  
-  switch (state.status) \{  
-    case "loading":  
+function renderState(state: State) \{
+  switch (state.status) \{
+    case "loading":
       return "Loading...";
 
-    case "success":  
+    case "success":
       return state.data.join(", ");
 
-    case "error":  
+    case "error":
       return state.error;
 
-    default:  
-      const exhaustiveCheck: never \= state;  
-      return exhaustiveCheck;  
-  \}  
+    default:
+      const exhaustiveCheck: never \= state;
+      return exhaustiveCheck;
+  \}
 \}
 
 If a new status is added and not handled, TypeScript catches it.
@@ -825,17 +825,17 @@ Type narrowing helps TypeScript understand the exact type inside a code block. C
 
 TypeScript supports standard ES modules using `import` and `export`.
 
-// user.ts  
-\export type User \= \{  
-  id: number;  
-  name: string;  
+// user.ts
+\export type User \= \{
+  id: number;
+  name: string;
 \};
 
-\export function getUserName(user: User): string \{  
-  return user.name;  
+\export function getUserName(user: User): string \{
+  return user.name;
 \}
 
-// app.ts  
+// app.ts
 \import \{ User, getUserName \} from "./user";
 
 Better for type-only import:
@@ -844,15 +844,15 @@ Better for type-only import:
 
 ## Default export
 
-\export default function Button() \{  
-  return "Button";  
+\export default function Button() \{
+  return "Button";
 \}
 
 \import Button from "./Button";
 
 ## Named export
 
-\export function formatDate() \{\}  
+\export function formatDate() \{\}
 \export function formatCurrency() \{\}
 
 \import \{ formatDate, formatCurrency \} from "./formatters";
@@ -867,22 +867,22 @@ Example:
 
 TypeScript checks:
 
-tsconfig paths  
-node\_modules  
-package.json types field  
-index.d.ts  
+tsconfig paths
+node\_modules
+package.json types field
+index.d.ts
 local files
 
 ## Path aliases
 
-\{  
-  "compilerOptions": \{  
-    "baseUrl": ".",  
-    "paths": \{  
-      "@features/\*": \["src/features/\*"\],  
-      "@shared/\*": \["src/shared/\*"\]  
-    \}  
-  \}  
+\{
+  "compilerOptions": \{
+    "baseUrl": ".",
+    "paths": \{
+      "@features/\*": \["src/features/\*"\],
+      "@shared/\*": \["src/shared/\*"\]
+    \}
+  \}
 \}
 
 Usage:
@@ -893,10 +893,10 @@ Usage:
 
 Namespaces are older TypeScript syntax for grouping code.
 
-namespace Utils \{  
-  \export function formatDate(date: Date): string \{  
-    return date.toISOString();  
-  \}  
+namespace Utils \{
+  \export function formatDate(date: Date): string \{
+    return date.toISOString();
+  \}
 \}
 
 Utils.formatDate(new Date());
@@ -919,36 +919,36 @@ They are commonly used in Angular and some backend frameworks.
 
 ## Class decorator
 
-function Controller(path: string) \{  
-  return function (target: Function) \{  
-    Reflect.defineMetadata("path", path, target);  
-  \};  
+function Controller(path: string) \{
+  return function (target: Function) \{
+    Reflect.defineMetadata("path", path, target);
+  \};
 \}
 
-@Controller("/users")  
+@Controller("/users")
 class UserController \{\}
 
 ## Method decorator
 
-function Log(  
-  target: unknown,  
-  propertyKey: string,  
-  descriptor: PropertyDescriptor  
-) \{  
+function Log(
+  target: unknown,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
+) \{
   const originalMethod \= descriptor.value;
 
-  descriptor.value \= function (...args: unknown\[\]) \{  
-    console.log("Calling:", propertyKey);  
-    return originalMethod.apply(this, args);  
-  \};  
+  descriptor.value \= function (...args: unknown\[\]) \{
+    console.log("Calling:", propertyKey);
+    return originalMethod.apply(this, args);
+  \};
 \}
 
 ## Angular example
 
-@Component(\{  
-  selector: "app-user",  
-  templateUrl: "./user.component.html",  
-\})  
+@Component(\{
+  selector: "app-user",
+  templateUrl: "./user.component.html",
+\})
 \export class UserComponent \{\}
 
 ## Metadata reflection
@@ -957,10 +957,10 @@ Metadata reflection means storing and reading metadata about classes or members.
 
 Frameworks can use metadata for:
 
-* Dependency injection  
-* Routing  
-* Validation  
-* Serialization  
+* Dependency injection
+* Routing
+* Validation
+* Serialization
 * Component configuration
 
 ## Important note
@@ -981,19 +981,19 @@ Decorators are functions used to add metadata or behavior to classes, methods, p
 
 Common options:
 
-\{  
-  "compilerOptions": \{  
-    "target": "ES2020",  
-    "module": "ESNext",  
-    "strict": true,  
-    "jsx": "react-jsx",  
-    "moduleResolution": "Bundler",  
-    "baseUrl": ".",  
-    "paths": \{  
-      "@shared/\*": \["src/shared/\*"\]  
-    \},  
-    "noEmit": true  
-  \}  
+\{
+  "compilerOptions": \{
+    "target": "ES2020",
+    "module": "ESNext",
+    "strict": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": \{
+      "@shared/\*": \["src/shared/\*"\]
+    \},
+    "noEmit": true
+  \}
 \}
 
 ## Important tsconfig options
@@ -1019,7 +1019,7 @@ Transpilation means converting code syntax from one version/language to another.
 
 Example:
 
-TypeScript → JavaScript  
+TypeScript → JavaScript
 Modern JavaScript → older JavaScript
 
 Tools like Babel, SWC, and esbuild often transpile very fast.
@@ -1028,16 +1028,16 @@ Tools like Babel, SWC, and esbuild often transpile very fast.
 
 Compilation in TypeScript usually includes type checking plus output generation.
 
-Type check  
-  \+  
+Type check
+  \+
 Generate JavaScript
 
 In many React apps:
 
-tsc \--noEmit  
+tsc \--noEmit
 → type checking only
 
-Vite/Webpack/SWC/Babel  
+Vite/Webpack/SWC/Babel
 → transpilation/bundling
 
 ## Type declaration files
@@ -1046,20 +1046,20 @@ Vite/Webpack/SWC/Babel
 
 Example:
 
-// global.d.ts  
-declare module "\*.svg" \{  
-  const content: string;  
-  \export default content;  
+// global.d.ts
+declare module "\*.svg" \{
+  const content: string;
+  \export default content;
 \}
 
 Another example:
 
-declare global \{  
-  interface Window \{  
-    analytics: \{  
-      track: (eventName: string) \=\> void;  
-    \};  
-  \}  
+declare global \{
+  interface Window \{
+    analytics: \{
+      track: (eventName: string) \=\> void;
+    \};
+  \}
 \}
 
 ## DefinitelyTyped and @types
@@ -1086,7 +1086,7 @@ These types usually come from DefinitelyTyped.
 
 ## Answer
 
-let a: any;  
+let a: any;
 let b: unknown;
 
 `any` allows anything and disables type checking. `unknown` allows assignment but requires narrowing before use. `never` represents impossible values or functions that never return.
@@ -1103,12 +1103,12 @@ let b: unknown;
 
 Both can define object shapes.
 
-interface User \{  
-  id: number;  
+interface User \{
+  id: number;
 \}
 
-type UserType \= \{  
-  id: number;  
+type UserType \= \{
+  id: number;
 \};
 
 ## Interview-ready answer
@@ -1143,8 +1143,8 @@ Union means a value can be one of several types. Intersection means a value must
 
 Generics allow reusable type-safe code.
 
-function wrap\<T\>(value: T): \{ value: T \} \{  
-  return \{ value \};  
+function wrap\<T\>(value: T): \{ value: T \} \{
+  return \{ value \};
 \}
 
 ## Interview-ready answer
@@ -1161,11 +1161,11 @@ Utility types transform existing types.
 
 Examples:
 
-Partial\<User\>  
-Pick\<User, "id" | "name"\>  
-Omit\<User, "password"\>  
-Record\<Role, Permission\[\]\>  
-Required\<User\>  
+Partial\<User\>
+Pick\<User, "id" | "name"\>
+Omit\<User, "password"\>
+Record\<Role, Permission\[\]\>
+Required\<User\>
 Readonly\<User\>
 
 ## Interview-ready answer
@@ -1180,10 +1180,10 @@ Utility types are built-in TypeScript helpers that transform types. They reduce 
 
 Type narrowing means refining a broad type into a specific type.
 
-function print(value: string | number) \{  
-  if (typeof value \=== "string") \{  
-    console.log(value.toUpperCase());  
-  \}  
+function print(value: string | number) \{
+  if (typeof value \=== "string") \{
+    console.log(value.toUpperCase());
+  \}
 \}
 
 ## Interview-ready answer
@@ -1198,9 +1198,9 @@ Type narrowing helps TypeScript understand the exact type inside a condition. It
 
 A discriminated union uses a common property to identify each variant.
 
-type State \=  
-  | \{ status: "loading" \}  
-  | \{ status: "success"; data: string\[\] \}  
+type State \=
+  | \{ status: "loading" \}
+  | \{ status: "success"; data: string\[\] \}
   | \{ status: "error"; error: string \};
 
 ## Interview-ready answer
@@ -1215,12 +1215,12 @@ A discriminated union is a union where each type has a common literal field, lik
 
 `keyof` creates a union of keys from a type.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type UserKey \= keyof User;  
+type UserKey \= keyof User;
 // "id" | "name"
 
 ## Interview-ready answer
@@ -1235,8 +1235,8 @@ type UserKey \= keyof User;
 
 Mapped types create new types by iterating over keys.
 
-type MyPartial\<T\> \= \{  
-  \[K in keyof T\]?: T\[K\];  
+type MyPartial\<T\> \= \{
+  \[K in keyof T\]?: T\[K\];
 \};
 
 ## Interview-ready answer

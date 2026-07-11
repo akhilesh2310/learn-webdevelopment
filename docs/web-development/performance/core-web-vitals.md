@@ -15,8 +15,8 @@ Related canonical pages: [Browser Rendering Pipeline](../web-fundamentals/browse
 
 The current Core Web Vitals are:
 
-1. **LCP (Largest Contentful Paint)**: How fast the main content loads.  
-2. **INP (Interaction to Next Paint)** : How quickly the page responds to user interaction.  
+1. **LCP (Largest Contentful Paint)**: How fast the main content loads.
+2. **INP (Interaction to Next Paint)** : How quickly the page responds to user interaction.
 3. **CLS (Cumulative Layout Shift)**: How stable the page layout is while loading.
 
 Earlier, **FID** was used for interactivity, but **INP replaced FID as a Core Web Vital on March 12, 2024**. So in interviews, we should talk about **INP**, not FID, unless we are explaining the historical difference.
@@ -29,8 +29,8 @@ Core Web Vitals matter because they directly connect technical performance with 
 
 A page may technically load, but if:
 
-* the main content appears late,  
-* the button click feels slow,  
+* the main content appears late,
+* the button click feels slow,
 * the layout jumps suddenly,
 
 then the user feels the website is slow or broken.
@@ -51,10 +51,10 @@ Core Web Vitals help us measure real user experience. They tell us whether the p
 
 It tells us when the largest visible content element in the viewport is rendered. This is usually:
 
-* hero image,  
-* banner,  
-* large heading,  
-* large text block,  
+* hero image,
+* banner,
+* large heading,
+* large text block,
 * video poster image.
 
 **Good score:** LCP should be **2.5 seconds or less** for a good user experience. Google recommends checking this at the **75th percentile**, separately for mobile and desktop users.
@@ -67,26 +67,26 @@ For example, if a product listing page opens but the product cards or hero conte
 
 ### Common reasons for poor LCP
 
-* Large hero image.  
-* Slow server response.  
-* Render-blocking CSS or JavaScript.  
-* Heavy client-side rendering.  
-* Too much JavaScript before showing content.  
-* Fonts blocking text rendering.  
+* Large hero image.
+* Slow server response.
+* Render-blocking CSS or JavaScript.
+* Heavy client-side rendering.
+* Too much JavaScript before showing content.
+* Fonts blocking text rendering.
 * API response needed before rendering above-the-fold content.
 
 ### How to improve LCP
 
-* Optimize hero images using WebP or AVIF.  
-* Use responsive images with correct sizes.  
-* Use CDN for static assets.  
-* Preload the critical hero image when required.  
-* Avoid lazy loading the main hero image.  
-* Reduce render-blocking CSS and JavaScript.  
-* Use SSR, SSG, ISR, or streaming rendering where useful.  
-* Cache API responses where possible.  
-* Reduce initial JavaScript bundle size.  
-* Split code by route and load only what is needed.  
+* Optimize hero images using WebP or AVIF.
+* Use responsive images with correct sizes.
+* Use CDN for static assets.
+* Preload the critical hero image when required.
+* Avoid lazy loading the main hero image.
+* Reduce render-blocking CSS and JavaScript.
+* Use SSR, SSG, ISR, or streaming rendering where useful.
+* Cache API responses where possible.
+* Reduce initial JavaScript bundle size.
+* Split code by route and load only what is needed.
 * Improve backend response time and use edge caching.
 
 ### React / Next.js example
@@ -103,12 +103,12 @@ In Next.js, SSR, SSG, or ISR can improve LCP because the browser receives meanin
 
 It checks how quickly the page gives visual feedback after a user interaction like:
 
-* click,  
-* tap,  
+* click,
+* tap,
 * keyboard input.
 
-**Good score:** INP should be **200 ms or less**.  
-**Needs improvement:** Above 200 ms and up to 500 ms.  
+**Good score:** INP should be **200 ms or less**.
+**Needs improvement:** Above 200 ms and up to 500 ms.
 **Poor:** Above 500 ms.
 
 ### Why INP replaced FID
@@ -119,58 +119,58 @@ INP is better because it observes interactions throughout the page lifecycle. It
 
 ### Simple difference between FID and INP
 
-**FID:**  
+**FID:**
 How long did the browser take to start handling the first user interaction?
 
-**INP:**  
+**INP:**
 How long did the page take to visually respond to user interactions during the full visit?
 
 So INP is more practical for modern web apps because users interact with the page multiple times, not just once.
 
 ### Common reasons for poor INP
 
-* Long JavaScript tasks blocking the main thread.  
-* Heavy click handlers.  
-* Large React re-renders after interaction.  
-* Expensive calculations on input change.  
-* Large lists rendering without virtualization.  
-* Too many state updates.  
-* Heavy third-party scripts.  
-* Poor memoization.  
-* Layout thrashing due to repeated DOM reads and writes.  
+* Long JavaScript tasks blocking the main thread.
+* Heavy click handlers.
+* Large React re-renders after interaction.
+* Expensive calculations on input change.
+* Large lists rendering without virtualization.
+* Too many state updates.
+* Heavy third-party scripts.
+* Poor memoization.
+* Layout thrashing due to repeated DOM reads and writes.
 * Running analytics, validation, or formatting logic synchronously during user input.
 
 ### How to improve INP
 
-* Break long JavaScript tasks into smaller chunks.  
-* Reduce unnecessary React re-renders.  
-* Use `React.memo` carefully for stable components.  
-* Use `useMemo` only for expensive calculations.  
-* Use `useCallback` when function reference stability matters.  
-* Use virtualization for large lists.  
-* Debounce expensive input logic.  
-* Move heavy computation to Web Workers.  
-* Use `startTransition` for non-urgent UI updates in React.  
-* Lazy load non-critical components.  
-* Delay or async-load third-party scripts.  
+* Break long JavaScript tasks into smaller chunks.
+* Reduce unnecessary React re-renders.
+* Use `React.memo` carefully for stable components.
+* Use `useMemo` only for expensive calculations.
+* Use `useCallback` when function reference stability matters.
+* Use virtualization for large lists.
+* Debounce expensive input logic.
+* Move heavy computation to Web Workers.
+* Use `startTransition` for non-urgent UI updates in React.
+* Lazy load non-critical components.
+* Delay or async-load third-party scripts.
 * Avoid doing heavy work directly inside click or input handlers.
 
 ### React example
 
 Bad pattern:
 
-const handleSearch \= (value: string) \=\> \{  
-  setSearch(value);  
-  runHeavyFiltering(value);  
-  updateAnalytics(value);  
+const handleSearch \= (value: string) \=\> \{
+  setSearch(value);
+  runHeavyFiltering(value);
+  updateAnalytics(value);
 \};
 
 Better pattern:
 
-const handleSearch \= (value: string) \=\> \{  
-  setSearch(value);  
-  debouncedFilter(value);  
-  queueAnalytics(value);  
+const handleSearch \= (value: string) \=\> \{
+  setSearch(value);
+  debouncedFilter(value);
+  queueAnalytics(value);
 \};
 
 The idea is simple: keep the user interaction fast and move expensive work away from the critical interaction path.
@@ -183,7 +183,7 @@ The idea is simple: keep the user interaction fast and move expensive work away 
 
 It tells us how much visible content unexpectedly moves on the page.
 
-**Good score:** CLS should be **0.1 or less**.  
+**Good score:** CLS should be **0.1 or less**.
 **Poor score:** Above **0.25**.
 
 ### Why CLS matters
@@ -196,24 +196,24 @@ A user is about to click “Buy Now”, but suddenly an ad or banner loads above
 
 ### Common reasons for poor CLS
 
-* Images without width and height.  
-* Ads loading without reserved space.  
-* Banners inserted above existing content.  
-* Fonts loading late and changing text size.  
-* Skeleton loaders with different size than final content.  
-* Dynamic content injected above the fold.  
+* Images without width and height.
+* Ads loading without reserved space.
+* Banners inserted above existing content.
+* Fonts loading late and changing text size.
+* Skeleton loaders with different size than final content.
+* Dynamic content injected above the fold.
 * Cookie banners or notification bars pushing layout.
 
 ### How to improve CLS
 
-* Always provide `width` and `height` for images.  
-* Use CSS `aspect-ratio` for responsive media.  
-* Reserve fixed space for ads, banners, and iframes.  
-* Avoid inserting new content above existing content.  
-* Use proper skeleton placeholders.  
-* Preload important fonts.  
-* Use `font-display` carefully.  
-* Keep fallback font and final font visually similar.  
+* Always provide `width` and `height` for images.
+* Use CSS `aspect-ratio` for responsive media.
+* Reserve fixed space for ads, banners, and iframes.
+* Avoid inserting new content above existing content.
+* Use proper skeleton placeholders.
+* Preload important fonts.
+* Use `font-display` carefully.
+* Keep fallback font and final font visually similar.
 * Use overlays for banners instead of pushing layout.
 
 ---
@@ -228,19 +228,19 @@ Core Web Vitals are the main metrics, but interviews often include related metri
 
 This could be:
 
-* text,  
-* image,  
-* SVG,  
+* text,
+* image,
+* SVG,
 * canvas.
 
 ### FCP vs LCP
 
-**FCP:** When the user sees the first content.  
+**FCP:** When the user sees the first content.
 **LCP:** When the main/largest content is visible.
 
 Example:
 
-If a small logo appears after 1 second, FCP is good.  
+If a small logo appears after 1 second, FCP is good.
 But if the main product list appears after 5 seconds, LCP is poor.
 
 So FCP tells us the page started rendering, but LCP tells us whether the useful main content is visible.
@@ -261,10 +261,10 @@ TBT helps debug JavaScript-heavy pages.
 
 If TBT is high, it usually means:
 
-* too much JavaScript,  
-* large bundle size,  
-* expensive hydration,  
-* heavy third-party scripts,  
+* too much JavaScript,
+* large bundle size,
+* expensive hydration,
+* heavy third-party scripts,
 * long synchronous tasks.
 
 ---
@@ -285,11 +285,11 @@ It is useful for understanding visual progress. A page that gradually shows usef
 
 It checks areas like:
 
-* Performance,  
-* Accessibility,  
-* SEO,  
-* Best Practices,  
-* Progressive Web App related checks,  
+* Performance,
+* Accessibility,
+* SEO,
+* Best Practices,
+* Progressive Web App related checks,
 * other quality signals.
 
 You can run Lighthouse from Chrome DevTools, command line, Node module, or Lighthouse CI.
@@ -326,13 +326,13 @@ Why?
 
 Because Lighthouse runs in a lab environment. Real users may have:
 
-* slower devices,  
-* slower networks,  
-* different browsers,  
-* different locations,  
-* personalized content,  
-* ads,  
-* logged-in states,  
+* slower devices,
+* slower networks,
+* different browsers,
+* different locations,
+* personalized content,
+* ads,
+* logged-in states,
 * A/B test variants.
 
 So a good Lighthouse score is useful, but production field data is more reliable.
@@ -347,10 +347,10 @@ Field data comes from real users.
 
 Examples:
 
-* Chrome UX Report,  
-* Google Search Console,  
-* PageSpeed Insights field data,  
-* Web Vitals library,  
+* Chrome UX Report,
+* Google Search Console,
+* PageSpeed Insights field data,
+* Web Vitals library,
 * internal RUM dashboards.
 
 CrUX is Google’s dataset showing how real Chrome users experience popular websites. It includes Core Web Vitals and is used in Google tools.
@@ -365,9 +365,9 @@ Lab data comes from controlled tests.
 
 Examples:
 
-* Lighthouse,  
-* Chrome DevTools Performance panel,  
-* WebPageTest,  
+* Lighthouse,
+* Chrome DevTools Performance panel,
+* WebPageTest,
 * local performance testing.
 
 ### Lab data answers
@@ -376,10 +376,10 @@ Examples:
 
 ## Best workflow
 
-1. Use field data to identify the real problem.  
-2. Segment by page type, device, browser, and geography.  
-3. Use Lighthouse and DevTools to debug.  
-4. Apply fixes.  
+1. Use field data to identify the real problem.
+2. Segment by page type, device, browser, and geography.
+3. Use Lighthouse and DevTools to debug.
+4. Apply fixes.
 5. Monitor field data again after release.
 
 ---
@@ -392,8 +392,8 @@ Use it for quick analysis.
 
 It provides:
 
-* field data from CrUX when available,  
-* lab data from Lighthouse,  
+* field data from CrUX when available,
+* lab data from Lighthouse,
 * improvement suggestions.
 
 ## 7.2 Google Search Console
@@ -402,8 +402,8 @@ Use it for SEO and production monitoring.
 
 It groups URLs by:
 
-* Good,  
-* Needs Improvement,  
+* Good,
+* Needs Improvement,
 * Poor.
 
 It uses real-world usage data and reports issues for LCP, INP, and CLS.
@@ -414,10 +414,10 @@ Use it during development and debugging.
 
 Best for:
 
-* finding render-blocking resources,  
-* checking unused JavaScript,  
-* checking image optimization,  
-* checking accessibility,  
+* finding render-blocking resources,
+* checking unused JavaScript,
+* checking image optimization,
+* checking accessibility,
 * checking SEO basics.
 
 ## 7.4 Chrome DevTools Performance Panel
@@ -426,11 +426,11 @@ Use it for deep debugging.
 
 Best for:
 
-* long tasks,  
-* scripting cost,  
-* rendering cost,  
-* layout shifts,  
-* expensive event handlers,  
+* long tasks,
+* scripting cost,
+* rendering cost,
+* layout shifts,
+* expensive event handlers,
 * React rendering issues.
 
 ## 7.5 Web Vitals Library
@@ -449,33 +449,33 @@ Use this when the page loads slowly.
 
 ### Frontend fixes
 
-* Reduce JavaScript bundle size.  
-* Code split by route.  
-* Lazy load below-the-fold components.  
-* Avoid lazy loading the LCP image.  
-* Preload important fonts and images.  
-* Remove unused CSS.  
-* Inline critical CSS if required.  
-* Use responsive images.  
-* Use WebP or AVIF.  
+* Reduce JavaScript bundle size.
+* Code split by route.
+* Lazy load below-the-fold components.
+* Avoid lazy loading the LCP image.
+* Preload important fonts and images.
+* Remove unused CSS.
+* Inline critical CSS if required.
+* Use responsive images.
+* Use WebP or AVIF.
 * Avoid blocking scripts in the head.
 
 ### Backend / platform fixes
 
-* Improve server response time.  
-* Use CDN caching.  
-* Use SSR or SSG for important landing pages.  
-* Cache API responses.  
-* Use edge rendering where useful.  
-* Compress responses using gzip or Brotli.  
+* Improve server response time.
+* Use CDN caching.
+* Use SSR or SSG for important landing pages.
+* Cache API responses.
+* Use edge rendering where useful.
+* Compress responses using gzip or Brotli.
 * Use HTTP/2 or HTTP/3 where possible.
 
 ### React / Next.js fixes
 
-* Use SSG or ISR for mostly static pages.  
-* Use SSR for dynamic SEO pages where data changes often.  
-* Use streaming and Suspense carefully.  
-* Avoid large client-only rendering for above-the-fold content.  
+* Use SSG or ISR for mostly static pages.
+* Use SSR for dynamic SEO pages where data changes often.
+* Use streaming and Suspense carefully.
+* Avoid large client-only rendering for above-the-fold content.
 * Keep the initial route bundle small.
 
 ---
@@ -486,26 +486,26 @@ Use this when clicks, typing, filters, dropdowns, or buttons feel slow.
 
 ### Frontend fixes
 
-* Reduce long tasks.  
-* Avoid heavy synchronous work in event handlers.  
-* Split expensive work.  
-* Use debounce or throttle.  
-* Use Web Workers for heavy computation.  
-* Virtualize large lists.  
-* Avoid unnecessary re-renders.  
-* Memoize expensive calculations.  
-* Keep component state local where possible.  
-* Avoid global state updates for small UI interactions.  
+* Reduce long tasks.
+* Avoid heavy synchronous work in event handlers.
+* Split expensive work.
+* Use debounce or throttle.
+* Use Web Workers for heavy computation.
+* Virtualize large lists.
+* Avoid unnecessary re-renders.
+* Memoize expensive calculations.
+* Keep component state local where possible.
+* Avoid global state updates for small UI interactions.
 * Lazy load non-critical logic.
 
 ### React-specific fixes
 
-* Use React Profiler to identify slow renders.  
-* Avoid passing unstable props to memoized children.  
-* Avoid creating large objects/functions on every render when it affects child rendering.  
-* Use `useTransition` for non-urgent updates.  
-* Use `useDeferredValue` for expensive filtered views.  
-* Avoid rendering huge lists directly.  
+* Use React Profiler to identify slow renders.
+* Avoid passing unstable props to memoized children.
+* Avoid creating large objects/functions on every render when it affects child rendering.
+* Use `useTransition` for non-urgent updates.
+* Use `useDeferredValue` for expensive filtered views.
+* Avoid rendering huge lists directly.
 * Avoid controlled input lag by separating input state from expensive derived state.
 
 ---
@@ -516,13 +516,13 @@ Use this when layout jumps.
 
 ### Frontend fixes
 
-* Add `width` and `height` to images.  
-* Use `aspect-ratio`.  
-* Reserve space for ads and iframes.  
-* Match skeleton size with final content.  
-* Avoid inserting banners above content.  
-* Avoid late-loading fonts that change text layout.  
-* Use stable containers for dynamic content.  
+* Add `width` and `height` to images.
+* Use `aspect-ratio`.
+* Reserve space for ads and iframes.
+* Match skeleton size with final content.
+* Avoid inserting banners above content.
+* Avoid late-loading fonts that change text layout.
+* Use stable containers for dynamic content.
 * Prefer overlays for popups or cookie banners.
 
 ---
@@ -535,13 +535,13 @@ SSR can improve LCP because the server sends rendered HTML to the browser.
 
 Good for:
 
-* dynamic SEO pages,  
-* personalized pages,  
+* dynamic SEO pages,
+* personalized pages,
 * pages where data changes frequently.
 
 Trade-off:
 
-* If server response is slow, SSR can hurt performance.  
+* If server response is slow, SSR can hurt performance.
 * Needs caching strategy.
 
 ## SSG: Static Site Generation
@@ -550,10 +550,10 @@ SSG pre-builds HTML at build time.
 
 Good for:
 
-* marketing pages,  
-* blogs,  
-* documentation,  
-* landing pages,  
+* marketing pages,
+* blogs,
+* documentation,
+* landing pages,
 * pages where data does not change often.
 
 Trade-off:
@@ -566,9 +566,9 @@ ISR gives static performance with controlled freshness.
 
 Good for:
 
-* product detail pages,  
-* content pages,  
-* catalog pages,  
+* product detail pages,
+* content pages,
+* catalog pages,
 * pages that need periodic updates.
 
 Trade-off:
@@ -585,26 +585,26 @@ SSR, SSG, and ISR can improve LCP because the browser gets meaningful HTML earli
 
 Lighthouse SEO audit checks basic technical SEO items like:
 
-* title tag,  
-* meta description,  
-* viewport meta tag,  
-* crawlable links,  
-* image alt text,  
-* valid canonical tags,  
-* mobile-friendly layout,  
-* readable font sizes,  
+* title tag,
+* meta description,
+* viewport meta tag,
+* crawlable links,
+* image alt text,
+* valid canonical tags,
+* mobile-friendly layout,
+* readable font sizes,
 * tap target sizes.
 
 But Lighthouse SEO score is not a complete SEO strategy.
 
 It does not fully judge:
 
-* content quality,  
-* keyword intent,  
-* backlinks,  
-* authority,  
-* internal linking depth,  
-* search competition,  
+* content quality,
+* keyword intent,
+* backlinks,
+* authority,
+* internal linking depth,
+* search competition,
 * structured content quality.
 
 ### Simple interview answer
@@ -617,22 +617,22 @@ Lighthouse SEO is useful for technical SEO checks, but it is not a complete SEO 
 
 Lighthouse also checks common accessibility issues like:
 
-* missing labels,  
-* poor color contrast,  
-* missing image alt text,  
-* incorrect heading order,  
-* buttons without accessible names,  
+* missing labels,
+* poor color contrast,
+* missing image alt text,
+* incorrect heading order,
+* buttons without accessible names,
 * form controls without labels.
 
 But Lighthouse cannot catch all accessibility issues.
 
 Manual testing is still needed for:
 
-* keyboard navigation,  
-* screen reader flow,  
-* focus management,  
-* modal accessibility,  
-* dynamic content announcements,  
+* keyboard navigation,
+* screen reader flow,
+* focus management,
+* modal accessibility,
+* dynamic content announcements,
 * real user journeys.
 
 ### Interview point
@@ -735,13 +735,13 @@ Finally, I would add performance budgets in CI/CD, monitor p75 metrics in produc
 
 For a React or Next.js application, I would define budgets like:
 
-* LCP below 2.5 seconds for important pages.  
-* INP below 200 ms at p75.  
-* CLS below 0.1.  
-* JavaScript bundle size limit per route.  
-* No unexpected layout shifts above the fold.  
-* Lighthouse performance score threshold for PR checks.  
-* Separate budgets for mobile and desktop.  
+* LCP below 2.5 seconds for important pages.
+* INP below 200 ms at p75.
+* CLS below 0.1.
+* JavaScript bundle size limit per route.
+* No unexpected layout shifts above the fold.
+* Lighthouse performance score threshold for PR checks.
+* Separate budgets for mobile and desktop.
 * Alerting if production p75 metrics degrade after release.
 
 ---
@@ -750,16 +750,16 @@ For a React or Next.js application, I would define budgets like:
 
 Remember this:
 
-* **LCP \= loading**  
-* **INP \= interaction responsiveness**  
-* **CLS \= layout stability**  
-* **FID is old, INP is current**  
-* **Lighthouse \= lab/debugging tool**  
-* **Search Console/CrUX/RUM \= field data**  
-* **Good LCP \= 2.5s or less**  
-* **Good INP \= 200ms or less**  
-* **Good CLS \= 0.1 or less**  
-* **Good Lighthouse score does not always mean real users are happy**  
+* **LCP \= loading**
+* **INP \= interaction responsiveness**
+* **CLS \= layout stability**
+* **FID is old, INP is current**
+* **Lighthouse \= lab/debugging tool**
+* **Search Console/CrUX/RUM \= field data**
+* **Good LCP \= 2.5s or less**
+* **Good INP \= 200ms or less**
+* **Good CLS \= 0.1 or less**
+* **Good Lighthouse score does not always mean real users are happy**
 * **Always debug using both lab and field data**
 
 ---

@@ -13,23 +13,23 @@ sidebar_position: 1
 
 ## TypeScript Interview Preparation Structure
 
-[https://www.typescriptlang.org/cheatsheets/](https://www.typescriptlang.org/cheatsheets/)
+- [https://www.typescriptlang.org/cheatsheets/](https://www.typescriptlang.org/cheatsheets/)
 
-[https://chatgpt.com/c/6a32d6e3-52b8-83ee-8149-2605708ec146](https://chatgpt.com/c/6a32d6e3-52b8-83ee-8149-2605708ec146)
+- [https://chatgpt.com/c/6a32d6e3-52b8-83ee-8149-2605708ec146](https://chatgpt.com/c/6a32d6e3-52b8-83ee-8149-2605708ec146)
 
-[https://github.com/aershov24/typescript-interview-questions](https://github.com/aershov24/typescript-interview-questions)
+- [https://github.com/aershov24/typescript-interview-questions](https://github.com/aershov24/typescript-interview-questions)
 
-[https://addyosmani.com/resources/essentialjsdesignpatterns/book/](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
+- [https://addyosmani.com/resources/essentialjsdesignpatterns/book/](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
 
-[https://www.codeproject.com/Articles/1071285/Latest-TypeScript-Interview-Questions-for-Beginner](https://www.codeproject.com/Articles/1071285/Latest-TypeScript-Interview-Questions-for-Beginner)
+- [https://www.codeproject.com/Articles/1071285/Latest-TypeScript-Interview-Questions-for-Beginner](https://www.codeproject.com/Articles/1071285/Latest-TypeScript-Interview-Questions-for-Beginner)
 
-[https://www.typescriptlang.org/docs/handbook/basic-types.html](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+- [https://www.typescriptlang.org/docs/handbook/basic-types.html](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 
-[https://devinterview.io/questions/web-and-mobile-development/typescript-interview-questions/](https://devinterview.io/questions/web-and-mobile-development/typescript-interview-questions/)
+- [https://devinterview.io/questions/web-and-mobile-development/typescript-interview-questions/](https://devinterview.io/questions/web-and-mobile-development/typescript-interview-questions/)
 
-[https://github.com/dotnetcrunch/typescript-interview-questions](https://github.com/dotnetcrunch/typescript-interview-questions)
+- [https://github.com/dotnetcrunch/typescript-interview-questions](https://github.com/dotnetcrunch/typescript-interview-questions)
 
-[https://zerotomastery.io/blog/typescript-interview-questions/](https://zerotomastery.io/blog/typescript-interview-questions/)
+- [https://zerotomastery.io/blog/typescript-interview-questions/](https://zerotomastery.io/blog/typescript-interview-questions/)
 
 ## TypeScript Interview Preparation Structure
 
@@ -37,23 +37,23 @@ sidebar_position: 1
 
 ## Why TypeScript?
 
-* Problems TypeScript solves  
-* JavaScript vs TypeScript  
+* Problems TypeScript solves
+* JavaScript vs TypeScript
 * Compile-time vs Runtime
 
 ## Basic Types
 
-* string  
-* number  
-* boolean  
-* bigint  
+* string
+* number
+* boolean
+* bigint
 * symbol
 
 ## Special Types
 
-* any  
-* unknown  
-* void  
+* any
+* unknown
+* void
 * never
 
 ## null & undefined
@@ -64,8 +64,8 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* any vs unknown  
-* void vs never  
+* any vs unknown
+* void vs never
 * TypeScript compile-time checking
 
 ---
@@ -88,7 +88,7 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* Function overloading  
+* Function overloading
 * Explicit return types
 
 ---
@@ -109,7 +109,7 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* Creating flexible object types  
+* Creating flexible object types
 * Dynamic key typing
 
 ---
@@ -130,7 +130,7 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* Interface inheritance  
+* Interface inheritance
 * Interface merging
 
 ---
@@ -149,7 +149,7 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* type vs interface  
+* type vs interface
 * Union vs Intersection
 
 ---
@@ -170,7 +170,7 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* Type guards  
+* Type guards
 * Narrowing union types
 
 ---
@@ -195,8 +195,8 @@ sidebar_position: 1
 
 ## Common Interview Topics
 
-* Why Generics?  
-* Generic Constraints  
+* Why Generics?
+* Generic Constraints
 * Generic Repository Pattern
 
 ---
@@ -221,8 +221,8 @@ T extends U ? X : Y
 
 ## Common Interview Topics
 
-* keyof usage  
-* Conditional Types  
+* keyof usage
+* Conditional Types
 * infer keyword
 
 ---
@@ -237,7 +237,7 @@ T extends U ? X : Y
 
 ## Property Modifiers
 
-* readonly  
+* readonly
 * optional
 
 ## Common Interview Topics
@@ -274,8 +274,8 @@ T extends U ? X : Y
 
 ## Common Interview Topics
 
-* Implement Pick  
-* Implement Omit  
+* Implement Pick
+* Implement Omit
 * Real-world utility type usage
 
 ---
@@ -306,8 +306,8 @@ T extends U ? X : Y
 
 ## Access Modifiers
 
-* public  
-* private  
+* public
+* private
 * protected
 
 ## Readonly Members
@@ -370,10 +370,10 @@ T extends U ? X : Y
 
 ### Important Options
 
-* strict  
-* noImplicitAny  
-* strictNullChecks  
-* target  
+* strict
+* noImplicitAny
+* strictNullChecks
+* target
 * module
 
 ## Compilation Process
@@ -384,7 +384,7 @@ T extends U ? X : Y
 
 ## Common Interview Topics
 
-* strict mode options  
+* strict mode options
 * TypeScript build flow
 
 ---
@@ -417,8 +417,8 @@ T extends U ? X : Y
 
 ### React Events
 
-* ChangeEvent  
-* MouseEvent  
+* ChangeEvent
+* MouseEvent
 * KeyboardEvent
 
 ## Typing Hooks
@@ -437,7 +437,7 @@ T extends U ? X : Y
 
 ## Common Interview Topics
 
-* Typing reusable components  
+* Typing reusable components
 * Typing hooks correctly
 
 ---
@@ -462,8 +462,8 @@ T extends U ? X : Y
 
 ## Common Interview Topics
 
-* Designing scalable type systems  
-* Building reusable generic libraries  
+* Designing scalable type systems
+* Building reusable generic libraries
 * Type-safe API clients
 
 ---
@@ -474,27 +474,27 @@ If your goal is **job switch preparation**, study in this order:
 
 ### Phase 1 (Most Asked)
 
-1. TypeScript Fundamentals  
-2. Interfaces  
-3. Type Aliases  
-4. Generics  
-5. Utility Types  
-6. Type Narrowing  
+1. TypeScript Fundamentals
+2. Interfaces
+3. Type Aliases
+4. Generics
+5. Utility Types
+6. Type Narrowing
 7. TypeScript with React
 
 ### Phase 2 (Senior Level)
 
-8. Advanced Types  
-9. Mapped Types  
-10. Classes  
-11. Modules  
+8. Advanced Types
+9. Mapped Types
+10. Classes
+11. Modules
 12. tsconfig
 
 ### Phase 3 (Staff Level)
 
-13. Declaration Files  
-14. Decorators  
-15. Advanced TypeScript Patterns  
+13. Declaration Files
+14. Decorators
+15. Advanced TypeScript Patterns
 16. Type-safe Architecture
 
 For React Senior/Staff Engineer interviews, mastering the first **7 sections** usually covers about **80–90% of TypeScript questions** that come up in frontend interviews.

@@ -9,9 +9,9 @@ Related canonical pages: [XSS](xss-cross-site-scripting.md), [JWT & CSRF](jwt-cs
 
 ## Security
 
-* XSS  
-* CSRF  
-* Content Security Policy (CSP)  
+* XSS
+* CSRF
+* Content Security Policy (CSP)
 * Secure Storage Practices
 
 ## [A10 Server Side Request Forgery (SSRF) \- OWASP Top 10:2021](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
@@ -162,18 +162,18 @@ Understand the nuances of \[Next Topic Name\], exploring its what, when, how, wh
 
 Discover the nuances of \[Next Topic Name\], understanding its what, when, how, why, examples, and solutions to fix/prevent vulnerabilities, in the context of both a generic web application and ReactJS.
 
-* Cross-site Scripting (XSS): Discover the nuances of XSS vulnerabilities, empowering you to fortify your frontend against malicious script injections that threaten user security.  
-* iFrame Protection: Secure your frontend against iFrame0based threats by mastering techniques to safeguard embedded content and prevent potential vulnerabilities.  
-* Security Headers: Implement security headers effectively to fortify your frontend against various threats, leveraging key configurations for enhanced protection.  
-* Client-side Security: Master best practices and tools for ensuring robust client-side security in your frontend architecture.  
-* Secure Communication (HTTPs): Safeguard data transfer using advanced HTTP security measures, ensuring secure communication in your frontend applications.  
-* Dependency Security: Learn to identify and mitigate vulnerabilities in third-party dependencies, fortifying your frontend against potential risks.  
-* Compliance & Regulation: Navigate complex compliance standards, ensuring your frontend adheres to regulations, mitigating legal and security risks effectively.  
-* Input Validation and Sanitization: Master the art of input validation and sanitization, safeguarding your frontend against various security threats originating from user inputs.  
-* Server-Side Request Forgery (SSRF): Identify and counter SSRF threats, ensuring robust security for your frontend servers against unauthorized requests.  
-* Feature Policy | Permissions-Policy: Leverage feature and permissions policies for strengthened frontend security, managing browser behaviors and permission effectively.  
-* Sub resource Integrity (SRI): Ensure resource integrity by implementing SRI, safeguarding resources loaded into your frontend against tampering.  
-* Cross-Origin Resource Sharing (CORS): Manage CORS effectively for secure cross-origin data sharing withing your frontend applications.  
+* Cross-site Scripting (XSS): Discover the nuances of XSS vulnerabilities, empowering you to fortify your frontend against malicious script injections that threaten user security.
+* iFrame Protection: Secure your frontend against iFrame0based threats by mastering techniques to safeguard embedded content and prevent potential vulnerabilities.
+* Security Headers: Implement security headers effectively to fortify your frontend against various threats, leveraging key configurations for enhanced protection.
+* Client-side Security: Master best practices and tools for ensuring robust client-side security in your frontend architecture.
+* Secure Communication (HTTPs): Safeguard data transfer using advanced HTTP security measures, ensuring secure communication in your frontend applications.
+* Dependency Security: Learn to identify and mitigate vulnerabilities in third-party dependencies, fortifying your frontend against potential risks.
+* Compliance & Regulation: Navigate complex compliance standards, ensuring your frontend adheres to regulations, mitigating legal and security risks effectively.
+* Input Validation and Sanitization: Master the art of input validation and sanitization, safeguarding your frontend against various security threats originating from user inputs.
+* Server-Side Request Forgery (SSRF): Identify and counter SSRF threats, ensuring robust security for your frontend servers against unauthorized requests.
+* Feature Policy | Permissions-Policy: Leverage feature and permissions policies for strengthened frontend security, managing browser behaviors and permission effectively.
+* Sub resource Integrity (SRI): Ensure resource integrity by implementing SRI, safeguarding resources loaded into your frontend against tampering.
+* Cross-Origin Resource Sharing (CORS): Manage CORS effectively for secure cross-origin data sharing withing your frontend applications.
 * Cross-Site Request Forgery (CSRF): Prevent cross-site request forgery (CSRF) attacks for enhanced security.
 
 ## ✨ Template for the Next Topic
@@ -182,33 +182,33 @@ I am preparing for interview with 13 years of experience as UI architect and I w
 
 **"Discover the nuances of “**Security Headers: Implement security headers effectively to fortify your frontend against various threats, leveraging key configurations for enhanced protection.**”, understanding its what, when, how, why, examples, and solutions to fix or prevent vulnerabilities, explained in the context of both a generic web application and ReactJS."**
 
-**Answer in the following template format:**  
+**Answer in the following template format:**
 `# [Topic Name]`
 
-`## 1. What is [Topic Name]?`  
+`## 1. What is [Topic Name]?`
 `(Explain what it is.)`
 
-`## 2. When does it occur?`  
+`## 2. When does it occur?`
 `(Explain when the vulnerability/problem occurs and when we need to fix it.)`
 
-`## 3. How does it happen?`  
+`## 3. How does it happen?`
 `(Describe the mechanisms or scenarios how this happens and how to fix it.)`
 
-`## 4. Why is it dangerous?`  
+`## 4. Why is it dangerous?`
 `(Explain the risks and consequences and why we need to fix it.)`
 
-`## 5. Example`  
+`## 5. Example`
 `(Provide examples in both generic web app and ReactJS.)`
 
 `## 6. 🛡️ How to Prevent/Fix`
 
-`### 6.1 In a Generic Web Application`  
+`### 6.1 In a Generic Web Application`
 `- (List steps.)`
 
-`### 6.2 In ReactJS`  
+`### 6.2 In ReactJS`
 `- (List steps.)`
 
-`## 7. ✅ Summary`  
+`## 7. ✅ Summary`
 `(Quick table or bullet points.)`
 
 ---

@@ -39,16 +39,16 @@ Common scenarios include:
 
 ## 3. How does XSS happen?
 
-Attackers craft malicious input containing executable scripts.  
+Attackers craft malicious input containing executable scripts.
  Types of XSS attacks include:
 
-* **Stored XSS**:  
+* **Stored XSS**:
    The malicious script is permanently stored (e.g., in a database) and served to other users.
 
-* **Reflected XSS**:  
+* **Reflected XSS**:
    The malicious input is immediately reflected by the server in the response (e.g., search result page).
 
-* **DOM-based XSS**:  
+* **DOM-based XSS**:
    The vulnerability exists in the frontend code itself (client-side JavaScript), where user input is read and written insecurely to the DOM.
 
 ---
@@ -71,7 +71,7 @@ Attackers craft malicious input containing executable scripts.
 
 ### Generic Web Application Example
 
-php  
+php
 ```text
 <div>Welcome, <?php echo $_GET['name']; ?>!</div>
 ```
@@ -95,7 +95,7 @@ const name = "<script>alert('XSS')</script>";
 return <div>{name}</div>;
 ```
 
-React renders it safely as text:  
+React renders it safely as text:
  `<div>&lt;script&gt;alert('XSS')&lt;/script&gt;`
 
 ---
@@ -116,24 +116,24 @@ If unsanitized, this will directly inject and execute the script.
 
 ### 6.1. In a Generic Web Application
 
-* **Escape Output**:  
+* **Escape Output**:
    Always escape user inputs before rendering them into HTML, JavaScript, or attributes.
 
-* **Validate and Sanitize Inputs**:  
+* **Validate and Sanitize Inputs**:
    Strictly validate incoming data. Sanitize it based on context (text, URL, number, etc.).
 
-**Use Content Security Policy (CSP)**:  
+**Use Content Security Policy (CSP)**:
  Configure a CSP header to restrict which scripts can run.
 
  Example:
 
- pgsql  
+ pgsql
 ```text
 Content-Security-Policy: default-src 'self';
 ```
 
-*   
-* **Set HTTP-only Cookies**:  
+*
+* **Set HTTP-only Cookies**:
    Cookies storing session data should be HTTP-only to prevent JavaScript access.
 
 * **Use Trusted Security Libraries**:
@@ -148,10 +148,10 @@ Content-Security-Policy: default-src 'self';
 
 ### 6.2. In ReactJS
 
-* **Rely on React's automatic escaping**:  
+* **Rely on React's automatic escaping**:
    React automatically escapes content rendered in JSX.
 
-* **Avoid `dangerouslySetInnerHTML`**:  
+* **Avoid `dangerouslySetInnerHTML`**:
    Only use it when absolutely necessary.
 
 **If needed, sanitize content using libraries like `DOMPurify`**:
@@ -163,11 +163,11 @@ const safeHTML = DOMPurify.sanitize(userInput);
 return <div dangerouslySetInnerHTML={{ __html: safeHTML }} />;
 ```
 
-*   
-* **Validate/Sanitize Backend Data**:  
+*
+* **Validate/Sanitize Backend Data**:
    React frontend should not assume backend data is safe.
 
-* **Implement CSP Headers**:  
+* **Implement CSP Headers**:
    Configure your server to send CSP headers even for Single Page Applications (SPA) like React.
 
 ---
@@ -263,5 +263,5 @@ This malicious script reads the user's authentication token and sends it to the 
 
 ## ✅ Final Tip:
 
-"**Prevent XSS first. Secure localStorage second.**"  
+"**Prevent XSS first. Secure localStorage second.**"
  Without fixing XSS, localStorage will always be an easy target.

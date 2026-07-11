@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Walmart
 
-[https://www.linkedin.com/jobs/view/4407750482/](https://www.linkedin.com/jobs/view/4407750482/)
+- [https://www.linkedin.com/jobs/view/4407750482/](https://www.linkedin.com/jobs/view/4407750482/)
 
 Job Description Summary:
 
@@ -33,11 +33,11 @@ JavaScript/TypeScript — Advanced proficiency in ES6+ features, TypeScript gene
 
 **State Management** — Experience with Redux Toolkit, Zustand, Recoil, or React Query for complex application state
 
-**Performance:** 
+**Performance:**
 
-* **Web Performance** — Core Web Vitals optimization (LCP, FID, CLS), lazy loading, code splitting, and bundle optimization  
-* **CDN & Caching** — Akamai/CDN configuration, cache strategies, and edge delivery optimization  
-* **System Design** — Designing scalable frontend architectures handling high-traffic  
+* **Web Performance** — Core Web Vitals optimization (LCP, FID, CLS), lazy loading, code splitting, and bundle optimization
+* **CDN & Caching** — Akamai/CDN configuration, cache strategies, and edge delivery optimization
+* **System Design** — Designing scalable frontend architectures handling high-traffic
 * **Performance Budgeting** — Setting and enforcing performance budgets for page load, TTI, and bundle size
 
 **AI Understanding** — Prompt Engineering, GenAI Integration, AI-Assisted Dev, Responsible AI
@@ -52,9 +52,9 @@ JavaScript/TypeScript — Advanced proficiency in ES6+ features, TypeScript gene
 
 **Testing:**
 
-* **Unit Testing** — React Testing Library with 85%+ code coverage  
-* **E2E Testing** — Cypress, Playwright, or Selenium for integration and end-to-end test automation  
-* **Visual Regression Testing** — Storybook, Chromatic, or Percy for UI consistency validation  
+* **Unit Testing** — React Testing Library with 85%+ code coverage
+* **E2E Testing** — Cypress, Playwright, or Selenium for integration and end-to-end test automation
+* **Visual Regression Testing** — Storybook, Chromatic, or Percy for UI consistency validation
 * **Accessibility Testing** — Axe, Lighthouse, and screen reader testing for WCAG compliance
 
 **CI/CD Pipelines** — Experience Jenkins for automated frontend builds and deployments

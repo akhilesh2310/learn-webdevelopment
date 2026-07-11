@@ -11,7 +11,7 @@ Related canonical page: [Security Headers](security-headers.md).
 
 ## 1. What is iFrame Protection?
 
-iFrame Protection refers to techniques and best practices used to **prevent a web page from being embedded inside an `<iframe>`** on another (potentially malicious) site, thus **protecting against attacks** like *clickjacking*, *phishing overlays*, or *data leakage*.  
+iFrame Protection refers to techniques and best practices used to **prevent a web page from being embedded inside an `<iframe>`** on another (potentially malicious) site, thus **protecting against attacks** like *clickjacking*, *phishing overlays*, or *data leakage*.
  It also ensures **embedded content behaves safely** when using iframes intentionally.
 
 ## 2. When does it occur?
@@ -48,7 +48,7 @@ Vulnerabilities around iframe usage occur when:
 
 ### Generic Web Application
 
-Imagine you have a banking web app `https://securebank.com`.  
+Imagine you have a banking web app `https://securebank.com`.
  Without iframe protection:
 
 ```html
@@ -77,15 +77,15 @@ React apps are still normal web apps under the hood. If a React app (`https://my
 
 ✅ Set HTTP headers:
 
-* **`X-Frame-Options: DENY`**  
+* **`X-Frame-Options: DENY`**
    Completely disallow framing by any site.
 
-* **`X-Frame-Options: SAMEORIGIN`**  
+* **`X-Frame-Options: SAMEORIGIN`**
    Allow framing only by your own site.
 
 ✅ Use Content Security Policy (CSP):
 
-http  
+http
 ```text
 Content-Security-Policy: frame-ancestors 'self';
 ```

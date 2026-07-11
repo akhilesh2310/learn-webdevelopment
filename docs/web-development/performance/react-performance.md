@@ -43,9 +43,9 @@ sidebar_position: 4
 
 ## Common Interview Topics
 
-* React.memo vs useMemo  
-* Large list optimization  
-* Scaling React teams  
+* React.memo vs useMemo
+* Large list optimization
+* Scaling React teams
 * Frontend architecture decisions
 
 ## React Performance Optimization
@@ -66,14 +66,14 @@ Optimize when users can feel slowness or metrics show a real issue.
 
 Common signs:
 
-* Page loads slowly.  
-* Typing feels laggy.  
-* Clicking button freezes UI.  
-* Large table scrolls slowly.  
-* Route change takes too long.  
-* Modal opens with delay.  
-* API response is fast but UI still slow.  
-* React DevTools shows expensive re-renders.  
+* Page loads slowly.
+* Typing feels laggy.
+* Clicking button freezes UI.
+* Large table scrolls slowly.
+* Route change takes too long.
+* Modal opens with delay.
+* API response is fast but UI still slow.
+* React DevTools shows expensive re-renders.
 * Lighthouse/Core Web Vitals are poor.
 
 ## Do not optimize too early
@@ -256,19 +256,19 @@ const user \= React.useMemo(() \=\> \{
 
 Use it when:
 
-* Component is expensive to render.  
-* Props are usually stable.  
-* Parent re-renders often.  
-* Child does not need to re-render every time.  
+* Component is expensive to render.
+* Props are usually stable.
+* Parent re-renders often.
+* Child does not need to re-render every time.
 * Profiling shows child render cost.
 
 ## When not to use
 
 Avoid when:
 
-* Component is cheap.  
-* Props always change.  
-* You are adding it everywhere without profiling.  
+* Component is cheap.
+* Props always change.
+* You are adding it everywhere without profiling.
 * It makes code harder to read for no benefit.
 
 ## Interview-ready answer
@@ -345,11 +345,11 @@ function UserList(\{
 
 Use `useMemo` for:
 
-* Expensive calculations.  
-* Filtering/sorting large lists.  
-* Derived data.  
-* Stable object/array props.  
-* Preventing unnecessary effect runs caused by unstable references.  
+* Expensive calculations.
+* Filtering/sorting large lists.
+* Derived data.
+* Stable object/array props.
+* Preventing unnecessary effect runs caused by unstable references.
 * Passing stable values to memoized children.
 
 ## Bad use
@@ -454,18 +454,18 @@ Without `useCallback`, `handleSave` gets a new function reference on every rende
 
 Use it when:
 
-* Passing function to a `React.memo` child.  
-* Function is dependency of `useEffect`.  
-* Custom hook returns stable handlers.  
+* Passing function to a `React.memo` child.
+* Function is dependency of `useEffect`.
+* Custom hook returns stable handlers.
 * Function identity matters.
 
 ## When not to use
 
 Avoid when:
 
-* Function is not passed anywhere.  
-* Child is not memoized.  
-* There is no performance issue.  
+* Function is not passed anywhere.
+* Child is not memoized.
+* There is no performance issue.
 * Code becomes harder to read.
 
 ## Interview-ready answer
@@ -696,10 +696,10 @@ Route chunk → lazy loading/code splitting
 
 Use memoization when:
 
-* Work is expensive.  
-* Same inputs repeat.  
-* Props need stable identity.  
-* Child component is memoized.  
+* Work is expensive.
+* Same inputs repeat.
+* Props need stable identity.
+* Child component is memoized.
 * Profiling shows repeated costly renders.
 
 ## Bad memoization strategy
@@ -722,9 +722,9 @@ Memoization also has cost.
 
 It adds:
 
-* Extra dependency tracking.  
-* Extra memory usage.  
-* More complex code.  
+* Extra dependency tracking.
+* Extra memory usage.
+* More complex code.
 * Possible stale dependency bugs.
 
 ## Interview-ready answer
@@ -777,14 +777,14 @@ function App() \{
 
 ## Good candidates for code splitting
 
-* Routes.  
-* Admin pages.  
-* Reports module.  
-* Heavy charts.  
-* Rich text editor.  
-* Date picker.  
-* Large modal.  
-* Rarely used feature.  
+* Routes.
+* Admin pages.
+* Reports module.
+* Heavy charts.
+* Rich text editor.
+* Date picker.
+* Large modal.
+* Rarely used feature.
 * Third-party-heavy component.
 
 ## Interview-ready answer
@@ -917,30 +917,30 @@ Update visible rows while scrolling
 
 Use it for:
 
-* Large tables.  
-* Infinite lists.  
-* Logs.  
-* Search results.  
-* Dropdowns with many options.  
-* File explorer.  
-* Chat history.  
+* Large tables.
+* Infinite lists.
+* Logs.
+* Search results.
+* Dropdowns with many options.
+* File explorer.
+* Chat history.
 * Grid/list views.
 
 ## Benefits
 
-* Faster initial render.  
-* Less DOM memory.  
-* Smooth scrolling.  
-* Better responsiveness.  
+* Faster initial render.
+* Less DOM memory.
+* Smooth scrolling.
+* Better responsiveness.
 * Lower browser layout/paint cost.
 
 ## Trade-offs
 
-* More implementation complexity.  
-* Dynamic row height is harder.  
-* Accessibility needs care.  
-* Browser find/search may not find non-rendered rows.  
-* SEO not suitable for all content lists.  
+* More implementation complexity.
+* Dynamic row height is harder.
+* Accessibility needs care.
+* Browser find/search may not find non-rendered rows.
+* SEO not suitable for all content lists.
 * Keyboard navigation needs handling.
 
 ## Interview-ready answer
@@ -1015,9 +1015,9 @@ The `style` prop is important.
 
 ## Use react-window when
 
-* You need simple list/grid virtualization.  
-* Row height is fixed or manageable.  
-* You want lighter API.  
+* You need simple list/grid virtualization.
+* Row height is fixed or manageable.
+* You want lighter API.
 * You do not need many advanced features.
 
 ## Interview-ready answer
@@ -1036,9 +1036,9 @@ It supports large lists, grids, tables, auto-sizing, cell measuring, and more ad
 
 ## Use react-virtualized when
 
-* You need advanced table/grid features.  
-* Dynamic row heights are important.  
-* You need mature utilities like auto sizer or cell measurer.  
+* You need advanced table/grid features.
+* Dynamic row heights are important.
+* You need mature utilities like auto sizer or cell measurer.
 * Existing project already uses it.
 
 ## react-window vs react-virtualized
@@ -1151,13 +1151,13 @@ Is the bottleneck React, JavaScript, network, layout, or bundle size?
 
 ## Tools
 
-* React DevTools Profiler.  
-* Browser Performance tab.  
-* Lighthouse.  
-* Web Vitals.  
-* Bundle analyzer.  
-* Network tab.  
-* Real user monitoring.  
+* React DevTools Profiler.
+* Browser Performance tab.
+* Lighthouse.
+* Web Vitals.
+* Bundle analyzer.
+* Network tab.
+* Real user monitoring.
 * Logging/monitoring tools.
 
 ## Profiling process
@@ -1188,11 +1188,11 @@ React DevTools Profiler helps identify component render performance issues.
 
 ## What it shows
 
-* Which components rendered.  
-* How long each render took.  
-* Commit duration.  
-* Render frequency.  
-* Interaction causing updates.  
+* Which components rendered.
+* How long each render took.
+* Commit duration.
+* Render frequency.
+* Interaction causing updates.
 * Components that rendered unnecessarily.
 
 ## How I use it
@@ -1403,17 +1403,17 @@ Scaling performance also means scaling engineering practices.
 
 ## Team-level practices
 
-* Feature ownership.  
-* Shared component library.  
-* Design system.  
-* Performance budgets.  
-* Bundle analysis in CI.  
-* Code review checklist.  
-* Storybook for UI components.  
-* Testing standards.  
-* Monitoring dashboards.  
-* Clear state management rules.  
-* Architecture decision records.  
+* Feature ownership.
+* Shared component library.
+* Design system.
+* Performance budgets.
+* Bundle analysis in CI.
+* Code review checklist.
+* Storybook for UI components.
+* Testing standards.
+* Monitoring dashboards.
+* Clear state management rules.
+* Architecture decision records.
 * Avoid uncontrolled dependency growth.
 
 ## Example code review checklist
@@ -1624,15 +1624,15 @@ At senior level, I do not jump directly to hooks. I first measure, then identify
 
 I consider:
 
-* User impact.  
-* Data size.  
-* Team ownership.  
-* Bundle size.  
-* Runtime cost.  
-* State scope.  
-* Reusability.  
-* Maintainability.  
-* Monitoring.  
+* User impact.
+* Data size.
+* Team ownership.
+* Bundle size.
+* Runtime cost.
+* State scope.
+* Reusability.
+* Maintainability.
+* Monitoring.
 * Future scale.
 
 ## Interview-ready answer

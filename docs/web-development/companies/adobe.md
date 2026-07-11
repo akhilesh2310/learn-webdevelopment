@@ -168,9 +168,9 @@ Related canonical pages: [React Performance](../performance/react-performance.md
 
 #### 2. Introducing Architectural Change (STAR Format)
 
-**Situation:** Legacy monolith React app became hard to scale.  
- **Task:** Break it into independently deployable modules.  
- **Action:** Proposed microfrontend architecture using Module Federation; created a POC.  
+**Situation:** Legacy monolith React app became hard to scale.
+ **Task:** Break it into independently deployable modules.
+ **Action:** Proposed microfrontend architecture using Module Federation; created a POC.
  **Result:** 40% faster onboarding for new developers and parallel team deployments.
 
 ---
@@ -211,9 +211,9 @@ Related canonical pages: [React Performance](../performance/react-performance.md
 
 #### 6. Mentoring for Testing/Accessibility (STAR Format)
 
-**Situation:** A React team had zero test coverage and poor a11y.  
- **Task:** Improve reliability and user experience.  
- **Action:** Introduced testing library \+ Jest. Created a11y checklist and integrated axe-core in CI.  
+**Situation:** A React team had zero test coverage and poor a11y.
+ **Task:** Improve reliability and user experience.
+ **Action:** Introduced testing library \+ Jest. Created a11y checklist and integrated axe-core in CI.
  **Result:** Increased test coverage to 80%. Passed all accessibility audits.
 
 ---
@@ -244,16 +244,16 @@ Related canonical pages: [React Performance](../performance/react-performance.md
 
 #### 9. Business vs UX/Engineering Goals (STAR Format)
 
-**Situation:** Stakeholders wanted complex form on a single page.  
- **Task:** Improve usability without losing requirements.  
- **Action:** Advocated for progressive disclosure using step-by-step wizard.  
+**Situation:** Stakeholders wanted complex form on a single page.
+ **Task:** Improve usability without losing requirements.
+ **Action:** Advocated for progressive disclosure using step-by-step wizard.
  **Result:** Form completion rate improved by 22%.
 
 ---
 
 #### 10. Designing UI that Improves Key Metric
 
-**Example:** Redesigned onboarding flow with inline tooltips and validations.  
+**Example:** Redesigned onboarding flow with inline tooltips and validations.
  **Result:** Increased account activation by 30% in 3 weeks.
 
 ---
@@ -340,10 +340,10 @@ Related canonical pages: [React Performance](../performance/react-performance.md
 
 #### 18. Communicating Tech Decisions to Non-Tech Stakeholders
 
-**STAR Example:**  
- **Situation:** Wanted to introduce lazy loading, but PM feared delays.  
- **Task:** Justify the investment.  
- **Action:** Presented ROI: faster load times \= better SEO & retention.  
+**STAR Example:**
+ **Situation:** Wanted to introduce lazy loading, but PM feared delays.
+ **Task:** Justify the investment.
+ **Action:** Presented ROI: faster load times \= better SEO & retention.
  **Result:** Got buy-in, and page load time dropped 45%.
 
 ---
@@ -386,11 +386,11 @@ One of the most complex projects I led was building a multi-tenant SaaS dashboar
 
 **Sample Answer:**
 
-Scalability starts with enforcing **component-driven development** and **smart/dumb component separation**. 
+Scalability starts with enforcing **component-driven development** and **smart/dumb component separation**.
 
-I enforce **atomic design principles**, maintain a **shared component library**, and establish **naming conventions** and a strict **folder structure**. 
+I enforce **atomic design principles**, maintain a **shared component library**, and establish **naming conventions** and a strict **folder structure**.
 
-We use **ESLint \+ Prettier \+ Husky** hooks for consistent code. For maintainability, I emphasize **unit and integration tests**, document APIs via Storybook, and encourage **refactoring sprints** to tackle tech debt. 
+We use **ESLint \+ Prettier \+ Husky** hooks for consistent code. For maintainability, I emphasize **unit and integration tests**, document APIs via Storybook, and encourage **refactoring sprints** to tackle tech debt.
 
 I also set up **module boundaries** in NX or Lerna to prevent tight coupling.
 
@@ -400,11 +400,11 @@ I also set up **module boundaries** in NX or Lerna to prevent tight coupling.
 
 **Sample Answer:**
 
-I would first assess the impact on the frontend. If it introduces a breaking change, I request a **versioned API** (v1, v2) or **feature flags** to roll it out gradually. 
+I would first assess the impact on the frontend. If it introduces a breaking change, I request a **versioned API** (v1, v2) or **feature flags** to roll it out gradually.
 
-I involve PMs to understand deadlines and prioritize time for integration. 
+I involve PMs to understand deadlines and prioritize time for integration.
 
-I also ensure **communication with QA** for regression testing. 
+I also ensure **communication with QA** for regression testing.
 
 Ultimately, I aim for **collaborative resolution**, not conflict — if needed, I offer frontend workarounds with deprecation notices to buy backend time.
 
@@ -504,7 +504,7 @@ As a UI Architect, your familiarity with OWASP means you proactively **build sec
 
 * **Broken access control:** Ensuring role-based rendering (e.g., hiding admin components for non-admin users).
 
-Example:  
+Example:
  If you're building a form-based UI, a secure implementation avoids inline script injections, properly encodes form inputs, and avoids displaying detailed error messages to unauthorized users.
 
 ---
@@ -525,7 +525,7 @@ In a **headless setup**, the frontend can be built with **React, Next.js, or Ang
 
 * Ensuring **fast, mobile-first UIs** optimized for conversions.
 
-Example:  
+Example:
  If Adobe Commerce is used as the backend, your React/Next.js frontend fetches catalog, pricing, and checkout details via REST/GraphQL — and renders them using reusable UI components.
 
 ---
@@ -550,7 +550,7 @@ As a UI engineer or architect working with AEM, you're likely building:
 
 * You manage routing, rendering, and personalization on the frontend, with AEM acting as a content source.
 
-Example:  
+Example:
  If you’re building a marketing landing page using React, the content blocks may be fetched from AEM headless CMS and dynamically rendered based on user location or behavior.
 
 ---
@@ -597,8 +597,8 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
 ### Learn This:
 
-* **React Security Cheatsheet**: [https://cheatsheetseries.owasp.org/cheatsheets/React\_Security\_Cheat\_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/React_Security_Cheat_Sheet.html)  
-* 
+* **React Security Cheatsheet**: [https://cheatsheetseries.owasp.org/cheatsheets/React\_Security\_Cheat\_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/React_Security_Cheat_Sheet.html)
+*
 
 * Tools: [Snyk](https://snyk.io), [npm audit](https://docs.npmjs.com/cli/v8/commands/npm-audit)
 
@@ -610,7 +610,7 @@ The **Open Web Application Security Project (OWASP)** is a nonprofit focused on 
 
 **Headless commerce** separates the **frontend (UI)** from the **backend (product data, checkout, etc.)**, and connects them via APIs.
 
-**Traditional commerce** \= tightly coupled backend \+ frontend  
+**Traditional commerce** \= tightly coupled backend \+ frontend
  **Headless commerce** \= backend (e.g., Shopify, Adobe Commerce) → APIs → frontend (React, Next.js)
 
 ### Why use it?

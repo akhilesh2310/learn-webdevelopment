@@ -29,7 +29,7 @@ This page is the React-specific coding and machine-coding entry point.
 
 ## Data Table
 
-Autocomplete:  
-[https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar](https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar)
+Autocomplete:
+- [https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar](https://namastedev.com/learn/namaste-interview/ep-08-autocomplete-search-bar)
 
 ## Common Machine Coding Problems

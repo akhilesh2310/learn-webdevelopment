@@ -104,11 +104,13 @@ sidebar_position: 3
 
 ## 💡 Decision Tree
 
-`Is SEO critical?`  
-`├─ Yes ─> Is content dynamic?`  
-`│        ├─ Yes ─> Use SSR`  
-`│        └─ No ─> Use SSG or ISR`  
-`└─ No ─> Use CSR`  
+```ts
+Is SEO critical?
+├─ Yes ─> Is content dynamic?
+│        ├─ Yes ─> Use SSR
+│        └─ No ─> Use SSG or ISR
+└─ No ─> Use CSR
+```
 ---
 
 ## 🔍 What Is Hydration?
@@ -151,11 +153,13 @@ It essentially turns a **static HTML page** into a **fully interactive web app**
 
 ## 📦 Example in React
 
-`// Server renders this component`  
-`function Button() \{`  
-  `const [count, setCount] = useState(0);`  
-  `return <button onClick=\{() => setCount(count + 1)\}>Clicked \{count\} times</button>;`  
-`\}`
+```ts
+// Server renders this component
+function Button() {
+const [count, setCount] = useState(0);
+return <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>;
+}
+```
 
 * **Server output:** `<button>Clicked 0 times</button>`
 

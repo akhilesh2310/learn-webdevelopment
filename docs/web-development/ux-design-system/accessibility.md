@@ -270,11 +270,11 @@ This will log accessibility violations in console during development\!
 
 ## 🧠 Quick Mental Checklist for Developers:
 
-✅ Use semantic HTML  
- ✅ Label everything (images, forms)  
- ✅ Full keyboard support  
- ✅ Check color contrast  
- ✅ Handle errors accessibly  
+✅ Use semantic HTML
+ ✅ Label everything (images, forms)
+ ✅ Full keyboard support
+ ✅ Check color contrast
+ ✅ Handle errors accessibly
  ✅ Test with screen readers and audits
 
 ---
@@ -289,9 +289,9 @@ This will log accessibility violations in console during development\!
 
 ---
 
-Would you like me to also give you a **React.js Accessibility Starter Template** you can use directly? 🎯  
- (Meaning: ready-to-go setup with accessible Button, Modal, Input components — production ready.)  
- If yes, I’ll quickly generate that too\! 🚀  
+Would you like me to also give you a **React.js Accessibility Starter Template** you can use directly? 🎯
+ (Meaning: ready-to-go setup with accessible Button, Modal, Input components — production ready.)
+ If yes, I’ll quickly generate that too\! 🚀
  Would you like that?
 
 4o
@@ -388,7 +388,7 @@ In **WCAG guidelines**, accessibility is **organized into three levels** of conf
 
 ## 🎨 Easy Visual Summary
 
-pgsql  
+pgsql
 ```text
 Level A   - Basic | Must work at minimum
 Level AA  - Strong | Should be usable by most people (standard target)
@@ -431,7 +431,7 @@ Would you also like me to show you:
 
 * ✅ A checklist table for Level A vs AA vs AAA to use while developing?
 
-It'll be super handy if you want to ensure your React apps are compliant from the start. 🚀  
+It'll be super handy if you want to ensure your React apps are compliant from the start. 🚀
  Would you like me to continue with that?
 
 4o
@@ -442,7 +442,7 @@ yes
 
 ###### ChatGPT said:
 
-Awesome\! Let’s continue 🔥  
+Awesome\! Let’s continue 🔥
  I’ll break this down clearly so you can **directly apply** it in your projects.
 
 ---

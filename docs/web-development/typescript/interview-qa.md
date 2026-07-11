@@ -19,56 +19,56 @@ TypeScript adds static typing on top of JavaScript.
 
 It does not replace JavaScript. TypeScript code is compiled/transpiled into JavaScript before running in the browser or Node.js.
 
-const name: string \= "Akhilesh";  
-const age: number \= 33;  
+const name: string \= "Akhilesh";
+const age: number \= 33;
 const isActive: boolean \= true;
 
 ## Why TypeScript?
 
 TypeScript helps catch mistakes early.
 
-function calculateTotal(price: number, quantity: number) \{  
-  return price \* quantity;  
+function calculateTotal(price: number, quantity: number) \{
+  return price \* quantity;
 \}
 
-calculateTotal("100", 2);  
+calculateTotal("100", 2);
 // TypeScript error: Argument of type 'string' is not assignable to parameter of type 'number'.
 
 ## Problems TypeScript solves
 
-* Catches type-related bugs before runtime.  
-* Improves autocomplete and refactoring.  
-* Makes function contracts clear.  
-* Helps model API responses.  
-* Makes large React apps easier to maintain.  
+* Catches type-related bugs before runtime.
+* Improves autocomplete and refactoring.
+* Makes function contracts clear.
+* Helps model API responses.
+* Makes large React apps easier to maintain.
 * Reduces accidental misuse of objects, props, and functions.
 
 ## JavaScript vs TypeScript
 
 JavaScript is dynamically typed. TypeScript is statically typed during development.
 
-// JavaScript  
-function greet(name) \{  
-  return name.toUpperCase();  
+// JavaScript
+function greet(name) \{
+  return name.toUpperCase();
 \}
 
 greet(123); // Runtime error: name.toUpperCase is not a function
 
-// TypeScript  
-function greet(name: string) \{  
-  return name.toUpperCase();  
+// TypeScript
+function greet(name: string) \{
+  return name.toUpperCase();
 \}
 
-greet(123);  
+greet(123);
 // TypeScript error: Argument of type 'number' is not assignable to parameter of type 'string'.
 
 ## Compile-time vs Runtime
 
 TypeScript checks types at compile time. It does not add runtime type checking automatically.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
 const user: User \= JSON.parse('\{ "id": "1", "name": "Akhilesh" \}');
@@ -77,10 +77,10 @@ TypeScript trusts the assigned type here, but at runtime `id` is still a string.
 
 ## Basic types
 
-const name: string \= "Akhilesh";  
-const age: number \= 33;  
-const isActive: boolean \= true;  
-const bigValue: bigint \= 100n;  
+const name: string \= "Akhilesh";
+const age: number \= 33;
+const isActive: boolean \= true;
+const bigValue: bigint \= 100n;
 const id: symbol \= Symbol("id");
 
 ## Special types
@@ -91,7 +91,7 @@ const id: symbol \= Symbol("id");
 
 let value: any \= "hello";
 
-value.toUpperCase();  
+value.toUpperCase();
 value.nonExistingMethod(); // No TypeScript error, but may fail at runtime
 
 ### `unknown`
@@ -100,60 +100,60 @@ value.nonExistingMethod(); // No TypeScript error, but may fail at runtime
 
 let value: unknown \= "hello";
 
-value.toUpperCase();  
+value.toUpperCase();
 // TypeScript error: 'value' is of type 'unknown'.
 
-if (typeof value \=== "string") \{  
-  console.log(value.toUpperCase()); // OK  
+if (typeof value \=== "string") \{
+  console.log(value.toUpperCase()); // OK
 \}
 
 ### `void`
 
 `void` means a function does not return a useful value.
 
-function logMessage(message: string): void \{  
-  console.log(message);  
+function logMessage(message: string): void \{
+  console.log(message);
 \}
 
 ### `never`
 
 `never` means a function never successfully returns.
 
-function throwError(message: string): never \{  
-  throw new Error(message);  
+function throwError(message: string): never \{
+  throw new Error(message);
 \}
 
 Also useful for exhaustiveness checking.
 
 type Status \= "success" | "error";
 
-function handleStatus(status: Status) \{  
-  switch (status) \{  
-    case "success":  
-      return "Success";  
-    case "error":  
-      return "Error";  
-    default:  
-      const exhaustiveCheck: never \= status;  
-      return exhaustiveCheck;  
-  \}  
+function handleStatus(status: Status) \{
+  switch (status) \{
+    case "success":
+      return "Success";
+    case "error":
+      return "Error";
+    default:
+      const exhaustiveCheck: never \= status;
+      return exhaustiveCheck;
+  \}
 \}
 
 ### `null` and `undefined`
 
 With `strictNullChecks`, `null` and `undefined` are not assignable to every type automatically.
 
-let name: string \= null;  
+let name: string \= null;
 // TypeScript error when strictNullChecks is true
 
 ## Type inference
 
 TypeScript can infer types automatically.
 
-const name \= "Akhilesh";  
+const name \= "Akhilesh";
 // inferred as string
 
-const age \= 33;  
+const age \= 33;
 // inferred as number
 
 Use type annotations when they improve clarity, especially for function parameters, return types, API data, and public contracts.
@@ -162,12 +162,12 @@ Use type annotations when they improve clarity, especially for function paramete
 
 `any` disables type safety. `unknown` forces type checking before usage.
 
-function handleValue(value: unknown) \{  
-  if (typeof value \=== "string") \{  
-    return value.toUpperCase();  
+function handleValue(value: unknown) \{
+  if (typeof value \=== "string") \{
+    return value.toUpperCase();
   \}
 
-  return String(value);  
+  return String(value);
 \}
 
 Interview-ready answer: `any` turns off TypeScript checking and should be avoided unless absolutely necessary. `unknown` is safer because it accepts any value but does not allow usage until we narrow the type. For external data like API responses or JSON parsing, `unknown` is usually better than `any`.
@@ -176,12 +176,12 @@ Interview-ready answer: `any` turns off TypeScript checking and should be avoide
 
 `void` means the function returns nothing useful. `never` means the function never returns normally.
 
-function log(): void \{  
-  console.log("done");  
+function log(): void \{
+  console.log("done");
 \}
 
-function fail(): never \{  
-  throw new Error("failed");  
+function fail(): never \{
+  throw new Error("failed");
 \}
 
 Interview-ready answer: `void` is used when a function completes but does not return a meaningful value. `never` is used when a function cannot complete normally, like throwing an error or running an infinite loop. `never` is also useful for exhaustiveness checks in discriminated unions.
@@ -198,28 +198,28 @@ TypeScript adds static type checking to JavaScript. It helps catch bugs during d
 
 TypeScript lets us type function parameters, return values, callbacks, overloads, and rest parameters.
 
-function add(a: number, b: number): number \{  
-  return a \+ b;  
+function add(a: number, b: number): number \{
+  return a \+ b;
 \}
 
 ## Function type annotations
 
-const add: (a: number, b: number) \=\> number \= (a, b) \=\> \{  
-  return a \+ b;  
+const add: (a: number, b: number) \=\> number \= (a, b) \=\> \{
+  return a \+ b;
 \};
 
 ## Return type annotations
 
-function getUserName(user: \{ name: string \}): string \{  
-  return user.name;  
+function getUserName(user: \{ name: string \}): string \{
+  return user.name;
 \}
 
 For public functions, explicit return types are often useful.
 
 ## Optional parameters
 
-function greet(name?: string) \{  
-  return \`Hello $\{name ?? "Guest"\}\`;  
+function greet(name?: string) \{
+  return \`Hello $\{name ?? "Guest"\}\`;
 \}
 
 console.log(greet()); // "Hello Guest"
@@ -228,16 +228,16 @@ Optional parameters are typed as `string | undefined`.
 
 ## Default parameters
 
-function greet(name \= "Guest") \{  
-  return \`Hello $\{name\}\`;  
+function greet(name \= "Guest") \{
+  return \`Hello $\{name\}\`;
 \}
 
 TypeScript infers `name` as `string`.
 
 ## Rest parameters
 
-function sum(...numbers: number\[\]): number \{  
-  return numbers.reduce((total, num) \=\> total \+ num, 0);  
+function sum(...numbers: number\[\]): number \{
+  return numbers.reduce((total, num) \=\> total \+ num, 0);
 \}
 
 console.log(sum(1, 2, 3)); // 6
@@ -252,30 +252,30 @@ const uppercase: Formatter \= (value) \=\> value.toUpperCase();
 
 Function overloading lets one function support multiple call signatures.
 
-function format(value: string): string;  
-function format(value: number): string;  
-function format(value: string | number): string \{  
-  if (typeof value \=== "number") \{  
-    return value.toFixed(2);  
+function format(value: string): string;
+function format(value: number): string;
+function format(value: string | number): string \{
+  if (typeof value \=== "number") \{
+    return value.toFixed(2);
   \}
 
-  return value.trim();  
+  return value.trim();
 \}
 
-console.log(format(" hello ")); // "hello"  
+console.log(format(" hello ")); // "hello"
 console.log(format(10)); // "10.00"
 
 ## Common mistake
 
 The implementation signature is not directly visible to callers.
 
-function getValue(value: string): string;  
-function getValue(value: number): number;  
-function getValue(value: string | number) \{  
-  return value;  
+function getValue(value: string): string;
+function getValue(value: number): number;
+function getValue(value: string | number) \{
+  return value;
 \}
 
-getValue(true);  
+getValue(true);
 // TypeScript error: No overload matches this call.
 
 ## Interview-ready answer
@@ -290,79 +290,79 @@ TypeScript functions can type parameters, return values, callbacks, optional par
 
 TypeScript can describe the shape of objects.
 
-const user: \{  
-  id: number;  
-  name: string;  
-  isActive: boolean;  
-\} \= \{  
-  id: 1,  
-  name: "Akhilesh",  
-  isActive: true,  
+const user: \{
+  id: number;
+  name: string;
+  isActive: boolean;
+\} \= \{
+  id: 1,
+  name: "Akhilesh",
+  isActive: true,
 \};
 
 Usually we define reusable object types.
 
-type User \= \{  
-  id: number;  
-  name: string;  
-  isActive: boolean;  
+type User \= \{
+  id: number;
+  name: string;
+  isActive: boolean;
 \};
 
 ## Nested objects
 
-type User \= \{  
-  id: number;  
-  profile: \{  
-    name: string;  
-    email: string;  
-  \};  
+type User \= \{
+  id: number;
+  profile: \{
+    name: string;
+    email: string;
+  \};
 \};
 
 ## Optional properties
 
-type User \= \{  
-  id: number;  
-  name: string;  
-  avatarUrl?: string;  
+type User \= \{
+  id: number;
+  name: string;
+  avatarUrl?: string;
 \};
 
 `avatarUrl?: string` means `avatarUrl` can be `string | undefined`.
 
 ## Readonly properties
 
-type User \= \{  
-  readonly id: number;  
-  name: string;  
+type User \= \{
+  readonly id: number;
+  name: string;
 \};
 
-const user: User \= \{  
-  id: 1,  
-  name: "Akhilesh",  
+const user: User \= \{
+  id: 1,
+  name: "Akhilesh",
 \};
 
-user.id \= 2;  
+user.id \= 2;
 // TypeScript error: Cannot assign to 'id' because it is a read-only property.
 
 ## Index signatures
 
 Use index signatures when object keys are dynamic.
 
-type Scores \= \{  
-  \[subject: string\]: number;  
+type Scores \= \{
+  \[subject: string\]: number;
 \};
 
-const scores: Scores \= \{  
-  math: 90,  
-  english: 85,  
+const scores: Scores \= \{
+  math: 90,
+  english: 85,
 \};
 
 ## Dynamic object keys
 
 type FeatureFlags \= Record\<string, boolean\>;
 
-const flags: FeatureFlags \= \{  
-  newDashboard: true,  
-  betaSearch: false,  
+const flags: FeatureFlags \= \{
+  newDashboard: true,
+  betaSearch: false,
 \};
 
 ## Safer dynamic keys with union
@@ -371,20 +371,20 @@ type Role \= "admin" | "user" | "guest";
 
 type RolePermissions \= Record\<Role, string\[\]\>;
 
-const permissions: RolePermissions \= \{  
-  admin: \["read", "write", "delete"\],  
-  user: \["read"\],  
-  guest: \[\],  
+const permissions: RolePermissions \= \{
+  admin: \["read", "write", "delete"\],
+  user: \["read"\],
+  guest: \[\],
 \};
 
 ## Common interview topic: creating flexible object types
 
 Use `Record`, index signatures, optional properties, or generics depending on how flexible the object needs to be.
 
-type ApiResponse\<T\> \= \{  
-  data: T;  
-  status: number;  
-  error?: string;  
+type ApiResponse\<T\> \= \{
+  data: T;
+  status: number;
+  error?: string;
 \};
 
 ## Interview-ready answer
@@ -399,82 +399,82 @@ TypeScript object types define the expected shape of an object. We can use optio
 
 An interface defines the shape of an object, function, or class contract.
 
-interface User \{  
-  id: number;  
-  name: string;  
+interface User \{
+  id: number;
+  name: string;
 \}
 
-const user: User \= \{  
-  id: 1,  
-  name: "Akhilesh",  
+const user: User \= \{
+  id: 1,
+  name: "Akhilesh",
 \};
 
 ## Extending interfaces
 
-interface User \{  
-  id: number;  
-  name: string;  
+interface User \{
+  id: number;
+  name: string;
 \}
 
-interface AdminUser extends User \{  
-  permissions: string\[\];  
+interface AdminUser extends User \{
+  permissions: string\[\];
 \}
 
 ## Multiple interface inheritance
 
-interface HasId \{  
-  id: number;  
+interface HasId \{
+  id: number;
 \}
 
-interface HasTimestamps \{  
-  createdAt: string;  
-  updatedAt: string;  
+interface HasTimestamps \{
+  createdAt: string;
+  updatedAt: string;
 \}
 
-interface User extends HasId, HasTimestamps \{  
-  name: string;  
+interface User extends HasId, HasTimestamps \{
+  name: string;
 \}
 
 ## Interface merging
 
 Interfaces with the same name are merged.
 
-interface User \{  
-  id: number;  
+interface User \{
+  id: number;
 \}
 
-interface User \{  
-  name: string;  
+interface User \{
+  name: string;
 \}
 
-const user: User \= \{  
-  id: 1,  
-  name: "Akhilesh",  
+const user: User \= \{
+  id: 1,
+  name: "Akhilesh",
 \};
 
 ## Interface for functions
 
-interface Formatter \{  
-  (value: string): string;  
+interface Formatter \{
+  (value: string): string;
 \}
 
 const uppercase: Formatter \= (value) \=\> value.toUpperCase();
 
 ## Interface for classes
 
-interface Repository\<T\> \{  
-  findById(id: string): Promise\<T\>;  
-  save(item: T): Promise\<void\>;  
+interface Repository\<T\> \{
+  findById(id: string): Promise\<T\>;
+  save(item: T): Promise\<void\>;
 \}
 
-class UserRepository implements Repository\<User\> \{  
-  async findById(id: string): Promise\<User\> \{  
-    return \{ id, name: "Akhilesh" \};  
+class UserRepository implements Repository\<User\> \{
+  async findById(id: string): Promise\<User\> \{
+    return \{ id, name: "Akhilesh" \};
   \}
 
-  async save(user: User): Promise\<void\> \{  
-    console.log(user);  
-  \}  
+  async save(user: User): Promise\<void\> \{
+    console.log(user);
+  \}
 \}
 
 ## Interview-ready answer
@@ -489,9 +489,9 @@ Interfaces define object, function, or class contracts. They can extend other in
 
 A type alias gives a name to any type.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
 Unlike interfaces, type aliases can represent primitives, unions, intersections, tuples, and complex type expressions.
@@ -506,13 +506,13 @@ type Status \= "idle" | "loading" | "success" | "error";
 
 ## Intersection type
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type WithPermissions \= \{  
-  permissions: string\[\];  
+type WithPermissions \= \{
+  permissions: string\[\];
 \};
 
 type AdminUser \= User & WithPermissions;
@@ -539,100 +539,100 @@ Both `type` and `interface` can define object shapes. I usually use `interface` 
 
 Type narrowing means reducing a broad type into a more specific type before using it.
 
-function printValue(value: string | number) \{  
-  if (typeof value \=== "string") \{  
-    console.log(value.toUpperCase());  
-  \} else \{  
-    console.log(value.toFixed(2));  
-  \}  
+function printValue(value: string | number) \{
+  if (typeof value \=== "string") \{
+    console.log(value.toUpperCase());
+  \} else \{
+    console.log(value.toFixed(2));
+  \}
 \}
 
 ## `typeof` guards
 
-function format(value: string | number) \{  
-  if (typeof value \=== "string") \{  
-    return value.trim();  
+function format(value: string | number) \{
+  if (typeof value \=== "string") \{
+    return value.trim();
   \}
 
-  return value.toFixed(2);  
+  return value.toFixed(2);
 \}
 
 ## `instanceof` guards
 
-function formatDate(value: Date | string) \{  
-  if (value instanceof Date) \{  
-    return value.toISOString();  
+function formatDate(value: Date | string) \{
+  if (value instanceof Date) \{
+    return value.toISOString();
   \}
 
-  return value.toUpperCase();  
+  return value.toUpperCase();
 \}
 
 ## `in` operator
 
-type Admin \= \{  
-  role: "admin";  
-  permissions: string\[\];  
+type Admin \= \{
+  role: "admin";
+  permissions: string\[\];
 \};
 
-type User \= \{  
-  role: "user";  
-  email: string;  
+type User \= \{
+  role: "user";
+  email: string;
 \};
 
-function handleAccount(account: Admin | User) \{  
-  if ("permissions" in account) \{  
-    console.log(account.permissions);  
-  \} else \{  
-    console.log(account.email);  
-  \}  
+function handleAccount(account: Admin | User) \{
+  if ("permissions" in account) \{
+    console.log(account.permissions);
+  \} else \{
+    console.log(account.email);
+  \}
 \}
 
 ## Equality narrowing
 
 type Status \= "success" | "error";
 
-function handle(status: Status) \{  
-  if (status \=== "success") \{  
-    return "Show success UI";  
+function handle(status: Status) \{
+  if (status \=== "success") \{
+    return "Show success UI";
   \}
 
-  return "Show error UI";  
+  return "Show error UI";
 \}
 
 ## User-defined type guards
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-function isUser(value: unknown): value is User \{  
-  return (  
-    typeof value \=== "object" &&  
-    value \!== null &&  
-    "id" in value &&  
-    "name" in value  
-  );  
+function isUser(value: unknown): value is User \{
+  return (
+    typeof value \=== "object" &&
+    value \!== null &&
+    "id" in value &&
+    "name" in value
+  );
 \}
 
-function handle(value: unknown) \{  
-  if (isUser(value)) \{  
-    console.log(value.name);  
-  \}  
+function handle(value: unknown) \{
+  if (isUser(value)) \{
+    console.log(value.name);
+  \}
 \}
 
 ## Assertion functions
 
-function assertIsString(value: unknown): asserts value is string \{  
-  if (typeof value \!== "string") \{  
-    throw new Error("Expected string");  
-  \}  
+function assertIsString(value: unknown): asserts value is string \{
+  if (typeof value \!== "string") \{
+    throw new Error("Expected string");
+  \}
 \}
 
-function format(value: unknown) \{  
+function format(value: unknown) \{
   assertIsString(value);
 
-  return value.toUpperCase();  
+  return value.toUpperCase();
 \}
 
 ## Interview-ready answer
@@ -649,53 +649,53 @@ Generics allow types to be passed like parameters.
 
 They help write reusable code while preserving type safety.
 
-function identity\<T\>(value: T): T \{  
-  return value;  
+function identity\<T\>(value: T): T \{
+  return value;
 \}
 
-const name \= identity\<string\>("Akhilesh");  
+const name \= identity\<string\>("Akhilesh");
 const age \= identity\<number\>(33);
 
 TypeScript can often infer the generic type.
 
-const name \= identity("Akhilesh");  
+const name \= identity("Akhilesh");
 // inferred as string
 
 ## Why generics?
 
 Without generics:
 
-function first(items: any\[\]) \{  
-  return items\[0\];  
+function first(items: any\[\]) \{
+  return items\[0\];
 \}
 
 This loses type safety.
 
 With generics:
 
-function first\<T\>(items: T\[\]): T \{  
-  return items\[0\];  
+function first\<T\>(items: T\[\]): T \{
+  return items\[0\];
 \}
 
-const value \= first(\["React", "TypeScript"\]);  
+const value \= first(\["React", "TypeScript"\]);
 // inferred as string
 
 ## Generic interfaces
 
-interface ApiResponse\<T\> \{  
-  data: T;  
-  status: number;  
-  error?: string;  
+interface ApiResponse\<T\> \{
+  data: T;
+  status: number;
+  error?: string;
 \}
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-const response: ApiResponse\<User\> \= \{  
-  data: \{ id: 1, name: "Akhilesh" \},  
-  status: 200,  
+const response: ApiResponse\<User\> \= \{
+  data: \{ id: 1, name: "Akhilesh" \},
+  status: 200,
 \};
 
 ## Generic type aliases
@@ -706,62 +706,62 @@ type NullableUser \= Nullable\<User\>;
 
 ## Generic classes
 
-class Store\<T\> \{  
+class Store\<T\> \{
   private state: T;
 
-  constructor(initialState: T) \{  
-    this.state \= initialState;  
+  constructor(initialState: T) \{
+    this.state \= initialState;
   \}
 
-  getState(): T \{  
-    return this.state;  
-  \}  
+  getState(): T \{
+    return this.state;
+  \}
 \}
 
 ## Multiple generic parameters
 
-function mapValue\<T, U\>(value: T, mapper: (item: T) \=\> U): U \{  
-  return mapper(value);  
+function mapValue\<T, U\>(value: T, mapper: (item: T) \=\> U): U \{
+  return mapper(value);
 \}
 
-const length \= mapValue("React", (value) \=\> value.length);  
+const length \= mapValue("React", (value) \=\> value.length);
 // inferred as number
 
 ## Generic constraints
 
-function getId\<T extends \{ id: string \}\>(item: T): string \{  
-  return item.id;  
+function getId\<T extends \{ id: string \}\>(item: T): string \{
+  return item.id;
 \}
 
 getId(\{ id: "1", name: "Akhilesh" \}); // OK
 
 ## Default generic types
 
-type ApiResponse\<T \= unknown\> \= \{  
-  data: T;  
-  status: number;  
+type ApiResponse\<T \= unknown\> \= \{
+  data: T;
+  status: number;
 \};
 
 ## Generic repository pattern
 
-interface Repository\<T, Id \= string\> \{  
-  findById(id: Id): Promise\<T\>;  
-  save(item: T): Promise\<void\>;  
+interface Repository\<T, Id \= string\> \{
+  findById(id: Id): Promise\<T\>;
+  save(item: T): Promise\<void\>;
 \}
 
-type User \= \{  
-  id: string;  
-  name: string;  
+type User \= \{
+  id: string;
+  name: string;
 \};
 
-class UserRepository implements Repository\<User\> \{  
-  async findById(id: string): Promise\<User\> \{  
-    return \{ id, name: "Akhilesh" \};  
+class UserRepository implements Repository\<User\> \{
+  async findById(id: string): Promise\<User\> \{
+    return \{ id, name: "Akhilesh" \};
   \}
 
-  async save(user: User): Promise\<void\> \{  
-    console.log(user);  
-  \}  
+  async save(user: User): Promise\<void\> \{
+    console.log(user);
+  \}
 \}
 
 ## Interview-ready answer
@@ -776,53 +776,53 @@ Generics allow us to write reusable code without losing type information. Instea
 
 `keyof` creates a union of keys from a type.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type UserKeys \= keyof User;  
+type UserKeys \= keyof User;
 // "id" | "name"
 
 Practical example:
 
-function getValue\<T, K extends keyof T\>(obj: T, key: K): T\[K\] \{  
-  return obj\[key\];  
+function getValue\<T, K extends keyof T\>(obj: T, key: K): T\[K\] \{
+  return obj\[key\];
 \}
 
 const user \= \{ id: 1, name: "Akhilesh" \};
 
-const name \= getValue(user, "name");  
+const name \= getValue(user, "name");
 // inferred as string
 
 ## `typeof`
 
 In TypeScript, `typeof` can create a type from a value.
 
-const config \= \{  
-  apiUrl: "/api",  
-  retryCount: 3,  
+const config \= \{
+  apiUrl: "/api",
+  retryCount: 3,
 \};
 
 type Config \= typeof config;
 
 ## Indexed access types
 
-type User \= \{  
-  id: number;  
-  profile: \{  
-    name: string;  
-  \};  
+type User \= \{
+  id: number;
+  profile: \{
+    name: string;
+  \};
 \};
 
-type Profile \= User\["profile"\];  
+type Profile \= User\["profile"\];
 type Name \= User\["profile"\]\["name"\];
 
 ## Conditional types
 
 type IsString\<T\> \= T extends string ? true : false;
 
-type A \= IsString\<string\>; // true  
+type A \= IsString\<string\>; // true
 type B \= IsString\<number\>; // false
 
 ## `infer`
@@ -831,8 +831,8 @@ type B \= IsString\<number\>; // false
 
 type MyReturnType\<T\> \= T extends (...args: any\[\]) \=\> infer R ? R : never;
 
-function getUser() \{  
-  return \{ id: 1, name: "Akhilesh" \};  
+function getUser() \{
+  return \{ id: 1, name: "Akhilesh" \};
 \}
 
 type User \= MyReturnType\<typeof getUser\>;
@@ -841,14 +841,14 @@ type User \= MyReturnType\<typeof getUser\>;
 
 type EventName \= "click" | "hover";
 
-type HandlerName \= \`on$\{Capitalize\<EventName\>\}\`;  
+type HandlerName \= \`on$\{Capitalize\<EventName\>\}\`;
 // "onClick" | "onHover"
 
 ## Recursive types
 
-type TreeNode \= \{  
-  id: string;  
-  children?: TreeNode\[\];  
+type TreeNode \= \{
+  id: string;
+  children?: TreeNode\[\];
 \};
 
 ## Interview-ready answer
@@ -863,43 +863,43 @@ Advanced TypeScript types help derive and transform types from existing types. `
 
 Mapped types create new types by looping over keys of another type.
 
-type User \= \{  
-  id: number;  
-  name: string;  
+type User \= \{
+  id: number;
+  name: string;
 \};
 
-type OptionalUser \= \{  
-  \[K in keyof User\]?: User\[K\];  
+type OptionalUser \= \{
+  \[K in keyof User\]?: User\[K\];
 \};
 
 ## Key syntax
 
-type MyMappedType\<T\> \= \{  
-  \[K in keyof T\]: T\[K\];  
+type MyMappedType\<T\> \= \{
+  \[K in keyof T\]: T\[K\];
 \};
 
 ## Make all properties readonly
 
-type MyReadonly\<T\> \= \{  
-  readonly \[K in keyof T\]: T\[K\];  
+type MyReadonly\<T\> \= \{
+  readonly \[K in keyof T\]: T\[K\];
 \};
 
 ## Make all properties optional
 
-type MyPartial\<T\> \= \{  
-  \[K in keyof T\]?: T\[K\];  
+type MyPartial\<T\> \= \{
+  \[K in keyof T\]?: T\[K\];
 \};
 
 ## Remove readonly modifier
 
-type Mutable\<T\> \= \{  
-  \-readonly \[K in keyof T\]: T\[K\];  
+type Mutable\<T\> \= \{
+  \-readonly \[K in keyof T\]: T\[K\];
 \};
 
 ## Remove optional modifier
 
-type RequiredType\<T\> \= \{  
-  \[K in keyof T\]-?: T\[K\];  
+type RequiredType\<T\> \= \{
+  \[K in keyof T\]-?: T\[K\];
 \};
 
 ## Interview-ready answer
@@ -918,10 +918,10 @@ They transform existing types into new types.
 
 ## Common utility types
 
-type User \= \{  
-  id: string;  
-  name: string;  
-  email?: string;  
+type User \= \{
+  id: string;
+  name: string;
+  email?: string;
 \};
 
 ### `Partial<T>`
@@ -968,14 +968,14 @@ Removes union members.
 
 type Status \= "idle" | "loading" | "success" | "error";
 
-type FinalStatus \= Exclude\<Status, "idle" | "loading"\>;  
+type FinalStatus \= Exclude\<Status, "idle" | "loading"\>;
 // "success" | "error"
 
 ### `Extract<T, U>`
 
 Keeps matching union members.
 
-type ErrorStatus \= Extract\<Status, "error" | "failed"\>;  
+type ErrorStatus \= Extract\<Status, "error" | "failed"\>;
 // "error"
 
 ### `NonNullable<T>`
@@ -984,15 +984,15 @@ Removes `null` and `undefined`.
 
 type Name \= string | null | undefined;
 
-type SafeName \= NonNullable\<Name\>;  
+type SafeName \= NonNullable\<Name\>;
 // string
 
 ### `ReturnType<T>`
 
 Gets function return type.
 
-function getUser() \{  
-  return \{ id: "1", name: "Akhilesh" \};  
+function getUser() \{
+  return \{ id: "1", name: "Akhilesh" \};
 \}
 
 type User \= ReturnType\<typeof getUser\>;
@@ -1003,19 +1003,19 @@ Gets function parameter types as tuple.
 
 function createUser(name: string, age: number) \{\}
 
-type CreateUserArgs \= Parameters\<typeof createUser\>;  
+type CreateUserArgs \= Parameters\<typeof createUser\>;
 // \[name: string, age: number\]
 
 ## Implement `Pick`
 
-type MyPick\<T, K extends keyof T\> \= \{  
-  \[P in K\]: T\[P\];  
+type MyPick\<T, K extends keyof T\> \= \{
+  \[P in K\]: T\[P\];
 \};
 
 ## Implement `Omit`
 
-type MyOmit\<T, K extends keyof T\> \= \{  
-  \[P in Exclude\<keyof T, K\>\]: T\[P\];  
+type MyOmit\<T, K extends keyof T\> \= \{
+  \[P in Exclude\<keyof T, K\>\]: T\[P\];
 \};
 
 ## Interview-ready answer
@@ -1034,25 +1034,25 @@ type Status \= "success" | "error" | "loading";
 
 let status: Status \= "success";
 
-status \= "failed";  
+status \= "failed";
 // TypeScript error: Type '"failed"' is not assignable to type 'Status'.
 
 ## Numeric enum
 
-enum Direction \{  
-  Up,  
-  Down,  
-  Left,  
-  Right,  
+enum Direction \{
+  Up,
+  Down,
+  Left,
+  Right,
 \}
 
 console.log(Direction.Up); // 0
 
 ## String enum
 
-enum Status \{  
-  Success \= "success",  
-  Error \= "error",  
+enum Status \{
+  Success \= "success",
+  Error \= "error",
 \}
 
 ## Const enum
@@ -1063,9 +1063,9 @@ enum Status \{
 
 type Status \= "success" | "error";
 
-const STATUS \= \{  
-  Success: "success",  
-  Error: "error",  
+const STATUS \= \{
+  Success: "success",
+  Error: "error",
 \} as const;
 
 type StatusFromObject \= typeof STATUS\[keyof typeof STATUS\];
@@ -1082,62 +1082,62 @@ Enums define named constants, while union literal types define a set of allowed 
 
 TypeScript adds type safety to JavaScript classes.
 
-class User \{  
+class User \{
   constructor(public id: string, public name: string) \{\}
 
-  greet(): string \{  
-    return \`Hello $\{this.name\}\`;  
-  \}  
+  greet(): string \{
+    return \`Hello $\{this.name\}\`;
+  \}
 \}
 
 ## Access modifiers
 
-class User \{  
-  public name: string;  
-  private token: string;  
+class User \{
+  public name: string;
+  private token: string;
   protected role: string;
 
-  constructor(name: string, token: string, role: string) \{  
-    this.name \= name;  
-    this.token \= token;  
-    this.role \= role;  
-  \}  
+  constructor(name: string, token: string, role: string) \{
+    this.name \= name;
+    this.token \= token;
+    this.role \= role;
+  \}
 \}
 
-* `public`: accessible everywhere.  
-* `private`: accessible only inside the class.  
+* `public`: accessible everywhere.
+* `private`: accessible only inside the class.
 * `protected`: accessible inside class and subclasses.
 
 ## Readonly members
 
-class User \{  
+class User \{
   readonly id: string;
 
-  constructor(id: string) \{  
-    this.id \= id;  
-  \}  
+  constructor(id: string) \{
+    this.id \= id;
+  \}
 \}
 
 ## Abstract classes
 
-abstract class BaseRepository\<T\> \{  
+abstract class BaseRepository\<T\> \{
   abstract findById(id: string): Promise\<T\>;
 
-  log() \{  
-    console.log("Repository called");  
-  \}  
+  log() \{
+    console.log("Repository called");
+  \}
 \}
 
 ## Implementing interfaces
 
-interface Printable \{  
-  print(): void;  
+interface Printable \{
+  print(): void;
 \}
 
-class Report implements Printable \{  
-  print(): void \{  
-    console.log("Printing report");  
-  \}  
+class Report implements Printable \{
+  print(): void \{
+    console.log("Printing report");
+  \}
 \}
 
 ## Abstract class vs interface
@@ -1161,32 +1161,32 @@ TypeScript classes support access modifiers, readonly members, parameter propert
 
 Modern TypeScript usually uses ES Modules.
 
-// user.ts  
-\export type User \= \{  
-  id: string;  
-  name: string;  
+// user.ts
+\export type User \= \{
+  id: string;
+  name: string;
 \};
 
-\export function getUserName(user: User): string \{  
-  return user.name;  
+\export function getUserName(user: User): string \{
+  return user.name;
 \}
 
-// app.ts  
+// app.ts
 \import \{ getUserName, type User \} from "./user";
 
 ## Re-exporting
 
-\export \* from "./user";  
+\export \* from "./user";
 \export \* from "./permissions";
 
 ## Namespace basics
 
 Namespaces were used to organize code before ES Modules became standard.
 
-namespace Utils \{  
-  \export function format(value: string) \{  
-    return value.trim();  
-  \}  
+namespace Utils \{
+  \export function format(value: string) \{
+    return value.trim();
+  \}
 \}
 
 ## Namespace vs Module
@@ -1203,10 +1203,10 @@ Decorators add metadata or behavior to classes, methods, properties, or paramete
 
 They are especially important in Angular.
 
-@Component(\{  
-  selector: "app-user",  
-  templateUrl: "./user.component.html",  
-\})  
+@Component(\{
+  selector: "app-user",
+  templateUrl: "./user.component.html",
+\})
 \export class UserComponent \{\}
 
 ## Angular use cases
@@ -1215,12 +1215,12 @@ Angular uses decorators to tell the framework how classes should behave.
 
 Common examples:
 
-* `@Component`  
-* `@Injectable`  
-* `@Input`  
-* `@Output`  
-* `@Directive`  
-* `@Pipe`  
+* `@Component`
+* `@Injectable`
+* `@Input`
+* `@Output`
+* `@Directive`
+* `@Pipe`
 * `@NgModule`
 
 ## Mental model
@@ -1241,15 +1241,15 @@ Decorators are functions that attach metadata or behavior to classes, methods, p
 
 ## Important options
 
-\{  
-  "compilerOptions": \{  
-    "strict": true,  
-    "noImplicitAny": true,  
-    "strictNullChecks": true,  
-    "target": "ES2020",  
-    "module": "ESNext",  
-    "sourceMap": true  
-  \}  
+\{
+  "compilerOptions": \{
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "sourceMap": true
+  \}
 \}
 
 ## `strict`
@@ -1260,16 +1260,16 @@ Enables a group of strict type-checking options.
 
 Prevents TypeScript from silently using `any`.
 
-function greet(name) \{  
-  return name.toUpperCase();  
-\}  
+function greet(name) \{
+  return name.toUpperCase();
+\}
 // TypeScript error when noImplicitAny is true
 
 ## `strictNullChecks`
 
 Makes `null` and `undefined` explicit.
 
-let name: string \= undefined;  
+let name: string \= undefined;
 // TypeScript error when strictNullChecks is true
 
 ## `target`
@@ -1302,7 +1302,7 @@ TypeScript source code is checked and transpiled into JavaScript. Type informati
 
 They contain type declarations but no runtime implementation.
 
-// analytics.d.ts  
+// analytics.d.ts
 declare function trackEvent(eventName: string): void;
 
 ## Ambient declarations
@@ -1331,44 +1331,44 @@ Declaration files tell TypeScript the types of JavaScript code that exists elsew
 
 ## Typing props
 
-type ButtonProps \= \{  
-  label: string;  
-  disabled?: boolean;  
-  onClick: () \=\> void;  
+type ButtonProps \= \{
+  label: string;
+  disabled?: boolean;
+  onClick: () \=\> void;
 \};
 
-function Button(\{ label, disabled, onClick \}: ButtonProps) \{  
-  return (  
-    \<button disabled=\{disabled\} onClick=\{onClick\}\>  
-      \{label\}  
-    \</button\>  
-  );  
+function Button(\{ label, disabled, onClick \}: ButtonProps) \{
+  return (
+    \<button disabled=\{disabled\} onClick=\{onClick\}\>
+      \{label\}
+    \</button\>
+  );
 \}
 
 ## Typing state
 
-type User \= \{  
-  id: string;  
-  name: string;  
+type User \= \{
+  id: string;
+  name: string;
 \};
 
 const \[user, setUser\] \= useState\<User | null\>(null);
 
 ## Typing events
 
-function SearchBox() \{  
-  function handleChange(event: React.ChangeEvent\<HTMLInputElement\>) \{  
-    console.log(event.target.value);  
+function SearchBox() \{
+  function handleChange(event: React.ChangeEvent\<HTMLInputElement\>) \{
+    console.log(event.target.value);
   \}
 
-  return \<input onChange=\{handleChange\} /\>;  
+  return \<input onChange=\{handleChange\} /\>;
 \}
 
 Common React event types:
 
-React.ChangeEvent\<HTMLInputElement\>  
-React.MouseEvent\<HTMLButtonElement\>  
-React.KeyboardEvent\<HTMLInputElement\>  
+React.ChangeEvent\<HTMLInputElement\>
+React.MouseEvent\<HTMLButtonElement\>
+React.KeyboardEvent\<HTMLInputElement\>
 React.FormEvent\<HTMLFormElement\>
 
 ## `useRef`
@@ -1379,63 +1379,63 @@ inputRef.current?.focus();
 
 ## `useReducer`
 
-type State \= \{  
-  count: number;  
+type State \= \{
+  count: number;
 \};
 
-type Action \=  
-  | \{ type: "increment" \}  
-  | \{ type: "decrement" \}  
+type Action \=
+  | \{ type: "increment" \}
+  | \{ type: "decrement" \}
   | \{ type: "reset"; value: number \};
 
-function reducer(state: State, action: Action): State \{  
-  switch (action.type) \{  
-    case "increment":  
-      return \{ count: state.count \+ 1 \};  
-    case "decrement":  
-      return \{ count: state.count \- 1 \};  
-    case "reset":  
-      return \{ count: action.value \};  
-    default:  
-      return state;  
-  \}  
+function reducer(state: State, action: Action): State \{
+  switch (action.type) \{
+    case "increment":
+      return \{ count: state.count \+ 1 \};
+    case "decrement":
+      return \{ count: state.count \- 1 \};
+    case "reset":
+      return \{ count: action.value \};
+    default:
+      return state;
+  \}
 \}
 
 ## Generic component
 
-type SelectProps\<T\> \= \{  
-  items: T\[\];  
-  getLabel: (item: T) \=\> string;  
-  onSelect: (item: T) \=\> void;  
+type SelectProps\<T\> \= \{
+  items: T\[\];
+  getLabel: (item: T) \=\> string;
+  onSelect: (item: T) \=\> void;
 \};
 
-function Select\<T\>(\{ items, getLabel, onSelect \}: SelectProps\<T\>) \{  
-  return (  
-    \<ul\>  
-      \{items.map((item, index) \=\> (  
-        \<li key=\{index\} onClick=\{() \=\> onSelect(item)\}\>  
-          \{getLabel(item)\}  
-        \</li\>  
-      ))\}  
-    \</ul\>  
-  );  
+function Select\<T\>(\{ items, getLabel, onSelect \}: SelectProps\<T\>) \{
+  return (
+    \<ul\>
+      \{items.map((item, index) \=\> (
+        \<li key=\{index\} onClick=\{() \=\> onSelect(item)\}\>
+          \{getLabel(item)\}
+        \</li\>
+      ))\}
+    \</ul\>
+  );
 \}
 
 ## ForwardRef
 
-type InputProps \= \{  
-  label: string;  
+type InputProps \= \{
+  label: string;
 \};
 
-const Input \= React.forwardRef\<HTMLInputElement, InputProps\>(  
-  function Input(\{ label \}, ref) \{  
-    return (  
-      \<label\>  
-        \{label\}  
-        \<input ref=\{ref\} /\>  
-      \</label\>  
-    );  
-  \}  
+const Input \= React.forwardRef\<HTMLInputElement, InputProps\>(
+  function Input(\{ label \}, ref) \{
+    return (
+      \<label\>
+        \{label\}
+        \<input ref=\{ref\} /\>
+      \</label\>
+    );
+  \}
 );
 
 ## Interview-ready answer
@@ -1450,98 +1450,98 @@ In React with TypeScript, we type props, state, events, refs, reducers, context,
 
 Discriminated unions model different states safely.
 
-type ApiState\<T\> \=  
-  | \{ status: "idle" \}  
-  | \{ status: "loading" \}  
-  | \{ status: "success"; data: T \}  
+type ApiState\<T\> \=
+  | \{ status: "idle" \}
+  | \{ status: "loading" \}
+  | \{ status: "success"; data: T \}
   | \{ status: "error"; error: string \};
 
-function renderState\<T\>(state: ApiState\<T\>) \{  
-  switch (state.status) \{  
-    case "idle":  
-      return "Idle";  
-    case "loading":  
-      return "Loading";  
-    case "success":  
-      return state.data;  
-    case "error":  
-      return state.error;  
-  \}  
+function renderState\<T\>(state: ApiState\<T\>) \{
+  switch (state.status) \{
+    case "idle":
+      return "Idle";
+    case "loading":
+      return "Loading";
+    case "success":
+      return state.data;
+    case "error":
+      return state.error;
+  \}
 \}
 
 ## Exhaustiveness checking
 
-function assertNever(value: never): never \{  
-  throw new Error(\`Unexpected value: $\{value\}\`);  
+function assertNever(value: never): never \{
+  throw new Error(\`Unexpected value: $\{value\}\`);
 \}
 
-function renderStatus(status: ApiState\<User\>) \{  
-  switch (status.status) \{  
-    case "idle":  
-      return "Idle";  
-    case "loading":  
-      return "Loading";  
-    case "success":  
-      return status.data.name;  
-    case "error":  
-      return status.error;  
-    default:  
-      return assertNever(status);  
-  \}  
+function renderStatus(status: ApiState\<User\>) \{
+  switch (status.status) \{
+    case "idle":
+      return "Idle";
+    case "loading":
+      return "Loading";
+    case "success":
+      return status.data.name;
+    case "error":
+      return status.error;
+    default:
+      return assertNever(status);
+  \}
 \}
 
 ## API response typing
 
-type ApiResponse\<T\> \= \{  
-  data: T;  
-  status: number;  
-  message?: string;  
+type ApiResponse\<T\> \= \{
+  data: T;
+  status: number;
+  message?: string;
 \};
 
-type User \= \{  
-  id: string;  
-  name: string;  
+type User \= \{
+  id: string;
+  name: string;
 \};
 
-async function fetchUser(): Promise\<ApiResponse\<User\>\> \{  
-  const response \= await fetch("/api/user");  
-  return response.json();  
+async function fetchUser(): Promise\<ApiResponse\<User\>\> \{
+  const response \= await fetch("/api/user");
+  return response.json();
 \}
 
 Important: TypeScript does not validate runtime response shape automatically.
 
 ## Type-safe event system
 
-type AppEvents \= \{  
-  "user:login": \{ id: string; name: string \};  
-  "theme:change": \{ theme: "light" | "dark" \};  
+type AppEvents \= \{
+  "user:login": \{ id: string; name: string \};
+  "theme:change": \{ theme: "light" | "dark" \};
 \};
 
-class TypedEventBus\<Events extends Record\<string, unknown\>\> \{  
+class TypedEventBus\<Events extends Record\<string, unknown\>\> \{
   private listeners \= new Map\<keyof Events, Set\<(payload: any) \=\> void\>\>();
 
-  on\<K extends keyof Events\>(event: K, listener: (payload: Events\[K\]) \=\> void) \{  
-    if (\!this.listeners.has(event)) \{  
-      this.listeners.set(event, new Set());  
+  on\<K extends keyof Events\>(event: K, listener: (payload: Events\[K\]) \=\> void) \{
+    if (\!this.listeners.has(event)) \{
+      this.listeners.set(event, new Set());
     \}
 
     this.listeners.get(event)\!.add(listener);
 
-    return () \=\> \{  
-      this.listeners.get(event)?.delete(listener);  
-    \};  
+    return () \=\> \{
+      this.listeners.get(event)?.delete(listener);
+    \};
   \}
 
-  emit\<K extends keyof Events\>(event: K, payload: Events\[K\]) \{  
-    this.listeners.get(event)?.forEach((listener) \=\> listener(payload));  
-  \}  
+  emit\<K extends keyof Events\>(event: K, payload: Events\[K\]) \{
+    this.listeners.get(event)?.forEach((listener) \=\> listener(payload));
+  \}
 \}
 
 const bus \= new TypedEventBus\<AppEvents\>();
 
 bus.emit("theme:change", \{ theme: "dark" \}); // OK
 
-bus.emit("theme:change", \{ theme: "blue" \});  
+bus.emit("theme:change", \{ theme: "blue" \});
 // TypeScript error: Type '"blue"' is not assignable to type '"light" | "dark"'.
 
 ## Domain modeling
@@ -1550,17 +1550,17 @@ Good TypeScript is not just adding types everywhere. It is about modeling valid 
 
 Bad:
 
-type Booking \= \{  
-  status: string;  
-  data?: unknown;  
-  error?: string;  
+type Booking \= \{
+  status: string;
+  data?: unknown;
+  error?: string;
 \};
 
 Better:
 
-type BookingState \=  
-  | \{ status: "draft" \}  
-  | \{ status: "confirmed"; bookingId: string \}  
+type BookingState \=
+  | \{ status: "draft" \}
+  | \{ status: "confirmed"; bookingId: string \}
   | \{ status: "cancelled"; reason: string \};
 
 ## Interview-ready answer
@@ -1575,14 +1575,14 @@ Senior TypeScript is about designing types that make invalid states hard to repr
 
 Study these first:
 
-1. TypeScript Fundamentals  
-2. `type` vs `interface`  
-3. `any` vs `unknown`  
-4. `void` vs `never`  
-5. Union and intersection types  
-6. Type narrowing and type guards  
-7. Generics and constraints  
-8. Utility types  
+1. TypeScript Fundamentals
+2. `type` vs `interface`
+3. `any` vs `unknown`
+4. `void` vs `never`
+5. Union and intersection types
+6. Type narrowing and type guards
+7. Generics and constraints
+8. Utility types
 9. React props, hooks, events, and reusable components
 
 This covers most frontend TypeScript interview questions.
@@ -1591,25 +1591,25 @@ This covers most frontend TypeScript interview questions.
 
 Study these next:
 
-1. Advanced types: `keyof`, `typeof`, indexed access  
-2. Conditional types and `infer`  
-3. Mapped types  
-4. Classes and abstract classes  
-5. Modules and module resolution  
-6. `tsconfig` strict options  
+1. Advanced types: `keyof`, `typeof`, indexed access
+2. Conditional types and `infer`
+3. Mapped types
+4. Classes and abstract classes
+5. Modules and module resolution
+6. `tsconfig` strict options
 7. API response typing and runtime validation concerns
 
 ## Phase 3: Staff Level
 
 Study these for deeper discussions:
 
-1. Declaration files  
-2. Decorators  
-3. Discriminated unions and exhaustiveness  
-4. Type-safe architecture  
-5. Type-safe event systems  
-6. Type-safe form libraries  
-7. Reusable generic libraries  
+1. Declaration files
+2. Decorators
+3. Discriminated unions and exhaustiveness
+4. Type-safe architecture
+5. Type-safe event systems
+6. Type-safe form libraries
+7. Reusable generic libraries
 8. Domain modeling
 
 ---
@@ -1630,7 +1630,7 @@ Both can define object shapes. `interface` is best for extendable object/class c
 
 ## 4. Union vs Intersection
 
-Union means value can be one of many types: `A | B`. 
+Union means value can be one of many types: `A | B`.
 
 Intersection means value must satisfy multiple types at the same time: `A & B`.
 
@@ -1658,13 +1658,13 @@ An interface defines a type-only contract. An abstract class can define both a c
 
 Use generics to preserve the data type passed into the component.
 
-type ListProps\<T\> \= \{  
-  items: T\[\];  
-  renderItem: (item: T) \=\> React.ReactNode;  
+type ListProps\<T\> \= \{
+  items: T\[\];
+  renderItem: (item: T) \=\> React.ReactNode;
 \};
 
-function List\<T\>(\{ items, renderItem \}: ListProps\<T\>) \{  
-  return \<\>\{items.map(renderItem)\}\</\>;  
+function List\<T\>(\{ items, renderItem \}: ListProps\<T\>) \{
+  return \<\>\{items.map(renderItem)\}\</\>;
 \}
 
 ---

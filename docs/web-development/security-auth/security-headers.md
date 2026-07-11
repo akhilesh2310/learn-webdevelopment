@@ -51,49 +51,49 @@ In a ReactJS app, imagine if you allow inline script execution through React's d
 
 * **Content Security Policy (CSP)**: Define which resources can be loaded and executed by the browser, reducing the risk of XSS attacks.
 
-Example header:  
+Example header:
 `Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com;`
 
 * **Strict-Transport-Security (HSTS)**: Force the browser to only communicate with your site over HTTPS to prevent MITM attacks.
 
-Example header:  
+Example header:
 `Strict-Transport-Security: max-age=31536000; includeSubDomains`
 
 * **X-Content-Type-Options**: Prevent browsers from interpreting files as a different MIME type (e.g., treating an HTML file as a script).
 
 Example header:
 
- pgsql  
+ pgsql
 ```text
 X-Content-Type-Options: nosniff
 ```
 
-*   
+*
 * **X-Frame-Options**: Prevent your site from being embedded within an iframe, which helps to avoid clickjacking attacks.
 
-Example header:  
+Example header:
 `X-Frame-Options: DENY`
 
 * **Referrer-Policy**: Control the information sent in the Referer header when a user clicks on a link.
 
 Example header:
 
- pgsql  
+ pgsql
 ```text
 Referrer-Policy: no-referrer-when-downgrade
 ```
 
-*   
+*
 * **Feature-Policy**: Restrict access to certain features in the browser (like geolocation, camera, microphone).
 
 Example header:
 
- pgsql  
+ pgsql
 ```text
 Feature-Policy: geolocation 'self'; microphone 'none';
 ```
 
-* 
+*
 
 ### 6.2 In ReactJS
 
@@ -109,7 +109,7 @@ next();
 });
 ```
 
-* 
+*
 
 **Use Helmet**: In a Node.js application using React (e.g., with Express), you can use the `helmet` middleware to automatically set various HTTP headers:
 
@@ -118,7 +118,7 @@ const helmet = require('helmet');
 app.use(helmet());
 ```
 
-* 
+*
 
 **React CSP with Meta Tags**: If your React app is entirely client-side, use meta tags for CSP (though not as secure as HTTP headers):
 
@@ -126,7 +126,7 @@ app.use(helmet());
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted.com;">
 ```
 
-* 
+*
 
 ## 7. ✅ Summary
 

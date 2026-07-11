@@ -17,45 +17,45 @@ Daily Time: 5-6 hours
 
 Days 1-3
 
-* var vs let vs const  
-* Scope  
-* Closure  
-* Hoisting  
-* Event Loop  
-* Call Stack  
-* Promises  
+* var vs let vs const
+* Scope
+* Closure
+* Hoisting
+* Event Loop
+* Call Stack
+* Promises
 * Async/Await
 
 Days 4-7
 
-* this  
-* bind  
-* call  
-* apply  
-* prototype  
-* inheritance  
+* this
+* bind
+* call
+* apply
+* prototype
+* inheritance
 * classes
 
 Days 8-14
 
-* Generics  
-* Utility Types  
-* Union Types  
-* Intersection Types  
-* Type Narrowing  
+* Generics
+* Utility Types
+* Union Types
+* Intersection Types
+* Type Narrowing
 * Advanced TypeScript
 
 ### Practice
 
 Implement:
 
-debounce  
-throttle  
-memoize  
-flatten object  
-deep clone  
-promise all  
-promise race  
+debounce
+throttle
+memoize
+flatten object
+deep clone
+promise all
+promise race
 event emitter
 
 These appear constantly in frontend interviews.
@@ -74,19 +74,19 @@ You need Staff Engineer React knowledge.
 
 Day 1
 
-* JSX  
-* Components  
-* Props  
+* JSX
+* Components
+* Props
 * State
 
 Day 2
 
-* useState  
+* useState
 * useEffect
 
 Day 3
 
-* useMemo  
+* useMemo
 * useCallback
 
 Day 4
@@ -109,15 +109,15 @@ Day 7
 
 ### Week 2
 
-* React Rendering  
-* Reconciliation  
-* Virtual DOM  
-* React 18 Features  
-* Suspense  
-* Lazy Loading  
-* Code Splitting  
-* Error Boundaries  
-* Server Components  
+* React Rendering
+* Reconciliation
+* Virtual DOM
+* React 18 Features
+* Suspense
+* Lazy Loading
+* Code Splitting
+* Error Boundaries
+* Server Components
 * Next.js Basics
 
 ---
@@ -136,61 +136,61 @@ Do NOT do random problems.
 
 Solve:
 
-* Two Sum  
-* Best Time To Buy Stock  
-* Remove Duplicates  
+* Two Sum
+* Best Time To Buy Stock
+* Remove Duplicates
 * Move Zeroes
 
 ---
 
 ### Strings
 
-* Valid Anagram  
-* Longest Common Prefix  
+* Valid Anagram
+* Longest Common Prefix
 * Reverse String
 
 ---
 
 ### HashMap
 
-* Two Sum  
-* Group Anagrams  
+* Two Sum
+* Group Anagrams
 * First Unique Character
 
 ---
 
 ### Sliding Window
 
-* Maximum Subarray  
+* Maximum Subarray
 * Longest Substring Without Repeating Characters
 
 ---
 
 ### Stack
 
-* Valid Parentheses  
+* Valid Parentheses
 * Min Stack
 
 ---
 
 ### Queue
 
-* Moving Average  
+* Moving Average
 * Implement Queue Using Stack
 
 ---
 
 ### Binary Search
 
-* Binary Search  
+* Binary Search
 * Search Insert Position
 
 ---
 
 ### Trees
 
-* Maximum Depth  
-* Invert Binary Tree  
+* Maximum Depth
+* Invert Binary Tree
 * Level Order Traversal
 
 That's enough for 80% of frontend interviews.
@@ -275,9 +275,9 @@ Prepare:
 
 Topics:
 
-* Lazy Loading  
-* Caching  
-* CDN  
+* Lazy Loading
+* Caching
+* CDN
 * Pagination
 
 ---
@@ -286,8 +286,8 @@ Topics:
 
 Topics:
 
-* Infinite Scroll  
-* Virtualization  
+* Infinite Scroll
+* Virtualization
 * Optimistic Updates
 
 ---
@@ -296,7 +296,7 @@ Topics:
 
 Topics:
 
-* Real-time Collaboration  
+* Real-time Collaboration
 * WebSockets
 
 ---
@@ -305,9 +305,9 @@ Topics:
 
 Topics:
 
-* GraphQL  
-* State Management  
-* Module Federation  
+* GraphQL
+* State Management
+* Module Federation
 * Performance
 
 ---
@@ -320,13 +320,13 @@ Prepare stories for:
 
 ### Leadership
 
-* Leading 8 engineers  
-* Mentoring juniors  
+* Leading 8 engineers
+* Mentoring juniors
 * Architecture decisions
 
 ### Conflict
 
-* Team disagreement  
+* Team disagreement
 * Technical debates
 
 ### Performance
@@ -353,18 +353,18 @@ Don't wait until you're "ready".
 
 ### Daily
 
-* 10 applications  
-* 5 recruiter messages  
-* 1 React topic  
-* 1 DSA problem  
+* 10 applications
+* 5 recruiter messages
+* 1 React topic
+* 1 DSA problem
 * 1 System Design topic
 
 Within 30-45 days, you'll be in a strong position for:
 
-* Staff Software Engineer  
-* Frontend Architect  
-* Principal Frontend Engineer  
-* Engineering Manager (Technical)  
+* Staff Software Engineer
+* Frontend Architect
+* Principal Frontend Engineer
+* Engineering Manager (Technical)
 * Senior Staff Engineer
 
 With your background, React refresh \+ frontend system design should be the priority. DSA should stay limited to easy and medium problems because that's where you'll get the highest return on time invested.

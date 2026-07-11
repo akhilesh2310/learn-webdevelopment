@@ -7,9 +7,9 @@ sidebar_position: 2
 
 Related canonical pages: [JWT & CSRF](../security-auth/jwt-csrf-token-storage.md), [XSS](../security-auth/xss-cross-site-scripting.md). For browser JavaScript scheduling, see [Event Loop](../javascript/event-loop.md).
 
-[https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252](https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252)
+- [https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252](https://chatgpt.com/c/6a360edc-0a54-83e8-a26b-bb8c318e5252)
 
-[https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b](https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b)
+- [https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b](https://chatgpt.com/share/6a360f76-7f40-83ee-bae2-a1d29ff5047b)
 
 Below is a **practical Node.js interview preparation guide** with the most commonly asked and important questions. I’m keeping it focused for frontend/full-stack interviews, especially where Node.js is used for **BFF, APIs, caching, authentication, rate limiting, and scalable services**.
 
@@ -23,10 +23,10 @@ In simple terms, Node.js lets us build backend services using JavaScript.
 
 \#\#\# Why Node.js is popular
 
-\- Uses JavaScript for backend  
-\- Good for I/O-heavy applications  
-\- Non-blocking and asynchronous by default  
-\- Great for APIs, BFF layers, real-time apps, streaming, and microservices  
+\- Uses JavaScript for backend
+\- Good for I/O-heavy applications
+\- Non-blocking and asynchronous by default
+\- Great for APIs, BFF layers, real-time apps, streaming, and microservices
 \- Large npm ecosystem
 
 \#\#\# Interview-ready answer
@@ -49,21 +49,21 @@ But Node.js delegates expensive async work to the background thread pool or oper
 
 \#\#\# Example
 
-\`\`\`js  
+\`\`\`js
 const fs \= require("fs");
 
 console.log("Start");
 
-fs.readFile("data.txt", "utf8", () \=\> \{  
- console.log("File read completed");  
+fs.readFile("data.txt", "utf8", () \=\> \{
+ console.log("File read completed");
 \});
 
 console.log("End");
 
 Output:
 
-Start  
-End  
+Start
+End
 File read completed
 
 Node.js does not wait for file reading to complete. It registers the callback and continues.
@@ -86,10 +86,10 @@ Node.js does not create one thread per request.
 
 Instead:
 
-1. Request comes in.  
-2. If it is async I/O, Node.js delegates it.  
-3. Main thread becomes free.  
-4. When I/O is done, callback is pushed to a queue.  
+1. Request comes in.
+2. If it is async I/O, Node.js delegates it.
+3. Main thread becomes free.
+4. When I/O is done, callback is pushed to a queue.
 5. Event loop picks it and executes it.
 
 ### Interview-ready answer
@@ -102,11 +102,11 @@ The event loop is the core mechanism that allows Node.js to handle asynchronous 
 
 The main phases are:
 
-1. Timers  
-2. Pending callbacks  
-3. Idle/prepare  
-4. Poll  
-5. Check  
+1. Timers
+2. Pending callbacks
+3. Idle/prepare
+4. Poll
+5. Check
 6. Close callbacks
 
 ### Important ones for interviews
@@ -115,7 +115,7 @@ The main phases are:
 
 Executes callbacks scheduled by:
 
-setTimeout()  
+setTimeout()
 setInterval()
 
 #### Poll phase
@@ -144,24 +144,24 @@ The event loop has multiple phases like timers, poll, check, and close callbacks
 
 Runs after the given delay, but not exactly guaranteed.
 
-setTimeout(() \=\> \{  
- console.log("timeout");  
+setTimeout(() \=\> \{
+ console.log("timeout");
 \}, 0);
 
 ### setImmediate
 
 Runs in the check phase of the event loop.
 
-setImmediate(() \=\> \{  
- console.log("immediate");  
+setImmediate(() \=\> \{
+ console.log("immediate");
 \});
 
 ### process.nextTick
 
 Runs before the event loop continues to the next phase.
 
-process.nextTick(() \=\> \{  
- console.log("nextTick");  
+process.nextTick(() \=\> \{
+ console.log("nextTick");
 \});
 
 ### Example
@@ -180,10 +180,10 @@ console.log("end");
 
 Output:
 
-start  
-end  
-nextTick  
-promise  
+start
+end
+nextTick
+promise
 timeout / immediate
 
 `setTimeout` and `setImmediate` order can vary depending on context.
@@ -202,7 +202,7 @@ Non-blocking I/O means Node.js does not wait for an operation to complete before
 
 const fs \= require("fs");
 
-const data \= fs.readFileSync("data.txt", "utf8");  
+const data \= fs.readFileSync("data.txt", "utf8");
 console.log(data);
 
 console.log("Next line");
@@ -213,8 +213,8 @@ Here, Node.js waits until the file is read.
 
 const fs \= require("fs");
 
-fs.readFile("data.txt", "utf8", (err, data) \=\> \{  
- console.log(data);  
+fs.readFile("data.txt", "utf8", (err, data) \=\> \{
+ console.log(data);
 \});
 
 console.log("Next line");
@@ -235,20 +235,20 @@ Node.js can handle many concurrent requests without blocking one request behind 
 
 ### Good use cases
 
-* REST APIs  
-* BFF layer  
-* Chat apps  
-* Notification systems  
-* Streaming  
-* Real-time dashboards  
-* API gateway  
+* REST APIs
+* BFF layer
+* Chat apps
+* Notification systems
+* Streaming
+* Real-time dashboards
+* API gateway
 * Microservices
 
 ### Not ideal for
 
-* Heavy CPU computation  
-* Image/video processing  
-* Large mathematical calculations  
+* Heavy CPU computation
+* Image/video processing
+* Large mathematical calculations
 * ML model execution
 
 ### Interview-ready answer
@@ -263,25 +263,25 @@ Callback hell happens when multiple async operations are nested inside each othe
 
 ### Example
 
-getUser(userId, (user) \=\> \{  
- getOrders(user.id, (orders) \=\> \{  
-   getPayment(orders\[0\].id, (payment) \=\> \{  
-     sendEmail(payment, () \=\> \{  
-       console.log("Done");  
-     \});  
-   \});  
- \});  
+getUser(userId, (user) \=\> \{
+ getOrders(user.id, (orders) \=\> \{
+   getPayment(orders\[0\].id, (payment) \=\> \{
+     sendEmail(payment, () \=\> \{
+       console.log("Done");
+     \});
+   \});
+ \});
 \});
 
 ### Better approach using async/await
 
-async function processOrder(userId) \{  
- const user \= await getUser(userId);  
- const orders \= await getOrders(user.id);  
- const payment \= await getPayment(orders\[0\].id);  
+async function processOrder(userId) \{
+ const user \= await getUser(userId);
+ const orders \= await getOrders(user.id);
+ const payment \= await getPayment(orders\[0\].id);
  await sendEmail(payment);
 
- console.log("Done");  
+ console.log("Done");
 \}
 
 ### Interview-ready answer
@@ -296,30 +296,30 @@ Callback hell is deeply nested callback-based async code. It makes error handlin
 
 A function passed to another function and called later.
 
-fs.readFile("file.txt", (err, data) \=\> \{  
- if (err) return console.error(err);  
- console.log(data);  
+fs.readFile("file.txt", (err, data) \=\> \{
+ if (err) return console.error(err);
+ console.log(data);
 \});
 
 ### Promise
 
 Represents a future value.
 
-fetchUser()  
- .then((user) \=\> console.log(user))  
+fetchUser()
+ .then((user) \=\> console.log(user))
  .catch((err) \=\> console.error(err));
 
 ### async/await
 
 Cleaner syntax over promises.
 
-async function loadUser() \{  
- try \{  
-   const user \= await fetchUser();  
-   console.log(user);  
- \} catch (err) \{  
-   console.error(err);  
- \}  
+async function loadUser() \{
+ try \{
+   const user \= await fetchUser();
+   console.log(user);
+ \} catch (err) \{
+   console.error(err);
+ \}
 \}
 
 ### Interview-ready answer
@@ -334,42 +334,42 @@ Error handling depends on the style of code.
 
 ### Callback style
 
-fs.readFile("data.txt", (err, data) \=\> \{  
- if (err) \{  
-   return console.error(err);  
+fs.readFile("data.txt", (err, data) \=\> \{
+ if (err) \{
+   return console.error(err);
  \}
 
- console.log(data);  
+ console.log(data);
 \});
 
 Node.js usually follows the error-first callback pattern.
 
 ### Promise style
 
-fetchUser()  
- .then((user) \=\> console.log(user))  
+fetchUser()
+ .then((user) \=\> console.log(user))
  .catch((err) \=\> console.error(err));
 
 ### async/await style
 
-async function getUser() \{  
- try \{  
-   const user \= await fetchUser();  
-   return user;  
- \} catch (err) \{  
-   console.error(err);  
-   throw err;  
- \}  
+async function getUser() \{
+ try \{
+   const user \= await fetchUser();
+   return user;
+ \} catch (err) \{
+   console.error(err);
+   throw err;
+ \}
 \}
 
 ### Express error middleware
 
-app.use((err, req, res, next) \=\> \{  
+app.use((err, req, res, next) \=\> \{
  console.error(err);
 
- res.status(500).json(\{  
-   message: "Something went wrong",  
- \});  
+ res.status(500).json(\{
+   message: "Something went wrong",
+ \});
 \});
 
 ### Interview-ready answer
@@ -390,21 +390,21 @@ const express \= require("express");
 
 const app \= express();
 
-app.get("/health", (req, res) \=\> \{  
- res.json(\{ status: "ok" \});  
+app.get("/health", (req, res) \=\> \{
+ res.json(\{ status: "ok" \});
 \});
 
-app.listen(3000, () \=\> \{  
- console.log("Server running on port 3000");  
+app.listen(3000, () \=\> \{
+ console.log("Server running on port 3000");
 \});
 
 ### Why Express is used
 
-* Routing  
-* Middleware  
-* Request/response handling  
-* Error handling  
-* API creation  
+* Routing
+* Middleware
+* Request/response handling
+* Error handling
+* API creation
 * Authentication integration
 
 ### Interview-ready answer
@@ -421,22 +421,22 @@ It can modify the request, modify the response, end the request, or pass control
 
 ### Example
 
-function logger(req, res, next) \{  
- console.log(\`$\{req.method\} $\{req.url\}\`);  
- next();  
+function logger(req, res, next) \{
+ console.log(\`$\{req.method\} $\{req.url\}\`);
+ next();
 \}
 
 app.use(logger);
 
 ### Common middleware examples
 
-* Authentication  
-* Authorization  
-* Logging  
-* Request validation  
-* Rate limiting  
-* CORS  
-* JSON body parsing  
+* Authentication
+* Authorization
+* Logging
+* Request validation
+* Rate limiting
+* CORS
+* JSON body parsing
 * Error handling
 
 ### Interview-ready answer
@@ -473,22 +473,22 @@ A REST API exposes resources using HTTP methods.
 
 ### Example
 
-GET /users        \-\> get users  
-GET /users/:id    \-\> get one user  
-POST /users       \-\> create user  
-PUT /users/:id    \-\> replace user  
-PATCH /users/:id  \-\> partially update user  
+GET /users        \-\> get users
+GET /users/:id    \-\> get one user
+POST /users       \-\> create user
+PUT /users/:id    \-\> replace user
+PATCH /users/:id  \-\> partially update user
 DELETE /users/:id \-\> delete user
 
 ### Example route
 
-app.get("/users/:id", async (req, res, next) \=\> \{  
- try \{  
-   const user \= await userService.getUser(req.params.id);  
-   res.json(user);  
- \} catch (err) \{  
-   next(err);  
- \}  
+app.get("/users/:id", async (req, res, next) \=\> \{
+ try \{
+   const user \= await userService.getUser(req.params.id);
+   res.json(user);
+ \} catch (err) \{
+   next(err);
+ \}
 \});
 
 ### Interview-ready answer
@@ -501,27 +501,27 @@ A REST API uses HTTP methods and URLs to perform operations on resources. In Nod
 
 A clean structure could look like this:
 
-src/  
- config/  
-   env.js  
-   db.js  
- routes/  
-   user.routes.js  
- controllers/  
-   user.controller.js  
- services/  
-   user.service.js  
- repositories/  
-   user.repository.js  
- middlewares/  
-   auth.middleware.js  
-   error.middleware.js  
-   rateLimit.middleware.js  
- validators/  
-   user.validator.js  
- utils/  
-   logger.js  
- app.js  
+src/
+ config/
+   env.js
+   db.js
+ routes/
+   user.routes.js
+ controllers/
+   user.controller.js
+ services/
+   user.service.js
+ repositories/
+   user.repository.js
+ middlewares/
+   auth.middleware.js
+   error.middleware.js
+   rateLimit.middleware.js
+ validators/
+   user.validator.js
+ utils/
+   logger.js
+ app.js
  server.js
 
 ### Responsibilities
@@ -550,27 +550,27 @@ I usually structure a Node.js app by separating routes, controllers, services, r
 
 It contains:
 
-* Project name and version  
-* Scripts  
-* Dependencies  
-* Dev dependencies  
-* Entry point  
+* Project name and version
+* Scripts
+* Dependencies
+* Dev dependencies
+* Entry point
 * Node/npm version config
 
 ### Example
 
-\{  
- "scripts": \{  
-   "start": "node src/server.js",  
-   "dev": "nodemon src/server.js",  
-   "test": "jest"  
- \},  
- "dependencies": \{  
-   "express": "^4.18.0"  
- \},  
- "devDependencies": \{  
-   "nodemon": "^3.0.0"  
- \}  
+\{
+ "scripts": \{
+   "start": "node src/server.js",
+   "dev": "nodemon src/server.js",
+   "test": "jest"
+ \},
+ "dependencies": \{
+   "express": "^4.18.0"
+ \},
+ "devDependencies": \{
+   "nodemon": "^3.0.0"
+ \}
 \}
 
 ### Interview-ready answer
@@ -587,9 +587,9 @@ Required to run the application in production.
 
 Examples:
 
-express  
-mongoose  
-jsonwebtoken  
+express
+mongoose
+jsonwebtoken
 axios
 
 ### devDependencies
@@ -598,10 +598,10 @@ Required only during development or build/test time.
 
 Examples:
 
-nodemon  
-jest  
-eslint  
-prettier  
+nodemon
+jest
+eslint
+prettier
 typescript
 
 ### Interview-ready answer
@@ -616,15 +616,15 @@ npm is the package manager for Node.js.
 
 It is used to:
 
-* Install packages  
-* Manage dependencies  
-* Run scripts  
+* Install packages
+* Manage dependencies
+* Run scripts
 * Publish packages
 
 ### Example
 
-npm install express  
-npm run dev  
+npm install express
+npm run dev
 npm test
 
 ### Interview-ready answer
@@ -675,11 +675,11 @@ It is a browser security mechanism that controls whether a frontend from one ori
 
 Frontend:
 
-https://app.example.com
+- https://app.example.com
 
 Backend:
 
-https://api.example.com
+- https://api.example.com
 
 This is cross-origin because the subdomain is different.
 
@@ -687,11 +687,11 @@ This is cross-origin because the subdomain is different.
 
 const cors \= require("cors");
 
-app.use(  
- cors(\{  
-   origin: "https://app.example.com",  
-   credentials: true,  
- \})  
+app.use(
+ cors(\{
+   origin: "https://app.example.com",
+   credentials: true,
+ \})
 );
 
 ### Interview-ready answer
@@ -706,40 +706,40 @@ Authentication verifies who the user is.
 
 Common flow:
 
-1. User logs in with email/password.  
-2. Server validates credentials.  
-3. Server creates access token.  
-4. Client sends token in future requests.  
+1. User logs in with email/password.
+2. Server validates credentials.
+3. Server creates access token.
+4. Client sends token in future requests.
 5. Server validates token and allows access.
 
 ### JWT example
 
 const jwt \= require("jsonwebtoken");
 
-const token \= jwt.sign(  
- \{ userId: user.id, role: user.role \},  
- process.env.JWT\_SECRET,  
- \{ expiresIn: "15m" \}  
+const token \= jwt.sign(
+ \{ userId: user.id, role: user.role \},
+ process.env.JWT\_SECRET,
+ \{ expiresIn: "15m" \}
 );
 
 ### Middleware
 
-function authMiddleware(req, res, next) \{  
+function authMiddleware(req, res, next) \{
  const authHeader \= req.headers.authorization;
 
- if (\!authHeader) \{  
-   return res.status(401).json(\{ message: "Token missing" \});  
+ if (\!authHeader) \{
+   return res.status(401).json(\{ message: "Token missing" \});
  \}
 
  const token \= authHeader.split(" ")\[1\];
 
- try \{  
-   const payload \= jwt.verify(token, process.env.JWT\_SECRET);  
-   req.user \= payload;  
-   next();  
- \} catch \{  
-   res.status(401).json(\{ message: "Invalid token" \});  
- \}  
+ try \{
+   const payload \= jwt.verify(token, process.env.JWT\_SECRET);
+   req.user \= payload;
+   next();
+ \} catch \{
+   res.status(401).json(\{ message: "Invalid token" \});
+ \}
 \}
 
 ### Interview-ready answer
@@ -778,14 +778,14 @@ Authorization is usually implemented using middleware.
 
 ### Example
 
-function requireRole(role) \{  
- return function (req, res, next) \{  
-   if (req.user.role \!== role) \{  
-     return res.status(403).json(\{ message: "Forbidden" \});  
+function requireRole(role) \{
+ return function (req, res, next) \{
+   if (req.user.role \!== role) \{
+     return res.status(403).json(\{ message: "Forbidden" \});
    \}
 
-   next();  
- \};  
+   next();
+ \};
 \}
 
 app.delete("/users/:id", authMiddleware, requireRole("admin"), deleteUser);
@@ -826,10 +826,10 @@ Refresh tokens are longer-lived and used to get new access tokens.
 
 ### Flow
 
-1. User logs in.  
-2. Server returns access token and refresh token.  
-3. Access token expires after a short time.  
-4. Client sends refresh token to get a new access token.  
+1. User logs in.
+2. Server returns access token and refresh token.
+3. Access token expires after a short time.
+4. Client sends refresh token to get a new access token.
 5. Server validates refresh token and issues new access token.
 
 ### Interview-ready answer
@@ -868,24 +868,24 @@ Commonly using middleware like `multer`.
 
 const multer \= require("multer");
 
-const upload \= multer(\{  
- dest: "uploads/",  
+const upload \= multer(\{
+ dest: "uploads/",
 \});
 
-app.post("/upload", upload.single("file"), (req, res) \=\> \{  
- res.json(\{  
-   filename: req.file.filename,  
-   size: req.file.size,  
- \});  
+app.post("/upload", upload.single("file"), (req, res) \=\> \{
+ res.json(\{
+   filename: req.file.filename,
+   size: req.file.size,
+ \});
 \});
 
 ### Production considerations
 
-* Validate file type  
-* Limit file size  
-* Scan for malware if needed  
-* Store in object storage like S3  
-* Do not trust original filename  
+* Validate file type
+* Limit file size
+* Scan for malware if needed
+* Store in object storage like S3
+* Do not trust original filename
 * Use signed URLs for download
 
 ### Interview-ready answer
@@ -902,10 +902,10 @@ Rate limiting controls how many requests a user/IP can make in a given time.
 
 const rateLimit \= require("express-rate-limit");
 
-const limiter \= rateLimit(\{  
- windowMs: 60 \* 1000,  
- max: 100,  
- message: "Too many requests, please try again later",  
+const limiter \= rateLimit(\{
+ windowMs: 60 \* 1000,
+ max: 100,
+ message: "Too many requests, please try again later",
 \});
 
 app.use(limiter);
@@ -926,30 +926,30 @@ Caching can be done at multiple levels.
 
 ### Common caching options
 
-* In-memory cache  
-* Redis cache  
-* CDN cache  
-* Browser cache  
+* In-memory cache
+* Redis cache
+* CDN cache
+* Browser cache
 * Database query cache
 
 ### Example using Redis mental model
 
-async function getUser(userId) \{  
+async function getUser(userId) \{
  const cacheKey \= \`user:$\{userId\}\`;
 
  const cachedUser \= await redis.get(cacheKey);
 
- if (cachedUser) \{  
-   return JSON.parse(cachedUser);  
+ if (cachedUser) \{
+   return JSON.parse(cachedUser);
  \}
 
  const user \= await db.users.findById(userId);
 
- await redis.set(cacheKey, JSON.stringify(user), \{  
-   EX: 300,  
+ await redis.set(cacheKey, JSON.stringify(user), \{
+   EX: 300,
  \});
 
- return user;  
+ return user;
 \}
 
 ### Interview-ready answer
@@ -974,9 +974,9 @@ Instead of the frontend calling many APIs, the BFF aggregates and transforms dat
 
 For a dashboard page, frontend needs:
 
-/user-profile  
-/orders  
-/recommendations  
+/user-profile
+/orders
+/recommendations
 /notifications
 
 BFF can expose one API:
@@ -995,11 +995,11 @@ A BFF is a backend layer created for a specific frontend experience. In Node.js,
 
 Node.js is a good fit for BFF because:
 
-* Frontend and BFF can share JavaScript/TypeScript knowledge  
-* Good for API aggregation  
-* Handles I/O-heavy calls well  
-* Easy to shape responses for UI  
-* Works well with GraphQL or REST  
+* Frontend and BFF can share JavaScript/TypeScript knowledge
+* Good for API aggregation
+* Handles I/O-heavy calls well
+* Easy to shape responses for UI
+* Works well with GraphQL or REST
 * Can add caching, rate limiting, and auth logic
 
 ### Interview-ready answer
@@ -1014,32 +1014,32 @@ Use parallel calls where possible.
 
 ### Example
 
-async function getDashboard(req, res, next) \{  
- try \{  
-   const \[profile, orders, notifications\] \= await Promise.all(\[  
-     userService.getProfile(req.user.id),  
-     orderService.getOrders(req.user.id),  
-     notificationService.getNotifications(req.user.id),  
+async function getDashboard(req, res, next) \{
+ try \{
+   const \[profile, orders, notifications\] \= await Promise.all(\[
+     userService.getProfile(req.user.id),
+     orderService.getOrders(req.user.id),
+     notificationService.getNotifications(req.user.id),
    \]);
 
-   res.json(\{  
-     profile,  
-     orders,  
-     notifications,  
-   \});  
- \} catch (err) \{  
-   next(err);  
- \}  
+   res.json(\{
+     profile,
+     orders,
+     notifications,
+   \});
+ \} catch (err) \{
+   next(err);
+ \}
 \}
 
 ### But handle partial failures carefully
 
 Sometimes one API failure should not fail the whole page.
 
-const results \= await Promise.allSettled(\[  
- userService.getProfile(userId),  
- orderService.getOrders(userId),  
- notificationService.getNotifications(userId),  
+const results \= await Promise.allSettled(\[
+ userService.getProfile(userId),
+ orderService.getOrders(userId),
+ notificationService.getNotifications(userId),
 \]);
 
 ### Interview-ready answer
@@ -1054,22 +1054,22 @@ Timeout prevents the server from waiting forever for a slow downstream service.
 
 ### Example using AbortController
 
-async function fetchWithTimeout(url, timeoutMs \= 3000\) \{  
+async function fetchWithTimeout(url, timeoutMs \= 3000\) \{
  const controller \= new AbortController();
 
- const timerId \= setTimeout(() \=\> \{  
-   controller.abort();  
+ const timerId \= setTimeout(() \=\> \{
+   controller.abort();
  \}, timeoutMs);
 
- try \{  
-   const response \= await fetch(url, \{  
-     signal: controller.signal,  
+ try \{
+   const response \= await fetch(url, \{
+     signal: controller.signal,
    \});
 
-   return response.json();  
- \} finally \{  
-   clearTimeout(timerId);  
- \}  
+   return response.json();
+ \} finally \{
+   clearTimeout(timerId);
+ \}
 \}
 
 ### Interview-ready answer
@@ -1084,33 +1084,33 @@ Retries should be used carefully.
 
 Retry is useful for temporary failures like:
 
-* Network timeout  
-* 502  
-* 503  
+* Network timeout
+* 502
+* 503
 * 504
 
 Avoid retrying:
 
-* 400  
-* 401  
-* 403  
-* Validation errors  
+* 400
+* 401
+* 403
+* Validation errors
 * Non-idempotent POST without safeguards
 
 ### Simple retry example
 
-async function retry(fn, retries \= 3\) \{  
+async function retry(fn, retries \= 3\) \{
  let lastError;
 
- for (let i \= 0; i \< retries; i++) \{  
-   try \{  
-     return await fn();  
-   \} catch (err) \{  
-     lastError \= err;  
-   \}  
+ for (let i \= 0; i \< retries; i++) \{
+   try \{
+     return await fn();
+   \} catch (err) \{
+     lastError \= err;
+   \}
  \}
 
- throw lastError;  
+ throw lastError;
 \}
 
 ### Interview-ready answer
@@ -1129,28 +1129,28 @@ If the same request is already in progress, return the same promise.
 
 const inFlightRequests \= new Map();
 
-async function getCachedUser(userId) \{  
+async function getCachedUser(userId) \{
  const key \= \`user:$\{userId\}\`;
 
- if (inFlightRequests.has(key)) \{  
-   return inFlightRequests.get(key);  
+ if (inFlightRequests.has(key)) \{
+   return inFlightRequests.get(key);
  \}
 
- const promise \= userService.getUser(userId).finally(() \=\> \{  
-   inFlightRequests.delete(key);  
+ const promise \= userService.getUser(userId).finally(() \=\> \{
+   inFlightRequests.delete(key);
  \});
 
  inFlightRequests.set(key, promise);
 
- return promise;  
+ return promise;
 \}
 
 ### Other options
 
-* Cache response with TTL  
-* Idempotency key  
-* Debounce on frontend  
-* Queue duplicate jobs  
+* Cache response with TTL
+* Idempotency key
+* Debounce on frontend
+* Queue duplicate jobs
 * Use database constraints
 
 ### Interview-ready answer
@@ -1189,25 +1189,25 @@ Idempotency means repeated execution of the same request produces the same outco
 
 Important practices:
 
-* Validate input  
-* Sanitize user data  
-* Use authentication and authorization  
-* Use HTTPS  
-* Use Helmet for security headers  
-* Configure CORS properly  
-* Rate limit APIs  
-* Avoid leaking stack traces  
-* Store secrets in environment variables or secret manager  
-* Hash passwords using bcrypt/argon2  
-* Prevent SQL/NoSQL injection  
-* Keep dependencies updated  
+* Validate input
+* Sanitize user data
+* Use authentication and authorization
+* Use HTTPS
+* Use Helmet for security headers
+* Configure CORS properly
+* Rate limit APIs
+* Avoid leaking stack traces
+* Store secrets in environment variables or secret manager
+* Hash passwords using bcrypt/argon2
+* Prevent SQL/NoSQL injection
+* Keep dependencies updated
 * Use logging and monitoring
 
 ### Example
 
 const helmet \= require("helmet");
 
-app.use(helmet());  
+app.use(helmet());
 app.use(express.json(\{ limit: "1mb" \}));
 
 ### Interview-ready answer
@@ -1228,9 +1228,9 @@ app.use(helmet());
 
 ### It helps with headers like
 
-* Content-Security-Policy  
-* X-Content-Type-Options  
-* X-Frame-Options  
+* Content-Security-Policy
+* X-Content-Type-Options
+* X-Frame-Options
 * Referrer-Policy
 
 ### Interview-ready answer
@@ -1247,23 +1247,23 @@ Use a validation library like Joi, Zod, or express-validator.
 
 const \{ z \} \= require("zod");
 
-const createUserSchema \= z.object(\{  
- name: z.string().min(1),  
- email: z.string().email(),  
+const createUserSchema \= z.object(\{
+ name: z.string().min(1),
+ email: z.string().email(),
 \});
 
-function validateCreateUser(req, res, next) \{  
+function validateCreateUser(req, res, next) \{
  const result \= createUserSchema.safeParse(req.body);
 
- if (\!result.success) \{  
-   return res.status(400).json(\{  
-     message: "Invalid request",  
-     errors: result.error.errors,  
-   \});  
+ if (\!result.success) \{
+   return res.status(400).json(\{
+     message: "Invalid request",
+     errors: result.error.errors,
+   \});
  \}
 
- req.body \= result.data;  
- next();  
+ req.body \= result.data;
+ next();
 \}
 
 ### Interview-ready answer
@@ -1278,27 +1278,27 @@ Use structured logging.
 
 Common libraries:
 
-* Winston  
-* Pino  
+* Winston
+* Pino
 * Bunyan
 
 ### Example log
 
-logger.info(\{  
- message: "Order created",  
- orderId,  
- userId,  
- requestId,  
+logger.info(\{
+ message: "Order created",
+ orderId,
+ userId,
+ requestId,
 \});
 
 ### Good logs include
 
-* Timestamp  
-* Request ID  
-* User ID if safe  
-* Route  
-* Status code  
-* Error stack for server logs  
+* Timestamp
+* Request ID
+* User ID if safe
+* Route
+* Status code
+* Error stack for server logs
 * Latency
 
 ### Interview-ready answer
@@ -1311,23 +1311,23 @@ In production, I use structured logging with a request ID so logs can be traced 
 
 Important things to monitor:
 
-* Error rate  
-* Latency  
-* Throughput  
-* CPU usage  
-* Memory usage  
-* Event loop lag  
-* Database latency  
-* External API latency  
+* Error rate
+* Latency
+* Throughput
+* CPU usage
+* Memory usage
+* Event loop lag
+* Database latency
+* External API latency
 * Cache hit/miss ratio
 
 ### Tools
 
-* Prometheus  
-* Grafana  
-* ELK  
-* Datadog  
-* New Relic  
+* Prometheus
+* Grafana
+* ELK
+* Datadog
+* New Relic
 * OpenTelemetry
 
 ### Interview-ready answer
@@ -1342,16 +1342,16 @@ Event loop lag means the event loop is blocked and cannot process callbacks on t
 
 ### Common causes
 
-* Heavy CPU work  
-* Large JSON parsing  
-* Synchronous file operations  
-* Blocking loops  
+* Heavy CPU work
+* Large JSON parsing
+* Synchronous file operations
+* Blocking loops
 * Large encryption/compression work
 
 ### Example bad code
 
-for (let i \= 0; i \< 1e10; i++) \{  
- // blocks event loop  
+for (let i \= 0; i \< 1e10; i++) \{
+ // blocks event loop
 \}
 
 During this time, Node.js cannot respond to other requests.
@@ -1366,25 +1366,25 @@ Event loop lag happens when the Node.js main thread is blocked by CPU-heavy or s
 
 Options:
 
-* Worker Threads  
-* Child processes  
-* Job queue  
-* Separate microservice  
+* Worker Threads
+* Child processes
+* Job queue
+* Separate microservice
 * Move heavy work to background processing
 
 ### Worker thread example
 
 const \{ Worker \} \= require("worker\_threads");
 
-function runWorker(data) \{  
- return new Promise((resolve, reject) \=\> \{  
-   const worker \= new Worker("./worker.js", \{  
-     workerData: data,  
+function runWorker(data) \{
+ return new Promise((resolve, reject) \=\> \{
+   const worker \= new Worker("./worker.js", \{
+     workerData: data,
    \});
 
-   worker.on("message", resolve);  
-   worker.on("error", reject);  
- \});  
+   worker.on("message", resolve);
+   worker.on("error", reject);
+ \});
 \}
 
 ### Interview-ready answer
@@ -1401,10 +1401,10 @@ They are useful for CPU-intensive work.
 
 ### Good use cases
 
-* Image processing  
-* Data transformation  
-* Compression  
-* Encryption  
+* Image processing
+* Data transformation
+* Compression
+* Encryption
 * Large calculations
 
 ### Interview-ready answer
@@ -1431,14 +1431,14 @@ Clustering means running multiple Node.js worker processes to use multiple CPU c
 
 Common ways:
 
-* Run multiple instances  
-* Use load balancer  
-* Use clustering or containers  
-* Use Redis for shared cache/session  
-* Use database connection pooling  
-* Use queues for async work  
-* Add CDN for static content  
-* Horizontal scaling with Kubernetes  
+* Run multiple instances
+* Use load balancer
+* Use clustering or containers
+* Use Redis for shared cache/session
+* Use database connection pooling
+* Use queues for async work
+* Add CDN for static content
+* Horizontal scaling with Kubernetes
 * Monitor bottlenecks
 
 ### Interview-ready answer
@@ -1453,23 +1453,23 @@ A memory leak happens when memory is no longer needed but is still referenced, s
 
 ### Common causes
 
-* Global variables  
-* Unbounded cache  
-* Event listeners not removed  
-* Large objects stored in closures  
-* Timers not cleared  
+* Global variables
+* Unbounded cache
+* Event listeners not removed
+* Large objects stored in closures
+* Timers not cleared
 * Maps that keep growing forever
 
 ### Example
 
 const cache \= new Map();
 
-app.get("/user/:id", async (req, res) \=\> \{  
+app.get("/user/:id", async (req, res) \=\> \{
  const user \= await getUser(req.params.id);
 
  cache.set(req.params.id, user); // grows forever
 
- res.json(user);  
+ res.json(user);
 \});
 
 ### Fix
@@ -1502,13 +1502,13 @@ Connection pooling improves performance by reusing database connections. It avoi
 
 Good practices:
 
-* Use parameterized queries  
-* Avoid SQL injection  
-* Use indexes  
-* Use pagination  
-* Avoid N+1 queries  
-* Use connection pooling  
-* Set query timeout  
+* Use parameterized queries
+* Avoid SQL injection
+* Use indexes
+* Use pagination
+* Avoid N+1 queries
+* Use connection pooling
+* Set query timeout
 * Handle transactions carefully
 
 ### Interview-ready answer
@@ -1529,9 +1529,9 @@ An attacker can modify the query using malicious input.
 
 ### Safe example
 
-const result \= await db.query(  
- "SELECT \* FROM users WHERE email \= $1",  
- \[email\]  
+const result \= await db.query(
+ "SELECT \* FROM users WHERE email \= $1",
+ \[email\]
 );
 
 ### Interview-ready answer
@@ -1546,25 +1546,25 @@ NoSQL injection happens when user input manipulates MongoDB queries.
 
 ### Bad example
 
-User.findOne(\{  
- email: req.body.email,  
- password: req.body.password,  
+User.findOne(\{
+ email: req.body.email,
+ password: req.body.password,
 \});
 
 If attacker sends an object instead of string:
 
-\{  
- "email": \{ "$ne": null \},  
- "password": \{ "$ne": null \}  
+\{
+ "email": \{ "$ne": null \},
+ "password": \{ "$ne": null \}
 \}
 
 It may bypass checks if not validated.
 
 ### Prevention
 
-* Validate input types  
-* Sanitize request body  
-* Use schema validation  
+* Validate input types
+* Sanitize request body
+* Use schema validation
 * Avoid passing raw user objects to queries
 
 ### Interview-ready answer
@@ -1581,7 +1581,7 @@ Streams allow processing data piece by piece instead of loading everything into 
 
 const fs \= require("fs");
 
-fs.createReadStream("large-file.txt")  
+fs.createReadStream("large-file.txt")
  .pipe(fs.createWriteStream("copy.txt"));
 
 ### Why useful?
@@ -1590,9 +1590,9 @@ For large files, streaming avoids memory overload.
 
 ### Types of streams
 
-* Readable  
-* Writable  
-* Duplex  
+* Readable
+* Writable
+* Duplex
 * Transform
 
 ### Interview-ready answer
@@ -1607,22 +1607,22 @@ Buffer is used to handle binary data.
 
 ### Used in
 
-* File operations  
-* Streams  
-* TCP packets  
-* Image/video data  
+* File operations
+* Streams
+* TCP packets
+* Image/video data
 * Binary protocols
 
 ### Example
 
 const buffer \= Buffer.from("Hello");
 
-console.log(buffer);  
+console.log(buffer);
 console.log(buffer.toString());
 
 Output:
 
-\<Buffer 48 65 6c 6c 6f\>  
+\<Buffer 48 65 6c 6c 6f\>
 Hello
 
 ### Interview-ready answer
@@ -1637,7 +1637,7 @@ Buffer is Node.js’s way of handling binary data. It is commonly used with stre
 
 ### Example
 
-const port \= process.env.PORT || 3000;  
+const port \= process.env.PORT || 3000;
 const dbUrl \= process.env.DATABASE\_URL;
 
 ### Why useful?
@@ -1656,10 +1656,10 @@ Do not hardcode secrets.
 
 Use:
 
-* Environment variables  
-* Secret managers  
-* Vault  
-* AWS Secrets Manager  
+* Environment variables
+* Secret managers
+* Vault
+* AWS Secrets Manager
 * Kubernetes secrets
 
 ### Avoid
@@ -1680,20 +1680,20 @@ Graceful shutdown means safely stopping the server without abruptly killing acti
 
 const server \= app.listen(3000);
 
-process.on("SIGTERM", () \=\> \{  
+process.on("SIGTERM", () \=\> \{
  console.log("SIGTERM received");
 
- server.close(() \=\> \{  
-   console.log("Server closed");  
-   process.exit(0);  
- \});  
+ server.close(() \=\> \{
+   console.log("Server closed");
+   process.exit(0);
+ \});
 \});
 
 ### In production, also close
 
-* Database connections  
-* Redis connections  
-* Message queue consumers  
+* Database connections
+* Redis connections
+* Message queue consumers
 * Background jobs
 
 ### Interview-ready answer
@@ -1750,7 +1750,7 @@ Common options:
 
 ### URL versioning
 
-/api/v1/users  
+/api/v1/users
 /api/v2/users
 
 ### Header versioning
@@ -1767,22 +1767,22 @@ API versioning helps evolve APIs without breaking existing clients. The most com
 
 Common tools:
 
-* Jest  
-* Supertest  
-* Mocha  
-* Chai  
+* Jest
+* Supertest
+* Mocha
+* Chai
 * Sinon
 
 ### Example with Jest and Supertest
 
-const request \= require("supertest");  
+const request \= require("supertest");
 const app \= require("../src/app");
 
-test("GET /health should return ok", async () \=\> \{  
+test("GET /health should return ok", async () \=\> \{
  const response \= await request(app).get("/health");
 
- expect(response.status).toBe(200);  
- expect(response.body).toEqual(\{ status: "ok" \});  
+ expect(response.status).toBe(200);
+ expect(response.body).toEqual(\{ status: "ok" \});
 \});
 
 ### Interview-ready answer
@@ -1795,33 +1795,33 @@ I test Node.js APIs using unit tests for services, integration tests for routes 
 
 ## Must know
 
-* Node.js runtime  
-* Event loop  
-* Async programming  
-* Promises and async/await  
-* Express middleware  
-* REST API design  
-* Error handling  
-* Authentication and authorization  
-* JWT and refresh tokens  
-* CORS  
-* Rate limiting  
-* Caching  
-* BFF pattern  
-* Security basics  
-* Logging and monitoring  
+* Node.js runtime
+* Event loop
+* Async programming
+* Promises and async/await
+* Express middleware
+* REST API design
+* Error handling
+* Authentication and authorization
+* JWT and refresh tokens
+* CORS
+* Rate limiting
+* Caching
+* BFF pattern
+* Security basics
+* Logging and monitoring
 * Scaling Node.js
 
 ## Good to know
 
-* Worker threads  
-* Clustering  
-* Streams  
-* Buffers  
-* Graceful shutdown  
-* Memory leaks  
-* Connection pooling  
-* API versioning  
+* Worker threads
+* Clustering
+* Streams
+* Buffers
+* Graceful shutdown
+* Memory leaks
+* Connection pooling
+* API versioning
 * Testing with Jest and Supertest
 
 ## Compact Interview Introduction for Node.js Experience
