@@ -296,12 +296,10 @@ Would you like me to also give you a **React.js Accessibility Starter Template**
 
 4o
 
-##### You said:
-
+**You said:**
 Exaplin different level of accessibility
 
-###### ChatGPT said:
-
+**ChatGPT said:**
 Of course\! Let’s dive into it step-by-step:
 
 ---
@@ -436,12 +434,10 @@ It'll be super handy if you want to ensure your React apps are compliant from th
 
 4o
 
-##### You said:
-
+**You said:**
 yes
 
-###### ChatGPT said:
-
+**ChatGPT said:**
 Awesome\! Let’s continue 🔥
  I’ll break this down clearly so you can **directly apply** it in your projects.
 

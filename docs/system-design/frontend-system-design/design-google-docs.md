@@ -47,7 +47,7 @@ sidebar_position: 3
 
 ### 🔧 Component Breakdown:
 
-php-template  
+php-template
 ```text
 <AppShell>
 ├── <Sidebar> (file list, share, version history)

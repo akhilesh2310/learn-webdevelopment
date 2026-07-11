@@ -9,23 +9,23 @@ This page preserves notes from a Google interview preparation session. The chat 
 
 ## Interview Approach & Principles
 
-* **First-Principle Thinking**  
+* **First-Principle Thinking**
    Avoid bias toward known solutions. Break down the problem from fundamentals.
 
-* **Problem Scoping**  
+* **Problem Scoping**
    Clearly define what's in scope and out of scope before diving into the solution.
 
-* **State Assumptions**  
+* **State Assumptions**
    Make realistic assumptions about scale, data size, traffic, etc., and call them out explicitly.
 
-* **High-Level Architecture First**  
-   Start with a big-picture design before going into details.  
+* **High-Level Architecture First**
+   Start with a big-picture design before going into details.
    Focus on **why** (purpose) before **what** (implementation details).
 
-* **Reliability & Scalability**  
+* **Reliability & Scalability**
    Ensure the design can handle growth, failures, and high availability.
 
-* **Deep Dive / Technical Depth**  
+* **Deep Dive / Technical Depth**
    Explain:
 
   * **Why** this design works.
@@ -34,11 +34,11 @@ This page preserves notes from a Google interview preparation session. The chat 
 
   * **Then what** trade-offs you considered.
 
-* **Trade-Off Analysis & Design Choices**  
+* **Trade-Off Analysis & Design Choices**
    Highlight pros/cons of each approach and justify your final decision.
 
-* **Efficacy & Time Management**  
-   Target: Solve in **\~1 hour** efficiently.  
+* **Efficacy & Time Management**
+   Target: Solve in **\~1 hour** efficiently.
    Structure your solution and present it logically.
 
 ## Problem: Design a Chat Service

@@ -569,12 +569,10 @@ Would you like a quick STAR-format response if asked: **"Have you worked with he
 
 4o
 
-##### You said:
-
+**You said:**
 No i need to learn so please share about it
 
-###### ChatGPT said:
-
+**ChatGPT said:**
 Great — here’s a **clear and beginner-friendly overview** to help you **learn** these three important topics as a UI architect:
 
 ---

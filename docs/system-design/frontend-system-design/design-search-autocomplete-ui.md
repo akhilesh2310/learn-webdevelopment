@@ -11,11 +11,11 @@ Design Autocomplete:
 
 [https://www.youtube.com/watch?v=6YrkXWFgiV8\&ab\_channel=RoadsideCoder](https://www.youtube.com/watch?v=6YrkXWFgiV8&ab_channel=RoadsideCoder) seen
 
-[https://www.youtube.com/watch?v=us0qySiUsGU\&ab\_channel=TusharRoy-CodingMadeSimple](https://www.youtube.com/watch?v=us0qySiUsGU&ab_channel=TusharRoy-CodingMadeSimple) seen, mostly backend related 
+[https://www.youtube.com/watch?v=us0qySiUsGU\&ab\_channel=TusharRoy-CodingMadeSimple](https://www.youtube.com/watch?v=us0qySiUsGU&ab_channel=TusharRoy-CodingMadeSimple) seen, mostly backend related
 
-[https://www.youtube.com/watch?v=IKRbWT6LqIY\&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj\&ab\_channel=ChiragGoel](https://www.youtube.com/watch?v=IKRbWT6LqIY&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj&ab_channel=ChiragGoel) seen, LLD explained 
+[https://www.youtube.com/watch?v=IKRbWT6LqIY\&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj\&ab\_channel=ChiragGoel](https://www.youtube.com/watch?v=IKRbWT6LqIY&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj&ab_channel=ChiragGoel) seen, LLD explained
 
-[https://www.youtube.com/watch?v=QemIfzcEeMM\&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj\&index=3\&ab\_channel=ChiragGoel](https://www.youtube.com/watch?v=QemIfzcEeMM&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj&index=3&ab_channel=ChiragGoel) 
+- [https://www.youtube.com/watch?v=QemIfzcEeMM&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj&index=3&ab_channel=ChiragGoel](https://www.youtube.com/watch?v=QemIfzcEeMM&list=PL4CFloQ4GGWJKu24kuizRUj9KiSO216Bj&index=3&ab_channel=ChiragGoel)
 
 ### Design an Autocomplete Component for Google Search
 
@@ -39,99 +39,101 @@ Start by clarifying the **scope and constraints**.
 
 **Sample clarifications:**
 
-* What kind of results should be supported?  
-* What devices will this component be used on?   
-  * Should this work on **mobile and desktop**?  
-  * Who will use this search auto-complete?  
-* Do we need to support fuzzy search on the client?  
-  * Ex.: Levenshtein distance is the similarity between two strings  
-* Are **async API calls** involved for live search? Or do we just do client-side search filtering?  
-* Should it support **keyboard navigation**?  
-* Do we expect to **group or categorize** suggestions?  
-* Is it a **generic library component** or a **one-off for Google Search**?  
-* Should it support **internationalization/localization**?  
+* What kind of results should be supported?
+* What devices will this component be used on?
+  * Should this work on **mobile and desktop**?
+  * Who will use this search auto-complete?
+* Do we need to support fuzzy search on the client?
+  * Ex.: Levenshtein distance is the similarity between two strings
+* Are **async API calls** involved for live search? Or do we just do client-side search filtering?
+* Should it support **keyboard navigation**?
+* Do we expect to **group or categorize** suggestions?
+* Is it a **generic library component** or a **one-off for Google Search**?
+* Should it support **internationalization/localization**?
 * Should it support offline usage?
 
-**Problem Scoping**  
+**Problem Scoping**
 Clearly define what's in scope and out of scope before diving into the solution.
 
 Functional Requirements
 
-In Scope: 
+In Scope:
 
-* Generalized enough to be plugged in and played anywhere  
-  * Should be **reusable across teams**  
-* Customizable UI for input and search results  
-  * Highly configurable  
-    * Client-only API  
-    * Server-only API  
-* Real-time suggestions  
-* Dynamic & Static Data support  
-  * Supports async api and static data  
-  * Fetches search results from the  API response  
-* Mouse \+ keyboard navigation  
-* Loading Indicator  
+* Generalized enough to be plugged in and played anywhere
+  * Should be **reusable across teams**
+* Customizable UI for input and search results
+  * Highly configurable
+    * Client-only API
+    * Server-only API
+* Real-time suggestions
+* Dynamic & Static Data support
+  * Supports async api and static data
+  * Fetches search results from the  API response
+* Mouse \+ keyboard navigation
+* Loading Indicator
   * Loading/Error/Success States management
 
 *Out of Scope:*
 
-* *Offline usages*  
-* *No spell check*  
-* *Multi-language input support*  
+* *Offline usages*
+* *No spell check*
+* *Multi-language input support*
 * *Personnel information*
 
 Non-Functional Requirements
 
-* Performance  
-  * Edgecases  
-    * UI component search result list should be able to handle large dataset as list.   
-    * UI should not crash or hang, Smooth experience  
-    * Infinite Scrolling/Virtualization for performance  
-    * Caching  
-    * Retries  
-    * Debouncing/throttling  
-* Responsiveness  
-  * Supported by all devices and screen sizes  
-* Compatibilty  
-  * Must work on both mobile & desktop  
-  * Must work on different web browsers  
-* Security  
-  * Prevent cross-site scripting attacks  
-* Caching  
-  * Offline Usage (read from cache)  
-* Accessibility  
-  * Needs to be highly accessible (ARIA support)  
-  * Supports A11y  
-* Internationalization/ **localization (smartling, html lang attribute)**  
+* Performance
+  * Edgecases
+    * UI component search result list should be able to handle large dataset as list.
+    * UI should not crash or hang, Smooth experience
+    * Infinite Scrolling/Virtualization for performance
+    * Caching
+    * Retries
+    * Debouncing/throttling
+* Responsiveness
+  * Supported by all devices and screen sizes
+* Compatibilty
+  * Must work on both mobile & desktop
+  * Must work on different web browsers
+* Security
+  * Prevent cross-site scripting attacks
+* Caching
+  * Offline Usage (read from cache)
+* Accessibility
+  * Needs to be highly accessible (ARIA support)
+  * Supports A11y
+* Internationalization/ **localization (smartling, html lang attribute)**
 * Best practices
 
-**State Assumptions**  
+**State Assumptions**
 Make realistic assumptions about scale, data size, traffic, etc., and call them out explicitly.
 
 * Can scale to **millions of users per day**
 
-**High-Level Architecture**  
-Start with a big-picture design before going into details.  
+**High-Level Architecture**
+Start with a big-picture design before going into details.
 Focus on **why** (purpose) before **what** (implementation details).
 
 ![][image1]
 
 Client
 
-	View
+View
 
-	Controller
+Controller
 
-	Data Store/ Model
+Data Store/ Model
 
 Server
 
-`<Autocomplete>`  
- `├── <InputField />`  
- `├── <SuggestionList />`  
- `│     ├── <SuggestionItem />`  
- `├── <LoadingSpinner />`  
- `└── <NoResultMessage />`
+```text
+<Autocomplete>
+├── <InputField />
+├── <SuggestionList />
+│   ├── <SuggestionItem />
+├── <LoadingSpinner />
+└── <NoResultMessage />
+```
 
 ### Internal Responsibilities:
 
@@ -147,184 +149,201 @@ Server
 
 `All these configuration are optional will have default settings on initial state`
 
-`Type AutoCompeleteProps = {`  
-	`// data`  
-	`dataContext:[NetworkContext | ClientContext]`  
-`onFetchedResults: [Promise<results, (page & limit) or cursor>]`  
-`minSearchLength: [int]`
+```ts
+Type AutoCompeleteProps = {
+  // data
+  dataContext:[NetworkContext | ClientContext]
+  onFetchedResults: [Promise<results, (page & limit) or cursor>]
+  minSearchLength: [int]
 
-	`// cache`  
-`cacheContext: [CacheContext]`
+  // cache
+  cacheContext: [CacheContext]
 
-	`// interactions`  
-`onChange: [EventHandler] // on text change`  
-`onFocus: [EventHandler] // on text focus`  
-`onBlur: [EventHandler] // on text blur`  
-`onSelect: [EventHandler] // on selecting a specific search result`
+  // interactions
+  onChange: [EventHandler] // on text change
+  onFocus: [EventHandler] // on text focus
+  onBlur: [EventHandler] // on text blur
+  onSelect: [EventHandler] // on selecting a specific search result
 
-	`// styling`  
-`style: [StyleObj]`  
-`className: [str]`  
-`resultsRenderer: [Function | JSX]`  
-`truncateLongStrings: [Bool]`  
-`shouldAutofocus: [Bool]`
+  // styling
+  style: [StyleObj]
+  className: [str]
+  resultsRenderer: [Function | JSX]
+  truncateLongStrings: [Bool]
+  shouldAutofocus: [Bool]
 
-	`// debounce`  
-	`debounce: [Bool]`  
-`debounceDuration: [int]`  
-`minQueryLength: [int]`  
-`}`
+  // debounce
+  debounce: [Bool]
+  debounceDuration: [int]
+  minQueryLength: [int]
+}
 
-`type NetworkContext = {`  
-	`url: String`  
-	`resultsKey: [str] // default results[‘data’]`  
-	`pagination: [PaginationContext]`  
-	`retryCount: [int]`  
-	`timeoutDuration: [int]`  
-`}`
+type NetworkContext = {
+  url: String
+  resultsKey: [str] // default results[‘data’]
+  pagination: [PaginationContext]
+  retryCount: [int]
+  timeoutDuration: [int]
+}
 
-`type ClientContext = {`  
-	`results: List[AutoCompleteResult],`  
-	`Pagination: PaginationContext]`  
-`}`
+type ClientContext = {
+  results: List[AutoCompleteResult],
+  Pagination: PaginationContext]
+}
 
-`type PaginationContext = {`  
-	`type: [Enum] // <offset, cursor, none>`  
-	`page: [int] // start page number`  
-	`limit: [int] // limit number of results per page`  
-	`nextCursor: [int] // start cursor`  
-`}`
+type PaginationContext = {
+  type: [Enum] // <offset, cursor, none>
+  page: [int] // start page number
+  limit: [int] // limit number of results per page
+  nextCursor: [int] // start cursor
+}
+```
 
 `Cursor page approach is for fast data addition to db real time kind of`
 
-`type AutoCompleteResults = {`  
-	`title: str`  
-	`subTitle: str`  
-	`thumbnail: str`  
-	`actionType: ActionType`  
-`}`
+```ts
+type AutoCompleteResults = {
+  title: str
+  subTitle: str
+  thumbnail: str
+  actionType: ActionType
+}
 
-`type ActionType = {`  
-	`Type: ‘deeplink’ | ‘expand’,`  
-	`Url: str`  
-	`otherMetaData...`  
-`}`
+type ActionType = {
+  Type: ‘deeplink’ | ‘expand’,
+  Url: str
+  otherMetaData...
+}
 
-`type CacheContext = {`	  
-	`type: [‘network only’ | ‘network & cache’ | ‘cache’ | ‘none’]`  
-`}`
+type CacheContext = {
+  type: [‘network only’ | ‘network & cache’ | ‘cache’ | ‘none’]
+}
+```
 
-`// Expected API response data structure` 
+Expected API response data structure:
 
-`{`  
-	`// offset base use case`  
-	`page: int,`  
-	`limit: int,`  
-	`total: int,`  
-	`hasNextPage: bool,`   
-	  
-`// cursor based use case`  
-`nextCursor: uuid,`  
-	`limit: init`
+```ts
+{
+  // offset base use case
+  page: int,
+  limit: int,
+  total: int,
+  hasNextPage: bool,
 
-`// results`  
-`data: [`  
-	`{`  
-		`title: str,`  
-		`subTitle: str,`  
-		`avatar: str,`  
-		`action: ‘deeplink’,`  
-		`url: str`  
-`}`  
-`]`	
+  // cursor based use case
+  nextCursor: uuid,
+  limit: init
 
-`}`
+  // results
+  data: [
+    {
+      title: str,
+      subTitle: str,
+      avatar: str,
+      action: ‘deeplink’,
+      url: str
+    }
+  ]
+}
+```
 
 ### Infinite Scrolling
 
 Support both cursor based and offset based
 
-* Cursor Based:  
-  * API: /api/items?cursor=id\&limit=20  
-  * Pros:  
-    * Pointer to the last item in the results  
-    * Real time app support  
-    * No duplicate results/repeated results  
-  * Cons:  
+* Cursor Based:
+  * API: /api/items?cursor=id\&limit=20
+  * Pros:
+    * Pointer to the last item in the results
+    * Real time app support
+    * No duplicate results/repeated results
+  * Cons:
     * Can’t jump to specific pages
 
-Request  
-`{`  
-	`cursor: ‘some cursor id’,`  
-	`size: 30,`  
-`}`
+Request
 
-Response  
-`{`  
-	`nextCursor: ‘some next cursor id’,`  
-	`size: 30,`  
-`}`
+```ts
+{
+  cursor: ‘some cursor id’,
+  size: 30,
+}
+```
 
-* Offset Based:  
-  * API: /api/items?page=0\&size=10  
-  * Pros:  
-    * Jump to any specific page and size  
-    * Easier to implement on the backend  
-    * Can see all page length  
-  * Cons:  
-    * Real time items update can cause stale data  
-    * As query size increases, the SQL fetch on the server will dramatically grow  
-  * 
+Response
 
-Request  
-`{`  
-	`page: 1,`  
-	`limit: 30,`  
-`}`
+```ts
+{
+  nextCursor: ‘some next cursor id’,
+  size: 30,
+}
+```
 
-Response  
-`{`  
-	`page: 1,`  
-	`size: 30,`  
-	`nextPage: true,`  
-`total: 200`  
-`}`
+* Offset Based:
+  * API: /api/items?page=0\&size=10
+  * Pros:
+    * Jump to any specific page and size
+    * Easier to implement on the backend
+    * Can see all page length
+  * Cons:
+    * Real time items update can cause stale data
+    * As query size increases, the SQL fetch on the server will dramatically grow
+  *
+
+Request
+
+```ts
+{
+  page: 1,
+  limit: 30,
+}
+```
+
+Response
+
+```ts
+{
+  page: 1,
+  size: 30,
+  nextPage: true,
+  total: 200
+}
+```
 
 **How do we implement infinite scrolling?**
 
 **Intersection Observer**
 
-* Runs on secondary thread  
-* Built a performant API to handle infinite scrolling  
-* Add a loading node after the end of your results and watch this node via Intersection Observer. If the node is in the view, add new items  
+* Runs on secondary thread
+* Built a performant API to handle infinite scrolling
+* Add a loading node after the end of your results and watch this node via Intersection Observer. If the node is in the view, add new items
 * Add a good threshold so you don’t have to be right on the node, somewhere above it
 
-[https://www.youtube.com/watch?v=QQB3x5lcZzI\&ab\_channel=ShivamBhalla](https://www.youtube.com/watch?v=QQB3x5lcZzI&ab_channel=ShivamBhalla)  
-[https://www.youtube.com/watch?v=VCkOoDk4a80\&ab\_channel=ShivamBhalla](https://www.youtube.com/watch?v=VCkOoDk4a80&ab_channel=ShivamBhalla)
+- [https://www.youtube.com/watch?v=QQB3x5lcZzI&ab_channel=ShivamBhalla](https://www.youtube.com/watch?v=QQB3x5lcZzI&ab_channel=ShivamBhalla)
+- [https://www.youtube.com/watch?v=VCkOoDk4a80&ab_channel=ShivamBhalla](https://www.youtube.com/watch?v=VCkOoDk4a80&ab_channel=ShivamBhalla)
 
 **Window.scroll**
 
-* More configurable  
+* More configurable
 * Less performant out of the box, needs a lot of custom implementation to get in par with Intersection Observer
 
 **Virtulalization**
 
-* Recycling the DOM for a long list  
-* Render the items as per the view size  
+* Recycling the DOM for a long list
+* Render the items as per the view size
 * Add a scroller as per the item count with space in the top and bottom
 
 **Caching**
 
-* Cache TTL  
-* Cache Eviction Policy  
-  * 10mb local storage limit  
-    * Use LRU cache  
-  * Or Use IndexDB  
-* Cache Store Types  
-  * Non normalized cache  
+* Cache TTL
+* Cache Eviction Policy
+  * 10mb local storage limit
+    * Use LRU cache
+  * Or Use IndexDB
+* Cache Store Types
+  * Non normalized cache
     * Option 1 (run into duplicates)
 
-    ## **![][image2]**
+    ![][image2]
 
     * Option 2 (O(n) complexity)
 
@@ -332,9 +351,9 @@ Response
 
   * Normalized Cache
 
-    `![][image4]`
+    ![][image4]
 
-API Retries  
+API Retries
 Concurrent Requests (which one to respect)?
 
 ![][image5]
@@ -407,19 +426,19 @@ Dark Mode Support
 
 ## Best Practices
 
-* Minification  
-* Lazyloading code/images  
-* Bundle splitting  
-* Tree Shaking  
-* Unit Tests/Integration Tests  
-* Observability  
+* Minification
+* Lazyloading code/images
+* Bundle splitting
+* Tree Shaking
+* Unit Tests/Integration Tests
+* Observability
 * Secuirty (XSS, CORS)
 
-**Reliability & Scalability**  
-Ensure the design can handle growth, failures, and high availability.  
+**Reliability & Scalability**
+Ensure the design can handle growth, failures, and high availability.
 ??
 
-**Deep Dive / Technical Depth**  
+**Deep Dive / Technical Depth**
  Explain:
 
 **Why** this design works. ??
@@ -428,7 +447,7 @@ Ensure the design can handle growth, failures, and high availability.
 
 **Then what** trade-offs you considered. ??
 
-**Trade-Off Analysis & Design Choices**  
+**Trade-Off Analysis & Design Choices**
 Highlight pros/cons of each approach and justify your final decision.
 
 | Decision | Trade-Off |

@@ -75,12 +75,10 @@ Would you also like me to show you a **visual diagram** or a **real-world exampl
 
 4o
 
-##### You said:
-
+**You said:**
 How to create and use it in react js ?
 
-###### ChatGPT said:
-
+**ChatGPT said:**
 Good question\! Let’s go step-by-step:
 
 ---
@@ -316,12 +314,10 @@ Would you also like me to show how to **separate your design system into a priva
 
 4o
 
-##### You said:
-
+**You said:**
 yes
 
-###### ChatGPT said:
-
+**ChatGPT said:**
 Awesome\! 🚀
  Let's take it step-by-step on **how to separate your React Design System into a reusable private NPM package**:
 

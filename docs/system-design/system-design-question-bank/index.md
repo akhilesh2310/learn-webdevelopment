@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Mock System Design Interview
 
-[https://careersonair.withgoogle.com/events/mock-interview-workshop/watch?talk=system-design](https://careersonair.withgoogle.com/events/mock-interview-workshop/watch?talk=system-design)
+- [https://careersonair.withgoogle.com/events/mock-interview-workshop/watch?talk=system-design](https://careersonair.withgoogle.com/events/mock-interview-workshop/watch?talk=system-design)
 
 These questions assess **architecture, scalability, UX, and engineering leadership**. These will prepare you for both whiteboard/system design rounds and cross-functional discussions.
 
